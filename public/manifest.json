@@ -1,0 +1,141 @@
+{
+  "name": "FYN Tools Worldwide - Professional Online Tools",
+  "short_name": "FYN Tools",
+  "description": "80+ free professional online tools for developers, businesses, and individuals. Calculators, text tools, image editors, converters, and generators.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "developer", "business"],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "FYN Tools Desktop Interface"
+    },
+    {
+      "src": "/screenshots/mobile-screenshot.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "FYN Tools Mobile Interface"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Word Counter",
+      "short_name": "Word Counter",
+      "description": "Count words, characters, and paragraphs",
+      "url": "/word-counter",
+      "icons": [
+        {
+          "src": "/shortcuts/word-counter.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "QR Code Generator",
+      "short_name": "QR Generator",
+      "description": "Generate QR codes instantly",
+      "url": "/qr-code-generator",
+      "icons": [
+        {
+          "src": "/shortcuts/qr-generator.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Password Generator",
+      "short_name": "Password Gen",
+      "description": "Generate secure passwords",
+      "url": "/password-generator",
+      "icons": [
+        {
+          "src": "/shortcuts/password-generator.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Image Resizer",
+      "short_name": "Image Resizer",
+      "description": "Resize images instantly",
+      "url": "/image-resizer",
+      "icons": [
+        {
+          "src": "/shortcuts/image-resizer.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "capture_links": "new-client"
+}
+

@@ -1,0 +1,729 @@
+# FYN Tools - AI Discovery Manifest
+Site: https://fyntools.com
+Description: Free online tools and calculators for productivity, design, development, finance, and daily use.
+Policy: Crawling and indexing allowed for AI assistants and search engines.
+Canonical Sitemap: https://fyntools.com/sitemap.xml
+Last Updated: 2026-07-22
+
+## Core Pages
+https://fyntools.com/
+https://fyntools.com/tools
+https://fyntools.com/about
+https://fyntools.com/contact
+https://fyntools.com/blog
+
+## Tool Catalog (Verified from toolsData)
+- Word Counter
+  URL: https://fyntools.com/word-counter
+  Category: Text & Writing Tools
+  Description: Count words, characters, and paragraphs in your text.
+  Keywords: word count, character count, text analysis, writing tools
+  Features: Real-time word counting, Character count with and without spaces, Paragraph counting, Sentence counting, Reading time estimation, Character frequency analysis, Word frequency analysis, Copy results to clipboard, Text statistics dashboard
+- Text Case Converter
+  URL: https://fyntools.com/text-case-converter
+  Category: Text & Writing Tools
+  Description: Convert text between uppercase, lowercase, and title case.
+  Keywords: uppercase, lowercase, title case, text transform
+  Features: Uppercase conversion, Lowercase conversion, Title case conversion, Sentence case conversion, Toggle case, Copy to clipboard, Real-time preview, Batch text processing, Preserve formatting options
+- Text Font Changer
+  URL: https://fyntools.com/text-font-changer
+  Category: Text & Writing Tools
+  Description: Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up.
+  Keywords: free fancy text generator, copy paste fancy text, instagram font, discord font, unicode font changer, cursive text generator, aesthetic text
+  Features: 35+ Unicode fonts, Bold italic cursive bubble aesthetic, Kaomojis and emoticons, Export to PNG, Platform presets Instagram Discord TikTok Roblox, Character limit indicators, Font search and favorites, Dark light preview, Sample text buttons
+- AI Text Rewriter
+  URL: https://fyntools.com/ai-text-rewriter
+  Category: Text & Writing Tools
+  Description: Rewrite your content to make it unique and avoid AI detection.
+  Keywords: ai rewriter, content rewrite, plagiarism, unique content
+  Features: Multiple writing styles, Professional tone option, Casual tone option, Creative writing style, Academic writing style, Simple writing style, Creativity level control, AI detection avoidance, Maintains original meaning, Natural human-like rewriting, Word count preservation, Instant rewriting, Copy rewritten text
+- Lorem Ipsum Generator
+  URL: https://fyntools.com/lorem-ipsum-generator
+  Category: Text & Writing Tools
+  Description: Generate placeholder text for your designs.
+  Keywords: lorem ipsum, placeholder text, dummy text, design
+  Features: Customizable word count, Paragraph generation, Sentence generation, Words generation, Copy to clipboard, Multiple variations, Classic Lorem Ipsum text, Design mockup ready, Instant generation
+- Whitespace Remover
+  URL: https://fyntools.com/whitespace-remover
+  Category: Text & Writing Tools
+  Description: Remove extra spaces and tabs from your text.
+  Keywords: whitespace, remove spaces, clean text, formatting
+  Features: Remove extra spaces, Remove tabs, Remove leading spaces, Remove trailing spaces, Remove all whitespace, Clean text formatting, Preserve line breaks option, Real-time cleaning, Copy cleaned text, Batch text processing
+- Duplicate Line Remover
+  URL: https://fyntools.com/duplicate-line-remover
+  Category: Text & Writing Tools
+  Description: Remove duplicate lines from your text.
+  Keywords: duplicate lines, remove duplicates, clean text, unique lines
+  Features: Remove duplicate lines, Case-sensitive option, Case-insensitive option, Keep first occurrence, Keep last occurrence, Show duplicate count, Preserve original order, Copy unique lines, Batch processing, Real-time preview
+- Text Reverser
+  URL: https://fyntools.com/text-reverser
+  Category: Text & Writing Tools
+  Description: Reverse text, words, or lines in your text.
+  Keywords: reverse text, flip text, backwards text, mirror text
+  Features: Reverse entire text, Reverse words order, Reverse lines order, Reverse characters, Mirror text effect, Copy reversed text, Real-time preview, Multiple reverse options, Preserve formatting
+- Regex Tester
+  URL: https://fyntools.com/regex-tester
+  Category: Text & Writing Tools
+  Description: Test regular expressions against your text.
+  Keywords: regex, regular expression, pattern matching, test regex
+  Features: Test regex patterns, Match highlighting, Match groups extraction, Global match option, Case-insensitive option, Multiline mode, Real-time testing, Match count display, Copy matches, Common regex patterns library
+- Base64 Converter
+  URL: https://fyntools.com/base64-converter
+  Category: Text & Writing Tools
+  Description: Encode and decode Base64 strings.
+  Keywords: base64, encode, decode, converter, encryption
+  Features: Encode text to Base64, Decode Base64 to text, File encoding support, URL-safe encoding, Instant conversion, Copy encoded text, Copy decoded text, Validation check, Error detection, Batch processing
+- Text to Handwriting
+  URL: https://fyntools.com/text-to-handwriting
+  Category: Text & Writing Tools
+  Description: Convert typed text into handwritten-style text on lined paper.
+  Keywords: handwriting, text to handwriting, cursive, calligraphy
+  Features: Convert text to handwriting, Multiple handwriting styles, Lined paper background, Cursive font option, Download as image, Customizable pen color, Adjustable font size, Real-time preview, Copy handwriting image
+- URL Slug Generator
+  URL: https://fyntools.com/url-slug-generator
+  Category: Text & Writing Tools
+  Description: Convert text into SEO-friendly URL slugs.
+  Keywords: url slug, seo friendly url, permalink, url generator
+  Features: Generate SEO-friendly slugs, Remove special characters, Convert to lowercase, Replace spaces with hyphens, Remove stop words option, Custom separator, Copy slug to clipboard, Real-time generation, URL validation, Length limit option
+- Notes
+  URL: https://fyntools.com/notes
+  Category: Text & Writing Tools
+  Description: Create, organize, and manage your personal notes with tags and colors.
+  Keywords: notes, notepad, organize notes, personal notes, tags
+  Features: Create notes, Edit notes, Delete notes, Tag organization, Color coding, Search notes, Filter by tags, Filter by color, Local storage, Export notes, Import notes, Rich text formatting, Date timestamps
+- Timestamp Converter
+  URL: https://fyntools.com/timestamp-converter
+  Category: Converter Tools
+  Description: Convert Unix timestamps to dates and dates to timestamps with timezone support.
+  Keywords: timestamp converter, unix timestamp, epoch converter, date to timestamp, timestamp to date
+  Features: Convert timestamp to date, Convert date to timestamp, Timezone support, Multiple timezone selection, Unix timestamp format, ISO 8601 format, Custom date format, Real-time conversion, Copy converted value, Current timestamp display, Date picker, Time picker
+- Image Compressor
+  URL: https://fyntools.com/image-compressor
+  Category: Image Tools
+  Description: Compress images to reduce file size while maintaining quality. Convert MB images to KB for document uploads.
+  Keywords: image compressor, reduce file size, compress photos, optimize images
+  Features: Quality control slider, Batch compression, Format conversion, Before after comparison, Drag and drop interface, Mobile optimization, Preserve aspect ratio, Custom compression level, Download compressed image, File size reduction percentage
+- Logo to Favicon Converter
+  URL: https://fyntools.com/logo-to-favicon
+  Category: Image Tools
+  Description: Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 and more favicon formats.
+  Keywords: favicon generator, logo to favicon, website icon, app icon
+  Features: Multiple favicon sizes, 16x16 favicon, 32x32 favicon, 180x180 favicon, ICO format support, PNG format support, Batch generation, Download all sizes, Preview favicons, Auto-crop and center
+- Image Upscaler
+  URL: https://fyntools.com/image-upscaler
+  Category: Image Tools
+  Description: Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity.
+  Keywords: image upscaler, enhance image quality, increase resolution, upscale photos
+  Features: Upscale resolution, Enhance image quality, Multiple upscale factors, Advanced interpolation, Quality improvement, Download upscaled image, Real-time preview, Preserve aspect ratio, Batch upscaling
+- Image Cropper & Resizer
+  URL: https://fyntools.com/image-cropper
+  Category: Image Tools
+  Description: Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitter, LinkedIn posts and stories.
+  Keywords: image cropper, crop photos, resize images, social media dimensions
+  Features: Crop images, Resize images, Social media presets, Instagram dimensions, Facebook dimensions, Twitter dimensions, LinkedIn dimensions, Custom dimensions, Aspect ratio lock, Real-time preview, Download cropped image
+- Image Format Converter
+  URL: https://fyntools.com/image-format-converter
+  Category: Image Tools
+  Description: Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image converter.
+  Keywords: image converter, jpg to png, webp converter, format converter
+  Features: JPG to PNG conversion, PNG to JPG conversion, WebP conversion, Quality control, Batch conversion, Format selection, Download converted image, Preserve transparency, Fast conversion, Secure processing
+- SVG Optimizer
+  URL: https://fyntools.com/svg-optimizer
+  Category: Image Tools
+  Description: Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while maintaining quality.
+  Keywords: svg optimizer, optimize svg, reduce svg size, clean svg
+  Features: Remove unused attributes, Remove comments, Remove metadata, Reduce file size, Preserve quality, Clean SVG code, Download optimized SVG, File size comparison, Batch optimization
+- Image Metadata Viewer
+  URL: https://fyntools.com/image-metadata-viewer
+  Category: Image Tools
+  Description: View and extract EXIF data and metadata from images. See camera settings, GPS location, and technical details.
+  Keywords: image metadata, exif data, photo details, image properties
+  Features: View EXIF data, Camera settings, GPS location, Technical details, Image properties, Metadata extraction, Export metadata, Camera model info, Date taken, ISO settings, Aperture settings
+- Image to Text
+  URL: https://fyntools.com/image-to-text
+  Category: Image Tools
+  Description: Extract text from images using OCR. Convert photos and scanned documents into editable text.
+  Keywords: image to text, ocr, extract text from image, photo to text, scanned document to text
+  Features: OCR text extraction, Extract text from photos, Extract text from scanned documents, Multiple language support, Copy extracted text, Download as text file, Batch processing, High accuracy OCR
+- PDF Text Extractor
+  URL: https://fyntools.com/pdf-text-extractor
+  Category: Image Tools
+  Description: Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying.
+  Keywords: pdf text extractor, pdf to text, extract pdf content, pdf converter
+  Features: Extract PDF text, Convert PDF to text, Copy extracted text, Download as text file, Batch PDF processing, Preserve formatting option, Multi-page PDF support
+- Placeholder Image Generator
+  URL: https://fyntools.com/placeholder-image-generator
+  Category: Image Tools
+  Description: Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web design mockups.
+  Keywords: placeholder image, dummy image, mockup image, design placeholder
+  Features: Custom dimensions, Custom colors, Custom text, Download placeholder, Multiple formats, Quick generation, Design mockups, Web development
+- Pixelate Tool
+  URL: https://fyntools.com/pixelate-tool
+  Category: Image Tools
+  Description: Apply pixelation effects to specific areas of your images with customizable strength and size.
+  Keywords: pixelate image, blur faces, privacy tool, image censoring
+  Features: Pixelate specific areas, Adjustable pixel size, Adjustable strength, Select area to pixelate, Download pixelated image, Privacy protection, Face blurring, Real-time preview
+- Photo Annotation Tool
+  URL: https://fyntools.com/photo-annotation-tool
+  Category: Image Tools
+  Description: Add name, date, signature, and fingerprint to photos. Perfect for passport photos and applications.
+  Keywords: photo annotation, add name to photo, passport photo editor, photo signature
+  Features: Add name to photo, Add date to photo, Add signature, Add fingerprint, Passport photo editor, Application photo editor, Text overlay, Download annotated photo
+- Background Remover
+  URL: https://fyntools.com/background-remover
+  Category: Image Tools
+  Description: Remove background from photos automatically. Create transparent backgrounds instantly.
+  Keywords: background remover, remove background, transparent background, photo editor
+  Features: Automatic background removal, Transparent background, Manual refinement, Download PNG with transparency, Batch processing, High quality removal, Instant processing
+- Merge Images
+  URL: https://fyntools.com/merge-images
+  Category: Image Tools
+  Description: Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image.
+  Keywords: merge images, photo merge, image merge, photo merge online, combine images
+  Features: Horizontal merge, Vertical merge, Grid layout, Combine multiple photos, Custom spacing, Align images, Download merged image, Batch merge, Preserve aspect ratio
+- Flip Image
+  URL: https://fyntools.com/flip-image
+  Category: Image Tools
+  Description: Flip images horizontally or vertically with real-time preview. Free image flipper online.
+  Keywords: flip image, image flipper, mirror image, flip photo online, horizontal flip image, vertical flip image, imageflipper com
+  Features: Horizontal flip, Vertical flip, Real-time preview, Download flipped image, Mirror effect, Instant flip, Batch flipping
+- Blur Image
+  URL: https://fyntools.com/blur-image
+  Category: Image Tools
+  Description: Blur image online with adjustable blur intensity. Create soft backgrounds and privacy blur effects.
+  Keywords: blur image, blur photo, blur image online, photo blur tool, image blur editor
+  Features: Adjustable blur intensity, Selective blur, Background blur, Privacy blur, Download blurred image, Real-time preview, Multiple blur styles
+- Split Image
+  URL: https://fyntools.com/split-image
+  Category: Image Tools
+  Description: Split images into custom rows and columns and download all pieces as ZIP files.
+  Keywords: split image, image splitter, split image online, cut image into pieces, divide image
+  Features: Custom rows and columns, Split into pieces, Download as ZIP, Individual piece download, Grid split, Equal size pieces, Download all pieces
+- Invert Image Colors
+  URL: https://fyntools.com/invert-image-colors
+  Category: Image Tools
+  Description: Invert image colors online to create negative effects with adjustable intensity.
+  Keywords: invert image colors, negative image, invert image online, invert photo colors, photo negative effect
+  Features: Color inversion, Negative effect, Adjustable intensity, Download inverted image, Real-time preview, Full color inversion
+- Image Resizer
+  URL: https://fyntools.com/image-resizer
+  Category: Image Tools
+  Description: Manually resize image dimensions and file size. Perfect for documents and web images.
+  Keywords: image resizer, resize photos, change image size, scale images
+  Features: Manual resize, Custom dimensions, Preserve aspect ratio, File size reduction, Download resized image, Real-time preview, Batch resizing
+- Add Name & Date on Photo
+  URL: https://fyntools.com/add-name-date-photo
+  Category: Image Tools
+  Description: Add name and date on passport photographs for online application forms.
+  Keywords: add name to photo, passport photo, photo with name, photo editor
+  Features: Add name to photo, Add date to photo, Passport photo editor, Application form photos, Text overlay, Download edited photo
+- QR Scanner
+  URL: https://fyntools.com/qr-scanner
+  Category: Image Tools
+  Description: Scan QR codes using camera or upload image to decode QR codes.
+  Keywords: qr scanner, scan qr code, qr reader, decode qr
+  Features: Camera scanning, Upload image to scan, Decode QR codes, Copy decoded text, Open decoded URLs, Multiple QR code support, History of scans
+- Typing Tutor
+  URL: https://fyntools.com/typing-tutor
+  Category: Typing Tools
+  Description: Learn touch typing with guided lessons in English and Hindi.
+  Keywords: typing tutor, learn typing, touch typing, typing lessons
+  Features: Guided typing lessons, English lessons, Hindi lessons, Touch typing practice, Progress tracking, Finger position guide, Lesson difficulty levels, Practice exercises, Typing speed improvement, Accuracy training
+- Typing Test
+  URL: https://fyntools.com/typing-test
+  Category: Typing Tools
+  Description: Test your typing speed and accuracy with various text samples.
+  Keywords: typing test, typing speed, wpm test, typing accuracy
+  Features: Typing speed test, WPM calculation, Accuracy measurement, Various text samples, Time-based tests, Word count tracking, Error highlighting, Results history, Performance statistics, Share results
+- Typing Games
+  URL: https://fyntools.com/typing-games
+  Category: Typing Tools
+  Description: Fun typing games to improve your skills while playing.
+  Keywords: typing games, fun typing, typing practice, keyboard games
+  Features: Multiple typing games, Fun learning experience, Skill improvement, Game-based practice, Score tracking, Level progression, Interactive gameplay, Typing challenges, Entertainment and learning
+- Typing Competition
+  URL: https://fyntools.com/typing-competition
+  Category: Typing Tools
+  Description: Compete with random players in real-time typing challenges.
+  Keywords: typing competition, multiplayer typing, typing race, typing challenge
+  Features: Real-time competition, Multiplayer typing, Typing races, Leaderboard, Challenge random players, Live results, Competition mode, Ranking system, Typing battles
+- QR Code Generator
+  URL: https://fyntools.com/qr-code-generator
+  Category: Utility Tools
+  Description: Generate QR codes from text or URLs.
+  Keywords: qr code generator, create qr code, qr maker, generate qr
+  Features: Generate QR codes, Text to QR code, URL to QR code, Custom colors, Custom sizes, Error correction levels, Logo embedding, Download as PNG, Download as SVG, Batch generation, Different QR types
+- Password Generator
+  URL: https://fyntools.com/password-generator
+  Category: Utility Tools
+  Description: Generate strong and secure passwords.
+  Keywords: password generator, strong password, secure password, random password
+  Features: Customizable length, Include numbers, Include symbols, Include uppercase, Include lowercase, Memorable passwords option, Strength indicator, Copy to clipboard, Multiple password generation, Secure random generation
+- JSON Beautifier & Formatter
+  URL: https://fyntools.com/json-formatter
+  Category: Development Tools
+  Description: Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool.
+  Keywords: json beautifier, json beautifier online, beautify json, json beautify, json beautify online, json online beautifier, json formatter online, minify json, code beautifier, json formatter, format json, validate json, json validator, json viewer, pretty print json
+  Features: Beautify JSON, Format JSON, Validate JSON, Minify JSON, Syntax highlighting, Error detection, Tree view, Copy formatted JSON, Download JSON, Pretty print, Indentation control
+- Color Picker
+  URL: https://fyntools.com/color-picker-tool
+  Category: Utility Tools
+  Description: Pick colors from a palette or image.
+  Keywords: color picker, eyedropper, color selector, hex color
+  Features: Color picker from palette, Pick color from image, HEX color code, RGB color code, HSL color code, Copy color code, Color history, Eyedropper tool, Color palette, Custom colors
+- To-Do List
+  URL: https://fyntools.com/todo-list
+  Category: Utility Tools
+  Description: Create and manage your to-do list.
+  Keywords: todo list, task manager, checklist, productivity
+  Features: Create tasks, Edit tasks, Delete tasks, Mark as complete, Task priorities, Due dates, Task categories, Local storage, Export tasks, Import tasks, Task search, Filter tasks
+- Daily Task Report Saver
+  URL: https://fyntools.com/daily-task-report-saver
+  Category: Utility Tools
+  Description: Save your daily timetable, routine, work report, and notes by date.
+  Keywords: daily task report, daily timetable, daily routine, daily work report, schedule tracker
+  Features: Save daily timetable, Daily routine tracking, Work report section, Export to file, Quick jump to saved dates, Local storage
+- Timetable Maker
+  URL: https://fyntools.com/timetable-maker
+  Category: Utility Tools
+  Description: Create a personalized timetable from your hobbies, goals, job, and preferences.
+  Keywords: timetable maker, schedule generator, student timetable, weekly planner, routine planner
+  Features: Profile-based generation, Hobbies and goals input, For students and adults, Editable slots, Regenerate, Save locally
+- List Randomizer
+  URL: https://fyntools.com/list-randomizer
+  Category: Utility Tools
+  Description: Randomize the order of items in any list.
+  Keywords: list randomizer, shuffle list, random order, randomize items
+  Features: Shuffle list items, Randomize order, Copy randomized list, Multiple randomization, Preserve original option, Export randomized list
+- Barcode Generator
+  URL: https://fyntools.com/barcode-generator
+  Category: Utility Tools
+  Description: Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export.
+  Keywords: barcode generator, bulk barcode labels, avery barcode, code 128, ean 13, print barcode sheet
+  Features: Visual 1D style picker, Avery label sheets, Bulk lines, Print layout planner, Code128 EAN UPC GS1, PNG ZIP download, QR tool links
+- Barcode Scanner
+  URL: https://fyntools.com/barcode-scanner-online
+  Category: Utility Tools
+  Description: Scan barcodes using camera or image upload with history and CSV export.
+  Keywords: barcode scanner online, camera barcode scanner, scan barcode from image, ean13 scanner
+  Features: Camera scanner, Upload image scanning, EAN13 UPC Code128 Code39 support, QR support, Batch mode, Scan history, CSV export, Copy results, Smart actions
+- Simple Calculator
+  URL: https://fyntools.com/simple-calculator
+  Category: Number Tools
+  Description: Perform basic arithmetic calculations.
+  Keywords: calculator, math, arithmetic, add subtract multiply divide
+  Features: Basic arithmetic operations, Addition, Subtraction, Multiplication, Division, Clear function, Memory functions, Percentage calculations, Decimal support
+- Age Calculator
+  URL: https://fyntools.com/age-calculator
+  Category: Number Tools
+  Description: Calculate age from a birthdate.
+  Keywords: age calculator, calculate age, birthday calculator, age from date
+  Features: Calculate exact age, Age in years months days, Age in days only, Age in weeks, Next birthday countdown, Date picker, Accurate calculation, Age display in multiple formats
+- Date Difference Calculator
+  URL: https://fyntools.com/date-difference-calculator
+  Category: Number Tools
+  Description: Calculate the difference between two dates.
+  Keywords: date difference, days between dates, date calculator, time difference
+  Features: Calculate days between dates, Calculate months between dates, Calculate years between dates, Total difference display, Date picker, Include end date option, Exclude end date option
+- Future Date Calculator
+  URL: https://fyntools.com/future-date-calculator
+  Category: Number Tools
+  Description: Calculate future or past dates by adding or subtracting days, months, or years.
+  Keywords: future date, past date, add days, subtract days, date calculator
+  Features: Add days to date, Subtract days from date, Add months to date, Subtract months from date, Add years to date, Subtract years from date, Date picker, Calculate future date, Calculate past date
+- BMI Calculator
+  URL: https://fyntools.com/bmi-calculator
+  Category: Number Tools
+  Description: Calculate Body Mass Index (BMI).
+  Keywords: bmi calculator, body mass index, health calculator, weight calculator
+  Features: BMI calculation, Metric units, Imperial units, BMI category classification, Health recommendations, Age and gender considerations, Visual BMI chart, Underweight normal overweight obese classification
+- Percentage Calculator
+  URL: https://fyntools.com/percentage-calculator
+  Category: Number Tools
+  Description: Calculate percentages and ratios.
+  Keywords: percentage calculator, percent, ratio calculator, percentage of
+  Features: Calculate percentage, Percentage increase, Percentage decrease, Percentage of number, Ratio calculation, Percentage change, Multiple calculation modes
+- Currency Converter
+  URL: https://fyntools.com/currency-converter
+  Category: Number Tools
+  Description: Convert between different currencies.
+  Keywords: currency converter, exchange rate, money converter, forex
+  Features: Multiple currencies, Real-time exchange rates, Historical rates, Currency swap, Amount input, Convert button, Popular currencies, All world currencies
+- GST Calculator
+  URL: https://fyntools.com/gst-calculator
+  Category: Number Tools
+  Description: Calculate GST (Goods and Services Tax).
+  Keywords: gst calculator, goods services tax, tax calculator, india tax
+  Features: GST calculation, Multiple GST rates, Add GST, Remove GST, GST inclusive price, GST exclusive price, Tax amount display, Total amount display, India GST rates
+- EMI Calculator
+  URL: https://fyntools.com/emi-calculator
+  Category: Number Tools
+  Description: Calculate Equated Monthly Installment (EMI) for loans.
+  Keywords: emi calculator, loan calculator, monthly installment, loan emi
+  Features: EMI calculation, Loan amount input, Interest rate input, Loan tenure input, Monthly EMI display, Total interest display, Total amount display, Amortization schedule, Principal and interest breakdown
+- SIP & Lumpsum Calculator
+  URL: https://fyntools.com/sip-calculator
+  Category: Number Tools
+  Description: Calculate returns on your SIP or Lumpsum investments.
+  Keywords: sip calculator, investment calculator, mutual fund, lumpsum calculator
+  Features: SIP calculation, Lumpsum calculation, Expected returns, Investment amount input, Expected return rate, Investment period, Maturity amount display, Total investment display, Returns breakdown, Investment growth chart
+- PPF Calculator
+  URL: https://fyntools.com/ppf-calculator
+  Category: Number Tools
+  Description: Calculate returns on your Public Provident Fund (PPF) investments.
+  Keywords: ppf calculator, public provident fund, ppf returns, ppf maturity
+  Features: PPF maturity calculation, Annual contribution input, Current PPF rate, Investment period, Maturity amount display, Total investment display, Interest earned display, Yearly breakdown
+- FD Calculator
+  URL: https://fyntools.com/fd-calculator
+  Category: Number Tools
+  Description: Calculate returns on your Fixed Deposit (FD) investments.
+  Keywords: fd calculator, fixed deposit, fd maturity, fd returns
+  Features: FD maturity calculation, Principal amount input, Interest rate input, Tenure input, Maturity amount display, Interest earned display, Quarterly compounding, Monthly compounding, Yearly compounding
+- Income Tax Calculator
+  URL: https://fyntools.com/income-tax-calculator
+  Category: Number Tools
+  Description: Calculate your income tax liability.
+  Keywords: income tax calculator, tax calculator, tax liability, india tax
+  Features: Income tax calculation, Taxable income input, Tax deductions, Tax exemptions, Old tax regime, New tax regime, Tax slabs, Tax liability display, Effective tax rate, Tax saving suggestions
+- Period Calculator
+  URL: https://fyntools.com/period-calculator
+  Category: Period & Cycle Tools
+  Description: Predict your next period date based on your cycle history.
+  Keywords: period calculator online, period calculator, next period date, menstrual cycle calculator
+  Features: Predict next period date, Cycle length input, Last period date, Average cycle calculation, Period calendar, Reminders, Cycle history tracking, Irregular cycle support
+- Ovulation Calculator
+  URL: https://fyntools.com/ovulation-calculator
+  Category: Period & Cycle Tools
+  Description: Find your ovulation day and fertile window easily.
+  Keywords: ovulation calculator, fertile window calculator, ovulation date
+  Features: Calculate ovulation day, Fertile window display, Cycle length input, Last period date, Ovulation calendar, Fertility predictions, Best conception days, Cycle tracking
+- Safe Days Calculator
+  URL: https://fyntools.com/safe-days-calculator
+  Category: Period & Cycle Tools
+  Description: Identify safe and fertile days with pregnancy risk insights.
+  Keywords: safe days calculator, fertile days, pregnancy risk indicator
+  Features: Identify safe days, Identify fertile days, Pregnancy risk indicator, Cycle length input, Last period date, Safe days calendar, Fertile days calendar, Risk level display
+- Period Tracker
+  URL: https://fyntools.com/period-tracker
+  Category: Period & Cycle Tools
+  Description: Log symptoms, mood, and flow with history charts and reminders.
+  Keywords: period tracker online, symptoms tracker, mood tracker, flow tracking
+  Features: Log period dates, Track symptoms, Track mood, Track flow, History charts, Reminders, Cycle patterns, Export data, Privacy protection, Local storage
+- PMS Symptom Tracker
+  URL: https://fyntools.com/pms-symptom-tracker
+  Category: Period & Cycle Tools
+  Description: Track PMS symptoms, pain scale, and daily changes.
+  Keywords: pms symptom tracker, pms tracker, pain scale tracker
+  Features: Track PMS symptoms, Pain scale tracking, Daily symptom logging, Symptom history, Pattern recognition, Export data, Reminders, Multiple symptom categories
+- Pregnancy Due Date Calculator
+  URL: https://fyntools.com/pregnancy-due-date-calculator
+  Category: Pregnancy Tools
+  Description: Calculate your baby due date using LMP or conception date.
+  Keywords: pregnancy due date calculator, due date, lmp calculator, conception date
+  Features: Calculate due date, LMP method, Conception date method, Ultrasound date method, Due date display, Pregnancy week display, Trimester information, Countdown to due date
+- Pregnancy Week Calculator
+  URL: https://fyntools.com/pregnancy-week-calculator
+  Category: Pregnancy Tools
+  Description: Track your pregnancy week, trimester stage, and baby growth.
+  Keywords: pregnancy week calculator, trimester stage, baby growth
+  Features: Calculate pregnancy week, Trimester stage display, Baby growth information, Development milestones, Week by week guide, Due date calculation, Pregnancy calendar
+- Conception Date Calculator
+  URL: https://fyntools.com/conception-date-calculator
+  Category: Pregnancy Tools
+  Description: Estimate your conception date from due date and cycle details.
+  Keywords: conception date calculator, fertility window, due date reverse
+  Features: Estimate conception date, Due date input, Cycle length input, Conception window display, Fertility period, Reverse calculation from due date
+- Pregnancy Weight Gain Calculator
+  URL: https://fyntools.com/pregnancy-weight-gain-calculator
+  Category: Pregnancy Tools
+  Description: Track healthy pregnancy weight gain based on BMI.
+  Keywords: pregnancy weight gain calculator, bmi check, healthy range
+  Features: Calculate healthy weight gain, Pre-pregnancy BMI input, Recommended weight gain range, Trimester-wise recommendations, Weight tracking, Health guidelines, BMI-based recommendations
+- Contraction Timer
+  URL: https://fyntools.com/contraction-timer
+  Category: Pregnancy Tools
+  Description: Measure contraction duration and intervals with history logs.
+  Keywords: contraction timer, labor timer, contraction intervals
+  Features: Measure contraction duration, Measure contraction intervals, History logs, Start stop timer, Contraction counter, Average interval calculation, Labor progress tracking, Export data
+- Baby Kick Counter
+  URL: https://fyntools.com/baby-kick-counter
+  Category: Pregnancy Tools
+  Description: Count baby kicks, track movement, and save daily history.
+  Keywords: baby kick counter, fetal movement tracker, kick timer
+  Features: Count baby kicks, Track fetal movement, Daily history, Kick timer, Movement patterns, Export data, Reminders, Health monitoring
+- Pregnancy Diet Planner
+  URL: https://fyntools.com/pregnancy-diet-planner
+  Category: Pregnancy Tools
+  Description: Get trimester diet tips, calorie goals, and food lists.
+  Keywords: pregnancy diet plan, trimester diet, calorie calculator, food list
+  Features: Trimester diet tips, Calorie goals, Food lists, Healthy foods, Foods to avoid, Nutritional guidelines, Meal planning, Trimester-specific recommendations
+- Temperature Converter
+  URL: https://fyntools.com/temperature-converter
+  Category: Converter Tools
+  Description: Convert between Celsius and Fahrenheit.
+  Keywords: temperature converter, celsius fahrenheit, temperature conversion
+  Features: Celsius to Fahrenheit, Fahrenheit to Celsius, Kelvin conversion, Real-time conversion, Bidirectional conversion, Copy result, Clear input
+- Unit Converter
+  URL: https://fyntools.com/unit-converter
+  Category: Converter Tools
+  Description: Convert between different units of measurement.
+  Keywords: unit converter, measurement converter, length weight volume
+  Features: Length conversion, Weight conversion, Volume conversion, Area conversion, Multiple unit types, Metric units, Imperial units, Real-time conversion, Copy result
+- Enhanced Unit Converter
+  URL: https://fyntools.com/enhanced-unit-converter
+  Category: Converter Tools
+  Description: Convert between various units including length, weight, temperature, time, data size, and speed.
+  Keywords: enhanced unit converter, advanced converter, all units, metric imperial
+  Features: Length conversion, Weight conversion, Temperature conversion, Time conversion, Data size conversion, Speed conversion, Multiple categories, Metric and imperial units, Real-time conversion, Copy result, History of conversions
+- Hash Generator & Comparator
+  URL: https://fyntools.com/hash-generator
+  Category: Development Tools
+  Description: Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify encrypted data by comparing plain text with hash values.
+  Keywords: hash generator, hash comparison, compare hash, md5 compare, sha compare, sha256 compare, sha512 compare, hash verify, hash verification, compare sha, compare md5, password hash verify, hash checker, hash validator, md5 generator, sha1 generator, sha256 generator, sha512 generator, cryptographic hash, hash comparison tool, verify hash, check hash, hash matcher, encrypted data comparison, hash pass fail
+  Features: Generate MD5 hash, Generate SHA-1 hash, Generate SHA-256 hash, Generate SHA-512 hash, Compare hashes, Verify hash, Hash comparison tool, Copy hash, Multiple hash algorithms, File hashing support
+- JWT Token Decoder
+  URL: https://fyntools.com/jwt-decoder
+  Category: Development Tools
+  Description: Decode and parse JWT (JSON Web Token) headers, payloads, and signatures.
+  Keywords: jwt decoder, json web token, jwt parser, token decoder
+  Features: Decode JWT tokens, Parse JWT header, Parse JWT payload, View JWT signature, Pretty print JSON, Copy decoded data, Token validation, Expiration check, Algorithm display
+- Meta Tag Previewer
+  URL: https://fyntools.com/meta-tag-previewer
+  Category: Development Tools
+  Description: Preview how your website appears in search results and generate SEO meta tags.
+  Keywords: meta tags, seo preview, open graph, twitter cards
+  Features: Preview search results, Generate meta tags, Open Graph tags, Twitter Card tags, Meta title preview, Meta description preview, SEO optimization, Copy meta tags, Validate meta tags
+- Live HTML Previewer
+  URL: https://fyntools.com/live-preview
+  Category: Development Tools
+  Description: Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code online, HTML editor with live preview.
+  Keywords: live html previewer, html live preview, online html preview tool, html css js preview, instant html preview, run html code online, html editor with live preview, test html online, html preview in browser, live html css javascript preview, real time html preview, preview html without hosting, html sandbox online, html code tester, html editor online free
+  Features: Live HTML preview, CSS preview, JavaScript preview, Real-time rendering, Multiple viewport sizes, Code editor, Syntax highlighting, Error detection, Copy code, Download code, Responsive preview
+- JavaScript Minifier
+  URL: https://fyntools.com/javascript-minifier
+  Category: Development Tools
+  Description: Minify JavaScript code to reduce file size.
+  Keywords: javascript minifier, js minify, compress javascript, optimize js
+  Features: Minify JavaScript, Compress JS code, Remove whitespace, Remove comments, Optimize code, File size reduction, Copy minified code, Download minified file, Before after comparison
+- Table to JSON Converter
+  URL: https://fyntools.com/table-to-json-converter
+  Category: Development Tools
+  Description: Convert HTML tables to JSON format.
+  Keywords: table to json, html table converter, json converter, data converter
+  Features: Convert HTML table to JSON, Paste table HTML, Generate JSON, Array format, Object format, Copy JSON, Download JSON, Validate JSON, Pretty print JSON
+- XML Sitemap Tester & Validator
+  URL: https://fyntools.com/xml-sitemap-tester
+  Category: Development Tools
+  Description: Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirects, and get actionable recommendations.
+  Keywords: xml sitemap tester, sitemap validator, sitemap checker, sitemap analyzer, xml sitemap validator, sitemap testing tool, sitemap health check, sitemap quality analyzer, free sitemap validator, sitemap seo tool
+  Features: Test XML sitemap, Validate sitemap, Analyze URLs, Detect broken links, Check redirects, Response time analysis, Status code checking, SEO recommendations, Export results, Sitemap health score
+- Trip Expense Splitter & Manager
+  URL: https://fyntools.com/trip-expense-splitter
+  Category: Finance Tools
+  Description: Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what.
+  Keywords: trip expense splitter, travel expense calculator, split expenses, group expense tracker, trip cost calculator, travel budget manager, expense sharing app
+  Features: Split expenses, Track trip expenses, Assign roles, Calculate settlements, See who owes what, Add participants, Add expenses, Equal split, Custom split, Export calculations, Expense history
+- Stopwatch
+  URL: https://fyntools.com/stopwatch
+  Category: Timer Tools
+  Description: Track elapsed time with a stopwatch.
+  Keywords: stopwatch, timer, time tracker, elapsed time
+  Features: Start stopwatch, Stop stopwatch, Reset stopwatch, Lap times, Time display, Millisecond precision, Multiple lap tracking, Copy time, Export lap times
+- Countdown Timer
+  URL: https://fyntools.com/countdown-timer
+  Category: Timer Tools
+  Description: Set a timer and count down to a specific time.
+  Keywords: countdown timer, timer, countdown, alarm timer
+  Features: Set countdown timer, Hours minutes seconds input, Alarm sound, Visual countdown, Pause resume, Reset timer, Custom alarm, Notification support, Full screen mode
+- What's My IP
+  URL: https://fyntools.com/ip-lookup
+  Category: Network Tools
+  Description: Find your public IP address and location information.
+  Keywords: ip lookup, my ip address, ip location, public ip
+  Features: Display public IP address, IP location, ISP information, Country city display, IPv4 IPv6 support, Copy IP address, Network information, Connection details
+- IP Address to Location Finder
+  URL: https://fyntools.com/ip-address-to-location-finder
+  Category: Network Tools
+  Description: Find the location of any IP address with detailed geolocation data.
+  Keywords: ip address to location, ip location finder, ip geolocation, find ip location, ip address location, ip to location
+  Features: Find IP location, Geolocation data, Country city lookup, ISP information, Latitude longitude, Timezone information, Map display, Copy location data, Detailed IP information
+- Social Media DB Viewer
+  URL: https://fyntools.com/social-media-db-viewer
+  Category: Video & Social Media Tools
+  Description: View public profile information from Instagram and Facebook accounts.
+  Keywords: social media viewer, instagram viewer, facebook viewer, profile viewer
+  Features: View Instagram profiles, View Facebook profiles, Public profile information, Profile statistics, Follower count, Post count, Profile details, Account information
+- Instagram & Facebook Downloader
+  URL: https://fyntools.com/social-media-downloader
+  Category: Video & Social Media Tools
+  Description: Download reels, posts, stories, and highlights from Instagram and Facebook.
+  Keywords: instagram downloader, facebook downloader, download reels, download stories
+  Features: Download Instagram reels, Download Instagram posts, Download Instagram stories, Download Instagram highlights, Download Facebook videos, Download Facebook posts, Multiple quality options, Download as MP4, Download as image, Batch download
+- Box Shadow Generator
+  URL: https://fyntools.com/box-shadow-generator
+  Category: Development Tools
+  Description: Create and customize CSS box-shadow effects for your web elements.
+  Keywords: box shadow, css shadow, shadow generator, css effects
+  Features: Customize box shadow, X offset, Y offset, Blur radius, Spread radius, Shadow color, Multiple shadows, Live preview, Copy CSS code, Download CSS, Inset shadow option
+- Border Radius Generator
+  URL: https://fyntools.com/border-radius-generator
+  Category: Development Tools
+  Description: Generate CSS border-radius properties for rounded corners.
+  Keywords: border radius, css border, rounded corners, css generator
+  Features: Generate border radius, Top left radius, Top right radius, Bottom left radius, Bottom right radius, Uniform radius, Individual corner control, Live preview, Copy CSS code, Visual preview
+- Button Generator
+  URL: https://fyntools.com/button-generator
+  Category: Development Tools
+  Description: Design and generate CSS for custom buttons with various styles.
+  Keywords: button generator, css button, custom button, button styles
+  Features: Design custom buttons, Multiple button styles, Custom colors, Custom sizes, Border radius, Shadow effects, Hover effects, Copy CSS code, Copy HTML code, Download button code, Live preview
+- CSS Minifier
+  URL: https://fyntools.com/css-minifier
+  Category: Development Tools
+  Description: Free CSS minifier online tool to compress and optimize CSS code. Best CSS minifier with color optimization, comment removal, and size reduction.
+  Keywords: css minifier, free css minifier, css minifier online free, best css minifier, css compressor, css optimizer, minify css, css minify, compress css, css compression, css code minifier, css file minifier, online css minifier, css minifier tool, css code optimizer
+  Features: Minify CSS code, Remove whitespace, Remove comments, Color optimization, File size reduction, Before after comparison, Copy minified CSS, Download minified file, Optimize CSS, Compress CSS
+- Gradient Generator
+  URL: https://fyntools.com/gradient-generator
+  Category: Development Tools
+  Description: Create custom CSS gradients with multiple colors and directions.
+  Keywords: gradient generator, css gradient, linear gradient, radial gradient
+  Features: Linear gradient, Radial gradient, Multiple colors, Color stops, Gradient direction, Angle control, Live preview, Copy CSS code, Download gradient, Custom gradient creation
+- HTML Formatter
+  URL: https://fyntools.com/html-formatter
+  Category: Development Tools
+  Description: Format and beautify HTML code for better readability.
+  Keywords: html formatter, beautify html, html code formatter, clean html
+  Features: Format HTML code, Beautify HTML, Indentation control, Remove extra whitespace, Clean HTML, Pretty print, Copy formatted code, Download formatted file, Syntax validation
+- JSON Validator
+  URL: https://fyntools.com/json-validator
+  Category: Development Tools
+  Description: Validate and format JSON data for accuracy and readability.
+  Keywords: json validator, validate json, json checker, json format
+  Features: Validate JSON, Format JSON, Error detection, Syntax checking, Pretty print, Copy validated JSON, Download JSON, Error highlighting, Line number display
+- URL Encode Decode
+  URL: https://fyntools.com/url-encode-decode
+  Category: Development Tools
+  Description: Encode URLs for safe transmission or decode URL-encoded strings instantly.
+  Keywords: url encode, url decode, url encoder, url decoder, encode url, decode url, url encoding, url decoding, percent encoding
+  Features: URL encode, URL decode, Percent encoding, Special character encoding, Instant conversion, Copy encoded URL, Copy decoded URL, Bidirectional conversion, Validation check
+- Coin Flip
+  URL: https://fyntools.com/coin-flip
+  Category: Utility Tools
+  Description: Simulate a coin flip to make random decisions.
+  Keywords: coin flip, random decision, heads or tails, coin toss
+  Features: Flip coin, Random heads or tails, Decision making, Visual coin flip, Flip history, Multiple flips, Copy result
+- Dice Roller
+  URL: https://fyntools.com/dice-roller
+  Category: Utility Tools
+  Description: Roll virtual dice with customizable sides and quantities.
+  Keywords: dice roller, roll dice, random dice, dice simulator
+  Features: Roll dice, Customizable sides, Multiple dice, Dice quantity, Roll history, Sum display, Individual dice results, Visual dice display
+- Random Number Generator
+  URL: https://fyntools.com/random-number-generator
+  Category: Utility Tools
+  Description: Generate random numbers within a specified range.
+  Keywords: random number, number generator, randomizer, random numbers
+  Features: Generate random numbers, Custom range, Minimum maximum input, Multiple numbers, Copy numbers, Exclude numbers option, Integer generation, Decimal generation
+- URL Shortener
+  URL: https://fyntools.com/url-shortener
+  Category: Utility Tools
+  Description: Shorten long URLs for easier sharing and tracking.
+  Keywords: url shortener, shorten link, short url, link shortener, bulk url shortener, utm link shortener, qr code short link
+  Features: Shorten URLs, Custom alias support, UTM builder for campaigns, Bulk URL shortening, Expiration dates with presets and custom date, QR code generation with logo, Basic click counts, Local link history with favicons, Copy short URL, Export history as CSV
+- Yes/No Generator
+  URL: https://fyntools.com/yes-no-generator
+  Category: Utility Tools
+  Description: Generate a random Yes or No answer for decision-making.
+  Keywords: yes no generator, random decision, yes or no, decision maker
+  Features: Random Yes or No, Decision making, Visual display, Copy result, Multiple generations, Decision history
+- Business Idea Generator
+  URL: https://fyntools.com/business-idea-generator
+  Category: Text & Writing Tools
+  Description: Generate creative business ideas based on your preferences.
+  Keywords: business ideas, idea generator, startup ideas, entrepreneurship
+  Features: Generate business ideas, Creative ideas, Startup ideas, Industry selection, Idea categories, Copy ideas, Save ideas, Multiple idea generation, Idea variations
+- Discord Formatter
+  URL: https://fyntools.com/discord-formatter
+  Category: Text & Writing Tools
+  Description: Format text for Discord with markdown and emojis.
+  Keywords: discord formatter, markdown discord, text formatting, discord text
+  Features: Format Discord text, Markdown support, Bold italic underline, Code blocks, Emoji support, Copy formatted text, Preview formatted text, Discord compatible formatting
+- Hashtag Generator
+  URL: https://fyntools.com/hashtag-generator
+  Category: Text & Writing Tools
+  Description: Generate relevant hashtags for social media posts.
+  Keywords: hashtag generator, social media hashtags, hashtag ideas, tags
+  Features: Generate hashtags, Relevant hashtags, Social media hashtags, Copy hashtags, Multiple hashtag generation, Trending hashtags, Category-based hashtags
+- Markdown Editor
+  URL: https://fyntools.com/markdown-editor
+  Category: Text & Writing Tools
+  Description: Write and preview markdown text with real-time rendering.
+  Keywords: markdown editor, markdown preview, write markdown, markdown tool
+  Features: Markdown editor, Real-time preview, Syntax highlighting, Export as HTML, Copy markdown, Copy HTML, Markdown formatting, Preview pane, Split view
+- Name Generator
+  URL: https://fyntools.com/name-generator
+  Category: Text & Writing Tools
+  Description: Generate random names for people, businesses, or projects.
+  Keywords: name generator, random names, business names, character names
+  Features: Generate random names, People names, Business names, Character names, Multiple name generation, Copy names, Name categories, Gender selection, Name variations
+- Username Generator
+  URL: https://fyntools.com/username-generator
+  Category: Text & Writing Tools
+  Description: Create unique usernames for social media or gaming platforms.
+  Keywords: username generator, random username, gaming username, social media
+  Features: Generate usernames, Unique usernames, Gaming usernames, Social media usernames, Customizable length, Include numbers, Include symbols, Copy usernames, Multiple username generation, Username availability check
+- Color Converter
+  URL: https://fyntools.com/color-converter
+  Category: Converter Tools
+  Description: Convert colors between HEX, RGB, HSL, and other formats.
+  Keywords: color converter, hex to rgb, rgb to hex, color formats
+  Features: HEX to RGB, RGB to HEX, HEX to HSL, HSL to HEX, RGB to HSL, HSL to RGB, Color picker, Copy color codes, Multiple color formats, Real-time conversion
+- Color Palette Generator
+  URL: https://fyntools.com/color-palette-generator
+  Category: Image Tools
+  Description: Generate color palettes from images or custom inputs.
+  Keywords: color palette, palette generator, color scheme, design colors
+  Features: Generate color palettes, Extract colors from images, Custom color input, Multiple color schemes, Copy color codes, Download palette, Color harmony, Design color schemes
+- Social Media Deep Link Generator
+  URL: https://fyntools.com/social-media-deep-link-generator
+  Category: Video & Social Media Tools
+  Description: Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn.
+  Keywords: deep link generator, app deep linking tool, open link in app, social media deep link, smart redirect link, universal deep link, deep linking generator, app link generator, smart link generator, deep link creator, mobile deep link, iOS deep link, Android deep link, universal link generator, YouTube deep link, Instagram deep link, Facebook deep link, Twitter deep link, WhatsApp deep link, Telegram deep link, LinkedIn deep link, social media app links, deep link redirect, smart app links, universal app links, branch.io alternative, firebase dynamic links alternative, free deep linking, deep link builder, social sharing deep links
+  Features: Generate deep links, YouTube deep links, Instagram deep links, Facebook deep links, Twitter deep links, WhatsApp deep links, Telegram deep links, LinkedIn deep links, Universal deep links, App fallback, Web fallback, Smart redirect, Copy deep link, Test deep link
+- Social Media Planner
+  URL: https://fyntools.com/social-media-planner
+  Category: Video & Social Media Tools
+  Description: Plan and schedule your social media posts with ease.
+  Keywords: social media planner, post scheduler, content calendar, social media
+  Features: Plan social media posts, Schedule posts, Content calendar, Multiple platforms, Post templates, Draft posts, Post history, Export calendar, Reminders, Post analytics
+- Text to Speech
+  URL: https://fyntools.com/text-to-speech
+  Category: Video & Social Media Tools
+  Description: Convert text to audio with natural-sounding voices.
+  Keywords: text to speech, tts, speech synthesis, text to audio
+  Features: Convert text to speech, Multiple voices, Natural sounding voices, Language selection, Speed control, Pitch control, Download audio, Play audio, Copy audio link, Voice selection
+- Weather Forecast
+  URL: https://fyntools.com/weather-forecast
+  Category: Network Tools
+  Description: Check the weather forecast for any location.
+  Keywords: weather forecast, weather checker, weather app, weather data
+  Features: Weather forecast, Current weather, Hourly forecast, Daily forecast, Location search, Temperature display, Humidity, Wind speed, Weather conditions, Weather icons, Extended forecast
+- Invoice Generator
+  URL: https://fyntools.com/invoice-generator
+  Category: Business Tools
+  Description: Create professional invoices with auto-save features. Generate PDF and image exports with client and product management.
+  Keywords: invoice generator, create invoice, invoice maker, business invoice, PDF invoice, invoice template, professional invoice
+  Features: Create invoices, Professional templates, Client management, Product management, Auto-save, Generate PDF, Generate image, Download invoice, Print invoice, Invoice numbering, Tax calculation, Multiple currencies, Invoice history, Custom branding
+- Dummy API Generator
+  URL: https://fyntools.com/dummy-api-generator
+  Category: Development Tools
+  Description: Free dummy REST API for students and developers to practice login, CRUD, and authentication testing with live endpoints.
+  Keywords: dummy api, free api, rest api, api testing, mock api, dummy api generator, bearer token api
+  Features: REST endpoints, Auth login register, CRUD operations, Bearer tokens, Live API tester, cURL examples, Fetch examples, Axios examples, JSON responses, No signup
+- Redirect
+  URL: https://fyntools.com/redirect
+  Category: Utility Tools
+  Description: Create and manage URL redirects for your website.
+  Keywords: url redirect, redirect link, link redirection, website redirect
+  Features: 

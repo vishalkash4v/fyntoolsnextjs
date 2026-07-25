@@ -1,0 +1,155 @@
+User-agent: *
+Allow: /
+
+# Search Engine Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI Search & Assistant Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: PhindBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: iaskspider
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: VelenpublicBot
+Allow: /
+
+User-agent: Webzio-Extended
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: Kangaroo Bot
+Allow: /
+
+# Social Media Preview Bots
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Snapchat
+Allow: /
+
+# Blocked Paths
+Disallow: /admin/
+Disallow: /fyntoolsadmin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /scripts/
+Disallow: /s/
+Disallow: /redirect
+Disallow: /deep-link-redirect
+
+# Sitemap (single source of truth)
+Sitemap: https://fyntools.com/sitemap.xml

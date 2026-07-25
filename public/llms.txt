@@ -1,0 +1,133 @@
+# llms.txt for FYN Tools
+site: https://fyntools.com
+sitemap: https://fyntools.com/sitemap.xml
+last_updated: 2026-07-22
+policy: allow
+
+[important_pages]
+https://fyntools.com/
+https://fyntools.com/tools
+https://fyntools.com/blog
+https://fyntools.com/about
+https://fyntools.com/contact
+
+[all_tools]
+https://fyntools.com/word-counter | Word Counter | Text & Writing Tools | Count words, characters, and paragraphs in your text.
+https://fyntools.com/text-case-converter | Text Case Converter | Text & Writing Tools | Convert text between uppercase, lowercase, and title case.
+https://fyntools.com/text-font-changer | Text Font Changer | Text & Writing Tools | Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up.
+https://fyntools.com/ai-text-rewriter | AI Text Rewriter | Text & Writing Tools | Rewrite your content to make it unique and avoid AI detection.
+https://fyntools.com/lorem-ipsum-generator | Lorem Ipsum Generator | Text & Writing Tools | Generate placeholder text for your designs.
+https://fyntools.com/whitespace-remover | Whitespace Remover | Text & Writing Tools | Remove extra spaces and tabs from your text.
+https://fyntools.com/duplicate-line-remover | Duplicate Line Remover | Text & Writing Tools | Remove duplicate lines from your text.
+https://fyntools.com/text-reverser | Text Reverser | Text & Writing Tools | Reverse text, words, or lines in your text.
+https://fyntools.com/regex-tester | Regex Tester | Text & Writing Tools | Test regular expressions against your text.
+https://fyntools.com/base64-converter | Base64 Converter | Text & Writing Tools | Encode and decode Base64 strings.
+https://fyntools.com/text-to-handwriting | Text to Handwriting | Text & Writing Tools | Convert typed text into handwritten-style text on lined paper.
+https://fyntools.com/url-slug-generator | URL Slug Generator | Text & Writing Tools | Convert text into SEO-friendly URL slugs.
+https://fyntools.com/notes | Notes | Text & Writing Tools | Create, organize, and manage your personal notes with tags and colors.
+https://fyntools.com/timestamp-converter | Timestamp Converter | Converter Tools | Convert Unix timestamps to dates and dates to timestamps with timezone support.
+https://fyntools.com/image-compressor | Image Compressor | Image Tools | Compress images to reduce file size while maintaining quality. Convert MB images to KB for document uploads.
+https://fyntools.com/logo-to-favicon | Logo to Favicon Converter | Image Tools | Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 and more favicon formats.
+https://fyntools.com/image-upscaler | Image Upscaler | Image Tools | Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity.
+https://fyntools.com/image-cropper | Image Cropper & Resizer | Image Tools | Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitter, LinkedIn posts and stories.
+https://fyntools.com/image-format-converter | Image Format Converter | Image Tools | Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image converter.
+https://fyntools.com/svg-optimizer | SVG Optimizer | Image Tools | Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while maintaining quality.
+https://fyntools.com/image-metadata-viewer | Image Metadata Viewer | Image Tools | View and extract EXIF data and metadata from images. See camera settings, GPS location, and technical details.
+https://fyntools.com/image-to-text | Image to Text | Image Tools | Extract text from images using OCR. Convert photos and scanned documents into editable text.
+https://fyntools.com/pdf-text-extractor | PDF Text Extractor | Image Tools | Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying.
+https://fyntools.com/placeholder-image-generator | Placeholder Image Generator | Image Tools | Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web design mockups.
+https://fyntools.com/pixelate-tool | Pixelate Tool | Image Tools | Apply pixelation effects to specific areas of your images with customizable strength and size.
+https://fyntools.com/photo-annotation-tool | Photo Annotation Tool | Image Tools | Add name, date, signature, and fingerprint to photos. Perfect for passport photos and applications.
+https://fyntools.com/background-remover | Background Remover | Image Tools | Remove background from photos automatically. Create transparent backgrounds instantly.
+https://fyntools.com/merge-images | Merge Images | Image Tools | Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image.
+https://fyntools.com/flip-image | Flip Image | Image Tools | Flip images horizontally or vertically with real-time preview. Free image flipper online.
+https://fyntools.com/blur-image | Blur Image | Image Tools | Blur image online with adjustable blur intensity. Create soft backgrounds and privacy blur effects.
+https://fyntools.com/split-image | Split Image | Image Tools | Split images into custom rows and columns and download all pieces as ZIP files.
+https://fyntools.com/invert-image-colors | Invert Image Colors | Image Tools | Invert image colors online to create negative effects with adjustable intensity.
+https://fyntools.com/image-resizer | Image Resizer | Image Tools | Manually resize image dimensions and file size. Perfect for documents and web images.
+https://fyntools.com/add-name-date-photo | Add Name & Date on Photo | Image Tools | Add name and date on passport photographs for online application forms.
+https://fyntools.com/qr-scanner | QR Scanner | Image Tools | Scan QR codes using camera or upload image to decode QR codes.
+https://fyntools.com/typing-tutor | Typing Tutor | Typing Tools | Learn touch typing with guided lessons in English and Hindi.
+https://fyntools.com/typing-test | Typing Test | Typing Tools | Test your typing speed and accuracy with various text samples.
+https://fyntools.com/typing-games | Typing Games | Typing Tools | Fun typing games to improve your skills while playing.
+https://fyntools.com/typing-competition | Typing Competition | Typing Tools | Compete with random players in real-time typing challenges.
+https://fyntools.com/qr-code-generator | QR Code Generator | Utility Tools | Generate QR codes from text or URLs.
+https://fyntools.com/password-generator | Password Generator | Utility Tools | Generate strong and secure passwords.
+https://fyntools.com/json-formatter | JSON Beautifier & Formatter | Development Tools | Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool.
+https://fyntools.com/color-picker-tool | Color Picker | Utility Tools | Pick colors from a palette or image.
+https://fyntools.com/todo-list | To-Do List | Utility Tools | Create and manage your to-do list.
+https://fyntools.com/daily-task-report-saver | Daily Task Report Saver | Utility Tools | Save your daily timetable, routine, work report, and notes by date.
+https://fyntools.com/timetable-maker | Timetable Maker | Utility Tools | Create a personalized timetable from your hobbies, goals, job, and preferences.
+https://fyntools.com/list-randomizer | List Randomizer | Utility Tools | Randomize the order of items in any list.
+https://fyntools.com/barcode-generator | Barcode Generator | Utility Tools | Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export.
+https://fyntools.com/barcode-scanner-online | Barcode Scanner | Utility Tools | Scan barcodes using camera or image upload with history and CSV export.
+https://fyntools.com/simple-calculator | Simple Calculator | Number Tools | Perform basic arithmetic calculations.
+https://fyntools.com/age-calculator | Age Calculator | Number Tools | Calculate age from a birthdate.
+https://fyntools.com/date-difference-calculator | Date Difference Calculator | Number Tools | Calculate the difference between two dates.
+https://fyntools.com/future-date-calculator | Future Date Calculator | Number Tools | Calculate future or past dates by adding or subtracting days, months, or years.
+https://fyntools.com/bmi-calculator | BMI Calculator | Number Tools | Calculate Body Mass Index (BMI).
+https://fyntools.com/percentage-calculator | Percentage Calculator | Number Tools | Calculate percentages and ratios.
+https://fyntools.com/currency-converter | Currency Converter | Number Tools | Convert between different currencies.
+https://fyntools.com/gst-calculator | GST Calculator | Number Tools | Calculate GST (Goods and Services Tax).
+https://fyntools.com/emi-calculator | EMI Calculator | Number Tools | Calculate Equated Monthly Installment (EMI) for loans.
+https://fyntools.com/sip-calculator | SIP & Lumpsum Calculator | Number Tools | Calculate returns on your SIP or Lumpsum investments.
+https://fyntools.com/ppf-calculator | PPF Calculator | Number Tools | Calculate returns on your Public Provident Fund (PPF) investments.
+https://fyntools.com/fd-calculator | FD Calculator | Number Tools | Calculate returns on your Fixed Deposit (FD) investments.
+https://fyntools.com/income-tax-calculator | Income Tax Calculator | Number Tools | Calculate your income tax liability.
+https://fyntools.com/period-calculator | Period Calculator | Period & Cycle Tools | Predict your next period date based on your cycle history.
+https://fyntools.com/ovulation-calculator | Ovulation Calculator | Period & Cycle Tools | Find your ovulation day and fertile window easily.
+https://fyntools.com/safe-days-calculator | Safe Days Calculator | Period & Cycle Tools | Identify safe and fertile days with pregnancy risk insights.
+https://fyntools.com/period-tracker | Period Tracker | Period & Cycle Tools | Log symptoms, mood, and flow with history charts and reminders.
+https://fyntools.com/pms-symptom-tracker | PMS Symptom Tracker | Period & Cycle Tools | Track PMS symptoms, pain scale, and daily changes.
+https://fyntools.com/pregnancy-due-date-calculator | Pregnancy Due Date Calculator | Pregnancy Tools | Calculate your baby due date using LMP or conception date.
+https://fyntools.com/pregnancy-week-calculator | Pregnancy Week Calculator | Pregnancy Tools | Track your pregnancy week, trimester stage, and baby growth.
+https://fyntools.com/conception-date-calculator | Conception Date Calculator | Pregnancy Tools | Estimate your conception date from due date and cycle details.
+https://fyntools.com/pregnancy-weight-gain-calculator | Pregnancy Weight Gain Calculator | Pregnancy Tools | Track healthy pregnancy weight gain based on BMI.
+https://fyntools.com/contraction-timer | Contraction Timer | Pregnancy Tools | Measure contraction duration and intervals with history logs.
+https://fyntools.com/baby-kick-counter | Baby Kick Counter | Pregnancy Tools | Count baby kicks, track movement, and save daily history.
+https://fyntools.com/pregnancy-diet-planner | Pregnancy Diet Planner | Pregnancy Tools | Get trimester diet tips, calorie goals, and food lists.
+https://fyntools.com/temperature-converter | Temperature Converter | Converter Tools | Convert between Celsius and Fahrenheit.
+https://fyntools.com/unit-converter | Unit Converter | Converter Tools | Convert between different units of measurement.
+https://fyntools.com/enhanced-unit-converter | Enhanced Unit Converter | Converter Tools | Convert between various units including length, weight, temperature, time, data size, and speed.
+https://fyntools.com/hash-generator | Hash Generator & Comparator | Development Tools | Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify encrypted data by comparing plain text with hash values.
+https://fyntools.com/jwt-decoder | JWT Token Decoder | Development Tools | Decode and parse JWT (JSON Web Token) headers, payloads, and signatures.
+https://fyntools.com/meta-tag-previewer | Meta Tag Previewer | Development Tools | Preview how your website appears in search results and generate SEO meta tags.
+https://fyntools.com/live-preview | Live HTML Previewer | Development Tools | Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code online, HTML editor with live preview.
+https://fyntools.com/javascript-minifier | JavaScript Minifier | Development Tools | Minify JavaScript code to reduce file size.
+https://fyntools.com/table-to-json-converter | Table to JSON Converter | Development Tools | Convert HTML tables to JSON format.
+https://fyntools.com/xml-sitemap-tester | XML Sitemap Tester & Validator | Development Tools | Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirects, and get actionable recommendations.
+https://fyntools.com/trip-expense-splitter | Trip Expense Splitter & Manager | Finance Tools | Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what.
+https://fyntools.com/stopwatch | Stopwatch | Timer Tools | Track elapsed time with a stopwatch.
+https://fyntools.com/countdown-timer | Countdown Timer | Timer Tools | Set a timer and count down to a specific time.
+https://fyntools.com/ip-lookup | What's My IP | Network Tools | Find your public IP address and location information.
+https://fyntools.com/ip-address-to-location-finder | IP Address to Location Finder | Network Tools | Find the location of any IP address with detailed geolocation data.
+https://fyntools.com/social-media-db-viewer | Social Media DB Viewer | Video & Social Media Tools | View public profile information from Instagram and Facebook accounts.
+https://fyntools.com/social-media-downloader | Instagram & Facebook Downloader | Video & Social Media Tools | Download reels, posts, stories, and highlights from Instagram and Facebook.
+https://fyntools.com/box-shadow-generator | Box Shadow Generator | Development Tools | Create and customize CSS box-shadow effects for your web elements.
+https://fyntools.com/border-radius-generator | Border Radius Generator | Development Tools | Generate CSS border-radius properties for rounded corners.
+https://fyntools.com/button-generator | Button Generator | Development Tools | Design and generate CSS for custom buttons with various styles.
+https://fyntools.com/css-minifier | CSS Minifier | Development Tools | Free CSS minifier online tool to compress and optimize CSS code. Best CSS minifier with color optimization, comment removal, and size reduction.
+https://fyntools.com/gradient-generator | Gradient Generator | Development Tools | Create custom CSS gradients with multiple colors and directions.
+https://fyntools.com/html-formatter | HTML Formatter | Development Tools | Format and beautify HTML code for better readability.
+https://fyntools.com/json-validator | JSON Validator | Development Tools | Validate and format JSON data for accuracy and readability.
+https://fyntools.com/url-encode-decode | URL Encode Decode | Development Tools | Encode URLs for safe transmission or decode URL-encoded strings instantly.
+https://fyntools.com/coin-flip | Coin Flip | Utility Tools | Simulate a coin flip to make random decisions.
+https://fyntools.com/dice-roller | Dice Roller | Utility Tools | Roll virtual dice with customizable sides and quantities.
+https://fyntools.com/random-number-generator | Random Number Generator | Utility Tools | Generate random numbers within a specified range.
+https://fyntools.com/url-shortener | URL Shortener | Utility Tools | Shorten long URLs for easier sharing and tracking.
+https://fyntools.com/yes-no-generator | Yes/No Generator | Utility Tools | Generate a random Yes or No answer for decision-making.
+https://fyntools.com/business-idea-generator | Business Idea Generator | Text & Writing Tools | Generate creative business ideas based on your preferences.
+https://fyntools.com/discord-formatter | Discord Formatter | Text & Writing Tools | Format text for Discord with markdown and emojis.
+https://fyntools.com/hashtag-generator | Hashtag Generator | Text & Writing Tools | Generate relevant hashtags for social media posts.
+https://fyntools.com/markdown-editor | Markdown Editor | Text & Writing Tools | Write and preview markdown text with real-time rendering.
+https://fyntools.com/name-generator | Name Generator | Text & Writing Tools | Generate random names for people, businesses, or projects.
+https://fyntools.com/username-generator | Username Generator | Text & Writing Tools | Create unique usernames for social media or gaming platforms.
+https://fyntools.com/color-converter | Color Converter | Converter Tools | Convert colors between HEX, RGB, HSL, and other formats.
+https://fyntools.com/color-palette-generator | Color Palette Generator | Image Tools | Generate color palettes from images or custom inputs.
+https://fyntools.com/social-media-deep-link-generator | Social Media Deep Link Generator | Video & Social Media Tools | Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn.
+https://fyntools.com/social-media-planner | Social Media Planner | Video & Social Media Tools | Plan and schedule your social media posts with ease.
+https://fyntools.com/text-to-speech | Text to Speech | Video & Social Media Tools | Convert text to audio with natural-sounding voices.
+https://fyntools.com/weather-forecast | Weather Forecast | Network Tools | Check the weather forecast for any location.
+https://fyntools.com/invoice-generator | Invoice Generator | Business Tools | Create professional invoices with auto-save features. Generate PDF and image exports with client and product management.
+https://fyntools.com/dummy-api-generator | Dummy API Generator | Development Tools | Free dummy REST API for students and developers to practice login, CRUD, and authentication testing with live endpoints.
+https://fyntools.com/redirect | Redirect | Utility Tools | Create and manage URL redirects for your website.

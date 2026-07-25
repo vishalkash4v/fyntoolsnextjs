@@ -1,0 +1,110 @@
+<!-- Performance Optimizations for Google PageSpeed Insights and GTmetrix -->
+
+<!-- Critical CSS Inline -->
+<style>
+  /* Critical above-the-fold CSS */
+  .min-h-screen { min-height: 100vh; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+  .text-center { text-align: center; }
+  .font-bold { font-weight: 700; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-6 { margin-bottom: 1.5rem; }
+  .mb-8 { margin-bottom: 2rem; }
+  .px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  
+  /* Loading animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeIn 0.6s ease-out; }
+  
+  /* Skeleton loading */
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+</style>
+
+<!-- Resource Hints for Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.fyntools.com">
+
+<!-- Preload Critical Resources -->
+<link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/hero-bg.webp" as="image">
+
+<!-- Service Worker for Caching -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registered'))
+        .catch(error => console.log('SW registration failed'));
+    });
+  }
+</script>
+
+<!-- Lazy Loading Images -->
+<script>
+  // Intersection Observer for lazy loading
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+</script>
+
+<!-- Performance Monitoring -->
+<script>
+  // Core Web Vitals monitoring
+  function sendToAnalytics(metric) {
+    // Send to your analytics service
+    console.log('Core Web Vitals:', metric);
+  }
+
+  // LCP (Largest Contentful Paint)
+  new PerformanceObserver((entryList) => {
+    for (const entry of entryList.getEntries()) {
+      sendToAnalytics({ name: 'LCP', value: entry.startTime });
+    }
+  }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+  // FID (First Input Delay)
+  new PerformanceObserver((entryList) => {
+    for (const entry of entryList.getEntries()) {
+      sendToAnalytics({ name: 'FID', value: entry.processingStart - entry.startTime });
+    }
+  }).observe({ entryTypes: ['first-input'] });
+
+  // CLS (Cumulative Layout Shift)
+  let clsValue = 0;
+  new PerformanceObserver((entryList) => {
+    for (const entry of entryList.getEntries()) {
+      if (!entry.hadRecentInput) {
+        clsValue += entry.value;
+      }
+    }
+    sendToAnalytics({ name: 'CLS', value: clsValue });
+  }).observe({ entryTypes: ['layout-shift'] });
+</script>
+
