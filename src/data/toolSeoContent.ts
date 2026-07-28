@@ -1225,7 +1225,7 @@ function inferToolType(tool: { name: string; description: string; category: stri
   const d = tool.description.toLowerCase();
   const c = tool.category.toLowerCase();
   const p = tool.path.toLowerCase();
-  if (c.includes('image') || p.includes('image') || p.includes('photo') || p.includes('favicon') || p.includes('placeholder') || p.includes('qr-scanner') || p.includes('pixelate') || p.includes('blur') || p.includes('split') || p.includes('merge') || p.includes('flip') || p.includes('invert') || p.includes('background') || p.includes('cropper') || p.includes('resizer') || p.includes('upscaler') || p.includes('metadata') || p.includes('annotat')) return 'image';
+  if (c.includes('image') || p.includes('image') || p.includes('photo') || p.includes('favicon') || p.includes('placeholder') || p.includes('qr-scanner') || p.includes('pixelate') || p.includes('blur') || p.includes('split') || p.includes('merge') || p.includes('flip-image') || p.includes('invert') || p.includes('background') || p.includes('cropper') || p.includes('resizer') || p.includes('upscaler') || p.includes('metadata') || p.includes('annotat') || p.includes('compressor')) return 'image';
   if (p.includes('pdf') || p.includes('svg') || p.includes('barcode')) return 'file';
   if (c.includes('calculator') || c.includes('number') || n.includes('calculator') || d.includes('calculat') || c.includes('period') || c.includes('pregnancy') || c.includes('timer') || n.includes('timer') || n.includes('stopwatch') || n.includes('countdown') || p.includes('calculator') || p.includes('age-calculator') || p.includes('emi') || p.includes('sip') || p.includes('ppf') || p.includes('fd-calculator') || p.includes('bmi') || p.includes('tax') || p.includes('percentage') || p.includes('expense') || p.includes('difference')) return 'calculator';
   if (c.includes('converter') || n.includes('converter') || d.includes('convert') || p.includes('converter') || p.includes('encode') || p.includes('decode') || n.includes('encode') || p.includes('formatter') || p.includes('minifier')) return 'converter';
@@ -1874,7 +1874,15 @@ export function getToolSeoContent(path: string): ToolSeoContent {
   const base = content[path] ?? generateFallbackSeoContent(path);
   const extended = getExtendedSeoContent(path);
   return {
-    ...base,
     ...extended,
+    ...base,
+    // Prefer curated specializations when present; else keep generated extended sections
+    toolComparisons: base.toolComparisons ?? extended.toolComparisons,
+    howItWorks: base.howItWorks ?? extended.howItWorks,
+    internalLinkInHowItWorks: base.internalLinkInHowItWorks ?? extended.internalLinkInHowItWorks,
+    advantages: base.advantages ?? extended.advantages,
+    internalLinkInAdvantages: base.internalLinkInAdvantages ?? extended.internalLinkInAdvantages,
+    commonMistakes: base.commonMistakes ?? extended.commonMistakes,
+    relatedSearches: base.relatedSearches ?? extended.relatedSearches,
   };
 }

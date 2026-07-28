@@ -10,7 +10,7 @@ const cache = new Map<string, FullSeoPageContent | null>();
 
 /**
  * Unique, intent-fit SEO content for every tool path.
- * Uses curated toolSeoContent where available; never the old longFormGenerator filler.
+ * Merges Vite page overrides + curated toolSeoContent via buildUniqueToolContent.
  */
 export function getFullSeoPage(path: string): FullSeoPageContent | null {
   const normalized = path.replace(/\/$/, '') || '/';

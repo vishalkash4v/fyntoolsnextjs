@@ -976,17 +976,19 @@ const UrlShortener = () => {
                   <CopyButton
                     textToCopy={shortUrl}
                     successMessage="Short URL copied to clipboard!"
-                    variant="outline"
+                    variant="default"
                     size="sm"
+                    copyText="Copy link"
+                    copiedText="Copied!"
                   />
                   <Button variant="outline" size="sm" onClick={openUrl} title="Open">
                     <ExternalLink className="h-4 w-4 sm:mr-2" />
                     <span className="hidden sm:inline">Open</span>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={() => openQrDialog(shortUrl)} 
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => openQrDialog(shortUrl)}
                     title="Show QR Code"
                   >
                     <QrCode className="h-4 w-4 sm:mr-2" />
@@ -1063,6 +1065,10 @@ const UrlShortener = () => {
                         successMessage="Short URL copied!"
                         variant="ghost"
                         size="icon"
+                        copyText=""
+                        copiedText=""
+                        title="Copy short URL"
+                        aria-label="Copy short URL"
                       />
                     </div>
                   ) : (
@@ -1171,50 +1177,48 @@ const UrlShortener = () => {
                         textToCopy={historyShortUrl}
                         successMessage="Short URL copied to clipboard!"
                         variant="ghost"
-                        size="sm"
-                      />
-                      <CopyButton
-                        textToCopy={item.originalUrl}
-                        successMessage="Original URL copied to clipboard!"
-                        variant="ghost"
-                        size="sm"
+                        size="icon"
+                        copyText=""
+                        copiedText=""
+                        title="Copy short URL"
+                        aria-label="Copy short URL"
                       />
                       <Button
                         variant="ghost"
-                        size="sm"
+                        size="icon"
                         onClick={() => window.open(historyShortUrl, '_blank')}
                         title="Open short link"
+                        aria-label="Open short link"
                       >
-                        <ExternalLink className="h-4 w-4 sm:mr-1" />
-                        <span className="hidden sm:inline">Open</span>
+                        <ExternalLink className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="ghost"
-                        size="sm"
+                        size="icon"
                         onClick={() => router.push(`/s/${item.shortCode}/stats`)}
                         title="View analytics"
+                        aria-label="View analytics"
                       >
-                        <BarChart2 className="h-4 w-4 sm:mr-1" />
-                        <span className="hidden sm:inline">Stats</span>
+                        <BarChart2 className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="ghost"
-                        size="sm"
+                        size="icon"
                         onClick={() => openQrDialog(historyShortUrl)}
                         title="Show QR Code"
+                        aria-label="Show QR code"
                       >
-                        <QrCode className="h-4 w-4 sm:mr-2" />
-                        <span className="hidden sm:inline">QR</span>
+                        <QrCode className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="ghost"
-                        size="sm"
+                        size="icon"
                         onClick={() => deleteHistoryItem(item.shortCode)}
                         className="text-destructive hover:text-destructive"
                         title="Delete"
+                        aria-label="Delete from history"
                       >
-                        <Trash2 className="h-4 w-4 sm:mr-2" />
-                        <span className="hidden sm:inline">Delete</span>
+                        <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>

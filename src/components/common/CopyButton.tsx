@@ -123,6 +123,11 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
       ? variant 
       : (copied ? "default" : "outline");
 
+    // Icon-only buttons must never render label text (avoids duplicate "Copy" UI).
+    const isIconOnly = size === 'icon' || (copyText === '' && copiedText === '');
+    const label = isIconOnly ? null : (copied ? copiedText : copyText);
+    const showLabel = Boolean(label);
+
     return (
       <Button
         ref={ref}
@@ -138,14 +143,14 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
       >
         {showIcon && (
           copied ? (
-            <Check className="h-4 w-4 sm:mr-2" />
+            <Check className={cn('h-4 w-4', showLabel && 'sm:mr-2')} />
           ) : (
-            <Copy className="h-4 w-4 sm:mr-2" />
+            <Copy className={cn('h-4 w-4', showLabel && 'sm:mr-2')} />
           )
         )}
-        <span className="hidden sm:inline">
-          {copied ? copiedText : copyText}
-        </span>
+        {showLabel && (
+          <span className="hidden sm:inline">{label}</span>
+        )}
         {children}
       </Button>
     );

@@ -1,6 +1,7 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import InteractiveToolLoader from '@/components/tools/InteractiveToolLoader';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
+import AdSenseUnit from '@/components/Ads/AdSenseUnit';
 
 type Faq = { question: string; answer: string };
 
@@ -17,7 +18,6 @@ type Props = {
 
 /**
  * Server Component shell: SEO is RSC; only InteractiveToolLoader is a client island.
- * Visible H1 lives in ToolSeoSections (single H1). Tool island sits between header and body copy.
  */
 export default function ToolPageShell({
   slug,
@@ -30,7 +30,7 @@ export default function ToolPageShell({
   fullSeo,
 }: Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90">
+    <div className="min-h-screen bg-background">
       <article className="w-full py-4 sm:py-6 md:py-8">
         <ToolSeoSections
           title={title}
@@ -46,6 +46,9 @@ export default function ToolPageShell({
             </section>
           }
         />
+        <div className="px-4 sm:px-6 md:px-8 mb-10">
+          <AdSenseUnit className="max-w-3xl mx-auto" />
+        </div>
       </article>
     </div>
   );

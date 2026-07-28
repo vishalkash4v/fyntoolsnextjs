@@ -3,8 +3,12 @@ import { allTools } from '@/data/toolsData';
 import { getToolSeoContent } from '@/data/toolSeoContent';
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import { getCategoryHubPath } from '@/utils/breadcrumbs';
+import { pageOverrides } from '@/data/tool-content/pageOverrides';
+import { getPremiumToolSeo } from '@/data/tool-content/premiumToolSeo';
+import { getGuidesForTool } from '@/data/guides/guidesData';
+import { buildExamplesForTool, buildTestimonialsForTool } from '@/data/tool-content/socialProof';
 
-function relatedTools(tool: Tool, limit = 6) {
+function relatedToolsFallback(tool: Tool, limit = 6) {
   const same = allTools.filter((t) => t.category === tool.category && t.path !== tool.path);
   const picked = same.slice(0, limit);
   if (picked.length < limit) {
@@ -21,13 +25,13 @@ function relatedTools(tool: Tool, limit = 6) {
   }));
 }
 
-function featureList(tool: Tool): string[] {
+function featureListFromTool(tool: Tool): string[] {
   if (tool.features) {
     return tool.features
       .split(',')
       .map((f) => f.trim())
       .filter(Boolean)
-      .slice(0, 8);
+      .slice(0, 10);
   }
   return [
     'Works in your browser',
@@ -37,273 +41,242 @@ function featureList(tool: Tool): string[] {
   ];
 }
 
-/** Intent-aware depth: simple utilities stay short; calculators/converters get more detail. */
-function depthFor(tool: Tool): 'short' | 'medium' | 'deep' {
-  const cat = tool.category.toLowerCase();
-  const name = tool.name.toLowerCase();
-  if (
-    cat.includes('finance') ||
-    cat.includes('pregnancy') ||
-    cat.includes('period') ||
-    name.includes('calculator') ||
-    name.includes('converter') ||
-    name.includes('formatter')
-  ) {
-    return 'deep';
-  }
-  if (
-    cat.includes('image') ||
-    cat.includes('development') ||
-    cat.includes('text') ||
-    name.includes('generator')
-  ) {
-    return 'medium';
-  }
-  return 'short';
+function splitIntro(text: string): string[] {
+  return text
+    .split(/\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
 }
 
-function uniqueTitle(tool: Tool): string {
-  const n = tool.name;
-  if (/calculator/i.test(n)) return `${n} Online — Free Instant Results`;
-  if (/converter/i.test(n)) return `${n} — Convert Instantly in Your Browser`;
-  if (/generator/i.test(n)) return `Free ${n} — Create Results in Seconds`;
-  if (/formatter|beautifier|minifier|validator/i.test(n)) return `${n} Online — Clean & Fix Instantly`;
-  if (/editor|maker|tracker|planner/i.test(n)) return `${n} — Free Browser Tool`;
-  if (/test|tutor|games|competition/i.test(n)) return `${n} — Practice Online Free`;
-  return `${n} — Free Online Tool`;
-}
-
-function uniqueH1(tool: Tool): string {
-  const n = tool.name;
-  if (/calculator/i.test(n)) return `${n}`;
-  if (/generator/i.test(n)) return `Free ${n}`;
-  return n;
-}
-
-function uniqueMeta(tool: Tool): string {
-  const base = tool.description.replace(/\s+/g, ' ').trim();
-  let meta = base.length > 140 ? `${base.slice(0, 137)}...` : base;
-  if (meta.length < 110) {
-    meta = `${meta} Free on FYN Tools — no signup.`;
-  }
-  if (meta.length > 155) meta = `${meta.slice(0, 152)}...`;
-  return meta;
-}
-
-function howToSteps(tool: Tool, feats: string[]): string[] {
+function defaultHowTo(tool: Tool, feats: string[]): string[] {
   const n = tool.name;
   const f0 = feats[0]?.toLowerCase() || 'your input';
-  const f1 = feats[1]?.toLowerCase() || 'the options';
-  if (/image|photo|svg|pdf|qr|barcode|pixel|blur|flip|merge|split|crop|compress|resizer/i.test(n + tool.category)) {
-    return [
-      `Open ${n} and upload or select your file (or paste content if the tool accepts text).`,
-      `Adjust ${f0} and review the live preview before you commit.`,
-      `Tune ${f1} until the result matches what you need.`,
-      `Download or copy the output, then close the tab — nothing requires an account.`,
-    ];
-  }
-  if (/calculator|emi|sip|gst|tax|bmi|age|percentage|ppf|fd/i.test(n)) {
-    return [
-      `Enter the values ${n} asks for (amounts, rates, dates, or measurements).`,
-      `Confirm units and any optional fields that affect the formula.`,
-      `Read the result and breakdown shown on the page.`,
-      `Change inputs to compare scenarios — recalculation is instant.`,
-    ];
-  }
-  if (/formatter|validator|minifier|encoder|decoder|regex|json|html|css|jwt|hash/i.test(n)) {
-    return [
-      `Paste your content into ${n}.`,
-      `Choose formatting or validation options if shown.`,
-      `Run the tool and inspect the output or error messages.`,
-      `Copy the cleaned result back into your project or docs.`,
-    ];
-  }
   return [
-    `Open ${n} on this page.`,
-    `Provide the input the tool expects and set ${f0}.`,
-    `Review the result; adjust ${f1} if needed.`,
-    `Copy, download, or save the output for your workflow.`,
+    `Open ${n} on FYN Tools.`,
+    `Enter or upload ${f0} using the controls above.`,
+    `Adjust options if available, then review the live result.`,
+    `Copy, download, or export the output for your workflow.`,
+    `Bookmark ${tool.path} if you use ${n} regularly.`,
   ];
 }
 
-function buildFaqs(tool: Tool, feats: string[]): { question: string; answer: string }[] {
-  const n = tool.name;
-  const f0 = feats[0] || 'core features';
-  const faqs = [
+function defaultFaqs(tool: Tool): { question: string; answer: string }[] {
+  return [
     {
-      question: `Is ${n} free to use?`,
-      answer: `Yes. ${n} on FYN Tools is free for normal interactive use — no mandatory account or paid unlock to get started.`,
+      question: `Is ${tool.name} free?`,
+      answer: `Yes. ${tool.name} is free to use on FYN Tools with no mandatory account.`,
     },
     {
-      question: `Does ${n} upload my data to a server?`,
-      answer: `Whenever the tool can run locally, processing stays in your browser. Avoid pasting secrets (passwords, private keys, medical IDs) into any public web tool if policy forbids it.`,
+      question: `Does ${tool.name} store my data?`,
+      answer: `Processing is designed to stay in your browser whenever possible. Avoid pasting highly sensitive secrets into any online tool.`,
     },
     {
-      question: `What makes ${n} useful?`,
-      answer: `${tool.description} Highlights include ${f0.toLowerCase()}${feats[1] ? ` and ${feats[1].toLowerCase()}` : ''}.`,
+      question: `Can I use ${tool.name} on mobile?`,
+      answer: `Yes. The interface adapts to phones and tablets with a modern browser.`,
     },
     {
-      question: `Can I use ${n} on my phone?`,
-      answer: `Yes. The layout adapts to mobile browsers so you can run ${n} without installing an app.`,
+      question: `Are there usage limits?`,
+      answer: `There are no artificial daily caps for normal interactive use. Very large inputs may be limited by your device.`,
+    },
+    {
+      question: `Where can I find related tools?`,
+      answer: `Browse the ${tool.category} hub and the related tools linked on this page.`,
     },
   ];
-
-  // Tool-specific fifth FAQ when deep
-  if (/password/i.test(n)) {
-    faqs.push({
-      question: 'How long should a generated password be?',
-      answer:
-        'For most accounts, 16+ characters with mixed character types is a solid baseline. Prefer a password manager to store unique passwords per site.',
-    });
-  } else if (/word counter/i.test(n)) {
-    faqs.push({
-      question: 'Does the word counter count characters with spaces?',
-      answer:
-        'Yes — you get word count, character counts (with and without spaces), and related stats so you can match form limits and SEO briefs.',
-    });
-  } else if (/json/i.test(n)) {
-    faqs.push({
-      question: 'What if my JSON is invalid?',
-      answer:
-        'The tool surfaces parse errors so you can fix commas, quotes, or brackets. Paste again after correcting the highlighted issue.',
-    });
-  } else if (/bmi/i.test(n)) {
-    faqs.push({
-      question: 'Is BMI a diagnosis?',
-      answer:
-        'No. BMI is a screening metric. Interpret results with a clinician, especially if you are an athlete, pregnant, or have other health conditions.',
-    });
-  } else if (/image/i.test(tool.category)) {
-    faqs.push({
-      question: `What file types does ${n} accept?`,
-      answer: `Most image tools here accept common web formats such as JPG, PNG, and WebP. Check on-page controls for any format-specific limits.`,
-    });
-  } else {
-    faqs.push({
-      question: `Where can I find tools related to ${n}?`,
-      answer: `Browse the ${tool.category} hub and the related links on this page for adjacent workflows.`,
-    });
-  }
-
-  return faqs;
 }
 
 /**
  * Build unique, intent-fit SEO content for one tool.
- * Prefers curated toolSeoContent fields; never uses the old longFormGenerator filler.
+ * Priority: Vite page overrides → curated toolSeoContent → sensible defaults.
  */
 export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
   const path = tool.path;
-  const feats = featureList(tool);
-  const depth = depthFor(tool);
+  const override = pageOverrides[path];
   const curated = getToolSeoContent(path);
+  const premium = getPremiumToolSeo(path);
+  const feats =
+    premium?.features?.length
+      ? premium.features
+      : override?.features?.length
+        ? override.features
+        : featureListFromTool(tool);
 
-  const title = uniqueTitle(tool);
-  const h1 = uniqueH1(tool);
-  const metaDescription = uniqueMeta(tool);
+  const title = premium?.title || override?.title || `${tool.name} — Free Online Tool`;
+  const h1 = premium?.h1 || override?.title || tool.name;
+  const metaDescription = (() => {
+    if (premium?.metaDescription) {
+      const m = premium.metaDescription;
+      return m.length > 160 ? `${m.slice(0, 157)}...` : m;
+    }
+    const base = (override?.description || tool.description).replace(/\s+/g, ' ').trim();
+    let meta = base.length > 155 ? `${base.slice(0, 152)}...` : base;
+    if (meta.length < 110) meta = `${meta} Free on FYN Tools — no signup.`;
+    if (meta.length > 160) meta = `${meta.slice(0, 157)}...`;
+    return meta;
+  })();
 
   const introParagraphs: string[] = [];
-  if (curated.introText) {
-    introParagraphs.push(curated.introText);
+  if (premium?.introParagraphs?.length) {
+    introParagraphs.push(...premium.introParagraphs);
   } else {
+    if (override?.shortIntro) introParagraphs.push(...splitIntro(override.shortIntro));
+    if (override?.introText) {
+      for (const p of splitIntro(override.introText)) {
+        if (!introParagraphs.includes(p)) introParagraphs.push(p);
+      }
+    }
+    if (curated.introText) {
+      for (const p of splitIntro(curated.introText)) {
+        if (!introParagraphs.includes(p)) introParagraphs.push(p);
+      }
+    }
+  }
+  if (introParagraphs.length === 0) {
     introParagraphs.push(
       `${tool.name} helps you ${tool.description.charAt(0).toLowerCase()}${tool.description.slice(1)} Use it when you need a quick browser-based answer without installing software.`
     );
   }
-
-  if (depth !== 'short') {
+  if (introParagraphs.length < 2 && !premium) {
     introParagraphs.push(
-      `This page focuses on what ${tool.name} actually does in the ${tool.category} group: ${feats.slice(0, 3).join(', ').toLowerCase()}. Related tools are linked below when you need an adjacent step.`
+      `This page covers what ${tool.name} does in the ${tool.category} group — including ${feats.slice(0, 3).join(', ').toLowerCase()}. Related FYN Tools utilities are linked below when you need an adjacent step.`
     );
+  }
+  if (premium?.deepParagraphs?.length) {
+    introParagraphs.push(...premium.deepParagraphs);
   }
 
   const overview =
-    depth === 'deep'
-      ? `${tool.name} is built for repeatable, transparent results. Enter values or files, adjust options tied to ${feats[0]?.toLowerCase() || 'your settings'}, and read the output before you export. If you are comparing approaches, change one input at a time so you can see how each factor moves the result.`
-      : '';
+    premium?.overview ||
+    `${tool.name} is built for repeatable, transparent results in your browser. Enter values or files, adjust options tied to ${feats[0]?.toLowerCase() || 'your settings'}, and review the output before you export. Change one input at a time when you are comparing approaches so you can see how each factor moves the result.`;
 
   const howToUse =
-    curated.whenToUse?.length && curated.introText
-      ? howToSteps(tool, feats)
-      : howToSteps(tool, feats);
+    premium?.howToUse?.length
+      ? premium.howToUse
+      : override?.howToUse?.length
+        ? override.howToUse
+        : defaultHowTo(tool, feats);
 
   const useCases =
-    curated.useCases?.length >= 2
-      ? curated.useCases.map((u) => ({ title: u.title, description: u.description }))
-      : depth === 'short'
-        ? []
-        : [
-            {
-              title: `Everyday ${tool.category.replace(/ Tools$/, '').toLowerCase()} work`,
-              description: `Reach for ${tool.name} when ${tool.description.charAt(0).toLowerCase()}${tool.description.slice(1)}`,
-            },
-            {
-              title: 'Quick checks before you publish or submit',
-              description: `Run ${tool.name} once, verify the output, then continue in your docs, design file, or application form.`,
-            },
-          ];
+    premium?.useCases?.length
+      ? premium.useCases
+      : override?.useCases?.length
+        ? override.useCases.map((u) => ({ title: u.title, description: u.description }))
+        : curated.useCases?.length
+          ? curated.useCases.map((u) => ({ title: u.title, description: u.description }))
+          : [
+              {
+                title: `Everyday ${tool.category.replace(/ Tools$/, '').toLowerCase()} work`,
+                description: `Reach for ${tool.name} when ${tool.description.charAt(0).toLowerCase()}${tool.description.slice(1)}`,
+              },
+              {
+                title: 'Quick checks before you publish or submit',
+                description: `Run ${tool.name} once, verify the output, then continue in your docs, design file, or application form.`,
+              },
+            ];
 
   const examples =
-    curated.examples?.length
-      ? curated.examples.map((e) => ({ input: e.input, output: e.output }))
-      : [];
+    premium?.examples?.length
+      ? premium.examples
+      : override?.examples?.length
+        ? override.examples.map((e) => ({ input: e.input, output: e.output }))
+        : curated.examples?.length
+          ? curated.examples.map((e) => ({ input: e.input, output: e.output }))
+          : buildExamplesForTool(tool);
+
+  const testimonials = buildTestimonialsForTool(tool);
 
   const tips =
-    curated.tips?.length
-      ? curated.tips
-      : depth === 'short'
-        ? [`Bookmark ${tool.path} if you reuse ${tool.name} often.`, 'Double-check outputs before sharing externally.']
-        : [
-            `Keep inputs realistic — ${tool.name} cannot fix bad source data.`,
-            `Use related ${tool.category.toLowerCase()} when your workflow needs a second step.`,
-            'On mobile, rotate to landscape if controls feel tight.',
-          ];
+    premium?.tips?.length
+      ? [...premium.tips]
+      : override?.tips?.length
+        ? [...override.tips]
+        : curated.tips?.length
+          ? [...curated.tips]
+          : [
+              `Bookmark ${tool.path} if you reuse ${tool.name} often.`,
+              'Double-check outputs before sharing externally.',
+              `Use related ${tool.category.toLowerCase()} when your workflow needs a second step.`,
+            ];
 
   const whenToUse =
-    curated.whenToUse?.length
-      ? curated.whenToUse
-      : [
-          `When you need ${tool.name.toLowerCase()} without installing desktop software`,
-          `When a quick browser pass is enough before a deeper workflow`,
-        ];
+    premium?.whenToUse?.length
+      ? [...premium.whenToUse]
+      : override?.whenToUse?.length
+        ? [...override.whenToUse]
+        : curated.whenToUse?.length
+          ? [...curated.whenToUse]
+          : [
+              `When you need ${tool.name.toLowerCase()} without installing desktop software`,
+              `When a quick browser pass is enough before a deeper workflow`,
+            ];
 
   const commonMistakes =
-    curated.commonMistakes?.length
-      ? curated.commonMistakes
-      : depth === 'deep'
-        ? [
+    premium?.commonMistakes?.length
+      ? premium.commonMistakes
+      : curated.commonMistakes?.length
+        ? curated.commonMistakes
+        : [
             `Ignoring units or formats ${tool.name} expects — always match the labels on the form.`,
             'Treating a single run as final without sanity-checking edge cases.',
-          ]
-        : [];
+            'Skipping related tools when your workflow clearly needs a second step.',
+          ];
 
   const advantages =
-    curated.advantages?.length
-      ? curated.advantages
-      : feats.slice(0, 4);
+    premium?.advantages?.length
+      ? premium.advantages
+      : curated.advantages?.length
+        ? curated.advantages
+        : feats.slice(0, 5);
 
   const howItWorks =
+    premium?.howItWorks ||
     curated.howItWorks ||
-    (depth === 'deep'
-      ? `${tool.name} takes your input through the panel above, applies the logic behind ${feats[0]?.toLowerCase() || 'its main feature'}, and returns a result you can copy or download. Options stay visible so you can iterate without starting over.`
-      : '');
+    `${tool.name} takes your input through the panel above, applies the logic behind ${feats[0]?.toLowerCase() || 'its main feature'}, and returns a result you can copy or download. Options stay visible so you can iterate without starting over.`;
 
-  const benefits =
-    depth === 'short'
-      ? []
-      : [
-          `Save time versus hunting through multiple apps for a one-off ${tool.name.toLowerCase()} task.`,
-          `Keep sensitive drafts closer to your device when the tool can run locally.`,
-        ];
+  const benefits = premium?.benefits?.length
+    ? premium.benefits
+    : [
+        `Save time versus hunting through multiple apps for a one-off ${tool.name.toLowerCase()} task.`,
+        `Keep drafts closer to your device when the tool can run locally in the browser.`,
+        `Get consistent output you can copy or download without creating an account.`,
+        `Pair ${tool.name} with related ${tool.category.toLowerCase()} on FYN Tools for a full workflow.`,
+      ];
+
+  const faqs =
+    premium?.faqs?.length
+      ? premium.faqs
+      : override?.faqs?.length && override.faqs.length >= 4
+        ? override.faqs.map((f) => ({ question: f.question, answer: f.answer }))
+        : (() => {
+            const base = override?.faqs?.length
+              ? override.faqs.map((f) => ({ question: f.question, answer: f.answer }))
+              : [];
+            const filler = defaultFaqs(tool);
+            return [...base, ...filler].slice(0, Math.max(5, base.length));
+          })();
+
+  const related =
+    premium?.relatedTools?.length
+      ? premium.relatedTools
+      : override?.relatedTools?.length
+        ? override.relatedTools.map((t) => ({
+            name: t.name,
+            href: t.href,
+            description: t.description,
+          }))
+        : relatedToolsFallback(tool);
+
+  const keywords = premium?.keywords?.length
+    ? premium.keywords
+    : override?.keywords
+      ? override.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 12)
+      : tool.keywords
+        ? tool.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 8)
+        : [tool.name.toLowerCase()];
 
   const conclusion =
-    depth === 'short'
-      ? `${tool.name} is ready above — run it, grab the result, and move on. Explore related ${tool.category.toLowerCase()} if you need a follow-up step.`
-      : `${tool.name} covers the core job described here without forcing an account wall. Use the live tool above, then follow internal links when your workflow continues into another FYN Tools utility.`;
-
-  const keywords = tool.keywords
-    ? tool.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 8)
-    : [tool.name.toLowerCase()];
+    premium?.conclusion ||
+    `${tool.name} covers the core job described here without forcing an account wall. Use the live tool above, then follow internal links when your workflow continues into another FYN Tools utility in ${tool.category}.`;
 
   return {
     title,
@@ -320,8 +293,10 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     useCases,
     tips,
     commonMistakes,
-    faqs: buildFaqs(tool, feats),
-    relatedTools: relatedTools(tool),
+    faqs,
+    relatedTools: related,
+    relatedGuides: getGuidesForTool(path),
+    testimonials,
     conclusion,
     whenToUse,
     howItWorks,
@@ -332,6 +307,8 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
       href: getCategoryHubPath(tool.category),
       after: ' collection.',
     },
+    toolComparisons: curated.toolComparisons,
+    relatedSearches: curated.relatedSearches,
     ogTitle: title,
     ogDescription: metaDescription,
     twitterTitle: title,

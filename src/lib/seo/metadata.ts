@@ -18,7 +18,7 @@ export type PageMetaInput = {
 
 /**
  * Build Next.js Metadata with absolute titles (avoids layout template doubling),
- * canonical, robots, Open Graph, and Twitter cards.
+ * canonical (query-stripped path), robots, Open Graph, and Twitter cards.
  */
 export function buildPageMetadata({
   title,
@@ -33,24 +33,31 @@ export function buildPageMetadata({
   modifiedTime,
   authors,
 }: PageMetaInput): Metadata {
-  const canonical = absoluteUrl(path === '/' ? '/' : path);
+  // Strip any accidental query/hash from path before canonicalizing
+  const cleanPath = (path.split('?')[0] || '/').split('#')[0] || '/';
+  const canonical = absoluteUrl(cleanPath === '/' ? '/' : cleanPath);
   const kw = Array.isArray(keywords) ? keywords.join(', ') : keywords;
 
-  // Absolute title — do NOT rely on layout template (prevents " | FYN … | FYN …")
-  const fullTitle = title.includes('FYN Tools')
-    ? title
-    : `${title} | FYN Tools Worldwide`;
+  // Absolute title — keep roughly 50–65 chars when possible (front-loaded keyword + short brand)
+  const brandSuffix = ' | FYN Tools';
+  let fullTitle = title.includes('FYN Tools') ? title : `${title}${brandSuffix}`;
+  if (fullTitle.length > 65 && !title.includes('FYN Tools')) {
+    const maxCore = 65 - brandSuffix.length;
+    const core = title.length > maxCore ? `${title.slice(0, maxCore - 1).trim()}…` : title;
+    fullTitle = `${core}${brandSuffix}`;
+  }
 
-  const desc =
+  let finalDesc =
     description.length > 160
       ? `${description.slice(0, 157)}...`
-      : description.length < 70
-        ? `${description} Free online on FYN Tools Worldwide — no signup required.`
+      : description.length < 110
+        ? `${description} Free on FYN Tools — no signup.`
         : description;
+  if (finalDesc.length > 160) finalDesc = `${finalDesc.slice(0, 157)}...`;
 
   return {
     title: { absolute: fullTitle },
-    description: desc,
+    description: finalDesc,
     keywords: kw,
     authors: [{ name: 'FYN Tools Worldwide' }],
     creator: 'FYN Tools Worldwide',
@@ -75,7 +82,7 @@ export function buildPageMetadata({
     },
     openGraph: {
       title: fullTitle,
-      description: desc,
+      description: finalDesc,
       url: canonical,
       siteName: 'FYN Tools Worldwide',
       locale: 'en_US',
@@ -99,7 +106,7 @@ export function buildPageMetadata({
     twitter: {
       card: 'summary_large_image',
       title: fullTitle,
-      description: desc,
+      description: finalDesc,
       images: [ogImage],
       site: '@fyntoolsworldwide',
       creator: '@fyntoolsworldwide',

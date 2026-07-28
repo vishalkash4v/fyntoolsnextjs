@@ -1,12 +1,11 @@
 'use client';
-import React, { useState, useMemo, useMemo as useMemoAlias, useRef } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { differenceInYears, differenceInMonths, differenceInDays, isValid, format } from 'date-fns';
 import { User, Gift, Download, Copy } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import CommonDatePicker from '@/components/ui/CommonDatePicker';
-import html2canvas from 'html2canvas';
 import { toast } from 'sonner';
 import SocialShareButtons from '@/components/tools/SocialShareButtons';
 
@@ -14,6 +13,27 @@ import SocialShareButtons from '@/components/tools/SocialShareButtons';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const EMOJIS = ["🎉", "🎈", "🎂", "🥳", "🎊"];
+
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+  fill: string
+) {
+  const radius = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + w, y, x + w, y + h, radius);
+  ctx.arcTo(x + w, y + h, x, y + h, radius);
+  ctx.arcTo(x, y + h, x, y, radius);
+  ctx.arcTo(x, y, x + w, y, radius);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+}
 
 const AgeCalculator = () => {
   const [dob, setDob] = useState<Date | null>(null);
@@ -100,49 +120,115 @@ const AgeCalculator = () => {
   };
 
   const downloadResultImage = async () => {
-    if (!resultRef.current) return;
+    if (!dob || !ageResult || ageResult.error) return;
     setIsImageGenerating(true);
-    setImageProgress(10);
-    let timer: number | undefined;
+    setImageProgress(15);
     try {
-      document.documentElement.classList.add('export-mode');
-      timer = window.setInterval(() => {
-        setImageProgress((prev) => (prev < 90 ? prev + 5 : prev));
-      }, 120);
-      const bg = '#0b1220';
-      const target = resultRef.current;
-      const wrapper = document.createElement('div');
-      wrapper.style.position = 'fixed';
-      wrapper.style.left = '-10000px';
-      wrapper.style.top = '0';
-      wrapper.style.background = bg;
-      wrapper.style.padding = '16px';
-      const exportWidth = Math.min(720, target.offsetWidth || 720);
-      wrapper.style.width = `${exportWidth}px`;
+      const W = 1080;
+      const H = 1350;
+      const canvas = document.createElement('canvas');
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas unavailable');
 
-      const clone = target.cloneNode(true) as HTMLElement;
-      clone.style.width = '100%';
-      clone.style.maxWidth = '100%';
-      wrapper.appendChild(clone);
-      document.body.appendChild(wrapper);
-      await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+      // Background gradient
+      const bg = ctx.createLinearGradient(0, 0, W, H);
+      bg.addColorStop(0, '#1e1b4b');
+      bg.addColorStop(0.45, '#4c1d95');
+      bg.addColorStop(1, '#9d174d');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
 
-      const canvas = await html2canvas(wrapper, {
-        scale: 2.5,
-        backgroundColor: bg,
-        useCORS: true,
-        logging: false,
+      // Soft glow orbs
+      const orb = (x: number, y: number, r: number, color: string) => {
+        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, color);
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(x - r, y - r, r * 2, r * 2);
+      };
+      orb(180, 220, 280, 'rgba(244,114,182,0.35)');
+      orb(900, 1100, 320, 'rgba(129,140,248,0.3)');
+
+      // Card panel
+      const pad = 72;
+      roundRect(ctx, pad, pad, W - pad * 2, H - pad * 2, 48, 'rgba(15,23,42,0.72)');
+      ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      setImageProgress(40);
+
+      // Brand
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.font = '600 28px system-ui, Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('FYN Tools · Age Card', W / 2, pad + 70);
+
+      ctx.fillStyle = '#fff';
+      ctx.font = '700 52px system-ui, Segoe UI, sans-serif';
+      ctx.fillText(isBirthdayToday ? 'Happy Birthday!' : 'Your Age', W / 2, pad + 150);
+
+      // Big years
+      ctx.font = '800 220px system-ui, Segoe UI, sans-serif';
+      ctx.fillStyle = '#f9a8d4';
+      ctx.fillText(String(ageResult.years), W / 2, pad + 420);
+      ctx.font = '600 42px system-ui, Segoe UI, sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText('years old', W / 2, pad + 490);
+
+      // Stats row
+      const stats = [
+        { label: 'Years', value: ageResult.years },
+        { label: 'Months', value: ageResult.months },
+        { label: 'Days', value: ageResult.days },
+      ];
+      const boxW = 240;
+      const gap = 36;
+      const totalW = stats.length * boxW + (stats.length - 1) * gap;
+      let x0 = (W - totalW) / 2;
+      stats.forEach((s) => {
+        roundRect(ctx, x0, pad + 560, boxW, 160, 24, 'rgba(255,255,255,0.08)');
+        ctx.fillStyle = '#fff';
+        ctx.font = '800 64px system-ui, Segoe UI, sans-serif';
+        ctx.fillText(String(s.value), x0 + boxW / 2, pad + 650);
+        ctx.fillStyle = 'rgba(255,255,255,0.65)';
+        ctx.font = '600 28px system-ui, Segoe UI, sans-serif';
+        ctx.fillText(s.label, x0 + boxW / 2, pad + 700);
+        x0 += boxW + gap;
       });
-      document.body.removeChild(wrapper);
-      setImageProgress(100);
+
+      setImageProgress(70);
+
+      // Birthday line
+      ctx.fillStyle = '#fde68a';
+      ctx.font = '600 34px system-ui, Segoe UI, sans-serif';
+      const bdayLine = isBirthdayToday
+        ? 'Today is your birthday 🎂'
+        : `${ageResult.daysToNextBirthday} day${ageResult.daysToNextBirthday === 1 ? '' : 's'} until your next birthday`;
+      ctx.fillText(bdayLine, W / 2, pad + 820);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.75)';
+      ctx.font = '500 28px system-ui, Segoe UI, sans-serif';
+      ctx.fillText(`Born ${format(dob, 'MMMM d, yyyy')}`, W / 2, pad + 890);
+      ctx.fillText(`Generated ${format(new Date(), 'MMM d, yyyy')}`, W / 2, pad + 940);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font = '500 24px system-ui, Segoe UI, sans-serif';
+      ctx.fillText('fyntools.com/age-calculator', W / 2, H - pad - 40);
+
+      setImageProgress(95);
       const link = document.createElement('a');
-      link.download = 'age-calculator-result.png';
-      link.href = canvas.toDataURL('image/png', 1.0);
+      link.download = `age-card-${ageResult.years}y.png`;
+      link.href = canvas.toDataURL('image/png');
       link.click();
-      toast.success('Result image downloaded');
+      toast.success('Age card downloaded');
+      setImageProgress(100);
+    } catch (err) {
+      console.error(err);
+      toast.error('Could not generate age card image');
     } finally {
-      document.documentElement.classList.remove('export-mode');
-      if (timer) window.clearInterval(timer);
       setTimeout(() => {
         setIsImageGenerating(false);
         setImageProgress(0);

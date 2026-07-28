@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle, XCircle, Minus, Maximize2 } from 'lucide-react';
 import { Label } from '@/components/ui/label';
-import CopyButton from '@/components/common/CopyButton';
+import AnimatedCopyButton from '@/components/ui/AnimatedCopyButton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useToolStorage } from '@/hooks/useToolStorage';
 
 type ActionType = 'beautify' | 'minify';
 
 const JsonFormatter: React.FC = () => {
-  const [inputText, setInputText] = useState<string>('');
+  const [inputText, setInputText] = useToolStorage<string>({
+    key: 'json-formatter:input',
+    initial: '',
+  });
   const [outputText, setOutputText] = useState<string>('');
   const [isValidJson, setIsValidJson] = useState<boolean | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -135,7 +139,7 @@ const JsonFormatter: React.FC = () => {
               Beautify JSON
             </Button>
             {outputText && (
-              <CopyButton
+              <AnimatedCopyButton
                 textToCopy={outputText}
                 successMessage="Beautified JSON copied to clipboard"
                 size="sm"
@@ -186,7 +190,7 @@ const JsonFormatter: React.FC = () => {
               Minify JSON
             </Button>
             {outputText && (
-              <CopyButton
+              <AnimatedCopyButton
                 textToCopy={outputText}
                 successMessage="Minified JSON copied to clipboard"
                 size="sm"

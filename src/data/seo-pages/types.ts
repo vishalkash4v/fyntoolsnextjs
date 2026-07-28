@@ -51,11 +51,21 @@ export interface FullSeoPageContent {
   commonMistakes: string[];
   faqs: SeoFaq[];
   relatedTools: SeoRelatedTool[];
+  relatedGuides?: { title: string; href: string }[];
+  testimonials?: Array<{ name: string; rating: number; text: string; title?: string }>;
   conclusion: string;
   whenToUse: string[];
   howItWorks: string;
   advantages: string[];
   internalLinkInIntro: SeoInternalLink;
+  toolComparisons?: Array<{
+    toolAName: string;
+    toolAHref: string;
+    toolBName: string;
+    toolBHref: string;
+    description: string;
+  }>;
+  relatedSearches?: Array<{ phrase: string; href?: string }>;
   ogTitle?: string;
   ogDescription?: string;
   twitterTitle?: string;

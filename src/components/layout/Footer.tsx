@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wrench, Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
 import { CATEGORY_HUBS } from '@/data/categoriesData';
 
 const Footer = () => {
@@ -18,6 +18,7 @@ const Footer = () => {
 
   const companyLinks = [
     { name: 'About Us', href: '/about' },
+    { name: 'Guides', href: '/guides' },
     { name: 'Contact', href: '/contact' },
     { name: 'All Tools', href: '/tools' },
     { name: 'Blog', href: '/blog' },
@@ -30,12 +31,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-secondary">
-                <Wrench className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                FYN Tools Worldwide
-              </span>
+              <img
+                src="/logobeta-128.webp"
+                width={128}
+                height={64}
+                className="w-32 h-auto object-contain"
+                alt="FYN Tools Logo"
+              />
             </Link>
             <p className="text-zinc-700 dark:text-zinc-300 mb-4 leading-relaxed">
               Professional online tools for developers, businesses, and individuals.

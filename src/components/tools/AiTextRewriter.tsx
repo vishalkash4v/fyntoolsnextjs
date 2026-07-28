@@ -16,8 +16,9 @@ import CopyButton from '@/components/common/CopyButton';
 import { useToast } from '@/hooks/use-toast';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
+import { API_BASE_URL } from '@/lib/seo/site';
 
-const API_BASE_URL = 'https://express-two-umber.vercel.app/api/rewrite';
+const REWRITE_URL = `${API_BASE_URL}/rewrite`;
 
 const AiTextRewriter = () => {
   const [inputText, setInputText] = useState('');
@@ -42,39 +43,54 @@ const AiTextRewriter = () => {
       });
       return;
     }
+    if (text.length > 12000) {
+      toast({
+        title: 'Text too long',
+        description: 'Please keep input under ~12,000 characters per rewrite.',
+        variant: 'destructive',
+      });
+      return;
+    }
 
     setIsRewriting(true);
     setRewrittenText('');
 
     try {
-      const res = await fetch(API_BASE_URL, {
+      const res = await fetch(REWRITE_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: text,
+          text,
           style: rewriteStyle,
           creativity: creativityLevel[0],
+          options: {
+            useContractions,
+            addFillers,
+            useIdioms,
+          },
         }),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error || `API error ${res.status}`);
+        throw new Error(data.error || `API error ${res.status}`);
       }
 
-      const data = await res.json();
-      
-      if (!data.success || !data.data?.rewrittenText) {
+      const output =
+        data?.data?.rewrittenText ||
+        data?.rewrittenText ||
+        data?.data?.text ||
+        data?.text;
+
+      if (!output || typeof output !== 'string') {
         throw new Error(data.error || 'No rewritten text was generated. Please try again.');
       }
 
-      setRewrittenText(data.data.rewrittenText);
-
+      setRewrittenText(output.trim());
       toast({
         title: 'Text Rewritten',
-        description: 'Text rewritten successfully using FYN LexaWrite Engine.',
+        description: 'Rewrite completed successfully.',
       });
     } catch (err: any) {
       console.error('API Rewrite error:', err);

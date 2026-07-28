@@ -31,8 +31,23 @@ const BeforeAfterSlider: React.FC<{
 }> = ({ beforeImage, afterImage, beforeLabel, afterLabel }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchIdRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const measure = () => setContainerWidth(el.clientWidth);
+    measure();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+    ro?.observe(el);
+    window.addEventListener('resize', measure);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, []);
 
   const updateSliderPosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -106,14 +121,34 @@ const BeforeAfterSlider: React.FC<{
         }
       }}
     >
-      {/* Before Image - Full background (left side) */}
-      <div className="absolute inset-0">
-        <img 
-          src={beforeImage} 
-          alt="Before" 
-          className="w-full h-full object-contain"
+      {/* After (full base) */}
+      <img
+        src={afterImage}
+        alt="After"
+        className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+        draggable={false}
+      />
+      <div className="absolute top-2 right-2 z-[5] bg-green-600/90 text-white px-3 py-1.5 rounded-md text-sm font-semibold shadow-lg pointer-events-none">
+        AFTER
+      </div>
+      <div className="absolute top-10 right-2 z-[5] bg-black/70 text-white px-2 py-1 rounded text-xs pointer-events-none">
+        {afterLabel}
+      </div>
+
+      {/* Before reveal from left — width tracks handle with no CSS transition lag */}
+      <div
+        className="absolute inset-y-0 left-0 overflow-hidden z-[2] pointer-events-none"
+        style={{ width: `${sliderPosition}%` }}
+      >
+        <img
+          src={beforeImage}
+          alt="Before"
+          className="absolute top-0 left-0 h-full object-contain max-w-none"
+          style={{
+            width: containerWidth ? `${containerWidth}px` : '100%',
+          }}
+          draggable={false}
         />
-        {/* Before Label - Red, on left side */}
         <div className="absolute top-2 left-2 bg-red-600/90 text-white px-3 py-1.5 rounded-md text-sm font-semibold shadow-lg">
           BEFORE
         </div>
@@ -122,29 +157,10 @@ const BeforeAfterSlider: React.FC<{
         </div>
       </div>
 
-      {/* After Image - Clipped to show on right side */}
-      <div 
-        className="absolute inset-0 overflow-hidden"
-        style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
-      >
-        <img 
-          src={afterImage} 
-          alt="After" 
-          className="w-full h-full object-contain"
-        />
-        {/* After Label - Green, on right side */}
-        <div className="absolute top-2 right-2 bg-green-600/90 text-white px-3 py-1.5 rounded-md text-sm font-semibold shadow-lg">
-          AFTER
-        </div>
-        <div className="absolute top-10 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-          {afterLabel}
-        </div>
-      </div>
-
-      {/* Slider Line */}
-      <div 
-        className="absolute top-0 bottom-0 w-0.5 sm:w-1 bg-white shadow-2xl z-10 transition-all pointer-events-none"
-        style={{ left: `${sliderPosition}%` }}
+      {/* Slider Line (no transition-all — that caused stick/image desync) */}
+      <div
+        className="absolute top-0 bottom-0 w-0.5 sm:w-1 bg-white shadow-2xl z-10 pointer-events-none"
+        style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
       >
         {/* Slider Handle */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-xl flex items-center justify-center cursor-grab active:cursor-grabbing touch-none pointer-events-auto">

@@ -1,15 +1,22 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import DeepLinkRedirectClient from '@/components/deeplink/DeepLinkRedirectClient';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  title: 'Deep Link Redirect',
+  title: 'Deep Link Redirect | FYN Tools',
 };
 
 export default function DeepLinkRedirectPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold">Deep Link Redirect</h1>
-      <p className="text-muted-foreground mt-2">Internal deep-link helper (noindex).</p>
-    </div>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+          Preparing deep link…
+        </div>
+      }
+    >
+      <DeepLinkRedirectClient />
+    </Suspense>
   );
 }

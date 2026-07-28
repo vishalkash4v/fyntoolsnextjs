@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import 'rsuite/dist/rsuite-no-reset.min.css';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { AppProviders } from '@/components/providers/AppProviders';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
+import { organizationSchema, websiteSchema } from '@/lib/seo/schemas';
 import { SITE_URL } from '@/lib/seo/site';
 
 const inter = Inter({
@@ -14,11 +16,16 @@ const inter = Inter({
   display: 'swap',
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: 'FYN Tools Worldwide - Free Professional Online Tools',
-    // Pages should use title.absolute via buildPageMetadata — template is fallback only
     template: '%s | FYN Tools Worldwide',
   },
   description:
@@ -38,9 +45,15 @@ export const metadata: Metadata = {
   publisher: 'FYN Tools Worldwide',
   formatDetection: { telephone: false, email: false, address: false },
   icons: {
-    icon: [{ url: '/favicon.ico' }, { url: '/placeholder.svg', type: 'image/svg+xml' }],
-    apple: '/placeholder.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logobeta-64.webp', type: 'image/webp', sizes: '64x64' },
+      { url: '/logo.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico',
   },
+  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -77,9 +90,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
+      >
+        <SchemaMarkup data={[organizationSchema(), websiteSchema()]} />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <AppProviders>
             <Header />
             <main className="flex-1">{children}</main>

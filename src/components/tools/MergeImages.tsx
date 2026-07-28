@@ -60,6 +60,9 @@ const MergeImages = () => {
   
   // Set default background color based on theme
   const getDefaultBgColor = () => {
+    if (typeof window === 'undefined') {
+      return theme === 'dark' ? '#1a1a1a' : '#ffffff';
+    }
     if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       return '#1a1a1a';
     }

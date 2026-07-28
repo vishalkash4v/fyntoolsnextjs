@@ -64,8 +64,8 @@ export function resolveToolPage(slug: string) {
   return {
     tool,
     fullSeo,
-    howToUse: getDefaultHowToUse(tool),
-    features: getDefaultFeatures(tool),
-    faqs: getDefaultFaqs(tool),
+    howToUse: fullSeo?.howToUse?.length ? fullSeo.howToUse : getDefaultHowToUse(tool),
+    features: fullSeo?.features?.length ? fullSeo.features : getDefaultFeatures(tool),
+    faqs: fullSeo?.faqs?.length ? fullSeo.faqs : getDefaultFaqs(tool),
   };
 }

@@ -35,6 +35,7 @@ const QRCodeGenerator: React.FC = () => {
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const bgImageInputRef = useRef<HTMLInputElement>(null);
+  const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const qrTypeOptions = [
     { value: 'text', label: 'Text/URL', icon: MessageCircle },
@@ -117,25 +118,63 @@ const QRCodeGenerator: React.FC = () => {
       });
       return;
     }
-    const canvas = document.getElementById('qrcode-canvas') as HTMLCanvasElement;
-    if (canvas) {
-      const pngUrl = canvas
-        .toDataURL('image/png')
-        .replace('image/png', 'image/octet-stream');
-      let downloadLink = document.createElement('a');
-      downloadLink.href = pngUrl;
-      downloadLink.download = 'custom-qrcode.png';
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
+
+    try {
+      // Prefer ref (id is unreliable with qrcode.react); fallback to query
+      const canvas =
+        qrCanvasRef.current ||
+        (document.querySelector('#qrcode-canvas') as HTMLCanvasElement | null) ||
+        (document.querySelector('canvas') as HTMLCanvasElement | null);
+
+      if (!canvas) {
+        toast({
+          title: 'Download Failed',
+          description: 'Could not find QR code canvas element.',
+          variant: 'destructive',
+        });
+        return;
+      }
+
+      // Draw to a clean offscreen canvas so logos/tainted pixels don't silently fail
+      const exportCanvas = document.createElement('canvas');
+      const scale = 2;
+      exportCanvas.width = canvas.width * scale;
+      exportCanvas.height = canvas.height * scale;
+      const ctx = exportCanvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas context unavailable');
+      ctx.imageSmoothingEnabled = false;
+      ctx.fillStyle = bgColor || '#FFFFFF';
+      ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+      ctx.drawImage(canvas, 0, 0, exportCanvas.width, exportCanvas.height);
+
+      exportCanvas.toBlob((blob) => {
+        if (!blob) {
+          toast({
+            title: 'Download Failed',
+            description: 'Could not export QR image. Try removing the logo and retry.',
+            variant: 'destructive',
+          });
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'fyntools-qrcode.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(url);
+        toast({
+          title: 'Download Started',
+          description: 'High-quality QR code PNG is downloading.',
+        });
+      }, 'image/png');
+    } catch (err) {
+      console.error(err);
       toast({
-        title: 'Download Started',
-        description: 'QR code image download has started.',
-      });
-    } else {
-       toast({
         title: 'Download Failed',
-        description: 'Could not find QR code canvas element.',
+        description:
+          'Export blocked (often by an external logo). Remove the logo or use a same-origin image.',
         variant: 'destructive',
       });
     }
@@ -639,6 +678,7 @@ const QRCodeGenerator: React.FC = () => {
                 <div className="relative">
                   <QRCodeCanvas
                     id="qrcode-canvas"
+                    ref={qrCanvasRef}
                     value={qrValue}
                     size={qrCodeSize}
                     fgColor={fgColor}

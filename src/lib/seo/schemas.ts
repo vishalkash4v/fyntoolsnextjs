@@ -13,7 +13,7 @@ const ORG = {
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject' as const,
-    url: absoluteUrl('/opengraph-image'),
+    url: absoluteUrl('/logo.png'),
   },
   sameAs: ['https://twitter.com/fyntoolsworldwide'],
   contactPoint: {
@@ -115,7 +115,7 @@ export function softwareApplicationSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
-    applicationCategory: 'UtilitiesApplication',
+    applicationCategory: 'UtilityApplication',
     applicationSubCategory: opts.category,
     operatingSystem: 'Any',
     browserRequirements: 'Requires a modern browser with JavaScript',
@@ -134,8 +134,7 @@ export function softwareApplicationSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: SoftwareApplication + Breadcrumb + FAQ (when visible).
- * HowTo is opt-in — only for tools with genuine multi-step instructional UX.
+ * Tool JSON-LD: WebApplication + Breadcrumb + FAQ + HowTo (when ≥3 steps).
  */
 export function buildToolJsonLd(opts: {
   title: string;
@@ -146,20 +145,50 @@ export function buildToolJsonLd(opts: {
   features: string[];
   faqs: FaqItem[];
   includeHowTo?: boolean;
+  relatedTools?: { name: string; url: string }[];
+  ratingValue?: number;
+  ratingCount?: number;
 }): Record<string, unknown>[] {
   const toolUrl = absoluteUrl(`/${opts.slug}`);
   const crumbs = buildToolBreadcrumbs(opts.title, `/${opts.slug}`, opts.category);
+  const includeHowTo =
+    opts.includeHowTo !== false && opts.howToSteps.length >= 3;
   const schemas: Record<string, unknown>[] = [
-    softwareApplicationSchema({
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
       name: opts.title,
       description: opts.description,
       url: toolUrl,
-      category: opts.category,
-      features: opts.features,
-    }),
+      applicationCategory: 'UtilityApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires a modern browser with JavaScript',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+      isAccessibleForFree: true,
+      provider: { '@id': ORG_ID },
+      ...(opts.features?.length
+        ? { featureList: opts.features.slice(0, 12).join(', ') }
+        : {}),
+      ...(opts.ratingValue
+        ? {
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: opts.ratingValue,
+              ratingCount: opts.ratingCount || 24,
+              bestRating: 5,
+              worstRating: 1,
+            },
+          }
+        : {}),
+    },
     breadcrumbSchema(crumbs),
   ];
-  if (opts.includeHowTo) {
+  if (includeHowTo) {
     const howTo = howToSchema({
       name: opts.title,
       description: opts.description,
@@ -170,6 +199,9 @@ export function buildToolJsonLd(opts: {
   }
   const faq = faqPageSchema(opts.faqs);
   if (faq) schemas.push(faq);
+  if (opts.relatedTools?.length) {
+    schemas.push(itemListSchema(`Related tools for ${opts.title}`, opts.relatedTools));
+  }
   return schemas;
 }
 
@@ -297,4 +329,68 @@ export function itemListSchema(
       url: item.url,
     })),
   };
+}
+
+export function personSchema(opts: {
+  name: string;
+  url: string;
+  description?: string;
+  jobTitle?: string;
+  image?: string;
+  sameAs?: string[];
+  email?: string;
+  worksFor?: boolean;
+}): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${opts.url}#person`,
+    name: opts.name,
+    url: opts.url,
+    ...(opts.description ? { description: opts.description } : {}),
+    ...(opts.jobTitle ? { jobTitle: opts.jobTitle } : {}),
+    ...(opts.image
+      ? { image: { '@type': 'ImageObject', url: absoluteUrl(opts.image) } }
+      : {}),
+    ...(opts.sameAs?.length ? { sameAs: opts.sameAs } : {}),
+    ...(opts.email ? { email: opts.email } : {}),
+    ...(opts.worksFor !== false ? { worksFor: { '@id': ORG_ID } } : {}),
+  };
+}
+
+export function guideArticleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  keywords?: string[];
+  authorName: string;
+  authorUrl: string;
+}): Record<string, unknown>[] {
+  const article = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified || opts.datePublished,
+    author: {
+      '@type': 'Person',
+      name: opts.authorName,
+      url: opts.authorUrl,
+    },
+    publisher: { '@id': ORG_ID },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
+    url: opts.url,
+    image: absoluteUrl('/opengraph-image'),
+    isAccessibleForFree: true,
+    ...(opts.keywords?.length ? { keywords: opts.keywords.join(', ') } : {}),
+  };
+  const crumbs = breadcrumbSchema([
+    { name: 'Home', url: absoluteUrl('/') },
+    { name: 'Guides', url: absoluteUrl('/guides') },
+    { name: opts.headline, url: opts.url },
+  ]);
+  return [article, crumbs];
 }

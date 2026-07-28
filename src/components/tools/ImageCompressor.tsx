@@ -12,6 +12,7 @@ import { Upload, Download, Image as ImageIcon, X, Loader2, Zap, Sparkles } from 
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
+import imageCompression from 'browser-image-compression';
 
 // Maximum file size: 15MB (increased like upscaler)
 const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15MB in bytes
@@ -366,7 +367,7 @@ const ImageCompressor: React.FC = () => {
     }
   }, [handleFile]);
 
-  // Frontend image compression using Canvas API
+  // Genuine compression via browser-image-compression (never return a larger file)
   const compressImageFrontend = useCallback(async (
     file: File,
     quality: number,
@@ -374,113 +375,81 @@ const ImageCompressor: React.FC = () => {
     targetSizeKB: number | undefined,
     smartResizeEnabled: boolean | undefined,
     currentPreset: SocialPreset
-  ): Promise<{ dataUrl: string; dimensions: { width: number; height: number }; fileSize: number }> => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => {
-        try {
-          let width = img.width;
-          let height = img.height;
-          const originalSize = width * height;
+  ): Promise<{ dataUrl: string; dimensions: { width: number; height: number }; fileSize: number; format: string }> => {
+    const mime =
+      format === 'png' ? 'image/png' : format === 'webp' ? 'image/webp' : 'image/jpeg';
 
-          // Smart resize if enabled and image is large
-          if (smartResizeEnabled && originalSize > 2000000) { // 2MP threshold
-            const scale = Math.sqrt(2000000 / originalSize);
-            width = Math.round(width * scale);
-            height = Math.round(height * scale);
-          }
+    // Optional dimension constraints from presets / smart resize
+    let maxWidthOrHeight: number | undefined;
+    if (currentPreset === 'instagram-post' || currentPreset === 'instagram-story') {
+      maxWidthOrHeight = currentPreset === 'instagram-story' ? 1920 : 1080;
+    } else if (currentPreset === 'youtube-thumbnail') {
+      maxWidthOrHeight = 1280;
+    } else if (currentPreset === 'whatsapp') {
+      maxWidthOrHeight = 1600;
+    } else if (smartResizeEnabled) {
+      maxWidthOrHeight = 2048;
+    }
 
-          // Apply preset dimensions if needed
-          if (currentPreset === 'instagram-post') {
-            width = 1080;
-            height = 1080;
-          } else if (currentPreset === 'instagram-story') {
-            width = 1080;
-            height = 1920;
-          } else if (currentPreset === 'youtube-thumbnail') {
-            width = 1280;
-            height = 720;
-          } else if (currentPreset === 'whatsapp') {
-            const maxDim = 1600;
-            if (width > height) {
-              height = Math.round((height / width) * maxDim);
-              width = maxDim;
-            } else {
-              width = Math.round((width / height) * maxDim);
-              height = maxDim;
-            }
-          }
+    const quality01 = Math.min(1, Math.max(0.1, quality / 100));
+    const targetMB = targetSizeKB ? Math.max(0.01, targetSizeKB / 1024) : undefined;
 
-          const canvas = document.createElement('canvas');
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          
-          if (!ctx) {
-            reject(new Error('Could not get canvas context'));
-            return;
-          }
+    const tryCompress = async (q: number, maxMB?: number) =>
+      imageCompression(file, {
+        maxSizeMB: maxMB ?? Math.max(0.05, (file.size * 0.92) / (1024 * 1024)),
+        maxWidthOrHeight,
+        useWebWorker: true,
+        fileType: mime,
+        initialQuality: q,
+        alwaysKeepResolution: !maxWidthOrHeight,
+      });
 
-          // High-quality image rendering
-          ctx.imageSmoothingEnabled = true;
-          ctx.imageSmoothingQuality = 'high';
-          ctx.drawImage(img, 0, 0, width, height);
+    let compressed = await tryCompress(quality01, targetMB);
 
-          const compressToTargetSize = async (targetKB: number): Promise<string> => {
-            let minQuality = 0.1;
-            let maxQuality = 1.0;
-            let bestQuality = quality;
-            let bestDataUrl = '';
-            let iterations = 0;
-            const maxIterations = 10;
-
-            while (iterations < maxIterations) {
-              const testQuality = (minQuality + maxQuality) / 2;
-              const testDataUrl = canvas.toDataURL(`image/${format}`, testQuality);
-              const testSizeKB = (testDataUrl.length * 3) / 4 / 1024;
-
-              if (Math.abs(testSizeKB - targetKB) < 5 || iterations >= maxIterations - 1) {
-                bestQuality = testQuality;
-                bestDataUrl = testDataUrl;
-                break;
-              }
-
-              if (testSizeKB > targetKB) {
-                maxQuality = testQuality;
-              } else {
-                minQuality = testQuality;
-                bestDataUrl = testDataUrl;
-                bestQuality = testQuality;
-              }
-              iterations++;
-            }
-
-            return bestDataUrl || canvas.toDataURL(`image/${format}`, bestQuality);
-          };
-
-          const performCompression = async (): Promise<string> => {
-            if (targetSizeKB && targetSizeKB > 0) {
-              return await compressToTargetSize(targetSizeKB);
-            } else {
-              return canvas.toDataURL(`image/${format}`, quality / 100);
-            }
-          };
-
-          performCompression().then((dataUrl) => {
-            const fileSize = (dataUrl.length * 3) / 4; // Approximate size in bytes
-            resolve({
-              dataUrl,
-              dimensions: { width, height },
-              fileSize
-            });
-          }).catch(reject);
-        } catch (error) {
-          reject(error);
+    // Retry harder if still larger than original (common with PNG→PNG / already-optimized JPEG)
+    if (compressed.size >= file.size) {
+      const harderFormats: string[] =
+        mime === 'image/png' ? ['image/webp', 'image/jpeg'] : mime === 'image/webp' ? ['image/jpeg'] : [];
+      for (const alt of harderFormats) {
+        const altFile = await imageCompression(file, {
+          maxSizeMB: Math.max(0.04, (file.size * 0.85) / (1024 * 1024)),
+          maxWidthOrHeight: maxWidthOrHeight ?? 2560,
+          useWebWorker: true,
+          fileType: alt,
+          initialQuality: Math.min(0.75, quality01),
+        });
+        if (altFile.size < compressed.size) {
+          compressed = altFile;
         }
+        if (compressed.size < file.size) break;
+      }
+    }
+
+    if (compressed.size >= file.size) {
+      // Still not smaller — return original bytes rather than a fake "compression"
+      const dataUrl = await imageCompression.getDataUrlFromFile(file);
+      const bitmap = await createImageBitmap(file);
+      const dims = { width: bitmap.width, height: bitmap.height };
+      bitmap.close?.();
+      return {
+        dataUrl,
+        dimensions: dims,
+        fileSize: file.size,
+        format: file.type.includes('png') ? 'png' : file.type.includes('webp') ? 'webp' : 'jpeg',
       };
-      img.onerror = () => reject(new Error('Failed to load image'));
-      img.src = URL.createObjectURL(file);
-    });
+    }
+
+    const dataUrl = await imageCompression.getDataUrlFromFile(compressed);
+    const bitmap = await createImageBitmap(compressed);
+    const dims = { width: bitmap.width, height: bitmap.height };
+    bitmap.close?.();
+    const outFormat = compressed.type.includes('png')
+      ? 'png'
+      : compressed.type.includes('webp')
+        ? 'webp'
+        : 'jpeg';
+
+    return { dataUrl, dimensions: dims, fileSize: compressed.size, format: outFormat };
   }, []);
 
   // Compress image - Frontend only, instant processing
@@ -557,7 +526,7 @@ const ImageCompressor: React.FC = () => {
       setCompressedFileSize(result.fileSize);
       setCompressionRatio(compressionRatio);
       setProcessingTime(processingTime);
-      setFinalFormat(compressionFormat);
+      setFinalFormat(result.format || compressionFormat);
       setProgress(100);
       
       // In manual mode, also update preview to match final result
@@ -565,11 +534,18 @@ const ImageCompressor: React.FC = () => {
         setPreviewCompressedUrl(result.dataUrl);
       }
 
-      // Only show success toast, not on every change
-      toast({
-        title: 'Image compressed successfully',
-        description: `Size reduced by ${compressionRatio.toFixed(1)}% • ${formatFileSize(result.fileSize)}`,
-      });
+      if (result.fileSize >= (originalFileSize || 0)) {
+        toast({
+          title: 'Already optimized',
+          description:
+            'This file is already small. We kept the original instead of making it larger.',
+        });
+      } else {
+        toast({
+          title: 'Image compressed successfully',
+          description: `Size reduced by ${compressionRatio.toFixed(1)}% • ${formatFileSize(result.fileSize)}`,
+        });
+      }
     } catch (err: any) {
       console.error('Compression error:', err);
       const errorMsg = err.message || 'An error occurred while compressing the image. Please try again.';

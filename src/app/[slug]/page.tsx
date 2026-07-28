@@ -41,6 +41,11 @@ export async function generateStaticParams() {
           'api',
           'redirect',
           'deep-link-redirect',
+          // Dedicated App Router pages (more specific than [slug])
+          'json-formatter',
+          'url-shortener',
+          'guides',
+          'author',
         ].includes(slug)
       ) {
         return false;
@@ -203,10 +208,11 @@ export default async function DynamicSlugPage({ params }: Props) {
     howToSteps: displayHowTo,
     features: displayFeatures,
     faqs: displayFaqs,
-    // HowTo only for calculators / converters with clear procedural steps
-    includeHowTo:
-      /calculator|converter|formatter|encoder|decoder|generator/i.test(tool.name) &&
-      displayHowTo.length >= 3,
+    includeHowTo: displayHowTo.length >= 3,
+    relatedTools: (fullSeo?.relatedTools || []).map((t) => ({
+      name: t.name,
+      url: absoluteUrl(t.href),
+    })),
   });
 
   return (

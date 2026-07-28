@@ -227,74 +227,94 @@ const ImageCropper = () => {
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     const img = new Image();
+    const objectUrl = URL.createObjectURL(selectedFile);
 
     img.onload = () => {
-      let outputWidth, outputHeight;
-      
+      let outputWidth: number;
+      let outputHeight: number;
+
       if (isCustomMode && customWidth && customHeight) {
-        outputWidth = parseInt(customWidth);
-        outputHeight = parseInt(customHeight);
+        outputWidth = parseInt(customWidth, 10) || cropArea.width;
+        outputHeight = parseInt(customHeight, 10) || cropArea.height;
       } else if (selectedPreset) {
-        const preset = cropPresets.find(p => p.name === selectedPreset);
-        if (preset) {
-          outputWidth = preset.width;
-          outputHeight = preset.height;
-        } else {
-          outputWidth = cropArea.width;
-          outputHeight = cropArea.height;
-        }
+        const preset = cropPresets.find((p) => p.name === selectedPreset);
+        outputWidth = preset?.width || cropArea.width;
+        outputHeight = preset?.height || cropArea.height;
       } else {
-        outputWidth = cropArea.width;
-        outputHeight = cropArea.height;
+        outputWidth = Math.round(cropArea.width);
+        outputHeight = Math.round(cropArea.height);
       }
 
-      canvas.width = outputWidth;
-      canvas.height = outputHeight;
+      // Clamp source crop to image bounds
+      const sx = Math.max(0, Math.min(cropArea.x, img.width - 1));
+      const sy = Math.max(0, Math.min(cropArea.y, img.height - 1));
+      const sw = Math.max(1, Math.min(cropArea.width, img.width - sx));
+      const sh = Math.max(1, Math.min(cropArea.height, img.height - sy));
 
-      if (ctx) {
-        // Enable high-quality rendering
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
-        
-        ctx.drawImage(
-          img,
-          cropArea.x,
-          cropArea.y,
-          cropArea.width,
-          cropArea.height,
-          0,
-          0,
-          canvas.width,
-          canvas.height
-        );
+      canvas.width = Math.max(1, outputWidth);
+      canvas.height = Math.max(1, outputHeight);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
 
-        // Use highest quality for output
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const croppedUrl = URL.createObjectURL(blob);
-            setCroppedUrl(croppedUrl);
-            
+      canvas.toBlob(
+        (blob) => {
+          URL.revokeObjectURL(objectUrl);
+          if (!blob) {
             toast({
-              title: "Image cropped successfully!",
-              description: `Cropped to ${canvas.width}×${canvas.height}px with zero quality loss`,
+              title: 'Crop failed',
+              description: 'Could not create cropped image.',
+              variant: 'destructive',
             });
+            return;
           }
-        }, 'image/png', 1.0);
-      }
+          if (croppedUrl) URL.revokeObjectURL(croppedUrl);
+          const url = URL.createObjectURL(blob);
+          setCroppedUrl(url);
+          toast({
+            title: 'Image cropped successfully!',
+            description: `Cropped to ${canvas.width}×${canvas.height}px`,
+          });
+        },
+        'image/png',
+        1.0
+      );
     };
 
-    img.src = URL.createObjectURL(selectedFile);
-  }, [selectedFile, originalDimensions, cropArea, selectedPreset, isCustomMode, customWidth, customHeight]);
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      toast({
+        title: 'Crop failed',
+        description: 'Could not load the source image.',
+        variant: 'destructive',
+      });
+    };
+
+    img.src = objectUrl;
+  }, [
+    selectedFile,
+    originalDimensions,
+    cropArea,
+    selectedPreset,
+    isCustomMode,
+    customWidth,
+    customHeight,
+    croppedUrl,
+    toast,
+  ]);
 
   const downloadCropped = useCallback(() => {
     if (croppedUrl && selectedFile) {
       const link = document.createElement('a');
       link.href = croppedUrl;
       const name = selectedFile.name.replace(/\.[^/.]+$/, '');
-      const ext = selectedFile.name.split('.').pop();
       const presetSuffix = selectedPreset ? `_${selectedPreset.replace(/\s+/g, '_')}` : '_cropped';
-      link.download = `${name}${presetSuffix}.${ext}`;
+      // Always PNG — blob is created as image/png
+      link.download = `${name}${presetSuffix}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -303,13 +323,14 @@ const ImageCropper = () => {
 
   useEffect(() => {
     if (previewContainerRef.current && originalDimensions) {
-      const containerWidth = previewContainerRef.current.offsetWidth;
-      const containerHeight = isMobile ? 300 : 400;
-      const scaleX = containerWidth / originalDimensions.width;
-      const scaleY = containerHeight / originalDimensions.height;
-      // Increase scale to make image more visible
-      const baseScale = Math.min(scaleX, scaleY, 1);
-      setPreviewScale(Math.min(baseScale * 1.2, 1));
+      const maxW = isMobile ? 350 : 500;
+      const maxH = isMobile ? 300 : 400;
+      const scale = Math.min(
+        maxW / originalDimensions.width,
+        maxH / originalDimensions.height,
+        1
+      );
+      setPreviewScale(scale);
     }
   }, [originalDimensions, isMobile]);
 
@@ -540,8 +561,8 @@ const ImageCropper = () => {
                     ref={previewContainerRef}
                     className="relative border-2 border-dashed border-border rounded-lg overflow-hidden cursor-move touch-none bg-muted"
                     style={{
-                      width: `${Math.min(originalDimensions.width * previewScale * zoomLevel, isMobile ? 350 : 500)}px`,
-                      height: `${Math.min(originalDimensions.height * previewScale * zoomLevel, isMobile ? 300 : 400)}px`,
+                      width: `${originalDimensions.width * previewScale * zoomLevel}px`,
+                      height: `${originalDimensions.height * previewScale * zoomLevel}px`,
                       maxWidth: '100%'
                     }}
                     onMouseDown={handleStart}
@@ -555,7 +576,7 @@ const ImageCropper = () => {
                     <img
                       src={previewUrl}
                       alt="Preview"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-fill"
                       draggable={false}
                     />
                     <div
