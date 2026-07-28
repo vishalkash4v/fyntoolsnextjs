@@ -1,7 +1,6 @@
-'use client';
 import React from 'react';
 import { Home, ChevronRight } from 'lucide-react';
-import Link from "next/link";
+import { Link } from 'react-router-dom';
 import { getCategoryHubUrl } from '@/utils/breadcrumbs';
 
 interface ToolBreadcrumbsProps {
