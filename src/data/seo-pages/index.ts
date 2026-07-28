@@ -1,10 +1,8 @@
 import { buildUniqueToolContent } from '@/data/tool-content/buildUniqueToolContent';
 import { allTools } from '@/data/toolsData';
-import { isAffectedToolPath, AFFECTED_TOOL_PATHS } from './affectedPaths';
 import type { FullSeoPageContent } from './types';
 
 export type { FullSeoPageContent } from './types';
-export { isAffectedToolPath, AFFECTED_TOOL_PATHS, AFFECTED_TOOL_PATH_SET } from './affectedPaths';
 
 const cache = new Map<string, FullSeoPageContent | null>();
 
@@ -39,13 +37,17 @@ export function countWords(content: FullSeoPageContent): number {
     content.title,
     content.metaDescription,
     content.h1,
-    ...content.introParagraphs,
+    ...(content.introParagraphs || []),
     content.overview,
-    ...content.features,
-    ...content.benefits,
-    ...content.howToUse,
-    ...content.faqs.map((f) => `${f.question} ${f.answer}`),
+    content.howItWorks,
     content.conclusion,
+    ...(content.howToUse || []),
+    ...(content.features || []),
+    ...(content.faqs || []).flatMap((f) => [f.question, f.answer]),
   ];
-  return parts.join(' ').split(/\s+/).filter(Boolean).length;
+  return parts
+    .filter(Boolean)
+    .join(' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
 }

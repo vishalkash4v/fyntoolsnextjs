@@ -5,8 +5,43 @@ import { blogPosts } from '@/data/blogsData';
 import { guides } from '@/data/guides/guidesData';
 import { authors } from '@/data/authors';
 import { SITE_URL } from '@/lib/seo/site';
+import { TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/registry.generated';
 
-const CONTENT_LASTMOD = new Date('2026-07-27');
+/** Bump on content/CWV deploys so Google sees freshness. */
+const SITEMAP_LASTMOD = new Date('2026-07-28');
+
+/**
+ * Paths from GSC “Crawled – currently not indexed” that need a stronger crawl signal.
+ * Higher priority + weekly changefreq encourages recrawl after SEO/CWV fixes.
+ */
+const GSC_RECRAWL_PRIORITY = new Set([
+  '/logo-to-favicon',
+  '/ovulation-calculator',
+  '/html-formatter',
+  '/pms-symptom-tracker',
+  '/safe-days-calculator',
+  '/percentage-calculator',
+  '/json-validator',
+  '/typing-test',
+  '/url-slug-generator',
+  '/image-resizer',
+  '/xml-sitemap-tester',
+  '/meta-tag-previewer',
+  '/typing-games',
+  '/text-reverser',
+  '/period-tracker',
+  '/barcode-scanner-online',
+  '/pregnancy-weight-gain-calculator',
+  '/markdown-editor',
+  '/list-randomizer',
+  '/hash-generator',
+  '/gradient-generator',
+  '/text-font-changer',
+  '/text-to-speech',
+  '/image-format-converter',
+  '/image-metadata-viewer',
+  '/ip-address-to-location-finder',
+]);
 
 const HIGH_PRIORITY = new Set([
   '/word-counter',
@@ -24,42 +59,57 @@ const HIGH_PRIORITY = new Set([
   '/base64-converter',
   '/html-formatter',
   '/typing-test',
+  '/unit-converter',
+  '/photo-annotation-tool',
+  '/hash-generator',
+  '/meta-tag-previewer',
+]);
+
+const SKIP_SITEMAP = new Set([
+  ...Object.keys(TOOL_CANONICAL_REDIRECTS).map((s) => `/${s}`),
 ]);
 
 /**
- * Homepage 1.0 · Tools 0.9 · Hubs 0.85 · Guides 0.8 · About 0.7 · Author 0.6
+ * Complete indexable sitemap — homepage, hubs, ALL live tools, guides, authors, blogs.
+ * Excludes: themes, admin, short links, soft-duplicate aliases, query URLs.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: { path: string; priority: number; freq: 'daily' | 'weekly' }[] = [
     { path: '/', priority: 1.0, freq: 'daily' },
     { path: '/tools', priority: 0.95, freq: 'daily' },
     { path: '/guides', priority: 0.85, freq: 'weekly' },
+    { path: '/blog', priority: 0.75, freq: 'weekly' },
     { path: '/about', priority: 0.7, freq: 'weekly' },
     { path: '/contact', priority: 0.6, freq: 'weekly' },
-    { path: '/blog', priority: 0.75, freq: 'weekly' },
   ];
+
+  const toolEntries = allTools
+    .filter((t) => t.path && !t.path.includes(':') && !SKIP_SITEMAP.has(t.path))
+    .map((t) => {
+      const gscBoost = GSC_RECRAWL_PRIORITY.has(t.path);
+      const high = HIGH_PRIORITY.has(t.path);
+      return {
+        url: `${SITE_URL}${t.path}`,
+        lastModified: SITEMAP_LASTMOD,
+        changeFrequency: 'weekly' as const,
+        priority: high || gscBoost ? 0.9 : 0.8,
+      };
+    });
 
   return [
     ...staticRoutes.map((r) => ({
       url: `${SITE_URL}${r.path === '/' ? '' : r.path}`,
-      lastModified: CONTENT_LASTMOD,
+      lastModified: SITEMAP_LASTMOD,
       changeFrequency: r.freq,
       priority: r.priority,
     })),
     ...CATEGORY_HUBS.map((hub) => ({
       url: `${SITE_URL}${hub.path}`,
-      lastModified: CONTENT_LASTMOD,
+      lastModified: SITEMAP_LASTMOD,
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     })),
-    ...allTools
-      .filter((t) => t.path && !t.path.includes(':'))
-      .map((t) => ({
-        url: `${SITE_URL}${t.path}`,
-        lastModified: CONTENT_LASTMOD,
-        changeFrequency: 'weekly' as const,
-        priority: HIGH_PRIORITY.has(t.path) ? 0.9 : 0.8,
-      })),
+    ...toolEntries,
     ...guides.map((g) => ({
       url: `${SITE_URL}/guides/${g.slug}`,
       lastModified: new Date(g.updatedAt || g.publishedAt),
@@ -68,7 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...authors.map((a) => ({
       url: `${SITE_URL}/author/${a.slug}`,
-      lastModified: CONTENT_LASTMOD,
+      lastModified: SITEMAP_LASTMOD,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

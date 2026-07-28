@@ -1,6 +1,8 @@
 /**
- * Generate TOOL_LOADERS from toolsData paths → real components in src/components/tools.
- * Never maps to ToolPageLayout / shells / loaders.
+ * Generate:
+ * 1) TOOL_LOADERS registry (server / static params)
+ * 2) Per-slug loader modules under src/lib/tools/loaders/ — so each tool page
+ *    only downloads THAT tool's JS (not a 90-tool sibling graph).
  *
  * Run: node scripts/generate-tool-registry.mjs
  */
@@ -13,6 +15,7 @@ const root = path.join(__dirname, "..");
 const toolsDir = path.join(root, "src", "components", "tools");
 const toolsDataPath = path.join(root, "src", "data", "toolsData.ts");
 const outFile = path.join(root, "src", "lib", "tools", "registry.generated.ts");
+const loadersDir = path.join(root, "src", "lib", "tools", "loaders");
 
 const EXCLUDED = new Set([
   "ToolPageLayout",
@@ -26,7 +29,9 @@ const EXCLUDED = new Set([
   "LikeDislikeButtons",
   "SocialShareButtons",
   "SitemapReport",
-  "ThemeManager", // themes is a route, not a tool page via [slug]
+  "ThemeManager",
+  "UrlShortenerQrDialog",
+  "JsonFormatterClient",
 ]);
 
 /** Explicit slug → component filename (without .tsx) when heuristics fail */
@@ -119,6 +124,7 @@ const OVERRIDES = {
   "timestamp-converter": "TimestampConverter",
   "base64-converter": "Base64Converter",
   "ip-lookup": "IpLookup",
+  "ip-address-to-location-finder": "IPAddressToLocationFinder",
   "image-compressor": "ImageCompressor",
   "image-resizer": "ImageResizer",
   "image-cropper": "ImageCropper",
@@ -142,7 +148,6 @@ const OVERRIDES = {
   "stopwatch": "Stopwatch",
   "trip-expense-splitter": "TripExpenseSplitter",
   "barcode-generator": "BarcodeGenerator",
-  "qr-generator": "QrGenerator", // alias component if exists; prefer QRCodeGenerator via path
 };
 
 function toPascalCase(slug) {
@@ -181,19 +186,16 @@ function resolveComponent(slug) {
   const pascal = toPascalCase(slug);
   if (toolFileSet.has(pascal)) return pascal;
 
-  // Case-insensitive match
   const lower = pascal.toLowerCase();
   for (const f of toolFileSet) {
     if (f.toLowerCase() === lower) return f;
   }
 
-  // QR special cases
   if (slug === "qr-code-generator" && toolFileSet.has("QRCodeGenerator")) {
     return "QRCodeGenerator";
   }
   if (slug === "qr-scanner" && toolFileSet.has("QRScanner")) return "QRScanner";
 
-  // Fuzzy: component name contains significant parts
   const parts = slug.split("-").filter((p) => p.length > 2);
   const candidates = [...toolFileSet].filter((f) => {
     const fl = f.toLowerCase();
@@ -247,13 +249,40 @@ export function getToolLoader(slug: string): ToolComponentLoader | null {
 }
 
 export const TOOL_SLUGS = Object.keys(TOOL_LOADERS);
+
+/** Soft-duplicate paths that 301 to a canonical tool (excluded from sitemap). */
+export const TOOL_CANONICAL_REDIRECTS: Record<string, string> = {
+  "enhanced-unit-converter": "unit-converter",
+  "add-name-date-photo": "photo-annotation-tool",
+};
 `;
 
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 fs.writeFileSync(outFile, code);
 
-const layoutHits = Object.values(registry).filter((c) => c === "ToolPageLayout");
-console.log(
-  `Wrote ${outFile}: ${Object.keys(registry).length} tools, ToolPageLayout hits: ${layoutHits.length}, missing: ${missing.length}`
+// Per-slug loader modules — one file per tool for clean code-splitting
+fs.mkdirSync(loadersDir, { recursive: true });
+const existing = new Set(
+  fs.readdirSync(loadersDir).filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"))
 );
-if (layoutHits.length) process.exitCode = 1;
+const keep = new Set();
+
+for (const [slug, file] of Object.entries(registry)) {
+  const loaderPath = path.join(loadersDir, `${slug}.ts`);
+  const loaderCode = `/* AUTO-GENERATED — do not edit */
+export { default } from "@/components/tools/${file}";
+`;
+  fs.writeFileSync(loaderPath, loaderCode);
+  keep.add(`${slug}.ts`);
+}
+
+for (const f of existing) {
+  if (!keep.has(f)) {
+    fs.unlinkSync(path.join(loadersDir, f));
+  }
+}
+
+console.log(
+  `Wrote ${outFile}: ${Object.keys(registry).length} tools; loaders dir: ${keep.size} files; missing: ${missing.length}`
+);
+if (missing.length) process.exitCode = 1;

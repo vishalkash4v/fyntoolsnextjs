@@ -23,6 +23,7 @@ declare global {
 /**
  * CLS-safe AdSense wrapper. Renders a fixed min-height skeleton until the ad loads.
  * No-ops (shows placeholder) when NEXT_PUBLIC_ADSENSE_CLIENT is unset.
+ * Defers adsbygoogle.push until idle to avoid competing with LCP.
  */
 export default function AdSenseUnit({
   slot,
@@ -30,7 +31,7 @@ export default function AdSenseUnit({
   format = 'auto',
   responsive = true,
   className = '',
-  minHeight = 280,
+  minHeight = 250,
 }: Props) {
   const pushed = useRef(false);
   const clientId = client || process.env.NEXT_PUBLIC_ADSENSE_CLIENT || '';
@@ -39,28 +40,44 @@ export default function AdSenseUnit({
 
   useEffect(() => {
     if (!enabled || pushed.current) return;
-    try {
-      const scriptId = 'adsense-loader';
-      if (!document.getElementById(scriptId)) {
-        const s = document.createElement('script');
-        s.id = scriptId;
-        s.async = true;
-        s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
-        s.crossOrigin = 'anonymous';
-        document.head.appendChild(s);
+
+    const run = () => {
+      if (pushed.current) return;
+      try {
+        const scriptId = 'adsense-loader';
+        if (!document.getElementById(scriptId)) {
+          const s = document.createElement('script');
+          s.id = scriptId;
+          s.async = true;
+          s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
+          s.crossOrigin = 'anonymous';
+          document.head.appendChild(s);
+        }
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+        pushed.current = true;
+      } catch {
+        /* ignore ad load errors */
       }
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
-      pushed.current = true;
-    } catch {
-      /* ignore ad load errors */
-    }
+    };
+
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const ric = w.requestIdleCallback?.(run, { timeout: 3500 });
+    const t = ric == null ? window.setTimeout(run, 2000) : null;
+    return () => {
+      if (ric != null) w.cancelIdleCallback?.(ric);
+      if (t != null) window.clearTimeout(t);
+    };
   }, [enabled, clientId]);
 
+  // Keep layout reserved even when ads are off — prevents CLS when enabling later
   return (
     <div
       className={`w-full overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 ${className}`}
-      style={{ minHeight }}
+      style={{ minHeight, containIntrinsicSize: `auto ${minHeight}px`, contentVisibility: 'auto' as const }}
       aria-hidden={!enabled}
     >
       {enabled ? (
@@ -74,7 +91,7 @@ export default function AdSenseUnit({
         />
       ) : (
         <div
-          className="flex h-full w-full items-center justify-center text-xs text-muted-foreground animate-pulse"
+          className="flex h-full w-full items-center justify-center text-xs text-muted-foreground"
           style={{ minHeight }}
         >
           Ad placeholder

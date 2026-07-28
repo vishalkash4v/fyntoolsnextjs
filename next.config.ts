@@ -4,7 +4,29 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   reactStrictMode: true,
   poweredByHeader: false,
+  // Fewer legacy polyfills + smaller client bundles for modern browsers (2026 Baseline)
+  experimental: {
+    optimizePackageImports: [
+      "lucide-react",
+      "date-fns",
+      "rsuite",
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-select",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toast",
+      "recharts",
+      "framer-motion",
+    ],
+  },
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === "production"
+        ? { exclude: ["error", "warn"] }
+        : false,
+  },
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "fyntools.com" },
       { protocol: "https", hostname: "**.vercel.app" },
@@ -23,6 +45,17 @@ const nextConfig: NextConfig = {
         destination: "/social-media-deep-link-generator",
         permanent: true,
       },
+      // Soft-duplicate tools → single canonical (GSC cannibalization fix)
+      {
+        source: "/enhanced-unit-converter",
+        destination: "/unit-converter",
+        permanent: true,
+      },
+      {
+        source: "/add-name-date-photo",
+        destination: "/photo-annotation-tool",
+        permanent: true,
+      },
       {
         source: "/google2bd88e5174647955",
         destination: "/google2bd88e5174647955.html",
@@ -36,7 +69,24 @@ const nextConfig: NextConfig = {
         source: "/fyntoolsadmin/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      // Skip document headers on hashed CSS/JS so static assets stay cache-friendly
+      {
+        source: "/themes",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/llms.txt",
+        headers: [
+          { key: "Content-Type", value: "text/markdown; charset=utf-8" },
+          { key: "Cache-Control", value: "public, max-age=3600" },
+        ],
+      },
+      {
+        source: "/ai.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Cache-Control", value: "public, max-age=3600" },
+        ],
+      },
       {
         source: "/((?!_next/static|_next/image|favicon.ico).*)",
         headers: [

@@ -5,6 +5,11 @@
       "has": [{ "type": "host", "value": "www.fyntools.com" }],
       "destination": "https://fyntools.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/.well-known/llms.txt",
+      "destination": "/llms.txt",
+      "permanent": true
     }
   ]
 }

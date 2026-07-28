@@ -11,6 +11,10 @@ import { allTools } from '@/data/toolsData';
 
 type NavItem = { name: string; href: string };
 
+const SEARCH_TOOLS = allTools.filter(
+  (t) => !['/enhanced-unit-converter', '/add-name-date-photo'].includes(t.path)
+);
+
 export default function HeaderClient({ navigation }: { navigation: NavItem[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
@@ -18,7 +22,7 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
   return (
     <>
       <div className="hidden md:flex flex-1 max-w-md mx-4">
-        <ToolSearch tools={allTools} className="w-full" />
+        <ToolSearch tools={SEARCH_TOOLS} className="w-full" />
       </div>
 
       <nav className="hidden lg:flex items-center space-x-1" aria-label="Primary">
@@ -50,7 +54,7 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
       {isMenuOpen && (
         <div className="absolute left-0 right-0 top-16 border-b bg-background/95 backdrop-blur-xl lg:hidden">
           <div className="container mx-auto px-4 pb-4 space-y-2">
-            <ToolSearch tools={allTools} className="w-full mb-2" />
+            <ToolSearch tools={SEARCH_TOOLS} className="w-full mb-2" />
             {navigation.map((item) => (
               <Link
                 key={item.name}

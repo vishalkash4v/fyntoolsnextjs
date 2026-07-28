@@ -7,6 +7,7 @@ import { getFullSeoPage } from '@/data/seo-pages';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import { allTools } from '@/data/toolsData';
 import ToolPageShell from '@/components/tools/ToolPageShell';
+import JsonFormatterClient from '@/app/json-formatter/JsonFormatterClient';
 
 export const dynamic = 'force-static';
 
@@ -81,6 +82,7 @@ export default function JsonFormatterPage() {
         features={features}
         faqs={faqs}
         fullSeo={fullSeo}
+        toolClient={<JsonFormatterClient />}
       />
     </>
   );

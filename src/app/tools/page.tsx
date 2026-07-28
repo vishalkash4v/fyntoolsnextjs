@@ -50,7 +50,8 @@ export default async function ToolsPage({ searchParams }: Props) {
   }
 
   const q = (sp.search || '').toLowerCase().trim();
-  const tools = q
+  const HIDDEN_PATHS = new Set(['/enhanced-unit-converter', '/add-name-date-photo']);
+  const tools = (q
     ? allTools.filter(
         (t) =>
           t.name.toLowerCase().includes(q) ||
@@ -58,7 +59,8 @@ export default async function ToolsPage({ searchParams }: Props) {
           t.category.toLowerCase().includes(q) ||
           t.keywords.toLowerCase().includes(q)
       )
-    : allTools;
+    : allTools
+  ).filter((t) => !HIDDEN_PATHS.has(t.path));
 
   const byCategory = new Map<string, typeof allTools>();
   for (const tool of tools) {

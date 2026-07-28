@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import HeaderClient from '@/components/layout/HeaderClient';
 
 const navigation = [
@@ -20,15 +21,14 @@ export default function Header() {
             href="/"
             className="flex items-center space-x-3 hover:opacity-90 transition-opacity shrink-0"
           >
-            <img
+            <Image
               src="/logobeta-128.webp"
-              srcSet="/logobeta-64.webp 64w, /logobeta-128.webp 128w, /logobeta-160.webp 160w"
-              sizes="(max-width: 640px) 96px, 128px"
-              width={128}
-              height={64}
-              className="w-36 h-auto object-contain"
               alt="FYN Tools Logo"
-              decoding="async"
+              width={128}
+              height={48}
+              className="w-28 sm:w-32 h-auto object-contain"
+              priority
+              sizes="128px"
             />
           </Link>
 

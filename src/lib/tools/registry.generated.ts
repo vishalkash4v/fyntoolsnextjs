@@ -129,3 +129,9 @@ export function getToolLoader(slug: string): ToolComponentLoader | null {
 }
 
 export const TOOL_SLUGS = Object.keys(TOOL_LOADERS);
+
+/** Soft-duplicate paths that 301 to a canonical tool (excluded from sitemap). */
+export const TOOL_CANONICAL_REDIRECTS: Record<string, string> = {
+  "enhanced-unit-converter": "unit-converter",
+  "add-name-date-photo": "photo-annotation-tool",
+};

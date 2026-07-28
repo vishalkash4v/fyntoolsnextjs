@@ -14,10 +14,15 @@ type Props = {
   features: string[];
   faqs: Faq[];
   fullSeo?: FullSeoPageContent | null;
+  /**
+   * Optional dedicated client island (bypasses the shared 90-tool registry).
+   * Use on high-traffic routes to avoid downloading unrelated tool chunks.
+   */
+  toolClient?: React.ReactNode;
 };
 
 /**
- * Server Component shell: SEO is RSC; only InteractiveToolLoader is a client island.
+ * Server Component shell: SEO is RSC; only the tool island is client JS.
  */
 export default function ToolPageShell({
   slug,
@@ -28,6 +33,7 @@ export default function ToolPageShell({
   features,
   faqs,
   fullSeo,
+  toolClient,
 }: Props) {
   return (
     <div className="min-h-screen bg-background">
@@ -41,13 +47,16 @@ export default function ToolPageShell({
           faqs={faqs}
           fullSeo={fullSeo}
           toolSlot={
-            <section id="tool" className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8">
-              <InteractiveToolLoader slug={slug} />
+            <section
+              id="tool"
+              className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
+            >
+              {toolClient ?? <InteractiveToolLoader slug={slug} />}
             </section>
           }
         />
-        <div className="px-4 sm:px-6 md:px-8 mb-10">
-          <AdSenseUnit className="max-w-3xl mx-auto" />
+        <div className="px-4 sm:px-6 md:px-8 mb-10" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 280px' }}>
+          <AdSenseUnit className="max-w-3xl mx-auto" minHeight={280} />
         </div>
       </article>
     </div>

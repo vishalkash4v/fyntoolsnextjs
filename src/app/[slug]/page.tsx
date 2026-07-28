@@ -16,19 +16,22 @@ import {
 } from '@/lib/seo/schemas';
 import { isReservedSlug } from '@/lib/tools/reserved';
 import { resolveToolPage } from '@/lib/tools/resolveToolPage';
-import { getToolLoader, TOOL_SLUGS } from '@/lib/tools/registry.generated';
+import { getToolLoader, TOOL_SLUGS, TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/registry.generated';
 import ToolPageShell from '@/components/tools/ToolPageShell';
 import { ArrowRight, Layers } from 'lucide-react';
+import { redirect } from 'next/navigation';
 
 type Props = { params: Promise<{ slug: string }> };
 
 const HUB_SLUGS = new Set(CATEGORY_HUBS.map((h) => h.slug));
+const REDIRECT_SLUGS = new Set(Object.keys(TOOL_CANONICAL_REDIRECTS));
 
 export async function generateStaticParams() {
   const toolSlugs = allTools.map((t) => t.path.replace(/^\//, '')).filter(Boolean);
   const slugs = new Set([...toolSlugs, ...TOOL_SLUGS, ...CATEGORY_HUBS.map((h) => h.slug)]);
   return [...slugs]
     .filter((slug) => {
+      if (REDIRECT_SLUGS.has(slug)) return false;
       if (
         [
           'about',
@@ -184,6 +187,11 @@ function HubPage({ slug }: { slug: string }) {
 
 export default async function DynamicSlugPage({ params }: Props) {
   const { slug } = await params;
+
+  const canonicalSlug = TOOL_CANONICAL_REDIRECTS[slug];
+  if (canonicalSlug) {
+    redirect(`/${canonicalSlug}`);
+  }
 
   if (HUB_SLUGS.has(slug)) {
     return <HubPage slug={slug} />;

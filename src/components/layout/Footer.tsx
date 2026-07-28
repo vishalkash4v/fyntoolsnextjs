@@ -23,6 +23,7 @@ const Footer = () => {
     { name: 'All Tools', href: '/tools' },
     { name: 'Blog', href: '/blog' },
     { name: 'Themes', href: '/themes' },
+    { name: 'llms.txt', href: '/llms.txt' },
   ];
 
   return (
@@ -31,12 +32,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-4">
+              {/* eslint-disable-next-line @next/next/no-img-element -- tiny footer logo; avoid layout JS cost */}
               <img
                 src="/logobeta-128.webp"
                 width={128}
-                height={64}
+                height={48}
                 className="w-32 h-auto object-contain"
                 alt="FYN Tools Logo"
+                loading="lazy"
+                decoding="async"
               />
             </Link>
             <p className="text-zinc-700 dark:text-zinc-300 mb-4 leading-relaxed">

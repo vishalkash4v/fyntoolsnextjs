@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "generate-registry": "node scripts/generate-tool-registry.mjs",
+    "generate-llms": "node scripts/generate-llms-txt.mjs",
     "check:registry": "node scripts/check-tool-registry.mjs",
     "check:seo": "node scripts/check-seo-matrix.mjs",
     "check:gsc": "node scripts/check-gsc-coverage.mjs"
@@ -71,6 +72,13 @@
     "vaul": "^1.1.2",
     "zod": "^4.4.3"
   },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4",
+    "not dead"
+  ],
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/typography": "^0.5.20",

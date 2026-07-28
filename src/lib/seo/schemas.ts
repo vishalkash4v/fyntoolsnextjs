@@ -41,14 +41,7 @@ export function websiteSchema() {
     description:
       'Free professional online tools — calculators, text tools, image editors, converters, and developer utilities.',
     publisher: { '@id': ORG_ID },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/tools?search={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    // No query-string SearchAction — robots disallows /*? (crawl budget). Browse via /tools.
   };
 }
 

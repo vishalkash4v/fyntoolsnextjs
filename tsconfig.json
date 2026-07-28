@@ -20,13 +20,5 @@
     "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
-  "exclude": [
-    "node_modules",
-    "src/components/tools/ToolContentSections.tsx",
-    "src/components/tools/ToolBreadcrumbs.tsx",
-    "src/hooks/useSEO.ts",
-    "src/hooks/useToolSeoContent.ts",
-    "src/utils/verifyAllToolsSEO.ts",
-    "src/utils/__tests__"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -277,13 +277,17 @@ export function getCategoryHub(slugOrPath: string): CategoryHub | undefined {
   return CATEGORY_HUBS.find((h) => h.slug === key || h.path === `/${key}` || h.path === slugOrPath);
 }
 
+const HIDDEN_FROM_HUBS = new Set(['/enhanced-unit-converter', '/add-name-date-photo']);
+
 export function getToolsForHub(hub: CategoryHub): Tool[] {
   const byCategory = allTools.filter((t) => hub.categories.includes(t.category));
   const extras = (hub.extraPaths || [])
     .map((p) => allTools.find((t) => t.path === p))
     .filter(Boolean) as Tool[];
   const map = new Map<string, Tool>();
-  [...byCategory, ...extras].forEach((t) => map.set(t.path, t));
+  [...byCategory, ...extras].forEach((t) => {
+    if (!HIDDEN_FROM_HUBS.has(t.path)) map.set(t.path, t);
+  });
   return Array.from(map.values());
 }
 

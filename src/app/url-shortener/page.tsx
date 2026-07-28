@@ -10,6 +10,7 @@ import { getFullSeoPage } from '@/data/seo-pages';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import { allTools } from '@/data/toolsData';
 import ToolPageShell from '@/components/tools/ToolPageShell';
+import UrlShortenerClient from '@/app/url-shortener/UrlShortenerClient';
 
 export const dynamic = 'force-static';
 
@@ -84,6 +85,7 @@ export default function UrlShortenerPage() {
         features={features}
         faqs={faqs}
         fullSeo={fullSeo}
+        toolClient={<UrlShortenerClient />}
       />
     </>
   );

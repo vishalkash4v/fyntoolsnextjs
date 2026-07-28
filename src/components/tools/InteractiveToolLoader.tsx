@@ -3,11 +3,13 @@
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import type { ComponentType } from 'react';
-import { getToolLoader } from '@/lib/tools/registry.generated';
+import { TOOL_SLUGS } from '@/lib/tools/registry.generated';
+
+const ALLOWED = new Set(TOOL_SLUGS);
 
 const loadingFallback = (
   <div
-    className="w-full min-h-[420px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
+    className="w-full min-h-[560px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
     aria-busy="true"
     aria-label="Loading tool"
   >
@@ -18,20 +20,31 @@ const loadingFallback = (
 /** Cache dynamic components so we never recreate them each render (that remounts forever). */
 const dynamicToolCache = new Map<string, ComponentType>();
 
+/**
+ * Load ONE per-slug module from `@/lib/tools/loaders/{slug}`.
+ * Webpack splits each file; we do NOT import the full registry of 100+ factories on the client.
+ */
 function getCachedTool(slug: string): ComponentType | null {
+  if (!ALLOWED.has(slug)) return null;
   if (dynamicToolCache.has(slug)) return dynamicToolCache.get(slug)!;
-  const loader = getToolLoader(slug);
-  if (!loader) return null;
-  const Tool = dynamic(loader, {
-    loading: () => loadingFallback,
-    ssr: false,
-  });
+
+  const Tool = dynamic(
+    () =>
+      import(
+        /* webpackPrefetch: false, webpackPreload: false */
+        `@/lib/tools/loaders/${slug}`
+      ),
+    {
+      loading: () => loadingFallback,
+      ssr: false,
+    }
+  );
   dynamicToolCache.set(slug, Tool);
   return Tool;
 }
 
 /**
- * Client island: lazy-loads the interactive tool.
+ * Client island used by EVERY tool page via ToolPageShell.
  * Outer min-height reserves space to prevent CLS when the chunk hydrates.
  */
 export default function InteractiveToolLoader({ slug }: { slug: string }) {
@@ -46,7 +59,7 @@ export default function InteractiveToolLoader({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="w-full min-h-[420px]" id="tool-interface">
+    <div className="w-full min-h-[560px]" id="tool-interface">
       <Tool />
     </div>
   );

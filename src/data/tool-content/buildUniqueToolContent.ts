@@ -9,11 +9,12 @@ import { getGuidesForTool } from '@/data/guides/guidesData';
 import { buildExamplesForTool, buildTestimonialsForTool } from '@/data/tool-content/socialProof';
 
 function relatedToolsFallback(tool: Tool, limit = 6) {
-  const same = allTools.filter((t) => t.category === tool.category && t.path !== tool.path);
+  const skip = new Set(['/enhanced-unit-converter', '/add-name-date-photo', tool.path]);
+  const same = allTools.filter((t) => t.category === tool.category && !skip.has(t.path));
   const picked = same.slice(0, limit);
   if (picked.length < limit) {
     for (const t of allTools) {
-      if (t.path === tool.path || picked.some((p) => p.path === t.path)) continue;
+      if (skip.has(t.path) || picked.some((p) => p.path === t.path)) continue;
       picked.push(t);
       if (picked.length >= limit) break;
     }
@@ -61,26 +62,27 @@ function defaultHowTo(tool: Tool, feats: string[]): string[] {
 }
 
 function defaultFaqs(tool: Tool): { question: string; answer: string }[] {
+  const hub = getCategoryHubPath(tool.category);
   return [
     {
-      question: `Is ${tool.name} free?`,
-      answer: `Yes. ${tool.name} is free to use on FYN Tools with no mandatory account.`,
+      question: `Is ${tool.name} free on FYN Tools?`,
+      answer: `Yes. ${tool.name} (${tool.path}) is free to use with no mandatory account. It sits in our ${tool.category} collection alongside related utilities.`,
     },
     {
-      question: `Does ${tool.name} store my data?`,
-      answer: `Processing is designed to stay in your browser whenever possible. Avoid pasting highly sensitive secrets into any online tool.`,
+      question: `How does ${tool.name} handle my data?`,
+      answer: `${tool.name} is built for browser-side workflows whenever possible. Do not paste production secrets or highly sensitive personal data into any online tool.`,
     },
     {
-      question: `Can I use ${tool.name} on mobile?`,
-      answer: `Yes. The interface adapts to phones and tablets with a modern browser.`,
+      question: `Can I use ${tool.name} on mobile browsers?`,
+      answer: `Yes. ${tool.name} adapts to phones and tablets. Open ${tool.path} on FYN Tools with a modern browser for the best experience.`,
     },
     {
-      question: `Are there usage limits?`,
-      answer: `There are no artificial daily caps for normal interactive use. Very large inputs may be limited by your device.`,
+      question: `What is ${tool.name} best used for?`,
+      answer: `${tool.description} Pair it with other ${tool.category} on FYN Tools when you need a full workflow.`,
     },
     {
-      question: `Where can I find related tools?`,
-      answer: `Browse the ${tool.category} hub and the related tools linked on this page.`,
+      question: `Where can I find similar tools?`,
+      answer: `Browse related ${tool.category} from the category hub${hub ? ` at ${hub}` : ''} or the full catalog at /tools.`,
     },
   ];
 }

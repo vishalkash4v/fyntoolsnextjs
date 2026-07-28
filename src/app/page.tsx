@@ -73,10 +73,10 @@ export default function HomePage() {
             <Sparkles className="h-4 w-4 mr-2 inline" />
             90+ Useful Tools Available
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight [content-visibility:visible]">
             Professional Online Tools for Everyone
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Free, secure, and instant tools for developers, businesses, and individuals. No registration
             required — works in your browser.
           </p>
@@ -90,7 +90,10 @@ export default function HomePage() {
               <Link href="/about">About Us</Link>
             </Button>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            style={{ contentVisibility: 'auto', containIntrinsicSize: '0 140px' }}
+          >
             {[
               { n: '90+', l: 'Useful Tools', Icon: Award },
               { n: '100K+', l: 'Happy Users', Icon: Users },
@@ -109,7 +112,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-muted/20">
+      <section
+        className="py-16 bg-muted/20"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}
+      >
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">Browse by Category</h2>
           <p className="text-center text-muted-foreground mb-10">

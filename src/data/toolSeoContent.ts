@@ -4,9 +4,10 @@
  * to match the Word Counter template structure.
  */
 
-import type { UseCaseItem } from '@/components/tools/ToolContentSections';
-import type { ToolExample } from '@/components/tools/ToolContentSections';
 import { allTools } from './toolsData';
+
+export type UseCaseItem = { title: string; description: string };
+export type ToolExample = { input: string; output: string };
 
 export interface ToolComparison {
   toolAName: string;

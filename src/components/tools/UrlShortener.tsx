@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -8,13 +8,16 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Link as LinkIcon, ExternalLink, QrCode, Trash2, History, Loader2, Clock, Download, BarChart2 } from "lucide-react";
 import { toast } from "sonner";
 import CopyButton from '@/components/common/CopyButton';
 import Link from 'next/link';
-import { QRCodeSVG } from 'qrcode.react';
+import dynamic from 'next/dynamic';
+
+const UrlShortenerQrDialog = dynamic(() => import('@/components/tools/UrlShortenerQrDialog'), {
+  ssr: false,
+});
 
 const API_BASE_URL = 'https://express-two-umber.vercel.app/api/shorturl';
 
@@ -44,7 +47,6 @@ const UrlShortener = () => {
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
   const [selectedQrUrl, setSelectedQrUrl] = useState<string>('');
   const [logoBase64, setLogoBase64] = useState<string>('');
-  const qrCodeRef = useRef<HTMLDivElement>(null);
   
   // Expiration settings
   const [expirationType, setExpirationType] = useState<'none' | 'preset' | 'custom'>('none');
@@ -63,15 +65,14 @@ const UrlShortener = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
   
-  // Load history on mount
+  // Load history on mount — logo base64 loads only when QR dialog opens
   useEffect(() => {
     loadHistory();
-    // Load logo as base64 for QR code download
-    loadLogoAsBase64();
   }, []);
 
   // Load logo as base64 for embedding in QR code download
   const loadLogoAsBase64 = async () => {
+    if (logoBase64) return;
     try {
       const response = await fetch('/logobeta-64.webp');
       const blob = await response.blob();
@@ -625,90 +626,7 @@ const UrlShortener = () => {
     }
     setSelectedQrUrl(fullUrl);
     setQrDialogOpen(true);
-  };
-
-  // Download QR code as PNG with logo embedded
-  const downloadQrCode = async () => {
-    if (!qrCodeRef.current || !selectedQrUrl) {
-      toast.error('QR code not available');
-      return;
-    }
-    
-    try {
-      const svg = qrCodeRef.current.querySelector('svg');
-      if (!svg) {
-        toast.error('QR code not found');
-        return;
-      }
-
-      // Clone SVG to modify it
-      const svgClone = svg.cloneNode(true) as SVGElement;
-      
-      // Replace logo path with base64 if available
-      if (logoBase64) {
-        const imageElements = svgClone.querySelectorAll('image');
-        imageElements.forEach((img) => {
-          // Check both href and xlink:href attributes
-          const href = img.getAttribute('href') || img.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
-          if (href && (href.includes('logobeta') || href.includes('logo'))) {
-            img.setAttribute('href', logoBase64);
-            img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', logoBase64);
-          }
-        });
-      }
-
-      const svgData = new XMLSerializer().serializeToString(svgClone);
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      
-      // Set canvas size (QR code is 256px + padding)
-      canvas.width = 320;
-      canvas.height = 320;
-      
-      // Convert SVG to data URL with base64 encoding to ensure logo is included
-      const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
-
-      img.onload = () => {
-        if (ctx) {
-          // Fill white background
-          ctx.fillStyle = 'white';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          
-          // Draw SVG image centered
-          const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-          const x = (canvas.width - img.width * scale) / 2;
-          const y = (canvas.height - img.height * scale) / 2;
-          ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-          
-          // Convert to blob and download
-          canvas.toBlob((blob) => {
-            if (blob) {
-              const downloadUrl = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = downloadUrl;
-              a.download = `qrcode-${selectedQrUrl.replace(/[^a-z0-9]/gi, '-').substring(0, 50)}.png`;
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-              URL.revokeObjectURL(downloadUrl);
-              toast.success('QR code downloaded successfully!');
-            } else {
-              toast.error('Failed to generate image');
-            }
-          }, 'image/png', 1.0);
-        }
-      };
-
-      img.onerror = () => {
-        toast.error('Failed to load QR code image');
-      };
-
-      img.src = svgDataUrl;
-    } catch (error) {
-      console.error('Error downloading QR code:', error);
-      toast.error('Failed to download QR code');
-    }
+    void loadLogoAsBase64();
   };
 
   return (
@@ -1282,49 +1200,14 @@ const UrlShortener = () => {
         </CardContent>
       </Card>
 
-      {/* QR Code Dialog */}
-      <Dialog open={qrDialogOpen} onOpenChange={setQrDialogOpen}>
-        <DialogContent className="sm:max-w-[400px]">
-          <DialogHeader>
-            <DialogTitle>QR Code</DialogTitle>
-            <DialogDescription>
-              Scan this QR code to open the URL
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex flex-col items-center space-y-4 py-4">
-            <div 
-              ref={qrCodeRef}
-              className="p-4 bg-white rounded-lg"
-              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-            >
-              <QRCodeSVG
-                value={selectedQrUrl}
-                size={256}
-                level="H"
-                includeMargin={true}
-                imageSettings={logoBase64 ? {
-                  src: logoBase64,
-                  height: 40,
-                  width: 40,
-                  excavate: true,
-                } : {
-                  src: '/logobeta-64.webp',
-                  height: 40,
-                  width: 40,
-                  excavate: true,
-                }}
-              />
-            </div>
-            <p className="text-xs text-muted-foreground text-center break-all px-4">
-              {selectedQrUrl}
-            </p>
-            <Button onClick={downloadQrCode} className="w-full" variant="default">
-              <Download className="h-4 w-4 mr-2" />
-              Download QR Code
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {qrDialogOpen && selectedQrUrl ? (
+        <UrlShortenerQrDialog
+          open={qrDialogOpen}
+          onOpenChange={setQrDialogOpen}
+          url={selectedQrUrl}
+          logoSrc={logoBase64 || '/logobeta-64.webp'}
+        />
+      ) : null}
     </div>
   );
 };
