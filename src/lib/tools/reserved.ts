@@ -1,6 +1,9 @@
 import { CATEGORY_HUBS } from '@/data/categoriesData';
 
-/** Slugs that must NOT be handled by app/[slug] tool routes */
+/** Slugs that must NOT be handled as generic tools by app/[slug] fallback.
+ * Dedicated App Router pages (url-shortener, json-formatter) are NOT listed —
+ * they live in allTools and must resolve via resolveToolPage / ToolStaticPage.
+ */
 export const RESERVED_SLUGS = new Set([
   'about',
   'contact',
@@ -12,8 +15,6 @@ export const RESERVED_SLUGS = new Set([
   'api',
   'redirect',
   'deep-link-redirect',
-  'json-formatter',
-  'url-shortener',
   'guides',
   'author',
   '_next',

@@ -29,11 +29,11 @@ export function ThemeToggle() {
       title={`Theme: ${current}`}
     >
       {!mounted || current === 'light' ? (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <Sun className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />
       ) : current === 'dark' ? (
-        <Moon className="h-[1.2rem] w-[1.2rem]" />
+        <Moon className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />
       ) : (
-        <Monitor className="h-[1.2rem] w-[1.2rem]" />
+        <Monitor className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />
       )}
     </Button>
   );

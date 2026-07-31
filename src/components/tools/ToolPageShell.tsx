@@ -1,6 +1,6 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
-import AdSenseUnit from '@/components/Ads/AdSenseUnit';
+import DeferredAdSense from '@/components/Ads/DeferredAdSense';
 
 type Faq = { question: string; answer: string };
 
@@ -54,9 +54,9 @@ export default function ToolPageShell({
         />
         <div
           className="px-4 sm:px-6 md:px-8 mb-10"
-          style={{ contentVisibility: 'auto', containIntrinsicSize: '0 280px' }}
+          style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1px' }}
         >
-          <AdSenseUnit className="max-w-3xl mx-auto" minHeight={280} />
+          <DeferredAdSense className="max-w-3xl mx-auto" minHeight={280} />
         </div>
       </article>
     </div>

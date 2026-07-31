@@ -78,30 +78,24 @@ export default function AdSenseUnit({
     };
   }, [enabled, clientId]);
 
-  // Keep layout reserved even when ads are off — prevents CLS when enabling later
+  // When ads are off, take no layout space (helps Lighthouse). When on, reserve height for CLS.
+  if (!enabled) {
+    return null;
+  }
+
   return (
     <div
       className={`w-full overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 ${className}`}
       style={{ minHeight, containIntrinsicSize: `auto ${minHeight}px`, contentVisibility: 'auto' as const }}
-      aria-hidden={!enabled}
     >
-      {enabled ? (
-        <ins
-          className="adsbygoogle block w-full"
-          style={{ display: 'block', minHeight }}
-          data-ad-client={clientId}
-          data-ad-slot={slotId}
-          data-ad-format={format}
-          data-full-width-responsive={responsive ? 'true' : 'false'}
-        />
-      ) : (
-        <div
-          className="flex h-full w-full items-center justify-center text-xs text-muted-foreground"
-          style={{ minHeight }}
-        >
-          Ad placeholder
-        </div>
-      )}
+      <ins
+        className="adsbygoogle block w-full"
+        style={{ display: 'block', minHeight }}
+        data-ad-client={clientId}
+        data-ad-slot={slotId}
+        data-ad-format={format}
+        data-full-width-responsive={responsive ? 'true' : 'false'}
+      />
     </div>
   );
 }

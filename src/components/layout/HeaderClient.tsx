@@ -90,6 +90,7 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
                   type="button"
                   onClick={enableSearch}
                   className="relative w-full h-10 mb-2 rounded-xl border-2 bg-background text-left px-3 text-sm text-muted-foreground flex items-center gap-2"
+                  aria-label="Open tool search"
                 >
                   <Search className="h-4 w-4" />
                   Search tools…

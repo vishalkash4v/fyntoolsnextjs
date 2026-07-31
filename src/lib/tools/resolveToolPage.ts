@@ -1,10 +1,11 @@
 import { allTools, type Tool } from '@/data/toolsData';
 import { getFullSeoPage } from '@/data/seo-pages';
-import { isKnownToolSlug } from '@/lib/tools/tool-slugs.generated';
-import { isReservedSlug } from '@/lib/tools/reserved';
 
+/**
+ * Look up a tool by URL slug. Dedicated routes (url-shortener, json-formatter)
+ * MUST resolve here — never treat them as "reserved" or ToolStaticPage 404s.
+ */
 export function getToolBySlug(slug: string): Tool | undefined {
-  if (isReservedSlug(slug)) return undefined;
   return allTools.find((t) => t.path === `/${slug}` || t.id === slug);
 }
 
@@ -59,8 +60,6 @@ export function getDefaultFaqs(tool: Tool): { question: string; answer: string }
 export function resolveToolPage(slug: string) {
   const tool = getToolBySlug(slug);
   if (!tool) return null;
-  // Prefer known registry slug; still allow toolsData-only entries for SEO shells.
-  if (!isKnownToolSlug(slug) && !tool) return null;
   const fullSeo = getFullSeoPage(`/${slug}`);
   return {
     tool,
