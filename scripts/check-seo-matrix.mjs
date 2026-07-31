@@ -115,4 +115,56 @@ if (fs.existsSync(serverApp)) {
 }
 
 console.log(`SEO matrix: ${uniqueSlugs.length} tools audited, errors=${errors}`);
+
+// Premium coverage — every tool path should exist in premiumToolSeo merge (hand + generated)
+const premiumGen = path.join(root, "src/data/tool-content/premium/generated.ts");
+const premiumMain = path.join(root, "src/data/tool-content/premiumToolSeo.ts");
+const testiFile = path.join(root, "src/data/tool-content/toolTestimonials.ts");
+if (!fs.existsSync(premiumGen)) {
+  console.error("Missing premium/generated.ts — run npm run generate-premium");
+  errors++;
+} else {
+  const gen = fs.readFileSync(premiumGen, "utf8");
+  const testi = fs.readFileSync(testiFile, "utf8");
+  const main = fs.readFileSync(premiumMain, "utf8");
+  if (!main.includes("generatedPremiumToolSeo")) {
+    console.error("premiumToolSeo.ts must merge generatedPremiumToolSeo");
+    errors++;
+  }
+  let missingPremium = 0;
+  let missingTesti = 0;
+  for (const slug of uniqueSlugs) {
+    if (slug === "enhanced-unit-converter" || slug === "add-name-date-photo") continue;
+    const key = `"/${slug}"`;
+    if (!gen.includes(key) && !main.includes(`'/${slug}'`) && !main.includes(`"/${slug}"`)) {
+      missingPremium++;
+      if (missingPremium <= 5) console.error("Missing premium:", slug);
+    }
+    if (!testi.includes(key)) {
+      missingTesti++;
+      if (missingTesti <= 5) console.error("Missing testimonials:", slug);
+    }
+  }
+  if (missingPremium) {
+    console.error(`Premium missing for ${missingPremium} tools`);
+    errors += missingPremium > 10 ? 10 : missingPremium;
+  }
+  if (missingTesti) {
+    console.error(`Testimonials missing for ${missingTesti} tools`);
+    errors += missingTesti > 10 ? 10 : missingTesti;
+  }
+}
+
+// Fake reviews must stay disabled
+const social = fs.readFileSync(path.join(root, "src/data/tool-content/socialProof.ts"), "utf8");
+if (social.includes("TEMPLATES") && social.includes("I use ${n} weekly")) {
+  console.error("Fake testimonial TEMPLATES still active in socialProof.ts");
+  errors++;
+}
+if (!social.includes("return [];")) {
+  console.error("buildTestimonialsForTool should return [] when uncurated");
+  errors++;
+}
+
+console.log(`SEO matrix final errors=${errors}`);
 process.exit(errors ? 1 : 0);

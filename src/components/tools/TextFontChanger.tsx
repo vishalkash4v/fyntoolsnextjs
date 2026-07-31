@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Download, RefreshCw, Heart, Star, Instagram, MessageCircle, Music2, Gamepad2, Search, Image, Sun, Moon, Zap, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CopyButton from "@/components/common/CopyButton";
-import html2canvas from 'html2canvas';
 
 import { API_BASE_URL } from '@/lib/seo/site';
 
@@ -661,6 +660,7 @@ const TextFontChanger = () => {
     div.textContent = text;
     document.body.appendChild(div);
     try {
+      const { default: html2canvas } = await import('html2canvas');
       const canvas = await html2canvas(div, { scale: 2, backgroundColor: darkPreview ? '#1a1a1a' : '#f4f4f5' });
       const link = document.createElement('a');
       link.href = canvas.toDataURL('image/png');

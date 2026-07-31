@@ -114,7 +114,7 @@ export default function ToolSeoSections({
         <p className="mb-3 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground bg-secondary">
           {category}
         </p>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-foreground">
           {displayTitle}
         </h1>
         <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">

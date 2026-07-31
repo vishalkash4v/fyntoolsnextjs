@@ -21,6 +21,7 @@ export function buildToolPageMetadata(slug: string): Metadata {
     path: `/${slug}`,
     keywords: fullSeo?.keywords || tool.keywords,
     ogImageAlt: fullSeo?.ogTitle || tool.name,
+    modifiedTime: new Date().toISOString().slice(0, 10),
   });
 }
 

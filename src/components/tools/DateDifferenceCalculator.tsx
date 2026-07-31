@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { format, differenceInDays, differenceInMonths, differenceInYears } from 'date-fns';
 import { Calendar as CalendarIcon, ArrowRight, Download, Copy } from 'lucide-react';
 import CommonDatePicker from '@/components/ui/CommonDatePicker';
-import html2canvas from 'html2canvas';
 import { toast } from 'sonner';
 import SocialShareButtons from '@/components/tools/SocialShareButtons';
 
@@ -117,6 +116,7 @@ const DateDifferenceCalculator = () => {
       document.body.appendChild(wrapper);
       await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 
+      const { default: html2canvas } = await import('html2canvas');
       const canvas = await html2canvas(wrapper, {
         scale: 2.5,
         backgroundColor: bg,

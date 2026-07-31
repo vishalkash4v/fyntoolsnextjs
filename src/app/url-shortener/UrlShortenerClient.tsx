@@ -2,23 +2,30 @@
 
 import dynamic from 'next/dynamic';
 
+/**
+ * SSR the form shell so LCP can paint from HTML (not after the client chunk).
+ * History/localStorage still hydrate in useEffect inside UrlShortener.
+ * QR dialog stays dynamically imported with ssr:false inside the tool.
+ */
 const UrlShortener = dynamic(() => import('@/components/tools/UrlShortener'), {
-  ssr: false,
+  ssr: true,
   loading: () => (
     <div
-      className="w-full min-h-[560px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
+      className="w-full min-h-[420px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card p-6"
       aria-busy="true"
       aria-label="Loading URL shortener"
     >
-      Loading tool…
+      <div className="h-7 w-48 rounded bg-muted animate-pulse mb-4" />
+      <div className="h-24 w-full rounded-md bg-muted/60 animate-pulse mb-4" />
+      <div className="h-10 w-36 rounded-md bg-muted animate-pulse" />
     </div>
   ),
 });
 
-/** Dedicated island — only loads UrlShortener (+ its deps), not the 90-tool registry. */
+/** Dedicated island — only loads UrlShortener (+ its deps), not the multi-tool registry. */
 export default function UrlShortenerClient() {
   return (
-    <div className="w-full min-h-[560px]" id="tool-interface">
+    <div className="w-full min-h-[420px]" id="tool-interface">
       <UrlShortener />
     </div>
   );

@@ -11,7 +11,6 @@ import { Calendar as CalendarIcon, Plus, Minus, RotateCcw, ArrowRight, Download,
 import { cn } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import CommonDatePicker from '@/components/ui/CommonDatePicker';
-import html2canvas from 'html2canvas';
 import SocialShareButtons from '@/components/tools/SocialShareButtons';
 
 type TimeUnit = 'days' | 'weeks' | 'months' | 'years';
@@ -159,6 +158,7 @@ const FutureDateCalculator = () => {
       document.body.appendChild(wrapper);
       await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 
+      const { default: html2canvas } = await import('html2canvas');
       const canvas = await html2canvas(wrapper, {
         scale: 2.5,
         backgroundColor: bg,

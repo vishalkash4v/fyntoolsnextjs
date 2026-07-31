@@ -9,9 +9,16 @@ import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Banknote, Download, Lightbulb, TrendingDown, TrendingUp } from 'lucide-react';
-import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
-import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
+import dynamic from 'next/dynamic';
+import type { ChartConfig } from '@/components/ui/chart';
 import Link from "next/link";
+
+const EmiCharts = dynamic(() => import('@/components/tools/EmiCharts'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[280px] w-full rounded-xl border bg-muted/30 animate-pulse" aria-label="Loading charts" />
+  ),
+});
 
 type StrategyMode = 'reduceTenure' | 'reduceEmi';
 
@@ -732,43 +739,12 @@ const EmiCalculator = () => {
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Remaining Balance Trend</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={lineChartConfig} className="h-[280px] w-full">
-                  <LineChart data={lineChartData}>
-                    <CartesianGrid vertical={false} />
-                    <XAxis dataKey="month" tickLine={false} axisLine={false} />
-                    <YAxis tickFormatter={(value) => `₹${Math.round(value / 100000)}L`} />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Line dataKey="baseBalance" type="monotone" stroke="var(--color-baseBalance)" strokeWidth={2} dot={false} />
-                    <Line dataKey="remainingBalance" type="monotone" stroke="var(--color-remainingBalance)" strokeWidth={2} dot={false} />
-                  </LineChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Yearly Interest Comparison</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={yearlyBreakdownConfig} className="h-[280px] w-full">
-                  <BarChart data={yearlyInterestComparisonData}>
-                    <CartesianGrid vertical={false} />
-                    <XAxis dataKey="year" tickFormatter={(value) => `Y${value}`} />
-                    <YAxis tickFormatter={(value) => `₹${Math.round(value / 100000)}L`} />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Bar dataKey="interestWithoutPrepayment" fill="var(--color-interestWithoutPrepayment)" radius={4} />
-                    <Bar dataKey="interestWithPrepayment" fill="var(--color-interestWithPrepayment)" radius={4} />
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-          </div>
+          <EmiCharts
+            lineChartConfig={lineChartConfig}
+            yearlyBreakdownConfig={yearlyBreakdownConfig}
+            lineChartData={lineChartData}
+            yearlyInterestComparisonData={yearlyInterestComparisonData}
+          />
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">

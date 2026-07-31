@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { CalendarDays, Baby } from 'lucide-react';
 import { addDays, format, differenceInDays } from 'date-fns';
 import CommonDatePicker from '@/components/ui/CommonDatePicker';
+import PregnancyHealthDisclaimer from '@/components/tools/PregnancyHealthDisclaimer';
 
 const PregnancyDueDateCalculator = () => {
   const [mode, setMode] = useState<'lmp' | 'conception'>('lmp');
@@ -25,6 +26,7 @@ const PregnancyDueDateCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      <PregnancyHealthDisclaimer toolName="Pregnancy Due Date Calculator" />
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

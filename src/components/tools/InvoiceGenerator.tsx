@@ -10,8 +10,6 @@ import {
   Check, ChevronRight, ChevronLeft, Pencil, Upload, X
 } from 'lucide-react';
 import { toast } from 'sonner';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -360,6 +358,10 @@ const InvoiceGenerator = () => {
   const handlePDFDownload = async () => {
     if (!invoiceRef.current) return;
     try {
+      const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ]);
       const mmToPx = 96 / 25.4;
       const targetWidthPx = pageSize.width * mmToPx;
       const canvas = await html2canvas(invoiceRef.current, {
@@ -391,6 +393,7 @@ const InvoiceGenerator = () => {
   const handleImageDownload = async () => {
     if (!invoiceRef.current) return;
     try {
+      const { default: html2canvas } = await import('html2canvas');
       const mmToPx = 96 / 25.4;
       const targetWidthPx = pageSize.width * mmToPx;
       const canvas = await html2canvas(invoiceRef.current, {

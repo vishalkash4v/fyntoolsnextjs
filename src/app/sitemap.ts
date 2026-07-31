@@ -81,6 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.75, freq: 'weekly' },
     { path: '/about', priority: 0.7, freq: 'weekly' },
     { path: '/contact', priority: 0.6, freq: 'weekly' },
+    { path: '/ai-domain-name-generator', priority: 0.75, freq: 'weekly' },
   ];
 
   const toolEntries = allTools

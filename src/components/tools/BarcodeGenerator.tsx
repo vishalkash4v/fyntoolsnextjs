@@ -1,8 +1,5 @@
 'use client';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import bwipjs from 'bwip-js';
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
 import { useRouter, usePathname, useParams, useSearchParams } from "next/navigation";
 import { ArrowRight, Sparkles } from 'lucide-react';
 import {
@@ -189,6 +186,7 @@ const BarcodeGenerator = () => {
       const basePadW = activeStyle.render.paddingwidth ?? 6;
       const basePadH = activeStyle.render.paddingheight ?? 6;
 
+      const bwipjs = (await import('bwip-js')).default;
       await bwipjs.toCanvas(canvas, {
         bcid: barcodeType,
         text: value,
@@ -403,6 +401,10 @@ const BarcodeGenerator = () => {
         return;
       }
 
+      const [{ default: JSZip }, fileSaver] = await Promise.all([
+        import('jszip'),
+        import('file-saver'),
+      ]);
       const zip = new JSZip();
       await Promise.all(
         results.map(async (item, index) => {
@@ -413,7 +415,7 @@ const BarcodeGenerator = () => {
         }),
       );
       const zipBlob = await zip.generateAsync({ type: 'blob' });
-      saveAs(zipBlob, `barcodes-${barcodeType}.zip`);
+      fileSaver.saveAs(zipBlob, `barcodes-${barcodeType}.zip`);
       setMessage('success', `Downloaded ZIP with ${results.length} barcodes.`);
     } catch {
       setMessage('error', 'Download failed. Please try again.');

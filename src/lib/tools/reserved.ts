@@ -17,6 +17,7 @@ export const RESERVED_SLUGS = new Set([
   'deep-link-redirect',
   'guides',
   'author',
+  'ai-domain-name-generator',
   '_next',
   'favicon.ico',
   ...CATEGORY_HUBS.map((h) => h.slug),

@@ -22,6 +22,7 @@ const Footer = () => {
     { name: 'Contact', href: '/contact' },
     { name: 'All Tools', href: '/tools' },
     { name: 'Blog', href: '/blog' },
+    { name: 'AI Domain Names', href: '/ai-domain-name-generator' },
     { name: 'Themes', href: '/themes' },
     { name: 'llms.txt', href: '/llms.txt' },
   ];

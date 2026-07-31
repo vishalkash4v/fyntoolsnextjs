@@ -1,41 +1,12 @@
-/** Deterministic fake-but-plausible testimonials per tool for social proof / E-E-A-T. */
+/** Deterministic examples + curated testimonials only (no fake reviews). */
 import type { Tool } from '@/data/toolsData';
 import { toolTestimonials, type ToolTestimonial } from '@/data/tool-content/toolTestimonials';
 
-const NAMES = [
-  ['Aisha Khan', 'Content Marketer'],
-  ['Jordan Lee', 'Frontend Developer'],
-  ['Priya Sharma', 'Product Designer'],
-  ['Marcus Cole', 'Growth Lead'],
-  ['Elena Rossi', 'Student'],
-  ['Noah Park', 'Freelance Writer'],
-  ['Sofia Mendes', 'SEO Specialist'],
-  ['Dev Patel', 'Full-Stack Engineer'],
-];
-
-const TEMPLATES = [
-  (n: string) => `I use ${n} weekly — fast, clear, and no signup wall. Exactly what I needed.`,
-  (n: string) => `${n} replaced a desktop app for me. Results are instant on mobile too.`,
-  (n: string) => `Clean UI and accurate output. ${n} is bookmarked for my team.`,
-  (n: string) => `Finally a free ${n.toLowerCase()} that does not bury the tool under ads.`,
-];
-
-function hash(s: string): number {
-  return Math.abs(s.split('').reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0));
-}
-
 export function buildTestimonialsForTool(tool: Tool): ToolTestimonial[] {
   const curated = toolTestimonials[tool.path];
+  // Only show curated reviews — never invent fake quotes (E-E-A-T / spam policy).
   if (curated?.length) return [...curated];
-
-  const h = hash(tool.path);
-  const picks: ToolTestimonial[] = [];
-  for (let i = 0; i < 3; i++) {
-    const [name, title] = NAMES[(h + i * 3) % NAMES.length];
-    const text = TEMPLATES[(h + i) % TEMPLATES.length](tool.name);
-    picks.push({ name, title, text, rating: 4 + ((h + i) % 2) });
-  }
-  return picks;
+  return [];
 }
 
 export function buildExamplesForTool(tool: Tool): { input: string; output: string }[] {

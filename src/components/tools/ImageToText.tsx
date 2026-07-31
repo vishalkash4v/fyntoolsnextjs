@@ -1,6 +1,5 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react';
-import Tesseract from 'tesseract.js';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,6 +62,7 @@ const ImageToText = () => {
     setProgress(0);
 
     try {
+      const Tesseract = (await import('tesseract.js')).default;
       const result = await Tesseract.recognize(selectedFile, language, {
         logger: (m) => {
           if (typeof m.progress === 'number') {

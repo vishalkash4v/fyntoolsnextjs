@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Baby, CalendarDays, Sparkles } from 'lucide-react';
 import { differenceInDays } from 'date-fns';
 import CommonDatePicker from '@/components/ui/CommonDatePicker';
+import PregnancyHealthDisclaimer from '@/components/tools/PregnancyHealthDisclaimer';
 
 const weekTips = [
   { range: [1, 4], tip: 'Early development begins. Focus on folic acid and hydration.' },
@@ -30,13 +31,14 @@ const PregnancyWeekCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      <PregnancyHealthDisclaimer toolName="Pregnancy Week Calculator" />
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CalendarDays className="h-5 w-5" />
             Pregnancy Week Calculator
           </CardTitle>
-          <CardDescription>Track your current pregnancy week and trimester.</CardDescription>
+          <CardDescription>Track your current pregnancy week and trimester (educational estimate from LMP).</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
           <label className="text-sm font-medium">Last Menstrual Period (LMP)</label>

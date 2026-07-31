@@ -27,6 +27,7 @@ import {
   Heart,
   Sparkles,
   Users,
+  MousePointerClick,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTheme } from 'next-themes';
@@ -142,6 +143,11 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       icon: Wrench,
       label: 'Tools Management',
       path: '/fyntoolsadmin/tools',
+    },
+    {
+      icon: MousePointerClick,
+      label: 'Ad Performance',
+      path: '/fyntoolsadmin/ads',
     },
   ];
 

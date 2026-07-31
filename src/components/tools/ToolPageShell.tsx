@@ -1,6 +1,7 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
+import NamezivoAdBanner from '@/components/Ads/NamezivoAdBanner';
 
 type Faq = { question: string; answer: string };
 
@@ -52,6 +53,13 @@ export default function ToolPageShell({
             </section>
           }
         />
+        <div className="px-4 sm:px-6 md:px-8 mb-6 max-w-4xl mx-auto">
+          <NamezivoAdBanner
+            sourcePath={`/${slug}`}
+            placement="tool_below"
+            variant="full"
+          />
+        </div>
         <div
           className="px-4 sm:px-6 md:px-8 mb-10"
           style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1px' }}

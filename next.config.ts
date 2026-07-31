@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Fewer legacy polyfills + smaller client bundles for modern browsers (2026 Baseline)
   experimental: {
+    // Inline critical CSS to cut render-blocking stylesheet round-trips (helps LCP on Slow 4G).
+    inlineCss: true,
     optimizePackageImports: [
       "lucide-react",
       "date-fns",

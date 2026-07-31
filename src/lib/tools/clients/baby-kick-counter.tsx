@@ -4,10 +4,10 @@
 import dynamic from "next/dynamic";
 
 const Tool = dynamic(() => import("@/components/tools/BabyKickCounter"), {
-  ssr: false,
+  ssr: true,
   loading: () => (
     <div
-      className="w-full min-h-[560px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
+      className="w-full min-h-[420px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
       aria-busy="true"
       aria-label="Loading Baby Kick Counter"
       role="status"
@@ -20,7 +20,7 @@ const Tool = dynamic(() => import("@/components/tools/BabyKickCounter"), {
 /** Dedicated island — only loads BabyKickCounter, not the multi-tool registry. */
 export default function ToolClient() {
   return (
-    <div className="w-full min-h-[560px]" id="tool-interface">
+    <div className="w-full min-h-[420px]" id="tool-interface">
       <Tool />
     </div>
   );
