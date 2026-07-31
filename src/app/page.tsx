@@ -123,7 +123,7 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {CATEGORY_HUBS.map((hub) => (
-              <Link key={hub.path} href={hub.path}>
+              <Link key={hub.path} href={hub.path} prefetch={false}>
                 <Card className="h-full hover:border-primary/40 transition-colors">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base">{hub.name}</CardTitle>
@@ -142,7 +142,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featured.map((tool) =>
               tool ? (
-                <Link key={tool.id} href={tool.path}>
+                <Link key={tool.id} href={tool.path} prefetch={false}>
                   <Card className="h-full hover:shadow-md transition-shadow">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-2">
@@ -171,6 +171,7 @@ export default function HomePage() {
                 <Link
                   key={tool.id}
                   href={tool.path}
+                  prefetch={false}
                   className="flex items-center gap-2 p-3 rounded-lg bg-background border hover:border-primary/40"
                 >
                   <tool.icon className="h-4 w-4 text-primary shrink-0" />

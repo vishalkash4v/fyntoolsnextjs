@@ -86,6 +86,7 @@ const Footer = () => {
                 <li key={tool.name}>
                   <Link
                     href={tool.path}
+                    prefetch={false}
                     className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-primary transition-colors inline-flex items-center group"
                   >
                     {tool.name}

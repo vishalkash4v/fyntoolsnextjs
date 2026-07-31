@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getCategoryHubPath } from '@/utils/breadcrumbs';
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
+import ToolFeedbackLazy from '@/components/tools/ToolFeedbackLazy';
 
 type Faq = { question: string; answer: string };
 
@@ -13,6 +14,8 @@ type Props = {
   features: string[];
   faqs: Faq[];
   fullSeo?: FullSeoPageContent | null;
+  /** Canonical tool path e.g. /word-counter — used for review API */
+  toolPath?: string;
   /** Client island rendered immediately below H1 (CLS-safe min-height expected) */
   toolSlot?: React.ReactNode;
 };
@@ -66,6 +69,7 @@ export default function ToolSeoSections({
   features,
   faqs,
   fullSeo,
+  toolPath,
   toolSlot,
 }: Props) {
   const displayTitle = fullSeo?.h1 || title;
@@ -128,6 +132,7 @@ export default function ToolSeoSections({
             </Link>
           </p>
         )}
+        <ToolFeedbackLazy toolName={displayTitle} toolPath={toolPath || ''} />
       </header>
 
       {/* 2. Interactive tool immediately below H1 (no scroll required) */}

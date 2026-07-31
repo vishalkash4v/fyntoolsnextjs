@@ -1,5 +1,4 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
-import InteractiveToolLoader from '@/components/tools/InteractiveToolLoader';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import AdSenseUnit from '@/components/Ads/AdSenseUnit';
 
@@ -14,15 +13,12 @@ type Props = {
   features: string[];
   faqs: Faq[];
   fullSeo?: FullSeoPageContent | null;
-  /**
-   * Optional dedicated client island (bypasses the shared 90-tool registry).
-   * Use on high-traffic routes to avoid downloading unrelated tool chunks.
-   */
-  toolClient?: React.ReactNode;
+  /** Required dedicated client island — keeps InteractiveToolLoader out of this module. */
+  toolClient: React.ReactNode;
 };
 
 /**
- * Server Component shell: SEO is RSC; only the tool island is client JS.
+ * Server Component shell: SEO is RSC; only the passed tool island is client JS.
  */
 export default function ToolPageShell({
   slug,
@@ -46,16 +42,20 @@ export default function ToolPageShell({
           features={features}
           faqs={faqs}
           fullSeo={fullSeo}
+          toolPath={`/${slug}`}
           toolSlot={
             <section
               id="tool"
               className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
             >
-              {toolClient ?? <InteractiveToolLoader slug={slug} />}
+              {toolClient}
             </section>
           }
         />
-        <div className="px-4 sm:px-6 md:px-8 mb-10" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 280px' }}>
+        <div
+          className="px-4 sm:px-6 md:px-8 mb-10"
+          style={{ contentVisibility: 'auto', containIntrinsicSize: '0 280px' }}
+        >
           <AdSenseUnit className="max-w-3xl mx-auto" minHeight={280} />
         </div>
       </article>

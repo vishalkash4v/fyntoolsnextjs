@@ -87,7 +87,9 @@ Sitemap: [${SITE}/sitemap.xml](${SITE}/sitemap.xml)
 All tools index: [${SITE}/tools](${SITE}/tools)  
 Contact: [${SITE}/contact](${SITE}/contact)  
 About: [${SITE}/about](${SITE}/about)  
-AI catalog (optional): [${SITE}/ai.txt](${SITE}/ai.txt)
+AI catalog (optional): [${SITE}/ai.txt](${SITE}/ai.txt)  
+Agents: [${SITE}/agents.json](${SITE}/agents.json)  
+Agent instructions: [${SITE}/agent-instructions.md](${SITE}/agent-instructions.md)
 
 ## Preferred crawl & citation policy
 

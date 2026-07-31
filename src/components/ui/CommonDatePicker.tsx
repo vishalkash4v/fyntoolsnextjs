@@ -3,6 +3,7 @@ import React from 'react';
 import { DatePicker, DatePickerProps } from 'rsuite';
 // Only load RSuite CSS when a date tool mounts — never block homepage/tool LCP globally.
 import 'rsuite/dist/rsuite-no-reset.min.css';
+import '@/styles/rsuite-datepicker.css';
 
 type CommonDatePickerProps = Omit<
   DatePickerProps,

@@ -19,7 +19,14 @@ export default function robots(): MetadataRoute.Robots {
     '/themes/',
   ];
 
-  const allowPublic = ['/', '/llms.txt', '/ai.txt', '/sitemap.xml'];
+  const allowPublic = [
+    '/',
+    '/llms.txt',
+    '/ai.txt',
+    '/agents.json',
+    '/agent-instructions.md',
+    '/sitemap.xml',
+  ];
 
   return {
     rules: [

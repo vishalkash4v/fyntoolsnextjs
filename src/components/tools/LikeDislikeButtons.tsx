@@ -18,11 +18,15 @@ const LikeDislikeButtons: React.FC<LikeDislikeButtonsProps> = ({ toolName, toolU
   const isSubmittingRef = useRef(false);
   const [likesCount, setLikesCount] = useState(0);
   const [dislikesCount, setDislikesCount] = useState(0);
+  const [currentUrl, setCurrentUrl] = useState(toolUrl || '');
 
-  const currentUrl = toolUrl || window.location.href;
+  useEffect(() => {
+    setCurrentUrl(toolUrl || window.location.href);
+  }, [toolUrl]);
 
   // Load existing stats
   useEffect(() => {
+    if (!currentUrl) return;
     const loadStats = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/toolreview/stats/${encodeURIComponent(toolName)}?url=${encodeURIComponent(currentUrl)}`);
@@ -31,7 +35,7 @@ const LikeDislikeButtons: React.FC<LikeDislikeButtonsProps> = ({ toolName, toolU
           setLikesCount(data.data.likes || 0);
           setDislikesCount(data.data.dislikes || 0);
         }
-      } catch (error) {
+      } catch {
         // Silently fail - stats are optional
       }
     };

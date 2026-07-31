@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import SiteChrome from '@/components/layout/SiteChrome';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { AppProviders } from '@/components/providers/AppProviders';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
@@ -83,7 +82,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
     types: {
-      'text/plain': [{ url: '/llms.txt', title: 'llms.txt' }],
+      'text/plain': [
+        { url: '/llms.txt', title: 'llms.txt' },
+        { url: '/agent-instructions.md', title: 'agent-instructions' },
+      ],
+      'application/json': [{ url: '/agents.json', title: 'agents.json' }],
     },
   },
 };
@@ -94,16 +97,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <SchemaMarkup data={[organizationSchema(), websiteSchema()]} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <AppProviders>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <SiteChrome>{children}</SiteChrome>
           </AppProviders>
         </ThemeProvider>
       </body>

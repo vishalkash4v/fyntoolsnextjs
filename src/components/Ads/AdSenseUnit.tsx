@@ -36,7 +36,12 @@ export default function AdSenseUnit({
   const pushed = useRef(false);
   const clientId = client || process.env.NEXT_PUBLIC_ADSENSE_CLIENT || '';
   const slotId = slot || process.env.NEXT_PUBLIC_ADSENSE_SLOT_DEFAULT || '';
-  const enabled = Boolean(clientId && slotId);
+  // Set NEXT_PUBLIC_ENABLE_ADSENSE=0 for Lighthouse / lab runs (third-party ads block 100).
+  const adsFlag = process.env.NEXT_PUBLIC_ENABLE_ADSENSE;
+  const enabled =
+    Boolean(clientId && slotId) &&
+    adsFlag !== '0' &&
+    adsFlag !== 'false';
 
   useEffect(() => {
     if (!enabled || pushed.current) return;

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useMemo, useEffect, useRef, useTransition } from 'react';
+import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -18,37 +18,51 @@ interface ToolSearchProps {
 
 const ToolSearch: React.FC<ToolSearchProps> = ({ tools, className, onResultClick }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedTerm, setDebouncedTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+  const [, startTransition] = useTransition();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      startTransition(() => setDebouncedTerm(searchTerm));
+    }, 150);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [searchTerm]);
 
   const filteredTools = useMemo(() => {
-    if (!searchTerm.trim()) return [];
-    
-    const query = searchTerm.toLowerCase();
-    return tools.filter(tool => 
-      tool.name.toLowerCase().includes(query) ||
-      tool.description.toLowerCase().includes(query) ||
-      tool.category.toLowerCase().includes(query) ||
-      tool.keywords.toLowerCase().includes(query)
-    ).slice(0, 8);
-  }, [searchTerm, tools]);
+    if (!debouncedTerm.trim()) return [];
+
+    const query = debouncedTerm.toLowerCase();
+    return tools
+      .filter(
+        (tool) =>
+          tool.name.toLowerCase().includes(query) ||
+          tool.description.toLowerCase().includes(query) ||
+          tool.category.toLowerCase().includes(query) ||
+          tool.keywords.toLowerCase().includes(query)
+      )
+      .slice(0, 8);
+  }, [debouncedTerm, tools]);
 
   const handleClear = () => {
     setSearchTerm('');
+    setDebouncedTerm('');
     setIsOpen(false);
   };
 
-  const handleResultClick = (toolPath: string) => {
+  const handleResultClick = () => {
     setIsOpen(false);
     setSearchTerm('');
-    router.push(toolPath);
-    if (onResultClick) {
-      onResultClick();
-    }
+    setDebouncedTerm('');
+    onResultClick?.();
   };
 
   return (
-    <div className={cn("relative w-full", className)}>
+    <div className={cn('relative w-full', className)}>
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
@@ -77,36 +91,49 @@ const ToolSearch: React.FC<ToolSearchProps> = ({ tools, className, onResultClick
 
       {isOpen && searchTerm && (
         <>
-          <div 
-            className="fixed inset-0 z-40" 
-            onClick={() => setIsOpen(false)}
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <Card className="absolute top-full left-0 right-0 mt-2 z-50 max-h-96 overflow-y-auto shadow-2xl border-2 rounded-xl bg-background/98 backdrop-blur-xl backdrop-saturate-150">
             <CardContent className="p-2 bg-background/95 backdrop-blur-md">
               {filteredTools.length > 0 ? (
                 <div className="space-y-1">
-                  {filteredTools.map((tool) => (
-                    <button
-                      key={tool.id}
-                      onClick={() => handleResultClick(tool.path)}
-                      className="w-full text-left block p-3 md:p-4 hover:bg-muted/70 transition-colors border-b border-border/50 last:border-b-0 rounded-md bg-background/90 backdrop-blur-sm"
-                    >
-                      <div className="flex items-center gap-3">
-                        <tool.icon className="h-5 w-5 text-primary shrink-0" />
-                        <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-sm truncate text-foreground">{tool.name}</div>
-                          <div className="text-xs text-muted-foreground/90 truncate">{tool.description}</div>
+                  {filteredTools.map((tool) => {
+                    const Icon = tool.icon;
+                    return (
+                      <Link
+                        key={tool.id}
+                        href={tool.path}
+                        prefetch={false}
+                        onClick={handleResultClick}
+                        className="w-full text-left block p-3 md:p-4 hover:bg-muted/70 transition-colors border-b border-border/50 last:border-b-0 rounded-md bg-background/90 backdrop-blur-sm"
+                      >
+                        <div className="flex items-center gap-3">
+                          <Icon className="h-5 w-5 text-primary shrink-0" />
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-sm truncate text-foreground">
+                              {tool.name}
+                            </div>
+                            <div className="text-xs text-muted-foreground/90 truncate">
+                              {tool.description}
+                            </div>
+                          </div>
+                          <Badge
+                            variant="secondary"
+                            className="text-xs shrink-0 bg-background/80 backdrop-blur-sm"
+                          >
+                            {tool.category.split(' ')[0]}
+                          </Badge>
                         </div>
-                        <Badge variant="secondary" className="text-xs shrink-0 bg-background/80 backdrop-blur-sm">
-                          {tool.category.split(' ')[0]}
-                        </Badge>
-                      </div>
-                    </button>
-                  ))}
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : debouncedTerm.trim() ? (
+                <div className="p-4 text-center text-muted-foreground bg-background/90 backdrop-blur-sm rounded-md">
+                  No tools found for &quot;{debouncedTerm}&quot;
                 </div>
               ) : (
                 <div className="p-4 text-center text-muted-foreground bg-background/90 backdrop-blur-sm rounded-md">
-                  No tools found for "{searchTerm}"
+                  Type to search…
                 </div>
               )}
             </CardContent>

@@ -15,59 +15,89 @@ const formatTime = (ms: number) => {
 };
 
 /**
- * Elapsed-time stopwatch based on Date.now() so background tabs keep accurate time.
- * Also mirrors the running time into document.title.
+ * Wall-clock stopwatch — elapsed time from Date.now(), not frame count.
+ * Uses setInterval (not rAF) so the tab title keeps updating in background tabs.
  */
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const startAtRef = useRef<number | null>(null);
   const accumulatedRef = useRef(0);
-  const rafRef = useRef<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const baseTitleRef = useRef<string>('');
 
-  const tick = useCallback(() => {
-    if (startAtRef.current == null) return;
-    const elapsed = accumulatedRef.current + (Date.now() - startAtRef.current);
-    setTime(elapsed);
-    document.title = `${formatTime(elapsed)} · Stopwatch`;
-    rafRef.current = requestAnimationFrame(tick);
+  const getElapsed = useCallback(() => {
+    if (startAtRef.current != null) {
+      return accumulatedRef.current + (Date.now() - startAtRef.current);
+    }
+    return accumulatedRef.current;
   }, []);
 
+  const paint = useCallback(
+    (elapsed: number, running: boolean) => {
+      setTime(elapsed);
+      if (running) {
+        document.title = `${formatTime(elapsed)} · Stopwatch`;
+      } else if (elapsed > 0) {
+        document.title = `${formatTime(elapsed)} · Stopwatch (paused)`;
+      } else {
+        document.title = baseTitleRef.current || 'FYN Tools';
+      }
+    },
+    []
+  );
+
   useEffect(() => {
-    baseTitleRef.current = document.title;
+    if (!baseTitleRef.current) {
+      baseTitleRef.current = document.title;
+    }
     return () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+      if (intervalRef.current != null) clearInterval(intervalRef.current);
       document.title = baseTitleRef.current || 'FYN Tools';
     };
   }, []);
 
   useEffect(() => {
-    if (isRunning) {
-      startAtRef.current = Date.now();
-      rafRef.current = requestAnimationFrame(tick);
-    } else {
-      if (rafRef.current != null) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-      if (startAtRef.current != null) {
-        accumulatedRef.current += Date.now() - startAtRef.current;
-        startAtRef.current = null;
-      }
-      if (accumulatedRef.current > 0) {
-        document.title = `${formatTime(accumulatedRef.current)} · Stopwatch (paused)`;
-      } else {
-        document.title = baseTitleRef.current || document.title;
-      }
+    if (intervalRef.current != null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-    return () => {
-      if (rafRef.current != null) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
+
+    if (isRunning) {
+      if (startAtRef.current == null) {
+        startAtRef.current = Date.now();
       }
-    };
-  }, [isRunning, tick]);
+
+      const tick = () => paint(getElapsed(), true);
+      tick();
+
+      // setInterval works in background tabs; rAF is throttled to ~1fps or paused
+      intervalRef.current = setInterval(tick, 100);
+
+      const onVisibility = () => {
+        if (document.visibilityState === 'visible' && startAtRef.current != null) {
+          tick();
+        }
+      };
+      const onFocus = () => {
+        if (startAtRef.current != null) tick();
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      window.addEventListener('focus', onFocus);
+
+      return () => {
+        if (intervalRef.current != null) clearInterval(intervalRef.current);
+        document.removeEventListener('visibilitychange', onVisibility);
+        window.removeEventListener('focus', onFocus);
+      };
+    }
+
+    if (startAtRef.current != null) {
+      accumulatedRef.current += Date.now() - startAtRef.current;
+      startAtRef.current = null;
+    }
+    paint(accumulatedRef.current, false);
+  }, [isRunning, getElapsed, paint]);
 
   const handleStart = () => setIsRunning(true);
   const handlePause = () => setIsRunning(false);
@@ -86,8 +116,7 @@ const Stopwatch = () => {
     setTime(0);
     document.title = baseTitleRef.current || 'FYN Tools';
     if (wasRunning) {
-      // Allow effect cleanup then restart fresh
-      requestAnimationFrame(() => setIsRunning(true));
+      setTimeout(() => setIsRunning(true), 0);
     }
   };
 

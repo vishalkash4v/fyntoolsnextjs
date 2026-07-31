@@ -1,6 +1,6 @@
 import { allTools, type Tool } from '@/data/toolsData';
 import { getFullSeoPage } from '@/data/seo-pages';
-import { getToolLoader } from '@/lib/tools/registry.generated';
+import { isKnownToolSlug } from '@/lib/tools/tool-slugs.generated';
 import { isReservedSlug } from '@/lib/tools/reserved';
 
 export function getToolBySlug(slug: string): Tool | undefined {
@@ -59,7 +59,8 @@ export function getDefaultFaqs(tool: Tool): { question: string; answer: string }
 export function resolveToolPage(slug: string) {
   const tool = getToolBySlug(slug);
   if (!tool) return null;
-  if (!getToolLoader(slug) && !tool) return null;
+  // Prefer known registry slug; still allow toolsData-only entries for SEO shells.
+  if (!isKnownToolSlug(slug) && !tool) return null;
   const fullSeo = getFullSeoPage(`/${slug}`);
   return {
     tool,

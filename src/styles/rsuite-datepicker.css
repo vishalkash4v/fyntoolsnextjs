@@ -1,0 +1,77 @@
+/* Rsuite DatePicker - Common Styles */
+  .rsuite-date-picker.rs-picker {
+    width: 100%;
+  }
+
+  .rsuite-date-picker .rs-picker-toggle {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--input));
+    color: hsl(var(--foreground));
+    box-shadow: none;
+  }
+
+  @media (min-width: 640px) {
+    .rsuite-date-picker .rs-picker-toggle {
+      height: 3.5rem;
+    }
+  }
+
+  .rsuite-date-picker .rs-picker-toggle-placeholder,
+  .rsuite-date-picker .rs-picker-toggle-value {
+    color: hsl(var(--foreground));
+  }
+
+  .rsuite-date-picker .rs-picker-toggle-caret,
+  .rsuite-date-picker .rs-picker-toggle-clean {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .rsuite-date-picker .rs-picker-toggle:focus,
+  .rsuite-date-picker .rs-picker-toggle.rs-picker-toggle-focus {
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.35);
+  }
+
+  .rsuite-date-picker .rs-picker-menu {
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .rsuite-date-picker .rs-calendar {
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+
+  .rsuite-date-picker .rs-calendar-header-title,
+  .rsuite-date-picker .rs-calendar-header-backward,
+  .rsuite-date-picker .rs-calendar-header-forward {
+    color: hsl(var(--foreground));
+  }
+
+  .rsuite-date-picker .rs-calendar-table-cell-content {
+    border-radius: 0.5rem;
+  }
+
+  .rsuite-date-picker .rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .rsuite-date-picker .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
+    border: 1px solid hsl(var(--primary));
+  }
+
+  .rsuite-date-picker .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .rsuite-date-picker .rs-calendar-table-cell-disabled .rs-calendar-table-cell-content {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.6;
+  }

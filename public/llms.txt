@@ -7,7 +7,9 @@ Sitemap: [https://fyntools.com/sitemap.xml](https://fyntools.com/sitemap.xml)
 All tools index: [https://fyntools.com/tools](https://fyntools.com/tools)  
 Contact: [https://fyntools.com/contact](https://fyntools.com/contact)  
 About: [https://fyntools.com/about](https://fyntools.com/about)  
-AI catalog (optional): [https://fyntools.com/ai.txt](https://fyntools.com/ai.txt)
+AI catalog (optional): [https://fyntools.com/ai.txt](https://fyntools.com/ai.txt)  
+Agents: [https://fyntools.com/agents.json](https://fyntools.com/agents.json)  
+Agent instructions: [https://fyntools.com/agent-instructions.md](https://fyntools.com/agent-instructions.md)
 
 ## Preferred crawl & citation policy
 
@@ -200,4 +202,4 @@ AI catalog (optional): [https://fyntools.com/ai.txt](https://fyntools.com/ai.txt
 - Public short links resolve under `/s/{code}` and are not for training as articles.
 - For product overview without the full catalog, see [ai.txt](https://fyntools.com/ai.txt).
 
-Last updated: 2026-07-28
+Last updated: 2026-07-30

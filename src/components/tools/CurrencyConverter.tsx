@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from "@/hooks/use-toast";
-import { AlertCircle, ArrowRightLeft } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
+import { ArrowRightLeft } from 'lucide-react';
 
 interface CurrenciesResponse {
   [key: string]: string;
@@ -33,7 +32,7 @@ const fetchCurrencies = async (): Promise<CurrenciesResponse> => {
 };
 
 const fetchConversion = async (amount: number, from: string, to: string): Promise<ConversionResponse> => {
-  if (from === to) { // API doesn't handle same currency conversion well for rates
+  if (from === to) {
     return { amount, base: from, date: new Date().toISOString().split('T')[0], rates: { [to]: amount } };
   }
   const response = await fetch(`${FRANKFURTER_API_BASE}/latest?amount=${amount}&from=${from}&to=${to}`);
@@ -43,7 +42,7 @@ const fetchConversion = async (amount: number, from: string, to: string): Promis
       const errorData = await response.json();
       errorMessage = errorData?.message || errorMessage;
     } catch {
-      // keep fallback when non-JSON response comes back
+      /* keep fallback */
     }
     throw new Error(errorMessage);
   }
@@ -56,28 +55,42 @@ const CurrencyConverter: React.FC = () => {
   const [toCurrency, setToCurrency] = useState<string>('INR');
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [isLoadingConversion, setIsLoadingConversion] = useState<boolean>(false);
+  const [currencies, setCurrencies] = useState<CurrenciesResponse | null>(null);
+  const [isLoadingCurrencies, setIsLoadingCurrencies] = useState(true);
+  const [currenciesError, setCurrenciesError] = useState<string | null>(null);
 
-  const { data: currencies, isLoading: isLoadingCurrencies, error: currenciesError } = useQuery<CurrenciesResponse, Error>({
-    queryKey: ['currencies'],
-    queryFn: fetchCurrencies,
-    staleTime: Infinity, // Currencies don't change often
-  });
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await fetchCurrencies();
+        if (!cancelled) setCurrencies(data);
+      } catch (e) {
+        if (!cancelled) setCurrenciesError(e instanceof Error ? e.message : 'Failed to load currencies');
+      } finally {
+        if (!cancelled) setIsLoadingCurrencies(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleConvert = async () => {
     const numericAmount = parseFloat(amount);
     if (isNaN(numericAmount) || numericAmount <= 0) {
       toast({
-        title: "Invalid Amount",
-        description: "Please enter a valid positive amount.",
-        variant: "destructive",
+        title: 'Invalid Amount',
+        description: 'Please enter a valid positive amount.',
+        variant: 'destructive',
       });
       return;
     }
     if (!fromCurrency || !toCurrency) {
       toast({
-        title: "Missing Selection",
+        title: 'Missing Selection',
         description: "Please select both 'From' and 'To' currencies.",
-        variant: "destructive",
+        variant: 'destructive',
       });
       return;
     }
@@ -89,45 +102,41 @@ const CurrencyConverter: React.FC = () => {
         setConvertedAmount(numericAmount);
       } else {
         const data = await fetchConversion(numericAmount, fromCurrency, toCurrency);
-        // The API returns the converted amount directly in rates[toCurrency] when amount is specified
         setConvertedAmount(data.rates[toCurrency]);
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred during conversion.";
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred during conversion.';
       toast({
-        title: "Conversion Error",
+        title: 'Conversion Error',
         description: errorMessage,
-        variant: "destructive",
+        variant: 'destructive',
       });
-      console.error("Conversion error:", error);
     } finally {
       setIsLoadingConversion(false);
     }
   };
 
   useEffect(() => {
-    // Auto-convert on initial load or when currencies change, if amount is valid
     if (amount && fromCurrency && toCurrency && parseFloat(amount) > 0 && currencies) {
-       handleConvert();
+      void handleConvert();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fromCurrency, toCurrency, currencies]); // Only run when currencies load or selections change, not amount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fromCurrency, toCurrency, currencies]);
 
   const handleSwapCurrencies = () => {
-    const temp = fromCurrency;
     setFromCurrency(toCurrency);
-    setToCurrency(temp);
-    // Trigger conversion after swap
-    // setAmount(convertedAmount ? convertedAmount.toString() : amount); // Optional: use converted amount as new input
+    setToCurrency(fromCurrency);
   };
-  
-  if (isLoadingCurrencies) return <p>Loading currencies...</p>;
-  if (currenciesError) return <p className="text-red-500">Error loading currencies: {currenciesError.message}</p>;
 
-  const currencyOptions = currencies ? Object.entries(currencies).map(([code, name]) => ({
-    value: code,
-    label: `${code} - ${name}`,
-  })) : [];
+  if (isLoadingCurrencies) return <p>Loading currencies...</p>;
+  if (currenciesError) return <p className="text-red-500">Error loading currencies: {currenciesError}</p>;
+
+  const currencyOptions = currencies
+    ? Object.entries(currencies).map(([code, name]) => ({
+        value: code,
+        label: `${code} - ${name}`,
+      }))
+    : [];
 
   return (
     <div className="space-y-6">
@@ -153,14 +162,21 @@ const CurrencyConverter: React.FC = () => {
               <SelectValue placeholder="Select currency" />
             </SelectTrigger>
             <SelectContent>
-              {currencyOptions.map(option => (
-                <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+              {currencyOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
 
-        <Button variant="ghost" size="icon" onClick={handleSwapCurrencies} className="mt-auto md:mt-6 self-center justify-self-center">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleSwapCurrencies}
+          className="mt-auto md:mt-6 self-center justify-self-center"
+        >
           <ArrowRightLeft className="h-5 w-5" />
         </Button>
 
@@ -171,14 +187,16 @@ const CurrencyConverter: React.FC = () => {
               <SelectValue placeholder="Select currency" />
             </SelectTrigger>
             <SelectContent>
-              {currencyOptions.map(option => (
-                <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+              {currencyOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
       </div>
-      
+
       <Button onClick={handleConvert} disabled={isLoadingConversion} className="w-full">
         {isLoadingConversion ? 'Converting...' : 'Convert'}
       </Button>
@@ -187,10 +205,17 @@ const CurrencyConverter: React.FC = () => {
         <div className="mt-6 rounded-lg border border-border bg-card p-5 text-center shadow-sm">
           <p className="text-sm font-medium text-foreground/70">Converted Amount</p>
           <p className="mt-1 text-3xl font-bold text-foreground">
-            {convertedAmount.toLocaleString(undefined, { style: 'currency', currency: toCurrency, minimumFractionDigits: 2, maximumFractionDigits: 4 })}
+            {convertedAmount.toLocaleString(undefined, {
+              style: 'currency',
+              currency: toCurrency,
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 4,
+            })}
           </p>
           <p className="mt-2 text-sm text-foreground/65">
-            {amount} {fromCurrency} = {convertedAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })} {toCurrency}
+            {amount} {fromCurrency} ={' '}
+            {convertedAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })}{' '}
+            {toCurrency}
           </p>
         </div>
       )}

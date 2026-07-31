@@ -1,0 +1,35 @@
+{
+  "name": "FYN Tools Worldwide",
+  "description": "Free browser-based tools for developers, businesses, and creators — calculators, text tools, image editors, converters, and more.",
+  "website": "https://fyntools.com",
+  "llms": "https://fyntools.com/llms.txt",
+  "sitemap": "https://fyntools.com/sitemap.xml",
+  "contact": "https://fyntools.com/contact",
+  "actions": [
+    {
+      "id": "list-tools",
+      "description": "Browse the full catalog of free online tools",
+      "url": "https://fyntools.com/tools"
+    },
+    {
+      "id": "shorten-url",
+      "description": "Shorten a long URL with optional custom alias, UTM, and QR",
+      "url": "https://fyntools.com/url-shortener"
+    },
+    {
+      "id": "format-json",
+      "description": "Validate, beautify, or minify JSON",
+      "url": "https://fyntools.com/json-formatter"
+    },
+    {
+      "id": "count-words",
+      "description": "Count words, characters, and paragraphs in text",
+      "url": "https://fyntools.com/word-counter"
+    },
+    {
+      "id": "compress-image",
+      "description": "Compress JPG, PNG, or WebP images in the browser",
+      "url": "https://fyntools.com/image-compressor"
+    }
+  ]
+}

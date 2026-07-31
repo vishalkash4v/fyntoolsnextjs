@@ -5,7 +5,7 @@ import { blogPosts } from '@/data/blogsData';
 import { guides } from '@/data/guides/guidesData';
 import { authors } from '@/data/authors';
 import { SITE_URL } from '@/lib/seo/site';
-import { TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/registry.generated';
+import { TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/tool-slugs.generated';
 
 /** Bump on content/CWV deploys so Google sees freshness. */
 const SITEMAP_LASTMOD = new Date('2026-07-28');
