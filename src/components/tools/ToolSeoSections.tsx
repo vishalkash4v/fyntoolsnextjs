@@ -58,8 +58,7 @@ function Section({
 
 /**
  * Server Component — Googlebot-readable SEO body.
- * Required hierarchy: H1 → Tool → How to Use → What is → Use Cases → FAQ → Related Tools.
- * Extra sections follow for information gain (features, tips, comparisons, etc.).
+ * Hierarchy: H1 → TL;DR → processing note → Tool → I/O → How to Use → What is → …
  */
 export default function ToolSeoSections({
   title,
@@ -81,12 +80,16 @@ export default function ToolSeoSections({
     ? fullSeo.introParagraphs
     : [displayDescription];
   const useCases = fullSeo?.useCases?.length ? fullSeo.useCases : [];
-  const relatedTools = fullSeo?.relatedTools?.length ? fullSeo.relatedTools : [];
+  const relatedTools = (fullSeo?.relatedTools?.length ? fullSeo.relatedTools : []).slice(0, 12);
   const relatedGuides = fullSeo?.relatedGuides?.length ? fullSeo.relatedGuides : [];
   const categoryHref = getCategoryHubPath(category);
   // Prefer catalog tool name for H2s ("URL Shortener"), not the long SEO H1.
   const conceptName = (title || displayTitle).replace(/\s*[—|-].*$/, '').trim() || displayTitle;
   const author = getAuthor(PRIMARY_AUTHOR_SLUG);
+  const tldr = fullSeo?.tldr;
+  const processingNote = fullSeo?.processingNote;
+  const ioContract = fullSeo?.ioContract;
+  const dateModified = fullSeo?.dateModified;
 
   return (
     <div className="w-full">
@@ -109,7 +112,7 @@ export default function ToolSeoSections({
         <span className="text-foreground">{conceptName}</span>
       </nav>
 
-      {/* 1. Header + H1 (benefit-oriented) */}
+      {/* 1. Header + H1 */}
       <header className="text-center mb-6 sm:mb-8 px-4">
         <p className="mb-3 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground bg-secondary">
           {category}
@@ -120,6 +123,15 @@ export default function ToolSeoSections({
         <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
           {displayDescription}
         </p>
+        {tldr && (
+          <p
+            className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-foreground/90 leading-relaxed border-l-2 border-primary/60 pl-4 text-left"
+            data-seo="tldr"
+          >
+            <span className="font-semibold text-foreground">TL;DR: </span>
+            {tldr}
+          </p>
+        )}
         {author && (
           <p className="mt-3 text-sm text-muted-foreground">
             Reviewed by{' '}
@@ -130,13 +142,70 @@ export default function ToolSeoSections({
             <Link href="/guides" className="hover:underline">
               Guides
             </Link>
+            {dateModified ? (
+              <>
+                {' · '}
+                <time dateTime={dateModified}>Updated {dateModified}</time>
+              </>
+            ) : null}
           </p>
         )}
         <ToolFeedbackLazy toolName={displayTitle} toolPath={toolPath || ''} />
       </header>
 
-      {/* 2. Interactive tool immediately below H1 (no scroll required) */}
+      {processingNote && (
+        <div
+          className="mx-4 sm:mx-6 md:mx-8 mb-6 max-w-3xl"
+          role="status"
+          aria-label="Privacy and processing note"
+        >
+          <p className="rounded-lg border border-emerald-600/30 bg-emerald-500/5 px-4 py-3 text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed">
+            <span className="font-semibold text-emerald-800 dark:text-emerald-300">
+              Privacy &amp; processing:{' '}
+            </span>
+            {processingNote}
+          </p>
+        </div>
+      )}
+
+      {/* 2. Interactive tool immediately below H1 */}
       {toolSlot}
+
+      {ioContract && (
+        <Section id="io-contract" title="Data input / output" asCard={false}>
+          <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+            <table className="w-full text-sm text-left">
+              <caption className="sr-only">
+                Supported inputs, outputs, formats, limits, and where processing runs for {conceptName}
+              </caption>
+              <tbody>
+                {(
+                  [
+                    ['Inputs', ioContract.inputs],
+                    ['Outputs', ioContract.outputs],
+                    ['Formats', ioContract.formats],
+                    ['Limits', ioContract.limits],
+                    ['Processing', ioContract.processing],
+                  ] as const
+                ).map(([label, value]) => (
+                  <tr
+                    key={label}
+                    className="border-b border-zinc-200 dark:border-zinc-800 last:border-0"
+                  >
+                    <th
+                      scope="row"
+                      className="px-4 py-3 font-semibold text-foreground whitespace-nowrap w-32 align-top bg-muted/40"
+                    >
+                      {label}
+                    </th>
+                    <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Section>
+      )}
 
       {/* 3. How to Use */}
       <Section id="how-to-use" title={`How to Use the ${conceptName}`} asCard={false}>
@@ -149,8 +218,12 @@ export default function ToolSeoSections({
         </ol>
       </Section>
 
-      {/* 4. What is [concept] — technical explanation */}
-      <Section id="what-is" title={`What is ${/^(a|an|the)\s/i.test(conceptName) ? conceptName : /^[aeiou]/i.test(conceptName) ? `an ${conceptName}` : `a ${conceptName}`}?`} asCard={false}>
+      {/* 4. What is [concept] */}
+      <Section
+        id="what-is"
+        title={`What is ${/^(a|an|the)\s/i.test(conceptName) ? conceptName : /^[aeiou]/i.test(conceptName) ? `an ${conceptName}` : `a ${conceptName}`}?`}
+        asCard={false}
+      >
         {introParagraphs.map((p, i) => (
           <p key={i}>{p}</p>
         ))}
@@ -195,21 +268,28 @@ export default function ToolSeoSections({
       {fullSeo?.examples && fullSeo.examples.length > 0 && (
         <Section id="examples" title="Input / Output Examples" asCard={false}>
           {fullSeo.examples.map((ex, i) => (
-            <div key={i} className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 space-y-2">
+            <div
+              key={i}
+              className="rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 space-y-2"
+            >
               <div>
                 <h3 className="text-xs font-semibold uppercase text-muted-foreground mb-1">Input</h3>
-                <pre className="text-sm whitespace-pre-wrap bg-muted/50 p-3 rounded-lg font-mono">{ex.input}</pre>
+                <pre className="text-sm whitespace-pre-wrap bg-muted/50 p-3 rounded-lg font-mono">
+                  {ex.input}
+                </pre>
               </div>
               <div>
                 <h3 className="text-xs font-semibold uppercase text-muted-foreground mb-1">Output</h3>
-                <pre className="text-sm whitespace-pre-wrap bg-muted/50 p-3 rounded-lg font-mono">{ex.output}</pre>
+                <pre className="text-sm whitespace-pre-wrap bg-muted/50 p-3 rounded-lg font-mono">
+                  {ex.output}
+                </pre>
               </div>
             </div>
           ))}
         </Section>
       )}
 
-      {/* 6. FAQ — semantic details/summary */}
+      {/* 6. FAQ */}
       <section
         id="faq"
         className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8"
@@ -238,11 +318,12 @@ export default function ToolSeoSections({
         </div>
       </section>
 
-      {/* 7. Related Guides + Related Tools — Next.js Link only */}
       {fullSeo?.testimonials && fullSeo.testimonials.length > 0 && (
         <section id="testimonials" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">What Users Say</h2>
-          <p className="text-sm text-muted-foreground mb-4">Feedback from people who use {conceptName} on FYN Tools.</p>
+          <p className="text-sm text-muted-foreground mb-4">
+            Feedback from people who use {conceptName} on FYN Tools.
+          </p>
           <ul className="grid md:grid-cols-2 gap-4 list-none p-0 m-0">
             {fullSeo.testimonials.map((t, i) => (
               <li
@@ -256,7 +337,9 @@ export default function ToolSeoSections({
                 <p className="text-sm text-foreground/90 mb-3">&ldquo;{t.text}&rdquo;</p>
                 <p className="text-sm font-semibold">
                   {t.name}
-                  {t.title ? <span className="text-muted-foreground font-normal"> · {t.title}</span> : null}
+                  {t.title ? (
+                    <span className="text-muted-foreground font-normal"> · {t.title}</span>
+                  ) : null}
                 </p>
               </li>
             ))}
@@ -285,7 +368,12 @@ export default function ToolSeoSections({
 
       {relatedTools.length > 0 && (
         <section id="related-tools" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
-          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">Related Tools</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">
+            Next steps — related tools
+          </h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Continue your workflow with these FYN Tools pages:
+          </p>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0">
             {relatedTools.map((t) => (
               <li key={t.href}>
@@ -306,8 +394,6 @@ export default function ToolSeoSections({
           </ul>
         </section>
       )}
-
-      {/* ——— Additional information-gain sections (after core hierarchy) ——— */}
 
       {displayFeatures.length > 0 && (
         <Section id="features" title="Key Features">
@@ -421,6 +507,51 @@ export default function ToolSeoSections({
           ))}
         </Section>
       )}
+
+      {/* E-E-A-T trust footer */}
+      <footer
+        id="trust"
+        className="mb-10 px-4 sm:px-6 md:px-8 max-w-3xl border-t border-zinc-200 dark:border-zinc-800 pt-8"
+      >
+        <h2 className="text-lg font-semibold tracking-tight mb-3">About this page</h2>
+        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-2">
+          {conceptName} is maintained by{' '}
+          {author ? (
+            <Link
+              href={`/author/${author.slug}`}
+              className="text-primary hover:underline font-medium"
+            >
+              {author.name}
+            </Link>
+          ) : (
+            'FYN Tools Worldwide'
+          )}
+          . See our{' '}
+          <Link href="/about" className="text-primary hover:underline">
+            about
+          </Link>{' '}
+          and{' '}
+          <Link href="/contact" className="text-primary hover:underline">
+            contact
+          </Link>{' '}
+          pages for ownership, editorial standards, and support.
+        </p>
+        {dateModified && (
+          <p className="text-sm text-muted-foreground">
+            <time dateTime={dateModified}>Last content update: {dateModified}</time>
+            {fullSeo?.datePublished && fullSeo.datePublished !== dateModified ? (
+              <>
+                {' '}
+                · Published <time dateTime={fullSeo.datePublished}>{fullSeo.datePublished}</time>
+              </>
+            ) : null}
+          </p>
+        )}
+        <p className="text-sm text-muted-foreground mt-2">
+          Prefer browser-side tools when handling sensitive drafts. Do not paste production secrets,
+          customer PII, or live API keys into online forms.
+        </p>
+      </footer>
     </div>
   );
 }

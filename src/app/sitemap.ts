@@ -8,7 +8,7 @@ import { SITE_URL } from '@/lib/seo/site';
 import { TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/tool-slugs.generated';
 
 /** Bump on content/CWV deploys so Google sees freshness. */
-const SITEMAP_LASTMOD = new Date('2026-07-28');
+const SITEMAP_LASTMOD = new Date('2026-08-05');
 
 /**
  * Paths from GSC “Crawled – currently not indexed” that need a stronger crawl signal.
@@ -41,6 +41,16 @@ const GSC_RECRAWL_PRIORITY = new Set([
   '/image-format-converter',
   '/image-metadata-viewer',
   '/ip-address-to-location-finder',
+  // Phase 0 shell deploy — keep Batch 1 URLs boosted for recrawl
+  '/word-counter',
+  '/password-generator',
+  '/qr-code-generator',
+  '/image-compressor',
+  '/bmi-calculator',
+  '/age-calculator',
+  '/regex-tester',
+  '/base64-converter',
+  '/unit-converter',
 ]);
 
 const HIGH_PRIORITY = new Set([

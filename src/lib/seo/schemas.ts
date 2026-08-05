@@ -127,7 +127,8 @@ export function softwareApplicationSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: WebApplication + Breadcrumb + FAQ + HowTo (when ≥3 steps).
+ * Tool JSON-LD: WebPage + SoftwareApplication + ConsumeAction + Breadcrumb
+ * + FAQ + HowTo (when visible). Prefer one coherent graph over thin duplicates.
  */
 export function buildToolJsonLd(opts: {
   title: string;
@@ -141,46 +142,104 @@ export function buildToolJsonLd(opts: {
   relatedTools?: { name: string; url: string }[];
   ratingValue?: number;
   ratingCount?: number;
+  datePublished?: string;
+  dateModified?: string;
+  authorUrl?: string;
+  authorName?: string;
 }): Record<string, unknown>[] {
   const toolUrl = absoluteUrl(`/${opts.slug}`);
+  const pageId = `${toolUrl}#webpage`;
+  const appId = `${toolUrl}#app`;
   const crumbs = buildToolBreadcrumbs(opts.title, `/${opts.slug}`, opts.category);
   const includeHowTo =
     opts.includeHowTo !== false && opts.howToSteps.length >= 3;
-  const schemas: Record<string, unknown>[] = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebApplication',
-      name: opts.title,
-      description: opts.description,
-      url: toolUrl,
-      applicationCategory: 'UtilityApplication',
-      operatingSystem: 'Any',
-      browserRequirements: 'Requires a modern browser with JavaScript',
-      offers: {
+  const published = opts.datePublished || opts.dateModified;
+  const modified = opts.dateModified || opts.datePublished;
+
+  const webPage: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': pageId,
+    url: toolUrl,
+    name: opts.title,
+    description: opts.description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': appId },
+    primaryImageOfPage: absoluteUrl('/opengraph-image'),
+    inLanguage: 'en-US',
+    isAccessibleForFree: true,
+    ...(published ? { datePublished: published } : {}),
+    ...(modified ? { dateModified: modified } : {}),
+    publisher: { '@id': ORG_ID },
+    ...(opts.authorUrl
+      ? {
+          author: {
+            '@type': 'Person',
+            name: opts.authorName || 'FYN Tools Editorial',
+            url: opts.authorUrl,
+          },
+        }
+      : { author: { '@id': ORG_ID } }),
+    potentialAction: {
+      '@type': 'ConsumeAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${toolUrl}#tool`,
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+      expectsAcceptanceOf: {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
       },
-      isAccessibleForFree: true,
-      provider: { '@id': ORG_ID },
-      ...(opts.features?.length
-        ? { featureList: opts.features.slice(0, 12).join(', ') }
-        : {}),
-      ...(opts.ratingValue
-        ? {
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: opts.ratingValue,
-              ratingCount: opts.ratingCount || 24,
-              bestRating: 5,
-              worstRating: 1,
-            },
-          }
-        : {}),
     },
+  };
+
+  const softwareApp: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': ['SoftwareApplication', 'WebApplication'],
+    '@id': appId,
+    name: opts.title,
+    description: opts.description,
+    url: toolUrl,
+    applicationCategory: 'UtilityApplication',
+    applicationSubCategory: opts.category,
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires a modern browser with JavaScript',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    isAccessibleForFree: true,
+    provider: { '@id': ORG_ID },
+    mainEntityOfPage: { '@id': pageId },
+    ...(opts.features?.length
+      ? { featureList: opts.features.slice(0, 12).join(', ') }
+      : {}),
+    ...(opts.ratingValue
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: opts.ratingValue,
+            ratingCount: opts.ratingCount || 24,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
+  };
+
+  const schemas: Record<string, unknown>[] = [
+    webPage,
+    softwareApp,
     breadcrumbSchema(crumbs),
   ];
+
   if (includeHowTo) {
     const howTo = howToSchema({
       name: opts.title,

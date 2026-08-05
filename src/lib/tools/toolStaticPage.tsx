@@ -21,7 +21,8 @@ export function buildToolPageMetadata(slug: string): Metadata {
     path: `/${slug}`,
     keywords: fullSeo?.keywords || tool.keywords,
     ogImageAlt: fullSeo?.ogTitle || tool.name,
-    modifiedTime: new Date().toISOString().slice(0, 10),
+    modifiedTime: fullSeo?.dateModified,
+    publishedTime: fullSeo?.datePublished,
   });
 }
 
@@ -42,6 +43,7 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
   const displayTitle = fullSeo?.h1 || tool.name;
   const displayDescription = fullSeo?.metaDescription || tool.description;
   const author = getAuthor(PRIMARY_AUTHOR_SLUG);
+  const authorUrl = author ? absoluteUrl(`/author/${author.slug}`) : undefined;
 
   const schemas = [
     ...buildToolJsonLd({
@@ -57,11 +59,15 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
         name: t.name,
         url: absoluteUrl(t.href),
       })),
+      datePublished: fullSeo?.datePublished,
+      dateModified: fullSeo?.dateModified,
+      authorUrl,
+      authorName: author?.name,
     }),
     author
       ? personSchema({
           name: author.name,
-          url: absoluteUrl(`/author/${author.slug}`),
+          url: authorUrl!,
           description: author.shortBio,
           jobTitle: author.role,
           image: author.avatar,

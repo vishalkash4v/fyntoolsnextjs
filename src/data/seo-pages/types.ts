@@ -30,6 +30,16 @@ export interface SeoRelatedTool {
   description?: string;
 }
 
+/** Visible input/output contract for E-E-A-T / GEO snippets */
+export interface SeoIoContract {
+  inputs: string;
+  outputs: string;
+  formats: string;
+  limits: string;
+  /** e.g. "Client-side (browser)" — must match real behavior */
+  processing: string;
+}
+
 export interface FullSeoPageContent {
   /** Unique SEO title (without site suffix) */
   title: string;
@@ -39,6 +49,16 @@ export interface FullSeoPageContent {
   h1: string;
   keywords: string[];
   canonicalPath: string;
+  /** 40–50 word GEO / AI Overview snippet under H1 */
+  tldr: string;
+  /** Truthful processing / privacy note (visible badge) */
+  processingNote: string;
+  /** Data input/output contract table rows */
+  ioContract: SeoIoContract;
+  /** ISO date YYYY-MM-DD — set when page content first published */
+  datePublished?: string;
+  /** ISO date YYYY-MM-DD — bump only when SEO body meaningfully changes */
+  dateModified?: string;
   /** Multi-paragraph introduction (rendered as shortIntro / what-is) */
   introParagraphs: string[];
   overview: string;

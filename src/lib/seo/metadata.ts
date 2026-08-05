@@ -113,6 +113,7 @@ export function buildPageMetadata({
     },
     other: {
       'application-name': 'FYN Tools Worldwide',
+      sitemap: absoluteUrl('/sitemap.xml'),
     },
   };
 }

@@ -17,6 +17,19 @@ const handTunedPremium: Record<string, PremiumPartial> = {
     h1: 'Free URL Shortener Online — Custom Links, UTM & QR',
     metaDescription:
       'Shorten long URLs free with custom aliases, UTM tracking, bulk shorten, QR codes, and click stats. No signup. Create trackable short links on FYN Tools.',
+    datePublished: '2024-01-15',
+    dateModified: '2026-08-05',
+    tldr:
+      'Paste a long URL, optionally add an alias, UTMs, expiry, or password, then create a fyntools.com/s/… link with QR and basic click stats — free, no account required.',
+    processingNote:
+      'Short-link creation stores the destination mapping on FYN Tools servers so /s/{code} can redirect. Do not shorten URLs that embed secrets in the query string.',
+    ioContract: {
+      inputs: 'One https URL, or up to 20 URLs (one per line) in bulk mode; optional alias, UTM fields, expiry, password',
+      outputs: 'Short link on fyntools.com/s/{code}, optional QR download, stats at /s/{code}/stats',
+      formats: 'http/https URLs; QR as downloadable image when offered',
+      limits: 'Abuse protection may throttle spammy bulk creates; aliases must be available',
+      processing: 'Server / API assisted (mapping stored for redirects)',
+    },
     keywords: [
       'url shortener',
       'free url shortener',
@@ -144,6 +157,12 @@ const handTunedPremium: Record<string, PremiumPartial> = {
       { name: 'URL Slug Generator', href: '/url-slug-generator', description: 'Build clean path segments for your own site' },
       { name: 'Social Deep Link Generator', href: '/social-media-deep-link-generator', description: 'App-aware open links with web fallback' },
       { name: 'JSON Formatter', href: '/json-formatter', description: 'Validate API payloads that power your campaigns' },
+      { name: 'Meta Tag Previewer', href: '/meta-tag-previewer', description: 'Check how link previews look before you share' },
+      { name: 'URL Encode / Decode', href: '/url-encode-decode', description: 'Fix query strings before shortening' },
+      { name: 'Hashtag Generator', href: '/hashtag-generator', description: 'Pair short links with campaign hashtags' },
+      { name: 'Barcode Generator', href: '/barcode-generator', description: 'Print-friendly codes for offline media' },
+      { name: 'Word Counter', href: '/word-counter', description: 'Trim social copy that wraps around your short link' },
+      { name: 'AI Text Rewriter', href: '/ai-text-rewriter', description: 'Rewrite CTA copy for the post that carries the link' },
     ],
     conclusion:
       'Use the free URL shortener above to create trackable, shareable links with the controls marketers actually need — aliases, UTMs, bulk, QR, expiry, and stats — then jump to related FYN Tools when your workflow moves to QR print or app deep links.',
@@ -158,6 +177,19 @@ const handTunedPremium: Record<string, PremiumPartial> = {
     h1: 'Free JSON Formatter, Validator & Beautifier',
     metaDescription:
       'Format, validate, beautify, and minify JSON online free. Catch syntax errors instantly, pretty-print for debugging, or compress for APIs. No signup on FYN Tools.',
+    datePublished: '2024-01-15',
+    dateModified: '2026-08-05',
+    tldr:
+      'Paste JSON, beautify or minify it, and validate syntax in your browser — free, no signup. Copy the result back into your editor or API client in seconds.',
+    processingNote:
+      'JSON formatting and validation run in your browser for this tool’s core transforms. Avoid pasting production secrets, private tokens, or regulated payloads into any online editor.',
+    ioContract: {
+      inputs: 'JSON text pasted or typed into the editor',
+      outputs: 'Pretty-printed, minified, or validated JSON with error messages when invalid',
+      formats: 'JSON text (objects, arrays, primitives)',
+      limits: 'Very large documents may lag in the browser; split huge logs when needed',
+      processing: 'Client-side (browser)',
+    },
     keywords: [
       'json formatter',
       'json validator',
@@ -261,8 +293,14 @@ const handTunedPremium: Record<string, PremiumPartial> = {
     relatedTools: [
       { name: 'HTML Formatter', href: '/html-formatter', description: 'Beautify HTML markup' },
       { name: 'JavaScript Minifier', href: '/javascript-minifier', description: 'Compress JS for production' },
+      { name: 'CSS Minifier', href: '/css-minifier', description: 'Compress stylesheets' },
       { name: 'Base64 Converter', href: '/base64-converter', description: 'Encode payloads for transport' },
       { name: 'JWT Decoder', href: '/jwt-decoder', description: 'Inspect JSON inside tokens' },
+      { name: 'JSON Validator', href: '/json-validator', description: 'Focused validation checks' },
+      { name: 'Regex Tester', href: '/regex-tester', description: 'Test patterns against sample strings' },
+      { name: 'Dummy API Generator', href: '/dummy-api-generator', description: 'Mock JSON responses for clients' },
+      { name: 'Table to JSON Converter', href: '/table-to-json-converter', description: 'Turn tables into JSON arrays' },
+      { name: 'URL Encode / Decode', href: '/url-encode-decode', description: 'Encode query values safely' },
     ],
     conclusion:
       'Use the formatter above to beautify, validate, or minify JSON in one pass — then continue with related developer tools on FYN Tools when your workflow moves to HTML, JS, or tokens.',
@@ -273,6 +311,19 @@ const handTunedPremium: Record<string, PremiumPartial> = {
     h1: 'Pregnancy Diet Planner — Trimester Foods, Nutrients & Safety',
     metaDescription:
       'Educational pregnancy diet planner with trimester meal ideas, key nutrients (folate, iron, calcium), foods to avoid, and medical disclaimers. Not a substitute for prenatal care.',
+    datePublished: '2025-06-01',
+    dateModified: '2026-08-05',
+    tldr:
+      'Pick a trimester for educational meal ideas, nutrient themes, and foods-to-avoid lists — then confirm everything with your prenatal clinician. Not medical advice.',
+    processingNote:
+      'Planner logic runs in your browser. Outputs are educational only — not a diagnosis, prescription, or substitute for prenatal care. Do not enter sensitive medical records you would not share publicly.',
+    ioContract: {
+      inputs: 'Trimester selection; optional weight and activity for a rough calorie estimate',
+      outputs: 'Educational meal ideas, nutrient cards, foods to avoid, optional PDF notes',
+      formats: 'On-screen guidance; PDF export when offered',
+      limits: 'Not personalized clinical nutrition; medical conditions require a clinician',
+      processing: 'Client-side (browser)',
+    },
     keywords: [
       'pregnancy diet planner',
       'pregnancy nutrition',
@@ -408,6 +459,36 @@ const handTunedPremium: Record<string, PremiumPartial> = {
         name: 'BMI Calculator',
         href: '/bmi-calculator',
         description: 'General BMI reference (not pregnancy-specific alone)',
+      },
+      {
+        name: 'Ovulation Calculator',
+        href: '/ovulation-calculator',
+        description: 'Educational fertile-window estimates',
+      },
+      {
+        name: 'Conception Date Calculator',
+        href: '/conception-date-calculator',
+        description: 'Explore conception timing themes',
+      },
+      {
+        name: 'Baby Kick Counter',
+        href: '/baby-kick-counter',
+        description: 'Track movement sessions (educational)',
+      },
+      {
+        name: 'Contraction Timer',
+        href: '/contraction-timer',
+        description: 'Time contraction intervals',
+      },
+      {
+        name: 'Period Tracker',
+        href: '/period-tracker',
+        description: 'Cycle logging for planning discussions',
+      },
+      {
+        name: 'Safe Days Calculator',
+        href: '/safe-days-calculator',
+        description: 'Educational cycle-day estimates',
       },
     ],
     conclusion:

@@ -7,8 +7,16 @@ import { pageOverrides } from '@/data/tool-content/pageOverrides';
 import { getPremiumToolSeo } from '@/data/tool-content/premiumToolSeo';
 import { getGuidesForTool } from '@/data/guides/guidesData';
 import { buildExamplesForTool, buildTestimonialsForTool } from '@/data/tool-content/socialProof';
+import {
+  defaultIoContract,
+  defaultProcessingNote,
+  defaultTldr,
+} from '@/data/tool-content/toolProcessingDefaults';
 
-function relatedToolsFallback(tool: Tool, limit = 6) {
+/** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
+export const SEO_SHELL_DATE = '2026-08-05';
+
+function relatedToolsFallback(tool: Tool, limit = 10) {
   const skip = new Set(['/enhanced-unit-converter', '/add-name-date-photo', tool.path]);
   const same = allTools.filter((t) => t.category === tool.category && !skip.has(t.path));
   const picked = same.slice(0, limit);
@@ -24,6 +32,24 @@ function relatedToolsFallback(tool: Tool, limit = 6) {
     href: t.path,
     description: t.description.slice(0, 110),
   }));
+}
+
+function ensureRelatedCount(
+  tools: { name: string; href: string; description?: string }[],
+  tool: Tool,
+  min = 8,
+  max = 12
+) {
+  if (tools.length >= min) return tools.slice(0, max);
+  const fallback = relatedToolsFallback(tool, max);
+  const seen = new Set(tools.map((t) => t.href));
+  for (const t of fallback) {
+    if (seen.has(t.href)) continue;
+    tools.push(t);
+    seen.add(t.href);
+    if (tools.length >= min) break;
+  }
+  return tools.slice(0, max);
 }
 
 function featureListFromTool(tool: Tool): string[] {
@@ -257,16 +283,18 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
             return [...base, ...filler].slice(0, Math.max(5, base.length));
           })();
 
-  const related =
+  const related = ensureRelatedCount(
     premium?.relatedTools?.length
-      ? premium.relatedTools
+      ? [...premium.relatedTools]
       : override?.relatedTools?.length
         ? override.relatedTools.map((t) => ({
             name: t.name,
             href: t.href,
             description: t.description,
           }))
-        : relatedToolsFallback(tool);
+        : relatedToolsFallback(tool),
+    tool
+  );
 
   const keywords = premium?.keywords?.length
     ? premium.keywords
@@ -280,12 +308,23 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     premium?.conclusion ||
     `${tool.name} covers the core job described here without forcing an account wall. Use the live tool above, then follow internal links when your workflow continues into another FYN Tools utility in ${tool.category}.`;
 
+  const tldr = premium?.tldr || defaultTldr(tool);
+  const processingNote = premium?.processingNote || defaultProcessingNote(tool);
+  const ioContract = premium?.ioContract || defaultIoContract(tool);
+  const datePublished = premium?.datePublished || SEO_SHELL_DATE;
+  const dateModified = premium?.dateModified || SEO_SHELL_DATE;
+
   return {
     title,
     metaDescription,
     h1,
     keywords,
     canonicalPath: path,
+    tldr,
+    processingNote,
+    ioContract,
+    datePublished,
+    dateModified,
     introParagraphs,
     overview,
     features: feats,
