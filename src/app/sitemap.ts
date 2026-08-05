@@ -60,6 +60,22 @@ const GSC_RECRAWL_PRIORITY = new Set([
   //  percentage-calculator, typing-test, image-resizer, meta-tag-previewer,
   //  text-to-speech, regex-tester, base64-converter already boosted above)
   '/jwt-decoder',
+  // Phase 1 Batch 3 — hand-tuned content deploy, boost for recrawl
+  // (text-reverser already boosted above)
+  '/text-case-converter',
+  '/ai-text-rewriter',
+  '/lorem-ipsum-generator',
+  '/whitespace-remover',
+  '/duplicate-line-remover',
+  '/text-to-handwriting',
+  '/discord-formatter',
+  '/hashtag-generator',
+  '/name-generator',
+  '/username-generator',
+  '/live-preview',
+  '/javascript-minifier',
+  '/css-minifier',
+  '/url-encode-decode',
 ]);
 
 const HIGH_PRIORITY = new Set([
