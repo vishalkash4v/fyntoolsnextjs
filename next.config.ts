@@ -57,6 +57,16 @@ const nextConfig: NextConfig = {
       { source: "/tools/:path+", destination: "/:path+", permanent: true },
       { source: "/qr-generator", destination: "/qr-code-generator", permanent: true },
       { source: "/color-picker", destination: "/color-picker-tool", permanent: true },
+      // Phase 1 Batch 4 — marketing aliases → canonical image/visual routes
+      { source: "/image-converter", destination: "/image-format-converter", permanent: true },
+      { source: "/image-filters", destination: "/blur-image", permanent: true },
+      { source: "/watermark-generator", destination: "/photo-annotation-tool", permanent: true },
+      { source: "/ico-converter", destination: "/logo-to-favicon", permanent: true },
+      { source: "/exif-data-remover", destination: "/image-metadata-viewer", permanent: true },
+      { source: "/aspect-ratio-calculator", destination: "/image-resizer", permanent: true },
+      { source: "/palette-generator", destination: "/color-palette-generator", permanent: true },
+      { source: "/favicon-generator", destination: "/logo-to-favicon", permanent: true },
+      { source: "/meme-generator", destination: "/photo-annotation-tool", permanent: true },
       {
         source: "/social-media-link-generator",
         destination: "/social-media-deep-link-generator",

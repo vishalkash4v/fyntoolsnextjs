@@ -76,6 +76,14 @@ const GSC_RECRAWL_PRIORITY = new Set([
   '/javascript-minifier',
   '/css-minifier',
   '/url-encode-decode',
+  // Phase 1 Batch 4 — hand-tuned content deploy, boost for recrawl
+  // (image-cropper, image-format-converter, svg-optimizer, gradient-generator,
+  //  placeholder-image-generator, blur-image, color-palette-generator,
+  //  color-picker-tool, photo-annotation-tool, logo-to-favicon,
+  //  image-metadata-viewer, image-resizer already boosted above)
+  '/pixelate-tool',
+  '/invert-image-colors',
+  '/background-remover',
 ]);
 
 const HIGH_PRIORITY = new Set([
