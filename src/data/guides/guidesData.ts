@@ -111,7 +111,7 @@ export const guides: Guide[] = [
     metaDescription:
       'Debug APIs faster with a JSON formatter: validate syntax, pretty-print payloads, minify for production. Free tool on FYN Tools.',
     publishedAt: '2026-07-18',
-    updatedAt: '2026-07-27',
+    updatedAt: '2026-08-05',
     authorSlug: PRIMARY_AUTHOR_SLUG,
     relatedTools: [
       { name: 'JSON Formatter', href: '/json-formatter', description: 'Format & validate JSON' },
@@ -146,6 +146,33 @@ export const guides: Guide[] = [
         paragraphs: [
           'Copy the body from DevTools, curl, or Postman into FYN Tools’ JSON Formatter, validate, then reformat. Pair with JWT Decoder when the payload is wrapped inside a token, or Base64 Converter when the transport layer encodes binary.',
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why does my JSON fail to parse even though it looks correct?',
+        answer:
+          'The most common invisible causes are single quotes instead of double quotes, a trailing comma after the last item, or an unquoted object key — all legal in JavaScript object literals but illegal in strict JSON.',
+      },
+      {
+        question: 'Should I validate before or after beautifying?',
+        answer:
+          'Validate first. Beautifying a document that already fails to parse only reformats whatever text you have — it does not fix or reveal the underlying syntax error the way a dedicated validation step does.',
+      },
+      {
+        question: 'When does minifying JSON actually matter for performance?',
+        answer:
+          'Minification helps most on high-frequency API responses, CDN-cached config files, and mobile clients where every kilobyte affects load time. For internal debugging or version-controlled config, keep the beautified version instead.',
+      },
+      {
+        question: 'How do I debug JSON nested inside a JWT or Base64 string?',
+        answer:
+          'Decode the outer layer first — use a JWT decoder for token payloads or a Base64 converter for encoded binary — then paste the resulting JSON text into a formatter to validate and beautify it.',
+      },
+      {
+        question: 'What is the fastest way to find a single broken field in a huge API response?',
+        answer:
+          'Beautify the full response first so nesting is visible, then search for the field name directly in the indented output rather than scanning a single unbroken line of minified text.',
       },
     ],
     conclusion:
