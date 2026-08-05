@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { blogPosts } from '@/data/blogsData';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/lib/seo/jsonld';
-import { articleSchema } from '@/lib/seo/schemas';
+import { articleSchema, faqPageSchema } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
 import { Badge } from '@/components/ui/badge';
 
@@ -37,20 +37,24 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const url = absoluteUrl(`/blog/${post.slug}`);
-  const schemas = articleSchema({
-    headline: post.title,
-    description: post.description,
-    url,
-    datePublished: post.publishDate,
-    dateModified: post.publishDate,
-    author: post.author || 'FYN Tools Worldwide',
-    image: post.imageUrl ? absoluteUrl(post.imageUrl) : undefined,
-    keywords: post.keywords?.length
-      ? post.keywords
-      : post.tags?.length
-        ? post.tags
-        : undefined,
-  });
+  const faqSchema = post.faqs?.length ? faqPageSchema(post.faqs) : null;
+  const schemas = [
+    ...articleSchema({
+      headline: post.title,
+      description: post.description,
+      url,
+      datePublished: post.publishDate,
+      dateModified: post.publishDate,
+      author: post.author || 'FYN Tools Worldwide',
+      image: post.imageUrl ? absoluteUrl(post.imageUrl) : undefined,
+      keywords: post.keywords?.length
+        ? post.keywords
+        : post.tags?.length
+          ? post.tags
+          : undefined,
+    }),
+    ...(faqSchema ? [faqSchema] : []),
+  ];
 
   const relatedTools =
     slug.includes('url-shortener')
@@ -95,6 +99,21 @@ export default async function BlogPostPage({ params }: Props) {
         className="prose dark:prose-invert max-w-none mb-12"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+      {post.faqs && post.faqs.length > 0 && (
+        <section className="mb-12" aria-labelledby="blog-faq-heading">
+          <h2 id="blog-faq-heading" className="text-xl font-bold mb-4">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-5">
+            {post.faqs.map((f) => (
+              <div key={f.question}>
+                <h3 className="font-medium text-foreground mb-1">{f.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{f.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
       <aside className="border-t pt-8">
         <h2 className="text-xl font-bold mb-4">Related Tools</h2>
         <div className="flex flex-wrap gap-2">

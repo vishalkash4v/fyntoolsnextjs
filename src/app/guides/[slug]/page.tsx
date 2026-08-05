@@ -7,6 +7,7 @@ import AdSenseUnit from '@/components/Ads/AdSenseUnit';
 import {
   guideArticleSchema,
   personSchema,
+  faqPageSchema,
 } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
 import { getGuide, guides } from '@/data/guides/guidesData';
@@ -62,6 +63,7 @@ export default async function GuideArticlePage({ params }: Props) {
           sameAs: author.sameAs,
         })
       : null,
+    guide.faqs?.length ? faqPageSchema(guide.faqs) : null,
   ].filter(Boolean) as object[];
 
   return (
@@ -136,6 +138,22 @@ export default async function GuideArticlePage({ params }: Props) {
           ))}
         </ul>
       </section>
+
+      {guide.faqs && guide.faqs.length > 0 && (
+        <section className="mb-10" aria-labelledby="guide-faq-heading">
+          <h2 id="guide-faq-heading" className="text-2xl font-semibold mb-4">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-5">
+            {guide.faqs.map((f) => (
+              <div key={f.question}>
+                <h3 className="font-medium text-foreground mb-1">{f.question}</h3>
+                <p className="text-foreground/90 leading-relaxed">{f.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <p className="text-foreground/90 leading-relaxed mb-10">{guide.conclusion}</p>
 

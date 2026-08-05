@@ -51,6 +51,10 @@ const GSC_RECRAWL_PRIORITY = new Set([
   '/regex-tester',
   '/base64-converter',
   '/unit-converter',
+  // Phase 1 Batch 1 — hand-tuned content deploy, boost for recrawl
+  '/url-shortener',
+  '/json-formatter',
+  '/barcode-generator',
 ]);
 
 const HIGH_PRIORITY = new Set([

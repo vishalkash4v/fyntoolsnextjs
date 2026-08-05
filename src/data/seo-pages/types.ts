@@ -91,3 +91,9 @@ export interface FullSeoPageContent {
   twitterTitle?: string;
   twitterDescription?: string;
 }
+
+/** Partial override shape used by hand-tuned premium content batches. */
+export type PremiumPartial = Partial<FullSeoPageContent> & {
+  /** Extra body paragraphs rendered after overview (information gain) */
+  deepParagraphs?: string[];
+};

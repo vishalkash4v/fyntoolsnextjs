@@ -1,3 +1,8 @@
+export interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -13,6 +18,7 @@ export interface BlogPost {
   metaTitle?: string;
   metaDescription?: string;
   keywords?: string[];
+  faqs?: BlogFaq[];
 }
 
 export const blogCategories = [
@@ -150,7 +156,34 @@ export const blogPosts: BlogPost[] = [
           </p>
         </div>
       </div>
-    `
+    `,
+    faqs: [
+      {
+        question: 'Do I need to install Express separately from Node.js?',
+        answer:
+          'Yes. Node.js only gives you the JavaScript runtime. Express is a separate framework you install with npm i express to add routing, middleware, and HTTP helpers on top of Node.',
+      },
+      {
+        question: 'What does npm init -y actually create?',
+        answer:
+          'It generates a package.json file with default values (name, version, entry point) without asking you to answer each prompt manually, which is what the -y flag skips.',
+      },
+      {
+        question: 'What is the difference between npx express-generator and manually setting up routes?',
+        answer:
+          'express-generator scaffolds a working folder structure (routes, views, public assets) automatically, while a manual setup means you create each file and wire up routing yourself from an empty project.',
+      },
+      {
+        question: 'Why do I need to run npm i after using express-generator?',
+        answer:
+          'The generator creates a package.json listing the dependencies your scaffolded app needs, but it does not download them — npm i reads that file and installs the actual packages into node_modules.',
+      },
+      {
+        question: 'How do I know my Node.js project setup worked?',
+        answer:
+          'Run npm start after installing dependencies. If the server starts without errors and you can reach it in a browser or with curl, your basic project setup is working.',
+      },
+    ],
   },
   {
     id: '2',
@@ -491,7 +524,34 @@ export const blogPosts: BlogPost[] = [
           </a>
         </div>
       </div>
-    `
+    `,
+    faqs: [
+      {
+        question: 'Which free URL shortener supports unlimited custom aliases?',
+        answer:
+          'FYN Tools allows custom aliases without a paid tier limit, while several competitors reserve custom aliases for paid plans or cap how many you can create for free.',
+      },
+      {
+        question: 'Do free URL shorteners include click analytics?',
+        answer:
+          'It varies by provider. Some free plans include only basic click counts, others omit analytics entirely until you upgrade. Check each tool’s free-tier limits before relying on analytics for a campaign.',
+      },
+      {
+        question: 'Can I generate a QR code from a shortened URL for free?',
+        answer:
+          'Several shorteners in this comparison, including FYN Tools, generate a QR code automatically from your short link at no cost, which is useful for print and packaging.',
+      },
+      {
+        question: 'Is a paid URL shortener plan worth it for a small business?',
+        answer:
+          'It depends on volume and features needed. If you only need custom aliases, basic analytics, and QR codes occasionally, a free tool can cover it; higher-volume teams needing advanced reporting or team seats may need a paid plan.',
+      },
+      {
+        question: 'What should I check before choosing a URL shortener?',
+        answer:
+          'Confirm whether custom aliases are free, whether click analytics are included, whether links expire automatically, and whether the shortener supports bulk creation if you manage many campaign links.',
+      },
+    ],
   },
   {
     id: '3',
@@ -571,7 +631,33 @@ export const blogPosts: BlogPost[] = [
           </a>
         </div>
       </div>
-    `
+    `,
+    faqs: [
+      {
+        question: 'How many writing styles does FYN Tools AI Rewriter offer?',
+        answer: 'Five: Professional, Casual, Creative, Academic, and Simple, each tuned for a different tone and audience.',
+      },
+      {
+        question: 'What does the creativity level control?',
+        answer:
+          'It is an adjustable scale from 1 to 10. Lower values keep rewrites closer to the original meaning and phrasing; higher values produce stronger variation in sentence structure and word choice.',
+      },
+      {
+        question: 'Can FYN Tools AI Rewriter guarantee my content passes AI detectors?',
+        answer:
+          'No honest rewriting tool can guarantee AI-detection outcomes. The realistic goal is publishing clear, factual, human-reviewed content rather than optimizing purely to beat a detector.',
+      },
+      {
+        question: 'What is the recommended workflow after rewriting content?',
+        answer:
+          'Rewrite the draft, check length and readability with Word Counter, standardize capitalization with Text Case Converter, remove messy spacing with Whitespace Remover, and generate a clean URL with URL Slug Generator before publishing.',
+      },
+      {
+        question: 'Who is the AI Text Rewriter built for?',
+        answer:
+          'Students, marketers, freelancers, founders, and support teams who need fast, practical rewrites for blog intros, ad copy, emails, captions, and product descriptions.',
+      },
+    ],
   }
 ];
 

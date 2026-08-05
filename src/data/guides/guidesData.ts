@@ -6,6 +6,8 @@ export type GuideSection = {
   bullets?: string[];
 };
 
+export type GuideFaq = { question: string; answer: string };
+
 export type Guide = {
   slug: string;
   title: string;
@@ -18,6 +20,7 @@ export type Guide = {
   keywords: string[];
   intro: string[];
   sections: GuideSection[];
+  faqs?: GuideFaq[];
   conclusion: string;
 };
 
@@ -30,7 +33,7 @@ export const guides: Guide[] = [
     metaDescription:
       'Learn URL shortener best practices: custom aliases, UTM tracking, expiration, QR codes, and safe sharing. Pair with FYN Tools free shortener.',
     publishedAt: '2026-07-20',
-    updatedAt: '2026-07-27',
+    updatedAt: '2026-08-05',
     authorSlug: PRIMARY_AUTHOR_SLUG,
     relatedTools: [
       { name: 'URL Shortener', href: '/url-shortener', description: 'Create trackable short links' },
@@ -68,6 +71,33 @@ export const guides: Guide[] = [
         paragraphs: [
           'Any shortener can hide a destination until resolve time. Disclose destinations when possible, and treat unknown short links carefully. On FYN Tools, redirects go to the URL you submitted—abuse filters still apply to protect the shared namespace.',
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Do custom aliases improve click-through rates?',
+        answer:
+          'Readable aliases (like /s/spring26) tend to build more trust than random codes because recipients can guess the destination before clicking, which matters most in print, packaging, and unfamiliar-brand contexts.',
+      },
+      {
+        question: 'Should I attach UTM parameters before or after shortening?',
+        answer:
+          'Before. UTM parameters need to be part of the destination URL when the short link is created — you cannot inject tracking parameters into a link after it already resolves to a fixed destination.',
+      },
+      {
+        question: 'When should a short link expire?',
+        answer:
+          'Set an expiry for flash sales, single events, or time-boxed promotions so old print material or expired posts stop resolving to a page that no longer exists. Evergreen content is usually left without an expiry.',
+      },
+      {
+        question: 'Is it safe to click an unfamiliar short link?',
+        answer:
+          'Treat unknown short links the way you would any unfamiliar URL — the destination is hidden until you resolve it. Prefer shorteners that show a brief interstitial or let you preview the destination before redirecting.',
+      },
+      {
+        question: 'Can I chain multiple shorteners together?',
+        answer:
+          'Avoid it. Each additional shortener in a redirect chain adds latency and increases the chance a spam filter or security scanner flags the link, since chained redirects are harder to audit than a single hop.',
       },
     ],
     conclusion:
@@ -166,7 +196,7 @@ export const guides: Guide[] = [
     metaDescription:
       'Build stronger passwords with length and uniqueness. Learn generator hygiene and use FYN Tools’ free Password Generator safely.',
     publishedAt: '2026-07-12',
-    updatedAt: '2026-07-27',
+    updatedAt: '2026-08-05',
     authorSlug: PRIMARY_AUTHOR_SLUG,
     relatedTools: [
       { name: 'Password Generator', href: '/password-generator', description: 'Create strong random passwords' },
@@ -193,6 +223,33 @@ export const guides: Guide[] = [
         paragraphs: [
           'A generator is not a vault. FYN Tools does not store generated passwords. Hash tools are for checksums—not for “encrypting” passwords you plan to reuse as login secrets.',
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is a longer password always stronger than one with more character types?',
+        answer:
+          'Length is generally the bigger lever. A longer password drawing from fewer character types can still outlast a short password that uses every available type, so raise length first, then add character variety if the site allows it.',
+      },
+      {
+        question: 'Can I trust a browser-based password generator?',
+        answer:
+          'Check that the tool generates and displays the password locally without transmitting it to a server, and that it does not store a history of what you generated. FYN Tools’ Password Generator does not save or log generated passwords.',
+      },
+      {
+        question: 'Should I email myself a generated password to save it?',
+        answer:
+          'No. Save it directly into a password manager instead. Emailing a password creates a plaintext copy sitting in your inbox indefinitely, which is a common way credentials leak later.',
+      },
+      {
+        question: 'Do I still need a password manager if I use a generator?',
+        answer:
+          'Yes. A generator creates a unique secret; a manager is what lets you actually use unique passwords everywhere without memorizing them or reusing one across accounts.',
+      },
+      {
+        question: 'What should I do immediately after a breach notification?',
+        answer:
+          'Generate a brand-new, unique password for the affected account (and any account where you reused the same or a similar password), update it in your manager, and enable multi-factor authentication if it is not already on.',
       },
     ],
     conclusion:
