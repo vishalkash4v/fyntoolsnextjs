@@ -3,7 +3,8 @@
  * Hand-tuned entries below override generated content for the same path.
  * Fleet content: `premium/generated.ts` (from `npm run generate-premium`).
  * Batch content: `batch1.ts` (Phase 1, Batch 1), `batch2.ts` (Phase 1, Batch 2),
- * `batch3.ts` (Phase 1, Batch 3), `batch4.ts` (Phase 1, Batch 4).
+ * `batch3.ts` (Phase 1, Batch 3), `batch4.ts` (Phase 1, Batch 4),
+ * `batch5.ts` (Phase 1, Batch 5).
  */
 import type { PremiumPartial } from '@/data/seo-pages/types';
 import { generatedPremiumToolSeo } from '@/data/tool-content/premium/generated';
@@ -11,6 +12,7 @@ import { batch1ToolSeo } from '@/data/tool-content/batch1';
 import { batch2ToolSeo } from '@/data/tool-content/batch2';
 import { batch3ToolSeo } from '@/data/tool-content/batch3';
 import { batch4ToolSeo } from '@/data/tool-content/batch4';
+import { batch5ToolSeo } from '@/data/tool-content/batch5';
 
 const handTunedPremium: Record<string, PremiumPartial> = {
   '/pregnancy-diet-planner': {
@@ -214,6 +216,7 @@ export const premiumToolSeo: Record<string, PremiumPartial> = {
   ...batch2ToolSeo,
   ...batch3ToolSeo,
   ...batch4ToolSeo,
+  ...batch5ToolSeo,
   ...handTunedPremium,
 };
 

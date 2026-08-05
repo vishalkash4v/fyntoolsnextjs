@@ -84,6 +84,17 @@ const GSC_RECRAWL_PRIORITY = new Set([
   '/pixelate-tool',
   '/invert-image-colors',
   '/background-remover',
+  // Phase 1 Batch 5 — hand-tuned content deploy, boost for recrawl
+  // (hash-generator, jwt-decoder, json-formatter, regex-tester, stopwatch,
+  //  ip-address-to-location-finder already boosted above)
+  '/qr-scanner',
+  '/random-number-generator',
+  '/timestamp-converter',
+  '/duplicate-line-remover',
+  '/url-encode-decode',
+  '/ip-lookup',
+  '/dummy-api-generator',
+  '/yes-no-generator',
 ]);
 
 const HIGH_PRIORITY = new Set([
