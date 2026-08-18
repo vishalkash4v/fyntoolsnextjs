@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/PregnancyDietPlanner"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads PregnancyDietPlanner, not the multi-tool registry. */

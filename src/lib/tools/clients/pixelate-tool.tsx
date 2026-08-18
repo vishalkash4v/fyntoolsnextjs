@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/PixelateTool"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads PixelateTool, not the multi-tool registry. */

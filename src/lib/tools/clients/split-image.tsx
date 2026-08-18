@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/SplitImage"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads SplitImage, not the multi-tool registry. */

@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/BlurImage"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads BlurImage, not the multi-tool registry. */

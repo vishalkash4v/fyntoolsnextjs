@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/InvoiceGenerator"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads InvoiceGenerator, not the multi-tool registry. */

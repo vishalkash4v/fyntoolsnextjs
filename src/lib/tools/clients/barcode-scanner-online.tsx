@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/BarcodeScanner"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads BarcodeScanner, not the multi-tool registry. */

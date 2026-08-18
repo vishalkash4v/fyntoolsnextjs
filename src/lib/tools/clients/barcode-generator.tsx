@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/BarcodeGenerator"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads BarcodeGenerator, not the multi-tool registry. */

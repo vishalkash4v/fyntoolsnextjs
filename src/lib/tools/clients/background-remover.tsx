@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/BackgroundRemover"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads BackgroundRemover, not the multi-tool registry. */

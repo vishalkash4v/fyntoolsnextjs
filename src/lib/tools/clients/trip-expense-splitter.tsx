@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/TripExpenseSplitter"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads TripExpenseSplitter, not the multi-tool registry. */

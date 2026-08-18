@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/PdfTextExtractor"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads PdfTextExtractor, not the multi-tool registry. */

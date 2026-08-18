@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageToText"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageToText, not the multi-tool registry. */

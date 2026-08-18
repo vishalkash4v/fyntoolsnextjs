@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ColorPickerTool"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ColorPickerTool, not the multi-tool registry. */

@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/PlaceholderImageGenerator"
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads PlaceholderImageGenerator, not the multi-tool registry. */

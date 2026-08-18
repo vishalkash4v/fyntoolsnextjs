@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/QRScanner"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads QRScanner, not the multi-tool registry. */

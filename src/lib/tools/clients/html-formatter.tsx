@@ -4,17 +4,7 @@
 import dynamic from "next/dynamic";
 
 const Tool = dynamic(() => import("@/components/tools/HtmlFormatter"), {
-  ssr: true,
-  loading: () => (
-    <div
-      className="w-full min-h-[420px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
-      aria-busy="true"
-      aria-label="Loading Html Formatter"
-      role="status"
-    >
-      Loading tool…
-    </div>
-  ),
+  ssr: true
 });
 
 /** Dedicated island — only loads HtmlFormatter, not the multi-tool registry. */

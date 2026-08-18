@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/SocialMediaDownloader"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads SocialMediaDownloader, not the multi-tool registry. */

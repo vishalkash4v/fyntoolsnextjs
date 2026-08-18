@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/TypingCompetition"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads TypingCompetition, not the multi-tool registry. */

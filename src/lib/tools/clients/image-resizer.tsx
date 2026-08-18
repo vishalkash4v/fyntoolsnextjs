@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageResizer"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageResizer, not the multi-tool registry. */

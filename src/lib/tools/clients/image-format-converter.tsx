@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageFormatConverter"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageFormatConverter, not the multi-tool registry. */

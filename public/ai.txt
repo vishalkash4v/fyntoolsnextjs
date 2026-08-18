@@ -3,7 +3,31 @@ Site: https://fyntools.com
 Description: Free online tools and calculators for productivity, design, development, finance, and daily use.
 Policy: Crawling and indexing allowed for AI assistants and search engines.
 Canonical Sitemap: https://fyntools.com/sitemap.xml
-Last Updated: 2026-07-22
+Last Updated: 2026-08-18
+Sitemap: https://fyntools.com/sitemap.xml (154 URLs — static, manually maintained)
+Robots: https://fyntools.com/robots.txt
+
+## Blog (indexable)
+https://fyntools.com/blog/know-my-next-period
+https://fyntools.com/blog/tinyurl-vs-bitly-vs-fyntools-best-url-shortener
+https://fyntools.com/blog/7-best-free-bitly-alternatives-in-2026-no-limits
+https://fyntools.com/blog/best-barcode-generator-2026-top-picks
+https://fyntools.com/blog/iphone-67w-charger-safe-for-iphone-2026-guide
+https://fyntools.com/blog/india-vs-nz-t20-wc-final-2026-our-pick
+https://fyntools.com/blog/fyn-tools-top-ai-rewriter-for-2026
+
+## Priority tools
+https://fyntools.com/period-calculator
+https://fyntools.com/ip-lookup
+https://fyntools.com/future-date-calculator
+https://fyntools.com/date-difference-calculator
+https://fyntools.com/barcode-generator
+https://fyntools.com/url-shortener
+https://fyntools.com/image-upscaler
+https://fyntools.com/word-counter
+https://fyntools.com/password-generator
+https://fyntools.com/yes-no-generator
+https://fyntools.com/whitespace-remover
 
 ## Core Pages
 https://fyntools.com/

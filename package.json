@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "generate-registry": "node scripts/generate-tool-registry.mjs",
+    "generate-sitemap": "node scripts/generate-static-sitemap.mjs",
     "generate-premium": "node scripts/generate-premium-batches.mjs",
     "generate-llms": "node scripts/generate-llms-txt.mjs",
     "check:registry": "node scripts/check-tool-registry.mjs",

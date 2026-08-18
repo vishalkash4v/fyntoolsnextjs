@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/SocialMediaDbViewer"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads SocialMediaDbViewer, not the multi-tool registry. */

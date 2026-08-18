@@ -76,7 +76,7 @@ Agent instructions: [https://fyntools.com/agent-instructions.md](https://fyntool
 - [QR Codes for Print & Packaging: Size, Error Correction & Short Links](https://fyntools.com/guides/qr-codes-for-print-and-packaging)
 - [Browser Privacy When Using Free Online Tools](https://fyntools.com/guides/browser-privacy-free-online-tools)
 
-## Full tool catalog (116)
+## Full tool catalog (114 canonical tools)
 
 - [Age Calculator](https://fyntools.com/age-calculator) — Calculate age from a birthdate.
 - [AI Text Rewriter](https://fyntools.com/ai-text-rewriter) — Rewrite your content to make it unique and avoid AI detection.
@@ -189,7 +189,7 @@ Agent instructions: [https://fyntools.com/agent-instructions.md](https://fyntool
 - [URL Slug Generator](https://fyntools.com/url-slug-generator) — Convert text into SEO-friendly URL slugs.
 - [Username Generator](https://fyntools.com/username-generator) — Create unique usernames for social media or gaming platforms.
 - [Weather Forecast](https://fyntools.com/weather-forecast) — Check the weather forecast for any location.
-- [What](https://fyntools.com/ip-lookup) — Find your public IP address and location information.
+- [IP Lookup (What's My IP)](https://fyntools.com/ip-lookup) — Find your public IP address and location information.
 - [Whitespace Remover](https://fyntools.com/whitespace-remover) — Remove extra spaces and tabs from your text.
 - [Word Counter](https://fyntools.com/word-counter) — Count words, characters, and paragraphs in your text.
 - [XML Sitemap Tester & Validator](https://fyntools.com/xml-sitemap-tester) — Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirect
@@ -202,4 +202,26 @@ Agent instructions: [https://fyntools.com/agent-instructions.md](https://fyntool
 - Public short links resolve under `/s/{code}` and are not for training as articles.
 - For product overview without the full catalog, see [ai.txt](https://fyntools.com/ai.txt).
 
-Last updated: 2026-07-30
+## Blog articles (7)
+
+- [Know My Next Period](https://fyntools.com/blog/know-my-next-period) — Period prediction guide with calendar method, symptom tracking, and free calculator tips.
+- [TinyURL vs Bitly vs FynTools: Best URL Shortener](https://fyntools.com/blog/tinyurl-vs-bitly-vs-fyntools-best-url-shortener) — Comparison of shortener features, pricing, and use cases.
+- [7 Best Free Bitly Alternatives in 2026 (No Limits)](https://fyntools.com/blog/7-best-free-bitly-alternatives-in-2026-no-limits) — Free link shorteners with custom aliases and analytics.
+- [Best Barcode Generator 2026: Top Picks](https://fyntools.com/blog/best-barcode-generator-2026-top-picks) — How to choose a barcode generator for retail and logistics.
+- [iPhone 67W Charger: Safe for iPhone? 2026 Guide](https://fyntools.com/blog/iphone-67w-charger-safe-for-iphone-2026-guide) — Fast charging safety and battery health.
+- [India vs NZ T20 WC Final 2026: Our Pick](https://fyntools.com/blog/india-vs-nz-t20-wc-final-2026-our-pick) — Cricket match analysis and highlights.
+- [FYN Tools: Top AI Rewriter for 2026](https://fyntools.com/blog/fyn-tools-top-ai-rewriter-for-2026) — AI text rewriting tool review.
+
+## Priority tools (high traffic / SEO focus)
+
+- [Period Calculator](https://fyntools.com/period-calculator) — Predict your next period date from cycle history.
+- [IP Lookup](https://fyntools.com/ip-lookup) — Auto-fetch your public IP address and geolocation.
+- [Future Date Calculator](https://fyntools.com/future-date-calculator) — Add or subtract days, weeks, months, or years from a date.
+- [Date Difference Calculator](https://fyntools.com/date-difference-calculator) — Calculate the span between two dates.
+- [Barcode Generator](https://fyntools.com/barcode-generator) — Code128, EAN-13, UPC-A, bulk labels, and print sheets.
+- [URL Shortener](https://fyntools.com/url-shortener) — Custom aliases, UTM builder, QR codes, and click stats.
+- [Image Upscaler](https://fyntools.com/image-upscaler) — Upscale and enhance image resolution in the browser.
+- [Yes/No Generator](https://fyntools.com/yes-no-generator) — Random yes or no answers for quick decisions.
+- [Whitespace Remover](https://fyntools.com/whitespace-remover) — Clean extra spaces and blank lines from text.
+
+Last updated: 2026-08-18

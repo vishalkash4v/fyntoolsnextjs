@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageCompressor"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageCompressor, not the multi-tool registry. */

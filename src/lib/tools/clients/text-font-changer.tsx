@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/TextFontChanger"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads TextFontChanger, not the multi-tool registry. */

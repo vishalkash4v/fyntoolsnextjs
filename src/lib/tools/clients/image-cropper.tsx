@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageCropper"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageCropper, not the multi-tool registry. */

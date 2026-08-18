@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageMetadataViewer"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageMetadataViewer, not the multi-tool registry. */

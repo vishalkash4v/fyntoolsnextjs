@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/MergeImages"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads MergeImages, not the multi-tool registry. */

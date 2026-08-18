@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/PhotoAnnotationTool"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads PhotoAnnotationTool, not the multi-tool registry. */

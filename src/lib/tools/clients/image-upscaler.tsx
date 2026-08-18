@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/ImageUpscaler"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads ImageUpscaler, not the multi-tool registry. */

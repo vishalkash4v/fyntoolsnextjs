@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/LogoToFavicon"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads LogoToFavicon, not the multi-tool registry. */

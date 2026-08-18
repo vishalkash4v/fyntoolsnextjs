@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/TypingGames"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads TypingGames, not the multi-tool registry. */

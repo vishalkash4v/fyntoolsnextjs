@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/WeatherForecast"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads WeatherForecast, not the multi-tool registry. */

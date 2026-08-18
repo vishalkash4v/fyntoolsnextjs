@@ -4,7 +4,26 @@
   "website": "https://fyntools.com",
   "llms": "https://fyntools.com/llms.txt",
   "sitemap": "https://fyntools.com/sitemap.xml",
+  "robots": "https://fyntools.com/robots.txt",
   "contact": "https://fyntools.com/contact",
+  "lastUpdated": "2026-08-18",
+  "indexablePages": 154,
+  "blockedPaths": ["/fyntoolsadmin/", "/api/", "/s/", "/themes", "/redirect", "/deep-link-redirect"],
+  "priorityPages": [
+    "https://fyntools.com/period-calculator",
+    "https://fyntools.com/ip-lookup",
+    "https://fyntools.com/future-date-calculator",
+    "https://fyntools.com/date-difference-calculator",
+    "https://fyntools.com/blog/know-my-next-period",
+    "https://fyntools.com/barcode-generator",
+    "https://fyntools.com/url-shortener",
+    "https://fyntools.com/image-upscaler",
+    "https://fyntools.com/word-counter",
+    "https://fyntools.com/password-generator",
+    "https://fyntools.com/yes-no-generator",
+    "https://fyntools.com/whitespace-remover",
+    "https://fyntools.com/blog/tinyurl-vs-bitly-vs-fyntools-best-url-shortener"
+  ],
   "actions": [
     {
       "id": "list-tools",
@@ -17,6 +36,16 @@
       "url": "https://fyntools.com/url-shortener"
     },
     {
+      "id": "period-calculator",
+      "description": "Predict next period date from cycle history",
+      "url": "https://fyntools.com/period-calculator"
+    },
+    {
+      "id": "ip-lookup",
+      "description": "Auto-fetch public IP address and geolocation",
+      "url": "https://fyntools.com/ip-lookup"
+    },
+    {
       "id": "format-json",
       "description": "Validate, beautify, or minify JSON",
       "url": "https://fyntools.com/json-formatter"
@@ -27,9 +56,9 @@
       "url": "https://fyntools.com/word-counter"
     },
     {
-      "id": "compress-image",
-      "description": "Compress JPG, PNG, or WebP images in the browser",
-      "url": "https://fyntools.com/image-compressor"
+      "id": "generate-barcode",
+      "description": "Generate 1D barcodes (Code128, EAN, UPC) with bulk print",
+      "url": "https://fyntools.com/barcode-generator"
     }
   ]
 }

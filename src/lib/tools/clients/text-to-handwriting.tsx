@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/TextToHandwriting"), {
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads TextToHandwriting, not the multi-tool registry. */

@@ -14,7 +14,7 @@ const Tool = dynamic(() => import("@/components/tools/IPAddressToLocationFinder"
     >
       Loading tool…
     </div>
-  ),
+  )
 });
 
 /** Dedicated island — only loads IPAddressToLocationFinder, not the multi-tool registry. */
