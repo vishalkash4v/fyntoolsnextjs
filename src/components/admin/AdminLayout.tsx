@@ -153,7 +153,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   const isActive = (path: string) => {
     if (path === '/fyntoolsadmin/blogs') {
-      return pathname === path || pathname.startsWith('/fyntoolsadmin/blogs/');
+      return pathname === path;
     }
     return pathname === path || pathname.startsWith(path + '/');
   };

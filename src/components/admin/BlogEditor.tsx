@@ -18,6 +18,7 @@ import ProfessionalRichTextEditor from '@/components/admin/ProfessionalRichTextE
 
 
 import { API_BASE_URL } from '@/lib/seo/site';
+import { assertAdminAuthorized, isAdminAuthError } from '@/utils/adminAuth';
 interface BlogEditorProps {
   blogId?: string;
 }
@@ -66,6 +67,7 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
         },
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) throw new Error('Failed to fetch blog');
 
       const data = await response.json();
@@ -89,8 +91,13 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
         setFocusKeyword(blog.focusKeyword || '');
         setCanonicalUrl(blog.canonicalUrl || '');
       }
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to load blog');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to load blog';
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
@@ -134,6 +141,7 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
         body: JSON.stringify(blogData),
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: 'Failed to save blog' }));
         throw new Error(errorData.error || 'Failed to save blog');
@@ -149,8 +157,13 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
       if (!blogId && data.data?._id) {
         router.push(`/fyntoolsadmin/blogs/edit/${data.data._id}`);
       }
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to save blog');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to save blog';
+      toast.error(message);
     } finally {
       setIsSaving(false);
     }
@@ -170,6 +183,7 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
         body: formData,
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) throw new Error('Failed to upload image');
 
       const data = await response.json();
@@ -177,8 +191,13 @@ const BlogEditor = ({ blogId }: BlogEditorProps) => {
         setFeaturedImage(data.data.url);
         toast.success('Image uploaded successfully');
       }
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to upload image');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to upload image';
+      toast.error(message);
     }
   };
 

@@ -14,6 +14,7 @@ import BlogEditor from '@/components/admin/BlogEditor';
 
 
 import { API_BASE_URL } from '@/lib/seo/site';
+import { assertAdminAuthorized, isAdminAuthError } from '@/utils/adminAuth';
 interface Blog {
   _id: string;
   title: string;
@@ -78,13 +79,19 @@ const AdminBlogsPage = ({ mode: propMode }: AdminBlogsPageProps) => {
         },
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) throw new Error('Failed to fetch blogs');
 
       const data = await response.json();
       setBlogs(data.data || []);
       setPagination(prev => ({ ...prev, ...data.pagination }));
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to load blogs');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to load blogs';
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
@@ -102,12 +109,18 @@ const AdminBlogsPage = ({ mode: propMode }: AdminBlogsPageProps) => {
         },
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) throw new Error('Failed to delete blog');
 
       toast.success('Blog deleted successfully');
       fetchBlogs();
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to delete blog');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to delete blog';
+      toast.error(message);
     }
   };
 
@@ -123,12 +136,18 @@ const AdminBlogsPage = ({ mode: propMode }: AdminBlogsPageProps) => {
         body: JSON.stringify({ status: newStatus }),
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) throw new Error('Failed to update status');
 
       toast.success('Status updated');
       fetchBlogs();
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to update status');
+    } catch (error: unknown) {
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to update status';
+      toast.error(message);
     }
   };
 

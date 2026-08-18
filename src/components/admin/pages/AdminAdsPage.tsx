@@ -14,6 +14,7 @@ import {
 } from 'recharts';
 import { Loader2, MousePointerClick, Users, RefreshCw } from 'lucide-react';
 import { API_BASE_URL } from '@/lib/seo/site';
+import { assertAdminAuthorized, isAdminAuthError } from '@/utils/adminAuth';
 import { Button } from '@/components/ui/button';
 
 type DailyPoint = { date: string; clicks: number };
@@ -70,6 +71,7 @@ export default function AdminAdsPage() {
         `${API_BASE_URL}/ads/admin/stats?campaignId=namezivo&days=${days}`,
         { headers }
       );
+      assertAdminAuthorized(res);
       const json = await res.json();
       if (!res.ok || !json.success) {
         throw new Error(json.error || 'Failed to load stats');
@@ -77,6 +79,10 @@ export default function AdminAdsPage() {
       setStats(json.data);
     } catch (e) {
       console.error(e);
+      if (isAdminAuthError(e)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
       toast.error('Failed to load Namezivo ad stats');
       setStats(null);
     } finally {
@@ -93,6 +99,7 @@ export default function AdminAdsPage() {
         `${API_BASE_URL}/ads/admin/clicks?campaignId=namezivo&page=${page}&limit=50`,
         { headers }
       );
+      assertAdminAuthorized(res);
       const json = await res.json();
       if (!res.ok || !json.success) {
         throw new Error(json.error || 'Failed to load clicks');
@@ -102,6 +109,10 @@ export default function AdminAdsPage() {
       setTotal(json.data.total || 0);
     } catch (e) {
       console.error(e);
+      if (isAdminAuthError(e)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
       toast.error('Failed to load click log');
     } finally {
       setListLoading(false);

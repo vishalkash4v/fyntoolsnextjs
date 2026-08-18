@@ -155,7 +155,7 @@ export default function ToolSeoSections({
 
       {processingNote && (
         <div
-          className="mx-4 sm:mx-6 md:mx-8 mb-6 max-w-3xl"
+          className="mx-auto mb-6 max-w-3xl px-4 sm:px-6 md:px-8"
           role="status"
           aria-label="Privacy and processing note"
         >
@@ -511,7 +511,7 @@ export default function ToolSeoSections({
       {/* E-E-A-T trust footer */}
       <footer
         id="trust"
-        className="mb-10 px-4 sm:px-6 md:px-8 max-w-3xl border-t border-zinc-200 dark:border-zinc-800 pt-8"
+        className="mb-10 mx-auto px-4 sm:px-6 md:px-8 max-w-3xl border-t border-zinc-200 dark:border-zinc-800 pt-8"
       >
         <h2 className="text-lg font-semibold tracking-tight mb-3">About this page</h2>
         <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-2">

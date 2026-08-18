@@ -14,6 +14,7 @@ import { toast } from 'sonner';
 
 
 import { API_BASE_URL } from '@/lib/seo/site';
+import { assertAdminAuthorized, isAdminAuthError } from '@/utils/adminAuth';
 const blogTypes = [
   { value: 'how-to', label: 'How To Guide', description: 'Step-by-step instructional content' },
   { value: 'best', label: 'Best Of', description: 'Comparison and review of top options' },
@@ -81,6 +82,7 @@ const AIBlogGenerationPage = () => {
         }),
       });
 
+      assertAdminAuthorized(response);
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.error || 'Failed to generate blog');
@@ -94,9 +96,14 @@ const AIBlogGenerationPage = () => {
       } else {
         throw new Error(data.error || 'Failed to generate blog');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Generation error:', error);
-      toast.error(error.message || 'Failed to generate blog. Please try again.');
+      if (isAdminAuthError(error)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+      const message = error instanceof Error ? error.message : 'Failed to generate blog. Please try again.';
+      toast.error(message);
     } finally {
       setIsGenerating(false);
     }

@@ -2,8 +2,9 @@
  * Cached fetch for admin API - uses ETag to avoid re-downloading unchanged data
  */
 
+import { assertAdminAuthorized } from '@/utils/adminAuth';
+
 const cache = new Map<string, { etag: string; data: unknown; timestamp: number }>();
-const CACHE_TTL_MS = 60 * 1000; // 1 min in-memory fallback
 
 export async function cachedFetch<T>(
   url: string,
@@ -26,10 +27,23 @@ export async function cachedFetch<T>(
     return { data: cached.data as T, fromCache: true };
   }
 
-  const etag = res.headers.get('ETag');
-  const json = await res.json();
+  assertAdminAuthorized(res);
 
-  if (res.ok && etag && json?.success && json?.data) {
+  const json = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(
+      (json as { error?: string })?.error || `Request failed (${res.status})`
+    );
+  }
+
+  if (!json?.success) {
+    throw new Error((json as { error?: string })?.error || 'Request failed');
+  }
+
+  const etag = res.headers.get('ETag');
+
+  if (etag && json?.data !== undefined) {
     cache.set(cacheKey, {
       etag,
       data: json.data,

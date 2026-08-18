@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lock, Mail, Loader2, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { API_BASE_URL } from '@/lib/seo/site';
+import { getAdminToken } from '@/utils/adminAuth';
 
 const AdminLoginPage = () => {
   const [username, setUsername] = useState('');
@@ -18,6 +19,12 @@ const AdminLoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    if (getAdminToken()) {
+      router.replace('/fyntoolsadmin/dashboard');
+    }
+  }, [router]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

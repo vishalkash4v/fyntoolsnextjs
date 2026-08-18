@@ -21,6 +21,7 @@ import { useRouter } from 'next/navigation';
 import { AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import AdminDashboardSkeleton from '@/components/admin/AdminDashboardSkeleton';
 import { cachedFetch } from '@/utils/adminApi';
+import { isAdminAuthError } from '@/utils/adminAuth';
 
 
 
@@ -79,6 +80,10 @@ const AdminDashboardPage = () => {
       if (data) setAnalytics(data);
     } catch (err) {
       console.error(err);
+      if (isAdminAuthError(err)) {
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
       toast.error('Failed to load dashboard');
       setAnalytics(null);
     } finally {
