@@ -1,5 +1,6 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
+import ToolCrawlerFallback from '@/components/tools/ToolCrawlerFallback';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
 import NamezivoAdBanner from '@/components/Ads/NamezivoAdBanner';
 
@@ -49,6 +50,7 @@ export default function ToolPageShell({
               id="tool"
               className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
             >
+              <ToolCrawlerFallback slug={slug} />
               {toolClient}
             </section>
           }

@@ -5,19 +5,9 @@ import dynamic from "next/dynamic";
 
 const Tool = dynamic(() => import("@/components/tools/ImageToText"), {
   ssr: false,
-  loading: () => (
-    <div
-      className="w-full min-h-[560px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
-      aria-busy="true"
-      aria-label="Loading Image To Text"
-      role="status"
-    >
-      Loading tool…
-    </div>
-  )
 });
 
-/** Dedicated island — only loads ImageToText, not the multi-tool registry. */
+/** Client-only island — see ToolCrawlerFallback for crawler-visible HTML. */
 export default function ToolClient() {
   return (
     <div className="w-full min-h-[560px]" id="tool-interface">

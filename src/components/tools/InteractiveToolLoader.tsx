@@ -5,17 +5,6 @@ import dynamic from 'next/dynamic';
 import type { ComponentType } from 'react';
 import { isKnownToolSlug } from '@/lib/tools/tool-slugs.generated';
 
-const loadingFallback = (
-  <div
-    className="w-full min-h-[560px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-muted/30 animate-pulse flex items-center justify-center text-muted-foreground"
-    aria-busy="true"
-    aria-label="Loading tool"
-    role="status"
-  >
-    Loading tool…
-  </div>
-);
-
 /** Cache dynamic components so we never recreate them each render (that remounts forever). */
 const dynamicToolCache = new Map<string, ComponentType>();
 
@@ -30,8 +19,7 @@ function getCachedTool(slug: string): ComponentType | null {
   if (dynamicToolCache.has(slug)) return dynamicToolCache.get(slug)!;
 
   const Tool = dynamic(() => import(`@/lib/tools/clients/${slug}`), {
-    loading: () => loadingFallback,
-    ssr: false,
+    ssr: true,
   });
   dynamicToolCache.set(slug, Tool);
   return Tool;
