@@ -19,12 +19,24 @@ function hostnameHint(url: string): string {
   }
 }
 
-export default function ShortUrlRedirectClient({ code }: { code: string }) {
+export default function ShortUrlRedirectClient({
+  code,
+  initialPhase,
+  initialError,
+  skipResolve = false,
+}: {
+  code: string;
+  initialPhase?: 'password' | 'error';
+  initialError?: string;
+  skipResolve?: boolean;
+}) {
   const router = useRouter();
   const [pendingRedirect, setPendingRedirect] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(REDIRECT_SECONDS);
-  const [error, setError] = useState<string | null>(null);
-  const [phase, setPhase] = useState<'loading' | 'interstitial' | 'password' | 'error'>('loading');
+  const [error, setError] = useState<string | null>(initialError ?? null);
+  const [phase, setPhase] = useState<'loading' | 'interstitial' | 'password' | 'error'>(
+    initialPhase ?? 'loading'
+  );
   const [password, setPassword] = useState('');
   const [unlockError, setUnlockError] = useState<string | null>(null);
 
@@ -35,6 +47,7 @@ export default function ShortUrlRedirectClient({ code }: { code: string }) {
   }, []);
 
   useEffect(() => {
+    if (skipResolve) return;
     if (!code) {
       setError('Invalid short URL code');
       setPhase('error');

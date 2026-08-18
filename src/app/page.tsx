@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { allTools } from '@/data/toolsData';
 import { CATEGORY_HUBS } from '@/data/categoriesData';
-import { blogPosts } from '@/data/blogsData';
+import { fetchPublicBlogs } from '@/lib/blog/api';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { absoluteUrl } from '@/lib/seo/site';
@@ -44,10 +44,11 @@ const popularIds = [
   'url-encode-decode',
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
   const featured = featuredIds.map((id) => allTools.find((t) => t.id === id)).filter(Boolean);
   const popular = popularIds.map((id) => allTools.find((t) => t.id === id)).filter(Boolean);
-  const latestBlogs = blogPosts.slice(0, 4);
+  const { posts: dbBlogs } = await fetchPublicBlogs({ limit: 4 });
+  const latestBlogs = dbBlogs.slice(0, 4);
 
   const featuredList = featured
     .filter(Boolean)
@@ -211,11 +212,11 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-center mb-8">Latest Blogs</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {latestBlogs.map((b) => (
-                <Link key={b.slug} href={`/blog/${b.slug}`}>
+                <Link key={b._id || b.slug} href={`/blog/${b.slug}`}>
                   <Card className="h-full">
                     <CardHeader>
                       <CardTitle className="text-xl">{b.title}</CardTitle>
-                      <CardDescription>{b.description}</CardDescription>
+                      <CardDescription>{b.excerpt}</CardDescription>
                     </CardHeader>
                   </Card>
                 </Link>

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { allTools } from '@/data/toolsData';
 import { CATEGORY_HUBS } from '@/data/categoriesData';
-import { blogPosts } from '@/data/blogsData';
+import { fetchAllBlogSlugs } from '@/lib/blog/api';
 import { guides } from '@/data/guides/guidesData';
 import { authors } from '@/data/authors';
 import { SITE_URL } from '@/lib/seo/site';
@@ -127,7 +127,7 @@ const SKIP_SITEMAP = new Set([
  * Complete indexable sitemap — homepage, hubs, ALL live tools, guides, authors, blogs.
  * Excludes: themes, admin, short links, soft-duplicate aliases, query URLs.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: { path: string; priority: number; freq: 'daily' | 'weekly' }[] = [
     { path: '/', priority: 1.0, freq: 'daily' },
     { path: '/tools', priority: 0.95, freq: 'daily' },
@@ -150,6 +150,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: high || gscBoost ? 0.9 : 0.8,
       };
     });
+
+  let blogEntries: MetadataRoute.Sitemap = [];
+  try {
+    const slugs = await fetchAllBlogSlugs();
+    blogEntries = slugs.map((b) => ({
+      url: `${SITE_URL}/blog/${b.slug}`,
+      lastModified: new Date(b.publishDate),
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    }));
+  } catch {
+    blogEntries = [];
+  }
 
   return [
     ...staticRoutes.map((r) => ({
@@ -177,11 +190,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),
-    ...blogPosts.map((b) => ({
-      url: `${SITE_URL}/blog/${b.slug}`,
-      lastModified: new Date(b.publishDate),
-      changeFrequency: 'monthly' as const,
-      priority: 0.65,
-    })),
+    ...blogEntries,
   ];
 }
