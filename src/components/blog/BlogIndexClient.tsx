@@ -32,11 +32,10 @@ export default function BlogIndexClient({ initialPosts, categories: initialCateg
   const [categories, setCategories] = useState(initialCategories);
   const [loading, setLoading] = useState(false);
 
-  // Always refresh from DB on mount (matches old React Frontend)
+  // Always refresh from DB in background (keep SSR HTML visible for Google)
   useEffect(() => {
     let cancelled = false;
     const refresh = async () => {
-      setLoading(true);
       try {
         const [blogRes, cats] = await Promise.all([
           fetchPublicBlogsClient({ limit: 50 }),
@@ -47,8 +46,6 @@ export default function BlogIndexClient({ initialPosts, categories: initialCateg
         if (cats?.length) setCategories(cats);
       } catch {
         /* keep SSR seed */
-      } finally {
-        if (!cancelled) setLoading(false);
       }
     };
     refresh();

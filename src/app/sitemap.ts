@@ -8,7 +8,7 @@ import { SITE_URL } from '@/lib/seo/site';
 import { TOOL_CANONICAL_REDIRECTS } from '@/lib/tools/tool-slugs.generated';
 
 /** Bump on content/CWV deploys so Google sees freshness. */
-const SITEMAP_LASTMOD = new Date('2026-08-05');
+const SITEMAP_LASTMOD = new Date('2026-08-18');
 
 /**
  * Paths from GSC “Crawled – currently not indexed” that need a stronger crawl signal.

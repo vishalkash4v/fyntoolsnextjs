@@ -1,19 +1,32 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { articleSchema, faqPageSchema } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
 import {
+  fetchAllBlogSlugs,
   fetchPublicBlogBySlug,
+  fetchRelatedBlogs,
   normalizeBlogKeywords,
   resolveBlogImageUrl,
 } from '@/lib/blog/api';
-import BlogPostClient from '@/components/blog/BlogPostClient';
+import BlogPostView from '@/components/blog/BlogPostView';
+import BlogViewTracker from '@/components/blog/BlogViewTracker';
 
 type Props = { params: Promise<{ slug: string }> };
 
 export const revalidate = 60;
 export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const slugs = await fetchAllBlogSlugs();
+    return slugs.map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -39,33 +52,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await fetchPublicBlogBySlug(slug);
+  const [post, relatedBlogs] = await Promise.all([
+    fetchPublicBlogBySlug(slug),
+    fetchRelatedBlogs(slug, 3),
+  ]);
 
-  const schemas = post
-    ? (() => {
-        const url = absoluteUrl(`/blog/${post.slug}`);
-        const image = resolveBlogImageUrl(post.ogImage || post.featuredImage);
-        const faqSchema = post.faqs?.length ? faqPageSchema(post.faqs) : null;
-        return [
-          ...articleSchema({
-            headline: post.title,
-            description: post.metaDescription || post.excerpt,
-            url,
-            datePublished: post.publishDate,
-            dateModified: post.updatedAt || post.publishDate,
-            author: post.author?.name || post.author?.email || 'FYN Tools Worldwide',
-            image: image ? absoluteUrl(image) : undefined,
-            keywords: normalizeBlogKeywords(post.keywords, post.tags),
-          }),
-          ...(faqSchema ? [faqSchema] : []),
-        ];
-      })()
-    : [];
+  if (!post) notFound();
+
+  const url = absoluteUrl(`/blog/${post.slug}`);
+  const image = resolveBlogImageUrl(post.ogImage || post.featuredImage);
+  const faqSchema = post.faqs?.length ? faqPageSchema(post.faqs) : null;
+  const schemas = [
+    ...articleSchema({
+      headline: post.title,
+      description: post.metaDescription || post.excerpt,
+      url,
+      datePublished: post.publishDate,
+      dateModified: post.updatedAt || post.publishDate,
+      author: post.author?.name || post.author?.email || 'FYN Tools Worldwide',
+      image: image ? absoluteUrl(image) : undefined,
+      keywords: normalizeBlogKeywords(post.keywords, post.tags),
+    }),
+    ...(faqSchema ? [faqSchema] : []),
+  ];
 
   return (
     <>
-      {schemas.length > 0 && <JsonLd data={schemas} />}
-      <BlogPostClient slug={slug} initialPost={post} />
+      <JsonLd data={schemas} />
+      <BlogViewTracker blogId={post._id} slug={post.slug} title={post.title} />
+      <BlogPostView post={post} relatedBlogs={relatedBlogs} />
     </>
   );
 }

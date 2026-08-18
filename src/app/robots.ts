@@ -2,10 +2,9 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo/site';
 
 /**
- * Crawl budget + LLM discovery (2026).
- * - Block faceted/query URLs and non-content surfaces
- * - Allow all indexable tool/hub/guide/blog pages
- * - Point crawlers at sitemap + host (apex)
+ * Crawl budget + indexing policy.
+ * - BLOCK /s/* short links (user-generated, never index — GSC "Blocked by robots.txt" is intentional)
+ * - Allow tools, hubs, blogs, guides
  */
 export default function robots(): MetadataRoute.Robots {
   const disallow = [
@@ -14,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
     '/api/',
     '/redirect',
     '/deep-link-redirect',
-    '/s/',
+    '/s/', // all short URLs e.g. /s/ijP1MR — do not index
     '/themes',
     '/themes/',
   ];
