@@ -11,6 +11,7 @@ import {
   itemListSchema,
 } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
+import { resolveCategoryHub } from '@/lib/seo/categoryHubRedirects';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -22,30 +23,13 @@ export const metadata: Metadata = buildPageMetadata({
   keywords: 'online tools, free tools, fyntools, calculators, converters, image tools, text tools',
 });
 
-const CATEGORY_QUERY_REDIRECTS: Record<string, string> = {
-  'Period & Cycle Tools': '/period-cycle-tools',
-  'Image Tools': '/image-tools',
-  'Text & Writing Tools': '/text-tools',
-  'Development Tools': '/developer-tools',
-  'Network Tools': '/network-tools',
-  'Converter Tools': '/converter-tools',
-  'Finance Tools': '/finance-tools',
-  'Typing Tools': '/typing-tools',
-  'Pregnancy Tools': '/pregnancy-tools',
-  'Utility Tools': '/utility-tools',
-  'Timer Tools': '/timer-tools',
-  'Video & Social Media Tools': '/social-media-tools',
-  'Business Tools': '/business-tools',
-  'Number Tools': '/number-tools',
-};
-
 type Props = { searchParams: Promise<{ category?: string; search?: string }> };
 
 export default async function ToolsPage({ searchParams }: Props) {
   const sp = await searchParams;
   if (sp.category) {
     const decoded = decodeURIComponent(sp.category);
-    const dest = CATEGORY_QUERY_REDIRECTS[decoded] || categoryToHubPath(decoded);
+    const dest = resolveCategoryHub(decoded);
     if (dest) redirect(dest);
   }
 

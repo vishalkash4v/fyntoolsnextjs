@@ -1,5 +1,6 @@
 import { buildUniqueToolContent } from '@/data/tool-content/buildUniqueToolContent';
 import { allTools } from '@/data/toolsData';
+import { canonicalizeSeoContent } from '@/lib/seo/canonicalPaths';
 import type { FullSeoPageContent } from './types';
 
 export type { FullSeoPageContent } from './types';
@@ -20,7 +21,7 @@ export function getFullSeoPage(path: string): FullSeoPageContent | null {
     return null;
   }
 
-  const content = buildUniqueToolContent(tool);
+  const content = canonicalizeSeoContent(buildUniqueToolContent(tool));
   cache.set(normalized, content);
   return content;
 }

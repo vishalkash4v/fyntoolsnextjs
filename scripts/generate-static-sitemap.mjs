@@ -8,7 +8,34 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://fyntools.com';
-const LASTMOD = '2026-08-18';
+const LASTMOD = '2026-08-29';
+
+/** GSC "Crawled – currently not indexed" validation URLs (Aug 2024 crawl batch) */
+const GSC_RECRAWL = new Set([
+  '/logo-to-favicon',
+  '/ovulation-calculator',
+  '/html-formatter',
+  '/pms-symptom-tracker',
+  '/safe-days-calculator',
+  '/percentage-calculator',
+  '/json-validator',
+  '/typing-test',
+  '/url-slug-generator',
+  '/image-resizer',
+  '/xml-sitemap-tester',
+  '/meta-tag-previewer',
+  '/typing-games',
+  '/text-reverser',
+  '/period-tracker',
+  '/barcode-scanner-online',
+  '/pregnancy-weight-gain-calculator',
+  '/markdown-editor',
+  '/list-randomizer',
+  '/hash-generator',
+  '/image-format-converter',
+  '/baby-kick-counter',
+  '/unit-converter',
+]);
 
 const TOP = new Set([
   '/period-calculator',
@@ -126,7 +153,8 @@ for (const b of BLOGS) {
 for (const slug of TOOL_SLUGS) {
   if (SKIP.has(slug)) continue;
   const p = `/${slug}`;
-  add(p, TOP.has(p) ? 0.95 : 0.8, 'weekly');
+  const priority = TOP.has(p) || GSC_RECRAWL.has(p) ? 0.95 : 0.8;
+  add(p, priority, 'weekly', GSC_RECRAWL.has(p) ? LASTMOD : LASTMOD);
 }
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

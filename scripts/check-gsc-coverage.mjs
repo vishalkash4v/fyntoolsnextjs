@@ -83,6 +83,7 @@ const registrySlugs = extractRegistrySlugs(fs.readFileSync(registryPath, "utf8")
 const CANONICAL_REDIRECTS = {
   "/enhanced-unit-converter": "/unit-converter",
   "/add-name-date-photo": "/photo-annotation-tool",
+  "/pregnancy-weight-gain": "/pregnancy-weight-gain-calculator",
 };
 
 const TECHNICAL = new Set([

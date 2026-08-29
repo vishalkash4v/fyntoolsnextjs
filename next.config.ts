@@ -95,6 +95,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/pregnancy-weight-gain",
+        destination: "/pregnancy-weight-gain-calculator",
+        permanent: true,
+      },
+      {
         source: "/add-name-date-photo",
         destination: "/photo-annotation-tool",
         permanent: true,

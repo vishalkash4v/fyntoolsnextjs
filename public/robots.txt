@@ -1,5 +1,5 @@
 # FYN Tools Worldwide — https://fyntools.com
-# Last updated: 2026-08-18
+# Last updated: 2026-08-29
 # Sitemap: 154 indexable pages (tools, hubs, guides, blogs, core pages)
 # Intentionally blocked: admin, API, short links, themes, redirect helpers
 
