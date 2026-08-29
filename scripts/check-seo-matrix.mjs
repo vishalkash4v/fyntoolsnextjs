@@ -60,6 +60,8 @@ const sample = [
   "index.html",
   "word-counter.html",
   "json-formatter.html",
+  "baby-kick-counter.html",
+  "hash-generator.html",
   "image-tools.html",
   "about.html",
   "contact.html",
@@ -85,6 +87,14 @@ function findHtml(name) {
   return walk(serverApp);
 }
 
+// Reject templated extended copy in built HTML
+const TEMPLATE_PHRASES = [
+  "When you provide input",
+  "covers a need that comes up",
+  "bookmarked on my work laptop",
+  "Search intent for",
+];
+
 if (fs.existsSync(serverApp)) {
   for (const name of sample) {
     const file = findHtml(name);
@@ -102,6 +112,12 @@ if (fs.existsSync(serverApp)) {
     for (const [label, re] of checks) {
       if (!re.test(html)) {
         console.error(`Fail ${name}: missing ${label}`);
+        errors++;
+      }
+    }
+    for (const phrase of TEMPLATE_PHRASES) {
+      if (html.includes(phrase)) {
+        console.error(`Fail ${name}: templated phrase "${phrase}" in HTML`);
         errors++;
       }
     }

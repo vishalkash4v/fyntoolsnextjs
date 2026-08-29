@@ -1,15 +1,12 @@
 import { resolveToolPage } from '@/lib/tools/resolveToolPage';
-import { toolNeedsClientOnly } from '@/lib/tools/ssr-policy.generated';
 
 type Props = { slug: string };
 
 /**
- * Server-rendered tool preview for client-only islands (camera, heavy canvas).
- * Googlebot gets real text in #tool — not "Loading tool…".
+ * Server-rendered tool preview inside #tool for all pages.
+ * Interactive UI hydrates client-side — this block is what crawlers read in #tool.
  */
 export default function ToolCrawlerFallback({ slug }: Props) {
-  if (!toolNeedsClientOnly(slug)) return null;
-
   const resolved = resolveToolPage(slug);
   if (!resolved) return null;
 

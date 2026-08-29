@@ -7,7 +7,7 @@ const Tool = dynamic(() => import("@/components/tools/PregnancyDietPlanner"), {
   ssr: false,
 });
 
-/** Client-only island — see ToolCrawlerFallback for crawler-visible HTML. */
+/** Client-only island — crawlable HTML is in ToolCrawlerFallback (server). */
 export default function ToolClient() {
   return (
     <div className="w-full min-h-[560px]" id="tool-interface">

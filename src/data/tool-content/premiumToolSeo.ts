@@ -13,6 +13,7 @@ import { batch2ToolSeo } from '@/data/tool-content/batch2';
 import { batch3ToolSeo } from '@/data/tool-content/batch3';
 import { batch4ToolSeo } from '@/data/tool-content/batch4';
 import { batch5ToolSeo } from '@/data/tool-content/batch5';
+import { batch6ToolSeo } from '@/data/tool-content/batch6';
 
 const handTunedPremium: Record<string, PremiumPartial> = {
   '/pregnancy-diet-planner': {
@@ -217,6 +218,7 @@ export const premiumToolSeo: Record<string, PremiumPartial> = {
   ...batch3ToolSeo,
   ...batch4ToolSeo,
   ...batch5ToolSeo,
+  ...batch6ToolSeo,
   ...handTunedPremium,
 };
 

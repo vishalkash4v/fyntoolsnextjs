@@ -53,3 +53,25 @@ export function isGeneratedPremiumTemplate(premium: PremiumPartial | null | unde
 export function isFakeTestimonial(text: string): boolean {
   return containsMarker(text, FAKE_TESTIMONIAL_MARKERS);
 }
+
+const EXTENDED_TEMPLATE_MARKERS = [
+  'When you provide input',
+  'covers a need that comes up',
+  'would otherwise require a separate tool',
+  'aligned with common requirements',
+  'addresses a common requirement',
+  'as part of your regular workflow',
+  'without extra setup or configuration',
+  'reduces the steps needed to finish',
+  'Result: computed value based on the formula',
+];
+
+export function isTemplatedExtendedText(text: string): boolean {
+  return containsMarker(text, EXTENDED_TEMPLATE_MARKERS);
+}
+
+export function isTemplatedExtendedArray(items: string[] | undefined): boolean {
+  if (!items?.length) return false;
+  const blob = items.join(' ');
+  return isTemplatedExtendedText(blob);
+}

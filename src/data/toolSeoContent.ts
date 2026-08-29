@@ -5,6 +5,7 @@
  */
 
 import { allTools } from './toolsData';
+import { pageOverrides } from '@/data/tool-content/pageOverrides';
 
 export type UseCaseItem = { title: string; description: string };
 export type ToolExample = { input: string; output: string };
@@ -1323,6 +1324,48 @@ function generateExamples(tool: { name: string; description: string; category: s
   }
 
   if (toolType === 'calculator') {
+    if (id.includes('baby-kick') || id.includes('kick-counter')) {
+      return [{
+        input: 'First tap at 2:15 PM → 10 kicks recorded by 3:40 PM → Save Session',
+        output: 'Saved: 10 kicks in 1h 25m (start 2:15:03 PM, end 3:40:18 PM) — stored locally in browser',
+      }];
+    }
+    if (id.includes('ovulation')) {
+      return [{
+        input: 'Last period: March 1, 2025 | Cycle length: 28 days',
+        output: 'Estimated ovulation around March 15; fertile window roughly March 13–17 (± a few days)',
+      }];
+    }
+    if (id.includes('safe-days')) {
+      return [{
+        input: 'Last period: March 1 | Cycle: 28 days | Period length: 5 days',
+        output: 'Calendar marks likely fertile days (mid-cycle) vs lower-risk days — educational estimate only',
+      }];
+    }
+    if (id.includes('pms-symptom')) {
+      return [{
+        input: 'Log: headache (6/10), bloating (4/10), mood low — March 22',
+        output: 'Entry saved to local history with date and pain scale for pattern review',
+      }];
+    }
+    if (id.includes('period-tracker')) {
+      return [{
+        input: 'Log period start March 1, flow medium, mood tired, cramps mild',
+        output: 'Cycle entry saved; history chart updates with symptoms and flow for the month',
+      }];
+    }
+    if (id.includes('contraction')) {
+      return [{
+        input: 'Start timer at first contraction → Stop at end → Repeat for next',
+        output: 'Interval and duration logged; pattern table shows time between contractions',
+      }];
+    }
+    if (id.includes('pregnancy-weight')) {
+      return [{
+        input: 'Pre-pregnancy BMI: 22 | Current week: 24 | Weight today: 68 kg',
+        output: 'Weight gain vs recommended range for your BMI trimester — discuss with clinician',
+      }];
+    }
     if (id.includes('period-calculator') || (desc.includes('next period') && desc.includes('cycle'))) {
       return [
         {
@@ -1425,105 +1468,58 @@ function generateExamples(tool: { name: string; description: string; category: s
   }];
 }
 
-/** Use cases: 4–5 scenarios derived from the tool's actual features for uniqueness */
+/** Use cases: short scenario titles tied to the tool description */
 function generateUseCases(tool: { name: string; description: string; category: string; path?: string } | null, toolType: string): UseCaseItem[] {
   const name = tool?.name || 'This tool';
-  const purpose = (tool?.description || '').replace(/\.$/, '').toLowerCase();
+  const purpose = (tool?.description || '').replace(/\.$/, '');
   const id = (tool?.path || '').replace(/^\//, '');
-  const feats = getFeaturesForPath(tool?.path);
-  const h = Math.abs(pathHash(id));
 
-  if (feats.length >= 4) {
-    const step = Math.max(1, Math.floor(feats.length / 5));
-    const selected: string[] = [];
-    const used = new Set<number>();
-    for (let i = 0; selected.length < 5 && i < feats.length; i++) {
-      const idx = (h + i * step) % feats.length;
-      if (!used.has(idx)) { used.add(idx); selected.push(feats[idx]); }
-    }
-    for (let i = 0; selected.length < 4 && i < feats.length; i++) {
-      if (!used.has(i)) { used.add(i); selected.push(feats[i]); }
-    }
+  const PATH_CASES: Record<string, UseCaseItem[]> = {
+    'baby-kick-counter': [
+      { title: 'Daily kick count routine', description: 'Count to 10 kicks in a sitting and save the session time for your prenatal notes.' },
+      { title: 'Reduced movement check', description: 'Run a timed session when movement feels lower and share the timestamp log with your clinician.' },
+      { title: 'Third-trimester tracking', description: 'Build a local history of session dates and durations across the last weeks of pregnancy.' },
+    ],
+    'list-randomizer': [
+      { title: 'Fair name picking', description: 'Shuffle a list of names or teams so the order is random and unbiased.' },
+      { title: 'Playlist or queue order', description: 'Randomize song or task order before starting a session.' },
+      { title: 'Sample randomization', description: 'Reorder survey or test items to reduce order bias.' },
+    ],
+    'xml-sitemap-tester': [
+      { title: 'Pre-launch SEO audit', description: 'Validate a new sitemap before submitting it to Google Search Console.' },
+      { title: 'Broken URL cleanup', description: 'Find 404 or redirect chains in sitemap URLs after a migration.' },
+      { title: 'Performance spot-check', description: 'See which indexed URLs respond slowly before crawl budget is wasted.' },
+    ],
+  };
 
-    const descVariants = [
-      (f: string) => `${name} includes ${lcf(f)}, which is useful when this step is part of your regular workflow.`,
-      (f: string) => `With ${lcf(f)}, ${name} handles a step that would otherwise require a separate tool or manual work.`,
-      (f: string) => `${f} in ${name} covers a need that comes up when preparing or verifying output.`,
-      (f: string) => `${name} provides ${lcf(f)} as part of the operation, addressing a common requirement.`,
-      (f: string) => `When ${lcf(f)} is needed, ${name} has it built in so you can finish the task in one place.`,
-    ];
-
-    return selected.slice(0, 5).map((feat, i) => ({
-      title: feat,
-      description: descVariants[(h + i) % descVariants.length](feat),
-    }));
-  }
+  if (PATH_CASES[id]) return PATH_CASES[id];
 
   return [
-    { title: 'Completing the task', description: `${name} can ${purpose}, which is useful when this operation is needed.` },
-    { title: 'Quick results', description: `Get output from ${name} without installing separate software.` },
-    { title: 'Checking output', description: `Verify or adjust the result before using it in your project.` },
-    { title: 'Routine use', description: `Use ${name} when this operation comes up in your regular workflow.` },
+    { title: `Using ${name}`, description: `${purpose}.` },
+    { title: 'Browser-based workflow', description: `Open ${name} on any device without installing software.` },
+    { title: 'Copy or export results', description: 'Take the output into your document, chat, or app after verifying it.' },
   ];
 }
 
-/** When to use: 4 bullets derived from the tool's features for per-page uniqueness */
+/** When to use: plain-language bullets */
 function generateWhenToUse(tool: { name: string; description: string; category: string; path?: string } | null, toolType: string): string[] {
   const name = tool?.name || 'This tool';
   const purpose = (tool?.description || '').replace(/\.$/, '').toLowerCase();
-  const id = (tool?.path || '').replace(/^\//, '');
-  const feats = getFeaturesForPath(tool?.path);
-  const h = Math.abs(pathHash(id));
-
-  if (feats.length >= 4) {
-    const selected = [feats[0], feats[1], feats[2], feats[3]];
-    const wrappers = [
-      (f: string) => `You need ${lcf(f)} as part of your current task.`,
-      (f: string) => `Your workflow requires ${lcf(f)} and you want it handled in one step.`,
-      (f: string) => `You are looking for ${lcf(f)} without installing desktop software.`,
-      (f: string) => `${f} is needed and you want the result immediately.`,
-      (f: string) => `You want to use ${lcf(f)} alongside the main operation in ${name}.`,
-      (f: string) => `${f} is part of what you need and ${name} includes it.`,
-    ];
-    return selected.map((feat, i) => wrappers[(h + i) % wrappers.length](feat));
-  }
-
   return [
-    `You need to ${purpose} without installing software.`,
-    `You want quick results from ${name} for a one-off or repeated task.`,
-    `You are preparing or checking content before using it elsewhere.`,
-    `You need output that matches your requirements and can be copied or downloaded.`,
+    `You need to ${purpose} without installing an app.`,
+    `You want a free ${name.toLowerCase()} in the browser on phone or desktop.`,
+    `You will copy or save the result into another tool or document.`,
+    `You prefer local browser processing over uploading files to a server.`,
   ];
 }
 
-/** Tips: 3 feature-derived best practices unique to each tool */
+/** Tips: practical advice without feature-name stuffing */
 function generateTips(tool: { name: string; description: string; path?: string } | null, toolType: string): string[] {
   const name = tool?.name || 'This tool';
-  const id = (tool?.path || '').replace(/^\//, '');
-  const feats = getFeaturesForPath(tool?.path);
-  const h = Math.abs(pathHash(id));
-
-  if (feats.length >= 3) {
-    const mid = Math.floor(feats.length / 2);
-    const selected = [
-      feats[mid] || feats[0],
-      feats[mid + 1] || feats[1],
-      feats[mid + 2] || feats[2],
-    ];
-    const wrappers = [
-      (f: string) => `Use ${lcf(f)} to get the most precise result for your use case.`,
-      (f: string) => `Check the ${lcf(f)} setting before processing so the output matches your needs.`,
-      (f: string) => `${f} can be adjusted for different scenarios—try different settings if the first result is not ideal.`,
-      (f: string) => `Take advantage of ${lcf(f)} to save time on this step.`,
-      (f: string) => `Review the ${lcf(f)} option to make sure it fits your requirements.`,
-    ];
-    return selected.map((feat, i) => wrappers[(h + i) % wrappers.length](feat));
-  }
-
   return [
-    `Review the available options so you get the output you need from ${name}.`,
-    `Verify the result before using it elsewhere.`,
-    `Bookmark ${name} for quick access when you need it again.`,
+    `Read the field labels on ${name} before entering data — units and formats vary by tool.`,
+    `Verify the output once before sharing or publishing it elsewhere.`,
+    `Bookmark this page if you reuse ${name} weekly.`,
   ];
 }
 
@@ -1704,92 +1700,73 @@ function generateToolComparisons(tool: { name: string; description: string; path
   return comparisons;
 }
 
-/** How it works: uses tool-specific features to describe the mechanism */
+/** How it works: path-aware natural explanation — no generic feature wrappers */
 function generateHowItWorks(tool: { name: string; description: string; path: string } | null, toolType: string): string {
   const name = tool?.name || 'This tool';
-  const feats = getFeaturesForPath(tool?.path);
-  const h = Math.abs(pathHash(tool?.path || ''));
+  const id = (tool?.path || '').replace(/^\//, '');
+  const desc = (tool?.description || '').replace(/\.$/, '');
 
-  if (feats.length >= 3) {
-    const f0 = lcf(feats[0]);
-    const f1 = lcf(feats[1]);
-    const f2 = lcf(feats[2]);
-    const variants = [
-      `${name} processes your input and applies the operation. It uses ${f0} and ${f1} to produce the result. ${feats[2]} is applied as part of the process so the output is ready to use.\n\nAll processing runs in the browser. Your data is not sent to external servers.`,
-      `When you provide input, ${name} runs ${f0} and ${f1}. The output reflects these operations. ${feats[2]} is included so the result covers common requirements.\n\nProcessing happens locally in your browser. Nothing is uploaded or stored externally.`,
-      `${name} takes your input and applies ${f0}, ${f1}, and ${f2}. The result appears in the output area and can be copied or downloaded.\n\nEverything runs in the browser. Data stays on your device.`,
-    ];
-    return variants[h % variants.length];
+  const PATH_COPY: Record<string, string> = {
+    'baby-kick-counter':
+      'Tap the button each time you feel movement. The session timer starts on your first tap and keeps running until you save. Each session stores the kick count plus exact start and end timestamps in your browser\'s local storage — nothing is sent to a server.',
+    'ovulation-calculator':
+      'Enter your last period start date and typical cycle length. The calculator estimates ovulation day (often around mid-cycle) and highlights a fertile window a few days before and after that point. Results are educational — cycle length varies person to person.',
+    'safe-days-calculator':
+      'Based on your last period and cycle length, the tool marks calendar days into fertile and lower-risk ranges using a standard calendar-rhythm estimate. It shows pregnancy risk levels for planning discussions — not contraception advice.',
+    'period-tracker':
+      'Log period start/end dates, flow level, mood, and symptoms day by day. Entries save locally and build a history chart so you can spot patterns before a clinic visit or personal review.',
+    'pms-symptom-tracker':
+      'Select symptoms and rate pain on a scale each day. Logs accumulate in local history so you can review which days tend to cluster before your period.',
+    'list-randomizer':
+      'Paste a list with one item per line. The shuffle uses a random reorder in your browser and shows the new sequence instantly — copy it or run shuffle again for a different order.',
+    'xml-sitemap-tester':
+      'Paste your sitemap URL or XML. The tool fetches the file, parses loc entries, and checks each URL for HTTP status, redirects, and response time — surfacing broken or slow links for SEO fixes.',
+    'typing-games':
+      'Pick a game mode, then type the on-screen words or sentences before time runs out. Score, accuracy, and speed update live so you can practice keyboard skills through short game rounds.',
+    'barcode-scanner-online':
+      'Grant camera access or upload a photo. The scanner decodes EAN-13, UPC, Code 128, Code 39, and QR formats in the browser, then shows the raw value with copy and export options.',
+    'typing-test':
+      'Start a timed passage and type the highlighted text. When the timer ends, you see words per minute, accuracy, and error count — useful for benchmarking typing speed.',
+  };
+
+  if (PATH_COPY[id]) {
+    return `${PATH_COPY[id]}\n\nAll processing runs in your browser. Your data is not uploaded to FYN Tools servers unless the tool explicitly fetches an external URL (such as a sitemap check).`;
   }
 
-  return `${name} processes your input and shows the result. All processing runs in the browser—data is not sent to external servers.`;
+  if (toolType === 'image' || toolType === 'file') {
+    return `Upload your file using the control above. ${name} processes it in the browser and shows a preview plus a download when ready. Adjust settings before exporting if the tool exposes quality or size options.`;
+  }
+  if (toolType === 'text' || toolType === 'converter') {
+    return `Paste or type your input in the panel above. ${name} transforms it instantly and displays the result below — copy it or download when finished.`;
+  }
+  if (toolType === 'calculator') {
+    return `Enter the dates or numbers requested in the form. ${name} applies the formula immediately and shows the breakdown so you can verify units before copying or sharing results.`;
+  }
+  if (toolType === 'generator') {
+    return `Configure the options shown (length, format, or style), then generate. ${name} creates fresh output each run — copy or download the result for your project.`;
+  }
+
+  return `${name} ${desc.charAt(0).toLowerCase()}${desc.slice(1)}. Use the controls above; results appear on the page and stay in your browser unless you choose to export them.`;
 }
 
-/** Advantages: 4 feature-derived bullets unique to each tool */
+/** Advantages: concise capability bullets */
 function generateAdvantages(tool: { name: string; description: string; category: string; path?: string } | null, toolType: string): string[] {
   const name = tool?.name || 'This tool';
-  const feats = getFeaturesForPath((tool as any)?.path);
-  const h = Math.abs(pathHash((tool as any)?.path || ''));
-
-  if (feats.length >= 4) {
-    const start = Math.max(0, feats.length - 6);
-    const pool = feats.slice(start);
-    const selected: string[] = [];
-    const used = new Set<number>();
-    for (let i = 0; selected.length < 4 && i < pool.length; i++) {
-      const idx = (h + i * 2) % pool.length;
-      if (!used.has(idx)) { used.add(idx); selected.push(pool[idx]); }
-    }
-    for (let i = 0; selected.length < 4 && i < pool.length; i++) {
-      if (!used.has(i)) { used.add(i); selected.push(pool[i]); }
-    }
-
-    const wrappers = [
-      (f: string) => `${name} includes ${lcf(f)}, which reduces the steps needed to finish the task.`,
-      (f: string) => `${f} is available without extra setup or configuration.`,
-      (f: string) => `With ${lcf(f)}, the operation stays efficient and consistent.`,
-      (f: string) => `${f} keeps the output aligned with common requirements.`,
-      (f: string) => `${name} provides ${lcf(f)} as part of the workflow, not as a separate step.`,
-      (f: string) => `${f} saves time by handling a step that would otherwise be manual.`,
-    ];
-    return selected.slice(0, 4).map((feat, i) => wrappers[(h + i) % wrappers.length](feat));
-  }
-
-  const purpose = (tool?.description || '').replace(/\.$/, '').toLowerCase();
   return [
-    `${name} handles the operation so you get results without manual repetition.`,
-    `Input and output stay in the browser—nothing is sent to a server.`,
-    `${name} can ${purpose} on any device with a modern browser.`,
-    `Results can be copied or downloaded for immediate use.`,
+    `Free ${name.toLowerCase()} with no mandatory account`,
+    'Works on modern mobile and desktop browsers',
+    'Copy or download results from the page',
+    'Privacy-minded when processing can stay local',
   ];
 }
 
-/** Common mistakes: 3 feature-derived items unique to each tool */
+/** Common mistakes: practical pitfalls */
 function generateCommonMistakes(tool: { name: string; description: string; path: string } | null, toolType: string): string[] {
   const name = tool?.name || 'This tool';
-  const feats = getFeaturesForPath(tool?.path);
-  const h = Math.abs(pathHash(tool?.path || ''));
-
-  if (feats.length >= 3) {
-    const variants = [
-      [
-        `Skipping the ${lcf(feats[0])} setting before processing—check it first to get the right output.`,
-        `Not reviewing the result after using ${lcf(feats[1])}—always verify before copying or downloading.`,
-        `Assuming ${lcf(feats[2])} handles all edge cases—test with your specific input to confirm.`,
-      ],
-      [
-        `Ignoring the ${lcf(feats[0])} option, which can change the quality or format of the result.`,
-        `Forgetting to check ${lcf(feats[1])} before processing, which may lead to unexpected output.`,
-        `Using ${lcf(feats[2])} without verifying that it fits your particular requirements.`,
-      ],
-    ];
-    return variants[h % variants.length];
-  }
-
   return [
-    `Not reviewing ${name} options before processing—check settings first.`,
-    `Skipping the result preview before copying or downloading.`,
-    `Assuming the tool handles all edge cases—test with your specific input.`,
+    `Entering values in the wrong unit or format for ${name}.`,
+    `Sharing output without double-checking it against your source data.`,
+    `Expecting ${name} to replace professional advice where the topic is medical, legal, or financial.`,
   ];
 }
 
@@ -1811,16 +1788,22 @@ function generateRelatedSearches(tool: { name: string; path: string; keywords?: 
     `online ${slug}`,
   ].filter(Boolean);
 
-  const phrases = fromKeywords.length >= 5 ? fromKeywords.slice(0, 7) : [...fromKeywords, ...fallbacks].slice(0, 7);
+  const phrases = [...fromKeywords, ...fallbacks];
   const seen = new Set<string>();
+  const out: RelatedSearch[] = [];
 
-  return phrases.map(phrase => {
+  for (const phrase of phrases) {
     const normalized = phrase.toLowerCase().trim();
-    if (seen.has(normalized)) return { phrase: phrase.trim(), href: undefined };
+    if (!normalized || seen.has(normalized)) continue;
     seen.add(normalized);
-    const match = allTools.find(t => t.path !== tool?.path && t.name.toLowerCase() === normalized);
-    return { phrase: phrase.trim(), href: match?.path };
-  });
+    const match = allTools.find(
+      (t) => t.path !== tool?.path && t.name.toLowerCase() === normalized
+    );
+    out.push({ phrase: phrase.trim(), href: match?.path });
+    if (out.length >= 6) break;
+  }
+
+  return out;
 }
 
 function generateFallbackSeoContent(path: string): ToolSeoContent {
@@ -1853,8 +1836,11 @@ function generateFallbackSeoContent(path: string): ToolSeoContent {
   };
 }
 
-/** Extended SEO content (always generated from metadata, merged for curated tools) */
+/** Extended SEO content — skip auto-generated blocks when hand-tuned page overrides exist. */
 function getExtendedSeoContent(path: string): Partial<ToolSeoContent> {
+  if (pageOverrides[path]?.howToUse?.length || pageOverrides[path]?.faqs?.length) {
+    return {};
+  }
   const tool = allTools.find(t => t.path === path);
   const toolType = inferToolType(tool);
   const toolForGen = tool ? { name: tool.name, description: tool.description, category: tool.category, path: tool.path } : null;

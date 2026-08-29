@@ -1,11 +1,15 @@
 'use client';
 
-import UrlShortener from '@/components/tools/UrlShortener';
+import dynamic from 'next/dynamic';
 
-/** Direct import — form shell in SSR HTML; history/QR hydrate client-side. */
+const UrlShortener = dynamic(() => import('@/components/tools/UrlShortener'), {
+  ssr: false,
+});
+
+/** Client-only island — crawlable HTML in ToolCrawlerFallback. */
 export default function UrlShortenerClient() {
   return (
-    <div className="w-full min-h-[420px]" id="tool-interface">
+    <div className="w-full min-h-[560px]" id="tool-interface">
       <UrlShortener />
     </div>
   );

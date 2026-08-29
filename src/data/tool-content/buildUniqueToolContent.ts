@@ -12,7 +12,7 @@ import {
   defaultProcessingNote,
   defaultTldr,
 } from '@/data/tool-content/toolProcessingDefaults';
-import { isGeneratedPremiumTemplate, isFakeTestimonial } from '@/lib/seo/contentQuality';
+import { isGeneratedPremiumTemplate, isFakeTestimonial, isTemplatedExtendedText, isTemplatedExtendedArray } from '@/lib/seo/contentQuality';
 
 /** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
 export const SEO_SHELL_DATE = '2026-08-29';
@@ -27,6 +27,16 @@ function containsTemplatePhrase(text: string): boolean {
   ];
   const lower = text.toLowerCase();
   return markers.some((m) => lower.includes(m.toLowerCase()));
+}
+
+function pickCuratedText(primary: string | undefined, fallback: string): string {
+  if (primary && !isTemplatedExtendedText(primary)) return primary;
+  return fallback;
+}
+
+function pickCuratedList(primary: string[] | undefined, fallback: string[]): string[] {
+  if (primary?.length && !isTemplatedExtendedArray(primary)) return primary;
+  return fallback;
 }
 
 function relatedToolsFallback(tool: Tool, limit = 10) {
@@ -191,18 +201,18 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
   }
   if (usePremiumBody && premium?.deepParagraphs?.length) {
     introParagraphs.push(...premium.deepParagraphs);
-  } else if (curated?.howItWorks && introParagraphs.length < 3) {
+  } else if (curated?.howItWorks && introParagraphs.length < 3 && !isTemplatedExtendedText(curated.howItWorks)) {
     const extra = splitIntro(curated.howItWorks)[0];
     if (extra && !introParagraphs.includes(extra)) introParagraphs.push(extra);
   }
 
   const overview =
     (usePremiumBody && premium?.overview) ||
-    (curated?.howItWorks
-      ? curated.howItWorks.split(/\n\n+/)[0]?.trim()
-      : null) ||
     override?.introText?.split(/\n\n+/)[0]?.trim() ||
-    `${tool.name} runs in your browser on FYN Tools. ${tool.description} Use the panel above, then review examples and FAQs before you copy or export results.`;
+    pickCuratedText(
+      curated?.howItWorks?.split(/\n\n+/)[0]?.trim(),
+      `${tool.name} runs in your browser on FYN Tools. ${tool.description} Use the panel above, then review examples and FAQs before you copy or export results.`
+    );
 
   const howToUse =
     (usePremiumBody && premium?.howToUse?.length
@@ -211,25 +221,30 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     (override?.howToUse?.length ? override.howToUse : null) ||
     defaultHowTo(tool, feats);
 
+  const defaultUseCases = [
+    {
+      title: `${tool.category.replace(/ Tools$/, '')} workflow`,
+      description: `Use ${tool.name} when ${tool.description.charAt(0).toLowerCase()}${tool.description.slice(1)}`,
+    },
+    {
+      title: 'Quick verification before you publish',
+      description: `Run ${tool.name} once to sanity-check output, then continue in your doc, design file, or app.`,
+    },
+  ];
+
+  const curatedUseCases =
+    curated?.useCases?.length
+      ? curated.useCases
+          .filter((u) => !isTemplatedExtendedText(u.description))
+          .map((u) => ({ title: u.title, description: u.description }))
+      : [];
+
   const useCases =
-    (usePremiumBody && premium?.useCases?.length
-      ? premium.useCases
-      : null) ||
+    (usePremiumBody && premium?.useCases?.length ? premium.useCases : null) ||
     (override?.useCases?.length
       ? override.useCases.map((u) => ({ title: u.title, description: u.description }))
       : null) ||
-    (curated?.useCases?.length
-      ? curated.useCases.map((u) => ({ title: u.title, description: u.description }))
-      : [
-          {
-            title: `${tool.category.replace(/ Tools$/, '')} workflow`,
-            description: `Use ${tool.name} when ${tool.description.charAt(0).toLowerCase()}${tool.description.slice(1)}`,
-          },
-          {
-            title: 'Quick verification before you publish',
-            description: `Run ${tool.name} once to sanity-check output, then continue in your doc, design file, or app.`,
-          },
-        ]);
+    (curatedUseCases.length >= 2 ? curatedUseCases : defaultUseCases);
 
   const examples =
     (usePremiumBody && premium?.examples?.length
@@ -239,45 +254,55 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
       ? override.examples.map((e) => ({ input: e.input, output: e.output }))
       : null) ||
     (curated?.examples?.length
-      ? curated.examples.map((e) => ({ input: e.input, output: e.output }))
+      ? curated.examples
+          .filter((e) => !/50,000 \| Rate: 6%|Result: computed value based on the formula/.test(e.input + e.output))
+          .map((e) => ({ input: e.input, output: e.output }))
       : buildExamplesForTool(tool));
 
   const rawTestimonials = buildTestimonialsForTool(tool);
   const testimonials = rawTestimonials.filter((t) => !isFakeTestimonial(t.text));
 
-  const tips =
-    (usePremiumBody && premium?.tips?.length ? [...premium.tips] : null) ||
-    (override?.tips?.length ? [...override.tips] : null) ||
-    (curated?.tips?.length ? [...curated.tips] : [
+  const tips = pickCuratedList(
+    (usePremiumBody && premium?.tips?.length ? premium.tips : undefined) ||
+      (override?.tips?.length ? override.tips : undefined) ||
+      curated?.tips,
+    [
       `Double-check ${tool.name} output before sharing externally.`,
       `Bookmark ${tool.path} if you reuse this workflow weekly.`,
       `Pair with related ${tool.category.toLowerCase()} linked below when you need a follow-up step.`,
-    ]);
+    ]
+  );
 
-  const whenToUse =
-    (usePremiumBody && premium?.whenToUse?.length ? [...premium.whenToUse] : null) ||
-    (override?.whenToUse?.length ? [...override.whenToUse] : null) ||
-    (curated?.whenToUse?.length ? [...curated.whenToUse] : [
+  const whenToUse = pickCuratedList(
+    (usePremiumBody && premium?.whenToUse?.length ? premium.whenToUse : undefined) ||
+      (override?.whenToUse?.length ? override.whenToUse : undefined) ||
+      curated?.whenToUse,
+    [
       `When you need ${tool.name.toLowerCase()} without installing desktop software`,
       `When a quick browser check is enough before a deeper workflow`,
-    ]);
+    ]
+  );
 
-  const commonMistakes =
-    (usePremiumBody && premium?.commonMistakes?.length ? premium.commonMistakes : null) ||
-    (curated?.commonMistakes?.length ? curated.commonMistakes : [
+  const commonMistakes = pickCuratedList(
+    (usePremiumBody && premium?.commonMistakes?.length ? premium.commonMistakes : undefined) ||
+      curated?.commonMistakes,
+    [
       `Mismatching units or formats that ${tool.name} expects — read the field labels first.`,
       'Treating one run as final without sanity-checking edge cases.',
       'Skipping related tools when your workflow clearly needs a second step.',
-    ]);
+    ]
+  );
 
-  const advantages =
-    (usePremiumBody && premium?.advantages?.length ? premium.advantages : null) ||
-    (curated?.advantages?.length ? curated.advantages : feats.slice(0, 5));
+  const advantages = pickCuratedList(
+    (usePremiumBody && premium?.advantages?.length ? premium.advantages : undefined) ||
+      curated?.advantages,
+    feats.slice(0, 5)
+  );
 
-  const howItWorks =
-    (usePremiumBody && premium?.howItWorks) ||
-    curated?.howItWorks ||
-    `${tool.name} reads your input from the panel above, applies ${feats[0]?.toLowerCase() || 'its core logic'}, and shows a result you can copy or download. Options stay visible so you can iterate without reloading the page.`;
+  const howItWorks = pickCuratedText(
+    (usePremiumBody && premium?.howItWorks) || curated?.howItWorks,
+    `${tool.name} reads your input from the panel above, applies ${feats[0]?.toLowerCase() || 'its core logic'}, and shows a result you can copy or download. Options stay visible so you can iterate without reloading the page.`
+  );
 
   const benefits =
     (usePremiumBody && premium?.benefits?.length ? premium.benefits : null) || [
