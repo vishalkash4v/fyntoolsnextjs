@@ -3,6 +3,8 @@ import { getCategoryHubPath } from '@/utils/breadcrumbs';
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import ToolFeedbackLazy from '@/components/tools/ToolFeedbackLazy';
+import ToolRatingServer from '@/components/tools/ToolRatingServer';
+import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 
 type Faq = { question: string; answer: string };
 
@@ -14,6 +16,8 @@ type Props = {
   features: string[];
   faqs: Faq[];
   fullSeo?: FullSeoPageContent | null;
+  /** Live review stats from API (SSR) */
+  reviewStats?: ToolReviewStats | null;
   /** Canonical tool path e.g. /word-counter — used for review API */
   toolPath?: string;
   /** Client island rendered immediately below H1 (CLS-safe min-height expected) */
@@ -68,6 +72,7 @@ export default function ToolSeoSections({
   features,
   faqs,
   fullSeo,
+  reviewStats,
   toolPath,
   toolSlot,
 }: Props) {
@@ -317,6 +322,8 @@ export default function ToolSeoSections({
           ))}
         </div>
       </section>
+
+      <ToolRatingServer toolName={title} stats={reviewStats ?? null} />
 
       {fullSeo?.testimonials && fullSeo.testimonials.length > 0 && (
         <section id="testimonials" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">

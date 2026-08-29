@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { absoluteUrl } from '@/lib/seo/site';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
-import { buildToolJsonLd, personSchema } from '@/lib/seo/schemas';
+import { buildToolJsonLd, mergeJsonLdGraph, personSchema } from '@/lib/seo/schemas';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import { resolveToolPage } from '@/lib/tools/resolveToolPage';
+import { getToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolPageShell from '@/components/tools/ToolPageShell';
 
 /** Metadata for a statically generated tool route (parity with /url-shortener). */
@@ -35,7 +36,7 @@ type ToolStaticPageProps = {
  * Server shell shared by every dedicated tool route.
  * Matches /url-shortener: SchemaMarkup + personSchema + ToolPageShell + client island.
  */
-export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps) {
+export default async function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps) {
   const resolved = resolveToolPage(slug);
   if (!resolved) notFound();
 
@@ -44,8 +45,9 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
   const displayDescription = fullSeo?.metaDescription || tool.description;
   const author = getAuthor(PRIMARY_AUTHOR_SLUG);
   const authorUrl = author ? absoluteUrl(`/author/${author.slug}`) : undefined;
+  const reviewStats = await getToolReviewStats(tool.name, slug);
 
-  const schemas = [
+  const schemaParts = [
     ...buildToolJsonLd({
       title: displayTitle,
       description: displayDescription,
@@ -63,6 +65,8 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
       dateModified: fullSeo?.dateModified,
       authorUrl,
       authorName: author?.name,
+      ratingValue: reviewStats?.ratingValue,
+      ratingCount: reviewStats?.ratingCount,
     }),
     author
       ? personSchema({
@@ -74,11 +78,13 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
           sameAs: author.sameAs,
         })
       : null,
-  ].filter(Boolean) as object[];
+  ].filter(Boolean) as Record<string, unknown>[];
+
+  const schemaGraph = mergeJsonLdGraph(schemaParts);
 
   return (
     <>
-      <SchemaMarkup data={schemas} />
+      <SchemaMarkup data={schemaGraph} />
       <ToolPageShell
         slug={slug}
         title={tool.name}
@@ -88,6 +94,7 @@ export default function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps
         features={features}
         faqs={faqs}
         fullSeo={fullSeo}
+        reviewStats={reviewStats}
         toolClient={toolClient}
       />
     </>

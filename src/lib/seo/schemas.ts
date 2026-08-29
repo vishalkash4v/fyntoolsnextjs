@@ -446,3 +446,17 @@ export function guideArticleSchema(opts: {
   ]);
   return [article, crumbs];
 }
+
+/** Merge multiple JSON-LD objects into one readable @graph block for view source. */
+export function mergeJsonLdGraph(schemas: Record<string, unknown>[]): Record<string, unknown> {
+  const graph = schemas
+    .filter(Boolean)
+    .map((schema) => {
+      const { '@context': _ctx, ...rest } = schema;
+      return rest;
+    });
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  };
+}

@@ -1,4 +1,5 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
+import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import ToolCrawlerFallback from '@/components/tools/ToolCrawlerFallback';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
@@ -15,6 +16,7 @@ type Props = {
   features: string[];
   faqs: Faq[];
   fullSeo?: FullSeoPageContent | null;
+  reviewStats?: ToolReviewStats | null;
   /** Required dedicated client island — keeps InteractiveToolLoader out of this module. */
   toolClient: React.ReactNode;
 };
@@ -31,6 +33,7 @@ export default function ToolPageShell({
   features,
   faqs,
   fullSeo,
+  reviewStats,
   toolClient,
 }: Props) {
   return (
@@ -44,6 +47,7 @@ export default function ToolPageShell({
           features={features}
           faqs={faqs}
           fullSeo={fullSeo}
+          reviewStats={reviewStats}
           toolPath={`/${slug}`}
           toolSlot={
             <section

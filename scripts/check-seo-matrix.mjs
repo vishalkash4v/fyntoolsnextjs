@@ -132,7 +132,6 @@ if (!fs.existsSync(premiumGen)) {
     errors++;
   }
   let missingPremium = 0;
-  let missingTesti = 0;
   for (const slug of uniqueSlugs) {
     if (slug === "enhanced-unit-converter" || slug === "add-name-date-photo") continue;
     const key = `"/${slug}"`;
@@ -140,18 +139,16 @@ if (!fs.existsSync(premiumGen)) {
       missingPremium++;
       if (missingPremium <= 5) console.error("Missing premium:", slug);
     }
-    if (!testi.includes(key)) {
-      missingTesti++;
-      if (missingTesti <= 5) console.error("Missing testimonials:", slug);
-    }
   }
   if (missingPremium) {
     console.error(`Premium missing for ${missingPremium} tools`);
     errors += missingPremium > 10 ? 10 : missingPremium;
   }
-  if (missingTesti) {
-    console.error(`Testimonials missing for ${missingTesti} tools`);
-    errors += missingTesti > 10 ? 10 : missingTesti;
+
+  // Reject fake testimonial templates in generated files
+  if (testi.includes("bookmarked on my work laptop")) {
+    console.error("Fake testimonial templates detected in toolTestimonials.ts — remove auto-generated quotes");
+    errors++;
   }
 }
 
