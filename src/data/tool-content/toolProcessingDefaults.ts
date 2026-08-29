@@ -100,6 +100,12 @@ export function defaultIoContract(tool: Tool): SeoIoContract {
     outputs = 'WPM, accuracy, and session stats';
     formats = 'Live keyboard events in the browser';
     limits = 'Scores stay in the session unless the tool UI offers export.';
+  } else if (cat.includes('pregnancy') || cat.includes('period') || cat.includes('cycle')) {
+    inputs = 'Calendar dates (LMP, conception, or cycle start) and optional cycle length';
+    outputs = 'Estimated due date, week, fertile window, or logged symptoms';
+    formats = 'Date picker; local symptom logs where applicable';
+    limits =
+      'Educational calendar estimates only — not contraception, diagnosis, or emergency medical advice.';
   } else if (cat.includes('network')) {
     inputs = 'IP, hostname, or lookup query as shown';
     outputs = 'Lookup results from the configured data source';

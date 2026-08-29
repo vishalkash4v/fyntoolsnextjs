@@ -93,6 +93,12 @@ const TEMPLATE_PHRASES = [
   "covers a need that comes up",
   "bookmarked on my work laptop",
   "Search intent for",
+  "locate the input fields at the top of the page",
+  "Enter the values or upload the file your task requires",
+  "The interactive panel loads above this guide",
+  "Typical Pregnancy Due Date Calculator input",
+  "Copy-friendly output",
+  "Handle everyday pregnancy tools needs",
 ];
 
 if (fs.existsSync(serverApp)) {

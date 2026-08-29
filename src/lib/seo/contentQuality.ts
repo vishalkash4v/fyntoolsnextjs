@@ -66,6 +66,24 @@ const EXTENDED_TEMPLATE_MARKERS = [
   'Result: computed value based on the formula',
 ];
 
+/** Generic batch7 auto-copy — treat as non-premium so curated defaults win. */
+const WEAK_BATCH_MARKERS = [
+  'locate the input fields at the top of the page',
+  'Enter the values or upload the file your task requires',
+  'The interactive panel loads above this guide',
+  'is built for pregnancy tools tasks',
+  'is built for number tools tasks',
+  'is built for image tools tasks',
+  'Handle everyday pregnancy tools needs',
+  'Handle everyday number tools needs',
+  'Typical Pregnancy Due Date Calculator input',
+  'Interactive Pregnancy Due Date Calculator',
+  'Copy-friendly output',
+  'Open the tool above, enter your data, and copy results instantly',
+  'When you need calculate your',
+  'For saved history tools, export data before clearing browser storage',
+];
+
 export function isTemplatedExtendedText(text: string): boolean {
   return containsMarker(text, EXTENDED_TEMPLATE_MARKERS);
 }
@@ -74,4 +92,21 @@ export function isTemplatedExtendedArray(items: string[] | undefined): boolean {
   if (!items?.length) return false;
   const blob = items.join(' ');
   return isTemplatedExtendedText(blob);
+}
+
+/** True when batch7-style content is too generic for premium body merge. */
+export function isWeakBatchPremium(premium: PremiumPartial | null | undefined): boolean {
+  if (!premium) return false;
+  const blob = collectStrings({
+    tldr: premium.tldr,
+    intro: premium.introParagraphs,
+    howToUse: premium.howToUse,
+    useCases: premium.useCases,
+    examples: premium.examples,
+    features: premium.features,
+    faqs: premium.faqs,
+    ioContract: premium.ioContract,
+    conclusion: premium.conclusion,
+  });
+  return containsMarker(blob, WEAK_BATCH_MARKERS);
 }

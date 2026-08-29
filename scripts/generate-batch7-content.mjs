@@ -33,8 +33,16 @@ function extractTools(src) {
     const description = block.match(/description:\s*['"]([^'"]+)['"]/)?.[1];
     const category = block.match(/category:\s*['"]([^'"]+)['"]/)?.[1];
     const pathM = block.match(/path:\s*['"](\/[^'"]+)['"]/);
+    const features = block.match(/features:\s*['"]([^'"]+)['"]/)?.[1];
     if (!id || !name || !pathM) continue;
-    tools.push({ id, name, description: description || name, category: category || "Tools", path: pathM[1] });
+    tools.push({
+      id,
+      name,
+      description: description || name,
+      category: category || "Tools",
+      path: pathM[1],
+      features: features || "",
+    });
   }
   return tools;
 }
@@ -184,8 +192,64 @@ const SLUG = {
   "pregnancy-due-date-calculator": {
     title: "Pregnancy Due Date Calculator — EDD from LMP",
     h1: "Due Date Calculator — Estimated Delivery Date",
-    metaDescription: "Estimate baby due date from last period or conception date using Naegele-style calendar math. Free, educational, not medical advice.",
-    processingNote: "EDD is an estimate — only about 5% of babies arrive on the exact date. Confirm with prenatal care.",
+    metaDescription:
+      "Estimate baby due date from last period or conception date using Naegele-style calendar math. Free, educational, not medical advice.",
+    processingNote:
+      "EDD is an estimate — only about 5% of babies arrive on the exact date. Confirm with prenatal care.",
+    tldr:
+      "Choose LMP or conception date; the tool adds 280 days (LMP) or 266 days (conception) to show your estimated due date, current week (1–40), and trimester end dates.",
+    ioContract: {
+      inputs: "Last menstrual period (LMP) date OR conception date — toggle with the mode buttons",
+      outputs: "Estimated due date, current pregnancy week, trimester 1 and 2 end dates",
+      formats: "Calendar date picker",
+      limits: "Calendar estimate only — ultrasound dating may differ; not medical advice",
+      processing: "Client-side (browser)",
+    },
+    howToUse: [
+      "Tap Use Last Period (LMP) or Use Conception Date.",
+      "Pick the date from the calendar picker.",
+      "Read the estimated due date and current pregnancy week.",
+      "Note trimester 1 and 2 end dates for planning discussions.",
+      "Share the estimate with your prenatal clinician — they may adjust after ultrasound.",
+    ],
+    howItWorks:
+      "In LMP mode the tool adds 280 days to your last period start (Naegele rule). In conception mode it adds 266 days. It also calculates weeks pregnant from today and trimester boundary dates.",
+    examples: [
+      {
+        input: "LMP: January 15, 2026",
+        output: "Estimated due date ~October 22, 2026; current week shown from today's date",
+      },
+      {
+        input: "Conception date: April 1, 2026",
+        output: "Estimated due date ~December 22, 2026 (266-day method)",
+      },
+    ],
+    useCases: [
+      { title: "First prenatal visit prep", description: "Bring an LMP-based EDD to your booking appointment before ultrasound dating." },
+      { title: "Partner planning", description: "See trimester end dates when scheduling travel or leave." },
+      { title: "IVF or known conception", description: "Switch to conception mode when you know the transfer or conception date." },
+    ],
+    faqs: [
+      {
+        question: "How is due date calculated from LMP?",
+        answer: "The tool uses the common Naegele rule: first day of last period plus 280 days (40 weeks). Your clinician may adjust after ultrasound.",
+      },
+      {
+        question: "LMP vs conception mode — which should I use?",
+        answer: "Use LMP if that is what your provider asks for. Use conception if you know that date from IVF or ovulation tracking.",
+      },
+      {
+        question: "Is this due date exact?",
+        answer: "No — it is an estimate. Most babies are born within two weeks before or after the EDD. Follow your prenatal care team for clinical dating.",
+      },
+    ],
+    features: [
+      "LMP or conception date modes",
+      "280-day / 266-day calendar math",
+      "Current pregnancy week (1–40)",
+      "Trimester 1 and 2 end dates",
+      "Medical disclaimer on page",
+    ],
   },
   "pregnancy-weight-gain-calculator": {
     title: "Pregnancy Weight Gain Calculator — BMI Ranges",
@@ -593,6 +657,59 @@ function ioFor(tool, o) {
   };
 }
 
+function featuresFromTool(tool, o) {
+  if (o.features?.length) return o.features;
+  if (tool.features) {
+    return tool.features.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 8);
+  }
+  return [`${tool.name} in your browser`, "No signup required", "Mobile-friendly layout"];
+}
+
+function relatedToolsFor(tool) {
+  const skip = new Set(["/enhanced-unit-converter", "/add-name-date-photo", tool.path]);
+  return allTools
+    .filter((t) => t.category === tool.category && !skip.has(t.path))
+    .slice(0, 10)
+    .map((t) => ({ name: t.name, href: t.path, description: t.description.slice(0, 100) }));
+}
+
+function howToFor(tool, cat, slug, o) {
+  if (o.howToUse?.length) return o.howToUse;
+  if (slug === "pregnancy-week-calculator") {
+    return ["Enter the first day of your last menstrual period (LMP).", "Review gestational week and trimester.", "Compare with ultrasound at prenatal visits."];
+  }
+  if (slug === "contraction-timer") {
+    return ["Tap start when a contraction begins.", "Tap stop when it ends.", "Review duration and interval history."];
+  }
+  if (cat === "Pregnancy Tools" || cat === "Period & Cycle Tools") {
+    return [`Enter dates or symptoms in ${tool.name}.`, "Review the estimate or log.", "Confirm medical decisions with your clinician."];
+  }
+  if (cat === "Number Tools" || cat === "Finance Tools") {
+    return [`Enter amounts and rates in ${tool.name}.`, "Compare scenarios by changing inputs.", "Verify with your bank or advisor when needed."];
+  }
+  if (cat === "Image Tools") {
+    return ["Upload your image.", "Adjust settings and preview.", "Download the result."];
+  }
+  return [`Use the ${tool.name} form above.`, "Review the on-screen result.", "Copy or download for your workflow."];
+}
+
+function faqsFor(tool, cat, o) {
+  if (o.faqs?.length) return o.faqs;
+  const privacy =
+    cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
+      ? "Date math runs in your browser; logs may stay local only."
+      : "Core processing runs in your browser unless noted above.";
+  return [
+    { question: `How do I use ${tool.name}?`, answer: `${tool.description} See How to Use above.` },
+    { question: `Is ${tool.name} free?`, answer: "Yes — no account required on FYN Tools." },
+    { question: "Is my data uploaded?", answer: privacy },
+    {
+      question: cat.includes("Pregnancy") || cat.includes("Period") ? "Can this replace my doctor?" : "Are results exact?",
+      answer: cat.includes("Pregnancy") || cat.includes("Period") ? "No — educational only. Call your clinician for medical concerns." : "Planning estimates only — verify critical figures independently.",
+    },
+  ];
+}
+
 function buildEntry(slug) {
   const tool = bySlug[slug];
   if (!tool) throw new Error(`Missing tool: ${slug}`);
@@ -609,34 +726,34 @@ function buildEntry(slug) {
 
   const tldr =
     o.tldr ||
-    `${name} lets you ${desc.charAt(0).toLowerCase()}${desc.slice(1).replace(/\.$/, "")}. Open the tool above, enter your data, and copy results instantly in the browser.`;
+    `${name}: ${desc.replace(/\.$/, "")}. Free in your browser on FYN Tools — use the panel above for instant results.`;
 
   const processingNote = o.processingNote || processingFor(cat, slug);
   const ioContract = ioFor(tool, o);
 
   const intro1 =
     o.introParagraphs?.[0] ||
-    `${name} on FYN Tools is built for ${cat.toLowerCase()} tasks: ${desc} The interactive panel loads above this guide so you can try it immediately without creating an account.`;
+    `${name} on FYN Tools ${desc.charAt(0).toLowerCase()}${desc.slice(1)} Use the tool above — free, no account required.`;
 
   const intro2 =
     o.introParagraphs?.[1] ||
     (cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
-      ? "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+      ? "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       : cat === "Number Tools" || cat === "Finance Tools"
-        ? "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+        ? "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
         : cat === "Image Tools"
-          ? "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
-          : "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab.");
+          ? "Upload from your device; most image tools process locally in the browser."
+          : "Results update as you type. Bookmark this page if you reuse the workflow.");
 
   const howItWorks =
     o.howItWorks ||
     (cat === "Image Tools"
-      ? `Upload an image into ${name}; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.`
+      ? `${name} processes your upload in the browser and shows a preview you can download.`
       : cat === "Development Tools"
-        ? `${name} updates a live preview and CSS/code output as you change controls — copy the snippet into your project.`
+        ? `${name} updates live preview and code output as you adjust controls.`
         : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
-          ? `${name} applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.`
-          : `The ${name} form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.`);
+          ? `${name} applies calendar math or local logging from the dates you enter — educational only.`
+          : `${name} runs the formulas or conversions in the form and displays results immediately.`);
 
   const commonMistakes =
     o.commonMistakes ||
@@ -664,37 +781,26 @@ function buildEntry(slug) {
               "Using educational output as professional advice without verification",
             ]);
 
-  const howToUse = o.howToUse || [
-    `Open ${name} and locate the input fields at the top of the page.`,
-    "Enter the values or upload the file your task requires.",
-    "Review the live output — copy, download, or adjust inputs as needed.",
-    "Read the tips and FAQs below if you need examples or troubleshooting.",
-    "For saved history tools, export data before clearing browser storage.",
-  ];
+  const howToUse = howToFor(tool, cat, slug, o);
 
   const whenToUse = o.whenToUse || [
-    `When you need ${desc.toLowerCase().replace(/\.$/, "")} without installing software`,
-    `For quick ${cat.toLowerCase()} checks on mobile or desktop`,
-    "Before sharing results in a doc, ticket, or chat — copy from the tool",
-    "As a free alternative to one-off paid utilities for the same task",
+    `When you need to ${desc.toLowerCase().replace(/\.$/, "")}`,
+    `For ${cat.toLowerCase()} on mobile or desktop without installing an app`,
+    "Before a prenatal visit, tax filing, or project handoff — copy results you need",
   ];
 
   const useCases =
     o.useCases ||
     [
-      { title: "Personal use", description: `Handle everyday ${cat.toLowerCase()} needs in one browser tab.` },
-      { title: "Work & study", description: `Produce numbers, text, or files you can paste into reports and assignments.` },
-      { title: "Mobile quick check", description: "Responsive layout for phone browsers when you are away from desktop." },
+      { title: `${cat.replace(/ Tools$/, "")} workflow`, description: desc },
+      { title: "Quick browser check", description: `Use ${name} once, then continue in your doc or app.` },
     ];
 
   const examples =
     o.examples ||
-    [
-      {
-        input: `Typical ${name} input`,
-        output: "Instant on-screen result you can copy or download",
-      },
-    ];
+    (cat === "Number Tools" || cat === "Finance Tools"
+      ? [{ input: "Sample amounts in the labeled fields", output: "On-screen breakdown with totals" }]
+      : [{ input: "Your input in the form above", output: "Instant result shown below the controls" }]);
 
   const tips =
     o.tips ||
@@ -715,29 +821,11 @@ function buildEntry(slug) {
       "Clear how-to steps and FAQs on the same page",
     ];
 
-  const faqs =
-    o.faqs ||
-    [
-      {
-        question: `Is ${name} free?`,
-        answer: "Yes — core features on FYN Tools are free to use in your browser without an account.",
-      },
-      {
-        question: "Is my data uploaded?",
-        answer:
-          ioContract.processing.includes("Client-side")
-            ? "Core processing runs in your browser. Check the processing note above for any API-backed tools."
-            : "This tool may fetch public data from external services when you submit a URL or location.",
-      },
-      {
-        question: "Can I use this on mobile?",
-        answer: "Yes — the layout is responsive. Very large uploads may be slower on mobile networks.",
-      },
-    ];
+  const faqs = faqsFor(tool, cat, o);
 
   const conclusion =
     o.conclusion ||
-    `Use ${name} above for ${desc.toLowerCase().replace(/\.$/, "")}, then explore related ${cat} tools linked on this page when you need the next step in your workflow.`;
+    `Use ${name} above, then browse related ${cat.toLowerCase()} linked below.`;
 
   return {
     title,
@@ -765,8 +853,9 @@ function buildEntry(slug) {
     commonMistakes,
     advantages,
     benefits: o.benefits || advantages.slice(0, 3),
-    features: o.features || [`Interactive ${name}`, "Copy-friendly output", "No signup", "Mobile-friendly UI"],
+    features: featuresFromTool(tool, o),
     faqs,
+    relatedTools: relatedToolsFor(tool),
     conclusion,
   };
 }

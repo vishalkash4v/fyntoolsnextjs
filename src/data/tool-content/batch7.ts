@@ -10,7 +10,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "h1": "Add Name & Date on Photo — Passport Size",
       "metaDescription": "Overlay name and date on passport photos for online application forms. Browser-based editor with download — free.",
       "dateModified": "2026-08-29",
-      "tldr": "Add Name & Date on Photo lets you add name and date on passport photographs for online application forms. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Add Name & Date on Photo: Add name and date on passport photographs for online application forms. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Photo editing runs in your browser. Verify final dimensions against the official portal you are applying through.",
       "ioContract": {
           "inputs": "Passport photo upload, name text, date text, position/font size",
@@ -27,42 +27,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Add Name & Date on Photo on FYN Tools is built for image tools tasks: Add name and date on passport photographs for online application forms. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Add Name & Date on Photo on FYN Tools add name and date on passport photographs for online application forms. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Add name and date on passport photographs for online application forms.",
-      "howItWorks": "Upload an image into Add Name & Date on Photo; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Add Name & Date on Photo processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Add Name & Date on Photo and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need add name and date on passport photographs for online application forms without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to add name and date on passport photographs for online application forms",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Add name and date on passport photographs for online application forms."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Add Name & Date on Photo once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Add Name & Date on Photo input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -87,33 +80,91 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Add Name & Date on Photo",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Add name to photo",
+          "Add date to photo",
+          "Passport photo editor",
+          "Application form photos",
+          "Text overlay",
+          "Download edited photo"
       ],
       "faqs": [
           {
+              "question": "How do I use Add Name & Date on Photo?",
+              "answer": "Add name and date on passport photographs for online application forms. See How to Use above."
+          },
+          {
               "question": "Is Add Name & Date on Photo free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Add Name & Date on Photo above for add name and date on passport photographs for online application forms, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          }
+      ],
+      "conclusion": "Use Add Name & Date on Photo above, then browse related image tools linked below."
   },
   '/border-radius-generator': {
       "title": "Border Radius Generator — CSS Rounded Corners",
       "h1": "Border Radius Generator — Live CSS Preview",
       "metaDescription": "Drag sliders to build border-radius CSS with live preview. Copy one rule or four-corner syntax — free for web developers.",
       "dateModified": "2026-08-29",
-      "tldr": "Border Radius Generator lets you generate CSS border-radius properties for rounded corners. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Border Radius Generator: Generate CSS border-radius properties for rounded corners. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -130,36 +181,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Border Radius Generator on FYN Tools is built for development tools tasks: Generate CSS border-radius properties for rounded corners. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Border Radius Generator on FYN Tools generate CSS border-radius properties for rounded corners. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Generate CSS border-radius properties for rounded corners.",
       "howItWorks": "Adjust radius per corner or link all corners; the preview box and CSS output update together for copy-paste into your stylesheet.",
       "howToUse": [
-          "Open Border Radius Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Border Radius Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need generate css border-radius properties for rounded corners without installing software",
-          "For quick development tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to generate css border-radius properties for rounded corners",
+          "For development tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday development tools needs in one browser tab."
+              "title": "Development workflow",
+              "description": "Generate CSS border-radius properties for rounded corners."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Border Radius Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -190,33 +234,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Border Radius Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Generate border radius",
+          "Top left radius",
+          "Top right radius",
+          "Bottom left radius",
+          "Bottom right radius",
+          "Uniform radius",
+          "Individual corner control",
+          "Live preview"
       ],
       "faqs": [
           {
+              "question": "How do I use Border Radius Generator?",
+              "answer": "Generate CSS border-radius properties for rounded corners. See How to Use above."
+          },
+          {
               "question": "Is Border Radius Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Border Radius Generator above for generate css border-radius properties for rounded corners, then explore related Development Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "JSON Beautifier & Formatter",
+              "href": "/json-formatter",
+              "description": "Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool."
+          },
+          {
+              "name": "Hash Generator & Comparator",
+              "href": "/hash-generator",
+              "description": "Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify "
+          },
+          {
+              "name": "JWT Token Decoder",
+              "href": "/jwt-decoder",
+              "description": "Decode and parse JWT (JSON Web Token) headers, payloads, and signatures."
+          },
+          {
+              "name": "Meta Tag Previewer",
+              "href": "/meta-tag-previewer",
+              "description": "Preview how your website appears in search results and generate SEO meta tags."
+          },
+          {
+              "name": "Live HTML Previewer",
+              "href": "/live-preview",
+              "description": "Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code onli"
+          },
+          {
+              "name": "JavaScript Minifier",
+              "href": "/javascript-minifier",
+              "description": "Minify JavaScript code to reduce file size."
+          },
+          {
+              "name": "Table to JSON Converter",
+              "href": "/table-to-json-converter",
+              "description": "Convert HTML tables to JSON format."
+          },
+          {
+              "name": "XML Sitemap Tester & Validator",
+              "href": "/xml-sitemap-tester",
+              "description": "Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirect"
+          },
+          {
+              "name": "Box Shadow Generator",
+              "href": "/box-shadow-generator",
+              "description": "Create and customize CSS box-shadow effects for your web elements."
+          },
+          {
+              "name": "Button Generator",
+              "href": "/button-generator",
+              "description": "Design and generate CSS for custom buttons with various styles."
+          }
+      ],
+      "conclusion": "Use Border Radius Generator above, then browse related development tools linked below."
   },
   '/box-shadow-generator': {
       "title": "Box Shadow Generator — CSS Shadow Builder",
       "h1": "Box Shadow Generator — Visual CSS Shadows",
       "metaDescription": "Design CSS box-shadow with offset, blur, spread, and color. Live preview and copy-ready code — free dev tool.",
       "dateModified": "2026-08-29",
-      "tldr": "Box Shadow Generator lets you create and customize CSS box-shadow effects for your web elements. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Box Shadow Generator: Create and customize CSS box-shadow effects for your web elements. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -233,42 +337,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Box Shadow Generator on FYN Tools is built for development tools tasks: Create and customize CSS box-shadow effects for your web elements. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Box Shadow Generator on FYN Tools create and customize CSS box-shadow effects for your web elements. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Create and customize CSS box-shadow effects for your web elements.",
       "howItWorks": "Tweak shadow layers on the preview card; the tool outputs the full box-shadow declaration including inset shadows when enabled.",
       "howToUse": [
-          "Open Box Shadow Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Box Shadow Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need create and customize css box-shadow effects for your web elements without installing software",
-          "For quick development tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to create and customize css box-shadow effects for your web elements",
+          "For development tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday development tools needs in one browser tab."
+              "title": "Development workflow",
+              "description": "Create and customize CSS box-shadow effects for your web elements."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Box Shadow Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Box Shadow Generator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -293,33 +390,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Box Shadow Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Customize box shadow",
+          "X offset",
+          "Y offset",
+          "Blur radius",
+          "Spread radius",
+          "Shadow color",
+          "Multiple shadows",
+          "Live preview"
       ],
       "faqs": [
           {
+              "question": "How do I use Box Shadow Generator?",
+              "answer": "Create and customize CSS box-shadow effects for your web elements. See How to Use above."
+          },
+          {
               "question": "Is Box Shadow Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Box Shadow Generator above for create and customize css box-shadow effects for your web elements, then explore related Development Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "JSON Beautifier & Formatter",
+              "href": "/json-formatter",
+              "description": "Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool."
+          },
+          {
+              "name": "Hash Generator & Comparator",
+              "href": "/hash-generator",
+              "description": "Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify "
+          },
+          {
+              "name": "JWT Token Decoder",
+              "href": "/jwt-decoder",
+              "description": "Decode and parse JWT (JSON Web Token) headers, payloads, and signatures."
+          },
+          {
+              "name": "Meta Tag Previewer",
+              "href": "/meta-tag-previewer",
+              "description": "Preview how your website appears in search results and generate SEO meta tags."
+          },
+          {
+              "name": "Live HTML Previewer",
+              "href": "/live-preview",
+              "description": "Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code onli"
+          },
+          {
+              "name": "JavaScript Minifier",
+              "href": "/javascript-minifier",
+              "description": "Minify JavaScript code to reduce file size."
+          },
+          {
+              "name": "Table to JSON Converter",
+              "href": "/table-to-json-converter",
+              "description": "Convert HTML tables to JSON format."
+          },
+          {
+              "name": "XML Sitemap Tester & Validator",
+              "href": "/xml-sitemap-tester",
+              "description": "Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirect"
+          },
+          {
+              "name": "Border Radius Generator",
+              "href": "/border-radius-generator",
+              "description": "Generate CSS border-radius properties for rounded corners."
+          },
+          {
+              "name": "Button Generator",
+              "href": "/button-generator",
+              "description": "Design and generate CSS for custom buttons with various styles."
+          }
+      ],
+      "conclusion": "Use Box Shadow Generator above, then browse related development tools linked below."
   },
   '/business-idea-generator': {
       "title": "Business Idea Generator — Startup Prompts",
       "h1": "Business Idea Generator — Creative Ideas",
       "metaDescription": "Generate business ideas from your interests, skills, and market preferences. Brainstorming aid — free.",
       "dateModified": "2026-08-29",
-      "tldr": "Business Idea Generator lets you generate creative business ideas based on your preferences. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Business Idea Generator: Generate creative business ideas based on your preferences. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -336,42 +493,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Business Idea Generator on FYN Tools is built for text & writing tools tasks: Generate creative business ideas based on your preferences. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Business Idea Generator on FYN Tools generate creative business ideas based on your preferences. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Generate creative business ideas based on your preferences.",
       "howItWorks": "Combines your selected tags and preferences into idea prompts you can refine offline.",
       "howToUse": [
-          "Open Business Idea Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Business Idea Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need generate creative business ideas based on your preferences without installing software",
-          "For quick text & writing tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to generate creative business ideas based on your preferences",
+          "For text & writing tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday text & writing tools needs in one browser tab."
+              "title": "Text & Writing workflow",
+              "description": "Generate creative business ideas based on your preferences."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Business Idea Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Business Idea Generator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -396,33 +546,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Business Idea Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Generate business ideas",
+          "Creative ideas",
+          "Startup ideas",
+          "Industry selection",
+          "Idea categories",
+          "Copy ideas",
+          "Save ideas",
+          "Multiple idea generation"
       ],
       "faqs": [
           {
+              "question": "How do I use Business Idea Generator?",
+              "answer": "Generate creative business ideas based on your preferences. See How to Use above."
+          },
+          {
               "question": "Is Business Idea Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Business Idea Generator above for generate creative business ideas based on your preferences, then explore related Text & Writing Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Word Counter",
+              "href": "/word-counter",
+              "description": "Count words, characters, and paragraphs in your text."
+          },
+          {
+              "name": "Text Case Converter",
+              "href": "/text-case-converter",
+              "description": "Convert text between uppercase, lowercase, and title case."
+          },
+          {
+              "name": "Text Font Changer",
+              "href": "/text-font-changer",
+              "description": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Rob"
+          },
+          {
+              "name": "AI Text Rewriter",
+              "href": "/ai-text-rewriter",
+              "description": "Rewrite your content to make it unique and avoid AI detection."
+          },
+          {
+              "name": "Lorem Ipsum Generator",
+              "href": "/lorem-ipsum-generator",
+              "description": "Generate placeholder text for your designs."
+          },
+          {
+              "name": "Whitespace Remover",
+              "href": "/whitespace-remover",
+              "description": "Remove extra spaces and tabs from your text."
+          },
+          {
+              "name": "Duplicate Line Remover",
+              "href": "/duplicate-line-remover",
+              "description": "Remove duplicate lines from your text."
+          },
+          {
+              "name": "Text Reverser",
+              "href": "/text-reverser",
+              "description": "Reverse text, words, or lines in your text."
+          },
+          {
+              "name": "Regex Tester",
+              "href": "/regex-tester",
+              "description": "Test regular expressions against your text."
+          },
+          {
+              "name": "Base64 Converter",
+              "href": "/base64-converter",
+              "description": "Encode and decode Base64 strings."
+          }
+      ],
+      "conclusion": "Use Business Idea Generator above, then browse related text & writing tools linked below."
   },
   '/button-generator': {
       "title": "Button Generator — CSS Button Styles",
       "h1": "Button Generator — Custom CSS Buttons",
       "metaDescription": "Design button colors, padding, radius, and hover states. Copy CSS and HTML snippet — free UI dev tool.",
       "dateModified": "2026-08-29",
-      "tldr": "Button Generator lets you design and generate CSS for custom buttons with various styles. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Button Generator: Design and generate CSS for custom buttons with various styles. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -439,42 +649,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Button Generator on FYN Tools is built for development tools tasks: Design and generate CSS for custom buttons with various styles. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Button Generator on FYN Tools design and generate CSS for custom buttons with various styles. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Design and generate CSS for custom buttons with various styles.",
-      "howItWorks": "Button Generator updates a live preview and CSS/code output as you change controls — copy the snippet into your project.",
+      "howItWorks": "Button Generator updates live preview and code output as you adjust controls.",
       "howToUse": [
-          "Open Button Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Button Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need design and generate css for custom buttons with various styles without installing software",
-          "For quick development tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to design and generate css for custom buttons with various styles",
+          "For development tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday development tools needs in one browser tab."
+              "title": "Development workflow",
+              "description": "Design and generate CSS for custom buttons with various styles."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Button Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Button Generator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -499,33 +702,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Button Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Design custom buttons",
+          "Multiple button styles",
+          "Custom colors",
+          "Custom sizes",
+          "Border radius",
+          "Shadow effects",
+          "Hover effects",
+          "Copy CSS code"
       ],
       "faqs": [
           {
+              "question": "How do I use Button Generator?",
+              "answer": "Design and generate CSS for custom buttons with various styles. See How to Use above."
+          },
+          {
               "question": "Is Button Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Button Generator above for design and generate css for custom buttons with various styles, then explore related Development Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "JSON Beautifier & Formatter",
+              "href": "/json-formatter",
+              "description": "Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool."
+          },
+          {
+              "name": "Hash Generator & Comparator",
+              "href": "/hash-generator",
+              "description": "Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify "
+          },
+          {
+              "name": "JWT Token Decoder",
+              "href": "/jwt-decoder",
+              "description": "Decode and parse JWT (JSON Web Token) headers, payloads, and signatures."
+          },
+          {
+              "name": "Meta Tag Previewer",
+              "href": "/meta-tag-previewer",
+              "description": "Preview how your website appears in search results and generate SEO meta tags."
+          },
+          {
+              "name": "Live HTML Previewer",
+              "href": "/live-preview",
+              "description": "Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code onli"
+          },
+          {
+              "name": "JavaScript Minifier",
+              "href": "/javascript-minifier",
+              "description": "Minify JavaScript code to reduce file size."
+          },
+          {
+              "name": "Table to JSON Converter",
+              "href": "/table-to-json-converter",
+              "description": "Convert HTML tables to JSON format."
+          },
+          {
+              "name": "XML Sitemap Tester & Validator",
+              "href": "/xml-sitemap-tester",
+              "description": "Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirect"
+          },
+          {
+              "name": "Box Shadow Generator",
+              "href": "/box-shadow-generator",
+              "description": "Create and customize CSS box-shadow effects for your web elements."
+          },
+          {
+              "name": "Border Radius Generator",
+              "href": "/border-radius-generator",
+              "description": "Generate CSS border-radius properties for rounded corners."
+          }
+      ],
+      "conclusion": "Use Button Generator above, then browse related development tools linked below."
   },
   '/coin-flip': {
       "title": "Coin Flip — Heads or Tails",
       "h1": "Coin Flip Simulator — Random Decision",
       "metaDescription": "Flip a virtual coin for heads or tails. Fair random outcome in the browser — free decision maker.",
       "dateModified": "2026-08-29",
-      "tldr": "Coin Flip lets you simulate a coin flip to make random decisions. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Coin Flip: Simulate a coin flip to make random decisions. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -542,42 +805,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Coin Flip on FYN Tools is built for utility tools tasks: Simulate a coin flip to make random decisions. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Coin Flip on FYN Tools simulate a coin flip to make random decisions. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Simulate a coin flip to make random decisions.",
       "howItWorks": "Uses browser randomness to pick heads or tails with animation feedback.",
       "howToUse": [
-          "Open Coin Flip and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Coin Flip form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need simulate a coin flip to make random decisions without installing software",
-          "For quick utility tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to simulate a coin flip to make random decisions",
+          "For utility tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday utility tools needs in one browser tab."
+              "title": "Utility workflow",
+              "description": "Simulate a coin flip to make random decisions."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Coin Flip once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Coin Flip input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -602,33 +858,92 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Coin Flip",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Flip coin",
+          "Random heads or tails",
+          "Decision making",
+          "Visual coin flip",
+          "Flip history",
+          "Multiple flips",
+          "Copy result"
       ],
       "faqs": [
           {
+              "question": "How do I use Coin Flip?",
+              "answer": "Simulate a coin flip to make random decisions. See How to Use above."
+          },
+          {
               "question": "Is Coin Flip free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Coin Flip above for simulate a coin flip to make random decisions, then explore related Utility Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "QR Code Generator",
+              "href": "/qr-code-generator",
+              "description": "Generate QR codes from text or URLs."
+          },
+          {
+              "name": "Password Generator",
+              "href": "/password-generator",
+              "description": "Generate strong and secure passwords."
+          },
+          {
+              "name": "Color Picker",
+              "href": "/color-picker-tool",
+              "description": "Pick colors from a palette or image."
+          },
+          {
+              "name": "To-Do List",
+              "href": "/todo-list",
+              "description": "Create and manage your to-do list."
+          },
+          {
+              "name": "Daily Task Report Saver",
+              "href": "/daily-task-report-saver",
+              "description": "Save your daily timetable, routine, work report, and notes by date."
+          },
+          {
+              "name": "Timetable Maker",
+              "href": "/timetable-maker",
+              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
+          },
+          {
+              "name": "List Randomizer",
+              "href": "/list-randomizer",
+              "description": "Randomize the order of items in any list."
+          },
+          {
+              "name": "Barcode Generator",
+              "href": "/barcode-generator",
+              "description": "Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export."
+          },
+          {
+              "name": "Barcode Scanner",
+              "href": "/barcode-scanner-online",
+              "description": "Scan barcodes using camera or image upload with history and CSV export."
+          },
+          {
+              "name": "Dice Roller",
+              "href": "/dice-roller",
+              "description": "Roll virtual dice with customizable sides and quantities."
+          }
+      ],
+      "conclusion": "Use Coin Flip above, then browse related utility tools linked below."
   },
   '/color-converter': {
       "title": "Color Converter — HEX, RGB, HSL",
       "h1": "Color Converter — Convert Color Formats",
       "metaDescription": "Convert colors between HEX, RGB, and HSL with live preview swatch. Free for designers and developers.",
       "dateModified": "2026-08-29",
-      "tldr": "Color Converter lets you convert colors between HEX, RGB, HSL, and other formats. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Color Converter: Convert colors between HEX, RGB, HSL, and other formats. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value and unit/color format selectors",
@@ -645,36 +960,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Color Converter on FYN Tools is built for converter tools tasks: Convert colors between HEX, RGB, HSL, and other formats. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Color Converter on FYN Tools convert colors between HEX, RGB, HSL, and other formats. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Convert colors between HEX, RGB, HSL, and other formats.",
-      "howItWorks": "The Color Converter form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Color Converter runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Color Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Color Converter form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need convert colors between hex, rgb, hsl, and other formats without installing software",
-          "For quick converter tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert colors between hex, rgb, hsl, and other formats",
+          "For converter tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday converter tools needs in one browser tab."
+              "title": "Converter workflow",
+              "description": "Convert colors between HEX, RGB, HSL, and other formats."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Color Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -705,33 +1013,58 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Color Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "HEX to RGB",
+          "RGB to HEX",
+          "HEX to HSL",
+          "HSL to HEX",
+          "RGB to HSL",
+          "HSL to RGB",
+          "Color picker",
+          "Copy color codes"
       ],
       "faqs": [
           {
+              "question": "How do I use Color Converter?",
+              "answer": "Convert colors between HEX, RGB, HSL, and other formats. See How to Use above."
+          },
+          {
               "question": "Is Color Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Color Converter above for convert colors between hex, rgb, hsl, and other formats, then explore related Converter Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Timestamp Converter",
+              "href": "/timestamp-converter",
+              "description": "Convert Unix timestamps to dates and dates to timestamps with timezone support."
+          },
+          {
+              "name": "Temperature Converter",
+              "href": "/temperature-converter",
+              "description": "Convert between Celsius and Fahrenheit."
+          },
+          {
+              "name": "Unit Converter",
+              "href": "/unit-converter",
+              "description": "Convert between different units of measurement."
+          }
+      ],
+      "conclusion": "Use Color Converter above, then browse related converter tools linked below."
   },
   '/conception-date-calculator': {
       "title": "Conception Date Calculator — Estimate from Due Date",
       "h1": "Conception Date Calculator — Reverse Due Date Math",
       "metaDescription": "Estimate conception window from due date and cycle length. Educational calendar tool — ultrasound dating is more precise.",
       "dateModified": "2026-08-29",
-      "tldr": "Conception Date Calculator lets you estimate your conception date from due date and cycle details. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Conception Date Calculator: Estimate your conception date from due date and cycle details. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Reverse calendar estimate — not paternity or clinical dating.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -748,42 +1081,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Conception Date Calculator on FYN Tools is built for pregnancy tools tasks: Estimate your conception date from due date and cycle details. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Conception Date Calculator on FYN Tools estimate your conception date from due date and cycle details. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Estimate your conception date from due date and cycle details.",
-      "howItWorks": "Conception Date Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "Conception Date Calculator applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open Conception Date Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Conception Date Calculator.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need estimate your conception date from due date and cycle details without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to estimate your conception date from due date and cycle details",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "Pregnancy workflow",
+              "description": "Estimate your conception date from due date and cycle details."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Conception Date Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Conception Date Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -808,33 +1134,71 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Conception Date Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Estimate conception date",
+          "Due date input",
+          "Cycle length input",
+          "Conception window display",
+          "Fertility period",
+          "Reverse calculation from due date"
       ],
       "faqs": [
           {
+              "question": "How do I use Conception Date Calculator?",
+              "answer": "Estimate your conception date from due date and cycle details. See How to Use above."
+          },
+          {
               "question": "Is Conception Date Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Conception Date Calculator above for estimate your conception date from due date and cycle details, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Due Date Calculator",
+              "href": "/pregnancy-due-date-calculator",
+              "description": "Calculate your baby due date using LMP or conception date."
+          },
+          {
+              "name": "Pregnancy Week Calculator",
+              "href": "/pregnancy-week-calculator",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
+          },
+          {
+              "name": "Pregnancy Weight Gain Calculator",
+              "href": "/pregnancy-weight-gain-calculator",
+              "description": "Track healthy pregnancy weight gain based on BMI."
+          },
+          {
+              "name": "Contraction Timer",
+              "href": "/contraction-timer",
+              "description": "Measure contraction duration and intervals with history logs."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          },
+          {
+              "name": "Pregnancy Diet Planner",
+              "href": "/pregnancy-diet-planner",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
+          }
+      ],
+      "conclusion": "Use Conception Date Calculator above, then browse related pregnancy tools linked below."
   },
   '/contraction-timer': {
       "title": "Contraction Timer — Duration & Intervals",
       "h1": "Contraction Timer — Track Labor Contractions",
       "metaDescription": "Time contraction duration and intervals with one tap. History log for labor patterns — free, private, browser-based. Not medical advice.",
       "dateModified": "2026-08-29",
-      "tldr": "Contraction Timer lets you measure contraction duration and intervals with history logs. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Contraction Timer: Measure contraction duration and intervals with history logs. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Contraction data stays in your browser. Call your maternity unit per local guidance — this tool does not diagnose labor stage.",
       "ioContract": {
           "inputs": "Start/stop tap for each contraction",
@@ -851,42 +1215,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Contraction Timer on FYN Tools is built for pregnancy tools tasks: Measure contraction duration and intervals with history logs. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Contraction Timer on FYN Tools measure contraction duration and intervals with history logs. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Measure contraction duration and intervals with history logs.",
       "howItWorks": "Tap start when a contraction begins and stop when it ends. The tool records duration and calculates the gap since the previous contraction.",
       "howToUse": [
-          "Open Contraction Timer and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Tap start when a contraction begins.",
+          "Tap stop when it ends.",
+          "Review duration and interval history."
       ],
       "whenToUse": [
-          "When you need measure contraction duration and intervals with history logs without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to measure contraction duration and intervals with history logs",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "Pregnancy workflow",
+              "description": "Measure contraction duration and intervals with history logs."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Contraction Timer once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Contraction Timer input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -911,33 +1268,73 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Contraction Timer",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Measure contraction duration",
+          "Measure contraction intervals",
+          "History logs",
+          "Start stop timer",
+          "Contraction counter",
+          "Average interval calculation",
+          "Labor progress tracking",
+          "Export data"
       ],
       "faqs": [
           {
+              "question": "How do I use Contraction Timer?",
+              "answer": "Measure contraction duration and intervals with history logs. See How to Use above."
+          },
+          {
               "question": "Is Contraction Timer free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Contraction Timer above for measure contraction duration and intervals with history logs, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Due Date Calculator",
+              "href": "/pregnancy-due-date-calculator",
+              "description": "Calculate your baby due date using LMP or conception date."
+          },
+          {
+              "name": "Pregnancy Week Calculator",
+              "href": "/pregnancy-week-calculator",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
+          },
+          {
+              "name": "Conception Date Calculator",
+              "href": "/conception-date-calculator",
+              "description": "Estimate your conception date from due date and cycle details."
+          },
+          {
+              "name": "Pregnancy Weight Gain Calculator",
+              "href": "/pregnancy-weight-gain-calculator",
+              "description": "Track healthy pregnancy weight gain based on BMI."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          },
+          {
+              "name": "Pregnancy Diet Planner",
+              "href": "/pregnancy-diet-planner",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
+          }
+      ],
+      "conclusion": "Use Contraction Timer above, then browse related pregnancy tools linked below."
   },
   '/countdown-timer': {
       "title": "Countdown Timer — Set Target Time",
       "h1": "Countdown Timer — Time Remaining",
       "metaDescription": "Set hours, minutes, and seconds to count down to zero with alert. Free browser timer.",
       "dateModified": "2026-08-29",
-      "tldr": "Countdown Timer lets you set a timer and count down to a specific time. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Countdown Timer: Set a timer and count down to a specific time. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -954,42 +1351,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Countdown Timer on FYN Tools is built for timer tools tasks: Set a timer and count down to a specific time. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Countdown Timer on FYN Tools set a timer and count down to a specific time. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Set a timer and count down to a specific time.",
-      "howItWorks": "The Countdown Timer form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Countdown Timer runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Countdown Timer and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Countdown Timer form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need set a timer and count down to a specific time without installing software",
-          "For quick timer tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to set a timer and count down to a specific time",
+          "For timer tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday timer tools needs in one browser tab."
+              "title": "Timer workflow",
+              "description": "Set a timer and count down to a specific time."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Countdown Timer once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Countdown Timer input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -1014,33 +1404,48 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Countdown Timer",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Set countdown timer",
+          "Hours minutes seconds input",
+          "Alarm sound",
+          "Visual countdown",
+          "Pause resume",
+          "Reset timer",
+          "Custom alarm",
+          "Notification support"
       ],
       "faqs": [
           {
+              "question": "How do I use Countdown Timer?",
+              "answer": "Set a timer and count down to a specific time. See How to Use above."
+          },
+          {
               "question": "Is Countdown Timer free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Countdown Timer above for set a timer and count down to a specific time, then explore related Timer Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Stopwatch",
+              "href": "/stopwatch",
+              "description": "Track elapsed time with a stopwatch."
+          }
+      ],
+      "conclusion": "Use Countdown Timer above, then browse related timer tools linked below."
   },
   '/currency-converter': {
       "title": "Currency Converter — Live Exchange Rates",
       "h1": "Currency Converter — FX Conversion",
       "metaDescription": "Convert amounts between world currencies using fetched exchange rates. Free currency calculator.",
       "dateModified": "2026-08-29",
-      "tldr": "Currency Converter lets you convert between different currencies. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Currency Converter: Convert between different currencies. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Rates come from a public API and are indicative — banks use different spreads.",
       "ioContract": {
           "inputs": "Amount, from currency, to currency",
@@ -1057,42 +1462,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Currency Converter on FYN Tools is built for number tools tasks: Convert between different currencies. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Currency Converter on FYN Tools convert between different currencies. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Convert between different currencies.",
-      "howItWorks": "The Currency Converter form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Currency Converter runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Currency Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Currency Converter.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need convert between different currencies without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert between different currencies",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Convert between different currencies."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Currency Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Currency Converter input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Sample amounts in the labeled fields",
+              "output": "On-screen breakdown with totals"
           }
       ],
       "tips": [
@@ -1117,33 +1515,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Currency Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Multiple currencies",
+          "Real-time exchange rates",
+          "Historical rates",
+          "Currency swap",
+          "Amount input",
+          "Convert button",
+          "Popular currencies",
+          "All world currencies"
       ],
       "faqs": [
           {
+              "question": "How do I use Currency Converter?",
+              "answer": "Convert between different currencies. See How to Use above."
+          },
+          {
               "question": "Is Currency Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "This tool may fetch public data from external services when you submit a URL or location."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Currency Converter above for convert between different currencies, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use Currency Converter above, then browse related number tools linked below."
   },
   '/daily-task-report-saver': {
       "title": "Daily Task Report Saver — Routine & Reports",
       "h1": "Daily Task Report Saver — Log by Date",
       "metaDescription": "Save daily timetable, routine, work report, and notes by date. Local browser storage — free planner.",
       "dateModified": "2026-08-29",
-      "tldr": "Daily Task Report Saver lets you save your daily timetable, routine, work report, and notes by date. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Daily Task Report Saver: Save your daily timetable, routine, work report, and notes by date. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Reports save in localStorage — back up important logs externally.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -1160,42 +1618,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Daily Task Report Saver on FYN Tools is built for utility tools tasks: Save your daily timetable, routine, work report, and notes by date. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Daily Task Report Saver on FYN Tools save your daily timetable, routine, work report, and notes by date. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Save your daily timetable, routine, work report, and notes by date.",
-      "howItWorks": "The Daily Task Report Saver form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Daily Task Report Saver runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Daily Task Report Saver and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Daily Task Report Saver form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need save your daily timetable, routine, work report, and notes by date without installing software",
-          "For quick utility tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to save your daily timetable, routine, work report, and notes by date",
+          "For utility tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday utility tools needs in one browser tab."
+              "title": "Utility workflow",
+              "description": "Save your daily timetable, routine, work report, and notes by date."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Daily Task Report Saver once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Daily Task Report Saver input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -1220,33 +1671,91 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Daily Task Report Saver",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Save daily timetable",
+          "Daily routine tracking",
+          "Work report section",
+          "Export to file",
+          "Quick jump to saved dates",
+          "Local storage"
       ],
       "faqs": [
           {
+              "question": "How do I use Daily Task Report Saver?",
+              "answer": "Save your daily timetable, routine, work report, and notes by date. See How to Use above."
+          },
+          {
               "question": "Is Daily Task Report Saver free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Daily Task Report Saver above for save your daily timetable, routine, work report, and notes by date, then explore related Utility Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "QR Code Generator",
+              "href": "/qr-code-generator",
+              "description": "Generate QR codes from text or URLs."
+          },
+          {
+              "name": "Password Generator",
+              "href": "/password-generator",
+              "description": "Generate strong and secure passwords."
+          },
+          {
+              "name": "Color Picker",
+              "href": "/color-picker-tool",
+              "description": "Pick colors from a palette or image."
+          },
+          {
+              "name": "To-Do List",
+              "href": "/todo-list",
+              "description": "Create and manage your to-do list."
+          },
+          {
+              "name": "Timetable Maker",
+              "href": "/timetable-maker",
+              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
+          },
+          {
+              "name": "List Randomizer",
+              "href": "/list-randomizer",
+              "description": "Randomize the order of items in any list."
+          },
+          {
+              "name": "Barcode Generator",
+              "href": "/barcode-generator",
+              "description": "Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export."
+          },
+          {
+              "name": "Barcode Scanner",
+              "href": "/barcode-scanner-online",
+              "description": "Scan barcodes using camera or image upload with history and CSV export."
+          },
+          {
+              "name": "Coin Flip",
+              "href": "/coin-flip",
+              "description": "Simulate a coin flip to make random decisions."
+          },
+          {
+              "name": "Dice Roller",
+              "href": "/dice-roller",
+              "description": "Roll virtual dice with customizable sides and quantities."
+          }
+      ],
+      "conclusion": "Use Daily Task Report Saver above, then browse related utility tools linked below."
   },
   '/date-difference-calculator': {
       "title": "Date Difference Calculator — Days Between Dates",
       "h1": "Date Difference Calculator — Count Days",
       "metaDescription": "Find days, weeks, and months between two calendar dates. Free date math tool.",
       "dateModified": "2026-08-29",
-      "tldr": "Date Difference Calculator lets you calculate the difference between two dates. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Date Difference Calculator: Calculate the difference between two dates. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -1263,36 +1772,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Date Difference Calculator on FYN Tools is built for number tools tasks: Calculate the difference between two dates. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Date Difference Calculator on FYN Tools calculate the difference between two dates. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate the difference between two dates.",
-      "howItWorks": "The Date Difference Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Date Difference Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Date Difference Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Date Difference Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate the difference between two dates without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate the difference between two dates",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate the difference between two dates."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Date Difference Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -1323,33 +1825,92 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Date Difference Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Calculate days between dates",
+          "Calculate months between dates",
+          "Calculate years between dates",
+          "Total difference display",
+          "Date picker",
+          "Include end date option",
+          "Exclude end date option"
       ],
       "faqs": [
           {
+              "question": "How do I use Date Difference Calculator?",
+              "answer": "Calculate the difference between two dates. See How to Use above."
+          },
+          {
               "question": "Is Date Difference Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Date Difference Calculator above for calculate the difference between two dates, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use Date Difference Calculator above, then browse related number tools linked below."
   },
   '/dice-roller': {
       "title": "Dice Roller — Custom Dice Online",
       "h1": "Dice Roller — Roll Virtual Dice",
       "metaDescription": "Roll d6, d20, or custom dice with quantity. Sum results for tabletop games — free in browser.",
       "dateModified": "2026-08-29",
-      "tldr": "Dice Roller lets you roll virtual dice with customizable sides and quantities. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Dice Roller: Roll virtual dice with customizable sides and quantities. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -1366,36 +1927,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Dice Roller on FYN Tools is built for utility tools tasks: Roll virtual dice with customizable sides and quantities. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Dice Roller on FYN Tools roll virtual dice with customizable sides and quantities. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Roll virtual dice with customizable sides and quantities.",
-      "howItWorks": "The Dice Roller form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Dice Roller runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Dice Roller and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Dice Roller form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need roll virtual dice with customizable sides and quantities without installing software",
-          "For quick utility tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to roll virtual dice with customizable sides and quantities",
+          "For utility tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday utility tools needs in one browser tab."
+              "title": "Utility workflow",
+              "description": "Roll virtual dice with customizable sides and quantities."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Dice Roller once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -1426,26 +1980,86 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Dice Roller",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Roll dice",
+          "Customizable sides",
+          "Multiple dice",
+          "Dice quantity",
+          "Roll history",
+          "Sum display",
+          "Individual dice results",
+          "Visual dice display"
       ],
       "faqs": [
           {
+              "question": "How do I use Dice Roller?",
+              "answer": "Roll virtual dice with customizable sides and quantities. See How to Use above."
+          },
+          {
               "question": "Is Dice Roller free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Dice Roller above for roll virtual dice with customizable sides and quantities, then explore related Utility Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "QR Code Generator",
+              "href": "/qr-code-generator",
+              "description": "Generate QR codes from text or URLs."
+          },
+          {
+              "name": "Password Generator",
+              "href": "/password-generator",
+              "description": "Generate strong and secure passwords."
+          },
+          {
+              "name": "Color Picker",
+              "href": "/color-picker-tool",
+              "description": "Pick colors from a palette or image."
+          },
+          {
+              "name": "To-Do List",
+              "href": "/todo-list",
+              "description": "Create and manage your to-do list."
+          },
+          {
+              "name": "Daily Task Report Saver",
+              "href": "/daily-task-report-saver",
+              "description": "Save your daily timetable, routine, work report, and notes by date."
+          },
+          {
+              "name": "Timetable Maker",
+              "href": "/timetable-maker",
+              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
+          },
+          {
+              "name": "List Randomizer",
+              "href": "/list-randomizer",
+              "description": "Randomize the order of items in any list."
+          },
+          {
+              "name": "Barcode Generator",
+              "href": "/barcode-generator",
+              "description": "Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export."
+          },
+          {
+              "name": "Barcode Scanner",
+              "href": "/barcode-scanner-online",
+              "description": "Scan barcodes using camera or image upload with history and CSV export."
+          },
+          {
+              "name": "Coin Flip",
+              "href": "/coin-flip",
+              "description": "Simulate a coin flip to make random decisions."
+          }
+      ],
+      "conclusion": "Use Dice Roller above, then browse related utility tools linked below."
   },
   '/emi-calculator': {
       "title": "EMI Calculator — Loan EMI, Amortization & Prepayment",
@@ -1469,23 +2083,20 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "EMI Calculator on FYN Tools is built for number tools tasks: Calculate Equated Monthly Installment (EMI) for loans. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "EMI Calculator on FYN Tools calculate Equated Monthly Installment (EMI) for loans. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate Equated Monthly Installment (EMI) for loans.",
       "howItWorks": "EMI uses the standard reducing-balance formula: monthly rate = annual rate ÷ 12, then EMI = P × r × (1+r)^n ÷ ((1+r)^n − 1). Prepayment adds extra principal each month and recalculates the schedule.",
       "howToUse": [
-          "Open EMI Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in EMI Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate equated monthly installment (emi) for loans without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate equated monthly installment (emi) for loans",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
@@ -1533,10 +2144,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive EMI Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "EMI calculation",
+          "Loan amount input",
+          "Interest rate input",
+          "Loan tenure input",
+          "Monthly EMI display",
+          "Total interest display",
+          "Total amount display",
+          "Amortization schedule"
       ],
       "faqs": [
           {
@@ -1552,14 +2167,66 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "answer": "You can choose reduce-tenure or reduce-EMI strategy in the tool — outcomes differ."
           }
       ],
-      "conclusion": "Use EMI Calculator above for calculate equated monthly installment (emi) for loans, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use EMI Calculator above, then browse related number tools linked below."
   },
   '/enhanced-unit-converter': {
       "title": "Enhanced Unit Converter — Multi-Category Units",
       "h1": "Enhanced Unit Converter — All Measurement Types",
       "metaDescription": "Convert units across length, weight, temperature, time, data size, and speed in one place. Same engine as Unit Converter.",
       "dateModified": "2026-08-29",
-      "tldr": "Enhanced Unit Converter lets you convert between various units including length, weight, temperature, time, data size, and speed. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Enhanced Unit Converter: Convert between various units including length, weight, temperature, time, data size, and speed. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Numeric value, unit category, from/to units",
@@ -1576,42 +2243,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Enhanced Unit Converter on FYN Tools is built for converter tools tasks: Convert between various units including length, weight, temperature, time, data size, and speed. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Enhanced Unit Converter on FYN Tools convert between various units including length, weight, temperature, time, data size, and speed. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Convert between various units including length, weight, temperature, time, data size, and speed.",
-      "howItWorks": "The Enhanced Unit Converter form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Enhanced Unit Converter runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Enhanced Unit Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Enhanced Unit Converter form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need convert between various units including length, weight, temperature, time, data size, and speed without installing software",
-          "For quick converter tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert between various units including length, weight, temperature, time, data size, and speed",
+          "For converter tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday converter tools needs in one browser tab."
+              "title": "Converter workflow",
+              "description": "Convert between various units including length, weight, temperature, time, data size, and speed."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Enhanced Unit Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Enhanced Unit Converter input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -1636,33 +2296,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Enhanced Unit Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Length conversion",
+          "Weight conversion",
+          "Temperature conversion",
+          "Time conversion",
+          "Data size conversion",
+          "Speed conversion",
+          "Multiple categories",
+          "Metric and imperial units"
       ],
       "faqs": [
           {
+              "question": "How do I use Enhanced Unit Converter?",
+              "answer": "Convert between various units including length, weight, temperature, time, data size, and speed. See How to Use above."
+          },
+          {
               "question": "Is Enhanced Unit Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Enhanced Unit Converter above for convert between various units including length, weight, temperature, time, data size, and speed, then explore related Converter Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Timestamp Converter",
+              "href": "/timestamp-converter",
+              "description": "Convert Unix timestamps to dates and dates to timestamps with timezone support."
+          },
+          {
+              "name": "Temperature Converter",
+              "href": "/temperature-converter",
+              "description": "Convert between Celsius and Fahrenheit."
+          },
+          {
+              "name": "Unit Converter",
+              "href": "/unit-converter",
+              "description": "Convert between different units of measurement."
+          },
+          {
+              "name": "Color Converter",
+              "href": "/color-converter",
+              "description": "Convert colors between HEX, RGB, HSL, and other formats."
+          }
+      ],
+      "conclusion": "Use Enhanced Unit Converter above, then browse related converter tools linked below."
   },
   '/fd-calculator': {
       "title": "FD Calculator — Fixed Deposit Maturity & Interest",
       "h1": "FD Calculator — Fixed Deposit Returns",
       "metaDescription": "Estimate fixed deposit maturity amount and interest for quarterly/monthly/yearly compounding. Free FD calculator for India.",
       "dateModified": "2026-08-29",
-      "tldr": "FD Calculator lets you calculate returns on your Fixed Deposit (FD) investments. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "FD Calculator: Calculate returns on your Fixed Deposit (FD) investments. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Principal (₹), annual interest rate (%), tenure (years/months), compounding frequency",
@@ -1679,36 +2369,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "FD Calculator on FYN Tools is built for number tools tasks: Calculate returns on your Fixed Deposit (FD) investments. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "FD Calculator on FYN Tools calculate returns on your Fixed Deposit (FD) investments. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate returns on your Fixed Deposit (FD) investments.",
-      "howItWorks": "The FD Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "FD Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open FD Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in FD Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate returns on your fixed deposit (fd) investments without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate returns on your fixed deposit (fd) investments",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate returns on your Fixed Deposit (FD) investments."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use FD Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -1739,33 +2422,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive FD Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "FD maturity calculation",
+          "Principal amount input",
+          "Interest rate input",
+          "Tenure input",
+          "Maturity amount display",
+          "Interest earned display",
+          "Quarterly compounding",
+          "Monthly compounding"
       ],
       "faqs": [
           {
+              "question": "How do I use FD Calculator?",
+              "answer": "Calculate returns on your Fixed Deposit (FD) investments. See How to Use above."
+          },
+          {
               "question": "Is FD Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use FD Calculator above for calculate returns on your fixed deposit (fd) investments, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          }
+      ],
+      "conclusion": "Use FD Calculator above, then browse related number tools linked below."
   },
   '/flip-image': {
       "title": "Flip Image — Horizontal & Vertical Flip",
       "h1": "Flip Image Online — Mirror Photos",
       "metaDescription": "Flip images horizontally or vertically with live preview. Download result — free browser tool.",
       "dateModified": "2026-08-29",
-      "tldr": "Flip Image lets you flip images horizontally or vertically with real-time preview. Free image flipper online. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Flip Image: Flip images horizontally or vertically with real-time preview. Free image flipper online. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -1782,42 +2525,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Flip Image on FYN Tools is built for image tools tasks: Flip images horizontally or vertically with real-time preview. Free image flipper online. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Flip Image on FYN Tools flip images horizontally or vertically with real-time preview. Free image flipper online. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Flip images horizontally or vertically with real-time preview. Free image flipper online.",
-      "howItWorks": "Upload an image into Flip Image; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Flip Image processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Flip Image and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need flip images horizontally or vertically with real-time preview. free image flipper online without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to flip images horizontally or vertically with real-time preview. free image flipper online",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Flip images horizontally or vertically with real-time preview. Free image flipper online."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Flip Image once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Flip Image input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -1842,33 +2578,92 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Flip Image",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Horizontal flip",
+          "Vertical flip",
+          "Real-time preview",
+          "Download flipped image",
+          "Mirror effect",
+          "Instant flip",
+          "Batch flipping"
       ],
       "faqs": [
           {
+              "question": "How do I use Flip Image?",
+              "answer": "Flip images horizontally or vertically with real-time preview. Free image flipper online. See How to Use above."
+          },
+          {
               "question": "Is Flip Image free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Flip Image above for flip images horizontally or vertically with real-time preview. free image flipper online, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          }
+      ],
+      "conclusion": "Use Flip Image above, then browse related image tools linked below."
   },
   '/future-date-calculator': {
       "title": "Future Date Calculator — Add or Subtract Days",
       "h1": "Future Date Calculator — Date Arithmetic",
       "metaDescription": "Add or subtract days, months, or years from any date. Plan deadlines and reminders — free.",
       "dateModified": "2026-08-29",
-      "tldr": "Future Date Calculator lets you calculate future or past dates by adding or subtracting days, months, or years. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Future Date Calculator: Calculate future or past dates by adding or subtracting days, months, or years. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -1885,36 +2680,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Future Date Calculator on FYN Tools is built for number tools tasks: Calculate future or past dates by adding or subtracting days, months, or years. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Future Date Calculator on FYN Tools calculate future or past dates by adding or subtracting days, months, or years. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate future or past dates by adding or subtracting days, months, or years.",
-      "howItWorks": "The Future Date Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Future Date Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Future Date Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Future Date Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate future or past dates by adding or subtracting days, months, or years without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate future or past dates by adding or subtracting days, months, or years",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Future Date Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -1945,26 +2733,86 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Future Date Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Add days to date",
+          "Subtract days from date",
+          "Add months to date",
+          "Subtract months from date",
+          "Add years to date",
+          "Subtract years from date",
+          "Date picker",
+          "Calculate future date"
       ],
       "faqs": [
           {
+              "question": "How do I use Future Date Calculator?",
+              "answer": "Calculate future or past dates by adding or subtracting days, months, or years. See How to Use above."
+          },
+          {
               "question": "Is Future Date Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Future Date Calculator above for calculate future or past dates by adding or subtracting days, months, or years, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use Future Date Calculator above, then browse related number tools linked below."
   },
   '/gst-calculator': {
       "title": "GST Calculator — Add or Remove GST (India)",
@@ -1988,36 +2836,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "GST Calculator on FYN Tools is built for number tools tasks: Calculate GST (Goods and Services Tax). The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "GST Calculator on FYN Tools calculate GST (Goods and Services Tax). Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate GST (Goods and Services Tax).",
-      "howItWorks": "The GST Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "GST Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open GST Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in GST Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate gst (goods and services tax) without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate gst (goods and services tax)",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate GST (Goods and Services Tax)."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use GST Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -2048,33 +2889,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive GST Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "GST calculation",
+          "Multiple GST rates",
+          "Add GST",
+          "Remove GST",
+          "GST inclusive price",
+          "GST exclusive price",
+          "Tax amount display",
+          "Total amount display"
       ],
       "faqs": [
           {
+              "question": "How do I use GST Calculator?",
+              "answer": "Calculate GST (Goods and Services Tax). See How to Use above."
+          },
+          {
               "question": "Is GST Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use GST Calculator above for calculate gst (goods and services tax), then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use GST Calculator above, then browse related number tools linked below."
   },
   '/image-to-text': {
       "title": "Image to Text (OCR) — Extract Text from Photos",
       "h1": "Image to Text — OCR Online",
       "metaDescription": "Extract text from images and scans using browser OCR. Upload PNG/JPG — copy recognized text. Private processing where supported.",
       "dateModified": "2026-08-29",
-      "tldr": "Image to Text lets you extract text from images using OCR. Convert photos and scanned documents into editable text. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Image to Text: Extract text from images using OCR. Convert photos and scanned documents into editable text. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "OCR runs in your browser when supported. Clear photos improve accuracy; always proofread output.",
       "ioContract": {
           "inputs": "Image upload (PNG, JPG, etc.)",
@@ -2091,42 +2992,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Image to Text on FYN Tools is built for image tools tasks: Extract text from images using OCR. Convert photos and scanned documents into editable text. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Image to Text on FYN Tools extract text from images using OCR. Convert photos and scanned documents into editable text. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Extract text from images using OCR. Convert photos and scanned documents into editable text.",
-      "howItWorks": "Upload an image into Image to Text; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Image to Text processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Image to Text and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need extract text from images using ocr. convert photos and scanned documents into editable text without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to extract text from images using ocr. convert photos and scanned documents into editable text",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Image to Text once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Image to Text input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2151,33 +3045,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Image to Text",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "OCR text extraction",
+          "Extract text from photos",
+          "Extract text from scanned documents",
+          "Multiple language support",
+          "Copy extracted text",
+          "Download as text file",
+          "Batch processing",
+          "High accuracy OCR"
       ],
       "faqs": [
           {
+              "question": "How do I use Image to Text?",
+              "answer": "Extract text from images using OCR. Convert photos and scanned documents into editable text. See How to Use above."
+          },
+          {
               "question": "Is Image to Text free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Image to Text above for extract text from images using ocr. convert photos and scanned documents into editable text, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          },
+          {
+              "name": "Pixelate Tool",
+              "href": "/pixelate-tool",
+              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
+          }
+      ],
+      "conclusion": "Use Image to Text above, then browse related image tools linked below."
   },
   '/image-upscaler': {
       "title": "Image Upscaler — Increase Resolution",
       "h1": "Image Upscaler — Enlarge & Sharpen",
       "metaDescription": "Upscale images with interpolation to increase pixel dimensions. Browser-based — best for moderate enlargement.",
       "dateModified": "2026-08-29",
-      "tldr": "Image Upscaler lets you upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Image Upscaler: Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Extreme upscaling cannot invent detail — results are interpolated estimates.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -2194,42 +3148,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Image Upscaler on FYN Tools is built for image tools tasks: Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Image Upscaler on FYN Tools upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity.",
-      "howItWorks": "Upload an image into Image Upscaler; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Image Upscaler processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Image Upscaler and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need upscale and enhance image quality using advanced interpolation techniques. increase image resolution and improve clarity without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to upscale and enhance image quality using advanced interpolation techniques. increase image resolution and improve clarity",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Image Upscaler once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Image Upscaler input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2254,33 +3201,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Image Upscaler",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Upscale resolution",
+          "Enhance image quality",
+          "Multiple upscale factors",
+          "Advanced interpolation",
+          "Quality improvement",
+          "Download upscaled image",
+          "Real-time preview",
+          "Preserve aspect ratio"
       ],
       "faqs": [
           {
+              "question": "How do I use Image Upscaler?",
+              "answer": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. See How to Use above."
+          },
+          {
               "question": "Is Image Upscaler free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Image Upscaler above for upscale and enhance image quality using advanced interpolation techniques. increase image resolution and improve clarity, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          },
+          {
+              "name": "Pixelate Tool",
+              "href": "/pixelate-tool",
+              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
+          }
+      ],
+      "conclusion": "Use Image Upscaler above, then browse related image tools linked below."
   },
   '/income-tax-calculator': {
       "title": "Income Tax Calculator — Old vs New Regime (India)",
       "h1": "Income Tax Calculator — Estimate Tax Liability",
       "metaDescription": "Estimate income tax under old and new tax regimes for India. Enter salary, deductions, and compare payable tax — free, educational.",
       "dateModified": "2026-08-29",
-      "tldr": "Income Tax Calculator lets you calculate your income tax liability. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Income Tax Calculator: Calculate your income tax liability. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Annual income, deductions (80C, 80D, etc.), regime selection, age slab if applicable",
@@ -2297,42 +3304,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Income Tax Calculator on FYN Tools is built for number tools tasks: Calculate your income tax liability. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Income Tax Calculator on FYN Tools calculate your income tax liability. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate your income tax liability.",
-      "howItWorks": "The Income Tax Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Income Tax Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Income Tax Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Income Tax Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate your income tax liability without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate your income tax liability",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate your income tax liability."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Income Tax Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Income Tax Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Sample amounts in the labeled fields",
+              "output": "On-screen breakdown with totals"
           }
       ],
       "tips": [
@@ -2357,33 +3357,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Income Tax Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Income tax calculation",
+          "Taxable income input",
+          "Tax deductions",
+          "Tax exemptions",
+          "Old tax regime",
+          "New tax regime",
+          "Tax slabs",
+          "Tax liability display"
       ],
       "faqs": [
           {
+              "question": "How do I use Income Tax Calculator?",
+              "answer": "Calculate your income tax liability. See How to Use above."
+          },
+          {
               "question": "Is Income Tax Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Income Tax Calculator above for calculate your income tax liability, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          }
+      ],
+      "conclusion": "Use Income Tax Calculator above, then browse related number tools linked below."
   },
   '/invoice-generator': {
       "title": "Invoice Generator — PDF & Image Export",
       "h1": "Invoice Generator — Professional Invoices",
       "metaDescription": "Create invoices with client details, line items, tax, and logo. Export PDF or image. Auto-save in browser — free for freelancers.",
       "dateModified": "2026-08-29",
-      "tldr": "Invoice Generator lets you create professional invoices with auto-save features. Generate PDF and image exports with client and product management. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Invoice Generator: Create professional invoices with auto-save features. Generate PDF and image exports with client and product management. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Business info, client, line items, tax rate, currency, logo upload",
@@ -2400,42 +3460,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Invoice Generator on FYN Tools is built for business tools tasks: Create professional invoices with auto-save features. Generate PDF and image exports with client and product management. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Invoice Generator on FYN Tools create professional invoices with auto-save features. Generate PDF and image exports with client and product management. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Create professional invoices with auto-save features. Generate PDF and image exports with client and product management.",
-      "howItWorks": "The Invoice Generator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Invoice Generator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Invoice Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Invoice Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need create professional invoices with auto-save features. generate pdf and image exports with client and product management without installing software",
-          "For quick business tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to create professional invoices with auto-save features. generate pdf and image exports with client and product management",
+          "For business tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday business tools needs in one browser tab."
+              "title": "Business workflow",
+              "description": "Create professional invoices with auto-save features. Generate PDF and image exports with client and product management."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Invoice Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Invoice Generator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2460,33 +3513,42 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Invoice Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Create invoices",
+          "Professional templates",
+          "Client management",
+          "Product management",
+          "Auto-save",
+          "Generate PDF",
+          "Generate image",
+          "Download invoice"
       ],
       "faqs": [
           {
+              "question": "How do I use Invoice Generator?",
+              "answer": "Create professional invoices with auto-save features. Generate PDF and image exports with client and product management. See How to Use above."
+          },
+          {
               "question": "Is Invoice Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Invoice Generator above for create professional invoices with auto-save features. generate pdf and image exports with client and product management, then explore related Business Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [],
+      "conclusion": "Use Invoice Generator above, then browse related business tools linked below."
   },
   '/merge-images': {
       "title": "Merge Images — Combine Photos Online",
       "h1": "Merge Images — Horizontal, Vertical, Grid",
       "metaDescription": "Combine multiple images into one layout. Horizontal, vertical, or grid merge — download PNG.",
       "dateModified": "2026-08-29",
-      "tldr": "Merge Images lets you merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Merge Images: Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -2503,42 +3565,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Merge Images on FYN Tools is built for image tools tasks: Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Merge Images on FYN Tools merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image.",
-      "howItWorks": "Upload an image into Merge Images; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Merge Images processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Merge Images and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need merge images online in horizontal, vertical, or grid layouts. combine multiple photos into one image without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to merge images online in horizontal, vertical, or grid layouts. combine multiple photos into one image",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Merge Images once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Merge Images input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2563,33 +3618,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Merge Images",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Horizontal merge",
+          "Vertical merge",
+          "Grid layout",
+          "Combine multiple photos",
+          "Custom spacing",
+          "Align images",
+          "Download merged image",
+          "Batch merge"
       ],
       "faqs": [
           {
+              "question": "How do I use Merge Images?",
+              "answer": "Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. See How to Use above."
+          },
+          {
               "question": "Is Merge Images free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Merge Images above for merge images online in horizontal, vertical, or grid layouts. combine multiple photos into one image, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          }
+      ],
+      "conclusion": "Use Merge Images above, then browse related image tools linked below."
   },
   '/notes': {
       "title": "Notes — Personal Notes with Tags",
       "h1": "Notes — Browser Note Organizer",
       "metaDescription": "Create color-coded notes with tags. Saved locally in your browser — free, private quick notes.",
       "dateModified": "2026-08-29",
-      "tldr": "Notes lets you create, organize, and manage your personal notes with tags and colors. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Notes: Create, organize, and manage your personal notes with tags and colors. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Notes persist in localStorage on this device only — export important notes before clearing browser data.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -2606,42 +3721,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Notes on FYN Tools is built for text & writing tools tasks: Create, organize, and manage your personal notes with tags and colors. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Notes on FYN Tools create, organize, and manage your personal notes with tags and colors. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Create, organize, and manage your personal notes with tags and colors.",
-      "howItWorks": "The Notes form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Notes runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Notes and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Notes form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need create, organize, and manage your personal notes with tags and colors without installing software",
-          "For quick text & writing tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to create, organize, and manage your personal notes with tags and colors",
+          "For text & writing tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday text & writing tools needs in one browser tab."
+              "title": "Text & Writing workflow",
+              "description": "Create, organize, and manage your personal notes with tags and colors."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Notes once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Notes input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2666,33 +3774,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Notes",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Create notes",
+          "Edit notes",
+          "Delete notes",
+          "Tag organization",
+          "Color coding",
+          "Search notes",
+          "Filter by tags",
+          "Filter by color"
       ],
       "faqs": [
           {
+              "question": "How do I use Notes?",
+              "answer": "Create, organize, and manage your personal notes with tags and colors. See How to Use above."
+          },
+          {
               "question": "Is Notes free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Notes above for create, organize, and manage your personal notes with tags and colors, then explore related Text & Writing Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Word Counter",
+              "href": "/word-counter",
+              "description": "Count words, characters, and paragraphs in your text."
+          },
+          {
+              "name": "Text Case Converter",
+              "href": "/text-case-converter",
+              "description": "Convert text between uppercase, lowercase, and title case."
+          },
+          {
+              "name": "Text Font Changer",
+              "href": "/text-font-changer",
+              "description": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Rob"
+          },
+          {
+              "name": "AI Text Rewriter",
+              "href": "/ai-text-rewriter",
+              "description": "Rewrite your content to make it unique and avoid AI detection."
+          },
+          {
+              "name": "Lorem Ipsum Generator",
+              "href": "/lorem-ipsum-generator",
+              "description": "Generate placeholder text for your designs."
+          },
+          {
+              "name": "Whitespace Remover",
+              "href": "/whitespace-remover",
+              "description": "Remove extra spaces and tabs from your text."
+          },
+          {
+              "name": "Duplicate Line Remover",
+              "href": "/duplicate-line-remover",
+              "description": "Remove duplicate lines from your text."
+          },
+          {
+              "name": "Text Reverser",
+              "href": "/text-reverser",
+              "description": "Reverse text, words, or lines in your text."
+          },
+          {
+              "name": "Regex Tester",
+              "href": "/regex-tester",
+              "description": "Test regular expressions against your text."
+          },
+          {
+              "name": "Base64 Converter",
+              "href": "/base64-converter",
+              "description": "Encode and decode Base64 strings."
+          }
+      ],
+      "conclusion": "Use Notes above, then browse related text & writing tools linked below."
   },
   '/pdf-text-extractor': {
       "title": "PDF Text Extractor — Copy Text from PDF",
       "h1": "PDF Text Extractor — PDF to Plain Text",
       "metaDescription": "Extract selectable text from PDF files in the browser. Copy plain text for editing — free.",
       "dateModified": "2026-08-29",
-      "tldr": "PDF Text Extractor lets you extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "PDF Text Extractor: Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Scanned image-only PDFs need OCR — try Image to Text if extraction is empty.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -2709,42 +3877,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PDF Text Extractor on FYN Tools is built for image tools tasks: Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "PDF Text Extractor on FYN Tools extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying.",
-      "howItWorks": "Upload an image into PDF Text Extractor; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "PDF Text Extractor processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open PDF Text Extractor and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need extract text content from pdf files. convert pdf documents to plain text format for easy editing and copying without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to extract text content from pdf files. convert pdf documents to plain text format for easy editing and copying",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use PDF Text Extractor once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical PDF Text Extractor input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2769,33 +3930,92 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive PDF Text Extractor",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Extract PDF text",
+          "Convert PDF to text",
+          "Copy extracted text",
+          "Download as text file",
+          "Batch PDF processing",
+          "Preserve formatting option",
+          "Multi-page PDF support"
       ],
       "faqs": [
           {
+              "question": "How do I use PDF Text Extractor?",
+              "answer": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. See How to Use above."
+          },
+          {
               "question": "Is PDF Text Extractor free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use PDF Text Extractor above for extract text content from pdf files. convert pdf documents to plain text format for easy editing and copying, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          },
+          {
+              "name": "Pixelate Tool",
+              "href": "/pixelate-tool",
+              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
+          }
+      ],
+      "conclusion": "Use PDF Text Extractor above, then browse related image tools linked below."
   },
   '/period-calculator': {
       "title": "Period Calculator — Next Period Prediction",
       "h1": "Period Calculator — Predict Next Cycle Date",
       "metaDescription": "Predict next period from last cycle start and average length. Free calendar estimate — cycles vary with stress and health.",
       "dateModified": "2026-08-29",
-      "tldr": "Period Calculator lets you predict your next period date based on your cycle history. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Period Calculator: Predict your next period date based on your cycle history. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Educational estimates only — confirm with your prenatal or women's health clinician.",
       "ioContract": {
           "inputs": "Last period start date, average cycle length (days)",
@@ -2812,42 +4032,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Period Calculator on FYN Tools is built for period & cycle tools tasks: Predict your next period date based on your cycle history. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Period Calculator on FYN Tools predict your next period date based on your cycle history. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Predict your next period date based on your cycle history.",
-      "howItWorks": "Period Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "Period Calculator applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open Period Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Period Calculator.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need predict your next period date based on your cycle history without installing software",
-          "For quick period & cycle tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to predict your next period date based on your cycle history",
+          "For period & cycle tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday period & cycle tools needs in one browser tab."
+              "title": "Period & Cycle workflow",
+              "description": "Predict your next period date based on your cycle history."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Period Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Period Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -2872,33 +4085,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Period Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Predict next period date",
+          "Cycle length input",
+          "Last period date",
+          "Average cycle calculation",
+          "Period calendar",
+          "Reminders",
+          "Cycle history tracking",
+          "Irregular cycle support"
       ],
       "faqs": [
           {
+              "question": "How do I use Period Calculator?",
+              "answer": "Predict your next period date based on your cycle history. See How to Use above."
+          },
+          {
               "question": "Is Period Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Period Calculator above for predict your next period date based on your cycle history, then explore related Period & Cycle Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Ovulation Calculator",
+              "href": "/ovulation-calculator",
+              "description": "Find your ovulation day and fertile window easily."
+          },
+          {
+              "name": "Safe Days Calculator",
+              "href": "/safe-days-calculator",
+              "description": "Identify safe and fertile days with pregnancy risk insights."
+          },
+          {
+              "name": "Period Tracker",
+              "href": "/period-tracker",
+              "description": "Log symptoms, mood, and flow with history charts and reminders."
+          },
+          {
+              "name": "PMS Symptom Tracker",
+              "href": "/pms-symptom-tracker",
+              "description": "Track PMS symptoms, pain scale, and daily changes."
+          }
+      ],
+      "conclusion": "Use Period Calculator above, then browse related period & cycle tools linked below."
   },
   '/period-tracker': {
       "title": "Period Tracker — Log Flow, Mood & Symptoms",
       "h1": "Period Tracker — Cycle Log with History",
       "metaDescription": "Log period days with flow level, mood, symptoms, and notes. History saves locally in your browser — free, private, no account.",
       "dateModified": "2026-08-29",
-      "tldr": "Period Tracker lets you log symptoms, mood, and flow with history charts and reminders. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Period Tracker: Log symptoms, mood, and flow with history charts and reminders. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Entries store in browser localStorage only. Not medical advice — share patterns with your clinician.",
       "ioContract": {
           "inputs": "Date, flow (light/medium/heavy), mood, symptom checkboxes, notes, optional reminder flag",
@@ -2915,36 +4158,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Period Tracker on FYN Tools is built for period & cycle tools tasks: Log symptoms, mood, and flow with history charts and reminders. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Period Tracker on FYN Tools log symptoms, mood, and flow with history charts and reminders. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Log symptoms, mood, and flow with history charts and reminders.",
       "howItWorks": "Pick a date, set flow and mood, tick symptoms, add notes, then save. Entries persist in localStorage and appear in the history list below.",
       "howToUse": [
-          "Open Period Tracker and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Period Tracker.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need log symptoms, mood, and flow with history charts and reminders without installing software",
-          "For quick period & cycle tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to log symptoms, mood, and flow with history charts and reminders",
+          "For period & cycle tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday period & cycle tools needs in one browser tab."
+              "title": "Period & Cycle workflow",
+              "description": "Log symptoms, mood, and flow with history charts and reminders."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Period Tracker once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -2975,33 +4211,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Period Tracker",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Log period dates",
+          "Track symptoms",
+          "Track mood",
+          "Track flow",
+          "History charts",
+          "Reminders",
+          "Cycle patterns",
+          "Export data"
       ],
       "faqs": [
           {
+              "question": "How do I use Period Tracker?",
+              "answer": "Log symptoms, mood, and flow with history charts and reminders. See How to Use above."
+          },
+          {
               "question": "Is Period Tracker free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Period Tracker above for log symptoms, mood, and flow with history charts and reminders, then explore related Period & Cycle Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Period Calculator",
+              "href": "/period-calculator",
+              "description": "Predict your next period date based on your cycle history."
+          },
+          {
+              "name": "Ovulation Calculator",
+              "href": "/ovulation-calculator",
+              "description": "Find your ovulation day and fertile window easily."
+          },
+          {
+              "name": "Safe Days Calculator",
+              "href": "/safe-days-calculator",
+              "description": "Identify safe and fertile days with pregnancy risk insights."
+          },
+          {
+              "name": "PMS Symptom Tracker",
+              "href": "/pms-symptom-tracker",
+              "description": "Track PMS symptoms, pain scale, and daily changes."
+          }
+      ],
+      "conclusion": "Use Period Tracker above, then browse related period & cycle tools linked below."
   },
   '/pms-symptom-tracker': {
       "title": "PMS Symptom Tracker — Daily Symptom Log",
       "h1": "PMS Symptom Tracker — Track Pain & Mood",
       "metaDescription": "Log PMS symptoms, pain scale, and daily changes. History stored locally — bring logs to your healthcare visit.",
       "dateModified": "2026-08-29",
-      "tldr": "PMS Symptom Tracker lets you track PMS symptoms, pain scale, and daily changes. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "PMS Symptom Tracker: Track PMS symptoms, pain scale, and daily changes. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Symptom logs stay in your browser. Not a diagnosis tool.",
       "ioContract": {
           "inputs": "Date, symptoms, pain scale, notes",
@@ -3018,42 +4284,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PMS Symptom Tracker on FYN Tools is built for period & cycle tools tasks: Track PMS symptoms, pain scale, and daily changes. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "PMS Symptom Tracker on FYN Tools track PMS symptoms, pain scale, and daily changes. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Track PMS symptoms, pain scale, and daily changes.",
-      "howItWorks": "PMS Symptom Tracker applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "PMS Symptom Tracker applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open PMS Symptom Tracker and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in PMS Symptom Tracker.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need track pms symptoms, pain scale, and daily changes without installing software",
-          "For quick period & cycle tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to track pms symptoms, pain scale, and daily changes",
+          "For period & cycle tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday period & cycle tools needs in one browser tab."
+              "title": "Period & Cycle workflow",
+              "description": "Track PMS symptoms, pain scale, and daily changes."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use PMS Symptom Tracker once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical PMS Symptom Tracker input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -3078,33 +4337,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive PMS Symptom Tracker",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Track PMS symptoms",
+          "Pain scale tracking",
+          "Daily symptom logging",
+          "Symptom history",
+          "Pattern recognition",
+          "Export data",
+          "Reminders",
+          "Multiple symptom categories"
       ],
       "faqs": [
           {
+              "question": "How do I use PMS Symptom Tracker?",
+              "answer": "Track PMS symptoms, pain scale, and daily changes. See How to Use above."
+          },
+          {
               "question": "Is PMS Symptom Tracker free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use PMS Symptom Tracker above for track pms symptoms, pain scale, and daily changes, then explore related Period & Cycle Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Period Calculator",
+              "href": "/period-calculator",
+              "description": "Predict your next period date based on your cycle history."
+          },
+          {
+              "name": "Ovulation Calculator",
+              "href": "/ovulation-calculator",
+              "description": "Find your ovulation day and fertile window easily."
+          },
+          {
+              "name": "Safe Days Calculator",
+              "href": "/safe-days-calculator",
+              "description": "Identify safe and fertile days with pregnancy risk insights."
+          },
+          {
+              "name": "Period Tracker",
+              "href": "/period-tracker",
+              "description": "Log symptoms, mood, and flow with history charts and reminders."
+          }
+      ],
+      "conclusion": "Use PMS Symptom Tracker above, then browse related period & cycle tools linked below."
   },
   '/ppf-calculator': {
       "title": "PPF Calculator — Public Provident Fund Maturity",
       "h1": "PPF Calculator — 15-Year PPF Projection",
       "metaDescription": "Calculate PPF maturity with annual contributions and current PPF interest rate. Free PPF calculator for long-term tax-saving planning.",
       "dateModified": "2026-08-29",
-      "tldr": "PPF Calculator lets you calculate returns on your Public Provident Fund (PPF) investments. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "PPF Calculator: Calculate returns on your Public Provident Fund (PPF) investments. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Yearly deposit (up to ₹1.5L limit), interest rate (%), tenure (15 years default)",
@@ -3121,42 +4410,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PPF Calculator on FYN Tools is built for number tools tasks: Calculate returns on your Public Provident Fund (PPF) investments. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "PPF Calculator on FYN Tools calculate returns on your Public Provident Fund (PPF) investments. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate returns on your Public Provident Fund (PPF) investments.",
-      "howItWorks": "The PPF Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "PPF Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open PPF Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in PPF Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate returns on your public provident fund (ppf) investments without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate returns on your public provident fund (ppf) investments",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use PPF Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical PPF Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Sample amounts in the labeled fields",
+              "output": "On-screen breakdown with totals"
           }
       ],
       "tips": [
@@ -3181,26 +4463,86 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive PPF Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "PPF maturity calculation",
+          "Annual contribution input",
+          "Current PPF rate",
+          "Investment period",
+          "Maturity amount display",
+          "Total investment display",
+          "Interest earned display",
+          "Yearly breakdown"
       ],
       "faqs": [
           {
+              "question": "How do I use PPF Calculator?",
+              "answer": "Calculate returns on your Public Provident Fund (PPF) investments. See How to Use above."
+          },
+          {
               "question": "Is PPF Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use PPF Calculator above for calculate returns on your public provident fund (ppf) investments, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          }
+      ],
+      "conclusion": "Use PPF Calculator above, then browse related number tools linked below."
   },
   '/pregnancy-diet-planner': {
       "title": "Pregnancy Diet Planner (Educational)",
@@ -3224,42 +4566,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Diet Planner on FYN Tools is built for pregnancy tools tasks: Get trimester diet tips, calorie goals, and food lists. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Pregnancy Diet Planner on FYN Tools get trimester diet tips, calorie goals, and food lists. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Get trimester diet tips, calorie goals, and food lists.",
       "howItWorks": "Choose your trimester, optionally enter weight and activity for a rough calorie estimate, then review priorities, sample meals, nutrient cards, foods to avoid, cautions, and terms.",
       "howToUse": [
-          "Open Pregnancy Diet Planner and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Pregnancy Diet Planner.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need get trimester diet tips, calorie goals, and food lists without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to get trimester diet tips, calorie goals, and food lists",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "Pregnancy workflow",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Pregnancy Diet Planner once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Pregnancy Diet Planner input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -3284,10 +4619,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Pregnancy Diet Planner",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Trimester diet tips",
+          "Calorie goals",
+          "Food lists",
+          "Healthy foods",
+          "Foods to avoid",
+          "Nutritional guidelines",
+          "Meal planning",
+          "Trimester-specific recommendations"
       ],
       "faqs": [
           {
@@ -3299,20 +4638,52 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "answer": "Alcohol, high-mercury fish, raw/undercooked meats, unpasteurized dairy, and raw sprouts are commonly listed — see the tool for the full educational list."
           }
       ],
-      "conclusion": "Use Pregnancy Diet Planner above for get trimester diet tips, calorie goals, and food lists, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Due Date Calculator",
+              "href": "/pregnancy-due-date-calculator",
+              "description": "Calculate your baby due date using LMP or conception date."
+          },
+          {
+              "name": "Pregnancy Week Calculator",
+              "href": "/pregnancy-week-calculator",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
+          },
+          {
+              "name": "Conception Date Calculator",
+              "href": "/conception-date-calculator",
+              "description": "Estimate your conception date from due date and cycle details."
+          },
+          {
+              "name": "Pregnancy Weight Gain Calculator",
+              "href": "/pregnancy-weight-gain-calculator",
+              "description": "Track healthy pregnancy weight gain based on BMI."
+          },
+          {
+              "name": "Contraction Timer",
+              "href": "/contraction-timer",
+              "description": "Measure contraction duration and intervals with history logs."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          }
+      ],
+      "conclusion": "Use Pregnancy Diet Planner above, then browse related pregnancy tools linked below."
   },
   '/pregnancy-due-date-calculator': {
       "title": "Pregnancy Due Date Calculator — EDD from LMP",
       "h1": "Due Date Calculator — Estimated Delivery Date",
       "metaDescription": "Estimate baby due date from last period or conception date using Naegele-style calendar math. Free, educational, not medical advice.",
       "dateModified": "2026-08-29",
-      "tldr": "Pregnancy Due Date Calculator lets you calculate your baby due date using LMP or conception date. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Choose LMP or conception date; the tool adds 280 days (LMP) or 266 days (conception) to show your estimated due date, current week (1–40), and trimester end dates.",
       "processingNote": "EDD is an estimate — only about 5% of babies arrive on the exact date. Confirm with prenatal care.",
       "ioContract": {
-          "inputs": "Fields shown in the tool form above",
-          "outputs": "Instant on-screen results",
-          "formats": "Copy-paste friendly text or numbers",
-          "limits": "Educational use — verify critical decisions independently",
+          "inputs": "Last menstrual period (LMP) date OR conception date — toggle with the mode buttons",
+          "outputs": "Estimated due date, current pregnancy week, trimester 1 and 2 end dates",
+          "formats": "Calendar date picker",
+          "limits": "Calendar estimate only — ultrasound dating may differ; not medical advice",
           "processing": "Client-side (browser)"
       },
       "keywords": [
@@ -3323,42 +4694,45 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Due Date Calculator on FYN Tools is built for pregnancy tools tasks: Calculate your baby due date using LMP or conception date. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Pregnancy Due Date Calculator on FYN Tools calculate your baby due date using LMP or conception date. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Calculate your baby due date using LMP or conception date.",
-      "howItWorks": "Pregnancy Due Date Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "In LMP mode the tool adds 280 days to your last period start (Naegele rule). In conception mode it adds 266 days. It also calculates weeks pregnant from today and trimester boundary dates.",
       "howToUse": [
-          "Open Pregnancy Due Date Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Tap Use Last Period (LMP) or Use Conception Date.",
+          "Pick the date from the calendar picker.",
+          "Read the estimated due date and current pregnancy week.",
+          "Note trimester 1 and 2 end dates for planning discussions.",
+          "Share the estimate with your prenatal clinician — they may adjust after ultrasound."
       ],
       "whenToUse": [
-          "When you need calculate your baby due date using lmp or conception date without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate your baby due date using lmp or conception date",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "First prenatal visit prep",
+              "description": "Bring an LMP-based EDD to your booking appointment before ultrasound dating."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
+              "title": "Partner planning",
+              "description": "See trimester end dates when scheduling travel or leave."
           },
           {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "IVF or known conception",
+              "description": "Switch to conception mode when you know the transfer or conception date."
           }
       ],
       "examples": [
           {
-              "input": "Typical Pregnancy Due Date Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "LMP: January 15, 2026",
+              "output": "Estimated due date ~October 22, 2026; current week shown from today's date"
+          },
+          {
+              "input": "Conception date: April 1, 2026",
+              "output": "Estimated due date ~December 22, 2026 (266-day method)"
           }
       ],
       "tips": [
@@ -3383,33 +4757,66 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Pregnancy Due Date Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "LMP or conception date modes",
+          "280-day / 266-day calendar math",
+          "Current pregnancy week (1–40)",
+          "Trimester 1 and 2 end dates",
+          "Medical disclaimer on page"
       ],
       "faqs": [
           {
-              "question": "Is Pregnancy Due Date Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "question": "How is due date calculated from LMP?",
+              "answer": "The tool uses the common Naegele rule: first day of last period plus 280 days (40 weeks). Your clinician may adjust after ultrasound."
           },
           {
-              "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "question": "LMP vs conception mode — which should I use?",
+              "answer": "Use LMP if that is what your provider asks for. Use conception if you know that date from IVF or ovulation tracking."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Is this due date exact?",
+              "answer": "No — it is an estimate. Most babies are born within two weeks before or after the EDD. Follow your prenatal care team for clinical dating."
           }
       ],
-      "conclusion": "Use Pregnancy Due Date Calculator above for calculate your baby due date using lmp or conception date, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Week Calculator",
+              "href": "/pregnancy-week-calculator",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
+          },
+          {
+              "name": "Conception Date Calculator",
+              "href": "/conception-date-calculator",
+              "description": "Estimate your conception date from due date and cycle details."
+          },
+          {
+              "name": "Pregnancy Weight Gain Calculator",
+              "href": "/pregnancy-weight-gain-calculator",
+              "description": "Track healthy pregnancy weight gain based on BMI."
+          },
+          {
+              "name": "Contraction Timer",
+              "href": "/contraction-timer",
+              "description": "Measure contraction duration and intervals with history logs."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          },
+          {
+              "name": "Pregnancy Diet Planner",
+              "href": "/pregnancy-diet-planner",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
+          }
+      ],
+      "conclusion": "Use Pregnancy Due Date Calculator above, then browse related pregnancy tools linked below."
   },
   '/pregnancy-week-calculator': {
       "title": "Pregnancy Week Calculator — Week & Trimester",
       "h1": "Pregnancy Week Calculator — How Many Weeks Pregnant",
       "metaDescription": "Calculate current pregnancy week and trimester from last menstrual period (LMP) or due date. Educational — confirm with ultrasound dating.",
       "dateModified": "2026-08-29",
-      "tldr": "Pregnancy Week Calculator lets you track your pregnancy week, trimester stage, and baby growth. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Pregnancy Week Calculator: Track your pregnancy week, trimester stage, and baby growth. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calendar-based estimate only. Clinical dating may differ — follow your prenatal provider.",
       "ioContract": {
           "inputs": "LMP date or due date",
@@ -3426,42 +4833,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Week Calculator on FYN Tools is built for pregnancy tools tasks: Track your pregnancy week, trimester stage, and baby growth. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Pregnancy Week Calculator on FYN Tools track your pregnancy week, trimester stage, and baby growth. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Track your pregnancy week, trimester stage, and baby growth.",
-      "howItWorks": "Pregnancy Week Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "Pregnancy Week Calculator applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open Pregnancy Week Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter the first day of your last menstrual period (LMP).",
+          "Review gestational week and trimester.",
+          "Compare with ultrasound at prenatal visits."
       ],
       "whenToUse": [
-          "When you need track your pregnancy week, trimester stage, and baby growth without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to track your pregnancy week, trimester stage, and baby growth",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "Pregnancy workflow",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Pregnancy Week Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Pregnancy Week Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -3486,33 +4886,72 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Pregnancy Week Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Calculate pregnancy week",
+          "Trimester stage display",
+          "Baby growth information",
+          "Development milestones",
+          "Week by week guide",
+          "Due date calculation",
+          "Pregnancy calendar"
       ],
       "faqs": [
           {
+              "question": "How do I use Pregnancy Week Calculator?",
+              "answer": "Track your pregnancy week, trimester stage, and baby growth. See How to Use above."
+          },
+          {
               "question": "Is Pregnancy Week Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Pregnancy Week Calculator above for track your pregnancy week, trimester stage, and baby growth, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Due Date Calculator",
+              "href": "/pregnancy-due-date-calculator",
+              "description": "Calculate your baby due date using LMP or conception date."
+          },
+          {
+              "name": "Conception Date Calculator",
+              "href": "/conception-date-calculator",
+              "description": "Estimate your conception date from due date and cycle details."
+          },
+          {
+              "name": "Pregnancy Weight Gain Calculator",
+              "href": "/pregnancy-weight-gain-calculator",
+              "description": "Track healthy pregnancy weight gain based on BMI."
+          },
+          {
+              "name": "Contraction Timer",
+              "href": "/contraction-timer",
+              "description": "Measure contraction duration and intervals with history logs."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          },
+          {
+              "name": "Pregnancy Diet Planner",
+              "href": "/pregnancy-diet-planner",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
+          }
+      ],
+      "conclusion": "Use Pregnancy Week Calculator above, then browse related pregnancy tools linked below."
   },
   '/pregnancy-weight-gain-calculator': {
       "title": "Pregnancy Weight Gain Calculator — BMI Ranges",
       "h1": "Pregnancy Weight Gain Calculator — Healthy Range by BMI",
       "metaDescription": "See educational weight-gain ranges by pre-pregnancy BMI (IOM-style). Track progress — discuss targets with your OB or midwife.",
       "dateModified": "2026-08-29",
-      "tldr": "Pregnancy Weight Gain Calculator lets you track healthy pregnancy weight gain based on BMI. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Pregnancy Weight Gain Calculator: Track healthy pregnancy weight gain based on BMI. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Educational BMI-based ranges. Twins, medical conditions, and individual plans require clinician guidance.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -3529,42 +4968,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Weight Gain Calculator on FYN Tools is built for pregnancy tools tasks: Track healthy pregnancy weight gain based on BMI. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Pregnancy Weight Gain Calculator on FYN Tools track healthy pregnancy weight gain based on BMI. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Track healthy pregnancy weight gain based on BMI.",
-      "howItWorks": "Pregnancy Weight Gain Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "Pregnancy Weight Gain Calculator applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open Pregnancy Weight Gain Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Pregnancy Weight Gain Calculator.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need track healthy pregnancy weight gain based on bmi without installing software",
-          "For quick pregnancy tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to track healthy pregnancy weight gain based on bmi",
+          "For pregnancy tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday pregnancy tools needs in one browser tab."
+              "title": "Pregnancy workflow",
+              "description": "Track healthy pregnancy weight gain based on BMI."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Pregnancy Weight Gain Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Pregnancy Weight Gain Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -3589,33 +5021,72 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Pregnancy Weight Gain Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Calculate healthy weight gain",
+          "Pre-pregnancy BMI input",
+          "Recommended weight gain range",
+          "Trimester-wise recommendations",
+          "Weight tracking",
+          "Health guidelines",
+          "BMI-based recommendations"
       ],
       "faqs": [
           {
+              "question": "How do I use Pregnancy Weight Gain Calculator?",
+              "answer": "Track healthy pregnancy weight gain based on BMI. See How to Use above."
+          },
+          {
               "question": "Is Pregnancy Weight Gain Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Pregnancy Weight Gain Calculator above for track healthy pregnancy weight gain based on bmi, then explore related Pregnancy Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Pregnancy Due Date Calculator",
+              "href": "/pregnancy-due-date-calculator",
+              "description": "Calculate your baby due date using LMP or conception date."
+          },
+          {
+              "name": "Pregnancy Week Calculator",
+              "href": "/pregnancy-week-calculator",
+              "description": "Track your pregnancy week, trimester stage, and baby growth."
+          },
+          {
+              "name": "Conception Date Calculator",
+              "href": "/conception-date-calculator",
+              "description": "Estimate your conception date from due date and cycle details."
+          },
+          {
+              "name": "Contraction Timer",
+              "href": "/contraction-timer",
+              "description": "Measure contraction duration and intervals with history logs."
+          },
+          {
+              "name": "Baby Kick Counter",
+              "href": "/baby-kick-counter",
+              "description": "Count baby kicks, track movement, and save daily history."
+          },
+          {
+              "name": "Pregnancy Diet Planner",
+              "href": "/pregnancy-diet-planner",
+              "description": "Get trimester diet tips, calorie goals, and food lists."
+          }
+      ],
+      "conclusion": "Use Pregnancy Weight Gain Calculator above, then browse related pregnancy tools linked below."
   },
   '/safe-days-calculator': {
       "title": "Safe Days Calculator — Fertile Window Estimate",
       "h1": "Safe Days Calculator — Cycle Day Estimates",
       "metaDescription": "Estimate fertile and lower-risk days from cycle length and last period. Rhythm method is not reliable contraception — educational only.",
       "dateModified": "2026-08-29",
-      "tldr": "Safe Days Calculator lets you identify safe and fertile days with pregnancy risk insights. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Safe Days Calculator: Identify safe and fertile days with pregnancy risk insights. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calendar rhythm estimates fail often for contraception. Not medical advice — use approved birth control and clinician guidance.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -3632,42 +5103,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Safe Days Calculator on FYN Tools is built for period & cycle tools tasks: Identify safe and fertile days with pregnancy risk insights. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Cycle and pregnancy tools vary person to person. Use these results for planning and discussion with your clinician — not as a diagnosis or emergency guide."
+          "Safe Days Calculator on FYN Tools identify safe and fertile days with pregnancy risk insights. Use the tool above — free, no account required.",
+          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
       ],
       "overview": "Identify safe and fertile days with pregnancy risk insights.",
-      "howItWorks": "Safe Days Calculator applies calendar or logging logic from the dates and options you enter. Outputs are educational — confirm clinically important decisions with your provider.",
+      "howItWorks": "Safe Days Calculator applies calendar math or local logging from the dates you enter — educational only.",
       "howToUse": [
-          "Open Safe Days Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter dates or symptoms in Safe Days Calculator.",
+          "Review the estimate or log.",
+          "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need identify safe and fertile days with pregnancy risk insights without installing software",
-          "For quick period & cycle tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to identify safe and fertile days with pregnancy risk insights",
+          "For period & cycle tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday period & cycle tools needs in one browser tab."
+              "title": "Period & Cycle workflow",
+              "description": "Identify safe and fertile days with pregnancy risk insights."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Safe Days Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Safe Days Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -3692,33 +5156,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Safe Days Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Identify safe days",
+          "Identify fertile days",
+          "Pregnancy risk indicator",
+          "Cycle length input",
+          "Last period date",
+          "Safe days calendar",
+          "Fertile days calendar",
+          "Risk level display"
       ],
       "faqs": [
           {
+              "question": "How do I use Safe Days Calculator?",
+              "answer": "Identify safe and fertile days with pregnancy risk insights. See How to Use above."
+          },
+          {
               "question": "Is Safe Days Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Date math runs in your browser; logs may stay local only."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Can this replace my doctor?",
+              "answer": "No — educational only. Call your clinician for medical concerns."
           }
       ],
-      "conclusion": "Use Safe Days Calculator above for identify safe and fertile days with pregnancy risk insights, then explore related Period & Cycle Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Period Calculator",
+              "href": "/period-calculator",
+              "description": "Predict your next period date based on your cycle history."
+          },
+          {
+              "name": "Ovulation Calculator",
+              "href": "/ovulation-calculator",
+              "description": "Find your ovulation day and fertile window easily."
+          },
+          {
+              "name": "Period Tracker",
+              "href": "/period-tracker",
+              "description": "Log symptoms, mood, and flow with history charts and reminders."
+          },
+          {
+              "name": "PMS Symptom Tracker",
+              "href": "/pms-symptom-tracker",
+              "description": "Track PMS symptoms, pain scale, and daily changes."
+          }
+      ],
+      "conclusion": "Use Safe Days Calculator above, then browse related period & cycle tools linked below."
   },
   '/simple-calculator': {
       "title": "Simple Calculator — Basic Arithmetic",
       "h1": "Simple Calculator — Add, Subtract, Multiply, Divide",
       "metaDescription": "Online calculator for everyday arithmetic. Keyboard-friendly — free, no download.",
       "dateModified": "2026-08-29",
-      "tldr": "Simple Calculator lets you perform basic arithmetic calculations. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Simple Calculator: Perform basic arithmetic calculations. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -3735,42 +5229,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Simple Calculator on FYN Tools is built for number tools tasks: Perform basic arithmetic calculations. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Simple Calculator on FYN Tools perform basic arithmetic calculations. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Perform basic arithmetic calculations.",
-      "howItWorks": "The Simple Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Simple Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Simple Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Simple Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need perform basic arithmetic calculations without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to perform basic arithmetic calculations",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Perform basic arithmetic calculations."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Simple Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Simple Calculator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Sample amounts in the labeled fields",
+              "output": "On-screen breakdown with totals"
           }
       ],
       "tips": [
@@ -3795,33 +5282,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Simple Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Basic arithmetic operations",
+          "Addition",
+          "Subtraction",
+          "Multiplication",
+          "Division",
+          "Clear function",
+          "Memory functions",
+          "Percentage calculations"
       ],
       "faqs": [
           {
+              "question": "How do I use Simple Calculator?",
+              "answer": "Perform basic arithmetic calculations. See How to Use above."
+          },
+          {
               "question": "Is Simple Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Simple Calculator above for perform basic arithmetic calculations, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "SIP & Lumpsum Calculator",
+              "href": "/sip-calculator",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use Simple Calculator above, then browse related number tools linked below."
   },
   '/sip-calculator': {
       "title": "SIP & Lumpsum Calculator — Mutual Fund Returns",
       "h1": "SIP & Lumpsum Calculator — Investment Growth",
       "metaDescription": "Project SIP or lumpsum mutual fund returns with expected annual return and tenure. Free investment calculator — educational estimates.",
       "dateModified": "2026-08-29",
-      "tldr": "SIP & Lumpsum Calculator lets you calculate returns on your SIP or Lumpsum investments. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "SIP & Lumpsum Calculator: Calculate returns on your SIP or Lumpsum investments. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Monthly SIP or one-time lumpsum, expected annual return (%), investment period (years)",
@@ -3838,36 +5385,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "SIP & Lumpsum Calculator on FYN Tools is built for number tools tasks: Calculate returns on your SIP or Lumpsum investments. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "SIP & Lumpsum Calculator on FYN Tools calculate returns on your SIP or Lumpsum investments. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Calculate returns on your SIP or Lumpsum investments.",
-      "howItWorks": "The SIP & Lumpsum Calculator form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "SIP & Lumpsum Calculator runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open SIP & Lumpsum Calculator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in SIP & Lumpsum Calculator.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need calculate returns on your sip or lumpsum investments without installing software",
-          "For quick number tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to calculate returns on your sip or lumpsum investments",
+          "For number tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday number tools needs in one browser tab."
+              "title": "Number workflow",
+              "description": "Calculate returns on your SIP or Lumpsum investments."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use SIP & Lumpsum Calculator once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -3898,33 +5438,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive SIP & Lumpsum Calculator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "SIP calculation",
+          "Lumpsum calculation",
+          "Expected returns",
+          "Investment amount input",
+          "Expected return rate",
+          "Investment period",
+          "Maturity amount display",
+          "Total investment display"
       ],
       "faqs": [
           {
+              "question": "How do I use SIP & Lumpsum Calculator?",
+              "answer": "Calculate returns on your SIP or Lumpsum investments. See How to Use above."
+          },
+          {
               "question": "Is SIP & Lumpsum Calculator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use SIP & Lumpsum Calculator above for calculate returns on your sip or lumpsum investments, then explore related Number Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Simple Calculator",
+              "href": "/simple-calculator",
+              "description": "Perform basic arithmetic calculations."
+          },
+          {
+              "name": "Age Calculator",
+              "href": "/age-calculator",
+              "description": "Calculate age from a birthdate."
+          },
+          {
+              "name": "Date Difference Calculator",
+              "href": "/date-difference-calculator",
+              "description": "Calculate the difference between two dates."
+          },
+          {
+              "name": "Future Date Calculator",
+              "href": "/future-date-calculator",
+              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+          },
+          {
+              "name": "BMI Calculator",
+              "href": "/bmi-calculator",
+              "description": "Calculate Body Mass Index (BMI)."
+          },
+          {
+              "name": "Percentage Calculator",
+              "href": "/percentage-calculator",
+              "description": "Calculate percentages and ratios."
+          },
+          {
+              "name": "Currency Converter",
+              "href": "/currency-converter",
+              "description": "Convert between different currencies."
+          },
+          {
+              "name": "GST Calculator",
+              "href": "/gst-calculator",
+              "description": "Calculate GST (Goods and Services Tax)."
+          },
+          {
+              "name": "EMI Calculator",
+              "href": "/emi-calculator",
+              "description": "Calculate Equated Monthly Installment (EMI) for loans."
+          },
+          {
+              "name": "PPF Calculator",
+              "href": "/ppf-calculator",
+              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+          }
+      ],
+      "conclusion": "Use SIP & Lumpsum Calculator above, then browse related number tools linked below."
   },
   '/social-media-db-viewer': {
       "title": "Social Media Profile Viewer",
       "h1": "Instagram & Facebook Public Profile Viewer",
       "metaDescription": "View public profile information from Instagram and Facebook URLs. Public data only — respect privacy and platform terms.",
       "dateModified": "2026-08-29",
-      "tldr": "Social Media DB Viewer lets you view public profile information from Instagram and Facebook accounts. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Social Media DB Viewer: View public profile information from Instagram and Facebook accounts. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Only works for public profiles. Do not use to harass or scrape private data.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -3941,42 +5541,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media DB Viewer on FYN Tools is built for video & social media tools tasks: View public profile information from Instagram and Facebook accounts. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Social Media DB Viewer on FYN Tools view public profile information from Instagram and Facebook accounts. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "View public profile information from Instagram and Facebook accounts.",
-      "howItWorks": "The Social Media DB Viewer form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Social Media DB Viewer runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Social Media DB Viewer and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Social Media DB Viewer form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need view public profile information from instagram and facebook accounts without installing software",
-          "For quick video & social media tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to view public profile information from instagram and facebook accounts",
+          "For video & social media tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday video & social media tools needs in one browser tab."
+              "title": "Video & Social Media workflow",
+              "description": "View public profile information from Instagram and Facebook accounts."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Social Media DB Viewer once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Social Media DB Viewer input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4001,33 +5594,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Social Media DB Viewer",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "View Instagram profiles",
+          "View Facebook profiles",
+          "Public profile information",
+          "Profile statistics",
+          "Follower count",
+          "Post count",
+          "Profile details",
+          "Account information"
       ],
       "faqs": [
           {
+              "question": "How do I use Social Media DB Viewer?",
+              "answer": "View public profile information from Instagram and Facebook accounts. See How to Use above."
+          },
+          {
               "question": "Is Social Media DB Viewer free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Social Media DB Viewer above for view public profile information from instagram and facebook accounts, then explore related Video & Social Media Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Instagram & Facebook Downloader",
+              "href": "/social-media-downloader",
+              "description": "Download reels, posts, stories, and highlights from Instagram and Facebook."
+          },
+          {
+              "name": "Social Media Deep Link Generator",
+              "href": "/social-media-deep-link-generator",
+              "description": "Generate smart deep links for social media platforms that automatically open content in apps if inst"
+          },
+          {
+              "name": "Social Media Planner",
+              "href": "/social-media-planner",
+              "description": "Plan and schedule your social media posts with ease."
+          },
+          {
+              "name": "Text to Speech",
+              "href": "/text-to-speech",
+              "description": "Convert text to audio with natural-sounding voices."
+          }
+      ],
+      "conclusion": "Use Social Media DB Viewer above, then browse related video & social media tools linked below."
   },
   '/social-media-deep-link-generator': {
       "title": "Deep Link Generator — Open in App or Web",
       "h1": "Social Media Deep Link Generator",
       "metaDescription": "Create smart links for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn that open apps when installed.",
       "dateModified": "2026-08-29",
-      "tldr": "Social Media Deep Link Generator lets you generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Social Media Deep Link Generator: Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "This tool may call external APIs to fetch public data. Do not submit secrets or private credentials.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -4044,42 +5667,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media Deep Link Generator on FYN Tools is built for video & social media tools tasks: Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Social Media Deep Link Generator on FYN Tools generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn.",
       "howItWorks": "Enter a platform URL; the tool outputs a deep-link pattern that tries the native app URI scheme with web fallback.",
       "howToUse": [
-          "Open Social Media Deep Link Generator and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Social Media Deep Link Generator form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. free universal deep linking tool for youtube, instagram, facebook, twitter, whatsapp, telegram, and linkedin without installing software",
-          "For quick video & social media tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. free universal deep linking tool for youtube, instagram, facebook, twitter, whatsapp, telegram, and linkedin",
+          "For video & social media tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday video & social media tools needs in one browser tab."
+              "title": "Video & Social Media workflow",
+              "description": "Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Social Media Deep Link Generator once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Social Media Deep Link Generator input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4104,33 +5720,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Social Media Deep Link Generator",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Generate deep links",
+          "YouTube deep links",
+          "Instagram deep links",
+          "Facebook deep links",
+          "Twitter deep links",
+          "WhatsApp deep links",
+          "Telegram deep links",
+          "LinkedIn deep links"
       ],
       "faqs": [
           {
+              "question": "How do I use Social Media Deep Link Generator?",
+              "answer": "Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. See How to Use above."
+          },
+          {
               "question": "Is Social Media Deep Link Generator free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Social Media Deep Link Generator above for generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. free universal deep linking tool for youtube, instagram, facebook, twitter, whatsapp, telegram, and linkedin, then explore related Video & Social Media Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Social Media DB Viewer",
+              "href": "/social-media-db-viewer",
+              "description": "View public profile information from Instagram and Facebook accounts."
+          },
+          {
+              "name": "Instagram & Facebook Downloader",
+              "href": "/social-media-downloader",
+              "description": "Download reels, posts, stories, and highlights from Instagram and Facebook."
+          },
+          {
+              "name": "Social Media Planner",
+              "href": "/social-media-planner",
+              "description": "Plan and schedule your social media posts with ease."
+          },
+          {
+              "name": "Text to Speech",
+              "href": "/text-to-speech",
+              "description": "Convert text to audio with natural-sounding voices."
+          }
+      ],
+      "conclusion": "Use Social Media Deep Link Generator above, then browse related video & social media tools linked below."
   },
   '/social-media-downloader': {
       "title": "Instagram & Facebook Downloader",
       "h1": "Social Media Downloader — Reels & Posts",
       "metaDescription": "Download public Instagram reels, posts, stories, and Facebook videos via URL. Respect copyright and platform terms of use.",
       "dateModified": "2026-08-29",
-      "tldr": "Instagram & Facebook Downloader lets you download reels, posts, stories, and highlights from Instagram and Facebook. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Instagram & Facebook Downloader: Download reels, posts, stories, and highlights from Instagram and Facebook. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Only download content you have rights to use. FYN Tools does not store your downloads on a server beyond the fetch step.",
       "ioContract": {
           "inputs": "Public post/reel/story URL",
@@ -4147,42 +5793,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Instagram & Facebook Downloader on FYN Tools is built for video & social media tools tasks: Download reels, posts, stories, and highlights from Instagram and Facebook. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Instagram & Facebook Downloader on FYN Tools download reels, posts, stories, and highlights from Instagram and Facebook. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Download reels, posts, stories, and highlights from Instagram and Facebook.",
-      "howItWorks": "The Instagram & Facebook Downloader form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Instagram & Facebook Downloader runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Instagram & Facebook Downloader and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Instagram & Facebook Downloader form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need download reels, posts, stories, and highlights from instagram and facebook without installing software",
-          "For quick video & social media tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to download reels, posts, stories, and highlights from instagram and facebook",
+          "For video & social media tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday video & social media tools needs in one browser tab."
+              "title": "Video & Social Media workflow",
+              "description": "Download reels, posts, stories, and highlights from Instagram and Facebook."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Instagram & Facebook Downloader once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Instagram & Facebook Downloader input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4207,33 +5846,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Instagram & Facebook Downloader",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Download Instagram reels",
+          "Download Instagram posts",
+          "Download Instagram stories",
+          "Download Instagram highlights",
+          "Download Facebook videos",
+          "Download Facebook posts",
+          "Multiple quality options",
+          "Download as MP4"
       ],
       "faqs": [
           {
+              "question": "How do I use Instagram & Facebook Downloader?",
+              "answer": "Download reels, posts, stories, and highlights from Instagram and Facebook. See How to Use above."
+          },
+          {
               "question": "Is Instagram & Facebook Downloader free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "This tool may fetch public data from external services when you submit a URL or location."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Instagram & Facebook Downloader above for download reels, posts, stories, and highlights from instagram and facebook, then explore related Video & Social Media Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Social Media DB Viewer",
+              "href": "/social-media-db-viewer",
+              "description": "View public profile information from Instagram and Facebook accounts."
+          },
+          {
+              "name": "Social Media Deep Link Generator",
+              "href": "/social-media-deep-link-generator",
+              "description": "Generate smart deep links for social media platforms that automatically open content in apps if inst"
+          },
+          {
+              "name": "Social Media Planner",
+              "href": "/social-media-planner",
+              "description": "Plan and schedule your social media posts with ease."
+          },
+          {
+              "name": "Text to Speech",
+              "href": "/text-to-speech",
+              "description": "Convert text to audio with natural-sounding voices."
+          }
+      ],
+      "conclusion": "Use Instagram & Facebook Downloader above, then browse related video & social media tools linked below."
   },
   '/social-media-planner': {
       "title": "Social Media Planner — Post Schedule Board",
       "h1": "Social Media Planner — Content Calendar",
       "metaDescription": "Draft and organize social posts by date and platform. Browser-based planning board — free.",
       "dateModified": "2026-08-29",
-      "tldr": "Social Media Planner lets you plan and schedule your social media posts with ease. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Social Media Planner: Plan and schedule your social media posts with ease. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Planner data may store locally — does not auto-publish to networks.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -4250,42 +5919,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media Planner on FYN Tools is built for video & social media tools tasks: Plan and schedule your social media posts with ease. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Social Media Planner on FYN Tools plan and schedule your social media posts with ease. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Plan and schedule your social media posts with ease.",
-      "howItWorks": "The Social Media Planner form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Social Media Planner runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Social Media Planner and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Social Media Planner form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need plan and schedule your social media posts with ease without installing software",
-          "For quick video & social media tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to plan and schedule your social media posts with ease",
+          "For video & social media tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday video & social media tools needs in one browser tab."
+              "title": "Video & Social Media workflow",
+              "description": "Plan and schedule your social media posts with ease."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Social Media Planner once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Social Media Planner input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4310,33 +5972,63 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Social Media Planner",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Plan social media posts",
+          "Schedule posts",
+          "Content calendar",
+          "Multiple platforms",
+          "Post templates",
+          "Draft posts",
+          "Post history",
+          "Export calendar"
       ],
       "faqs": [
           {
+              "question": "How do I use Social Media Planner?",
+              "answer": "Plan and schedule your social media posts with ease. See How to Use above."
+          },
+          {
               "question": "Is Social Media Planner free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Social Media Planner above for plan and schedule your social media posts with ease, then explore related Video & Social Media Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Social Media DB Viewer",
+              "href": "/social-media-db-viewer",
+              "description": "View public profile information from Instagram and Facebook accounts."
+          },
+          {
+              "name": "Instagram & Facebook Downloader",
+              "href": "/social-media-downloader",
+              "description": "Download reels, posts, stories, and highlights from Instagram and Facebook."
+          },
+          {
+              "name": "Social Media Deep Link Generator",
+              "href": "/social-media-deep-link-generator",
+              "description": "Generate smart deep links for social media platforms that automatically open content in apps if inst"
+          },
+          {
+              "name": "Text to Speech",
+              "href": "/text-to-speech",
+              "description": "Convert text to audio with natural-sounding voices."
+          }
+      ],
+      "conclusion": "Use Social Media Planner above, then browse related video & social media tools linked below."
   },
   '/split-image': {
       "title": "Split Image — Grid Slice & ZIP Download",
       "h1": "Split Image — Cut into Rows & Columns",
       "metaDescription": "Split an image into equal tiles by rows and columns. Download all pieces as ZIP — free.",
       "dateModified": "2026-08-29",
-      "tldr": "Split Image lets you split images into custom rows and columns and download all pieces as ZIP files. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Split Image: Split images into custom rows and columns and download all pieces as ZIP files. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -4353,42 +6045,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Split Image on FYN Tools is built for image tools tasks: Split images into custom rows and columns and download all pieces as ZIP files. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Upload from your device; processing stays local when the tool uses browser canvas APIs. Download the output when the preview looks correct."
+          "Split Image on FYN Tools split images into custom rows and columns and download all pieces as ZIP files. Use the tool above — free, no account required.",
+          "Upload from your device; most image tools process locally in the browser."
       ],
       "overview": "Split images into custom rows and columns and download all pieces as ZIP files.",
-      "howItWorks": "Upload an image into Split Image; the canvas pipeline applies the selected transform and shows a preview you can download as PNG or JPG.",
+      "howItWorks": "Split Image processes your upload in the browser and shows a preview you can download.",
       "howToUse": [
-          "Open Split Image and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Upload your image.",
+          "Adjust settings and preview.",
+          "Download the result."
       ],
       "whenToUse": [
-          "When you need split images into custom rows and columns and download all pieces as zip files without installing software",
-          "For quick image tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to split images into custom rows and columns and download all pieces as zip files",
+          "For image tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday image tools needs in one browser tab."
+              "title": "Image workflow",
+              "description": "Split images into custom rows and columns and download all pieces as ZIP files."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Split Image once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Split Image input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4413,33 +6098,92 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Split Image",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Custom rows and columns",
+          "Split into pieces",
+          "Download as ZIP",
+          "Individual piece download",
+          "Grid split",
+          "Equal size pieces",
+          "Download all pieces"
       ],
       "faqs": [
           {
+              "question": "How do I use Split Image?",
+              "answer": "Split images into custom rows and columns and download all pieces as ZIP files. See How to Use above."
+          },
+          {
               "question": "Is Split Image free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Split Image above for split images into custom rows and columns and download all pieces as zip files, then explore related Image Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Image Compressor",
+              "href": "/image-compressor",
+              "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for document "
+          },
+          {
+              "name": "Logo to Favicon Converter",
+              "href": "/logo-to-favicon",
+              "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32, 180x180 "
+          },
+          {
+              "name": "Image Upscaler",
+              "href": "/image-upscaler",
+              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution"
+          },
+          {
+              "name": "Image Cropper & Resizer",
+              "href": "/image-cropper",
+              "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Facebook, Twitt"
+          },
+          {
+              "name": "Image Format Converter",
+              "href": "/image-format-converter",
+              "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online image con"
+          },
+          {
+              "name": "SVG Optimizer",
+              "href": "/svg-optimizer",
+              "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size while mai"
+          },
+          {
+              "name": "Image Metadata Viewer",
+              "href": "/image-metadata-viewer",
+              "description": "View and extract EXIF data and metadata from images. See camera settings, GPS location, and technica"
+          },
+          {
+              "name": "Image to Text",
+              "href": "/image-to-text",
+              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+          },
+          {
+              "name": "PDF Text Extractor",
+              "href": "/pdf-text-extractor",
+              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
+          },
+          {
+              "name": "Placeholder Image Generator",
+              "href": "/placeholder-image-generator",
+              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+          }
+      ],
+      "conclusion": "Use Split Image above, then browse related image tools linked below."
   },
   '/table-to-json-converter': {
       "title": "Table to JSON Converter — HTML Table Parser",
       "h1": "Table to JSON — Convert HTML Tables",
       "metaDescription": "Paste an HTML table and get JSON array output. Free for scraping cleanup and API fixtures.",
       "dateModified": "2026-08-29",
-      "tldr": "Table to JSON Converter lets you convert HTML tables to JSON format. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Table to JSON Converter: Convert HTML tables to JSON format. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -4456,36 +6200,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Table to JSON Converter on FYN Tools is built for development tools tasks: Convert HTML tables to JSON format. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Table to JSON Converter on FYN Tools convert HTML tables to JSON format. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Convert HTML tables to JSON format.",
       "howItWorks": "Parses table rows and cells into an array of objects using header row keys when present.",
       "howToUse": [
-          "Open Table to JSON Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Table to JSON Converter form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need convert html tables to json format without installing software",
-          "For quick development tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert html tables to json format",
+          "For development tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday development tools needs in one browser tab."
+              "title": "Development workflow",
+              "description": "Convert HTML tables to JSON format."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Table to JSON Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -4516,33 +6253,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Table to JSON Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Convert HTML table to JSON",
+          "Paste table HTML",
+          "Generate JSON",
+          "Array format",
+          "Object format",
+          "Copy JSON",
+          "Download JSON",
+          "Validate JSON"
       ],
       "faqs": [
           {
+              "question": "How do I use Table to JSON Converter?",
+              "answer": "Convert HTML tables to JSON format. See How to Use above."
+          },
+          {
               "question": "Is Table to JSON Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Table to JSON Converter above for convert html tables to json format, then explore related Development Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "JSON Beautifier & Formatter",
+              "href": "/json-formatter",
+              "description": "Beautify, format, validate, and minify JSON data online. Free JSON beautifier and minifier tool."
+          },
+          {
+              "name": "Hash Generator & Comparator",
+              "href": "/hash-generator",
+              "description": "Generate and compare cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Verify "
+          },
+          {
+              "name": "JWT Token Decoder",
+              "href": "/jwt-decoder",
+              "description": "Decode and parse JWT (JSON Web Token) headers, payloads, and signatures."
+          },
+          {
+              "name": "Meta Tag Previewer",
+              "href": "/meta-tag-previewer",
+              "description": "Preview how your website appears in search results and generate SEO meta tags."
+          },
+          {
+              "name": "Live HTML Previewer",
+              "href": "/live-preview",
+              "description": "Instantly preview HTML, CSS, and JavaScript code online. Real-time HTML preview, test HTML code onli"
+          },
+          {
+              "name": "JavaScript Minifier",
+              "href": "/javascript-minifier",
+              "description": "Minify JavaScript code to reduce file size."
+          },
+          {
+              "name": "XML Sitemap Tester & Validator",
+              "href": "/xml-sitemap-tester",
+              "description": "Test and validate your XML sitemap for SEO issues. Analyze URLs, detect broken links, check redirect"
+          },
+          {
+              "name": "Box Shadow Generator",
+              "href": "/box-shadow-generator",
+              "description": "Create and customize CSS box-shadow effects for your web elements."
+          },
+          {
+              "name": "Border Radius Generator",
+              "href": "/border-radius-generator",
+              "description": "Generate CSS border-radius properties for rounded corners."
+          },
+          {
+              "name": "Button Generator",
+              "href": "/button-generator",
+              "description": "Design and generate CSS for custom buttons with various styles."
+          }
+      ],
+      "conclusion": "Use Table to JSON Converter above, then browse related development tools linked below."
   },
   '/temperature-converter': {
       "title": "Temperature Converter — Celsius ↔ Fahrenheit",
       "h1": "Temperature Converter — °C and °F",
       "metaDescription": "Convert Celsius to Fahrenheit and back instantly. Free temperature converter for cooking, travel, and science homework.",
       "dateModified": "2026-08-29",
-      "tldr": "Temperature Converter lets you convert between Celsius and Fahrenheit. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Temperature Converter: Convert between Celsius and Fahrenheit. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value and unit/color format selectors",
@@ -4559,36 +6356,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Temperature Converter on FYN Tools is built for converter tools tasks: Convert between Celsius and Fahrenheit. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Temperature Converter on FYN Tools convert between Celsius and Fahrenheit. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Convert between Celsius and Fahrenheit.",
-      "howItWorks": "The Temperature Converter form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Temperature Converter runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Temperature Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Temperature Converter form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need convert between celsius and fahrenheit without installing software",
-          "For quick converter tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert between celsius and fahrenheit",
+          "For converter tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday converter tools needs in one browser tab."
+              "title": "Converter workflow",
+              "description": "Convert between Celsius and Fahrenheit."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Temperature Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -4623,33 +6413,57 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Temperature Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Celsius to Fahrenheit",
+          "Fahrenheit to Celsius",
+          "Kelvin conversion",
+          "Real-time conversion",
+          "Bidirectional conversion",
+          "Copy result",
+          "Clear input"
       ],
       "faqs": [
           {
+              "question": "How do I use Temperature Converter?",
+              "answer": "Convert between Celsius and Fahrenheit. See How to Use above."
+          },
+          {
               "question": "Is Temperature Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Temperature Converter above for convert between celsius and fahrenheit, then explore related Converter Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Timestamp Converter",
+              "href": "/timestamp-converter",
+              "description": "Convert Unix timestamps to dates and dates to timestamps with timezone support."
+          },
+          {
+              "name": "Unit Converter",
+              "href": "/unit-converter",
+              "description": "Convert between different units of measurement."
+          },
+          {
+              "name": "Color Converter",
+              "href": "/color-converter",
+              "description": "Convert colors between HEX, RGB, HSL, and other formats."
+          }
+      ],
+      "conclusion": "Use Temperature Converter above, then browse related converter tools linked below."
   },
   '/text-font-changer': {
       "title": "Fancy Text Generator — Unicode Fonts",
       "h1": "Text Font Changer — 35+ Unicode Styles",
       "metaDescription": "Turn plain text into bold, cursive, bubble, and aesthetic Unicode fonts for Instagram, Discord, TikTok, and bios. Copy-paste free.",
       "dateModified": "2026-08-29",
-      "tldr": "Text Font Changer lets you free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Text Font Changer: Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -4666,36 +6480,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Text Font Changer on FYN Tools is built for text & writing tools tasks: Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Text Font Changer on FYN Tools free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up.",
       "howItWorks": "Type in the box; each style row shows a Unicode transformation you can copy — works anywhere Unicode is supported.",
       "howToUse": [
-          "Open Text Font Changer and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Text Font Changer form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need free fancy text generator with 35+ unicode fonts. copy-paste for instagram bio, discord, tiktok, roblox—bold, cursive, bubble, aesthetic. no sign-up without installing software",
-          "For quick text & writing tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to free fancy text generator with 35+ unicode fonts. copy-paste for instagram bio, discord, tiktok, roblox—bold, cursive, bubble, aesthetic. no sign-up",
+          "For text & writing tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday text & writing tools needs in one browser tab."
+              "title": "Text & Writing workflow",
+              "description": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Text Font Changer once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -4726,33 +6533,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Text Font Changer",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "35+ Unicode fonts",
+          "Bold italic cursive bubble aesthetic",
+          "Kaomojis and emoticons",
+          "Export to PNG",
+          "Platform presets Instagram Discord TikTok Roblox",
+          "Character limit indicators",
+          "Font search and favorites",
+          "Dark light preview"
       ],
       "faqs": [
           {
+              "question": "How do I use Text Font Changer?",
+              "answer": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. See How to Use above."
+          },
+          {
               "question": "Is Text Font Changer free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Text Font Changer above for free fancy text generator with 35+ unicode fonts. copy-paste for instagram bio, discord, tiktok, roblox—bold, cursive, bubble, aesthetic. no sign-up, then explore related Text & Writing Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Word Counter",
+              "href": "/word-counter",
+              "description": "Count words, characters, and paragraphs in your text."
+          },
+          {
+              "name": "Text Case Converter",
+              "href": "/text-case-converter",
+              "description": "Convert text between uppercase, lowercase, and title case."
+          },
+          {
+              "name": "AI Text Rewriter",
+              "href": "/ai-text-rewriter",
+              "description": "Rewrite your content to make it unique and avoid AI detection."
+          },
+          {
+              "name": "Lorem Ipsum Generator",
+              "href": "/lorem-ipsum-generator",
+              "description": "Generate placeholder text for your designs."
+          },
+          {
+              "name": "Whitespace Remover",
+              "href": "/whitespace-remover",
+              "description": "Remove extra spaces and tabs from your text."
+          },
+          {
+              "name": "Duplicate Line Remover",
+              "href": "/duplicate-line-remover",
+              "description": "Remove duplicate lines from your text."
+          },
+          {
+              "name": "Text Reverser",
+              "href": "/text-reverser",
+              "description": "Reverse text, words, or lines in your text."
+          },
+          {
+              "name": "Regex Tester",
+              "href": "/regex-tester",
+              "description": "Test regular expressions against your text."
+          },
+          {
+              "name": "Base64 Converter",
+              "href": "/base64-converter",
+              "description": "Encode and decode Base64 strings."
+          },
+          {
+              "name": "Text to Handwriting",
+              "href": "/text-to-handwriting",
+              "description": "Convert typed text into handwritten-style text on lined paper."
+          }
+      ],
+      "conclusion": "Use Text Font Changer above, then browse related text & writing tools linked below."
   },
   '/timetable-maker': {
       "title": "Timetable Maker — Personal Schedule Builder",
       "h1": "Timetable Maker — Custom Weekly Schedule",
       "metaDescription": "Build a weekly timetable from hobbies, goals, and job hours. Printable layout — free schedule maker.",
       "dateModified": "2026-08-29",
-      "tldr": "Timetable Maker lets you create a personalized timetable from your hobbies, goals, job, and preferences. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Timetable Maker: Create a personalized timetable from your hobbies, goals, job, and preferences. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -4769,42 +6636,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Timetable Maker on FYN Tools is built for utility tools tasks: Create a personalized timetable from your hobbies, goals, job, and preferences. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Timetable Maker on FYN Tools create a personalized timetable from your hobbies, goals, job, and preferences. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Create a personalized timetable from your hobbies, goals, job, and preferences.",
-      "howItWorks": "The Timetable Maker form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Timetable Maker runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Timetable Maker and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Timetable Maker form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need create a personalized timetable from your hobbies, goals, job, and preferences without installing software",
-          "For quick utility tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to create a personalized timetable from your hobbies, goals, job, and preferences",
+          "For utility tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday utility tools needs in one browser tab."
+              "title": "Utility workflow",
+              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Timetable Maker once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Timetable Maker input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4829,33 +6689,91 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Timetable Maker",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Profile-based generation",
+          "Hobbies and goals input",
+          "For students and adults",
+          "Editable slots",
+          "Regenerate",
+          "Save locally"
       ],
       "faqs": [
           {
+              "question": "How do I use Timetable Maker?",
+              "answer": "Create a personalized timetable from your hobbies, goals, job, and preferences. See How to Use above."
+          },
+          {
               "question": "Is Timetable Maker free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Timetable Maker above for create a personalized timetable from your hobbies, goals, job, and preferences, then explore related Utility Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "QR Code Generator",
+              "href": "/qr-code-generator",
+              "description": "Generate QR codes from text or URLs."
+          },
+          {
+              "name": "Password Generator",
+              "href": "/password-generator",
+              "description": "Generate strong and secure passwords."
+          },
+          {
+              "name": "Color Picker",
+              "href": "/color-picker-tool",
+              "description": "Pick colors from a palette or image."
+          },
+          {
+              "name": "To-Do List",
+              "href": "/todo-list",
+              "description": "Create and manage your to-do list."
+          },
+          {
+              "name": "Daily Task Report Saver",
+              "href": "/daily-task-report-saver",
+              "description": "Save your daily timetable, routine, work report, and notes by date."
+          },
+          {
+              "name": "List Randomizer",
+              "href": "/list-randomizer",
+              "description": "Randomize the order of items in any list."
+          },
+          {
+              "name": "Barcode Generator",
+              "href": "/barcode-generator",
+              "description": "Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export."
+          },
+          {
+              "name": "Barcode Scanner",
+              "href": "/barcode-scanner-online",
+              "description": "Scan barcodes using camera or image upload with history and CSV export."
+          },
+          {
+              "name": "Coin Flip",
+              "href": "/coin-flip",
+              "description": "Simulate a coin flip to make random decisions."
+          },
+          {
+              "name": "Dice Roller",
+              "href": "/dice-roller",
+              "description": "Roll virtual dice with customizable sides and quantities."
+          }
+      ],
+      "conclusion": "Use Timetable Maker above, then browse related utility tools linked below."
   },
   '/todo-list': {
       "title": "To-Do List — Simple Task Manager",
       "h1": "To-Do List — Tasks in Your Browser",
       "metaDescription": "Add, complete, and delete tasks. Local browser storage — free minimalist todo list.",
       "dateModified": "2026-08-29",
-      "tldr": "To-Do List lets you create and manage your to-do list. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "To-Do List: Create and manage your to-do list. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Tasks save locally; they do not sync across devices unless you export them.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -4872,42 +6790,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "To-Do List on FYN Tools is built for utility tools tasks: Create and manage your to-do list. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "To-Do List on FYN Tools create and manage your to-do list. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Create and manage your to-do list.",
-      "howItWorks": "The To-Do List form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "To-Do List runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open To-Do List and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the To-Do List form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need create and manage your to-do list without installing software",
-          "For quick utility tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to create and manage your to-do list",
+          "For utility tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday utility tools needs in one browser tab."
+              "title": "Utility workflow",
+              "description": "Create and manage your to-do list."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use To-Do List once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical To-Do List input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -4932,33 +6843,93 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive To-Do List",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Create tasks",
+          "Edit tasks",
+          "Delete tasks",
+          "Mark as complete",
+          "Task priorities",
+          "Due dates",
+          "Task categories",
+          "Local storage"
       ],
       "faqs": [
           {
+              "question": "How do I use To-Do List?",
+              "answer": "Create and manage your to-do list. See How to Use above."
+          },
+          {
               "question": "Is To-Do List free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use To-Do List above for create and manage your to-do list, then explore related Utility Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "QR Code Generator",
+              "href": "/qr-code-generator",
+              "description": "Generate QR codes from text or URLs."
+          },
+          {
+              "name": "Password Generator",
+              "href": "/password-generator",
+              "description": "Generate strong and secure passwords."
+          },
+          {
+              "name": "Color Picker",
+              "href": "/color-picker-tool",
+              "description": "Pick colors from a palette or image."
+          },
+          {
+              "name": "Daily Task Report Saver",
+              "href": "/daily-task-report-saver",
+              "description": "Save your daily timetable, routine, work report, and notes by date."
+          },
+          {
+              "name": "Timetable Maker",
+              "href": "/timetable-maker",
+              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
+          },
+          {
+              "name": "List Randomizer",
+              "href": "/list-randomizer",
+              "description": "Randomize the order of items in any list."
+          },
+          {
+              "name": "Barcode Generator",
+              "href": "/barcode-generator",
+              "description": "Bulk 1D barcodes with visual styles, Avery print sheets (A4/Letter), and PNG/ZIP export."
+          },
+          {
+              "name": "Barcode Scanner",
+              "href": "/barcode-scanner-online",
+              "description": "Scan barcodes using camera or image upload with history and CSV export."
+          },
+          {
+              "name": "Coin Flip",
+              "href": "/coin-flip",
+              "description": "Simulate a coin flip to make random decisions."
+          },
+          {
+              "name": "Dice Roller",
+              "href": "/dice-roller",
+              "description": "Roll virtual dice with customizable sides and quantities."
+          }
+      ],
+      "conclusion": "Use To-Do List above, then browse related utility tools linked below."
   },
   '/trip-expense-splitter': {
       "title": "Trip Expense Splitter — Split Bills with Friends",
       "h1": "Trip Expense Splitter — Who Owes What",
       "metaDescription": "Track group trip expenses, assign shares, and calculate settlements. Free expense splitter with roles and balance summary.",
       "dateModified": "2026-08-29",
-      "tldr": "Trip Expense Splitter & Manager lets you split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Trip Expense Splitter & Manager: Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Trip members, expenses, payer, split rules",
@@ -4975,42 +6946,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Trip Expense Splitter & Manager on FYN Tools is built for finance tools tasks: Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Adjust inputs to compare scenarios — for example different tenures, tax regimes, or deposit amounts — before you commit to a financial decision elsewhere."
+          "Trip Expense Splitter & Manager on FYN Tools split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. Use the tool above — free, no account required.",
+          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
       ],
       "overview": "Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what.",
-      "howItWorks": "The Trip Expense Splitter & Manager form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Trip Expense Splitter & Manager runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Trip Expense Splitter & Manager and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Enter amounts and rates in Trip Expense Splitter & Manager.",
+          "Compare scenarios by changing inputs.",
+          "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need split and manage trip expenses with friends. track expenses, assign roles, calculate settlements, and see who owes what without installing software",
-          "For quick finance tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to split and manage trip expenses with friends. track expenses, assign roles, calculate settlements, and see who owes what",
+          "For finance tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday finance tools needs in one browser tab."
+              "title": "Finance workflow",
+              "description": "Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Trip Expense Splitter & Manager once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Trip Expense Splitter & Manager input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Sample amounts in the labeled fields",
+              "output": "On-screen breakdown with totals"
           }
       ],
       "tips": [
@@ -5035,33 +6999,42 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Trip Expense Splitter & Manager",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Split expenses",
+          "Track trip expenses",
+          "Assign roles",
+          "Calculate settlements",
+          "See who owes what",
+          "Add participants",
+          "Add expenses",
+          "Equal split"
       ],
       "faqs": [
           {
+              "question": "How do I use Trip Expense Splitter & Manager?",
+              "answer": "Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. See How to Use above."
+          },
+          {
               "question": "Is Trip Expense Splitter & Manager free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Trip Expense Splitter & Manager above for split and manage trip expenses with friends. track expenses, assign roles, calculate settlements, and see who owes what, then explore related Finance Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [],
+      "conclusion": "Use Trip Expense Splitter & Manager above, then browse related finance tools linked below."
   },
   '/typing-competition': {
       "title": "Typing Competition — Real-Time Races",
       "h1": "Typing Competition — Multiplayer Typing",
       "metaDescription": "Compete in real-time typing races against random players. Track WPM and accuracy — free browser game.",
       "dateModified": "2026-08-29",
-      "tldr": "Typing Competition lets you compete with random players in real-time typing challenges. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Typing Competition: Compete with random players in real-time typing challenges. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Keyboard input during matched prompt",
@@ -5078,42 +7051,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Typing Competition on FYN Tools is built for typing tools tasks: Compete with random players in real-time typing challenges. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Typing Competition on FYN Tools compete with random players in real-time typing challenges. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Compete with random players in real-time typing challenges.",
-      "howItWorks": "The Typing Competition form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Typing Competition runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Typing Competition and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Typing Competition form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need compete with random players in real-time typing challenges without installing software",
-          "For quick typing tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to compete with random players in real-time typing challenges",
+          "For typing tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday typing tools needs in one browser tab."
+              "title": "Typing workflow",
+              "description": "Compete with random players in real-time typing challenges."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Typing Competition once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Typing Competition input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -5138,33 +7104,58 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Typing Competition",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Real-time competition",
+          "Multiplayer typing",
+          "Typing races",
+          "Leaderboard",
+          "Challenge random players",
+          "Live results",
+          "Competition mode",
+          "Ranking system"
       ],
       "faqs": [
           {
+              "question": "How do I use Typing Competition?",
+              "answer": "Compete with random players in real-time typing challenges. See How to Use above."
+          },
+          {
               "question": "Is Typing Competition free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "This tool may fetch public data from external services when you submit a URL or location."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Typing Competition above for compete with random players in real-time typing challenges, then explore related Typing Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Typing Tutor",
+              "href": "/typing-tutor",
+              "description": "Learn touch typing with guided lessons in English and Hindi."
+          },
+          {
+              "name": "Typing Test",
+              "href": "/typing-test",
+              "description": "Test your typing speed and accuracy with various text samples."
+          },
+          {
+              "name": "Typing Games",
+              "href": "/typing-games",
+              "description": "Fun typing games to improve your skills while playing."
+          }
+      ],
+      "conclusion": "Use Typing Competition above, then browse related typing tools linked below."
   },
   '/typing-tutor': {
       "title": "Typing Tutor — Touch Typing Lessons",
       "h1": "Typing Tutor — Learn Keyboard Skills",
       "metaDescription": "Guided touch typing lessons in English and Hindi. Finger placement drills and accuracy tracking — free in browser.",
       "dateModified": "2026-08-29",
-      "tldr": "Typing Tutor lets you learn touch typing with guided lessons in English and Hindi. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Typing Tutor: Learn touch typing with guided lessons in English and Hindi. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Lesson selection, keyboard input",
@@ -5181,42 +7172,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Typing Tutor on FYN Tools is built for typing tools tasks: Learn touch typing with guided lessons in English and Hindi. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Typing Tutor on FYN Tools learn touch typing with guided lessons in English and Hindi. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Learn touch typing with guided lessons in English and Hindi.",
-      "howItWorks": "The Typing Tutor form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Typing Tutor runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Typing Tutor and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Typing Tutor form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need learn touch typing with guided lessons in english and hindi without installing software",
-          "For quick typing tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to learn touch typing with guided lessons in english and hindi",
+          "For typing tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday typing tools needs in one browser tab."
+              "title": "Typing workflow",
+              "description": "Learn touch typing with guided lessons in English and Hindi."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Typing Tutor once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Typing Tutor input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -5241,33 +7225,58 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Typing Tutor",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Guided typing lessons",
+          "English lessons",
+          "Hindi lessons",
+          "Touch typing practice",
+          "Progress tracking",
+          "Finger position guide",
+          "Lesson difficulty levels",
+          "Practice exercises"
       ],
       "faqs": [
           {
+              "question": "How do I use Typing Tutor?",
+              "answer": "Learn touch typing with guided lessons in English and Hindi. See How to Use above."
+          },
+          {
               "question": "Is Typing Tutor free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Typing Tutor above for learn touch typing with guided lessons in english and hindi, then explore related Typing Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Typing Test",
+              "href": "/typing-test",
+              "description": "Test your typing speed and accuracy with various text samples."
+          },
+          {
+              "name": "Typing Games",
+              "href": "/typing-games",
+              "description": "Fun typing games to improve your skills while playing."
+          },
+          {
+              "name": "Typing Competition",
+              "href": "/typing-competition",
+              "description": "Compete with random players in real-time typing challenges."
+          }
+      ],
+      "conclusion": "Use Typing Tutor above, then browse related typing tools linked below."
   },
   '/unit-converter': {
       "title": "Unit Converter — Length, Weight, Temp & More",
       "h1": "Unit Converter — Measurement Conversion",
       "metaDescription": "Convert length, weight, volume, temperature, data size, speed, and more. Free instant unit converter in your browser.",
       "dateModified": "2026-08-29",
-      "tldr": "Unit Converter lets you convert between different units of measurement. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Unit Converter: Convert between different units of measurement. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value + source unit + target unit category",
@@ -5284,36 +7293,29 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Unit Converter on FYN Tools is built for converter tools tasks: Convert between different units of measurement. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Unit Converter on FYN Tools convert between different units of measurement. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Convert between different units of measurement.",
-      "howItWorks": "The Unit Converter form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Unit Converter runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Unit Converter and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Unit Converter form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need convert between different units of measurement without installing software",
-          "For quick converter tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to convert between different units of measurement",
+          "For converter tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday converter tools needs in one browser tab."
+              "title": "Converter workflow",
+              "description": "Convert between different units of measurement."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Unit Converter once, then continue in your doc or app."
           }
       ],
       "examples": [
@@ -5344,33 +7346,58 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Unit Converter",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Length conversion",
+          "Weight conversion",
+          "Volume conversion",
+          "Area conversion",
+          "Multiple unit types",
+          "Metric units",
+          "Imperial units",
+          "Real-time conversion"
       ],
       "faqs": [
           {
+              "question": "How do I use Unit Converter?",
+              "answer": "Convert between different units of measurement. See How to Use above."
+          },
+          {
               "question": "Is Unit Converter free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "Core processing runs in your browser. Check the processing note above for any API-backed tools."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Unit Converter above for convert between different units of measurement, then explore related Converter Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "Timestamp Converter",
+              "href": "/timestamp-converter",
+              "description": "Convert Unix timestamps to dates and dates to timestamps with timezone support."
+          },
+          {
+              "name": "Temperature Converter",
+              "href": "/temperature-converter",
+              "description": "Convert between Celsius and Fahrenheit."
+          },
+          {
+              "name": "Color Converter",
+              "href": "/color-converter",
+              "description": "Convert colors between HEX, RGB, HSL, and other formats."
+          }
+      ],
+      "conclusion": "Use Unit Converter above, then browse related converter tools linked below."
   },
   '/weather-forecast': {
       "title": "Weather Forecast — City Weather Lookup",
       "h1": "Weather Forecast — Current & Weekly",
       "metaDescription": "Check weather forecast by city name. Temperature, conditions, and multi-day outlook — free online.",
       "dateModified": "2026-08-29",
-      "tldr": "Weather Forecast lets you check the weather forecast for any location. Open the tool above, enter your data, and copy results instantly in the browser.",
+      "tldr": "Weather Forecast: Check the weather forecast for any location. Free in your browser on FYN Tools — use the panel above for instant results.",
       "processingNote": "This tool may call external APIs to fetch public data. Do not submit secrets or private credentials.",
       "ioContract": {
           "inputs": "City or location search",
@@ -5387,42 +7414,35 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Weather Forecast on FYN Tools is built for network tools tasks: Check the weather forecast for any location. The interactive panel loads above this guide so you can try it immediately without creating an account.",
-          "Results update as you type. Bookmark the page if you reuse this workflow often — everything runs in one tab."
+          "Weather Forecast on FYN Tools check the weather forecast for any location. Use the tool above — free, no account required.",
+          "Results update as you type. Bookmark this page if you reuse the workflow."
       ],
       "overview": "Check the weather forecast for any location.",
-      "howItWorks": "The Weather Forecast form reads your inputs, runs the built-in formulas or conversions, and shows results immediately in the page.",
+      "howItWorks": "Weather Forecast runs the formulas or conversions in the form and displays results immediately.",
       "howToUse": [
-          "Open Weather Forecast and locate the input fields at the top of the page.",
-          "Enter the values or upload the file your task requires.",
-          "Review the live output — copy, download, or adjust inputs as needed.",
-          "Read the tips and FAQs below if you need examples or troubleshooting.",
-          "For saved history tools, export data before clearing browser storage."
+          "Use the Weather Forecast form above.",
+          "Review the on-screen result.",
+          "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need check the weather forecast for any location without installing software",
-          "For quick network tools checks on mobile or desktop",
-          "Before sharing results in a doc, ticket, or chat — copy from the tool",
-          "As a free alternative to one-off paid utilities for the same task"
+          "When you need to check the weather forecast for any location",
+          "For network tools on mobile or desktop without installing an app",
+          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
       ],
       "useCases": [
           {
-              "title": "Personal use",
-              "description": "Handle everyday network tools needs in one browser tab."
+              "title": "Network workflow",
+              "description": "Check the weather forecast for any location."
           },
           {
-              "title": "Work & study",
-              "description": "Produce numbers, text, or files you can paste into reports and assignments."
-          },
-          {
-              "title": "Mobile quick check",
-              "description": "Responsive layout for phone browsers when you are away from desktop."
+              "title": "Quick browser check",
+              "description": "Use Weather Forecast once, then continue in your doc or app."
           }
       ],
       "examples": [
           {
-              "input": "Typical Weather Forecast input",
-              "output": "Instant on-screen result you can copy or download"
+              "input": "Your input in the form above",
+              "output": "Instant result shown below the controls"
           }
       ],
       "tips": [
@@ -5447,25 +7467,45 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Mobile-friendly layout"
       ],
       "features": [
-          "Interactive Weather Forecast",
-          "Copy-friendly output",
-          "No signup",
-          "Mobile-friendly UI"
+          "Weather forecast",
+          "Current weather",
+          "Hourly forecast",
+          "Daily forecast",
+          "Location search",
+          "Temperature display",
+          "Humidity",
+          "Wind speed"
       ],
       "faqs": [
           {
+              "question": "How do I use Weather Forecast?",
+              "answer": "Check the weather forecast for any location. See How to Use above."
+          },
+          {
               "question": "Is Weather Forecast free?",
-              "answer": "Yes — core features on FYN Tools are free to use in your browser without an account."
+              "answer": "Yes — no account required on FYN Tools."
           },
           {
               "question": "Is my data uploaded?",
-              "answer": "This tool may fetch public data from external services when you submit a URL or location."
+              "answer": "Core processing runs in your browser unless noted above."
           },
           {
-              "question": "Can I use this on mobile?",
-              "answer": "Yes — the layout is responsive. Very large uploads may be slower on mobile networks."
+              "question": "Are results exact?",
+              "answer": "Planning estimates only — verify critical figures independently."
           }
       ],
-      "conclusion": "Use Weather Forecast above for check the weather forecast for any location, then explore related Network Tools tools linked on this page when you need the next step in your workflow."
+      "relatedTools": [
+          {
+              "name": "What",
+              "href": "/ip-lookup",
+              "description": "Find your public IP address and location information."
+          },
+          {
+              "name": "IP Address to Location Finder",
+              "href": "/ip-address-to-location-finder",
+              "description": "Find the location of any IP address with detailed geolocation data."
+          }
+      ],
+      "conclusion": "Use Weather Forecast above, then browse related network tools linked below."
   },
 };

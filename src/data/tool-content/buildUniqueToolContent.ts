@@ -12,7 +12,7 @@ import {
   defaultProcessingNote,
   defaultTldr,
 } from '@/data/tool-content/toolProcessingDefaults';
-import { isGeneratedPremiumTemplate, isFakeTestimonial, isTemplatedExtendedText, isTemplatedExtendedArray } from '@/lib/seo/contentQuality';
+import { isGeneratedPremiumTemplate, isFakeTestimonial, isTemplatedExtendedText, isTemplatedExtendedArray, isWeakBatchPremium } from '@/lib/seo/contentQuality';
 
 /** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
 export const SEO_SHELL_DATE = '2026-08-29';
@@ -41,20 +41,14 @@ function pickCuratedList(primary: string[] | undefined, fallback: string[]): str
 
 function relatedToolsFallback(tool: Tool, limit = 10) {
   const skip = new Set(['/enhanced-unit-converter', '/add-name-date-photo', tool.path]);
-  const same = allTools.filter((t) => t.category === tool.category && !skip.has(t.path));
-  const picked = same.slice(0, limit);
-  if (picked.length < limit) {
-    for (const t of allTools) {
-      if (skip.has(t.path) || picked.some((p) => p.path === t.path)) continue;
-      picked.push(t);
-      if (picked.length >= limit) break;
-    }
-  }
-  return picked.map((t) => ({
-    name: t.name,
-    href: t.path,
-    description: t.description.slice(0, 110),
-  }));
+  return allTools
+    .filter((t) => t.category === tool.category && !skip.has(t.path))
+    .slice(0, limit)
+    .map((t) => ({
+      name: t.name,
+      href: t.path,
+      description: t.description.slice(0, 110),
+    }));
 }
 
 function ensureRelatedCount(
@@ -146,7 +140,8 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
   const curated = getToolSeoContent(path);
   const premium = getPremiumToolSeo(path);
   const templatedPremium = isGeneratedPremiumTemplate(premium);
-  const usePremiumBody = premium && !templatedPremium;
+  const weakBatch = isWeakBatchPremium(premium);
+  const usePremiumBody = premium && !templatedPremium && !weakBatch;
   const feats =
     premium?.features?.length
       ? premium.features
@@ -352,9 +347,12 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     (usePremiumBody && premium?.conclusion) ||
     `${tool.name} handles the core job on this page without a mandatory account. Use the live tool above, then follow related links when your workflow continues in another FYN Tools utility.`;
 
-  const tldr = premium?.tldr || defaultTldr(tool);
+  const tldr =
+    (premium?.tldr && !weakBatch ? premium.tldr : null) || defaultTldr(tool);
   const processingNote = premium?.processingNote || defaultProcessingNote(tool);
-  const ioContract = premium?.ioContract || defaultIoContract(tool);
+  const ioContract =
+    (premium?.ioContract && !weakBatch ? premium.ioContract : null) ||
+    defaultIoContract(tool);
   const datePublished = premium?.datePublished || SEO_SHELL_DATE;
   const dateModified = premium?.dateModified || SEO_SHELL_DATE;
 
