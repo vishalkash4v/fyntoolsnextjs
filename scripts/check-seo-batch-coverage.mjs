@@ -15,7 +15,7 @@ function slugKeysFromTs(filePath) {
 }
 
 const batchSlugs = new Set();
-for (const b of ["batch1", "batch2", "batch3", "batch4", "batch5", "batch6"]) {
+for (const b of ["batch1", "batch2", "batch3", "batch4", "batch5", "batch6", "batch7"]) {
   for (const k of slugKeysFromTs(path.join(root, "src/data/tool-content", `${b}.ts`))) {
     batchSlugs.add(k);
   }
