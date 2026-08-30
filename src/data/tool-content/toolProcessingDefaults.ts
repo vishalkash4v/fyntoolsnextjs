@@ -60,6 +60,17 @@ export function defaultTldr(tool: Tool): string {
 export function defaultIoContract(tool: Tool): SeoIoContract {
   const mode = getProcessingMode(tool);
   const cat = tool.category.toLowerCase();
+  const path = tool.path;
+
+  if (path === '/pms-symptom-tracker' || path === '/period-tracker') {
+    return {
+      inputs: 'Date, symptoms, pain scale (1–10), mood, and optional notes',
+      outputs: 'Saved symptom log and history timeline in browser localStorage',
+      formats: 'Daily log entries; export when the tool UI offers it',
+      limits: 'Educational self-tracking only — not diagnosis or emergency medical advice',
+      processing: 'Client-side (browser localStorage)',
+    };
+  }
 
   let inputs = 'Text, numbers, or options in the on-page form';
   let outputs = 'On-screen result you can copy or download';

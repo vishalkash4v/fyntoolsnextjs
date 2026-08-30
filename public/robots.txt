@@ -1,0 +1,22 @@
+# https://fyntools.com — served from CDN edge (static file, no serverless)
+User-agent: *
+Allow: /
+Disallow: /fyntoolsadmin/
+Disallow: /api/
+Disallow: /redirect
+Disallow: /deep-link-redirect
+Disallow: /s/
+Disallow: /themes
+Disallow: /themes/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /fyntoolsadmin/
+Disallow: /api/
+Disallow: /redirect
+Disallow: /deep-link-redirect
+Disallow: /s/
+Disallow: /themes
+Disallow: /themes/
+
+Sitemap: https://fyntools.com/sitemap.xml
