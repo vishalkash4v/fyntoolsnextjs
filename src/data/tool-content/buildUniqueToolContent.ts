@@ -11,12 +11,14 @@ import {
   defaultProcessingNote,
   defaultTldr,
 } from '@/data/tool-content/toolProcessingDefaults';
+import { getToolHowToSteps } from '@/data/tool-content/toolHowToCatalog';
 import {
   isGeneratedPremiumTemplate,
   isFakeTestimonial,
   isTemplatedExtendedText,
   isTemplatedExtendedArray,
   isWeakBatchPremium,
+  isWeakHowToSteps,
   isGenericFaq,
   isGenericExamples,
 } from '@/lib/seo/contentQuality';
@@ -240,10 +242,11 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     );
 
   const howToUse =
-    (usePremiumBody && premium?.howToUse?.length
+    (usePremiumBody && premium?.howToUse?.length && !isWeakHowToSteps(premium.howToUse)
       ? premium.howToUse
       : null) ||
-    (override?.howToUse?.length ? override.howToUse : null) ||
+    (override?.howToUse?.length && !isWeakHowToSteps(override.howToUse) ? override.howToUse : null) ||
+    getToolHowToSteps(path) ||
     defaultHowTo(tool, feats);
 
   const defaultUseCases = [

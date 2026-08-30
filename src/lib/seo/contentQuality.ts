@@ -101,6 +101,26 @@ export function isTemplatedExtendedArray(items: string[] | undefined): boolean {
 }
 
 /** True when batch7-style content is too generic for premium body merge. */
+export function isWeakHowToSteps(steps: string[] | undefined): boolean {
+  if (!steps?.length || steps.length < 3) return true;
+  const weakMarkers = [
+    /^Use the .+ form above\.$/i,
+    /^Review the on-screen result\.$/i,
+    /^Copy or download for your workflow\.$/i,
+    /^Enter amounts and rates in/i,
+    /^Compare scenarios by changing inputs\.$/i,
+    /^Verify with your bank or advisor when needed\.$/i,
+    /^Enter dates or symptoms in/i,
+    /^Review the estimate or log\.$/i,
+    /^Upload your image\.$/i,
+    /^Adjust settings and preview\.$/i,
+    /^Download the result\.$/i,
+    /^Use .+ as shown in the tool panel\.$/i,
+  ];
+  const weakCount = steps.filter((s) => weakMarkers.some((re) => re.test(s))).length;
+  return weakCount >= 2;
+}
+
 export function isWeakBatchPremium(premium: PremiumPartial | null | undefined): boolean {
   if (!premium) return false;
   const blob = collectStrings({
