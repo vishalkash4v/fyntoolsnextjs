@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '@/lib/seo/site';
 import { blogPosts as fallbackPosts } from '@/data/blogsData';
+import { fixExternalLinks } from '@/lib/content/fixExternalLinks';
 
 export interface PublicBlogPost {
   _id: string;
@@ -65,7 +66,7 @@ function mapFallbackPost(p: (typeof fallbackPosts)[number]): PublicBlogPost {
     title: p.title,
     slug: p.slug,
     excerpt: p.description,
-    content: p.content,
+    content: fixExternalLinks(p.content),
     category: p.category,
     tags: p.tags,
     metaTitle: p.metaTitle,
@@ -74,7 +75,22 @@ function mapFallbackPost(p: (typeof fallbackPosts)[number]): PublicBlogPost {
     featuredImage: p.imageUrl,
     author: { name: p.author },
     keywords: p.keywords,
-    faqs: p.faqs,
+    faqs: p.faqs?.map((f) => ({
+      question: f.question,
+      answer: fixExternalLinks(f.answer),
+    })),
+  };
+}
+
+function sanitizeBlogPost(post: PublicBlogPost): PublicBlogPost {
+  return {
+    ...post,
+    content: fixExternalLinks(post.content),
+    excerpt: fixExternalLinks(post.excerpt),
+    faqs: post.faqs?.map((f) => ({
+      question: f.question,
+      answer: fixExternalLinks(f.answer),
+    })),
   };
 }
 
@@ -106,7 +122,7 @@ export async function fetchPublicBlogs(options?: {
     const data = await res.json();
     if (!data.success) throw new Error('Blog list unsuccessful');
     return {
-      posts: data.data ?? [],
+      posts: (data.data ?? []).map(sanitizeBlogPost),
       pagination: data.pagination ?? null,
     };
   } catch {
@@ -127,7 +143,7 @@ export async function fetchPublicBlogBySlug(slug: string): Promise<PublicBlogPos
     if (!res.ok) throw new Error(`Blog post ${res.status}`);
     const data = await res.json();
     if (!data.success || !data.data) return null;
-    return data.data;
+    return sanitizeBlogPost(data.data);
   } catch {
     const fallback = fallbackPosts.find((p) => p.slug === slug);
     return fallback ? mapFallbackPost(fallback) : null;

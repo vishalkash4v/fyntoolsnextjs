@@ -6,6 +6,7 @@ import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { breadcrumbSchema, personSchema } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
 import { authors, getAuthor } from '@/data/authors';
+import { filterAuthorProfiles } from '@/lib/content/fixExternalLinks';
 import { getGuidesByAuthor } from '@/data/guides/guidesData';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -32,6 +33,7 @@ export default async function AuthorPage({ params }: Props) {
   if (!author) notFound();
   const url = absoluteUrl(`/author/${author.slug}`);
   const authoredGuides = getGuidesByAuthor(author.slug);
+  const profiles = filterAuthorProfiles(author.sameAs);
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-3xl">
@@ -43,7 +45,7 @@ export default async function AuthorPage({ params }: Props) {
             description: author.shortBio,
             jobTitle: author.role,
             image: author.avatar,
-            sameAs: author.sameAs,
+            sameAs: profiles,
             email: author.email,
           }),
           breadcrumbSchema([
@@ -117,11 +119,11 @@ export default async function AuthorPage({ params }: Props) {
         </ul>
       </section>
 
-      {author.sameAs.length > 0 && (
+      {profiles.length > 0 && (
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4">Profiles</h2>
           <ul className="space-y-2 list-none p-0 m-0">
-            {author.sameAs.map((href) => (
+            {profiles.map((href) => (
               <li key={href}>
                 <a
                   href={href}

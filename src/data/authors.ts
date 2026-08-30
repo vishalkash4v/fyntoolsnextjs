@@ -37,9 +37,9 @@ export const authors: Author[] = [
     ],
     experienceYears: 8,
     sameAs: [
-      'https://twitter.com/fyntoolsworldwide',
-      'https://github.com/fyntools',
       'https://fyntools.com/about',
+      'https://fyntools.com/contact',
+      'https://fyntools.com/guides',
     ],
     email: 'support@fyntools.com',
     avatar: '/logo.png',

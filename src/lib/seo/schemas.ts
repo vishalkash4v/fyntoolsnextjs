@@ -15,7 +15,7 @@ const ORG = {
     '@type': 'ImageObject' as const,
     url: absoluteUrl('/logo.png'),
   },
-  sameAs: ['https://twitter.com/fyntoolsworldwide'],
+  sameAs: ['https://fyntools.com/about', 'https://fyntools.com/contact'],
   contactPoint: {
     '@type': 'ContactPoint' as const,
     contactType: 'customer support',
