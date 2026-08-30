@@ -1,5 +1,4 @@
 import type { Tool } from '@/data/toolsData';
-import { allTools } from '@/data/toolsData';
 import { getToolSeoContent } from '@/data/toolSeoContent';
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import { getCategoryHubPath } from '@/utils/breadcrumbs';
@@ -12,7 +11,19 @@ import {
   defaultProcessingNote,
   defaultTldr,
 } from '@/data/tool-content/toolProcessingDefaults';
-import { isGeneratedPremiumTemplate, isFakeTestimonial, isTemplatedExtendedText, isTemplatedExtendedArray, isWeakBatchPremium } from '@/lib/seo/contentQuality';
+import {
+  isGeneratedPremiumTemplate,
+  isFakeTestimonial,
+  isTemplatedExtendedText,
+  isTemplatedExtendedArray,
+  isWeakBatchPremium,
+  isGenericFaq,
+  isGenericExamples,
+} from '@/lib/seo/contentQuality';
+import {
+  filterValidRelatedTools,
+  getRelatedToolsForPage,
+} from '@/lib/seo/relatedToolsPicker';
 
 /** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
 export const SEO_SHELL_DATE = '2026-08-29';
@@ -40,15 +51,7 @@ function pickCuratedList(primary: string[] | undefined, fallback: string[]): str
 }
 
 function relatedToolsFallback(tool: Tool, limit = 10) {
-  const skip = new Set(['/enhanced-unit-converter', '/add-name-date-photo', tool.path]);
-  return allTools
-    .filter((t) => t.category === tool.category && !skip.has(t.path))
-    .slice(0, limit)
-    .map((t) => ({
-      name: t.name,
-      href: t.path,
-      description: t.description.slice(0, 110),
-    }));
+  return getRelatedToolsForPage(tool.path, limit);
 }
 
 function ensureRelatedCount(
@@ -95,39 +98,66 @@ function splitIntro(text: string): string[] {
 function defaultHowTo(tool: Tool, feats: string[]): string[] {
   const n = tool.name;
   const f0 = feats[0]?.toLowerCase() || 'your input';
-  return [
-    `Open ${n} on FYN Tools.`,
-    `Enter or upload ${f0} using the controls above.`,
-    `Adjust options if available, then review the live result.`,
-    `Copy, download, or export the output for your workflow.`,
-    `Bookmark ${tool.path} if you use ${n} regularly.`,
+  const f1 = feats[1]?.toLowerCase();
+  const steps = [
+    `Open ${n} at ${tool.path} on FYN Tools.`,
+    `Enter or upload ${f0} using the controls in the panel above.`,
   ];
+  if (f1) steps.push(`Use ${f1} if your task needs it — options stay visible while you work.`);
+  else steps.push(`Adjust any on-screen options, then review the live result.`);
+  steps.push(`Copy, download, or export the output for your ${tool.category.toLowerCase()} workflow.`);
+  return steps;
 }
 
 function defaultFaqs(tool: Tool): { question: string; answer: string }[] {
   const hub = getCategoryHubPath(tool.category);
-  return [
+  const feat = tool.features?.split(',')[0]?.trim();
+  const faqs: { question: string; answer: string }[] = [
+    {
+      question: `What does ${tool.name} do?`,
+      answer: `${tool.description}${feat ? ` It includes ${feat.toLowerCase()}.` : ''}`,
+    },
     {
       question: `Is ${tool.name} free on FYN Tools?`,
-      answer: `Yes. ${tool.name} (${tool.path}) is free to use with no mandatory account. It sits in our ${tool.category} collection alongside related utilities.`,
+      answer: `Yes. ${tool.name} (${tool.path}) is free to use with no mandatory account.`,
     },
     {
       question: `How does ${tool.name} handle my data?`,
-      answer: `${tool.name} is built for browser-side workflows whenever possible. Do not paste production secrets or highly sensitive personal data into any online tool.`,
+      answer: `${tool.name} runs browser-side workflows whenever possible. Do not paste production secrets or highly sensitive personal data into any online tool.`,
     },
     {
       question: `Can I use ${tool.name} on mobile browsers?`,
-      answer: `Yes. ${tool.name} adapts to phones and tablets. Open ${tool.path} on FYN Tools with a modern browser for the best experience.`,
+      answer: `Yes. ${tool.name} adapts to phones and tablets. Open ${tool.path} with a modern mobile browser.`,
     },
     {
       question: `What is ${tool.name} best used for?`,
-      answer: `${tool.description} Pair it with other ${tool.category} on FYN Tools when you need a full workflow.`,
-    },
-    {
-      question: `Where can I find similar tools?`,
-      answer: `Browse related ${tool.category} from the category hub${hub ? ` at ${hub}` : ''} or the full catalog at /tools.`,
+      answer: `${tool.description} Pair it with related ${tool.category.toLowerCase()} linked below when your workflow needs a follow-up step.`,
     },
   ];
+
+  if (/pregnancy|period|ovulation|conception|kick|contraction|pms|safe-days/i.test(tool.path + tool.name)) {
+    faqs.push({
+      question: `Can ${tool.name} replace medical advice?`,
+      answer: `No. ${tool.name} provides educational estimates only. Confirm dates, symptoms, and health decisions with a qualified clinician.`,
+    });
+  } else if (/calculator|emi|sip|tax|gst|fd|ppf|currency|loan/i.test(tool.path + tool.name)) {
+    faqs.push({
+      question: `Are ${tool.name} results official financial figures?`,
+      answer: `Results are planning estimates from the numbers you enter. Confirm rates, fees, and tax rules with your bank or advisor before acting on them.`,
+    });
+  } else if (/image|photo|compress|crop|resize|pdf|barcode|qr/i.test(tool.path + tool.name)) {
+    faqs.push({
+      question: `What file types does ${tool.name} support?`,
+      answer: `Check the upload area on ${tool.path} for supported formats. Very large files may be limited by your device memory or browser.`,
+    });
+  } else {
+    faqs.push({
+      question: `Where can I find similar tools?`,
+      answer: `Browse related ${tool.category.toLowerCase()}${hub ? ` at ${hub}` : ''} or the full catalog at /tools.`,
+    });
+  }
+
+  return faqs;
 }
 
 /**
@@ -241,18 +271,25 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
       : null) ||
     (curatedUseCases.length >= 2 ? curatedUseCases : defaultUseCases);
 
-  const examples =
-    (usePremiumBody && premium?.examples?.length
-      ? premium.examples
-      : null) ||
-    (override?.examples?.length
+  const examples = (() => {
+    const fromOverride = override?.examples?.length
       ? override.examples.map((e) => ({ input: e.input, output: e.output }))
-      : null) ||
-    (curated?.examples?.length
+      : null;
+    const fromCurated = curated?.examples?.length
       ? curated.examples
-          .filter((e) => !/50,000 \| Rate: 6%|Result: computed value based on the formula/.test(e.input + e.output))
+          .filter((e) => !isGenericExamples([e]))
           .map((e) => ({ input: e.input, output: e.output }))
-      : buildExamplesForTool(tool));
+      : null;
+    const fromPremium =
+      usePremiumBody && premium?.examples?.length && !isGenericExamples(premium.examples)
+        ? premium.examples
+        : null;
+
+    if (fromOverride?.length && !isGenericExamples(fromOverride)) return fromOverride;
+    if (fromCurated?.length) return fromCurated;
+    if (fromPremium?.length) return fromPremium;
+    return buildExamplesForTool(tool);
+  })();
 
   const rawTestimonials = buildTestimonialsForTool(tool);
   const testimonials = rawTestimonials.filter((t) => !isFakeTestimonial(t.text));
@@ -307,33 +344,42 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
       `Continue in related ${tool.category.toLowerCase()} via internal links below.`,
     ];
 
-  const faqs =
-    (usePremiumBody && premium?.faqs?.length
-      ? premium.faqs
-      : null) ||
-    (override?.faqs?.length && override.faqs.length >= 4
-      ? override.faqs.map((f) => ({ question: f.question, answer: f.answer }))
-      : (() => {
-          const base = override?.faqs?.length
-            ? override.faqs.map((f) => ({ question: f.question, answer: f.answer }))
-            : [];
-          const filler = defaultFaqs(tool);
-          return [...base, ...filler].slice(0, Math.max(5, base.length));
-        })());
+  const faqs = (() => {
+    const fromOverride = override?.faqs?.filter((f) => !isGenericFaq(f));
+    if (fromOverride && fromOverride.length >= 4) {
+      return fromOverride.map((f) => ({ question: f.question, answer: f.answer }));
+    }
 
-  const related = ensureRelatedCount(
-    (usePremiumBody && premium?.relatedTools?.length
-      ? [...premium.relatedTools]
-      : null) ||
-    (override?.relatedTools?.length
-      ? override.relatedTools.map((t) => ({
-          name: t.name,
-          href: t.href,
-          description: t.description,
-        }))
-      : relatedToolsFallback(tool)),
-    tool
-  );
+    const fromPremium =
+      usePremiumBody && premium?.faqs?.length
+        ? premium.faqs.filter((f) => !isGenericFaq(f))
+        : [];
+    if (fromPremium.length >= 4) {
+      return fromPremium.slice(0, 8).map((f) => ({ question: f.question, answer: f.answer }));
+    }
+
+    const base = fromOverride?.length
+      ? fromOverride.map((f) => ({ question: f.question, answer: f.answer }))
+      : fromPremium.map((f) => ({ question: f.question, answer: f.answer }));
+    const filler = defaultFaqs(tool).filter(
+      (f) => !base.some((b) => b.question.toLowerCase() === f.question.toLowerCase())
+    );
+    return [...base, ...filler].slice(0, Math.max(5, base.length));
+  })();
+
+  const related = (() => {
+    const fromOverride = filterValidRelatedTools(tool, override?.relatedTools);
+    if (fromOverride.length >= 4) {
+      return ensureRelatedCount([...fromOverride], tool);
+    }
+
+    const fromPremium = filterValidRelatedTools(tool, premium?.relatedTools);
+    if (usePremiumBody && fromPremium.length >= 4) {
+      return ensureRelatedCount([...fromPremium], tool);
+    }
+
+    return ensureRelatedCount(relatedToolsFallback(tool), tool);
+  })();
 
   const keywords = premium?.keywords?.length
     ? premium.keywords

@@ -58,13 +58,7 @@ function extractTools(src) {
 
 function relatedFor(tool, all) {
   const same = all.filter((t) => t.category === tool.category && t.path !== tool.path);
-  const picks = same.slice(0, 4);
-  while (picks.length < 4) {
-    const t = all[(hash(tool.path) + picks.length * 7) % all.length];
-    if (t.path !== tool.path && !picks.some((p) => p.path === t.path)) picks.push(t);
-    if (picks.length >= 4) break;
-  }
-  return picks.map((t) => ({
+  return same.slice(0, 6).map((t) => ({
     name: t.name,
     href: t.path,
     description: t.description.slice(0, 90),
@@ -152,32 +146,52 @@ function examplesFor(tool) {
 function faqsFor(tool) {
   const n = tool.name;
   const p = tool.path;
-  return [
+  const cat = tool.category;
+  const desc = tool.description;
+
+  const faqs = [
+    {
+      question: `What does ${n} do?`,
+      answer: `${desc} It is part of our ${cat} collection on FYN Tools (${p}).`,
+    },
     {
       question: `Is ${n} free on FYN Tools?`,
-      answer: `Yes. ${n} (${p}) is free to use in your browser with no mandatory account for normal interactive use.`,
+      answer: `Yes. ${n} is free to use in your browser with no mandatory account for normal interactive use.`,
     },
     {
       question: `Does ${n} upload my data to a server?`,
-      answer: `Processing is designed to stay in your browser whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool.`,
+      answer: `${n} is designed for browser-side processing whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool.`,
     },
     {
       question: `Can I use ${n} on mobile?`,
-      answer: `Yes. The layout adapts to phones and tablets. Open ${p} in a modern mobile browser for the best experience.`,
+      answer: `Yes. Open ${p} on a modern phone or tablet browser — the layout adapts to smaller screens.`,
     },
     {
-      question: `What is ${n} best used for?`,
-      answer: `${tool.description} It sits in our ${tool.category} collection next to related utilities you can open from the related tools list.`,
-    },
-    {
-      question: `Are there usage limits on ${n}?`,
-      answer: `There are no artificial daily caps for normal use. Very large inputs may be limited by your device memory or browser.`,
-    },
-    {
-      question: `How is FYN Tools ${n} different from random free sites?`,
-      answer: `You get a fast interactive tool above the fold, clear how-to steps, FAQs, and internal links to related FYN Tools — plus consistent privacy-minded browser workflows.`,
+      question: `How do I get the best results with ${n}?`,
+      answer: `Enter values exactly as labeled in the tool panel, review the live output, then copy or download. Bookmark ${p} if you reuse this workflow regularly.`,
     },
   ];
+
+  if (/pregnancy|period|ovulation|conception|kick|contraction|pms|safe-days/i.test(p + n)) {
+    faqs.push({
+      question: `Can ${n} replace medical advice?`,
+      answer: `No. ${n} provides educational estimates only. Always confirm dates, symptoms, and health decisions with a qualified clinician.`,
+    });
+  }
+  if (/calculator|emi|sip|tax|gst|fd|ppf|currency|loan/i.test(p + n)) {
+    faqs.push({
+      question: `Are ${n} results official financial figures?`,
+      answer: `Results are planning estimates based on the numbers you enter. Confirm rates, fees, and tax rules with your bank, advisor, or relevant authority before acting on them.`,
+    });
+  }
+  if (/image|photo|compress|crop|resize|pdf|barcode|qr/i.test(p + n)) {
+    faqs.push({
+      question: `What file types does ${n} support?`,
+      answer: `Supported formats depend on the tool — check the upload area on ${p}. Very large files may be limited by your device memory or browser.`,
+    });
+  }
+
+  return faqs.slice(0, 6);
 }
 
 function testimonialsFor(tool) {

@@ -1,0 +1,36 @@
+{
+  "scannedAt": "2026-08-30T04:32:52.889Z",
+  "stats": {
+    "total": 172,
+    "tools": 130,
+    "hubs": 18,
+    "marketing": 24,
+    "withJsonLd": 170,
+    "withFaq": 138,
+    "withHowTo": 116,
+    "withSoftwareApp": 116,
+    "genericHits": 0,
+    "missingMeta": 1
+  },
+  "duplicateTitles": [
+    {
+      "title": "fyn tools worldwide - free professional online tools",
+      "pages": [
+        "/fyntoolsadmin",
+        "/_not-found"
+      ]
+    }
+  ],
+  "pagesWithErrors": [
+    {
+      "slug": "/_global-error",
+      "errors": [
+        {
+          "severity": "error",
+          "msg": "Missing meta description"
+        }
+      ]
+    }
+  ],
+  "pagesWithWarnings": 19
+}

@@ -673,6 +673,155 @@ function relatedToolsFor(tool) {
     .map((t) => ({ name: t.name, href: t.path, description: t.description.slice(0, 100) }));
 }
 
+function whenToUseFor(tool, cat, slug) {
+  const desc = tool.description.replace(/\.$/, "").toLowerCase();
+  if (cat === "Pregnancy Tools" || cat === "Period & Cycle Tools") {
+    if (/pms-symptom/.test(slug)) {
+      return [
+        "When you want to log cramps, mood, bloating, or pain scale day by day",
+        "Before a gynecologist visit — bring exported symptom history",
+        "When tracking patterns across cycles to discuss with your clinician",
+      ];
+    }
+    if (/period-tracker/.test(slug)) {
+      return [
+        "When logging flow, mood, and symptoms each cycle",
+        "To review monthly patterns before a clinic appointment",
+        "On mobile for quick daily period and symptom entries",
+      ];
+    }
+    if (/period-calculator|ovulation|safe-days|conception/.test(slug)) {
+      return [
+        `When you need to ${desc}`,
+        "Before planning travel, workouts, or appointments around your cycle",
+        "On mobile for a quick date estimate without installing an app",
+      ];
+    }
+    if (/contraction|kick/.test(slug)) {
+      return [
+        "During the third trimester when timing contractions or kick counts",
+        "When your clinician asks for a printed or screenshot log",
+        "On mobile at bedside — data stays in this browser session",
+      ];
+    }
+    return [
+      `When you need to ${desc}`,
+      "Before a prenatal or women's health visit — screenshot or export your log",
+      "On mobile for quick tracking without installing an app",
+    ];
+  }
+  if (cat === "Number Tools" || cat === "Finance Tools") {
+    return [
+      `When comparing loan, tax, or investment numbers before signing paperwork`,
+      `Before a budget review or tax filing — copy the breakdown from ${tool.name}`,
+      "On mobile when you need a quick calculator without a spreadsheet",
+    ];
+  }
+  if (cat === "Image Tools") {
+    return [
+      "When you need a quick image edit without opening desktop software",
+      "Before uploading to a site or app — compress, resize, or convert first",
+      "On mobile to process a photo from your camera roll",
+    ];
+  }
+  if (cat === "Development Tools" || cat === "Converter Tools") {
+    return [
+      `When you need to ${desc}`,
+      "During development or content prep — copy output into your project",
+      "On mobile for a quick format or conversion check",
+    ];
+  }
+  return [
+    `When you need to ${desc}`,
+    `For ${cat.toLowerCase()} on mobile or desktop without installing an app`,
+    "When a quick browser check is enough before a deeper workflow",
+  ];
+}
+
+function examplesFor(tool, cat, slug) {
+  const n = tool.name;
+  if (slug === "pms-symptom-tracker") {
+    return [
+      {
+        input: "Log: March 22 — headache (6/10), bloating (4/10), mood low, cramps mild",
+        output: "Entry saved to local history with date and pain scale for pattern review",
+      },
+      {
+        input: "Review last 3 cycles in history chart",
+        output: "Symptom frequency trends visible — export before a clinic visit",
+      },
+    ];
+  }
+  if (slug === "period-tracker") {
+    return [
+      {
+        input: "Log period start March 1, flow medium, mood tired, cramps mild",
+        output: "Cycle entry saved; history chart updates with symptoms and flow for the month",
+      },
+    ];
+  }
+  if (slug === "period-calculator") {
+    return [
+      {
+        input: "Last period: March 1, 2025 | Cycle: 28 days | Period length: 5 days",
+        output: "Next period estimated around March 29, 2025 (± a few days)",
+      },
+    ];
+  }
+  if (slug === "ovulation-calculator") {
+    return [
+      {
+        input: "Last period: March 1, 2025 | Cycle length: 28 days",
+        output: "Estimated ovulation around March 15; fertile window roughly March 13–17",
+      },
+    ];
+  }
+  if (slug === "contraction-timer") {
+    return [
+      {
+        input: "Start timer at first contraction → Stop at end → Repeat for next",
+        output: "Interval and duration logged; pattern table shows time between contractions",
+      },
+    ];
+  }
+  if (slug === "baby-kick-counter") {
+    return [
+      {
+        input: "First tap at 2:15 PM → 10 kicks by 3:40 PM → Save Session",
+        output: "Saved: 10 kicks in 1h 25m — stored locally in browser",
+      },
+    ];
+  }
+  if (slug === "emi-calculator") {
+    return [
+      { input: "₹10,00,000 · 8.5% · 20 years", output: "EMI ≈ ₹8,678 · total interest ≈ ₹10,82,720" },
+    ];
+  }
+  if (slug === "coin-flip") {
+    return [
+      { input: 'Click "Flip Coin" once', output: "Heads or Tails after a short spin — fair 50/50 result" },
+    ];
+  }
+  if (cat === "Number Tools" || cat === "Finance Tools") {
+    return [
+      { input: `Enter labeled amounts in ${n}`, output: "On-screen breakdown with totals you can copy or screenshot" },
+    ];
+  }
+  if (cat === "Image Tools") {
+    return [
+      { input: "Upload PNG/JPG from your device", output: "Processed preview ready to download — stays in browser" },
+    ];
+  }
+  if (cat === "Pregnancy Tools" || cat === "Period & Cycle Tools") {
+    return [
+      { input: `Open ${n} and enter cycle dates or symptoms`, output: "Calendar or log updates — educational estimate only" },
+    ];
+  }
+  return [
+    { input: `Sample input for ${n}`, output: `${n} returns a formatted result you can copy or download` },
+  ];
+}
+
 function howToFor(tool, cat, slug, o) {
   if (o.howToUse?.length) return o.howToUse;
   if (slug === "pregnancy-week-calculator") {
@@ -783,11 +932,7 @@ function buildEntry(slug) {
 
   const howToUse = howToFor(tool, cat, slug, o);
 
-  const whenToUse = o.whenToUse || [
-    `When you need to ${desc.toLowerCase().replace(/\.$/, "")}`,
-    `For ${cat.toLowerCase()} on mobile or desktop without installing an app`,
-    "Before a prenatal visit, tax filing, or project handoff — copy results you need",
-  ];
+  const whenToUse = o.whenToUse || whenToUseFor(tool, cat, slug);
 
   const useCases =
     o.useCases ||
@@ -796,11 +941,7 @@ function buildEntry(slug) {
       { title: "Quick browser check", description: `Use ${name} once, then continue in your doc or app.` },
     ];
 
-  const examples =
-    o.examples ||
-    (cat === "Number Tools" || cat === "Finance Tools"
-      ? [{ input: "Sample amounts in the labeled fields", output: "On-screen breakdown with totals" }]
-      : [{ input: "Your input in the form above", output: "Instant result shown below the controls" }]);
+  const examples = o.examples || examplesFor(tool, cat, slug);
 
   const tips =
     o.tips ||

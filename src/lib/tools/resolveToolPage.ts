@@ -33,26 +33,27 @@ export function getDefaultFeatures(tool: Tool): string[] {
 }
 
 export function getDefaultFaqs(tool: Tool): { question: string; answer: string }[] {
+  const feat = tool.features?.split(',')[0]?.trim();
   return [
     {
-      question: `Is ${tool.name} free?`,
-      answer: `Yes. ${tool.name} is free to use on FYNTools with no mandatory account.`,
+      question: `What does ${tool.name} do?`,
+      answer: `${tool.description}${feat ? ` Key capability: ${feat.toLowerCase()}.` : ''}`,
     },
     {
-      question: `Does ${tool.name} store my data?`,
-      answer: `Processing is designed to stay in your browser whenever possible. Avoid pasting highly sensitive secrets into any online tool.`,
+      question: `Is ${tool.name} free on FYN Tools?`,
+      answer: `Yes. ${tool.name} (${tool.path}) is free in your browser with no mandatory account.`,
+    },
+    {
+      question: `How does ${tool.name} handle my data?`,
+      answer: `${tool.name} is designed for browser-side processing whenever possible. Do not paste production secrets or highly sensitive personal data into any online tool.`,
     },
     {
       question: `Can I use ${tool.name} on mobile?`,
-      answer: `Yes. The interface adapts to phones and tablets with a modern browser.`,
+      answer: `Yes. Open ${tool.path} on a modern phone or tablet browser — the layout adapts to smaller screens.`,
     },
     {
-      question: `Are there usage limits?`,
-      answer: `There are no artificial daily caps for normal interactive use. Very large inputs may be limited by your device.`,
-    },
-    {
-      question: `Where can I find related tools?`,
-      answer: `Browse the ${tool.category} hub and related tools linked on this page.`,
+      question: `Where can I find related ${tool.category.toLowerCase()}?`,
+      answer: `Use the related tools list on this page or browse the ${tool.category} category hub on FYN Tools.`,
     },
   ];
 }

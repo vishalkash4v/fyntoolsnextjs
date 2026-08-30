@@ -139,6 +139,7 @@ add('/guides', 0.85, 'weekly');
 add('/blog', 0.85, 'weekly');
 add('/about', 0.7, 'monthly');
 add('/contact', 0.65, 'monthly');
+add('/privacy', 0.65, 'monthly');
 add('/ai-domain-name-generator', 0.75, 'weekly');
 add('/author/fyn-editorial', 0.6, 'monthly');
 

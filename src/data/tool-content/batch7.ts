@@ -38,9 +38,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to add name and date on passport photographs for online application forms",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -54,8 +54,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -193,8 +193,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to generate css border-radius properties for rounded corners",
-          "For development tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -349,8 +349,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to create and customize css box-shadow effects for your web elements",
-          "For development tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -364,8 +364,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Box Shadow Generator",
+              "output": "Box Shadow Generator returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -506,7 +506,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to generate creative business ideas based on your preferences",
           "For text & writing tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -520,8 +520,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Business Idea Generator",
+              "output": "Business Idea Generator returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -661,8 +661,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to design and generate css for custom buttons with various styles",
-          "For development tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -676,8 +676,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Button Generator",
+              "output": "Button Generator returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -818,7 +818,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to simulate a coin flip to make random decisions",
           "For utility tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -832,8 +832,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Click \"Flip Coin\" once",
+              "output": "Heads or Tails after a short spin — fair 50/50 result"
           }
       ],
       "tips": [
@@ -972,8 +972,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to convert colors between hex, rgb, hsl, and other formats",
-          "For converter tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -1093,8 +1093,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to estimate your conception date from due date and cycle details",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before planning travel, workouts, or appointments around your cycle",
+          "On mobile for a quick date estimate without installing an app"
       ],
       "useCases": [
           {
@@ -1108,8 +1108,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Open Conception Date Calculator and enter cycle dates or symptoms",
+              "output": "Calendar or log updates — educational estimate only"
           }
       ],
       "tips": [
@@ -1226,9 +1226,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Review duration and interval history."
       ],
       "whenToUse": [
-          "When you need to measure contraction duration and intervals with history logs",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During the third trimester when timing contractions or kick counts",
+          "When your clinician asks for a printed or screenshot log",
+          "On mobile at bedside — data stays in this browser session"
       ],
       "useCases": [
           {
@@ -1242,8 +1242,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Start timer at first contraction → Stop at end → Repeat for next",
+              "output": "Interval and duration logged; pattern table shows time between contractions"
           }
       ],
       "tips": [
@@ -1364,7 +1364,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to set a timer and count down to a specific time",
           "For timer tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -1378,8 +1378,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Countdown Timer",
+              "output": "Countdown Timer returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -1473,9 +1473,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to convert between different currencies",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Currency Converter",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -1489,8 +1489,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Sample amounts in the labeled fields",
-              "output": "On-screen breakdown with totals"
+              "input": "Enter labeled amounts in Currency Converter",
+              "output": "On-screen breakdown with totals you can copy or screenshot"
           }
       ],
       "tips": [
@@ -1631,7 +1631,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to save your daily timetable, routine, work report, and notes by date",
           "For utility tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -1645,8 +1645,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Daily Task Report Saver",
+              "output": "Daily Task Report Saver returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -1783,9 +1783,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate the difference between two dates",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Date Difference Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -1940,7 +1940,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to roll virtual dice with customizable sides and quantities",
           "For utility tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -2094,9 +2094,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate equated monthly installment (emi) for loans",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from EMI Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -2255,8 +2255,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to convert between various units including length, weight, temperature, time, data size, and speed",
-          "For converter tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -2270,8 +2270,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Enhanced Unit Converter",
+              "output": "Enhanced Unit Converter returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -2380,9 +2380,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate returns on your fixed deposit (fd) investments",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from FD Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -2536,9 +2536,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to flip images horizontally or vertically with real-time preview. free image flipper online",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -2552,8 +2552,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -2691,9 +2691,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate future or past dates by adding or subtracting days, months, or years",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Future Date Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -2847,9 +2847,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate gst (goods and services tax)",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from GST Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -3003,9 +3003,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to extract text from images using ocr. convert photos and scanned documents into editable text",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -3019,8 +3019,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -3159,9 +3159,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to upscale and enhance image quality using advanced interpolation techniques. increase image resolution and improve clarity",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -3175,8 +3175,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -3315,9 +3315,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate your income tax liability",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Income Tax Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -3331,8 +3331,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Sample amounts in the labeled fields",
-              "output": "On-screen breakdown with totals"
+              "input": "Enter labeled amounts in Income Tax Calculator",
+              "output": "On-screen breakdown with totals you can copy or screenshot"
           }
       ],
       "tips": [
@@ -3473,7 +3473,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to create professional invoices with auto-save features. generate pdf and image exports with client and product management",
           "For business tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -3487,8 +3487,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Invoice Generator",
+              "output": "Invoice Generator returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -3576,9 +3576,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to merge images online in horizontal, vertical, or grid layouts. combine multiple photos into one image",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -3592,8 +3592,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -3734,7 +3734,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to create, organize, and manage your personal notes with tags and colors",
           "For text & writing tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -3748,8 +3748,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Notes",
+              "output": "Notes returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -3888,9 +3888,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to extract text content from pdf files. convert pdf documents to plain text format for easy editing and copying",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -3904,8 +3904,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -4044,8 +4044,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to predict your next period date based on your cycle history",
-          "For period & cycle tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before planning travel, workouts, or appointments around your cycle",
+          "On mobile for a quick date estimate without installing an app"
       ],
       "useCases": [
           {
@@ -4059,8 +4059,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Last period: March 1, 2025 | Cycle: 28 days | Period length: 5 days",
+              "output": "Next period estimated around March 29, 2025 (± a few days)"
           }
       ],
       "tips": [
@@ -4169,9 +4169,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to log symptoms, mood, and flow with history charts and reminders",
-          "For period & cycle tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When logging flow, mood, and symptoms each cycle",
+          "To review monthly patterns before a clinic appointment",
+          "On mobile for quick daily period and symptom entries"
       ],
       "useCases": [
           {
@@ -4295,9 +4295,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to track pms symptoms, pain scale, and daily changes",
-          "For period & cycle tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you want to log cramps, mood, bloating, or pain scale day by day",
+          "Before a gynecologist visit — bring exported symptom history",
+          "When tracking patterns across cycles to discuss with your clinician"
       ],
       "useCases": [
           {
@@ -4311,8 +4311,12 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Log: March 22 — headache (6/10), bloating (4/10), mood low, cramps mild",
+              "output": "Entry saved to local history with date and pain scale for pattern review"
+          },
+          {
+              "input": "Review last 3 cycles in history chart",
+              "output": "Symptom frequency trends visible — export before a clinic visit"
           }
       ],
       "tips": [
@@ -4421,9 +4425,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate returns on your public provident fund (ppf) investments",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from PPF Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -4437,8 +4441,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Sample amounts in the labeled fields",
-              "output": "On-screen breakdown with totals"
+              "input": "Enter labeled amounts in PPF Calculator",
+              "output": "On-screen breakdown with totals you can copy or screenshot"
           }
       ],
       "tips": [
@@ -4578,8 +4582,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to get trimester diet tips, calorie goals, and food lists",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before a prenatal or women's health visit — screenshot or export your log",
+          "On mobile for quick tracking without installing an app"
       ],
       "useCases": [
           {
@@ -4593,8 +4597,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Open Pregnancy Diet Planner and enter cycle dates or symptoms",
+              "output": "Calendar or log updates — educational estimate only"
           }
       ],
       "tips": [
@@ -4708,8 +4712,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to calculate your baby due date using lmp or conception date",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before a prenatal or women's health visit — screenshot or export your log",
+          "On mobile for quick tracking without installing an app"
       ],
       "useCases": [
           {
@@ -4845,8 +4849,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to track your pregnancy week, trimester stage, and baby growth",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before a prenatal or women's health visit — screenshot or export your log",
+          "On mobile for quick tracking without installing an app"
       ],
       "useCases": [
           {
@@ -4860,8 +4864,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Open Pregnancy Week Calculator and enter cycle dates or symptoms",
+              "output": "Calendar or log updates — educational estimate only"
           }
       ],
       "tips": [
@@ -4980,8 +4984,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to track healthy pregnancy weight gain based on bmi",
-          "For pregnancy tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before a prenatal or women's health visit — screenshot or export your log",
+          "On mobile for quick tracking without installing an app"
       ],
       "useCases": [
           {
@@ -4995,8 +4999,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Open Pregnancy Weight Gain Calculator and enter cycle dates or symptoms",
+              "output": "Calendar or log updates — educational estimate only"
           }
       ],
       "tips": [
@@ -5115,8 +5119,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to identify safe and fertile days with pregnancy risk insights",
-          "For period & cycle tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "Before planning travel, workouts, or appointments around your cycle",
+          "On mobile for a quick date estimate without installing an app"
       ],
       "useCases": [
           {
@@ -5130,8 +5134,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Open Safe Days Calculator and enter cycle dates or symptoms",
+              "output": "Calendar or log updates — educational estimate only"
           }
       ],
       "tips": [
@@ -5240,9 +5244,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to perform basic arithmetic calculations",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Simple Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -5256,8 +5260,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Sample amounts in the labeled fields",
-              "output": "On-screen breakdown with totals"
+              "input": "Enter labeled amounts in Simple Calculator",
+              "output": "On-screen breakdown with totals you can copy or screenshot"
           }
       ],
       "tips": [
@@ -5396,9 +5400,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to calculate returns on your sip or lumpsum investments",
-          "For number tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from SIP & Lumpsum Calculator",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -5554,7 +5558,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to view public profile information from instagram and facebook accounts",
           "For video & social media tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -5568,8 +5572,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Social Media DB Viewer",
+              "output": "Social Media DB Viewer returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -5680,7 +5684,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. free universal deep linking tool for youtube, instagram, facebook, twitter, whatsapp, telegram, and linkedin",
           "For video & social media tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -5694,8 +5698,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Social Media Deep Link Generator",
+              "output": "Social Media Deep Link Generator returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -5806,7 +5810,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to download reels, posts, stories, and highlights from instagram and facebook",
           "For video & social media tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -5820,8 +5824,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Instagram & Facebook Downloader",
+              "output": "Instagram & Facebook Downloader returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -5932,7 +5936,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to plan and schedule your social media posts with ease",
           "For video & social media tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -5946,8 +5950,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Social Media Planner",
+              "output": "Social Media Planner returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -6056,9 +6060,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Download the result."
       ],
       "whenToUse": [
-          "When you need to split images into custom rows and columns and download all pieces as zip files",
-          "For image tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When you need a quick image edit without opening desktop software",
+          "Before uploading to a site or app — compress, resize, or convert first",
+          "On mobile to process a photo from your camera roll"
       ],
       "useCases": [
           {
@@ -6072,8 +6076,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Upload PNG/JPG from your device",
+              "output": "Processed preview ready to download — stays in browser"
           }
       ],
       "tips": [
@@ -6212,8 +6216,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to convert html tables to json format",
-          "For development tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -6368,8 +6372,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to convert between celsius and fahrenheit",
-          "For converter tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -6493,7 +6497,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to free fancy text generator with 35+ unicode fonts. copy-paste for instagram bio, discord, tiktok, roblox—bold, cursive, bubble, aesthetic. no sign-up",
           "For text & writing tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -6649,7 +6653,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to create a personalized timetable from your hobbies, goals, job, and preferences",
           "For utility tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -6663,8 +6667,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Timetable Maker",
+              "output": "Timetable Maker returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -6803,7 +6807,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to create and manage your to-do list",
           "For utility tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -6817,8 +6821,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for To-Do List",
+              "output": "To-Do List returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -6957,9 +6961,9 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When you need to split and manage trip expenses with friends. track expenses, assign roles, calculate settlements, and see who owes what",
-          "For finance tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When comparing loan, tax, or investment numbers before signing paperwork",
+          "Before a budget review or tax filing — copy the breakdown from Trip Expense Splitter & Manager",
+          "On mobile when you need a quick calculator without a spreadsheet"
       ],
       "useCases": [
           {
@@ -6973,8 +6977,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Sample amounts in the labeled fields",
-              "output": "On-screen breakdown with totals"
+              "input": "Enter labeled amounts in Trip Expense Splitter & Manager",
+              "output": "On-screen breakdown with totals you can copy or screenshot"
           }
       ],
       "tips": [
@@ -7064,7 +7068,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to compete with random players in real-time typing challenges",
           "For typing tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -7078,8 +7082,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Typing Competition",
+              "output": "Typing Competition returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -7185,7 +7189,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to learn touch typing with guided lessons in english and hindi",
           "For typing tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -7199,8 +7203,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Typing Tutor",
+              "output": "Typing Tutor returns a formatted result you can copy or download"
           }
       ],
       "tips": [
@@ -7305,8 +7309,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "whenToUse": [
           "When you need to convert between different units of measurement",
-          "For converter tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "During development or content prep — copy output into your project",
+          "On mobile for a quick format or conversion check"
       ],
       "useCases": [
           {
@@ -7427,7 +7431,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "whenToUse": [
           "When you need to check the weather forecast for any location",
           "For network tools on mobile or desktop without installing an app",
-          "Before a prenatal visit, tax filing, or project handoff — copy results you need"
+          "When a quick browser check is enough before a deeper workflow"
       ],
       "useCases": [
           {
@@ -7441,8 +7445,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       ],
       "examples": [
           {
-              "input": "Your input in the form above",
-              "output": "Instant result shown below the controls"
+              "input": "Sample input for Weather Forecast",
+              "output": "Weather Forecast returns a formatted result you can copy or download"
           }
       ],
       "tips": [

@@ -1,3 +1,4 @@
+import type { Tool } from '@/data/toolsData';
 import type { PremiumPartial } from '@/data/seo-pages/types';
 
 /** Phrases from generate-premium-batches.mjs that signal auto-template content. */
@@ -82,6 +83,11 @@ const WEAK_BATCH_MARKERS = [
   'Open the tool above, enter your data, and copy results instantly',
   'When you need calculate your',
   'For saved history tools, export data before clearing browser storage',
+  'Your input in the form above',
+  'Instant result shown below the controls',
+  'Before a prenatal visit, tax filing, or project handoff',
+  'Enter dates or symptoms in',
+  'Review the estimate or log',
 ];
 
 export function isTemplatedExtendedText(text: string): boolean {
@@ -109,4 +115,42 @@ export function isWeakBatchPremium(premium: PremiumPartial | null | undefined): 
     conclusion: premium.conclusion,
   });
   return containsMarker(blob, WEAK_BATCH_MARKERS);
+}
+
+const GENERIC_FAQ_MARKERS = [
+  'Are there usage limits on',
+  'How is FYN Tools',
+  'different from random free sites',
+  'no artificial daily caps for normal use',
+  'consistent privacy-minded browser workflows',
+];
+
+const GENERIC_EXAMPLE_MARKERS = [
+  'Typical inputs for',
+  'Instant breakdown with clear units — copy or screenshot results',
+  ' with a realistic sample',
+  'Compare results side-by-side in your notes',
+  ' and enter your values in the tool above',
+  'Get an instant result you can copy or download — no signup required',
+  'Processed preview + download of the result',
+  'Live counters update — useful on phone or desktop',
+  'Transformed output based on the selected operation',
+  'Updated text appears in the result section',
+  'Result: computed value based on the formula',
+  '50,000 | Rate: 6%',
+  'Change one field',
+  'Live recalculation without page reload',
+  'Your input in the form above',
+  'Instant result shown below the controls',
+  'Sample amounts in the labeled fields',
+];
+
+export function isGenericFaq(faq: { question: string; answer: string }): boolean {
+  return containsMarker(`${faq.question} ${faq.answer}`, GENERIC_FAQ_MARKERS);
+}
+
+export function isGenericExamples(examples: { input: string; output: string }[] | undefined): boolean {
+  if (!examples?.length) return true;
+  const blob = examples.map((e) => `${e.input} ${e.output}`).join('\n');
+  return containsMarker(blob, GENERIC_EXAMPLE_MARKERS);
 }

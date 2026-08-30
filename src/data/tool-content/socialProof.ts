@@ -1,6 +1,8 @@
 /** Deterministic examples + curated testimonials only (no fake reviews). */
 import type { Tool } from '@/data/toolsData';
+import { getToolSeoContent } from '@/data/toolSeoContent';
 import { toolTestimonials, type ToolTestimonial } from '@/data/tool-content/toolTestimonials';
+import { isGenericExamples } from '@/lib/seo/contentQuality';
 
 export function buildTestimonialsForTool(tool: Tool): ToolTestimonial[] {
   const curated = toolTestimonials[tool.path];
@@ -10,6 +12,12 @@ export function buildTestimonialsForTool(tool: Tool): ToolTestimonial[] {
 }
 
 export function buildExamplesForTool(tool: Tool): { input: string; output: string }[] {
+  const curated = getToolSeoContent(tool.path);
+  if (curated.examples?.length) {
+    const mapped = curated.examples.map((e) => ({ input: e.input, output: e.output }));
+    if (!isGenericExamples(mapped)) return mapped;
+  }
+
   const n = tool.name;
   const path = tool.path;
   const cat = tool.category.toLowerCase();
@@ -80,8 +88,8 @@ export function buildExamplesForTool(tool: Tool): { input: string; output: strin
   }
   return [
     {
-      input: `Open ${n} and enter your values in the tool above`,
-      output: `Get an instant result you can copy or download — no signup required`,
+      input: `Sample input for ${n}`,
+      output: `${n} returns a formatted result you can copy or download`,
     },
   ];
 }

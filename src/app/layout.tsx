@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | FYN Tools Worldwide',
   },
   description:
-    'Access 90+ free professional online tools instantly. Calculators, text tools, image editors, converters, and developer utilities. No registration required.',
+    'Access 118+ free professional online tools instantly. Calculators, text tools, image editors, converters, and developer utilities. No registration required.',
   applicationName: 'FYN Tools Worldwide',
   keywords: [
     'free online tools',
