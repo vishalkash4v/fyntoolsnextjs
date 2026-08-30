@@ -18,7 +18,6 @@ const SERVER_ASSISTED = new Set([
   '/background-remover',
   '/image-upscaler',
   '/image-to-text',
-  '/pdf-text-extractor',
   '/invoice-generator',
 ]);
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run generate-premium && npm run generate-registry",
+    "prebuild": "node scripts/copy-pdf-worker.mjs && npm run generate-premium && npm run generate-registry",
     "build": "next build",
     "postbuild": "node scripts/prettify-static-html.mjs && node scripts/check-robots-txt.mjs && node scripts/check-dead-links.mjs && node scripts/check-tool-content-quality.mjs && node scripts/check-full-site-audit.mjs",
     "start": "next start",
@@ -66,6 +66,7 @@
     "lucide-react": "^0.462.0",
     "next": "^16.2.12",
     "next-themes": "^0.4.6",
+    "pdfjs-dist": "^4.10.38",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.8",
     "react-chartjs-2": "^5.3.1",
