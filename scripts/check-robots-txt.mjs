@@ -37,6 +37,10 @@ if (fs.existsSync(staticRobots)) {
     console.error('❌ robots.txt must include Sitemap: https://fyntools.com/sitemap.xml');
     errors++;
   }
+  if (!/disallow:\s*\/s\//im.test(txt)) {
+    console.error('❌ robots.txt must Disallow: /s/ — user-generated short links must not be crawled');
+    errors++;
+  }
   if (txt.length > 500_000) {
     console.error('❌ robots.txt exceeds 500KB Google limit');
     errors++;
