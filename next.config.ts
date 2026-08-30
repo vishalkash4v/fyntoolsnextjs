@@ -4,7 +4,8 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   reactStrictMode: true,
   poweredByHeader: false,
-  // Fewer legacy polyfills + smaller client bundles for modern browsers (2026 Baseline)
+  productionBrowserSourceMaps: false,
+  // JS + CSS minified on `next build` (SWC + Lightning CSS). Package tree-shaking below.
   experimental: {
     optimizePackageImports: [
       "lucide-react",

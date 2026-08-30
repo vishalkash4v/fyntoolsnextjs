@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "npm run generate-premium && npm run generate-registry",
     "build": "next build",
-    "postbuild": "node scripts/prettify-static-html.mjs && node scripts/check-robots-txt.mjs && node scripts/check-tool-content-quality.mjs && node scripts/check-full-site-audit.mjs",
+    "postbuild": "node scripts/prettify-static-html.mjs && node scripts/check-robots-txt.mjs && node scripts/check-dead-links.mjs && node scripts/check-tool-content-quality.mjs && node scripts/check-full-site-audit.mjs",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -20,7 +20,8 @@
     "check:seo": "node scripts/check-seo-matrix.mjs",
     "check:content": "node scripts/check-tool-content-quality.mjs",
     "check:full": "node scripts/check-full-site-audit.mjs",
-    "check:gsc": "node scripts/check-gsc-coverage.mjs",
+    "check:howto": "node scripts/audit-howto-coverage.mjs",
+    "check:batch": "node scripts/check-seo-batch-coverage.mjs",
     "check:lh-batch": "node scripts/lighthouse-batch.mjs"
   },
   "dependencies": {
