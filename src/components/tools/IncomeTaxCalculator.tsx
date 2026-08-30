@@ -7,111 +7,29 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Receipt, DollarSign, Calculator } from 'lucide-react';
-
-interface TaxResult {
-  grossIncome: number;
-  taxableIncome: number;
-  incomeTax: number;
-  cess: number;
-  totalTax: number;
-  netIncome: number;
-}
+import { Badge } from '@/components/ui/badge';
+import { Receipt, Calculator } from 'lucide-react';
+import {
+  type AgeGroup,
+  type TaxBreakdown,
+  calculateNewRegimeTax,
+  calculateOldRegimeTax,
+} from '@/lib/finance/indiaIncomeTax';
 
 const IncomeTaxCalculator = () => {
   const [grossIncome, setGrossIncome] = useState('');
-  const [ageGroup, setAgeGroup] = useState('below-60');
+  const [ageGroup, setAgeGroup] = useState<AgeGroup>('below-60');
   const [deductions, setDeductions] = useState('');
-  const [oldRegimeResult, setOldRegimeResult] = useState<TaxResult | null>(null);
-  const [newRegimeResult, setNewRegimeResult] = useState<TaxResult | null>(null);
-
-  const calculateOldRegimeTax = (income: number, age: string) => {
-    let tax = 0;
-    let exemptionLimit = 250000; // Default for below 60
-
-    if (age === '60-80') exemptionLimit = 300000;
-    if (age === 'above-80') exemptionLimit = 500000;
-
-    if (income <= exemptionLimit) return 0;
-
-    const taxableIncome = income - exemptionLimit;
-
-    // Old regime tax slabs (FY 2023-24)
-    if (taxableIncome <= 250000) {
-      tax = taxableIncome * 0.05;
-    } else if (taxableIncome <= 500000) {
-      tax = 250000 * 0.05 + (taxableIncome - 250000) * 0.2;
-    } else {
-      tax = 250000 * 0.05 + 250000 * 0.2 + (taxableIncome - 500000) * 0.3;
-    }
-
-    return tax;
-  };
-
-  const calculateNewRegimeTax = (income: number) => {
-    let tax = 0;
-
-    if (income <= 300000) return 0;
-
-    const taxableIncome = income - 300000;
-
-    // New regime tax slabs (FY 2023-24)
-    if (taxableIncome <= 300000) {
-      tax = taxableIncome * 0.05;
-    } else if (taxableIncome <= 300000) {
-      tax = 300000 * 0.05 + (taxableIncome - 300000) * 0.1;
-    } else if (taxableIncome <= 300000) {
-      tax = 300000 * 0.05 + 300000 * 0.1 + (taxableIncome - 600000) * 0.15;
-    } else if (taxableIncome <= 600000) {
-      tax = 300000 * 0.05 + 300000 * 0.1 + 300000 * 0.15 + (taxableIncome - 900000) * 0.2;
-    } else if (taxableIncome <= 600000) {
-      tax = 300000 * 0.05 + 300000 * 0.1 + 300000 * 0.15 + 600000 * 0.2 + (taxableIncome - 1200000) * 0.25;
-    } else {
-      tax = 300000 * 0.05 + 300000 * 0.1 + 300000 * 0.15 + 600000 * 0.2 + 300000 * 0.25 + (taxableIncome - 1500000) * 0.3;
-    }
-
-    return tax;
-  };
-
-  const calculateTax = () => {
-    const income = parseFloat(grossIncome);
-    const deductionAmount = parseFloat(deductions) || 0;
-
-    if (income <= 0) return;
-
-    // Old Regime Calculation
-    const oldRegimeTaxableIncome = income - deductionAmount;
-    const oldRegimeIncomeTax = calculateOldRegimeTax(oldRegimeTaxableIncome, ageGroup);
-    const oldRegimeCess = oldRegimeIncomeTax * 0.04; // 4% Health & Education Cess
-    const oldRegimeTotalTax = oldRegimeIncomeTax + oldRegimeCess;
-
-    setOldRegimeResult({
-      grossIncome: income,
-      taxableIncome: oldRegimeTaxableIncome,
-      incomeTax: oldRegimeIncomeTax,
-      cess: oldRegimeCess,
-      totalTax: oldRegimeTotalTax,
-      netIncome: income - oldRegimeTotalTax,
-    });
-
-    // New Regime Calculation (no deductions except standard deduction of 50k)
-    const newRegimeTaxableIncome = income - 50000; // Standard deduction
-    const newRegimeIncomeTax = calculateNewRegimeTax(newRegimeTaxableIncome);
-    const newRegimeCess = newRegimeIncomeTax * 0.04;
-    const newRegimeTotalTax = newRegimeIncomeTax + newRegimeCess;
-
-    setNewRegimeResult({
-      grossIncome: income,
-      taxableIncome: newRegimeTaxableIncome,
-      incomeTax: newRegimeIncomeTax,
-      cess: newRegimeCess,
-      totalTax: newRegimeTotalTax,
-      netIncome: income - newRegimeTotalTax,
-    });
-  };
+  const [oldRegimeResult, setOldRegimeResult] = useState<TaxBreakdown | null>(null);
+  const [newRegimeResult, setNewRegimeResult] = useState<TaxBreakdown | null>(null);
 
   const handleCalculate = () => {
-    calculateTax();
+    const income = parseFloat(grossIncome);
+    const deductionAmount = parseFloat(deductions) || 0;
+    if (!income || income <= 0) return;
+
+    setOldRegimeResult(calculateOldRegimeTax(income, ageGroup, deductionAmount));
+    setNewRegimeResult(calculateNewRegimeTax(income));
   };
 
   const handleClear = () => {
@@ -122,13 +40,65 @@ const IncomeTaxCalculator = () => {
     setNewRegimeResult(null);
   };
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
+  const formatCurrency = (amount: number) =>
+    new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'INR',
       maximumFractionDigits: 0,
     }).format(amount);
-  };
+
+  const renderBreakdown = (result: TaxBreakdown, regime: 'old' | 'new') => (
+    <div className="space-y-3 text-sm">
+      <div className="flex justify-between">
+        <span>Gross Income</span>
+        <span className="font-medium">{formatCurrency(result.grossIncome)}</span>
+      </div>
+      <div className="flex justify-between text-muted-foreground">
+        <span>Standard Deduction</span>
+        <span>− {formatCurrency(result.standardDeduction)}</span>
+      </div>
+      {regime === 'old' && result.chapterViaDeductions > 0 && (
+        <div className="flex justify-between text-muted-foreground">
+          <span>Chapter VI-A Deductions</span>
+          <span>− {formatCurrency(result.chapterViaDeductions)}</span>
+        </div>
+      )}
+      <div className="flex justify-between font-medium border-t pt-2">
+        <span>Taxable Income</span>
+        <span>{formatCurrency(result.taxableIncome)}</span>
+      </div>
+      <div className="flex justify-between">
+        <span>Income Tax (before rebate)</span>
+        <span>{formatCurrency(result.incomeTax + result.rebate87A)}</span>
+      </div>
+      {result.rebate87A > 0 && (
+        <div className="flex justify-between text-green-600 dark:text-green-400">
+          <span>Rebate u/s 87A</span>
+          <span>− {formatCurrency(result.rebate87A)}</span>
+        </div>
+      )}
+      <div className="flex justify-between">
+        <span>Income Tax (after rebate)</span>
+        <span className="font-medium">{formatCurrency(result.incomeTax)}</span>
+      </div>
+      <div className="flex justify-between">
+        <span>Health &amp; Education Cess (4%)</span>
+        <span>{formatCurrency(result.cess)}</span>
+      </div>
+      <div className="flex justify-between text-lg font-bold border-t pt-2">
+        <span>Total Tax</span>
+        <span className="text-red-600">{formatCurrency(result.totalTax)}</span>
+      </div>
+      <div className="flex justify-between text-lg font-bold">
+        <span>Net In-Hand</span>
+        <span className="text-green-600">{formatCurrency(result.netIncome)}</span>
+      </div>
+      <div className="flex justify-between text-muted-foreground">
+        <span>Effective tax rate</span>
+        <span>{result.effectiveRate.toFixed(2)}%</span>
+      </div>
+    </div>
+  );
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
@@ -139,53 +109,48 @@ const IncomeTaxCalculator = () => {
             Income Tax Calculator (India)
           </CardTitle>
           <CardDescription>
-            Calculate income tax for FY 2023-24 under both old and new tax regimes.
+            FY 2024-25 (AY 2025-26) — progressive slab tax with Section 87A rebate, standard deduction, and 4% cess.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="grossIncome" className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
-                Annual Gross Income (₹)
-              </Label>
+              <Label htmlFor="grossIncome">Annual Gross Income (₹)</Label>
               <Input
                 id="grossIncome"
                 type="number"
-                placeholder="1000000"
+                min={0}
+                placeholder="1200000"
                 value={grossIncome}
                 onChange={(e) => setGrossIncome(e.target.value)}
               />
             </div>
 
             <div className="space-y-2">
-              <Label>Age Group</Label>
-              <Select value={ageGroup} onValueChange={setAgeGroup}>
+              <Label>Age Group (Old Regime)</Label>
+              <Select value={ageGroup} onValueChange={(v) => setAgeGroup(v as AgeGroup)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="below-60">Below 60 years</SelectItem>
-                  <SelectItem value="60-80">60-80 years</SelectItem>
-                  <SelectItem value="above-80">Above 80 years</SelectItem>
+                  <SelectItem value="60-80">60–80 years (Senior)</SelectItem>
+                  <SelectItem value="above-80">Above 80 years (Super senior)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="deductions">
-                Total Deductions (₹) - Old Regime
-              </Label>
+              <Label htmlFor="deductions">Chapter VI-A Deductions (₹)</Label>
               <Input
                 id="deductions"
                 type="number"
+                min={0}
                 placeholder="150000"
                 value={deductions}
                 onChange={(e) => setDeductions(e.target.value)}
               />
-              <div className="text-xs text-muted-foreground">
-                80C, 80D, HRA, etc.
-              </div>
+              <p className="text-xs text-muted-foreground">80C, 80D, NPS etc. — old regime only</p>
             </div>
           </div>
 
@@ -204,43 +169,19 @@ const IncomeTaxCalculator = () => {
               <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="old-regime">Old Regime</TabsTrigger>
                 <TabsTrigger value="new-regime">New Regime</TabsTrigger>
-                <TabsTrigger value="comparison">Comparison</TabsTrigger>
+                <TabsTrigger value="comparison">Compare</TabsTrigger>
               </TabsList>
 
               <TabsContent value="old-regime">
                 {oldRegimeResult && (
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Old Tax Regime</CardTitle>
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        Old Tax Regime
+                        <Badge variant="outline">Std ded ₹50,000</Badge>
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex justify-between">
-                          <span>Gross Income:</span>
-                          <span className="font-medium">{formatCurrency(oldRegimeResult.grossIncome)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Taxable Income:</span>
-                          <span className="font-medium">{formatCurrency(oldRegimeResult.taxableIncome)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Income Tax:</span>
-                          <span className="font-medium">{formatCurrency(oldRegimeResult.incomeTax)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Health & Education Cess (4%):</span>
-                          <span className="font-medium">{formatCurrency(oldRegimeResult.cess)}</span>
-                        </div>
-                        <div className="flex justify-between text-lg font-bold border-t pt-2">
-                          <span>Total Tax:</span>
-                          <span className="text-red-600">{formatCurrency(oldRegimeResult.totalTax)}</span>
-                        </div>
-                        <div className="flex justify-between text-lg font-bold">
-                          <span>Net Income:</span>
-                          <span className="text-green-600">{formatCurrency(oldRegimeResult.netIncome)}</span>
-                        </div>
-                      </div>
-                    </CardContent>
+                    <CardContent>{renderBreakdown(oldRegimeResult, 'old')}</CardContent>
                   </Card>
                 )}
               </TabsContent>
@@ -249,36 +190,12 @@ const IncomeTaxCalculator = () => {
                 {newRegimeResult && (
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">New Tax Regime</CardTitle>
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        New Tax Regime
+                        <Badge variant="outline">Std ded ₹75,000</Badge>
+                      </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex justify-between">
-                          <span>Gross Income:</span>
-                          <span className="font-medium">{formatCurrency(newRegimeResult.grossIncome)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Taxable Income:</span>
-                          <span className="font-medium">{formatCurrency(newRegimeResult.taxableIncome)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Income Tax:</span>
-                          <span className="font-medium">{formatCurrency(newRegimeResult.incomeTax)}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Health & Education Cess (4%):</span>
-                          <span className="font-medium">{formatCurrency(newRegimeResult.cess)}</span>
-                        </div>
-                        <div className="flex justify-between text-lg font-bold border-t pt-2">
-                          <span>Total Tax:</span>
-                          <span className="text-red-600">{formatCurrency(newRegimeResult.totalTax)}</span>
-                        </div>
-                        <div className="flex justify-between text-lg font-bold">
-                          <span>Net Income:</span>
-                          <span className="text-green-600">{formatCurrency(newRegimeResult.netIncome)}</span>
-                        </div>
-                      </div>
-                    </CardContent>
+                    <CardContent>{renderBreakdown(newRegimeResult, 'new')}</CardContent>
                   </Card>
                 )}
               </TabsContent>
@@ -287,35 +204,28 @@ const IncomeTaxCalculator = () => {
                 {oldRegimeResult && newRegimeResult && (
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Regime Comparison</CardTitle>
+                      <CardTitle className="text-lg">Which regime saves more?</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="text-center p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                          <div className="text-lg font-semibold mb-2">Old Regime</div>
-                          <div className="text-2xl font-bold text-blue-600 mb-1">
-                            {formatCurrency(oldRegimeResult.totalTax)}
-                          </div>
-                          <div className="text-sm text-muted-foreground">Total Tax</div>
+                    <CardContent className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="text-center p-4 rounded-lg bg-muted/50">
+                          <div className="font-semibold mb-1">Old Regime</div>
+                          <div className="text-2xl font-bold">{formatCurrency(oldRegimeResult.totalTax)}</div>
                         </div>
-                        
-                        <div className="text-center p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
-                          <div className="text-lg font-semibold mb-2">New Regime</div>
-                          <div className="text-2xl font-bold text-green-600 mb-1">
-                            {formatCurrency(newRegimeResult.totalTax)}
-                          </div>
-                          <div className="text-sm text-muted-foreground">Total Tax</div>
+                        <div className="text-center p-4 rounded-lg bg-muted/50">
+                          <div className="font-semibold mb-1">New Regime</div>
+                          <div className="text-2xl font-bold">{formatCurrency(newRegimeResult.totalTax)}</div>
                         </div>
                       </div>
-                      
-                      <div className="mt-6 text-center">
-                        <div className="text-lg font-semibold">
-                          {oldRegimeResult.totalTax < newRegimeResult.totalTax ? 'Old Regime' : 'New Regime'} is better
-                        </div>
-                        <div className="text-2xl font-bold text-primary">
-                          Save {formatCurrency(Math.abs(oldRegimeResult.totalTax - newRegimeResult.totalTax))}
-                        </div>
-                      </div>
+                      <p className="text-center text-lg">
+                        <strong>
+                          {oldRegimeResult.totalTax <= newRegimeResult.totalTax ? 'Old' : 'New'} regime
+                        </strong>{' '}
+                        is lower by{' '}
+                        <span className="text-primary font-bold">
+                          {formatCurrency(Math.abs(oldRegimeResult.totalTax - newRegimeResult.totalTax))}
+                        </span>
+                      </p>
                     </CardContent>
                   </Card>
                 )}

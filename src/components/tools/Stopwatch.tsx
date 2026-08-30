@@ -15,108 +15,102 @@ const formatTime = (ms: number) => {
 };
 
 /**
- * Wall-clock stopwatch — elapsed time from Date.now(), not frame count.
- * Uses setInterval (not rAF) so the tab title keeps updating in background tabs.
+ * Wall-clock stopwatch — keeps running when the tab is hidden.
+ * Uses Date.now() deltas (not frame counts) so background throttling only delays UI paint, not elapsed time.
  */
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+
+  const runningRef = useRef(false);
   const startAtRef = useRef<number | null>(null);
   const accumulatedRef = useRef(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const baseTitleRef = useRef<string>('');
+  const baseTitleRef = useRef('');
 
   const getElapsed = useCallback(() => {
-    if (startAtRef.current != null) {
+    if (runningRef.current && startAtRef.current != null) {
       return accumulatedRef.current + (Date.now() - startAtRef.current);
     }
     return accumulatedRef.current;
   }, []);
 
-  const paint = useCallback(
-    (elapsed: number, running: boolean) => {
-      setTime(elapsed);
-      if (running) {
-        document.title = `${formatTime(elapsed)} · Stopwatch`;
-      } else if (elapsed > 0) {
-        document.title = `${formatTime(elapsed)} · Stopwatch (paused)`;
-      } else {
-        document.title = baseTitleRef.current || 'FYN Tools';
-      }
-    },
-    []
-  );
-
-  useEffect(() => {
-    if (!baseTitleRef.current) {
-      baseTitleRef.current = document.title;
+  const syncUi = useCallback((elapsed: number, running: boolean) => {
+    setTime(elapsed);
+    const base = baseTitleRef.current || 'FYN Tools';
+    if (running) {
+      document.title = `${formatTime(elapsed)} · Stopwatch`;
+    } else if (elapsed > 0) {
+      document.title = `${formatTime(elapsed)} · Stopwatch (paused)`;
+    } else {
+      document.title = base;
     }
-    return () => {
-      if (intervalRef.current != null) clearInterval(intervalRef.current);
-      document.title = baseTitleRef.current || 'FYN Tools';
-    };
   }, []);
 
   useEffect(() => {
-    if (intervalRef.current != null) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
+    baseTitleRef.current = document.title;
 
-    if (isRunning) {
-      if (startAtRef.current == null) {
-        startAtRef.current = Date.now();
+    const tick = () => {
+      if (!runningRef.current) return;
+      syncUi(getElapsed(), true);
+    };
+
+    const intervalId = setInterval(tick, 100);
+
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible' && runningRef.current) {
+        syncUi(getElapsed(), true);
       }
+    };
 
-      const tick = () => paint(getElapsed(), true);
-      tick();
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('focus', onVisibility);
 
-      // setInterval works in background tabs; rAF is throttled to ~1fps or paused
-      intervalRef.current = setInterval(tick, 100);
+    return () => {
+      clearInterval(intervalId);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('focus', onVisibility);
+      document.title = baseTitleRef.current || 'FYN Tools';
+    };
+  }, [getElapsed, syncUi]);
 
-      const onVisibility = () => {
-        if (document.visibilityState === 'visible' && startAtRef.current != null) {
-          tick();
-        }
-      };
-      const onFocus = () => {
-        if (startAtRef.current != null) tick();
-      };
-      document.addEventListener('visibilitychange', onVisibility);
-      window.addEventListener('focus', onFocus);
+  const handleStart = () => {
+    if (runningRef.current) return;
+    runningRef.current = true;
+    startAtRef.current = Date.now();
+    setIsRunning(true);
+    syncUi(getElapsed(), true);
+  };
 
-      return () => {
-        if (intervalRef.current != null) clearInterval(intervalRef.current);
-        document.removeEventListener('visibilitychange', onVisibility);
-        window.removeEventListener('focus', onFocus);
-      };
-    }
-
+  const handlePause = () => {
+    if (!runningRef.current) return;
     if (startAtRef.current != null) {
       accumulatedRef.current += Date.now() - startAtRef.current;
-      startAtRef.current = null;
     }
-    paint(accumulatedRef.current, false);
-  }, [isRunning, getElapsed, paint]);
-
-  const handleStart = () => setIsRunning(true);
-  const handlePause = () => setIsRunning(false);
-  const handleStop = () => {
-    setIsRunning(false);
-    accumulatedRef.current = 0;
     startAtRef.current = null;
+    runningRef.current = false;
+    setIsRunning(false);
+    syncUi(accumulatedRef.current, false);
+  };
+
+  const handleStop = () => {
+    runningRef.current = false;
+    startAtRef.current = null;
+    accumulatedRef.current = 0;
+    setIsRunning(false);
     setTime(0);
     document.title = baseTitleRef.current || 'FYN Tools';
   };
+
   const handleReset = () => {
-    const wasRunning = isRunning;
-    setIsRunning(false);
-    accumulatedRef.current = 0;
+    const wasRunning = runningRef.current;
+    runningRef.current = false;
     startAtRef.current = null;
+    accumulatedRef.current = 0;
+    setIsRunning(false);
     setTime(0);
     document.title = baseTitleRef.current || 'FYN Tools';
     if (wasRunning) {
-      setTimeout(() => setIsRunning(true), 0);
+      requestAnimationFrame(() => handleStart());
     }
   };
 
@@ -126,12 +120,13 @@ const Stopwatch = () => {
         <CardHeader>
           <CardTitle>Stopwatch</CardTitle>
           <CardDescription>
-            Precise stopwatch that keeps running when you switch tabs. The live time also shows in the browser tab title.
+            Keeps running when you switch tabs — live time shows in the browser tab title. Elapsed time uses your
+            device clock, not animation frames.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="text-center">
-            <div className="text-6xl font-mono font-bold text-primary mb-8 tabular-nums">
+            <div className="text-6xl font-mono font-bold text-primary mb-8 tabular-nums tracking-tight">
               {formatTime(time)}
             </div>
 
