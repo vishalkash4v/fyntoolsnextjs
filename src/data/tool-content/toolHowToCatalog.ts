@@ -660,10 +660,10 @@ export const toolHowToCatalog: Record<string, string[]> = {
     "Copy an available-style handle; verify availability on the target platform.",
   ],
   '/weather-forecast': [
-    "Search any city worldwide — no API key required.",
-    "Tap My Location for GPS-based forecast, or pick from search suggestions.",
-    "View current conditions, 24-hour hourly outlook, and 7-day forecast.",
-    "Refresh anytime — data from Open-Meteo (30+ weather models, free forever).",
+    "Weather loads instantly for your region — no API key or signup.",
+    "Search any city or tap My Location; the search bar syncs to your GPS city.",
+    "View 7-day forecast, rain chart, air quality, UV index & activity tips.",
+    "Toggle °C/°F, copy a weather report, or pick from recent cities.",
   ],
   '/whitespace-remover': [
     "Paste text with extra spaces, tabs, or blank lines.",

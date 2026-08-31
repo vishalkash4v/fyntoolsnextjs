@@ -7391,41 +7391,47 @@ export const pageOverrides: Record<string, PageOverride> = {
     ]
   },
   "/weather-forecast": {
-    "title": "Weather Forecast - Live Weather Updates & 5-Day Forecast",
-    "description": "Get accurate weather forecasts and current weather conditions for any city worldwide. Live weather updates with temperature, humidity, wind speed, and 5-day forecast.",
-    "shortIntro": "Check the weather for any city instantly. Get current conditions, temperature, humidity, wind speed, and a 5-day forecast—all in one place.",
+    "title": "Free Weather Forecast Online — 7-Day, Hourly & Air Quality | FYN Tools",
+    "description": "Free weather forecast alternative to AccuWeather & Weather.com. Live 7-day forecast, hourly rain probability, UV index, air quality, and activity tips for any city — no API key, no signup.",
+    "shortIntro": "Instant free weather forecast for any city worldwide. 7-day outlook, hourly rain chart, air quality, UV index, what-to-wear tips, and GPS location — no ads, no account, open-source data.",
+    "keywords": "weather forecast, free weather forecast, weather forecast online, accuweather alternative, weather.com alternative, 7 day weather forecast, hourly weather forecast, weather by city, live weather, current weather, weather radar free, air quality index, UV index today, weather app free no download, local weather forecast, weather near me",
     "category": "Utility Tools",
     "howToUse": [
-      "Enter a city name or location in the search field.",
-      "Press search or select from suggestions.",
-      "View current weather conditions (temp, humidity, wind).",
-      "Scroll to see the 5-day forecast.",
-      "Check weather for multiple cities as needed."
+      "Weather loads automatically for your region — no setup required.",
+      "Search any city or tap My Location for GPS-accurate forecast.",
+      "View current conditions, 7-day forecast, rain probability chart, and air quality.",
+      "Check Activity Planner for running, driving, and outdoor tips.",
+      "Toggle °C/°F and copy a shareable weather summary."
     ],
     "features": [
-      "Current weather for any city",
-      "5-day forecast",
-      "Temperature, humidity, wind speed",
-      "Weather icons and descriptions",
-      "Search by city name",
-      "Free, no API key needed"
+      "Auto-load forecast — no API key or signup",
+      "7-day & 24-hour forecast with rain probability",
+      "Air quality index (AQI) & UV index",
+      "Activity planner & what-to-wear tips",
+      "GPS My Location with search bar sync",
+      "Recent cities & °C/°F toggle",
+      "Copy weather report — free open-source data"
     ],
     "faqs": [
       {
+        "question": "Is this a free alternative to AccuWeather or Weather.com?",
+        "answer": "Yes. FYN Tools Weather Forecast is 100% free with no ads, no account, and no API key. It uses open-source Open-Meteo data (30+ weather models) plus air quality and UV index — features people expect from AccuWeather and Weather.com."
+      },
+      {
         "question": "What weather data is shown?",
-        "answer": "You get current conditions (temperature, humidity, wind speed, description), plus a 5-day forecast with high/low temps and conditions for each day."
+        "answer": "Current temperature, feels-like, humidity, wind, pressure, cloud cover, sunrise/sunset, 7-day forecast, 24-hour hourly outlook, rain probability chart, US AQI air quality, UV index, activity tips, and what-to-wear suggestions."
+      },
+      {
+        "question": "How does My Location work?",
+        "answer": "Tap My Location to use GPS. The search bar and forecast both update to your detected city. If GPS is denied, we fall back to IP-based region detection."
       },
       {
         "question": "Which cities are supported?",
-        "answer": "We support cities worldwide. Enter the city name and we'll find matching locations. For best results, include country or state for common city names."
-      },
-      {
-        "question": "How often is the weather data updated?",
-        "answer": "Weather data is typically refreshed when you search. Forecasts are updated regularly from our weather data provider."
+        "answer": "Worldwide coverage via Open-Meteo and OpenStreetMap geocoding. Search any city, town, or district — include state or country for common names."
       },
       {
         "question": "Is the weather forecast free?",
-        "answer": "Yes, our weather forecast tool is completely free. No registration or API key required."
+        "answer": "Yes — completely free forever. No registration, no API key, no hidden paywall. Powered by open-source weather APIs."
       }
     ]
   },

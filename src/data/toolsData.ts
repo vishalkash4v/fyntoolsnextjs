@@ -1677,11 +1677,11 @@ export const allTools: Tool[] = [
     name: 'Weather Forecast', 
     category: 'Network Tools', 
     description: 'Check the weather forecast for any location.', 
-    keywords: 'weather forecast, weather checker, weather app, weather data', 
+    keywords: 'weather forecast, free weather forecast, accuweather alternative, weather.com alternative, 7 day weather forecast, hourly weather, air quality index, UV index, weather by city, live weather, weather near me, local weather forecast, weather app free', 
     path: '/weather-forecast', 
     href: '/weather-forecast', 
     url: 'https://fyntools.com/weather-forecast',
-    features: 'Weather forecast, Current weather, Hourly forecast, Daily forecast, Location search, Temperature display, Humidity, Wind speed, Weather conditions, Weather icons, Extended forecast',
+    features: 'Weather forecast, 7-day forecast, Hourly forecast, Rain probability chart, Air quality AQI, UV index, Activity planner, What to wear tips, GPS location, Recent cities, Celsius Fahrenheit toggle, Copy weather report, No API key, Open-source data',
     icon: CloudSun,
     rating: 4.6,
     userCount: '26,200+'

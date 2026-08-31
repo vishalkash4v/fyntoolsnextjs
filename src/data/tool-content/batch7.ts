@@ -7397,11 +7397,11 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "conclusion": "Use Unit Converter above, then browse related converter tools linked below."
   },
   '/weather-forecast': {
-      "title": "Weather Forecast — City Weather Lookup",
-      "h1": "Weather Forecast — Current & Weekly",
-      "metaDescription": "Check weather forecast by city name. Temperature, conditions, and multi-day outlook — free online.",
-      "dateModified": "2026-08-29",
-      "tldr": "Weather Forecast: Check the weather forecast for any location. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "title": "Free Weather Forecast Online — 7-Day, Hourly & Air Quality",
+      "h1": "Free Weather Forecast — 7-Day, Hourly & AQI",
+      "metaDescription": "Free AccuWeather & Weather.com alternative. 7-day forecast, hourly rain, air quality, UV index & activity tips for any city — no API key.",
+      "dateModified": "2026-08-31",
+      "tldr": "Free weather forecast with 7-day outlook, rain chart, air quality, UV index, and activity tips — open-source data, no signup on FYN Tools.",
       "processingNote": "This tool may call external APIs to fetch public data. Do not submit secrets or private credentials.",
       "ioContract": {
           "inputs": "City or location search",
@@ -7412,10 +7412,16 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       },
       "keywords": [
           "weather forecast",
-          "weather forecast online",
           "free weather forecast",
-          "network tools",
-          "fyn tools"
+          "accuweather alternative",
+          "weather.com alternative",
+          "7 day weather forecast",
+          "hourly weather forecast",
+          "air quality index",
+          "UV index today",
+          "weather by city",
+          "weather near me",
+          "local weather forecast"
       ],
       "introParagraphs": [
           "Weather Forecast on FYN Tools check the weather forecast for any location. Use the tool above — free, no account required.",

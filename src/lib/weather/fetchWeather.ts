@@ -2,6 +2,13 @@ import { type GeoPlace } from '@/lib/weather/geocode';
 import { fetchJson } from '@/lib/weather/http';
 import { categoryToMain, wmoToCategory, wmoToDescription, type WeatherCategory } from '@/lib/weather/wmoCodes';
 
+export type AirQuality = {
+  usAqi: number;
+  europeanAqi: number;
+  pm25: number;
+  pm10: number;
+};
+
 export type CurrentWeather = {
   time: string;
   temperature: number;
@@ -15,6 +22,9 @@ export type CurrentWeather = {
   category: WeatherCategory;
   description: string;
   main: string;
+  uvIndex: number;
+  precipitation: number;
+  isDay: boolean;
 };
 
 export type DailyForecast = {
@@ -23,6 +33,9 @@ export type DailyForecast = {
   tempMin: number;
   tempMax: number;
   precipitationProb: number;
+  precipitationSum: number;
+  windGustMax: number;
+  uvMax: number;
   weatherCode: number;
   category: WeatherCategory;
   description: string;
@@ -39,6 +52,8 @@ export type HourlyForecast = {
   category: WeatherCategory;
   description: string;
   main: string;
+  precipitationProb: number;
+  humidity: number;
 };
 
 export type WeatherBundle = {
@@ -46,7 +61,9 @@ export type WeatherBundle = {
   current: CurrentWeather;
   daily: DailyForecast[];
   hourly: HourlyForecast[];
+  airQuality: AirQuality | null;
   sources: string[];
+  fetchedAt: string;
 };
 
 type OpenMeteoForecast = {
@@ -61,6 +78,9 @@ type OpenMeteoForecast = {
     wind_direction_10m: number;
     surface_pressure: number;
     cloud_cover: number;
+    uv_index?: number;
+    precipitation?: number;
+    is_day?: number;
   };
   daily?: {
     time: string[];
@@ -68,6 +88,9 @@ type OpenMeteoForecast = {
     temperature_2m_max: number[];
     temperature_2m_min: number[];
     precipitation_probability_max: number[];
+    precipitation_sum: number[];
+    wind_gusts_10m_max: number[];
+    uv_index_max: number[];
     sunrise: string[];
     sunset: string[];
   };
@@ -75,10 +98,21 @@ type OpenMeteoForecast = {
     time: string[];
     temperature_2m: number[];
     weather_code: number[];
+    precipitation_probability?: number[];
+    relative_humidity_2m?: number[];
   };
 };
 
-const FORECAST_PARAMS = [
+type OpenMeteoAir = {
+  current?: {
+    us_aqi?: number;
+    european_aqi?: number;
+    pm2_5?: number;
+    pm10?: number;
+  };
+};
+
+const CURRENT_PARAMS = [
   'temperature_2m',
   'relative_humidity_2m',
   'apparent_temperature',
@@ -87,6 +121,9 @@ const FORECAST_PARAMS = [
   'wind_speed_10m',
   'wind_direction_10m',
   'surface_pressure',
+  'uv_index',
+  'precipitation',
+  'is_day',
 ].join(',');
 
 const DAILY_PARAMS = [
@@ -94,6 +131,9 @@ const DAILY_PARAMS = [
   'temperature_2m_max',
   'temperature_2m_min',
   'precipitation_probability_max',
+  'precipitation_sum',
+  'wind_gusts_10m_max',
+  'uv_index_max',
   'sunrise',
   'sunset',
 ].join(',');
@@ -121,7 +161,22 @@ function descToCategory(desc: string): WeatherCategory {
   return 'clear';
 }
 
-function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace): WeatherBundle | null {
+async function fetchAirQuality(lat: number, lon: number): Promise<AirQuality | null> {
+  const url =
+    `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}` +
+    `&current=us_aqi,european_aqi,pm2_5,pm10`;
+  const data = await fetchJson<OpenMeteoAir>(url, { cache: 'no-store' });
+  const c = data?.current;
+  if (!c?.us_aqi && !c?.european_aqi) return null;
+  return {
+    usAqi: Math.round(c.us_aqi ?? c.european_aqi ?? 0),
+    europeanAqi: Math.round(c.european_aqi ?? 0),
+    pm25: c.pm2_5 ?? 0,
+    pm10: c.pm10 ?? 0,
+  };
+}
+
+function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace, airQuality: AirQuality | null): WeatherBundle | null {
   if (!data.current || !data.daily) return null;
 
   const resolvedPlace =
@@ -139,6 +194,9 @@ function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace): WeatherBundle
       tempMin: data.daily!.temperature_2m_min[i],
       tempMax: data.daily!.temperature_2m_max[i],
       precipitationProb: data.daily!.precipitation_probability_max[i] ?? 0,
+      precipitationSum: data.daily!.precipitation_sum?.[i] ?? 0,
+      windGustMax: data.daily!.wind_gusts_10m_max?.[i] ?? 0,
+      uvMax: data.daily!.uv_index_max?.[i] ?? 0,
       weatherCode: code,
       category: cat,
       description: wmoToDescription(code),
@@ -159,6 +217,8 @@ function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace): WeatherBundle
       category: cat,
       description: wmoToDescription(code),
       main: categoryToMain(cat),
+      precipitationProb: data.hourly!.precipitation_probability?.[i] ?? 0,
+      humidity: data.hourly!.relative_humidity_2m?.[i] ?? 0,
     };
   });
 
@@ -177,27 +237,39 @@ function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace): WeatherBundle
       category: curCategory,
       description: wmoToDescription(cur.weather_code),
       main: categoryToMain(curCategory),
+      uvIndex: cur.uv_index ?? 0,
+      precipitation: cur.precipitation ?? 0,
+      isDay: (cur.is_day ?? 1) === 1,
     },
     daily,
     hourly,
+    airQuality,
     sources: ['Open-Meteo (30+ models)', place.source],
+    fetchedAt: new Date().toISOString(),
   };
 }
 
-/** Primary: Open-Meteo best-match forecast (free, open-source data). */
 async function fetchOpenMeteo(place: GeoPlace): Promise<WeatherBundle | null> {
   const tz = place.timezone === 'auto' ? 'auto' : encodeURIComponent(place.timezone);
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}` +
-    `&current=${FORECAST_PARAMS}&daily=${DAILY_PARAMS}&hourly=temperature_2m,weather_code` +
-    `&timezone=${tz}&forecast_days=7&wind_speed_unit=ms&cell_selection=land`;
+    `&current=${CURRENT_PARAMS}&daily=${DAILY_PARAMS}` +
+    `&hourly=temperature_2m,weather_code,precipitation_probability,relative_humidity_2m` +
+    `&timezone=${tz}&forecast_days=7&wind_speed_unit=ms&precipitation_unit=mm&cell_selection=land`;
 
-  const data = await fetchJson<OpenMeteoForecast>(url, { cache: 'no-store' });
+  const [data, airQuality] = await Promise.all([
+    fetchJson<OpenMeteoForecast>(url, { cache: 'no-store' }),
+    fetchAirQuality(place.latitude, place.longitude),
+  ]);
+
   if (!data) return null;
-  return parseOpenMeteo(data, place);
+  const bundle = parseOpenMeteo(data, place, airQuality);
+  if (bundle && airQuality) {
+    bundle.sources.push('Open-Meteo Air Quality');
+  }
+  return bundle;
 }
 
-/** Fallback: wttr.in (WorldWeatherOnline / open data mirror, no key). */
 async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
   const q = `${place.latitude},${place.longitude}`;
   type WttrDay = {
@@ -212,7 +284,6 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
       FeelsLikeC: string;
       humidity: string;
       windspeedKmph: string;
-      winddir16Point: string;
       pressure: string;
       cloudcover: string;
       weatherDesc: { value: string }[];
@@ -240,6 +311,9 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
       tempMin: parseFloat(d.mintempC),
       tempMax: parseFloat(d.maxtempC),
       precipitationProb: 0,
+      precipitationSum: 0,
+      windGustMax: 0,
+      uvMax: 0,
       weatherCode: 0,
       category: dayCat,
       description: dayDesc,
@@ -260,6 +334,8 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
       category: hCat,
       description: hDesc,
       main: categoryToMain(hCat),
+      precipitationProb: 0,
+      humidity: 0,
     };
   });
 
@@ -280,14 +356,18 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
       category: cat,
       description: desc,
       main: categoryToMain(cat),
+      uvIndex: 0,
+      precipitation: 0,
+      isDay: true,
     },
     daily,
     hourly,
+    airQuality: null,
     sources: ['wttr.in (fallback)', place.source],
+    fetchedAt: new Date().toISOString(),
   };
 }
 
-/** Multi-provider fetch — Open-Meteo first, wttr.in fallback. No API keys. */
 export async function fetchWeatherBundle(place: GeoPlace): Promise<WeatherBundle> {
   const primary = await fetchOpenMeteo(place);
   if (primary) return primary;
