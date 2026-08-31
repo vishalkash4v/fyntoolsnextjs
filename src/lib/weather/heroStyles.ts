@@ -1,39 +1,54 @@
-/** Theme-safe hero styling — saturated gradients readable in light & dark mode. */
+/** Hero background — inline CSS so glass-card / theme cannot override. */
 
 import type { WeatherCategory } from '@/lib/weather/wmoCodes';
 
-export type HeroStyles = {
-  gradient: string;
-  overlay: string;
-  text: string;
-  badge: string;
-  border: string;
-  iconClass: string;
+export type HeroTheme = {
+  background: string;
+  accent: string;
+  animation: WeatherCategory;
 };
 
-export function getWeatherHeroStyles(category: WeatherCategory): HeroStyles {
-  const base = {
-    overlay: 'bg-black/35',
-    text: 'text-white drop-shadow-sm',
-    badge: 'bg-white/25 text-white border-white/30 backdrop-blur-sm',
-    border: 'border-white/20',
-    iconClass: 'text-white drop-shadow-md',
-  };
-
+export function getHeroTheme(category: WeatherCategory, isDay = true): HeroTheme {
   switch (category) {
     case 'clear':
-      return { ...base, gradient: 'bg-gradient-to-br from-amber-600 via-orange-600 to-rose-700' };
+      return {
+        background: isDay
+          ? 'linear-gradient(160deg, #b45309 0%, #c2410c 35%, #9f1239 70%, #7c2d12 100%)'
+          : 'linear-gradient(160deg, #1e3a5f 0%, #312e81 40%, #1e1b4b 100%)',
+        accent: '#fbbf24',
+        animation: 'clear',
+      };
     case 'clouds':
-      return { ...base, gradient: 'bg-gradient-to-br from-slate-600 via-slate-700 to-slate-900' };
+      return {
+        background: 'linear-gradient(160deg, #64748b 0%, #475569 40%, #1e293b 75%, #0f172a 100%)',
+        accent: '#94a3b8',
+        animation: 'clouds',
+      };
     case 'fog':
-      return { ...base, gradient: 'bg-gradient-to-br from-slate-500 via-slate-600 to-slate-800' };
+      return {
+        background: 'linear-gradient(160deg, #78716c 0%, #57534e 50%, #292524 100%)',
+        accent: '#d6d3d1',
+        animation: 'fog',
+      };
     case 'rain':
     case 'drizzle':
-      return { ...base, gradient: 'bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900' };
+      return {
+        background: 'linear-gradient(160deg, #1d4ed8 0%, #1e3a8a 45%, #172554 100%)',
+        accent: '#60a5fa',
+        animation: 'rain',
+      };
     case 'snow':
-      return { ...base, gradient: 'bg-gradient-to-br from-sky-700 via-blue-800 to-indigo-900' };
+      return {
+        background: 'linear-gradient(160deg, #0369a1 0%, #1e40af 50%, #1e3a8a 100%)',
+        accent: '#e0f2fe',
+        animation: 'snow',
+      };
     case 'thunderstorm':
-      return { ...base, gradient: 'bg-gradient-to-br from-violet-800 via-purple-900 to-slate-950' };
+      return {
+        background: 'linear-gradient(160deg, #4c1d95 0%, #312e81 40%, #0f0f14 100%)',
+        accent: '#a78bfa',
+        animation: 'thunderstorm',
+      };
   }
 }
 
@@ -45,7 +60,7 @@ export function getWeatherIconColor(category: WeatherCategory, onHero = false): 
     case 'clouds':
       return 'text-slate-500';
     case 'fog':
-      return 'text-slate-400';
+      return 'text-stone-400';
     case 'rain':
     case 'drizzle':
       return 'text-blue-500';

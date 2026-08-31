@@ -15,26 +15,21 @@ import {
   CloudSnow,
   CloudFog,
   Zap,
-  MapPin,
-  Thermometer,
-  Droplets,
-  Wind,
-  Gauge,
-  Sunrise,
-  Sunset,
   Navigation,
   RefreshCw,
   Shirt,
   Activity,
   Clock,
   Shield,
+  Loader2,
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import CopyButton from '@/components/common/CopyButton';
+import WeatherHeroCard from '@/components/tools/weather/WeatherHeroCard';
 import { formatPlaceLabel, type GeoPlace } from '@/lib/weather/geocode';
 import type { WeatherBundle } from '@/lib/weather/fetchWeather';
 import type { WeatherCategory } from '@/lib/weather/wmoCodes';
-import { getWeatherHeroStyles, getWeatherIconColor } from '@/lib/weather/heroStyles';
+import { getWeatherIconColor } from '@/lib/weather/heroStyles';
 import {
   aqiLabel,
   buildWeatherSummary,
@@ -91,7 +86,7 @@ const WeatherForecast = () => {
   const initialLoad = useRef(false);
   const isEditingSearch = useRef(false);
   const searchSeq = useRef(0);
-  const activePlaceKey = useRef('');
+  const searchWrapRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -102,9 +97,7 @@ const WeatherForecast = () => {
 
   const syncSearchToPlace = useCallback((place: GeoPlace) => {
     isEditingSearch.current = false;
-    const label = formatPlaceLabel(place);
-    activePlaceKey.current = `${place.latitude},${place.longitude}`;
-    setSearchQuery(label);
+    setSearchQuery(formatPlaceLabel(place));
     setSuggestions([]);
   }, []);
 
@@ -252,8 +245,6 @@ const WeatherForecast = () => {
     return dirs[Math.round(deg / 45) % 8];
   };
 
-  const hero = weather ? getWeatherHeroStyles(weather.current.category) : null;
-
   const insights = useMemo(() => {
     if (!weather) return null;
     return {
@@ -290,32 +281,43 @@ const WeatherForecast = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex gap-2 flex-wrap items-center">
-            <div className="relative flex-1 min-w-[200px]">
+          {/* Search — mobile-first responsive */}
+          <div className="space-y-3">
+            <div ref={searchWrapRef} className="relative w-full">
               <Input
                 placeholder="Search city, town, or district…"
                 value={searchQuery}
                 onChange={(e) => handleInputChange(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleSearch();
+                  if (e.key === 'Escape') setSuggestions([]);
+                }}
                 onFocus={() => {
                   if (weather && searchQuery === formatPlaceLabel(weather.place)) {
                     isEditingSearch.current = true;
                   }
                 }}
+                onBlur={() => {
+                  setTimeout(() => setSuggestions([]), 180);
+                }}
+                className="w-full h-11 sm:h-10 text-base sm:text-sm pr-10"
                 aria-label="Search location"
+                aria-expanded={suggestions.length > 0}
+                aria-autocomplete="list"
               />
               {searching && (
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
-                  …
-                </span>
+                <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-muted-foreground pointer-events-none" />
               )}
               {suggestions.length > 0 && isEditingSearch.current && (
-                <ul className="absolute z-20 top-full left-0 right-0 mt-1 rounded-md border bg-popover shadow-lg text-sm max-h-52 overflow-auto">
+                <ul
+                  role="listbox"
+                  className="absolute z-[100] left-0 right-0 top-[calc(100%+4px)] rounded-lg border bg-popover text-popover-foreground shadow-xl max-h-[min(280px,50vh)] overflow-y-auto overscroll-contain"
+                >
                   {suggestions.map((s, i) => (
-                    <li key={`${s.latitude}-${s.longitude}-${i}`}>
+                    <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
                       <button
                         type="button"
-                        className="w-full text-left px-3 py-2.5 hover:bg-muted transition-colors"
+                        className="w-full text-left px-4 py-3 text-sm sm:text-base hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/50"
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={() => loadPlace(s)}
                       >
@@ -326,45 +328,50 @@ const WeatherForecast = () => {
                 </ul>
               )}
             </div>
-            <Button onClick={handleSearch} disabled={loading} className="shrink-0">
-              {loading ? 'Loading…' : 'Search'}
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleUseLocation}
-              disabled={loading || locating}
-              className="shrink-0 gap-2"
-            >
-              <Navigation className="h-4 w-4" />
-              {locating ? 'GPS…' : 'My Location'}
-            </Button>
-            {weather && (
-              <>
-                <Tabs value={unit} onValueChange={(v) => toggleUnit(v as TempUnit)}>
-                  <TabsList className="h-9">
-                    <TabsTrigger value="c" className="text-xs px-3">
-                      °C
-                    </TabsTrigger>
-                    <TabsTrigger value="f" className="text-xs px-3">
-                      °F
-                    </TabsTrigger>
-                  </TabsList>
-                </Tabs>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() =>
-                    void loadFromApi(() =>
-                      fetchWeatherByCoords(weather.place.latitude, weather.place.longitude)
-                    )
-                  }
-                  disabled={loading}
-                  aria-label="Refresh"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-                </Button>
-              </>
-            )}
+
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
+              <Button onClick={handleSearch} disabled={loading} className="w-full sm:w-auto h-11 sm:h-10">
+                {loading ? 'Loading…' : 'Search'}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={handleUseLocation}
+                disabled={loading || locating}
+                className="w-full sm:w-auto h-11 sm:h-10 gap-2"
+              >
+                <Navigation className="h-4 w-4 shrink-0" />
+                <span className="truncate">{locating ? 'GPS…' : 'My Location'}</span>
+              </Button>
+              {weather && (
+                <>
+                  <Tabs value={unit} onValueChange={(v) => toggleUnit(v as TempUnit)} className="col-span-2 sm:col-span-1">
+                    <TabsList className="h-11 sm:h-10 w-full sm:w-auto grid grid-cols-2">
+                      <TabsTrigger value="c" className="text-sm">
+                        °C
+                      </TabsTrigger>
+                      <TabsTrigger value="f" className="text-sm">
+                        °F
+                      </TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="col-span-2 sm:col-span-1 h-11 sm:h-10 w-full sm:w-10"
+                    onClick={() =>
+                      void loadFromApi(() =>
+                        fetchWeatherByCoords(weather.place.latitude, weather.place.longitude)
+                      )
+                    }
+                    disabled={loading}
+                    aria-label="Refresh weather"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+                    <span className="sm:hidden ml-2">Refresh</span>
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
 
           {recent.length > 0 && (
@@ -408,93 +415,16 @@ const WeatherForecast = () => {
         </Card>
       )}
 
-      {weather && hero && insights && (
+      {weather && insights && (
         <>
-          <Card className={`${hero.gradient} border-0 shadow-lg relative overflow-hidden`}>
-            <div className={`absolute inset-0 ${hero.overlay}`} />
-            <CardContent className={`relative pt-6 ${hero.text}`}>
-              <div className="flex items-start justify-between mb-6 gap-4">
-                <div className="min-w-0">
-                  <h2 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
-                    <MapPin className="h-6 w-6 shrink-0" />
-                    <span className="truncate">{formatPlaceLabel(weather.place)}</span>
-                  </h2>
-                  <p className="text-lg opacity-95 capitalize mt-1">{weather.current.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {weather.sources.map((s) => (
-                      <Badge key={s} variant="outline" className={hero.badge}>
-                        {s}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                {getWeatherIcon(weather.current.category, true, true)}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center md:text-left">
-                  <div className="text-5xl font-bold mb-2 tabular-nums">
-                    {formatTemp(weather.current.temperature, unit)}
-                  </div>
-                  <p className="opacity-90">
-                    Feels like {formatTemp(weather.current.feelsLike, unit)}
-                  </p>
-                </div>
-                <div className="space-y-3 text-sm sm:text-base">
-                  <div className="flex items-center gap-2">
-                    <Thermometer className="h-5 w-5 shrink-0" />
-                    <span>
-                      High: {formatTemp(weather.daily[0]?.tempMax ?? weather.current.temperature, unit)}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Thermometer className="h-5 w-5 shrink-0" />
-                    <span>
-                      Low: {formatTemp(weather.daily[0]?.tempMin ?? weather.current.temperature, unit)}
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-3 text-sm sm:text-base">
-                  <div className="flex items-center gap-2">
-                    <Droplets className="h-5 w-5 shrink-0" />
-                    <span>Humidity: {weather.current.humidity}%</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Wind className="h-5 w-5 shrink-0" />
-                    <span>
-                      Wind: {windMsToKmh(weather.current.windSpeed).toFixed(0)} km/h{' '}
-                      {weather.current.windDirection ? windCompass(weather.current.windDirection) : ''}
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-3 text-sm sm:text-base">
-                  <div className="flex items-center gap-2">
-                    <Gauge className="h-5 w-5 shrink-0" />
-                    <span>Pressure: {weather.current.pressure} hPa</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Cloud className="h-5 w-5 shrink-0" />
-                    <span>Clouds: {weather.current.cloudCover}%</span>
-                  </div>
-                </div>
-              </div>
-
-              {weather.daily[0]?.sunrise !== '—' && (
-                <div
-                  className={`flex justify-between items-center mt-6 pt-6 border-t ${hero.border} flex-wrap gap-4 text-sm sm:text-base`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Sunrise className="h-5 w-5" />
-                    <span>Sunrise: {weather.daily[0].sunrise}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Sunset className="h-5 w-5" />
-                    <span>Sunset: {weather.daily[0].sunset}</span>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+          <WeatherHeroCard
+            weather={weather}
+            unit={unit}
+            windCompass={windCompass}
+            renderIcon={(isLarge, onHero) =>
+              getWeatherIcon(weather.current.category, isLarge, onHero)
+            }
+          />
 
           {/* Unique value: health + planning row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
