@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -45,6 +44,7 @@ import {
   fetchWeatherByCoords,
   fetchWeatherByQuery,
   searchWeatherPlaces,
+  type WeatherSearchMeta,
 } from '@/lib/weather/clientApi';
 
 const RECENT_KEY = 'fyn-weather-recent';
@@ -77,11 +77,7 @@ const WeatherForecast = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<GeoPlace[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [dropdownRect, setDropdownRect] = useState<{
-    top: number;
-    left: number;
-    width: number;
-  } | null>(null);
+  const [searchMeta, setSearchMeta] = useState<WeatherSearchMeta | null>(null);
   const [weather, setWeather] = useState<WeatherBundle | null>(null);
   const [recent, setRecent] = useState<GeoPlace[]>([]);
   const [loading, setLoading] = useState(true);
@@ -92,7 +88,6 @@ const WeatherForecast = () => {
   const initialLoad = useRef(false);
   const isEditingSearch = useRef(false);
   const searchSeq = useRef(0);
-  const searchWrapRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -100,32 +95,6 @@ const WeatherForecast = () => {
     if (saved === 'c' || saved === 'f') setUnit(saved);
     setRecent(loadRecent());
   }, []);
-
-  const updateDropdownPosition = useCallback(() => {
-    const el = searchWrapRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    setDropdownRect({
-      top: r.bottom + 4,
-      left: r.left,
-      width: r.width,
-    });
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!showSuggestions || suggestions.length === 0) {
-      setDropdownRect(null);
-      return;
-    }
-    updateDropdownPosition();
-    const onMove = () => updateDropdownPosition();
-    window.addEventListener('scroll', onMove, true);
-    window.addEventListener('resize', onMove);
-    return () => {
-      window.removeEventListener('scroll', onMove, true);
-      window.removeEventListener('resize', onMove);
-    };
-  }, [showSuggestions, suggestions.length, updateDropdownPosition]);
 
   const syncSearchToPlace = useCallback((place: GeoPlace) => {
     isEditingSearch.current = false;
@@ -181,6 +150,7 @@ const WeatherForecast = () => {
       return;
     }
     isEditingSearch.current = false;
+    setShowSuggestions(false);
     void loadFromApi(() => fetchWeatherByQuery(q));
   };
 
@@ -220,12 +190,9 @@ const WeatherForecast = () => {
     isEditingSearch.current = false;
     setShowSuggestions(false);
     syncSearchToPlace(place);
-    void loadFromApi(() =>
-      fetchWeatherByCoords(place.latitude, place.longitude)
-    );
+    void loadFromApi(() => fetchWeatherByCoords(place.latitude, place.longitude));
   };
 
-  // Fast autocomplete — 150ms debounce, stale-request guard
   useEffect(() => {
     if (!isEditingSearch.current) return;
     const q = searchQuery.trim();
@@ -240,9 +207,10 @@ const WeatherForecast = () => {
     setSearching(true);
     const t = setTimeout(async () => {
       try {
-        const results = await searchWeatherPlaces(q);
+        const { results, meta } = await searchWeatherPlaces(q);
         if (seq === searchSeq.current) {
-          setSuggestions(results.slice(0, 10));
+          setSuggestions(results.slice(0, 12));
+          setSearchMeta(meta ?? null);
           setShowSuggestions(results.length > 0 && isEditingSearch.current);
         }
       } catch {
@@ -253,7 +221,7 @@ const WeatherForecast = () => {
       } finally {
         if (seq === searchSeq.current) setSearching(false);
       }
-    }, 150);
+    }, 180);
 
     return () => clearTimeout(t);
   }, [searchQuery]);
@@ -307,7 +275,7 @@ const WeatherForecast = () => {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      <Card className={showSuggestions && suggestions.length > 0 ? 'relative z-[60]' : 'relative z-10'}>
+      <Card className="relative z-20 overflow-visible">
         <CardHeader className="pb-2">
           <CardTitle className="text-base sm:text-lg">Weather Forecast</CardTitle>
           <CardDescription className="text-xs sm:text-sm leading-relaxed">
@@ -319,9 +287,9 @@ const WeatherForecast = () => {
         <CardContent className="space-y-3 overflow-visible">
           {/* Compact search row */}
           <div className="flex items-stretch gap-1.5 sm:gap-2">
-            <div ref={searchWrapRef} className="relative min-w-0 flex-1">
+            <div className="relative min-w-0 flex-1">
               <Input
-                placeholder="Search area, village, city…"
+                placeholder="Search village, town, city…"
                 value={searchQuery}
                 onChange={(e) => handleInputChange(e.target.value)}
                 onKeyDown={(e) => {
@@ -339,14 +307,11 @@ const WeatherForecast = () => {
                     setShowSuggestions(true);
                   }
                 }}
-                onBlur={() => {
-                  // delay so click on portal item still registers
-                  setTimeout(() => setShowSuggestions(false), 200);
-                }}
                 className="h-9 text-sm pr-8"
                 aria-label="Search location"
                 aria-expanded={showSuggestions && suggestions.length > 0}
                 aria-autocomplete="list"
+                autoComplete="off"
               />
               {searching && (
                 <Loader2 className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 animate-spin text-muted-foreground pointer-events-none" />
@@ -374,9 +339,7 @@ const WeatherForecast = () => {
               aria-label="My location"
             >
               <Navigation className="h-3.5 w-3.5" />
-              <span className="hidden xs:inline sm:inline text-xs">
-                {locating ? '…' : 'GPS'}
-              </span>
+              <span className="hidden sm:inline text-xs">{locating ? '…' : 'GPS'}</span>
             </Button>
 
             {weather && (
@@ -426,6 +389,63 @@ const WeatherForecast = () => {
             )}
           </div>
 
+          {/* In-document-flow list — never under the weather card */}
+          {showSuggestions && suggestions.length > 0 && (
+            <ul
+              role="listbox"
+              className="rounded-md border bg-background shadow-md max-h-[min(320px,50vh)] overflow-y-auto relative z-30"
+            >
+              {suggestions.map((s, i) => (
+                <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
+                  <button
+                    type="button"
+                    className="w-full text-left px-3 py-2.5 text-sm hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/40"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => loadPlace(s)}
+                  >
+                    <span className="font-medium">{s.name}</span>
+                    {(s.admin1 || s.country) && (
+                      <span className="text-muted-foreground">
+                        {` · ${[s.admin1, s.country].filter(Boolean).join(', ')}`}
+                      </span>
+                    )}
+                    {s.source === 'Google Places' && (
+                      <span className="ml-1.5 text-[10px] uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                        Google
+                      </span>
+                    )}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {searchMeta && isEditingSearch.current && searchQuery.trim().length >= 2 && (
+            <p className="text-[11px] text-muted-foreground">
+              {searchMeta.googleKeyPresent ? (
+                searchMeta.provider === 'google' ? (
+                  <>
+                    Location search:{' '}
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                      Google Places
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Google key present — using {searchMeta.provider} fallback (
+                    {searchMeta.googleStatus || 'no matches'})
+                  </>
+                )
+              ) : (
+                <span className="text-amber-600 dark:text-amber-400">
+                  Google Places key missing on Next.js server. Add GOOGLE_PLACES_API_KEY to
+                  fyntoolsnextjs/.env.local and restart with npm run dev (Backend/.env is ignored
+                  here).
+                </span>
+              )}
+            </p>
+          )}
+
           {recent.length > 0 && (
             <div className="flex flex-wrap gap-1.5 items-center">
               <span className="text-[11px] text-muted-foreground shrink-0">Recent</span>
@@ -443,8 +463,8 @@ const WeatherForecast = () => {
           )}
 
           <p className="text-[11px] text-muted-foreground leading-snug">
-            Location search uses Google Places when configured, otherwise open geocoders. Weather
-            data is fetched via FYN servers from open multi-model forecasts for accuracy.
+            Location search prefers Google Places when configured. Weather data is fetched via FYN
+            servers from open multi-model forecasts for accuracy.
           </p>
 
           {error && (
@@ -455,44 +475,7 @@ const WeatherForecast = () => {
         </CardContent>
       </Card>
 
-      {typeof document !== 'undefined' &&
-        showSuggestions &&
-        suggestions.length > 0 &&
-        dropdownRect &&
-        createPortal(
-          <ul
-            role="listbox"
-            className="fixed z-[9999] rounded-md border bg-popover text-popover-foreground shadow-2xl max-h-[min(280px,50vh)] overflow-y-auto overscroll-contain"
-            style={{
-              top: dropdownRect.top,
-              left: dropdownRect.left,
-              width: dropdownRect.width,
-            }}
-          >
-            {suggestions.map((s, i) => (
-              <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
-                <button
-                  type="button"
-                  className="w-full text-left px-3 py-2.5 text-sm hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/40"
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => loadPlace(s)}
-                >
-                  <span className="font-medium">{s.name}</span>
-                  {(s.admin1 || s.country) && (
-                    <span className="text-muted-foreground">
-                      {` · ${[s.admin1, s.country].filter(Boolean).join(', ')}`}
-                    </span>
-                  )}
-                  {s.source === 'Google Places' && (
-                    <span className="ml-1 text-[10px] text-muted-foreground/70">Maps</span>
-                  )}
-                </button>
-              </li>
-            ))}
-          </ul>,
-          document.body
-        )}
-
+      <div className="relative z-0 space-y-6">
       {loading && !weather && (
         <Card>
           <CardContent className="pt-6 space-y-4">
@@ -731,6 +714,7 @@ const WeatherForecast = () => {
           </p>
         </>
       )}
+      </div>
     </div>
   );
 };

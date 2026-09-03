@@ -1,8 +1,11 @@
 import type { GeoPlace } from '@/lib/weather/geocode';
 import type { WeatherBundle } from '@/lib/weather/fetchWeather';
 
-const searchCache = new Map<string, { at: number; results: GeoPlace[] }>();
-const CACHE_TTL = 5 * 60 * 1000;
+const searchCache = new Map<
+  string,
+  { at: number; results: GeoPlace[]; meta?: WeatherSearchMeta }
+>();
+const CACHE_TTL = 2 * 60 * 1000;
 
 let searchAbort: AbortController | null = null;
 
@@ -30,21 +33,27 @@ export async function fetchWeatherByCoords(lat: number, lon: number): Promise<We
   return parseJson(res);
 }
 
-export type WeatherSearchResponse = {
-  results: GeoPlace[];
-  meta?: {
-    provider: string;
-    googleKeyPresent: boolean;
-    googleStatus?: string;
-  };
+export type WeatherSearchMeta = {
+  provider: string;
+  googleKeyPresent: boolean;
+  googleStatus?: string;
 };
 
-export async function searchWeatherPlaces(q: string): Promise<GeoPlace[]> {
+export type WeatherSearchResponse = {
+  results: GeoPlace[];
+  meta?: WeatherSearchMeta;
+};
+
+export async function searchWeatherPlaces(
+  q: string
+): Promise<{ results: GeoPlace[]; meta?: WeatherSearchMeta }> {
   const key = q.trim().toLowerCase();
-  if (key.length < 2) return [];
+  if (key.length < 2) return { results: [] };
 
   const hit = searchCache.get(key);
-  if (hit && Date.now() - hit.at < CACHE_TTL) return hit.results;
+  if (hit && Date.now() - hit.at < CACHE_TTL) {
+    return { results: hit.results, meta: hit.meta };
+  }
 
   searchAbort?.abort();
   searchAbort = new AbortController();
@@ -58,10 +67,10 @@ export async function searchWeatherPlaces(q: string): Promise<GeoPlace[]> {
     if (typeof window !== 'undefined' && data.meta) {
       console.info('[weather search]', q, data.meta, `${data.results.length} results`);
     }
-    searchCache.set(key, { at: Date.now(), results: data.results });
-    return data.results;
+    searchCache.set(key, { at: Date.now(), results: data.results, meta: data.meta });
+    return { results: data.results, meta: data.meta };
   } catch (e) {
-    if (e instanceof DOMException && e.name === 'AbortError') return [];
+    if (e instanceof DOMException && e.name === 'AbortError') return { results: [] };
     throw e;
   }
 }

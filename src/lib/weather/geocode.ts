@@ -148,6 +148,7 @@ export function getGoogleMapsApiKey(): string | null {
     process.env.GOOGLE_PLACES_API_KEY?.trim() ||
     process.env.GOOGLE_MAPS_API_KEY?.trim() ||
     process.env.GOOGLE_GEOCODING_API_KEY?.trim() ||
+    process.env.GOOGLE_API_KEY?.trim() ||
     '';
   return key || null;
 }
@@ -215,7 +216,7 @@ function logGoogleStatus(api: string, status: string, errorMessage?: string) {
   console.warn(`[weather/geocode] Google ${api}: ${status}${errorMessage ? ` — ${errorMessage}` : ''}`);
 }
 
-/** Places Autocomplete → Place Details (best for villages / local typing). */
+/** Places Autocomplete → Place Details (fallback: geocode prediction text). */
 async function geocodeGoogleAutocomplete(query: string): Promise<{
   places: GeoPlace[];
   status: string;
@@ -226,6 +227,7 @@ async function geocodeGoogleAutocomplete(query: string): Promise<{
   const autoUrl =
     `https://maps.googleapis.com/maps/api/place/autocomplete/json` +
     `?input=${encodeURIComponent(query)}` +
+    `&types=geocode` +
     `&key=${encodeURIComponent(key)}` +
     `&language=en`;
 
@@ -234,10 +236,29 @@ async function geocodeGoogleAutocomplete(query: string): Promise<{
 
   logGoogleStatus('Autocomplete', auto.status, auto.error_message);
   if (auto.status !== 'OK' || !auto.predictions?.length) {
-    return { places: [], status: auto.status };
+    // Retry without types filter (establishments + addresses)
+    const auto2Url =
+      `https://maps.googleapis.com/maps/api/place/autocomplete/json` +
+      `?input=${encodeURIComponent(query)}` +
+      `&key=${encodeURIComponent(key)}` +
+      `&language=en`;
+    const auto2 = await fetchJson<GoogleAutocompleteResponse>(auto2Url, { cache: 'no-store' });
+    if (!auto2 || auto2.status !== 'OK' || !auto2.predictions?.length) {
+      return { places: [], status: auto.status };
+    }
+    return resolveAutocompletePredictions(auto2.predictions, key, query, auto2.status);
   }
 
-  const top = auto.predictions.slice(0, 8);
+  return resolveAutocompletePredictions(auto.predictions, key, query, auto.status);
+}
+
+async function resolveAutocompletePredictions(
+  predictions: NonNullable<GoogleAutocompleteResponse['predictions']>,
+  key: string,
+  query: string,
+  status: string
+): Promise<{ places: GeoPlace[]; status: string }> {
+  const top = predictions.slice(0, 12);
   const detailed = await Promise.all(
     top.map(async (pred) => {
       const detailsUrl =
@@ -247,48 +268,57 @@ async function geocodeGoogleAutocomplete(query: string): Promise<{
         `&key=${encodeURIComponent(key)}` +
         `&language=en`;
       const details = await fetchJson<GooglePlaceDetailsResponse>(detailsUrl, { cache: 'no-store' });
-      if (!details?.result?.geometry?.location) {
-        if (details) logGoogleStatus('PlaceDetails', details.status, details.error_message);
-        return null;
+
+      if (details?.result?.geometry?.location) {
+        const loc = details.result.geometry.location;
+        const comps = details.result.address_components ?? [];
+        const name =
+          details.result.name ||
+          pred.structured_formatting?.main_text ||
+          pred.description.split(',')[0];
+
+        if (comps.length) {
+          return placeFromGoogleComponents(
+            comps,
+            details.result.formatted_address || pred.description,
+            loc.lat,
+            loc.lng,
+            name,
+            'Google Places'
+          );
+        }
+
+        const parts = (details.result.formatted_address || pred.description)
+          .split(',')
+          .map((p) => p.trim());
+        return {
+          name: name || parts[0] || query,
+          admin1: parts.length >= 3 ? parts[parts.length - 2] : undefined,
+          country: parts[parts.length - 1] || '',
+          countryCode: '',
+          latitude: loc.lat,
+          longitude: loc.lng,
+          timezone: 'auto',
+          source: 'Google Places',
+        } satisfies GeoPlace;
       }
 
-      const loc = details.result.geometry.location;
-      const comps = details.result.address_components ?? [];
-      const name =
-        details.result.name ||
-        pred.structured_formatting?.main_text ||
-        pred.description.split(',')[0];
-
-      if (comps.length) {
-        return placeFromGoogleComponents(
-          comps,
-          details.result.formatted_address || pred.description,
-          loc.lat,
-          loc.lng,
-          name,
-          'Google Places'
-        );
+      // Details failed / restricted — geocode the full prediction text
+      const geo = await geocodeGoogle(pred.description);
+      if (geo.places[0]) {
+        return {
+          ...geo.places[0],
+          name: pred.structured_formatting?.main_text || geo.places[0].name,
+          source: 'Google Places',
+        };
       }
-
-      const parts = (details.result.formatted_address || pred.description)
-        .split(',')
-        .map((p) => p.trim());
-      return {
-        name: name || parts[0] || query,
-        admin1: parts.length >= 3 ? parts[parts.length - 2] : undefined,
-        country: parts[parts.length - 1] || '',
-        countryCode: '',
-        latitude: loc.lat,
-        longitude: loc.lng,
-        timezone: 'auto',
-        source: 'Google Places',
-      } satisfies GeoPlace;
+      return null;
     })
   );
 
   return {
     places: detailed.filter((p): p is GeoPlace => p != null),
-    status: auto.status,
+    status,
   };
 }
 
@@ -524,7 +554,7 @@ export async function searchPlaces(query: string): Promise<{
     if (merged.length > 0) {
       console.info(`[weather/search] "${trimmed}" → Google Places (${merged.length} hits)`);
       return {
-        results: merged.slice(0, 10),
+        results: merged.slice(0, 12),
         meta: {
           provider: 'google',
           googleKeyPresent: true,

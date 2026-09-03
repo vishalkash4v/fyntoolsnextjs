@@ -36,16 +36,46 @@ const ToolSearch: React.FC<ToolSearchProps> = ({ tools, className, onResultClick
   const filteredTools = useMemo(() => {
     if (!debouncedTerm.trim()) return [];
 
-    const query = debouncedTerm.toLowerCase();
-    return tools
-      .filter(
-        (tool) =>
-          tool.name.toLowerCase().includes(query) ||
-          tool.description.toLowerCase().includes(query) ||
-          tool.category.toLowerCase().includes(query) ||
-          tool.keywords.toLowerCase().includes(query)
-      )
-      .slice(0, 8);
+    const query = debouncedTerm.toLowerCase().trim();
+    const tokens = query.split(/\s+/).filter(Boolean);
+
+    const scored = tools
+      .map((tool) => {
+        const name = tool.name.toLowerCase();
+        const desc = tool.description.toLowerCase();
+        const cat = tool.category.toLowerCase();
+        const kw = tool.keywords.toLowerCase();
+        const id = tool.id.toLowerCase().replace(/-/g, ' ');
+        const hay = `${name} ${desc} ${cat} ${kw} ${id}`;
+
+        if (!tokens.every((t) => hay.includes(t)) && !hay.includes(query)) {
+          return null;
+        }
+
+        let score = 0;
+        if (name === query || id === query) score += 1000;
+        if (name.startsWith(query)) score += 500;
+        if (name.includes(query)) score += 300;
+        if (id.includes(query.replace(/\s+/g, ' '))) score += 250;
+        for (const t of tokens) {
+          if (name.includes(t)) score += 120;
+          if (kw.split(',').some((k) => k.trim().startsWith(t) || k.trim() === t)) score += 80;
+          if (kw.includes(t)) score += 40;
+          if (desc.includes(t)) score += 15;
+          if (cat.includes(t)) score += 10;
+        }
+        // Prefer exact tool-type matches (e.g. "pdf compressor" over generic pdf text)
+        if (tokens.length >= 2 && tokens.every((t) => name.includes(t))) score += 200;
+        // Boost PDF Compressor for common PDF queries
+        if (tool.id === 'pdf-compressor' && (query.includes('pdf') || query.includes('compress'))) {
+          score += 350;
+        }
+        return { tool, score };
+      })
+      .filter((x): x is { tool: Tool; score: number } => x != null)
+      .sort((a, b) => b.score - a.score || a.tool.name.localeCompare(b.tool.name));
+
+    return scored.slice(0, 12).map((x) => x.tool);
   }, [debouncedTerm, tools]);
 
   const handleClear = () => {

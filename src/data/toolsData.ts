@@ -360,7 +360,7 @@ export const allTools: Tool[] = [
     description:
       'Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals.',
     keywords:
-      'pdf compressor, compress pdf to 150kb, 150kb pdf converter, compress 150kb pdf, pdf crop, free pdf compressor online, reduce pdf file size, compress pdf bulk',
+      'pdf compressor, compress pdf, compress pdf to 150kb, 150kb pdf, reduce pdf size, free pdf compressor, pdf size reducer, compress pdf online, bulk pdf compress, pdf crop compress',
     path: '/pdf-compressor',
     href: '/pdf-compressor',
     url: 'https://fyntools.com/pdf-compressor',
@@ -1373,12 +1373,15 @@ export const allTools: Tool[] = [
     id: 'button-generator', 
     name: 'Button Generator', 
     category: 'Development Tools', 
-    description: 'Design and generate CSS for custom buttons with various styles.', 
-    keywords: 'button generator, css button, custom button, button styles', 
-    path: '/button-generator', 
-    href: '/button-generator', 
+    description:
+      'Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy HTML/CSS/React.',
+    keywords:
+      'button generator, css button generator, custom button css, button presets, hover gradient button, animated button css, button with emoji sticker, free button maker',
+    path: '/button-generator',
+    href: '/button-generator',
     url: 'https://fyntools.com/button-generator',
-    features: 'Design custom buttons, Multiple button styles, Custom colors, Custom sizes, Border radius, Shadow effects, Hover effects, Copy CSS code, Copy HTML code, Download button code, Live preview',
+    features:
+      '24 popular button presets, 40+ Google fonts, Hover gradient, Idle & hover animations, Sticker packs (animals pets birds nature anime), Upload logo/image icon, Glow & shadow styles, Copy HTML CSS React',
     icon: Palette,
     rating: 4.5,
     userCount: '15,200+'
