@@ -70,6 +70,7 @@ export const TOOL_LOADERS: Record<string, ToolComponentLoader> = {
   "notes": () => import("@/components/tools/Notes"),
   "ovulation-calculator": () => import("@/components/tools/OvulationCalculator"),
   "password-generator": () => import("@/components/tools/PasswordGenerator"),
+  "pdf-compressor": () => import("@/components/tools/PdfCompressor"),
   "pdf-text-extractor": () => import("@/components/tools/PdfTextExtractor"),
   "percentage-calculator": () => import("@/components/tools/PercentageCalculator"),
   "period-calculator": () => import("@/components/tools/PeriodCalculator"),

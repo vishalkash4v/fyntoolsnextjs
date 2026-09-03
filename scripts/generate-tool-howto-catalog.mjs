@@ -120,9 +120,9 @@ const SLUG_STEPS = {
   ],
   'image-compressor': [
     'Upload an image via drag-and-drop or the file picker (JPG, PNG, WebP).',
-    'Adjust the quality slider and compare before/after file size in the preview.',
-    'Pick output format if offered, then download the compressed image.',
-    'Repeat for batch uploads when multiple files are listed.',
+    'Choose Auto, Target Size (50/100/150/200/500 KB or Email 1MB chips), or Manual quality.',
+    'Compare before/after file size in the preview, then download the compressed image.',
+    'Use Target Size for photo KB resize and email-friendly compression.',
   ],
   'qr-code-generator': [
     'Enter a URL or text string in the content field.',
@@ -339,6 +339,12 @@ const SLUG_STEPS = {
     'Wait for text extraction to complete page by page.',
     'Review extracted plain text in the output panel.',
     'Copy or download as .txt for editing elsewhere.',
+  ],
+  'pdf-compressor': [
+    'Choose Single or Bulk mode and upload PDF file(s) up to 40MB each.',
+    'Select a compression level (Full Quality → Compact, or Compress to ~150 KB) and check estimated size.',
+    'Click Compress and wait for page progress.',
+    'Download each compressed PDF or use Download all for bulk jobs.',
   ],
   'box-shadow-generator': [
     'Adjust X offset, Y offset, blur, spread, and shadow color with the sliders.',
@@ -611,9 +617,9 @@ const SLUG_STEPS = {
   ],
   'image-resizer': [
     'Upload your image.',
-    'Enter target width/height or pick a preset; lock aspect ratio if needed.',
-    'Preview dimensions and estimated file size.',
-    'Download the resized image.',
+    'Pick Education, Social, Email/Photo KB Resize (50–150KB, 1MB), or Manual dimensions.',
+    'Preview dimensions and estimated file size; tune quality if needed.',
+    'Download the resized email-friendly or exam-ready photo.',
   ],
   'image-format-converter': [
     'Upload JPG, PNG, or WebP source file.',

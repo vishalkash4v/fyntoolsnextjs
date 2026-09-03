@@ -26,12 +26,12 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const featuredIds = [
+  'pdf-compressor',
+  'image-compressor',
   'timestamp-converter',
   'word-counter',
-  'image-compressor',
   'qr-code-generator',
   'json-formatter',
-  'password-generator',
 ];
 const popularIds = [
   'image-resizer',
@@ -41,7 +41,7 @@ const popularIds = [
   'percentage-calculator',
   'hash-generator',
   'pdf-text-extractor',
-  'url-encode-decode',
+  'password-generator',
 ];
 
 export default async function HomePage() {

@@ -6,14 +6,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const popularTools = [
-    { name: 'Word Counter', path: '/word-counter' },
+    { name: 'PDF Compressor', path: '/pdf-compressor' },
+    { name: 'Image Compressor', path: '/image-compressor' },
     { name: 'Image Resizer', path: '/image-resizer' },
+    { name: 'Word Counter', path: '/word-counter' },
     { name: 'JSON Formatter', path: '/json-formatter' },
     { name: 'BMI Calculator', path: '/bmi-calculator' },
     { name: 'QR Code Generator', path: '/qr-code-generator' },
     { name: 'Password Generator', path: '/password-generator' },
-    { name: 'HTML Formatter', path: '/html-formatter' },
-    { name: 'Typing Test', path: '/typing-test' },
   ];
 
   const companyLinks = [

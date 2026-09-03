@@ -359,6 +359,120 @@ export const guides: Guide[] = [
     conclusion:
       'Explore FYN Tools utilities that emphasize browser-side workflows, and read our About page for editorial and privacy commitments.',
   },
+  {
+    slug: 'compress-pdf-to-150kb',
+    title: 'How to Compress a PDF to 150KB Online (Free, No Signup)',
+    description:
+      'Step-by-step guide to shrink PDFs for government forms, exam portals, and email — including when to use Full Quality vs Compress to ~150 KB.',
+    metaDescription:
+      'Compress PDF to 150KB free: choose the right quality level, bulk-compress files, and fix oversized scanned forms. Use FYN Tools PDF Compressor — no signup.',
+    publishedAt: '2026-09-03',
+    updatedAt: '2026-09-03',
+    authorSlug: PRIMARY_AUTHOR_SLUG,
+    relatedTools: [
+      {
+        name: 'PDF Compressor',
+        href: '/pdf-compressor',
+        description: 'Compress PDF to 150KB — single or bulk',
+      },
+      {
+        name: 'PDF Text Extractor',
+        href: '/pdf-text-extractor',
+        description: 'Extract text from PDFs',
+      },
+      {
+        name: 'Image Compressor',
+        href: '/image-compressor',
+        description: 'Compress photos to KB before embedding',
+      },
+      {
+        name: 'Image Resizer',
+        href: '/image-resizer',
+        description: 'Email-friendly photo KB resize',
+      },
+      {
+        name: 'Image Cropper',
+        href: '/image-cropper',
+        description: 'Crop oversized page images first',
+      },
+    ],
+    keywords: [
+      'compress pdf to 150kb',
+      '150kb pdf converter',
+      'compress 150kb pdf',
+      'free pdf compressor online',
+      'reduce pdf file size',
+      'pdf crop',
+      'compress pdf for upload',
+      'compress pdf for email',
+    ],
+    intro: [
+      'Many Indian exam portals, university forms, and government upload fields reject PDFs over 100–200KB. Searching for “compress pdf to 150kb” or “150kb pdf converter” usually means you need a predictable size target — not a vague “optimize” slider.',
+      'FYN Tools PDF Compressor runs in your browser: pick Single or Bulk, choose one of six levels (including Compress to ~150 KB), see an estimated size, then download. No account and no upload to our servers.',
+    ],
+    sections: [
+      {
+        heading: 'Why portals ask for 150KB PDFs',
+        paragraphs: [
+          'Upload validators often hard-cap file size to keep storage and virus-scanning cheap. Scanned forms with camera photos easily hit 2–10MB. Re-encoding pages as efficient JPEG images inside a new PDF is how free compressors hit the limit while keeping text readable.',
+        ],
+        bullets: [
+          'Exam / recruitment form attachments',
+          'Scholarship and university document portals',
+          'Email gateways with attachment caps',
+          'Ticket and support uploads',
+        ],
+      },
+      {
+        heading: 'Which compression level should you use?',
+        paragraphs: [
+          'Start with Optimized if you only need a smaller email attachment. Use Compact for stricter forms. Use Compress to ~150 KB when the portal rejects anything larger — that mode retries with stronger settings until the file is near 150KB or the quality floor.',
+        ],
+        bullets: [
+          'Full Quality / High Quality — sharing & printing',
+          'Optimized / Slight Quality Drop — everyday email',
+          'Compact — most form uploads',
+          'Compress to ~150 KB — strict validators',
+        ],
+      },
+      {
+        heading: 'Single vs bulk compression',
+        paragraphs: [
+          'Use Single for one affidavit or photo-ID scan. Use Bulk (up to 12 files) when a portal asks for multiple supporting PDFs — then Download all when the batch finishes.',
+        ],
+      },
+      {
+        heading: 'Still too large? Crop and compress photos first',
+        paragraphs: [
+          'If a multi-page scan stays above 150KB at the strongest level, crop or resize the source photos, then rebuild or re-upload. Image Cropper, Image Resizer (email KB presets), and Image Compressor reduce the pixels that dominate PDF size. “PDF crop” searches often mean this workflow — shrink visuals, then compress the PDF.',
+        ],
+      },
+      {
+        heading: 'Privacy note',
+        paragraphs: [
+          'Compression runs client-side in your browser. Prefer unlocked PDFs (remove passwords first). Keep originals — page-image compression is lossy by design.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I really compress a PDF to 150KB for free?',
+        answer:
+          'Yes on FYN Tools. Open /pdf-compressor, choose Compress to ~150 KB, and download the result. Extremely large multi-page photo PDFs may land slightly above 150KB at the quality floor — crop photos first if needed.',
+      },
+      {
+        question: 'Is bulk PDF compression supported?',
+        answer: 'Yes — Bulk mode accepts up to 12 PDFs (40MB each).',
+      },
+      {
+        question: 'Will text stay readable?',
+        answer:
+          'Readable for most forms at Compact and 150KB modes. Full Quality keeps the most clarity when size limits are loose.',
+      },
+    ],
+    conclusion:
+      'Open the free PDF Compressor, pick Compress to ~150 KB (or a gentler level), and download a portal-ready file. Pair with Image Resizer and Image Compressor when photos inside the document are the real size problem.',
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {

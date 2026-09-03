@@ -46,6 +46,7 @@ const toolIconMap: Record<string, LucideIcon> = {
   'svg-optimizer': FileCode,
   'image-metadata-viewer': Eye,
   'pdf-text-extractor': FileText,
+  'pdf-compressor': FileText,
   'placeholder-image-generator': ImageIcon,
   'pixelate-tool': Grid3x3,
   'photo-annotation-tool': Edit,

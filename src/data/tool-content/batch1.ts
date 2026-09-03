@@ -917,9 +917,9 @@ export const batch1ToolSeo: Record<string, PremiumPartial> = {
     metaDescription:
       'Compress JPG, PNG, or WebP images free in your browser with a live quality slider and before/after preview. Files up to 15MB, no signup, no upload wait.',
     datePublished: '2024-02-20',
-    dateModified: '2026-08-05',
+    dateModified: '2026-09-03',
     tldr:
-      'Upload a JPG, PNG, or WebP image (up to 15MB), pick an output format and quality level, and compare the compressed result against the original with a live before/after slider before downloading — all processed locally via canvas.',
+      'Upload a JPG, PNG, or WebP image (up to 15MB), pick Auto, Target Size (50–150KB / email 1MB chips), or Manual quality, and compare with a live before/after slider before downloading — all processed locally.',
     processingNote:
       'Compression runs entirely in your browser using the HTML canvas API — your image is never uploaded to a server. Files over 15MB are rejected before processing begins.',
     ioContract: {
@@ -936,6 +936,11 @@ export const batch1ToolSeo: Record<string, PremiumPartial> = {
       'jpg compressor',
       'png compressor',
       'webp converter compressor',
+      'photo kb resize',
+      'resize photo to kb',
+      'compress image to 150kb',
+      'email friendly photo compressor',
+      'compress jpg to kb',
     ],
     introParagraphs: [
       'This compressor draws your uploaded image onto an HTML canvas, then re-encodes it at your chosen quality level and output format (JPEG, WebP, or PNG) using the browser’s native canvas.toDataURL API. Because PNG is a lossless format, the quality slider only changes output size for JPEG and WebP — PNG compression depends on the image content itself.',
@@ -1040,6 +1045,7 @@ export const batch1ToolSeo: Record<string, PremiumPartial> = {
     ],
     relatedTools: [
       { name: 'Image Resizer', href: '/image-resizer', description: 'Change dimensions before or after compressing' },
+      { name: 'PDF Compressor', href: '/pdf-compressor', description: 'Compress PDF to 150KB for form uploads' },
       { name: 'Image Format Converter', href: '/image-format-converter', description: 'Convert between JPG, PNG, WebP, and more' },
       { name: 'Image Cropper', href: '/image-cropper', description: 'Crop before compressing to reduce size further' },
       { name: 'Background Remover', href: '/background-remover', description: 'Remove backgrounds before compressing product photos' },
@@ -1050,6 +1056,157 @@ export const batch1ToolSeo: Record<string, PremiumPartial> = {
     ],
     conclusion:
       'Upload an image up to 15MB, choose your output format and quality, and use the before/after slider to confirm the tradeoff before downloading — everything runs locally in your browser, with no upload wait.',
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* /pdf-compressor                                                   */
+  /* ---------------------------------------------------------------- */
+  '/pdf-compressor': {
+    title: 'Compress PDF to 150KB Free — Bulk PDF Compressor Online',
+    h1: 'PDF Compressor — Compress PDF to 150KB (Single or Bulk)',
+    metaDescription:
+      'Compress PDF to 150KB free online. Bulk or single PDF compression with 6 levels (Full Quality → Compact) and estimated sizes. No signup — private browser tool.',
+    datePublished: '2026-09-03',
+    dateModified: '2026-09-03',
+    tldr:
+      'Upload one PDF or a batch (up to 12), pick a compression level from Full Quality to Compress to ~150 KB, preview estimated size, then download the compressed PDF — all client-side.',
+    processingNote:
+      'Compression runs entirely in your browser with PDF.js + pdf-lib. PDFs are never uploaded to FYN Tools servers. Large scanned PDFs may take longer to re-encode page by page.',
+    ioContract: {
+      inputs: 'One PDF or up to 12 PDFs (bulk), each up to 40MB; choose one of six compression levels',
+      outputs: 'Compressed PDF download(s) with before/after byte sizes and percent reduced',
+      formats: 'application/pdf input and output',
+      limits:
+        '40MB per file, 12 files in bulk; “Compress to ~150 KB” iteratively lowers quality — very image-heavy multi-page PDFs may land slightly above 150KB at the quality floor',
+      processing: 'Client-side (PDF.js page render + pdf-lib rebuild)',
+    },
+    keywords: [
+      'pdf compressor',
+      'compress pdf to 150kb',
+      '150kb pdf converter',
+      'compress 150kb pdf',
+      'pdf crop',
+      'free pdf compressor online',
+      'compress pdf bulk',
+      'reduce pdf file size',
+      'compress pdf for email',
+      'compress pdf for upload',
+    ],
+    introParagraphs: [
+      'Government portals, university forms, and email gateways often cap uploads at 100–200KB. This free PDF compressor targets those limits with an explicit “Compress to ~150 KB” level plus five higher-quality options (Full Quality, High Quality, Optimized, Slight Quality Drop, Compact). Each level shows an estimated output size before you run compression so you can pick the right tradeoff.',
+      'Use Single mode for one document or Bulk mode for up to 12 PDFs at once. Pages are re-rendered and re-encoded as efficient JPEG images inside a new PDF — the same approach free compressors use for scanned forms and photo-heavy files. Pair with Image Cropper or PDF Text Extractor when you need to crop photos first or extract text after shrinking.',
+    ],
+    overview:
+      'PDF size is dominated by embedded images. Re-encoding each page at a lower scale and JPEG quality shrinks the file dramatically while keeping text readable for form uploads. Levels map to scale/quality presets; the 150KB target mode retries with stronger settings until the file is under ~150KB or the quality floor is reached.',
+    howItWorks:
+      'Select Single or Bulk, drop PDF files, choose a compression level (estimates update from your file sizes), then Compress. The tool renders each page with PDF.js, encodes JPEG at the level’s settings, rebuilds a PDF with pdf-lib, and offers per-file download plus Download all.',
+    howToUse: [
+      'Choose Single PDF or Bulk (up to 12 files).',
+      'Drag and drop or select your PDF(s) — max 40MB each.',
+      'Pick a compression level; read the estimated size under each card (or Compress to ~150 KB for upload portals).',
+      'Click Compress and wait for page-by-page progress.',
+      'Download each file or use Download all when the batch finishes.',
+    ],
+    whenToUse: [
+      'Meeting a 150KB PDF upload limit on exam or government forms',
+      'Shrinking scanned documents for email without desktop Acrobat',
+      'Bulk-compressing multiple PDFs before a portal submission',
+      'Reducing photo-heavy PDFs after cropping images elsewhere',
+    ],
+    useCases: [
+      {
+        title: '150KB portal upload',
+        description:
+          'Select Compress to ~150 KB, upload a scanned form PDF, and download a file sized for strict upload validators.',
+      },
+      {
+        title: 'Bulk application documents',
+        description:
+          'Switch to Bulk, add several supporting PDFs, use Optimized or Compact, then Download all.',
+      },
+      {
+        title: 'Email-friendly PDF',
+        description:
+          'Use Compact or Slight Quality Drop so attachments stay under common mailbox limits.',
+      },
+    ],
+    examples: [
+      {
+        input: '2.4MB scanned form → Compress to ~150 KB',
+        output: 'Compressed PDF near or under 150KB, ready for upload',
+      },
+      {
+        input: 'Three 5MB PDFs → Bulk + Optimized',
+        output: 'Three smaller PDFs with estimated sizes shown before encode',
+      },
+    ],
+    tips: [
+      'Start with Optimized; only use Compress to ~150 KB when a portal rejects larger files.',
+      'Crop oversized photos before compressing for even smaller results (see Image Cropper).',
+      'Text-only vector PDFs may shrink less than scanned image PDFs — Compact still helps.',
+      'Keep originals; compression is lossy for page images.',
+    ],
+    commonMistakes: [
+      'Expecting 150KB on a 50-page photo PDF at Full Quality — use the 150KB level.',
+      'Uploading password-protected PDFs (unlock first).',
+      'Closing the tab mid-bulk before downloads finish.',
+    ],
+    advantages: [
+      'Explicit compress PDF to 150KB mode',
+      'Six named levels with live size estimates',
+      'Single and bulk modes',
+      '100% browser-side — no signup, no upload to our servers',
+    ],
+    benefits: [
+      'Pass strict 150KB PDF converters and form validators.',
+      'Compress many PDFs in one sitting.',
+      'See estimated size before committing to a quality drop.',
+    ],
+    features: [
+      'Compress PDF to 150KB target',
+      'Six compression levels with estimates',
+      'Single and bulk PDF compression',
+      'Client-side private processing',
+      'Per-file and download-all actions',
+    ],
+    faqs: [
+      {
+        question: 'Can I compress a PDF to 150KB?',
+        answer:
+          'Yes. Choose the “Compress to ~150 KB” level. The tool iteratively lowers render scale and JPEG quality to approach 150KB. Extremely large multi-page scans may land slightly above 150KB at the quality floor.',
+      },
+      {
+        question: 'Is bulk PDF compression supported?',
+        answer: 'Yes — switch to Bulk mode and add up to 12 PDFs (40MB each), then Download all when finished.',
+      },
+      {
+        question: 'What do the six compression levels mean?',
+        answer:
+          'Full Quality (minimal drop), High Quality, Optimized (balanced), Slight Quality Drop, Compact (forms/email), and Compress to ~150 KB (aggressive target). Each card shows an estimated size from your files.',
+      },
+      {
+        question: 'Does “pdf crop” work here?',
+        answer:
+          'This page compresses PDFs. For cropping images inside a document, use Image Cropper first, then compress here. Many users search “pdf crop” when preparing size-limited form uploads — compression is usually the missing step.',
+      },
+      {
+        question: 'Is my PDF uploaded to a server?',
+        answer: 'No. Compression runs in your browser. Files stay on your device.',
+      },
+      {
+        question: 'Is this PDF compressor free?',
+        answer: 'Yes — free, no account, no watermark.',
+      },
+    ],
+    relatedTools: [
+      { name: 'PDF Text Extractor', href: '/pdf-text-extractor', description: 'Extract text from PDFs after or before compressing' },
+      { name: 'Image Compressor', href: '/image-compressor', description: 'Compress photos to KB before inserting into a PDF' },
+      { name: 'Image Cropper', href: '/image-cropper', description: 'Crop images for smaller PDF embeds' },
+      { name: 'Image Resizer', href: '/image-resizer', description: 'Resize photo to KB / email-friendly sizes' },
+      { name: 'Image Format Converter', href: '/image-format-converter', description: 'Convert page exports between formats' },
+    ],
+    conclusion:
+      'Pick a level, compress single or bulk PDFs in your browser, and download files ready for 150KB portals, email, or form uploads — free on FYN Tools.',
   },
 
   /* ---------------------------------------------------------------- */

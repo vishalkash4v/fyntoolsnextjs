@@ -22,15 +22,15 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     path: '/image-tools',
     name: 'Image Tools',
     title: 'Free Image Tools Online – Compress, Resize, Convert & Edit',
-    metaDescription: 'Browse free online image tools on FYNTools: compress, resize, crop, convert, remove backgrounds, OCR, and more. Fast browser-based editors with no signup.',
+    metaDescription: 'Browse free online image tools on FYNTools: compress, resize to KB, crop, convert, remove backgrounds, OCR, and PDF compress to 150KB. Fast browser-based editors with no signup.',
     h1: 'Free Online Image Tools',
     categories: ['Image Tools'],
-    intro: 'FYNTools Image Tools help designers, marketers, and everyday users edit visuals without installing software. Compress photos for uploads, convert formats for the web, crop for social platforms, extract text with OCR, and optimize SVGs — all in your browser with privacy-minded processing.',
-    keywords: ['image tools', 'online image editor', 'compress image', 'resize image', 'free photo tools'],
+    intro: 'FYNTools Image Tools help designers, marketers, and everyday users edit visuals without installing software. Compress photos for uploads, resize photo to KB for email, convert formats for the web, crop for social platforms, extract text with OCR, and compress PDFs to 150KB — all in your browser with privacy-minded processing.',
+    keywords: ['image tools', 'online image editor', 'compress image', 'resize image', 'photo kb resize', 'pdf compressor', 'free photo tools'],
     faqs: [
       { question: 'Are FYNTools image tools free?', answer: 'Yes. Every image utility on this hub is free to use on fyntools.com without mandatory registration.' },
       { question: 'Do image tools upload my photos to a server?', answer: 'Most FYNTools image utilities process files in the browser when possible. Always review each tool page for specifics before handling sensitive images.' },
-      { question: 'Which image tool should I start with?', answer: 'Use Image Compressor for file size, Image Resizer for dimensions, Image Format Converter for JPG/PNG/WebP, and Background Remover for cutouts.' },
+      { question: 'Which image tool should I start with?', answer: 'Use Image Compressor for file size, Image Resizer for dimensions or email KB targets, Image Format Converter for JPG/PNG/WebP, PDF Compressor for compress PDF to 150KB, and Background Remover for cutouts.' },
     ],
   },
   {
@@ -84,16 +84,39 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     slug: 'pdf-tools',
     path: '/pdf-tools',
     name: 'PDF Tools',
-    title: 'Free PDF Tools – Extract Text from PDF Online',
-    metaDescription: 'PDF tools on FYNTools including PDF text extraction. Pull selectable text from PDF documents in your browser for free.',
-    h1: 'Free Online PDF Tools',
+    title: 'Free PDF Tools – Compress PDF to 150KB & Extract Text',
+    metaDescription:
+      'Free PDF tools: compress PDF to 150KB (bulk or single), extract PDF text, and OCR scans. Browser-based — no signup on FYNTools.',
+    h1: 'Free Online PDF Tools — Compress & Extract',
     categories: [],
-    extraPaths: ['/pdf-text-extractor', '/image-to-text'],
-    intro: 'Work with document content without heavy desktop suites. Extract text from PDFs and complement OCR workflows with image-to-text when your source is a scan or screenshot.',
-    keywords: ['pdf tools', 'pdf text extractor', 'extract text from pdf', 'ocr online'],
+    extraPaths: ['/pdf-compressor', '/pdf-text-extractor', '/image-to-text', '/image-compressor', '/image-resizer'],
+    intro:
+      'Prepare documents for strict upload portals and email limits. Compress PDF to 150KB with six quality levels, extract selectable text from PDFs, and use Image to Text when your source is a scan. Pair with Image Compressor and Image Resizer when photos inside a form need a KB target first.',
+    keywords: [
+      'pdf tools',
+      'pdf compressor',
+      'compress pdf to 150kb',
+      '150kb pdf converter',
+      'pdf text extractor',
+      'extract text from pdf',
+      'compress 150kb pdf',
+      'free pdf compressor online',
+    ],
     faqs: [
-      { question: 'Can I extract text from scanned PDFs?', answer: 'Scanned PDFs may need OCR. Try Image to Text for screenshot/scan workflows in addition to PDF Text Extractor.' },
-      { question: 'Is PDF extraction free?', answer: 'Yes on FYNTools for supported interactive use.' },
+      {
+        question: 'Can I compress a PDF to 150KB here?',
+        answer:
+          'Yes — open PDF Compressor and choose the Compress to ~150 KB level. Single and bulk modes are supported.',
+      },
+      {
+        question: 'Can I extract text from scanned PDFs?',
+        answer:
+          'Scanned PDFs may need OCR. Try Image to Text for screenshot/scan workflows in addition to PDF Text Extractor.',
+      },
+      {
+        question: 'Are PDF tools free?',
+        answer: 'Yes on FYNTools for supported interactive use — no account required.',
+      },
     ],
   },
   {

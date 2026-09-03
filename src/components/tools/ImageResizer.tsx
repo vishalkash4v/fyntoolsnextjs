@@ -8,8 +8,18 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
-import { Upload, Download, Link, RotateCcw, GraduationCap, Briefcase } from 'lucide-react';
+import { Upload, Download, Link, RotateCcw, GraduationCap, Briefcase, Mail } from 'lucide-react';
 import { toast } from 'sonner';
+
+/** Email-friendly photo KB resize presets — resize photo to KB targets. */
+const emailKbPresets = [
+  { id: 'email-50', label: '50 KB', max_kb: 50, maxSide: 720, note: 'Strict form uploads' },
+  { id: 'email-100', label: '100 KB', max_kb: 100, maxSide: 1024, note: 'Common portal limit' },
+  { id: 'email-150', label: '150 KB', max_kb: 150, maxSide: 1280, note: 'Popular exam/form size' },
+  { id: 'email-200', label: '200 KB', max_kb: 200, maxSide: 1400, note: 'Email thumbnail friendly' },
+  { id: 'email-500', label: '500 KB', max_kb: 500, maxSide: 1600, note: 'Balanced email photo' },
+  { id: 'email-1024', label: '1 MB (Email)', max_kb: 1024, maxSide: 1920, note: 'Email-friendly photo resizer' },
+] as const;
 
 // Social Media Presets
 const socialMediaPresets = {
@@ -383,7 +393,7 @@ const ImageResizer = () => {
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
   const [selectedPresetType, setSelectedPresetType] = useState<'photo' | 'signature' | null>(null);
   const [currentStep, setCurrentStep] = useState<'upload' | 'preset-type' | 'presets' | 'tools'>('upload');
-  const [selectedPresetCategory, setSelectedPresetCategory] = useState<'education' | 'social' | 'manual' | null>(null);
+  const [selectedPresetCategory, setSelectedPresetCategory] = useState<'education' | 'social' | 'manual' | 'email' | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [scalePercent, setScalePercent] = useState(0);
@@ -461,9 +471,34 @@ const ImageResizer = () => {
     }
   };
 
-  const handlePresetCategorySelect = (category: 'education' | 'social' | 'manual') => {
+  const handlePresetCategorySelect = (category: 'education' | 'social' | 'manual' | 'email') => {
     setSelectedPresetCategory(category);
     setCurrentStep('presets');
+  };
+
+  const applyEmailKbPreset = (presetId: string) => {
+    const preset = emailKbPresets.find((p) => p.id === presetId);
+    if (!preset || !originalImage) return;
+
+    const scale = Math.min(1, preset.maxSide / Math.max(originalImage.width, originalImage.height));
+    const newWidth = Math.max(1, Math.round(originalImage.width * scale));
+    const newHeight = Math.max(1, Math.round(originalImage.height * scale));
+
+    setSelectedPreset(preset.label);
+    setSelectedPresetType('photo');
+    setSelectedPresetCategory('email');
+    setFormat('jpeg');
+    setDimensions({ width: newWidth, height: newHeight });
+    updateScaleFromSizes(newWidth, newHeight);
+
+    const maxBytes = preset.max_kb * 1024;
+    const estimatedQuality = Math.min(
+      92,
+      Math.max(12, Math.round((maxBytes / Math.max(1, newWidth * newHeight * 0.12)) * 100))
+    );
+    setQuality(estimatedQuality);
+    setCurrentStep('tools');
+    toast.success(`Email / KB preset: ${preset.label} — resize photo to ~${preset.max_kb} KB`);
   };
 
   const handleManualResize = () => {
@@ -695,7 +730,7 @@ const ImageResizer = () => {
                 <p className="text-muted-foreground">What do you want to resize your image for?</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Education/Government */}
                 <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
                      onClick={() => handlePresetCategorySelect('education')}>
@@ -719,6 +754,19 @@ const ImageResizer = () => {
                   </p>
                   <div className="text-xs text-primary font-medium">
                     Profile, posts, stories, covers
+                  </div>
+                </div>
+
+                {/* Email / KB */}
+                <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
+                     onClick={() => handlePresetCategorySelect('email')}>
+                  <Mail className="mx-auto h-12 w-12 text-primary mb-4" />
+                  <h4 className="font-semibold mb-2">Email / Photo KB Resize</h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Resize photo to KB — 50KB, 100KB, 150KB, email-friendly sizes
+                  </p>
+                  <div className="text-xs text-primary font-medium">
+                    Email friendly photo resizer
                   </div>
                 </div>
 
@@ -758,9 +806,38 @@ const ImageResizer = () => {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-semibold mb-2">Step 3: Choose Your Preset</h3>
                 <p className="text-muted-foreground">
-                  Select the specific {selectedPresetCategory === 'education' ? 'exam/portal' : 'social media'} preset that matches your needs
+                  Select the specific{' '}
+                  {selectedPresetCategory === 'education'
+                    ? 'exam/portal'
+                    : selectedPresetCategory === 'email'
+                      ? 'email / KB size'
+                      : 'social media'}{' '}
+                  preset that matches your needs
                 </p>
               </div>
+
+              {/* Email / KB presets */}
+              {selectedPresetCategory === 'email' && (
+                <div className="space-y-4">
+                  <p className="text-sm text-muted-foreground text-center max-w-xl mx-auto">
+                    Photo KB resize for email attachments and forms — we scale long edge and tune JPEG quality toward your KB target.
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {emailKbPresets.map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        className="border rounded-lg p-4 text-left hover:border-primary/50 transition-all"
+                        onClick={() => applyEmailKbPreset(p.id)}
+                      >
+                        <div className="font-semibold">{p.label}</div>
+                        <div className="text-xs text-muted-foreground mt-1">{p.note}</div>
+                        <div className="text-xs text-primary mt-2">Max side ~{p.maxSide}px</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Education Presets */}
               {selectedPresetCategory === 'education' && (

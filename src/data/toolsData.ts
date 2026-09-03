@@ -232,11 +232,11 @@ export const allTools: Tool[] = [
     name: 'Image Compressor', 
     category: 'Image Tools', 
     description: 'Compress images to reduce file size while maintaining quality. Convert MB images to KB for document uploads.',
-    keywords: 'image compressor, reduce file size, compress photos, optimize images',
+    keywords: 'image compressor, reduce file size, compress photos, optimize images, photo kb resize, resize photo to kb, compress image to 150kb, email friendly photo compressor, compress jpg to kb',
     path: '/image-compressor',
     href: '/image-compressor',
     url: 'https://fyntools.com/image-compressor',
-    features: 'Quality control slider, Batch compression, Format conversion, Before after comparison, Drag and drop interface, Mobile optimization, Preserve aspect ratio, Custom compression level, Download compressed image, File size reduction percentage',
+    features: 'Quality control slider, Target size in KB, Email-friendly presets, Batch compression, Format conversion, Before after comparison, Drag and drop interface, Mobile optimization, Preserve aspect ratio, Custom compression level, Download compressed image, File size reduction percentage',
     icon: ImageIcon,
     rating: 4.9,
     userCount: '50,000+'
@@ -352,6 +352,23 @@ export const allTools: Tool[] = [
     icon: FileArchive,
     rating: 4.5,
     userCount: '15,000+'
+  },
+  {
+    id: 'pdf-compressor',
+    name: 'PDF Compressor',
+    category: 'Image Tools',
+    description:
+      'Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals.',
+    keywords:
+      'pdf compressor, compress pdf to 150kb, 150kb pdf converter, compress 150kb pdf, pdf crop, free pdf compressor online, reduce pdf file size, compress pdf bulk',
+    path: '/pdf-compressor',
+    href: '/pdf-compressor',
+    url: 'https://fyntools.com/pdf-compressor',
+    features:
+      'Compress PDF to 150KB, Six compression levels with size estimates, Single and bulk PDF compression, Full quality to max compact modes, Client-side private processing, Download compressed PDF, Government form upload ready',
+    icon: FileArchive,
+    rating: 4.8,
+    userCount: '12,400+',
   },
   { 
     id: 'placeholder-image-generator', 
@@ -484,11 +501,11 @@ export const allTools: Tool[] = [
     name: 'Image Resizer', 
     category: 'Image Tools', 
     description: 'Manually resize image dimensions and file size. Perfect for documents and web images.',
-    keywords: 'image resizer, resize photos, change image size, scale images',
+    keywords: 'image resizer, resize photos, change image size, scale images, photo kb resize, resize photo to kb, email friendly photo resizer, resize image to 100kb, resize image for email, compress photo to kb',
     path: '/image-resizer',
     href: '/image-resizer',
     url: 'https://fyntools.com/image-resizer',
-    features: 'Manual resize, Custom dimensions, Preserve aspect ratio, File size reduction, Download resized image, Real-time preview, Batch resizing',
+    features: 'Manual resize, Custom dimensions, Preserve aspect ratio, File size reduction, Email-friendly KB presets, Download resized image, Real-time preview, Batch resizing, Exam and social presets',
     icon: ImageIcon,
     rating: 4.8,
     userCount: '40,000+'

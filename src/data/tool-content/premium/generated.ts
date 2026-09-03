@@ -3326,6 +3326,154 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
       "If you arrived from a search for pdf text extractor, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /pdf-text-extractor (no tracking query strings)."
     ]
   },
+  "/pdf-compressor": {
+    "title": "PDF Compressor Free Online",
+    "h1": "PDF Compressor — Free Online Tool",
+    "metaDescription": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and uplo",
+    "keywords": [
+      "pdf compressor",
+      "free pdf compressor",
+      "pdf compressor online",
+      "image tools",
+      "fyn tools"
+    ],
+    "introParagraphs": [
+      "PDF Compressor helps you compress pdf to 150kb or smaller online free. single or bulk pdf compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
+      "Search intent for “pdf compressor” is practical: people want a reliable browser utility without installing software. This page pairs the interactive PDF Compressor with clear steps, examples, FAQs, and links to related image tools tools."
+    ],
+    "overview": "PDF Compressor runs in your browser as part of the FYN Tools Image Tools suite. Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
+    "howItWorks": "Open /pdf-compressor, enter or upload your input, adjust options if shown, then copy or download the output. Most calculations and transforms update immediately as you type or change settings.",
+    "howToUse": [
+      "Open PDF Compressor at /pdf-compressor on FYN Tools.",
+      "Enter your input using the fields or upload controls above.",
+      "Adjust options if available, then review the live result.",
+      "Copy, download, or export the output for your workflow.",
+      "Bookmark /pdf-compressor if you use PDF Compressor regularly."
+    ],
+    "whenToUse": [
+      "Whenever you need a quick pdf compressor without installing apps",
+      "On mobile when you only have a browser tab",
+      "During drafting, debugging, or campaign prep workflows",
+      "When comparing outputs with other image tools tools on FYN Tools"
+    ],
+    "useCases": [
+      {
+        "title": "Everyday productivity",
+        "description": "Drop PDF Compressor into your daily checklist when you need a trustworthy, fast answer without leaving the browser."
+      },
+      {
+        "title": "Team and education",
+        "description": "Share /pdf-compressor with teammates or students so everyone uses the same free utility and instructions."
+      },
+      {
+        "title": "Campaign or project bursts",
+        "description": "Use PDF Compressor during launches, homework deadlines, or sprint reviews when speed matters more than heavy desktop suites."
+      }
+    ],
+    "examples": [
+      {
+        "input": "Upload PNG/JPG (under your device limits)",
+        "output": "Processed preview + download of the result"
+      },
+      {
+        "input": "Adjust options, then export",
+        "output": "Keep original until you download the new file"
+      }
+    ],
+    "tips": [
+      "Keep a sample input saved so you can re-test PDF Compressor after changing options.",
+      "Prefer HTTPS pages and updated browsers for the smoothest experience.",
+      "Pair PDF Compressor with related tools listed below when your workflow has a next step.",
+      "Double-check outputs before publishing or sending to clients."
+    ],
+    "commonMistakes": [
+      "Pasting highly sensitive secrets into any online tool",
+      "Assuming desktop-only features exist — this is a focused web utility",
+      "Skipping the FAQ when an option label is unclear",
+      "Forgetting to copy results before refreshing the tab"
+    ],
+    "advantages": [
+      "Free to use with no mandatory account",
+      "Works on modern mobile and desktop browsers",
+      "Clear how-to, examples, and FAQs on the same page",
+      "Related FYN Tools linked for the next step"
+    ],
+    "benefits": [
+      "Finish pdf compressor tasks without installing software.",
+      "Stay on one trusted domain for multiple utilities.",
+      "Learn the workflow from examples and FAQs without leaving the tool."
+    ],
+    "features": [
+      "Interactive tool above the fold",
+      "Mobile-friendly layout",
+      "Copy-friendly outputs",
+      "Privacy-minded browser processing when possible",
+      "Related tools and guides when available"
+    ],
+    "faqs": [
+      {
+        "question": "What does PDF Compressor do?",
+        "answer": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals. It is part of our Image Tools collection on FYN Tools (/pdf-compressor)."
+      },
+      {
+        "question": "Is PDF Compressor free on FYN Tools?",
+        "answer": "Yes. PDF Compressor is free to use in your browser with no mandatory account for normal interactive use."
+      },
+      {
+        "question": "Does PDF Compressor upload my data to a server?",
+        "answer": "PDF Compressor is designed for browser-side processing whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool."
+      },
+      {
+        "question": "Can I use PDF Compressor on mobile?",
+        "answer": "Yes. Open /pdf-compressor on a modern phone or tablet browser — the layout adapts to smaller screens."
+      },
+      {
+        "question": "How do I get the best results with PDF Compressor?",
+        "answer": "Enter values exactly as labeled in the tool panel, review the live output, then copy or download. Bookmark /pdf-compressor if you reuse this workflow regularly."
+      },
+      {
+        "question": "What file types does PDF Compressor support?",
+        "answer": "Supported formats depend on the tool — check the upload area on /pdf-compressor. Very large files may be limited by your device memory or browser."
+      }
+    ],
+    "relatedTools": [
+      {
+        "name": "Image Compressor",
+        "href": "/image-compressor",
+        "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for"
+      },
+      {
+        "name": "Logo to Favicon Converter",
+        "href": "/logo-to-favicon",
+        "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32"
+      },
+      {
+        "name": "Image Upscaler",
+        "href": "/image-upscaler",
+        "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image "
+      },
+      {
+        "name": "Image Cropper & Resizer",
+        "href": "/image-cropper",
+        "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Faceb"
+      },
+      {
+        "name": "Image Format Converter",
+        "href": "/image-format-converter",
+        "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online"
+      },
+      {
+        "name": "SVG Optimizer",
+        "href": "/svg-optimizer",
+        "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size"
+      }
+    ],
+    "conclusion": "Use PDF Compressor above for a fast, free result, then explore related image tools tools on FYN Tools when your workflow continues.",
+    "deepParagraphs": [
+      "Google rewards pages that put the useful tool first and explain the topic with unique detail. This PDF Compressor page follows that pattern: interactive UI, then how-to, overview, examples, FAQs, and internal links — not thin keyword stuffing.",
+      "If you arrived from a search for pdf compressor, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /pdf-compressor (no tracking query strings)."
+    ]
+  },
   "/placeholder-image-generator": {
     "title": "Placeholder Image Generator Free Online",
     "h1": "Placeholder Image Generator — Free Online Tool",

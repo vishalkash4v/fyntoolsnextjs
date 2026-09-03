@@ -175,6 +175,12 @@ https://fyntools.com/blog
   Description: Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying.
   Keywords: pdf text extractor, pdf to text, extract pdf content, pdf converter
   Features: Extract PDF text, Convert PDF to text, Copy extracted text, Download as text file, Batch PDF processing, Preserve formatting option, Multi-page PDF support
+- PDF Compressor
+  URL: https://fyntools.com/pdf-compressor
+  Category: Image Tools
+  Description: Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes.
+  Keywords: pdf compressor, compress pdf to 150kb, 150kb pdf converter, compress 150kb pdf, pdf crop, free pdf compressor online, compress pdf bulk
+  Features: Compress PDF to 150KB, Six compression levels with size estimates, Single and bulk PDF compression, Full quality to max compact modes, Client-side private processing, Download compressed PDF
 - Placeholder Image Generator
   URL: https://fyntools.com/placeholder-image-generator
   Category: Image Tools

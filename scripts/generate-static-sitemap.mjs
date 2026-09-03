@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://fyntools.com';
-const LASTMOD = '2026-08-29';
+const LASTMOD = '2026-09-03';
 
 /** GSC "Crawled – currently not indexed" validation URLs (Aug 2024 crawl batch) */
 const GSC_RECRAWL = new Set([
@@ -38,6 +38,7 @@ const GSC_RECRAWL = new Set([
 ]);
 
 const TOP = new Set([
+  '/pdf-compressor',
   '/period-calculator',
   '/ip-lookup',
   '/future-date-calculator',
@@ -49,6 +50,8 @@ const TOP = new Set([
   '/password-generator',
   '/yes-no-generator',
   '/whitespace-remover',
+  '/image-compressor',
+  '/image-resizer',
 ]);
 
 const TOP_BLOGS = new Set([
@@ -77,7 +80,7 @@ const TOOL_SLUGS = [
   'json-formatter', 'json-validator', 'jwt-decoder', 'list-randomizer',
   'live-preview', 'logo-to-favicon', 'lorem-ipsum-generator', 'markdown-editor',
   'merge-images', 'meta-tag-previewer', 'name-generator', 'notes',
-  'ovulation-calculator', 'password-generator', 'pdf-text-extractor',
+  'ovulation-calculator', 'password-generator', 'pdf-compressor', 'pdf-text-extractor',
   'percentage-calculator', 'period-calculator', 'period-tracker',
   'photo-annotation-tool', 'pixelate-tool', 'placeholder-image-generator',
   'pms-symptom-tracker', 'ppf-calculator', 'pregnancy-diet-planner',
@@ -110,6 +113,7 @@ const GUIDES = [
   'password-generator-hygiene',
   'qr-codes-for-print-and-packaging',
   'browser-privacy-free-online-tools',
+  'compress-pdf-to-150kb',
 ];
 
 const BLOGS = [

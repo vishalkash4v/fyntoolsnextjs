@@ -792,18 +792,32 @@ const ImageCompressor: React.FC = () => {
 
                 {/* Target Size Mode */}
                 {mode === 'targetSize' && (
-                  <div className="space-y-2">
-                    <Label>Target Size (KB)</Label>
+                  <div className="space-y-3">
+                    <Label>Target Size (KB) — photo KB resize</Label>
+                    <div className="flex flex-wrap gap-2">
+                      {[50, 100, 150, 200, 500, 1024].map((kb) => (
+                        <Button
+                          key={kb}
+                          type="button"
+                          size="sm"
+                          variant={targetSizeKB === String(kb) ? 'default' : 'outline'}
+                          disabled={isCompressing}
+                          onClick={() => setTargetSizeKB(String(kb))}
+                        >
+                          {kb >= 1024 ? 'Email 1MB' : `${kb} KB`}
+                        </Button>
+                      ))}
+                    </div>
                     <Input
                       type="number"
                       min={1}
                       value={targetSizeKB}
                       onChange={(e) => setTargetSizeKB(e.target.value)}
-                      placeholder="e.g., 100"
+                      placeholder="e.g. 150 for compress to 150KB"
                       disabled={isCompressing}
                     />
                     <p className="text-xs text-muted-foreground">
-                      System will adjust quality to reach this size
+                      Email-friendly photo compressor — pick a KB target (50–150KB for forms, 1MB for email).
                     </p>
                   </div>
                 )}

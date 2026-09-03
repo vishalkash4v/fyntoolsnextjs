@@ -4523,6 +4523,84 @@ export const pageOverrides: Record<string, PageOverride> = {
         "question": "Does this work with multi-page PDFs?",
         "answer": "Yes, our tool can extract text from multi-page PDFs. All pages are processed and the text from all pages is combined in the output."
       }
+    ],
+    "relatedTools": [
+      {
+        "name": "PDF Compressor",
+        "href": "/pdf-compressor",
+        "description": "Compress PDF to 150KB for form uploads"
+      },
+      {
+        "name": "Image to Text",
+        "href": "/image-to-text",
+        "description": "OCR for scanned PDF pages"
+      },
+      {
+        "name": "Image Compressor",
+        "href": "/image-compressor",
+        "description": "Compress photos to KB"
+      },
+      {
+        "name": "Image Resizer",
+        "href": "/image-resizer",
+        "description": "Email-friendly photo KB resize"
+      }
+    ]
+  },
+  "/pdf-compressor": {
+    "title": "Compress PDF to 150KB Free — Bulk PDF Compressor Online",
+    "description": "Compress PDF to 150KB free. Single or bulk PDF compression with 6 quality levels and estimated sizes. 150KB PDF converter for forms, email, and uploads — no signup.",
+    "shortIntro": "Free PDF compressor for single or bulk files. Six levels from Full Quality to Compress to ~150 KB with live size estimates — built for government forms and email limits.",
+    "keywords": "pdf compressor, compress pdf to 150kb, 150kb pdf converter, compress 150kb pdf, pdf crop, free pdf compressor online, compress pdf bulk, reduce pdf file size",
+    "category": "Image Tools",
+    "howToUse": [
+      "Choose Single or Bulk mode and upload your PDF(s).",
+      "Select a compression level and check the estimated size.",
+      "Click Compress and wait for page-by-page progress.",
+      "Download each file or use Download all for bulk jobs."
+    ],
+    "features": [
+      "Compress PDF to 150KB target mode",
+      "Six named quality levels with estimates",
+      "Single and bulk compression (up to 12 files)",
+      "Client-side private processing",
+      "Download all for batches",
+      "Form and email upload ready"
+    ],
+    "faqs": [
+      {
+        "question": "Can I compress a PDF to 150KB?",
+        "answer": "Yes. Use the Compress to ~150 KB level. The tool lowers quality iteratively to approach 150KB for form upload portals."
+      },
+      {
+        "question": "Is bulk PDF compression available?",
+        "answer": "Yes — Bulk mode accepts up to 12 PDFs (40MB each) with Download all when finished."
+      },
+      {
+        "question": "Is my PDF uploaded to a server?",
+        "answer": "No. Compression runs entirely in your browser."
+      },
+      {
+        "question": "Is this PDF compressor free?",
+        "answer": "Yes — free, no account, no watermark."
+      }
+    ],
+    "relatedTools": [
+      {
+        "name": "PDF Text Extractor",
+        "href": "/pdf-text-extractor",
+        "description": "Extract text from PDFs"
+      },
+      {
+        "name": "Image Compressor",
+        "href": "/image-compressor",
+        "description": "Compress photos to KB"
+      },
+      {
+        "name": "Image Resizer",
+        "href": "/image-resizer",
+        "description": "Email-friendly photo KB resize"
+      }
     ]
   },
   "/percentage-calculator": {

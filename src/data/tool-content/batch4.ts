@@ -140,6 +140,7 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       },
     ],
     relatedTools: [
+      { name: 'PDF Compressor', href: '/pdf-compressor', description: 'Compress PDF to 150KB after cropping page images' },
       { name: 'Image Resizer', href: '/image-resizer', description: 'Resize a cropped image to exam or social presets' },
       { name: 'Image Compressor', href: '/image-compressor', description: 'Shrink the PNG file size after cropping' },
       { name: 'Image Format Converter', href: '/image-format-converter', description: 'Convert the PNG to JPEG or WebP' },
@@ -149,7 +150,6 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       { name: 'Merge Images', href: '/merge-images', description: 'Combine multiple cropped images into one' },
       { name: 'Flip Image', href: '/flip-image', description: 'Mirror a photo before or after cropping' },
       { name: 'Split Image', href: '/split-image', description: 'Split a large image into tiles after cropping' },
-      { name: 'Placeholder Image Generator', href: '/placeholder-image-generator', description: 'Generate placeholder assets at exact dimensions' },
     ],
     conclusion:
       'Upload your image, pick a social preset or enter custom dimensions, drag the crop box into place, and download a PNG at the exact pixel size you need — all processed locally in your browser.',
@@ -293,6 +293,7 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
     ],
     relatedTools: [
       { name: 'Image Compressor', href: '/image-compressor', description: 'Further reduce file size with a live quality preview' },
+      { name: 'PDF Compressor', href: '/pdf-compressor', description: 'Compress PDF to 150KB after converting page images' },
       { name: 'Image Resizer', href: '/image-resizer', description: 'Change dimensions before or after converting format' },
       { name: 'Image Cropper', href: '/image-cropper', description: 'Crop to exact social dimensions before converting' },
       { name: 'Image Metadata Viewer', href: '/image-metadata-viewer', description: 'Check what metadata exists before converting' },
@@ -1072,14 +1073,14 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
   /* /image-resizer                                                    */
   /* ---------------------------------------------------------------- */
   '/image-resizer': {
-    title: 'Free Image Resizer — Exam, Social & Manual DPI Presets',
-    h1: 'Image Resizer — Education, Social Media & Manual DPI Presets',
+    title: 'Free Image Resizer — Exam, Social & Photo KB Resize',
+    h1: 'Image Resizer — Exam, Social & Email Photo KB Resize',
     metaDescription:
-      'Resize images free with exam/government presets (GATE, NEET, UPSC), social media sizes (Instagram, LinkedIn), or manual WxH with DPI & quality. Try it now.',
+      'Free image resizer: exam presets, social sizes, and email-friendly photo KB resize (50–150KB, 1MB). Resize photo to KB online — no signup.',
     datePublished: '2024-01-15',
-    dateModified: '2026-08-05',
+    dateModified: '2026-09-03',
     tldr:
-      'Upload an image, choose Education/Government exam presets (GATE, NEET, UPSC, SSC, and more), Social Media presets (Instagram, Facebook, LinkedIn, X), or Manual mode with DPI, aspect-ratio lock, quality slider, and debounced live resize — download as JPEG, PNG, or WebP.',
+      'Upload an image, choose Education/Government, Social Media, Email/Photo KB Resize (50–150KB or 1MB email), or Manual DPI mode — download as JPEG, PNG, or WebP.',
     processingNote:
       '100% client-side browser processing — images are resized on an HTML canvas with high-quality smoothing and exported locally; nothing is uploaded to a server.',
     ioContract: {
@@ -1096,6 +1097,12 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       'social media image resizer',
       'free image resizer online',
       'resize image dpi',
+      'photo kb resize',
+      'resize photo to kb',
+      'email friendly photo resizer',
+      'resize image to 100kb',
+      'resize image for email',
+      'compress photo to kb',
     ],
     introParagraphs: [
       'This resizer organizes presets into three paths. Education & Government covers exam and portal photo/signature specs for GATE, NEET (NTA), JEE Main, UPSC, SSC, IBPS, HPPSC, HPSSC, RRB, Driving License (RTO), and Indian Passport — each preset includes expected dimensions and file-size targets where applicable, with aspect_ratio fields ensuring correct proportions. Social Media covers Instagram, Facebook, X, LinkedIn, Snapchat, and Tinder with exact pixel dimensions per placement (profile, cover, post, story).',
@@ -1206,6 +1213,7 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       },
     ],
     relatedTools: [
+      { name: 'PDF Compressor', href: '/pdf-compressor', description: 'Compress PDF to 150KB for form uploads' },
       { name: 'Image Compressor', href: '/image-compressor', description: 'Compress further after resizing' },
       { name: 'Image Cropper', href: '/image-cropper', description: 'Crop to exact aspect ratio before resizing' },
       { name: 'Image Format Converter', href: '/image-format-converter', description: 'Convert resized output to another format' },
