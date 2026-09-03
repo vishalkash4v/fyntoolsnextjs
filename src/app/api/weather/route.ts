@@ -16,7 +16,8 @@ export const runtime = 'nodejs';
  *   ?q=London         — search city + forecast
  *   ?lat=..&lon=..    — coords + forecast
  *
- * 100% free open-source providers — no API keys.
+ * Location search: Google Places/Geocoding when GOOGLE_PLACES_API_KEY (or MAPS/GEOCODING) is set;
+ * otherwise Open-Meteo + OSM. Forecast always via FYN Weather Gateway + open models.
  */
 export async function GET(req: NextRequest) {
   try {

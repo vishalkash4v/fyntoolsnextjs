@@ -30,6 +30,15 @@ export async function fetchWeatherByCoords(lat: number, lon: number): Promise<We
   return parseJson(res);
 }
 
+export type WeatherSearchResponse = {
+  results: GeoPlace[];
+  meta?: {
+    provider: string;
+    googleKeyPresent: boolean;
+    googleStatus?: string;
+  };
+};
+
 export async function searchWeatherPlaces(q: string): Promise<GeoPlace[]> {
   const key = q.trim().toLowerCase();
   if (key.length < 2) return [];
@@ -45,7 +54,10 @@ export async function searchWeatherPlaces(q: string): Promise<GeoPlace[]> {
       cache: 'no-store',
       signal: searchAbort.signal,
     });
-    const data = await parseJson<{ results: GeoPlace[] }>(res);
+    const data = await parseJson<WeatherSearchResponse>(res);
+    if (typeof window !== 'undefined' && data.meta) {
+      console.info('[weather search]', q, data.meta, `${data.results.length} results`);
+    }
     searchCache.set(key, { at: Date.now(), results: data.results });
     return data.results;
   } catch (e) {

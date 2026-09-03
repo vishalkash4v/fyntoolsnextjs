@@ -7470,46 +7470,50 @@ export const pageOverrides: Record<string, PageOverride> = {
   },
   "/weather-forecast": {
     "title": "Free Weather Forecast Online — 7-Day, Hourly & Air Quality | FYN Tools",
-    "description": "Free weather forecast alternative to AccuWeather & Weather.com. Live 7-day forecast, hourly rain probability, UV index, air quality, and activity tips for any city — no API key, no signup.",
-    "shortIntro": "Instant free weather forecast for any city worldwide. 7-day outlook, hourly rain chart, air quality, UV index, what-to-wear tips, and GPS location — no ads, no account, open-source data.",
-    "keywords": "weather forecast, free weather forecast, weather forecast online, accuweather alternative, weather.com alternative, 7 day weather forecast, hourly weather forecast, weather by city, live weather, current weather, weather radar free, air quality index, UV index today, weather app free no download, local weather forecast, weather near me",
+    "description": "Accurate free weather via the FYN Weather Gateway + open multi-model APIs. 7-day forecast, hourly rain, UV, air quality & GPS — AccuWeather alternative, no signup.",
+    "shortIntro": "Live weather through FYN’s own weather gateway, powered by open weather models for exact local conditions. Search villages and cities, GPS location, 7-day forecast, AQI & UV — free.",
+    "keywords": "weather forecast, free weather forecast, weather forecast online, accurate weather forecast, local weather forecast, weather near me, accuweather alternative, weather.com alternative, 7 day weather forecast, hourly weather forecast, weather by city, live weather, air quality index, UV index today",
     "category": "Utility Tools",
     "howToUse": [
-      "Weather loads automatically for your region — no setup required.",
-      "Search any city or tap My Location for GPS-accurate forecast.",
-      "View current conditions, 7-day forecast, rain probability chart, and air quality.",
-      "Check Activity Planner for running, driving, and outdoor tips.",
-      "Toggle °C/°F and copy a shareable weather summary."
+      "Weather loads automatically for your region via the FYN Weather Gateway.",
+      "Search any village, town, or city — or tap GPS for your exact location.",
+      "View current conditions, 7-day forecast, rain chart, and air quality.",
+      "Use the small °C/°F toggle and refresh icon in the search bar.",
+      "Check Activity Planner tips and copy a weather summary."
     ],
     "features": [
-      "Auto-load forecast — no API key or signup",
+      "FYN Weather Gateway on our servers",
+      "Open multi-model forecasts for accuracy",
+      "Google Places search when configured (local areas)",
       "7-day & 24-hour forecast with rain probability",
       "Air quality index (AQI) & UV index",
       "Activity planner & what-to-wear tips",
-      "GPS My Location with search bar sync",
-      "Recent cities & °C/°F toggle",
-      "Copy weather report — free open-source data"
+      "Compact GPS, °C/°F, and refresh controls"
     ],
     "faqs": [
       {
+        "question": "How is FYN weather more accurate?",
+        "answer": "Requests go through the FYN Weather Gateway on our servers, which pulls open multi-model forecasts (Open-Meteo and partners — 30+ models). Location search can use Google Places for precise villages and local areas when configured."
+      },
+      {
         "question": "Is this a free alternative to AccuWeather or Weather.com?",
-        "answer": "Yes. FYN Tools Weather Forecast is 100% free with no ads, no account, and no API key. It uses open-source Open-Meteo data (30+ weather models) plus air quality and UV index — features people expect from AccuWeather and Weather.com."
+        "answer": "Yes. FYN Tools Weather Forecast is 100% free with no ads and no account. You get open-model accuracy plus AQI, UV, and activity tips."
       },
       {
         "question": "What weather data is shown?",
-        "answer": "Current temperature, feels-like, humidity, wind, pressure, cloud cover, sunrise/sunset, 7-day forecast, 24-hour hourly outlook, rain probability chart, US AQI air quality, UV index, activity tips, and what-to-wear suggestions."
+        "answer": "Current temperature, feels-like, humidity, wind, pressure, cloud cover, sunrise/sunset, 7-day forecast, 24-hour hourly outlook, rain probability, US AQI, UV index, activity tips, and what-to-wear suggestions."
       },
       {
-        "question": "How does My Location work?",
-        "answer": "Tap My Location to use GPS. The search bar and forecast both update to your detected city. If GPS is denied, we fall back to IP-based region detection."
+        "question": "How does My Location / GPS work?",
+        "answer": "Tap GPS to use your device location. The search bar updates to the reverse-geocoded place name. If GPS is denied, we fall back to IP-based region detection."
       },
       {
-        "question": "Which cities are supported?",
-        "answer": "Worldwide coverage via Open-Meteo and OpenStreetMap geocoding. Search any city, town, or district — include state or country for common names."
+        "question": "Which places are supported?",
+        "answer": "Worldwide. With a Google Places key configured, local villages and districts resolve more accurately; otherwise Open-Meteo and OpenStreetMap geocoders are used."
       },
       {
         "question": "Is the weather forecast free?",
-        "answer": "Yes — completely free forever. No registration, no API key, no hidden paywall. Powered by open-source weather APIs."
+        "answer": "Yes — completely free forever. No registration and no hidden paywall."
       }
     ]
   },

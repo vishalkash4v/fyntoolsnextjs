@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Sun,
   Cloud,
@@ -76,6 +76,12 @@ function saveRecent(place: GeoPlace) {
 const WeatherForecast = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<GeoPlace[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [dropdownRect, setDropdownRect] = useState<{
+    top: number;
+    left: number;
+    width: number;
+  } | null>(null);
   const [weather, setWeather] = useState<WeatherBundle | null>(null);
   const [recent, setRecent] = useState<GeoPlace[]>([]);
   const [loading, setLoading] = useState(true);
@@ -95,8 +101,35 @@ const WeatherForecast = () => {
     setRecent(loadRecent());
   }, []);
 
+  const updateDropdownPosition = useCallback(() => {
+    const el = searchWrapRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    setDropdownRect({
+      top: r.bottom + 4,
+      left: r.left,
+      width: r.width,
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!showSuggestions || suggestions.length === 0) {
+      setDropdownRect(null);
+      return;
+    }
+    updateDropdownPosition();
+    const onMove = () => updateDropdownPosition();
+    window.addEventListener('scroll', onMove, true);
+    window.addEventListener('resize', onMove);
+    return () => {
+      window.removeEventListener('scroll', onMove, true);
+      window.removeEventListener('resize', onMove);
+    };
+  }, [showSuggestions, suggestions.length, updateDropdownPosition]);
+
   const syncSearchToPlace = useCallback((place: GeoPlace) => {
     isEditingSearch.current = false;
+    setShowSuggestions(false);
     setSearchQuery(formatPlaceLabel(place));
     setSuggestions([]);
   }, []);
@@ -120,6 +153,7 @@ const WeatherForecast = () => {
       setLoading(true);
       setError('');
       setSuggestions([]);
+      setShowSuggestions(false);
       try {
         const bundle = await loader();
         applyBundle(bundle, quiet);
@@ -156,6 +190,7 @@ const WeatherForecast = () => {
       return;
     }
     isEditingSearch.current = false;
+    setShowSuggestions(false);
     setSearchQuery('Detecting your location…');
     setSuggestions([]);
     setLocating(true);
@@ -183,18 +218,20 @@ const WeatherForecast = () => {
 
   const loadPlace = (place: GeoPlace) => {
     isEditingSearch.current = false;
+    setShowSuggestions(false);
     syncSearchToPlace(place);
     void loadFromApi(() =>
       fetchWeatherByCoords(place.latitude, place.longitude)
     );
   };
 
-  // Fast autocomplete — 120ms debounce, stale-request guard
+  // Fast autocomplete — 150ms debounce, stale-request guard
   useEffect(() => {
     if (!isEditingSearch.current) return;
     const q = searchQuery.trim();
     if (q.length < 2 || q === 'Detecting your location…') {
       setSuggestions([]);
+      setShowSuggestions(false);
       setSearching(false);
       return;
     }
@@ -204,13 +241,19 @@ const WeatherForecast = () => {
     const t = setTimeout(async () => {
       try {
         const results = await searchWeatherPlaces(q);
-        if (seq === searchSeq.current) setSuggestions(results.slice(0, 6));
+        if (seq === searchSeq.current) {
+          setSuggestions(results.slice(0, 10));
+          setShowSuggestions(results.length > 0 && isEditingSearch.current);
+        }
       } catch {
-        if (seq === searchSeq.current) setSuggestions([]);
+        if (seq === searchSeq.current) {
+          setSuggestions([]);
+          setShowSuggestions(false);
+        }
       } finally {
         if (seq === searchSeq.current) setSearching(false);
       }
-    }, 120);
+    }, 150);
 
     return () => clearTimeout(t);
   }, [searchQuery]);
@@ -264,132 +307,145 @@ const WeatherForecast = () => {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg flex flex-wrap items-center gap-2">
-            Free Weather Forecast
-            <Badge variant="secondary" className="font-normal text-xs">
-              No signup · No ads · Open data
-            </Badge>
-          </CardTitle>
-          <CardDescription>
-            Accurate 7-day forecast with air quality, UV index &amp; activity tips — powered by{' '}
-            <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              Open-Meteo
-            </a>{' '}
-            (30+ models). Alternative to AccuWeather &amp; Weather.com — 100% free.
+      <Card className={showSuggestions && suggestions.length > 0 ? 'relative z-[60]' : 'relative z-10'}>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base sm:text-lg">Weather Forecast</CardTitle>
+          <CardDescription className="text-xs sm:text-sm leading-relaxed">
+            Forecasts are served through the <strong>FYN Weather Gateway</strong> on our servers,
+            blended with open weather models (Open-Meteo and partners) for accurate, location-exact
+            conditions — free, no signup.
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
-          {/* Search — mobile-first responsive */}
-          <div className="space-y-3">
-            <div ref={searchWrapRef} className="relative w-full">
+        <CardContent className="space-y-3 overflow-visible">
+          {/* Compact search row */}
+          <div className="flex items-stretch gap-1.5 sm:gap-2">
+            <div ref={searchWrapRef} className="relative min-w-0 flex-1">
               <Input
-                placeholder="Search city, town, or district…"
+                placeholder="Search area, village, city…"
                 value={searchQuery}
                 onChange={(e) => handleInputChange(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') handleSearch();
-                  if (e.key === 'Escape') setSuggestions([]);
+                  if (e.key === 'Escape') {
+                    setSuggestions([]);
+                    setShowSuggestions(false);
+                  }
                 }}
                 onFocus={() => {
                   if (weather && searchQuery === formatPlaceLabel(weather.place)) {
                     isEditingSearch.current = true;
                   }
+                  if (suggestions.length > 0 && isEditingSearch.current) {
+                    setShowSuggestions(true);
+                  }
                 }}
                 onBlur={() => {
-                  setTimeout(() => setSuggestions([]), 180);
+                  // delay so click on portal item still registers
+                  setTimeout(() => setShowSuggestions(false), 200);
                 }}
-                className="w-full h-11 sm:h-10 text-base sm:text-sm pr-10"
+                className="h-9 text-sm pr-8"
                 aria-label="Search location"
-                aria-expanded={suggestions.length > 0}
+                aria-expanded={showSuggestions && suggestions.length > 0}
                 aria-autocomplete="list"
               />
               {searching && (
-                <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-muted-foreground pointer-events-none" />
-              )}
-              {suggestions.length > 0 && isEditingSearch.current && (
-                <ul
-                  role="listbox"
-                  className="absolute z-[100] left-0 right-0 top-[calc(100%+4px)] rounded-lg border bg-popover text-popover-foreground shadow-xl max-h-[min(280px,50vh)] overflow-y-auto overscroll-contain"
-                >
-                  {suggestions.map((s, i) => (
-                    <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
-                      <button
-                        type="button"
-                        className="w-full text-left px-4 py-3 text-sm sm:text-base hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/50"
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={() => loadPlace(s)}
-                      >
-                        {formatPlaceLabel(s)}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+                <Loader2 className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 animate-spin text-muted-foreground pointer-events-none" />
               )}
             </div>
 
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
-              <Button onClick={handleSearch} disabled={loading} className="w-full sm:w-auto h-11 sm:h-10">
-                {loading ? 'Loading…' : 'Search'}
-              </Button>
-              <Button
-                variant="outline"
-                onClick={handleUseLocation}
-                disabled={loading || locating}
-                className="w-full sm:w-auto h-11 sm:h-10 gap-2"
-              >
-                <Navigation className="h-4 w-4 shrink-0" />
-                <span className="truncate">{locating ? 'GPS…' : 'My Location'}</span>
-              </Button>
-              {weather && (
-                <>
-                  <Tabs value={unit} onValueChange={(v) => toggleUnit(v as TempUnit)} className="col-span-2 sm:col-span-1">
-                    <TabsList className="h-11 sm:h-10 w-full sm:w-auto grid grid-cols-2">
-                      <TabsTrigger value="c" className="text-sm">
-                        °C
-                      </TabsTrigger>
-                      <TabsTrigger value="f" className="text-sm">
-                        °F
-                      </TabsTrigger>
-                    </TabsList>
-                  </Tabs>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="col-span-2 sm:col-span-1 h-11 sm:h-10 w-full sm:w-10"
-                    onClick={() =>
-                      void loadFromApi(() =>
-                        fetchWeatherByCoords(weather.place.latitude, weather.place.longitude)
-                      )
-                    }
-                    disabled={loading}
-                    aria-label="Refresh weather"
+            <Button
+              type="button"
+              size="sm"
+              className="h-9 px-3 shrink-0"
+              onClick={handleSearch}
+              disabled={loading}
+            >
+              {loading ? '…' : 'Go'}
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="h-9 px-2.5 shrink-0 gap-1"
+              onClick={handleUseLocation}
+              disabled={loading || locating}
+              title="Use GPS"
+              aria-label="My location"
+            >
+              <Navigation className="h-3.5 w-3.5" />
+              <span className="hidden xs:inline sm:inline text-xs">
+                {locating ? '…' : 'GPS'}
+              </span>
+            </Button>
+
+            {weather && (
+              <>
+                <div
+                  className="inline-flex h-9 items-center rounded-md border bg-muted/40 p-0.5 shrink-0"
+                  role="group"
+                  aria-label="Temperature unit"
+                >
+                  <button
+                    type="button"
+                    className={`h-7 min-w-[28px] rounded px-1.5 text-[11px] font-semibold transition-colors ${
+                      unit === 'c' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground'
+                    }`}
+                    onClick={() => toggleUnit('c')}
                   >
-                    <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-                    <span className="sm:hidden ml-2">Refresh</span>
-                  </Button>
-                </>
-              )}
-            </div>
+                    °C
+                  </button>
+                  <button
+                    type="button"
+                    className={`h-7 min-w-[28px] rounded px-1.5 text-[11px] font-semibold transition-colors ${
+                      unit === 'f' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground'
+                    }`}
+                    onClick={() => toggleUnit('f')}
+                  >
+                    °F
+                  </button>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9 shrink-0"
+                  onClick={() =>
+                    void loadFromApi(() =>
+                      fetchWeatherByCoords(weather.place.latitude, weather.place.longitude)
+                    )
+                  }
+                  disabled={loading}
+                  aria-label="Refresh"
+                  title="Refresh"
+                >
+                  <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
+                </Button>
+              </>
+            )}
           </div>
 
           {recent.length > 0 && (
-            <div className="flex flex-wrap gap-2 items-center">
-              <span className="text-xs text-muted-foreground shrink-0">Recent:</span>
+            <div className="flex flex-wrap gap-1.5 items-center">
+              <span className="text-[11px] text-muted-foreground shrink-0">Recent</span>
               {recent.map((p) => (
-                <Button
+                <button
                   key={`${p.latitude}-${p.longitude}`}
-                  variant="outline"
-                  size="sm"
-                  className="h-7 text-xs"
+                  type="button"
+                  className="h-6 rounded-full border px-2 text-[11px] text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
                   onClick={() => loadPlace(p)}
                 >
                   {p.name}
-                </Button>
+                </button>
               ))}
             </div>
           )}
+
+          <p className="text-[11px] text-muted-foreground leading-snug">
+            Location search uses Google Places when configured, otherwise open geocoders. Weather
+            data is fetched via FYN servers from open multi-model forecasts for accuracy.
+          </p>
 
           {error && (
             <Alert variant="destructive">
@@ -398,6 +454,44 @@ const WeatherForecast = () => {
           )}
         </CardContent>
       </Card>
+
+      {typeof document !== 'undefined' &&
+        showSuggestions &&
+        suggestions.length > 0 &&
+        dropdownRect &&
+        createPortal(
+          <ul
+            role="listbox"
+            className="fixed z-[9999] rounded-md border bg-popover text-popover-foreground shadow-2xl max-h-[min(280px,50vh)] overflow-y-auto overscroll-contain"
+            style={{
+              top: dropdownRect.top,
+              left: dropdownRect.left,
+              width: dropdownRect.width,
+            }}
+          >
+            {suggestions.map((s, i) => (
+              <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
+                <button
+                  type="button"
+                  className="w-full text-left px-3 py-2.5 text-sm hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/40"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => loadPlace(s)}
+                >
+                  <span className="font-medium">{s.name}</span>
+                  {(s.admin1 || s.country) && (
+                    <span className="text-muted-foreground">
+                      {` · ${[s.admin1, s.country].filter(Boolean).join(', ')}`}
+                    </span>
+                  )}
+                  {s.source === 'Google Places' && (
+                    <span className="ml-1 text-[10px] text-muted-foreground/70">Maps</span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>,
+          document.body
+        )}
 
       {loading && !weather && (
         <Card>
@@ -626,12 +720,14 @@ const WeatherForecast = () => {
             </CardContent>
           </Card>
 
-          <p className="text-xs text-center text-muted-foreground">
-            Open-source weather by{' '}
+          <p className="text-xs text-center text-muted-foreground max-w-2xl mx-auto">
+            Weather served via the <strong>FYN Weather Gateway</strong> on our servers, using open
+            multi-model forecasts (
             <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="underline">
-              Open-Meteo.com
-            </a>{' '}
-            (CC BY 4.0) · Geocoding: OpenStreetMap · No API key required
+              Open-Meteo
+            </a>
+            , CC BY 4.0) for accurate local conditions. Location search prefers Google Places when
+            configured.
           </p>
         </>
       )}

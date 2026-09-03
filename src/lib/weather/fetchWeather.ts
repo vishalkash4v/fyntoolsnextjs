@@ -244,7 +244,7 @@ function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace, airQuality: Ai
     daily,
     hourly,
     airQuality,
-    sources: ['Open-Meteo (30+ models)', place.source],
+    sources: ['FYN Weather Gateway', 'Open-Meteo (30+ models)', place.source],
     fetchedAt: new Date().toISOString(),
   };
 }
@@ -363,7 +363,7 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
     daily,
     hourly,
     airQuality: null,
-    sources: ['wttr.in (fallback)', place.source],
+    sources: ['FYN Weather Gateway', 'wttr.in (fallback)', place.source],
     fetchedAt: new Date().toISOString(),
   };
 }
