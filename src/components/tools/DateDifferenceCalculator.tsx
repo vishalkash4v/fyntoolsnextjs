@@ -141,7 +141,7 @@ const DateDifferenceCalculator = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 p-4 sm:p-6">
+    <div className="w-full space-y-6">
       <div className="text-center space-y-3">
         <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 mb-3">
           <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />

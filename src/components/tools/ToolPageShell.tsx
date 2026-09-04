@@ -54,8 +54,10 @@ export default function ToolPageShell({
               id="tool"
               className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
             >
-              <ToolCrawlerFallback slug={slug} />
-              {toolClient}
+              <div className="mx-auto w-full max-w-6xl">{toolClient}</div>
+              <div className="sr-only">
+                <ToolCrawlerFallback slug={slug} />
+              </div>
             </section>
           }
         />

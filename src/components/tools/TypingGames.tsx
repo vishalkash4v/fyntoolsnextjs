@@ -802,7 +802,7 @@ const TypingGames = () => {
             </div>
 
             {/* Input */}
-            <div className="max-w-md mx-auto">
+            <div className="w-full">
               <input
                 ref={inputRef}
                 type="text"
@@ -819,7 +819,7 @@ const TypingGames = () => {
 
             {/* Game Over Results */}
             {isGameOver && (
-              <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
+              <div className="text-center p-6 bg-muted/40 rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">Game Complete!</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm max-w-2xl mx-auto mb-6">
                   <div>

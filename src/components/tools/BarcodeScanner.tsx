@@ -589,7 +589,7 @@ const BarcodeScanner = () => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto space-y-4 pb-24 px-0 sm:px-2">
+    <div className="w-full space-y-4 pb-24 px-0 sm:px-2">
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-2">

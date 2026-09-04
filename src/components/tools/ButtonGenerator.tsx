@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
-import { RotateCcw, Upload, X } from 'lucide-react';
+import { RotateCcw, Upload, X, Check } from 'lucide-react';
 import CopyButton from '@/components/common/CopyButton';
 import {
   BUTTON_FONTS,
@@ -19,8 +19,12 @@ import {
   STICKER_PACKS,
   animationName,
   bgCss,
+  findStickerPackForEmoji,
+  isHexColor,
+  mergeButtonConfig,
   shadowCss,
   type ButtonConfig,
+  type ButtonPreset,
 } from '@/lib/button-generator/buttonData';
 
 function loadGoogleFont(familyValue: string) {
@@ -35,14 +39,78 @@ function loadGoogleFont(familyValue: string) {
   document.head.appendChild(link);
 }
 
+/** Color picker for hex + text field for rgba/transparent */
+function ColorField({
+  label,
+  value,
+  onChange,
+  disabled,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  disabled?: boolean;
+}) {
+  const hex = isHexColor(value) ? value : '#3b82f6';
+  return (
+    <div className={disabled ? 'opacity-50 pointer-events-none' : ''}>
+      <Label className="text-xs">{label}</Label>
+      <div className="mt-1 flex gap-1.5">
+        <Input
+          type="color"
+          value={hex}
+          onChange={(e) => onChange(e.target.value)}
+          className="h-9 w-11 shrink-0 p-1 cursor-pointer"
+          disabled={disabled || !isHexColor(value)}
+          title={isHexColor(value) ? 'Pick color' : 'Use text field for rgba/transparent'}
+        />
+        <Input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="#hex or rgba()"
+          className="h-9 flex-1 text-xs font-mono"
+          disabled={disabled}
+        />
+      </div>
+    </div>
+  );
+}
+
+function SettingToggle({
+  label,
+  checked,
+  onChange,
+  children,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className={`rounded-md border p-3 space-y-2 ${checked ? 'border-primary/40 bg-primary/5' : ''}`}>
+      <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+        <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+        {label}
+        {checked && <Badge variant="secondary" className="text-[10px] h-5">On</Badge>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
 const ButtonGenerator = () => {
   const [cfg, setCfg] = useState<ButtonConfig>(DEFAULT_BUTTON_CONFIG);
+  const [activePresetId, setActivePresetId] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [stickerPack, setStickerPack] = useState(STICKER_PACKS[0].id);
   const [presetFilter, setPresetFilter] = useState('All');
   const fileRef = useRef<HTMLInputElement>(null);
+  const settingsRef = useRef<HTMLDivElement>(null);
 
   const set = <K extends keyof ButtonConfig>(key: K, value: ButtonConfig[K]) => {
+    setActivePresetId(null);
     setCfg((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -51,44 +119,45 @@ const ButtonGenerator = () => {
   }, [cfg.fontFamily]);
 
   useEffect(() => {
-    // Prefetch fonts used by presets for snappy switching
     BUTTON_PRESETS.forEach((p) => {
       if (p.config.fontFamily) loadGoogleFont(p.config.fontFamily);
     });
   }, []);
 
-  const applyPreset = (partial: Partial<ButtonConfig>) => {
-    setCfg((prev) => ({
-      ...DEFAULT_BUTTON_CONFIG,
-      ...prev,
-      ...partial,
-      // reset effects that presets often omit intentionally
-      glowIntensity: partial.glowIntensity ?? 0,
-      idleAnimation: partial.idleAnimation ?? 'none',
-      customImage: partial.customImage ?? null,
-      gradient: partial.gradient ?? false,
-      hoverGradient: partial.hoverGradient ?? false,
-      borderWidth: partial.borderWidth ?? 0,
-      letterSpacing: partial.letterSpacing ?? 0,
-      textTransform: partial.textTransform ?? 'none',
-      stickerPosition: partial.stickerPosition ?? 'left',
-    }));
+  const applyPreset = (preset: ButtonPreset) => {
+    const next = mergeButtonConfig(preset.config);
+    setCfg(next);
+    setActivePresetId(preset.id);
+    if (next.sticker) {
+      const pack = findStickerPackForEmoji(next.sticker);
+      if (pack) setStickerPack(pack);
+    }
+    if (next.fontFamily) loadGoogleFont(next.fontFamily);
+    setTimeout(() => {
+      settingsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
   };
 
-  const reset = () => setCfg(DEFAULT_BUTTON_CONFIG);
+  const reset = () => {
+    setCfg(DEFAULT_BUTTON_CONFIG);
+    setActivePresetId(null);
+  };
 
   const onImageUpload = (file: File | undefined) => {
     if (!file || !file.type.startsWith('image/')) return;
     const reader = new FileReader();
     reader.onload = () => {
-      if (typeof reader.result === 'string') set('customImage', reader.result);
+      if (typeof reader.result === 'string') {
+        setActivePresetId(null);
+        setCfg((prev) => ({ ...prev, customImage: reader.result as string, sticker: '' }));
+      }
     };
     reader.readAsDataURL(file);
   };
 
-  const glow =
-    cfg.glowIntensity > 0 ? `0 0 ${cfg.glowIntensity}px ${cfg.glowColor}` : '';
-  const boxShadow = [glow, shadowCss(cfg.shadow)].filter((s) => s && s !== 'none').join(', ') || 'none';
+  const glow = cfg.glowIntensity > 0 ? `0 0 ${cfg.glowIntensity}px ${cfg.glowColor}` : '';
+  const boxShadow =
+    [glow, shadowCss(cfg.shadow)].filter((s) => s && s !== 'none').join(', ') || 'none';
 
   const activeAnim = isHovered
     ? animationName(cfg.hoverAnimation)
@@ -129,7 +198,12 @@ const ButtonGenerator = () => {
           alt=""
           width={cfg.imageSize}
           height={cfg.imageSize}
-          style={{ width: cfg.imageSize, height: cfg.imageSize, objectFit: 'contain', borderRadius: 4 }}
+          style={{
+            width: cfg.imageSize,
+            height: cfg.imageSize,
+            objectFit: 'contain',
+            borderRadius: 4,
+          }}
         />
       ) : null;
     const sticker =
@@ -163,9 +237,8 @@ const ButtonGenerator = () => {
     const imgTag = cfg.customImage
       ? `<img src="YOUR_IMAGE_URL" alt="" width="${cfg.imageSize}" height="${cfg.imageSize}" />`
       : '';
-    const stickerTag = !cfg.customImage && cfg.sticker
-      ? `<span class="btn-sticker">${cfg.sticker}</span>`
-      : '';
+    const stickerTag =
+      !cfg.customImage && cfg.sticker ? `<span class="btn-sticker">${cfg.sticker}</span>` : '';
     const icon = imgTag || stickerTag;
 
     let inner = '';
@@ -238,6 +311,32 @@ ${hoverAnim}
     [htmlCode]
   );
 
+  const activePreset = BUTTON_PRESETS.find((p) => p.id === activePresetId);
+
+  const settingsSummary = useMemo(() => {
+    const items: string[] = [
+      cfg.fontFamily.split(',')[0],
+      `${cfg.fontSize}px / ${cfg.fontWeight}`,
+      cfg.textTransform !== 'none' ? cfg.textTransform : null,
+      cfg.letterSpacing ? `spacing ${cfg.letterSpacing}px` : null,
+      cfg.gradient
+        ? `grad ${cfg.gradientAngle}°`
+        : isHexColor(cfg.backgroundColor)
+          ? cfg.backgroundColor
+          : 'custom bg',
+      cfg.hoverGradient ? 'hover grad' : cfg.hoverBgColor !== DEFAULT_BUTTON_CONFIG.hoverBgColor ? 'custom hover' : null,
+      cfg.borderRadius >= 100 ? 'pill' : `r${cfg.borderRadius}`,
+      `pad ${cfg.paddingY}×${cfg.paddingX}`,
+      cfg.borderWidth > 0 ? `border ${cfg.borderWidth}px` : null,
+      cfg.shadow !== 'none' ? cfg.shadow : null,
+      cfg.glowIntensity > 0 ? `glow ${cfg.glowIntensity}px` : null,
+      cfg.hoverAnimation !== 'none' ? `hover:${cfg.hoverAnimation}` : null,
+      cfg.idleAnimation !== 'none' ? `idle:${cfg.idleAnimation}` : null,
+      cfg.sticker || cfg.customImage ? 'icon' : null,
+    ].filter(Boolean) as string[];
+    return items;
+  }, [cfg]);
+
   const categories = ['All', ...Array.from(new Set(BUTTON_PRESETS.map((p) => p.category)))];
   const presets =
     presetFilter === 'All'
@@ -254,7 +353,8 @@ ${hoverAnim}
         <CardHeader className="pb-3">
           <CardTitle className="text-base sm:text-lg">Popular Button Presets</CardTitle>
           <CardDescription className="text-xs sm:text-sm">
-            Click any preset to load all settings — colors, fonts, hover gradient, animation & stickers.
+            Click a preset — every control below updates to match (colors, gradient, hover, font,
+            padding, glow, animations & sticker).
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -276,28 +376,36 @@ ${hoverAnim}
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
             {presets.map((p) => {
-              const preview = { ...DEFAULT_BUTTON_CONFIG, ...p.config };
+              const preview = mergeButtonConfig(p.config);
+              const selected = activePresetId === p.id;
               return (
                 <button
                   key={p.id}
                   type="button"
-                  onClick={() => applyPreset(p.config)}
-                  className="rounded-lg border p-2.5 text-left hover:border-primary/60 hover:bg-muted/40 transition-colors"
+                  onClick={() => applyPreset(p)}
+                  className={`rounded-lg border p-2.5 text-left transition-colors ${
+                    selected
+                      ? 'border-primary ring-2 ring-primary/30 bg-primary/5'
+                      : 'hover:border-primary/60 hover:bg-muted/40'
+                  }`}
                 >
                   <div className="flex justify-center mb-2 min-h-[36px] items-center">
                     <span
                       style={{
                         background: bgCss(preview, false),
                         color: preview.textColor,
-                        borderRadius: preview.borderRadius,
+                        borderRadius: Math.min(preview.borderRadius, 24),
                         padding: '6px 12px',
                         fontSize: 11,
-                        fontWeight: 600,
+                        fontWeight: preview.fontWeight,
                         fontFamily: preview.fontFamily,
+                        letterSpacing: preview.letterSpacing,
+                        textTransform: preview.textTransform,
                         border:
                           preview.borderWidth > 0
                             ? `${preview.borderWidth}px solid ${preview.borderColor}`
                             : 'none',
+                        boxShadow: shadowCss(preview.shadow),
                         display: 'inline-flex',
                         gap: 4,
                         alignItems: 'center',
@@ -306,13 +414,16 @@ ${hoverAnim}
                       {preview.sticker && preview.stickerPosition !== 'right' && (
                         <span>{preview.sticker}</span>
                       )}
-                      {preview.buttonText}
+                      {preview.stickerPosition !== 'only' && preview.buttonText}
                       {preview.sticker && preview.stickerPosition === 'right' && (
                         <span>{preview.sticker}</span>
                       )}
                     </span>
                   </div>
-                  <div className="text-xs font-medium truncate">{p.name}</div>
+                  <div className="flex items-center gap-1">
+                    {selected && <Check className="h-3 w-3 text-primary shrink-0" />}
+                    <div className="text-xs font-medium truncate">{p.name}</div>
+                  </div>
                   <div className="text-[10px] text-muted-foreground">{p.category}</div>
                 </button>
               );
@@ -323,7 +434,33 @@ ${hoverAnim}
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Controls */}
-        <div className="lg:w-[48%] space-y-4 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1">
+        <div
+          ref={settingsRef}
+          className="lg:w-[48%] space-y-4 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1"
+        >
+          {/* Active settings summary */}
+          <Card className="border-dashed">
+            <CardHeader className="pb-2 py-3">
+              <CardTitle className="text-sm flex items-center gap-2 flex-wrap">
+                Active settings
+                {activePreset && (
+                  <Badge variant="default" className="text-[10px] font-normal">
+                    Preset: {activePreset.name}
+                  </Badge>
+                )}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0 pb-3">
+              <div className="flex flex-wrap gap-1">
+                {settingsSummary.map((s) => (
+                  <Badge key={s} variant="outline" className="text-[10px] font-normal">
+                    {s}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Text & Typography</CardTitle>
@@ -353,7 +490,7 @@ ${hoverAnim}
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Size ({cfg.fontSize}px)</Label>
+                  <Label>Font size ({cfg.fontSize}px)</Label>
                   <Slider
                     value={[cfg.fontSize]}
                     onValueChange={(v) => set('fontSize', v[0])}
@@ -363,7 +500,7 @@ ${hoverAnim}
                   />
                 </div>
                 <div>
-                  <Label>Weight ({cfg.fontWeight})</Label>
+                  <Label>Font weight ({cfg.fontWeight})</Label>
                   <Slider
                     value={[cfg.fontWeight]}
                     onValueChange={(v) => set('fontWeight', v[0])}
@@ -376,12 +513,12 @@ ${hoverAnim}
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Letter spacing</Label>
+                  <Label>Letter spacing ({cfg.letterSpacing}px)</Label>
                   <Slider
                     value={[cfg.letterSpacing]}
                     onValueChange={(v) => set('letterSpacing', v[0])}
                     min={-1}
-                    max={6}
+                    max={8}
                     step={0.5}
                     className="mt-2"
                   />
@@ -404,7 +541,7 @@ ${hoverAnim}
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Align</Label>
+                  <Label>Text align</Label>
                   <select
                     value={cfg.textAlign}
                     onChange={(e) => set('textAlign', e.target.value as ButtonConfig['textAlign'])}
@@ -422,7 +559,7 @@ ${hoverAnim}
                       checked={cfg.fullWidth}
                       onChange={(e) => set('fullWidth', e.target.checked)}
                     />
-                    Full width
+                    Full width button
                   </label>
                 </div>
               </div>
@@ -432,136 +569,150 @@ ${hoverAnim}
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Colors & Gradients</CardTitle>
+              <CardDescription className="text-xs">
+                Hex or rgba() — glass presets use rgba for transparency
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="grid grid-cols-3 gap-2">
-                <div>
-                  <Label className="text-xs">Text</Label>
-                  <Input
-                    type="color"
-                    value={cfg.textColor.startsWith('#') ? cfg.textColor : '#ffffff'}
-                    onChange={(e) => set('textColor', e.target.value)}
-                    className="mt-1 h-9 p-1"
-                  />
-                </div>
-                <div>
-                  <Label className="text-xs">Background</Label>
-                  <Input
-                    type="color"
-                    value={
-                      cfg.backgroundColor.startsWith('#') ? cfg.backgroundColor : '#3b82f6'
-                    }
-                    onChange={(e) => set('backgroundColor', e.target.value)}
-                    className="mt-1 h-9 p-1"
-                    disabled={cfg.gradient}
-                  />
-                </div>
-                <div>
-                  <Label className="text-xs">Hover solid</Label>
-                  <Input
-                    type="color"
-                    value={cfg.hoverBgColor.startsWith('#') ? cfg.hoverBgColor : '#2563eb'}
-                    onChange={(e) => set('hoverBgColor', e.target.value)}
-                    className="mt-1 h-9 p-1"
-                    disabled={cfg.hoverGradient}
-                  />
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <ColorField label="Text color" value={cfg.textColor} onChange={(v) => set('textColor', v)} />
+                <ColorField
+                  label="Background"
+                  value={cfg.backgroundColor}
+                  onChange={(v) => set('backgroundColor', v)}
+                  disabled={cfg.gradient}
+                />
+                <ColorField
+                  label="Hover (solid)"
+                  value={cfg.hoverBgColor}
+                  onChange={(v) => set('hoverBgColor', v)}
+                  disabled={cfg.hoverGradient}
+                />
               </div>
 
-              <div className="rounded-md border p-3 space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={cfg.gradient}
-                    onChange={(e) => set('gradient', e.target.checked)}
+              <SettingToggle
+                label="Background gradient"
+                checked={cfg.gradient}
+                onChange={(v) => set('gradient', v)}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  <ColorField
+                    label="Gradient start"
+                    value={cfg.gradientColor1}
+                    onChange={(v) => set('gradientColor1', v)}
                   />
-                  Background gradient
-                </label>
-                {cfg.gradient && (
-                  <div className="grid grid-cols-3 gap-2">
-                    <Input
-                      type="color"
-                      value={cfg.gradientColor1}
-                      onChange={(e) => set('gradientColor1', e.target.value)}
-                      className="h-9 p-1"
+                  <ColorField
+                    label="Gradient end"
+                    value={cfg.gradientColor2}
+                    onChange={(v) => set('gradientColor2', v)}
+                  />
+                  <div>
+                    <Label className="text-xs">Angle ({cfg.gradientAngle}°)</Label>
+                    <Slider
+                      value={[cfg.gradientAngle]}
+                      onValueChange={(v) => set('gradientAngle', v[0])}
+                      min={0}
+                      max={360}
+                      className="mt-2"
+                      disabled={!cfg.gradient}
                     />
-                    <Input
-                      type="color"
-                      value={cfg.gradientColor2}
-                      onChange={(e) => set('gradientColor2', e.target.value)}
-                      className="h-9 p-1"
-                    />
-                    <div>
-                      <Label className="text-[10px]">Angle {cfg.gradientAngle}°</Label>
-                      <Slider
-                        value={[cfg.gradientAngle]}
-                        onValueChange={(v) => set('gradientAngle', v[0])}
-                        min={0}
-                        max={360}
-                        className="mt-2"
-                      />
-                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              </SettingToggle>
 
-              <div className="rounded-md border p-3 space-y-2 bg-muted/30">
-                <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={cfg.hoverGradient}
-                    onChange={(e) => set('hoverGradient', e.target.checked)}
+              <SettingToggle
+                label="Hover gradient"
+                checked={cfg.hoverGradient}
+                onChange={(v) => set('hoverGradient', v)}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  <ColorField
+                    label="Hover grad start"
+                    value={cfg.hoverGradientColor1}
+                    onChange={(v) => set('hoverGradientColor1', v)}
                   />
-                  Hover gradient
-                </label>
-                {cfg.hoverGradient && (
-                  <div className="grid grid-cols-3 gap-2">
-                    <Input
-                      type="color"
-                      value={cfg.hoverGradientColor1}
-                      onChange={(e) => set('hoverGradientColor1', e.target.value)}
-                      className="h-9 p-1"
+                  <ColorField
+                    label="Hover grad end"
+                    value={cfg.hoverGradientColor2}
+                    onChange={(v) => set('hoverGradientColor2', v)}
+                  />
+                  <div>
+                    <Label className="text-xs">Hover angle ({cfg.hoverGradientAngle}°)</Label>
+                    <Slider
+                      value={[cfg.hoverGradientAngle]}
+                      onValueChange={(v) => set('hoverGradientAngle', v[0])}
+                      min={0}
+                      max={360}
+                      className="mt-2"
+                      disabled={!cfg.hoverGradient}
                     />
-                    <Input
-                      type="color"
-                      value={cfg.hoverGradientColor2}
-                      onChange={(e) => set('hoverGradientColor2', e.target.value)}
-                      className="h-9 p-1"
-                    />
-                    <div>
-                      <Label className="text-[10px]">Angle {cfg.hoverGradientAngle}°</Label>
-                      <Slider
-                        value={[cfg.hoverGradientAngle]}
-                        onValueChange={(v) => set('hoverGradientAngle', v[0])}
-                        min={0}
-                        max={360}
-                        className="mt-2"
-                      />
-                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              </SettingToggle>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-base">Shape, Border & Shadow</CardTitle>
+              <CardTitle className="text-base">Shape, Border & Effects</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
+              <div>
+                <Label>
+                  Border radius ({cfg.borderRadius}px)
+                  {cfg.borderRadius >= 100 && (
+                    <Badge variant="secondary" className="ml-2 text-[10px]">
+                      Pill
+                    </Badge>
+                  )}
+                </Label>
+                <Slider
+                  value={[Math.min(cfg.borderRadius, 999)]}
+                  onValueChange={(v) => set('borderRadius', v[0])}
+                  min={0}
+                  max={999}
+                  className="mt-2"
+                />
+                <div className="flex gap-1.5 mt-2">
+                  {[0, 8, 12, 16, 999].map((r) => (
+                    <button
+                      key={r}
+                      type="button"
+                      onClick={() => set('borderRadius', r)}
+                      className={`h-6 px-2 rounded border text-[10px] ${
+                        cfg.borderRadius === r ? 'border-primary bg-primary/10' : ''
+                      }`}
+                    >
+                      {r === 999 ? 'Pill' : r}
+                    </button>
+                  ))}
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Radius ({cfg.borderRadius}px)</Label>
+                  <Label>Padding X ({cfg.paddingX}px)</Label>
                   <Slider
-                    value={[cfg.borderRadius]}
-                    onValueChange={(v) => set('borderRadius', v[0])}
-                    min={0}
-                    max={50}
+                    value={[cfg.paddingX]}
+                    onValueChange={(v) => set('paddingX', v[0])}
+                    min={4}
+                    max={80}
                     className="mt-2"
                   />
                 </div>
                 <div>
-                  <Label>Border ({cfg.borderWidth}px)</Label>
+                  <Label>Padding Y ({cfg.paddingY}px)</Label>
+                  <Slider
+                    value={[cfg.paddingY]}
+                    onValueChange={(v) => set('paddingY', v[0])}
+                    min={4}
+                    max={48}
+                    className="mt-2"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label>Border width ({cfg.borderWidth}px)</Label>
                   <Slider
                     value={[cfg.borderWidth]}
                     onValueChange={(v) => set('borderWidth', v[0])}
@@ -570,41 +721,15 @@ ${hoverAnim}
                     className="mt-2"
                   />
                 </div>
+                <ColorField
+                  label="Border color"
+                  value={cfg.borderColor}
+                  onChange={(v) => set('borderColor', v)}
+                />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Padding X ({cfg.paddingX})</Label>
-                  <Slider
-                    value={[cfg.paddingX]}
-                    onValueChange={(v) => set('paddingX', v[0])}
-                    min={8}
-                    max={64}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label>Padding Y ({cfg.paddingY})</Label>
-                  <Slider
-                    value={[cfg.paddingY]}
-                    onValueChange={(v) => set('paddingY', v[0])}
-                    min={4}
-                    max={40}
-                    className="mt-2"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <Label>Border color</Label>
-                  <Input
-                    type="color"
-                    value={cfg.borderColor.startsWith('#') ? cfg.borderColor : '#000000'}
-                    onChange={(e) => set('borderColor', e.target.value)}
-                    className="mt-1.5 h-9 p-1"
-                  />
-                </div>
-                <div>
-                  <Label>Shadow</Label>
+                  <Label>Shadow style</Label>
                   <select
                     value={cfg.shadow}
                     onChange={(e) => set('shadow', e.target.value as ButtonConfig['shadow'])}
@@ -613,32 +738,27 @@ ${hoverAnim}
                     <option value="none">None</option>
                     <option value="soft">Soft</option>
                     <option value="medium">Medium</option>
-                    <option value="hard">Hard / Neo</option>
-                    <option value="lift">Lifted</option>
+                    <option value="hard">Hard / Neo-brutalist</option>
+                    <option value="lift">Lifted / floating</option>
                   </select>
                 </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Glow color</Label>
-                  <Input
-                    type="color"
-                    value={cfg.glowColor}
-                    onChange={(e) => set('glowColor', e.target.value)}
-                    className="mt-1.5 h-9 p-1"
-                  />
-                </div>
-                <div>
-                  <Label>Glow ({cfg.glowIntensity}px)</Label>
+                  <Label>Glow intensity ({cfg.glowIntensity}px)</Label>
                   <Slider
                     value={[cfg.glowIntensity]}
                     onValueChange={(v) => set('glowIntensity', v[0])}
                     min={0}
-                    max={24}
+                    max={32}
                     className="mt-2"
                   />
                 </div>
               </div>
+              <ColorField
+                label="Glow color"
+                value={cfg.glowColor}
+                onChange={(v) => set('glowColor', v)}
+                disabled={cfg.glowIntensity === 0}
+              />
             </CardContent>
           </Card>
 
@@ -646,7 +766,7 @@ ${hoverAnim}
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Animations</CardTitle>
             </CardHeader>
-            <CardContent className="grid grid-cols-2 gap-3">
+            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <Label>Hover animation</Label>
                 <select
@@ -662,7 +782,7 @@ ${hoverAnim}
                 </select>
               </div>
               <div>
-                <Label>Idle animation</Label>
+                <Label>Idle animation (always on)</Label>
                 <select
                   value={cfg.idleAnimation}
                   onChange={(e) => set('idleAnimation', e.target.value)}
@@ -682,7 +802,11 @@ ${hoverAnim}
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Stickers, Emojis & Images</CardTitle>
               <CardDescription className="text-xs">
-                Animals, pets, birds, nature, anime faces — or upload your own icon/logo.
+                {cfg.sticker
+                  ? `Selected: ${cfg.sticker} · position: ${cfg.stickerPosition}`
+                  : cfg.customImage
+                    ? 'Custom image uploaded'
+                    : 'No icon — pick from packs or upload'}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
@@ -701,9 +825,14 @@ ${hoverAnim}
               <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto rounded-md border p-2">
                 <button
                   type="button"
-                  className="h-9 w-9 rounded border text-xs text-muted-foreground"
-                  onClick={() => set('sticker', '')}
-                  title="Clear sticker"
+                  className={`h-9 w-9 rounded border text-xs ${
+                    !cfg.sticker && !cfg.customImage ? 'border-primary bg-primary/10' : ''
+                  }`}
+                  onClick={() => {
+                    set('sticker', '');
+                    set('customImage', null);
+                  }}
+                  title="No icon"
                 >
                   ∅
                 </button>
@@ -711,9 +840,12 @@ ${hoverAnim}
                   <button
                     key={emoji}
                     type="button"
-                    onClick={() => set('sticker', emoji)}
+                    onClick={() => {
+                      setActivePresetId(null);
+                      setCfg((prev) => ({ ...prev, sticker: emoji, customImage: null }));
+                    }}
                     className={`h-9 w-9 rounded border text-lg hover:bg-accent ${
-                      cfg.sticker === emoji ? 'border-primary bg-primary/10' : ''
+                      cfg.sticker === emoji ? 'border-primary bg-primary/10 ring-1 ring-primary/40' : ''
                     }`}
                   >
                     {emoji}
@@ -722,7 +854,7 @@ ${hoverAnim}
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Sticker position</Label>
+                  <Label>Icon / sticker position</Label>
                   <select
                     value={cfg.stickerPosition}
                     onChange={(e) =>
@@ -732,11 +864,11 @@ ${hoverAnim}
                   >
                     <option value="left">Left of text</option>
                     <option value="right">Right of text</option>
-                    <option value="only">Icon only</option>
+                    <option value="only">Icon only (no text)</option>
                   </select>
                 </div>
                 <div>
-                  <Label>Image size ({cfg.imageSize}px)</Label>
+                  <Label>Icon size ({cfg.imageSize}px)</Label>
                   <Slider
                     value={[cfg.imageSize]}
                     onValueChange={(v) => set('imageSize', v[0])}
@@ -754,7 +886,12 @@ ${hoverAnim}
                   className="hidden"
                   onChange={(e) => onImageUpload(e.target.files?.[0])}
                 />
-                <Button type="button" variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => fileRef.current?.click()}
+                >
                   <Upload className="h-3.5 w-3.5 mr-1.5" />
                   Upload image / logo
                 </Button>
@@ -772,7 +909,7 @@ ${hoverAnim}
               </div>
               <Button type="button" variant="outline" className="w-full" onClick={reset}>
                 <RotateCcw className="h-4 w-4 mr-2" />
-                Reset all
+                Reset all to default
               </Button>
             </CardContent>
           </Card>
@@ -783,7 +920,10 @@ ${hoverAnim}
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Live Preview</CardTitle>
-              <CardDescription className="text-xs">Hover to test hover gradient & animations</CardDescription>
+              <CardDescription className="text-xs">
+                Hover to test hover gradient &amp; animations
+                {activePreset && ` · ${activePreset.name} preset loaded`}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div

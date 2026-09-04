@@ -343,7 +343,7 @@ const ImageCropper = () => {
   }, {} as Record<string, CropPreset[]>);
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 max-w-6xl">
+    <div className="w-full py-4 sm:py-6">
       <div className="text-center mb-4 sm:mb-6">
         <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">
           Professional Image Cropper
@@ -712,7 +712,7 @@ const ImageCropper = () => {
                       </p>
                     )}
                   </div>
-                  <div className="border rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-900">
+                  <div className="border rounded-lg overflow-hidden bg-muted/40">
                     <img 
                       src={previewUrl} 
                       alt="Original" 
@@ -730,7 +730,7 @@ const ImageCropper = () => {
                       </p>
                     )}
                   </div>
-                  <div className="border rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-900">
+                  <div className="border rounded-lg overflow-hidden bg-muted/40">
                     <img 
                       src={croppedUrl} 
                       alt="Cropped" 

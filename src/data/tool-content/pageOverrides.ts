@@ -886,6 +886,7 @@ export const pageOverrides: Record<string, PageOverride> = {
     "title": "CSS Button Generator - Create Beautiful Buttons",
     "description": "Generate CSS buttons with custom styles, colors, shadows, and effects. Create beautiful, responsive buttons with our free online button generator tool.",
     "shortIntro": "Generate CSS buttons with custom styles, colors, shadows, and effects using our free online Button Generator. Create beautiful, responsive buttons instantly.",
+    "introText": "Click a preset (Neon, Glass, Instagram, Pill) and every control — font, hover gradient, glow, sticker — loads with it. Export HTML, CSS keyframes, and React. This is not a generic “paste input, get output” demo; the preview is the button you copy.",
     "keywords": "css button generator, button generator, css buttons, button maker, online button generator, css button creator, free button generator, html button generator",
     "category": "Design Tools",
     "howToUse": [
@@ -896,6 +897,16 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Preview your button design",
       "Copy the generated HTML and CSS code"
     ],
+    "examples": [
+      {
+        "input": "Preset: Neon Cyberpunk  · text ENTER  · hover: pulse  · glow 14px",
+        "output": "HTML: <button class=\"fyn-btn\">⚡ ENTER</button>\nCSS: dark bg, neon border, Orbitron, glow, hover pulse — copy-ready"
+      },
+      {
+        "input": "Preset: Sunset Gradient  · hover gradient on  · sticker Shop Now",
+        "output": "Live button preview + HTML / CSS / React snippet with gradients and icon"
+      }
+    ],
     "features": [
       "Custom button text and styling",
       "Color customization for background and text",
@@ -903,6 +914,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Hover state animations",
       "Responsive button designs",
       "Copy HTML and CSS code"
+    ],
+    "useCases": [
+      {
+        "title": "Landing-page CTA",
+        "description": "Load Primary CTA or Sunset Gradient, tweak padding, copy the CSS into your hero."
+      },
+      {
+        "title": "Neon with pulse",
+        "description": "Preset Neon Cyberpunk keeps glow and idle animation; export includes @keyframes."
+      },
+      {
+        "title": "Icon pill",
+        "description": "Pill Success plus a sticker on the left — HTML includes the emoji span."
+      }
     ],
     "faqs": [
       {
@@ -1901,6 +1926,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Balance trend and interest vs principal charts",
       "CSV export for amortization schedule"
     ],
+    "useCases": [
+      {
+        "title": "Home loan EMI sketch",
+        "description": "Enter principal, rate, and years to see the monthly installment before you talk to a bank."
+      },
+      {
+        "title": "Prepayment vs tenure",
+        "description": "Turn on extra yearly payment and watch interest and months drop on the amortization table."
+      },
+      {
+        "title": "Step-up EMI",
+        "description": "Model a rising EMI if your income is expected to grow, then export CSV."
+      }
+    ],
     "faqs": [
       {
         "question": "How to reduce EMI?",
@@ -2028,6 +2067,26 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Tax calculation on FD interest (TDS)",
       "Premature withdrawal penalty calculation",
       "Interest rate trend analysis"
+    ],
+    "useCases": [
+      {
+        "title": "1-year FD sketch",
+        "description": "Enter principal and your bank’s rate to see maturity before you lock the deposit."
+      },
+      {
+        "title": "Compare tenures",
+        "description": "Try 1 vs 3 years at the same rate to see how compounding changes the payout."
+      },
+      {
+        "title": "Senior-citizen rate",
+        "description": "Use the higher senior rate your bank quotes when it applies."
+      }
+    ],
+    "examples": [
+      {
+        "input": "₹1,00,000 · 7% · 1 year · quarterly compounding",
+        "output": "Maturity amount and interest earned for the term"
+      }
     ],
     "faqs": [
       {
@@ -2270,6 +2329,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Reverse GST calculation support",
       "Export results for accounting",
       "Multiple currency support"
+    ],
+    "useCases": [
+      {
+        "title": "Invoice GST exclusive",
+        "description": "Enter the taxable value, pick 18%, and copy CGST/SGST split for an intra-state invoice."
+      },
+      {
+        "title": "Price already includes GST",
+        "description": "Switch to inclusive mode so you can back out the base amount from an MRP."
+      },
+      {
+        "title": "IGST for interstate",
+        "description": "Use the IGST view when the supply is across state lines."
+      }
     ],
     "faqs": [
       {
@@ -2553,6 +2626,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Mobile Friendly - Works perfectly on all devices",
       "Privacy First - Images processed in memory, never stored on servers",
       "Free Forever - No registration, no watermarks, no limits"
+    ],
+    "useCases": [
+      {
+        "title": "Email attachment under 2MB",
+        "description": "Use Target Size so a JPEG actually lands under the mailbox cap."
+      },
+      {
+        "title": "Instagram-ready export",
+        "description": "Pick the Instagram preset instead of guessing quality sliders."
+      },
+      {
+        "title": "WebP for a blog",
+        "description": "Auto mode often picks WebP; download and drop into the CMS."
+      }
     ],
     "faqs": [
       {
@@ -3198,6 +3285,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Comparison between old and new tax systems",
       "HRA, LTA, and other exemption calculations",
       "Tax-saving investment recommendations"
+    ],
+    "useCases": [
+      {
+        "title": "Old vs new regime",
+        "description": "Enter salary and deductions, then compare both regimes before you file."
+      },
+      {
+        "title": "HRA and 80C sketch",
+        "description": "Add HRA and 80C amounts so the old regime is not compared as a blank slate."
+      },
+      {
+        "title": "FY planning",
+        "description": "Use the current-year slabs as a sketch — not a substitute for a CA on complex returns."
+      }
     ],
     "faqs": [
       {
@@ -4442,22 +4543,50 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Secure random generation",
       "No passwords stored or logged"
     ],
+    "useCases": [
+      {
+        "title": "New account signup",
+        "description": "Set length 16–20 with symbols on, generate once, paste into a password manager — never reuse it."
+      },
+      {
+        "title": "Bank form without symbols",
+        "description": "Turn symbols off when the site rejects special characters, keep length high."
+      },
+      {
+        "title": "Pick from a few options",
+        "description": "Generate several passwords and choose the one that is easiest to type on your phone."
+      }
+    ],
+    "examples": [
+      {
+        "input": "Length 20 · upper + lower + numbers + symbols",
+        "output": "One strong random password — copy once; nothing is stored on FYN servers"
+      },
+      {
+        "input": "Length 12 · symbols off",
+        "output": "Alphanumeric password for sites that ban special characters"
+      }
+    ],
     "faqs": [
       {
         "question": "How secure are the generated passwords?",
-        "answer": "Our password generator uses cryptographically secure random number generation to create passwords. The passwords are generated locally in your browser and are not stored anywhere."
+        "answer": "Generation runs in your browser with secure randomness. Passwords are not uploaded or logged by FYN Tools."
       },
       {
-        "question": "What makes a strong password?",
-        "answer": "A strong password should be at least 12 characters long, contain a mix of uppercase and lowercase letters, numbers, and special characters, and avoid common words or patterns."
+        "question": "What length should I use?",
+        "answer": "Prefer 16+ characters with mixed character sets for important accounts. Use 12+ when a site caps length."
       },
       {
-        "question": "Should I use different passwords for different accounts?",
-        "answer": "Yes, absolutely! Using unique passwords for each account ensures that if one password is compromised, your other accounts remain secure."
+        "question": "Should I reuse a generated password?",
+        "answer": "No. Generate a unique password per account and store it in a password manager."
       },
       {
-        "question": "How often should I change my passwords?",
-        "answer": "It's recommended to change passwords every 3-6 months, or immediately if you suspect a security breach. Use a password manager to keep track of multiple passwords."
+        "question": "Does FYN Tools see my password?",
+        "answer": "No. The string is created and copied on your device. Closing the tab clears it from this page."
+      },
+      {
+        "question": "What if a site rejects symbols?",
+        "answer": "Disable symbols (and optionally adjust length) so the password still meets the site’s policy."
       }
     ],
     "relatedTools": [
@@ -4566,6 +4695,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Client-side private processing",
       "Download all for batches",
       "Form and email upload ready"
+    ],
+    "useCases": [
+      {
+        "title": "Exam portal 150KB cap",
+        "description": "Upload a scanned form, pick Compress to ~150 KB, download and attach."
+      },
+      {
+        "title": "Bulk supporting PDFs",
+        "description": "Switch to Bulk, drop up to 12 files, Download all when estimates look right."
+      },
+      {
+        "title": "Email a lighter copy",
+        "description": "Use Compact so a photo-heavy PDF fits a typical mailbox limit."
+      }
     ],
     "faqs": [
       {
@@ -5090,6 +5233,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Due date output",
       "Trimester breakdown",
       "Mobile-friendly layout"
+    ],
+    "useCases": [
+      {
+        "title": "LMP due date",
+        "description": "Pick last menstrual period and get an EDD plus trimester dates in one pass."
+      },
+      {
+        "title": "Known conception date",
+        "description": "Switch to conception mode when LMP is uncertain."
+      },
+      {
+        "title": "Week count for appointments",
+        "description": "Read gestational week from the same card before you see a clinician."
+      }
     ],
     "faqs": [
       {
@@ -5711,6 +5868,30 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Inflation-adjusted calculations",
       "Export results and charts"
     ],
+    "useCases": [
+      {
+        "title": "Monthly SIP corpus sketch",
+        "description": "Enter ₹5,000/month, an expected return, and years to see invested amount vs projected corpus."
+      },
+      {
+        "title": "Lumpsum compare",
+        "description": "Switch to lumpsum mode to compare a one-time invest against SIP for the same horizon."
+      },
+      {
+        "title": "Goal reverse",
+        "description": "Nudge the SIP amount until the future value hits the goal you have in mind."
+      }
+    ],
+    "examples": [
+      {
+        "input": "SIP ₹5,000/mo · 12% · 10 years",
+        "output": "Invested ₹6,00,000 · estimated corpus (illustrative) with year-wise growth"
+      },
+      {
+        "input": "Lumpsum ₹2,00,000 · 10% · 5 years",
+        "output": "Future value and gain vs amount invested"
+      }
+    ],
     "faqs": [
       {
         "question": "What is a good SIP return rate to expect?",
@@ -5809,6 +5990,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Multiple quality options",
       "No registration required",
       "Fast, simple interface"
+    ],
+    "useCases": [
+      {
+        "title": "Save a reel offline",
+        "description": "Paste the Instagram reel URL and download when the platform still exposes a media file."
+      },
+      {
+        "title": "Facebook video for later",
+        "description": "Drop a public Facebook video link — respect copyright; this is for personal copies."
+      },
+      {
+        "title": "Quality pick",
+        "description": "Choose a lower resolution if you only need a small file for a note."
+      }
     ],
     "faqs": [
       {
@@ -6524,22 +6719,50 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Batch text conversion",
       "Mobile-friendly interface"
     ],
+    "useCases": [
+      {
+        "title": "Homework page",
+        "description": "Type answers, pick a school-like font, enable lined paper, export PDF."
+      },
+      {
+        "title": "Lined paper look",
+        "description": "Turn on ruled lines and A4 before you download for printing."
+      },
+      {
+        "title": "Short cover note",
+        "description": "A few lines in a cursive font for a cover sheet — not a 20-page dump in one go."
+      }
+    ],
+    "examples": [
+      {
+        "input": "Homework paragraph · font: school cursive · lined paper on",
+        "output": "Handwriting preview → Export PDF / image"
+      },
+      {
+        "input": "Short cover note · Amatic-style font · A4",
+        "output": "Single-page handwriting render ready to print"
+      }
+    ],
     "faqs": [
       {
         "question": "Can I use this for school assignments?",
-        "answer": "While our tool creates realistic handwritten text, please check your school's policies regarding digital submissions. Many institutions prefer authentic handwritten work for specific assignments."
+        "answer": "It creates realistic handwriting-style pages. Follow your school’s rules — many require authentic handwriting for graded work."
       },
       {
-        "question": "What file formats can I download?",
-        "answer": "You can download your handwritten text as PNG, JPEG images, or PDF documents. High-resolution options are available for printing purposes."
+        "question": "What can I export?",
+        "answer": "Download as image or PDF from the tool. Prefer PDF when you need multi-page printouts."
       },
       {
-        "question": "How realistic does the handwriting look?",
-        "answer": "Our fonts are designed to closely mimic natural handwriting with variations in letter spacing, slight irregularities, and realistic pen strokes. The result looks very similar to actual handwritten text."
+        "question": "Does my text leave the browser?",
+        "answer": "Rendering runs in your browser on this page. Do not paste secrets you would not put in a local document."
       },
       {
-        "question": "Can I create multiple pages of handwritten text?",
-        "answer": "Yes, our tool can handle long texts and automatically format them across multiple pages with consistent styling and spacing."
+        "question": "How do I get cleaner output?",
+        "answer": "Use A4, a readable handwriting font, moderate size (about 16px), and line height around 1.3 — then export at higher quality."
+      },
+      {
+        "question": "Long essays look cramped — what should I do?",
+        "answer": "Split long text into pages or sections instead of dumping everything into one dense block."
       }
     ],
     "relatedTools": [
@@ -7287,6 +7510,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Local link history with favicons and basic click counts per short link",
       "No signup required and links stay fast and lightweight on desktop and mobile"
     ],
+    "useCases": [
+      {
+        "title": "Campaign UTM short link",
+        "description": "Build source/medium/campaign, then shorten so ads do not show a 200-character URL."
+      },
+      {
+        "title": "Bulk paste",
+        "description": "Drop up to 20 URLs, one per line, and copy the short set for a spreadsheet."
+      },
+      {
+        "title": "QR for print",
+        "description": "Generate a QR with optional logo after the short URL exists."
+      }
+    ],
     "faqs": [
       {
         "question": "Why should I use a URL shortener?",
@@ -7472,14 +7709,25 @@ export const pageOverrides: Record<string, PageOverride> = {
     "title": "Free Weather Forecast Online — 7-Day, Hourly & Air Quality | FYN Tools",
     "description": "Accurate free weather via the FYN Weather Gateway + open multi-model APIs. 7-day forecast, hourly rain, UV, air quality & GPS — AccuWeather alternative, no signup.",
     "shortIntro": "Live weather through FYN’s own weather gateway, powered by open weather models for exact local conditions. Search villages and cities, GPS location, 7-day forecast, AQI & UV — free.",
+    "introText": "Search a village or city (Google Places when configured), or tap GPS. Forecasts come through the FYN Weather Gateway on our servers using open multi-model data — not a pasted “sample input” box. You see current temp, rain odds, AQI, UV, and a 7-day strip on the same card.",
     "keywords": "weather forecast, free weather forecast, weather forecast online, accurate weather forecast, local weather forecast, weather near me, accuweather alternative, weather.com alternative, 7 day weather forecast, hourly weather forecast, weather by city, live weather, air quality index, UV index today",
     "category": "Utility Tools",
     "howToUse": [
-      "Weather loads automatically for your region via the FYN Weather Gateway.",
-      "Search any village, town, or city — or tap GPS for your exact location.",
+      "Allow location when prompted so the forecast opens on your current spot (GPS).",
+      "If you deny permission, we fall back to your IP region — or search any village/city.",
       "View current conditions, 7-day forecast, rain chart, and air quality.",
       "Use the small °C/°F toggle and refresh icon in the search bar.",
       "Check Activity Planner tips and copy a weather summary."
+    ],
+    "examples": [
+      {
+        "input": "Search: Una, Himachal Pradesh, India  (or tap GPS)",
+        "output": "Current: 29°C · Feels like 35°C · Overcast\nHigh 31°C / Low 23°C · Humidity 80% · Wind 1.3 m/s E\nSunrise 06:02 · Sunset 18:47\n7-day outlook + hourly rain % + US AQI + UV + what-to-wear tips"
+      },
+      {
+        "input": "Search: Mumbai  · unit °C  · refresh",
+        "output": "FYN Weather Gateway forecast (Open-Meteo multi-model)\nToday rain probability chart, 24-hour hourly temps, AQI badge, activity planner"
+      }
     ],
     "features": [
       "FYN Weather Gateway on our servers",
@@ -7489,6 +7737,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       "Air quality index (AQI) & UV index",
       "Activity planner & what-to-wear tips",
       "Compact GPS, °C/°F, and refresh controls"
+    ],
+    "useCases": [
+      {
+        "title": "Village search before you travel",
+        "description": "Type a Himachal village, pick the Google suggestion, and read the next 24 hours of rain probability — not just a city-level blob."
+      },
+      {
+        "title": "GPS where you stand",
+        "description": "Allow location on first visit (or tap GPS) so the search bar and hero card match reverse-geocoded coordinates."
+      },
+      {
+        "title": "AQI and UV with the temperature",
+        "description": "Check air quality and UV on the same forecast so you are not opening a second weather site."
+      }
     ],
     "faqs": [
       {
@@ -7505,7 +7767,7 @@ export const pageOverrides: Record<string, PageOverride> = {
       },
       {
         "question": "How does My Location / GPS work?",
-        "answer": "Tap GPS to use your device location. The search bar updates to the reverse-geocoded place name. If GPS is denied, we fall back to IP-based region detection."
+        "answer": "On first open we ask for location permission and load weather for your coordinates. Tap GPS anytime to refresh. If you deny permission, we fall back to IP-based region detection — or search a city manually."
       },
       {
         "question": "Which places are supported?",
@@ -7669,30 +7931,26 @@ export const pageOverrides: Record<string, PageOverride> = {
     ],
     "useCases": [
       {
-        "title": "Blog and article writing",
-        "description": "Writers and content creators use the Word Counter to stay within target word limits and estimate reading time for posts. It helps optimize content length for both SEO and reader engagement."
+        "title": "Essay length check",
+        "description": "Paste a draft and watch words and characters update as you trim."
       },
       {
-        "title": "Academic essays and assignments",
-        "description": "Students check word counts to meet assignment requirements and ensure essays are within specified limits. The character count is useful for abstract or title length constraints."
+        "title": "Caption or tweet limit",
+        "description": "Use character count (with/without spaces) before you hit a platform cap."
       },
       {
-        "title": "Social media and captions",
-        "description": "Platforms like Twitter and LinkedIn have character limits. The Word Counter helps craft posts that fit within these limits while tracking words for longer captions."
-      },
-      {
-        "title": "SEO and marketing copy",
-        "description": "Marketers use word and character metrics to optimize meta descriptions, headlines, and landing page copy. Reading time helps plan content length for better dwell time."
-      },
-      {
-        "title": "Legal and professional documents",
-        "description": "Contracts, reports, and briefs often have strict length requirements. The tool provides precise counts to meet those requirements without manual counting."
+        "title": "Reading-time estimate",
+        "description": "Check estimated reading time for a blog post before you publish."
       }
     ],
     "examples": [
       {
-        "input": "\"This is a simple sentence example.\"",
-        "output": "Words: 5\nCharacters: 28\nSentences: 1\nParagraphs: 1"
+        "input": "Paste a 520-word blog draft",
+        "output": "Words: 520 · Characters (with spaces) · Sentences · ~ Reading time 2 min"
+      },
+      {
+        "input": "Instagram caption draft under a 2,200 character cap",
+        "output": "Live character count updates as you trim; words and paragraphs shown beside it"
       }
     ],
     "whenToUse": [

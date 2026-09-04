@@ -145,8 +145,8 @@ const Base64Converter = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 p-4">
-      <Card className="bg-white dark:bg-gray-800">
+    <div className="w-full space-y-6">
+      <Card className="bg-card">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-gray-900 dark:text-gray-100">
             <Binary className="h-6 w-6" />
@@ -217,7 +217,7 @@ const Base64Converter = () => {
                   placeholder={mode === 'encode' ? 'Enter text to encode...' : 'Enter Base64 string to decode...'}
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
-                  className="min-h-32 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                  className="min-h-32 bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                 />
               </div>
 
@@ -248,7 +248,7 @@ const Base64Converter = () => {
                     id="textOutput"
                     value={outputText}
                     readOnly
-                    className="min-h-32 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                    className="min-h-32 bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                   />
                 </div>
               )}
@@ -303,7 +303,7 @@ const Base64Converter = () => {
                           id="imageBase64"
                           value={inputText}
                           readOnly
-                          className="min-h-32 font-mono text-xs bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                          className="min-h-32 font-mono text-xs bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                         />
                         {inputText && (
                           <div className="flex flex-wrap gap-2">
@@ -328,7 +328,7 @@ const Base64Converter = () => {
                       placeholder="Paste Base64 string or a full Data URL (e.g., data:image/png;base64,...)"
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
-                      className="min-h-32 font-mono text-xs bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                      className="min-h-32 font-mono text-xs bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                     />
                   </div>
                   
@@ -407,7 +407,7 @@ const Base64Converter = () => {
                           id="audioBase64"
                           value={inputText}
                           readOnly
-                          className="min-h-32 font-mono text-xs bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                          className="min-h-32 font-mono text-xs bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                         />
                         {inputText && (
                           <div className="flex flex-wrap gap-2">
@@ -432,7 +432,7 @@ const Base64Converter = () => {
                       placeholder="Paste Base64 string or a full Data URL (e.g., data:audio/mpeg;base64,...)"
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
-                      className="min-h-32 font-mono text-xs bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                      className="min-h-32 font-mono text-xs bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                     />
                   </div>
                   

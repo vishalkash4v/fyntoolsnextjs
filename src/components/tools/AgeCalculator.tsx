@@ -237,7 +237,7 @@ const AgeCalculator = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 px-4 sm:px-6">
+    <div className="w-full space-y-6 sm:space-y-8 px-4 sm:px-6">
       {/* Hero Section */}
       <div className="text-center space-y-3 sm:space-y-4">
         <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 mb-2 sm:mb-4">

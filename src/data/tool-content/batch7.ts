@@ -9,8 +9,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       "title": "Add Name & Date on Passport Photo",
       "h1": "Add Name & Date on Photo — Passport Size",
       "metaDescription": "Overlay name and date on passport photos for online application forms. Browser-based editor with download — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Add Name & Date on Photo: Add name and date on passport photographs for online application forms. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Add Name & Date on Photo: Overlays name and date on a passport-style photo for portal uploads. Input: Photo + name + date. Output: Annotated image download.",
       "processingNote": "Photo editing runs in your browser. Verify final dimensions against the official portal you are applying through.",
       "ioContract": {
           "inputs": "Passport photo upload, name text, date text, position/font size",
@@ -27,57 +27,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Add Name & Date on Photo on FYN Tools add name and date on passport photographs for online application forms. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Add Name & Date on Photo: Overlays name and date on a passport-style photo for portal uploads.",
+          "Inputs: Photo + name + date. Outputs: Annotated image download. Mistake to avoid: covering the face with text — keep the overlay in the margin the portal allows."
       ],
-      "overview": "Add name and date on passport photographs for online application forms.",
-      "howItWorks": "Add Name & Date on Photo processes your upload in the browser and shows a preview you can download.",
+      "overview": "Add Name & Date on Photo: Overlays name and date on a passport-style photo for portal uploads.",
+      "howItWorks": "You set photo + name + date in the live panel. Add Name & Date on Photo then overlays name and date on a passport-style photo for portal uploads. Results show as annotated image download.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need overlays name and date on a passport-style photo for portal uploads. without another app",
+          "When your input looks like: Photo + name + date"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Add name and date on passport photographs for online application forms."
+              "title": "Visa form",
+              "description": "Add name/date as the embassy PDF specifies."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Add Name & Date on Photo once, then continue in your doc or app."
+              "title": "Exam portal",
+              "description": "Match their sample overlay position."
+          },
+          {
+              "title": "Check DPI",
+              "description": "Do not upscale a tiny selfie until it blurs."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "Photo + name + date",
+              "output": "Annotated image download"
+          },
+          {
+              "input": "Open /add-name-date-photo and use the live controls",
+              "output": "Annotated image download"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Covering the face with text — keep the overlay in the margin the portal allows.",
+          "Copy Add Name & Date on Photo output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Covering the face with text — keep the overlay in the margin the portal allows.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Add Name & Date on Photo runs without installing desktop software",
+          "Accepts: Photo + name + date",
+          "Returns: Annotated image download",
+          "How-to and FAQs for Add Name & Date on Photo live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Add Name & Date on Photo runs without installing desktop software",
+          "Accepts: Photo + name + date",
+          "Returns: Annotated image download"
       ],
       "features": [
           "Add name to photo",
@@ -152,19 +159,19 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
-              "name": "Placeholder Image Generator",
-              "href": "/placeholder-image-generator",
-              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
           }
       ],
-      "conclusion": "Use Add Name & Date on Photo above, then browse related image tools linked below."
+      "conclusion": "Use Add Name & Date on Photo on this page, then browse related image tools linked below."
   },
   '/border-radius-generator': {
       "title": "Border Radius Generator — CSS Rounded Corners",
       "h1": "Border Radius Generator — Live CSS Preview",
       "metaDescription": "Drag sliders to build border-radius CSS with live preview. Copy one rule or four-corner syntax — free for web developers.",
-      "dateModified": "2026-08-29",
-      "tldr": "Border Radius Generator: Generate CSS border-radius properties for rounded corners. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Border Radius Generator: Lets you drag four corners and copy the CSS border-radius shorthand. Input: Per-corner pixel or percent values. Output: border-radius CSS + live box preview.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -181,10 +188,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Border Radius Generator on FYN Tools generate CSS border-radius properties for rounded corners. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Border Radius Generator: Lets you drag four corners and copy the CSS border-radius shorthand.",
+          "Inputs: Per-corner pixel or percent values. Outputs: border-radius CSS + live box preview. Mistake to avoid: copying only one corner when you needed the 8-value ellipsis form."
       ],
-      "overview": "Generate CSS border-radius properties for rounded corners.",
+      "overview": "Border Radius Generator: Lets you drag four corners and copy the CSS border-radius shorthand.",
       "howItWorks": "Adjust radius per corner or link all corners; the preview box and CSS output update together for copy-paste into your stylesheet.",
       "howToUse": [
           "Use the Border Radius Generator form above.",
@@ -192,18 +199,21 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to generate css border-radius properties for rounded corners",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need lets you drag four corners and copy the CSS border-radius shorthand. without another app",
+          "When your input looks like: Per-corner pixel or percent values"
       ],
       "useCases": [
           {
-              "title": "Development workflow",
-              "description": "Generate CSS border-radius properties for rounded corners."
+              "title": "Card chip",
+              "description": "Set 12px all around and paste into a card class."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Border Radius Generator once, then continue in your doc or app."
+              "title": "Pill button",
+              "description": "Push radius to 999px and copy the one-line rule."
+          },
+          {
+              "title": "Asymmetric blob",
+              "description": "Uneven corners for a hero image mask."
           }
       ],
       "examples": [
@@ -213,25 +223,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Copying only one corner when you needed the 8-value ellipsis form.",
+          "Copy Border Radius Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Copying only one corner when you needed the 8-value ellipsis form.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Border Radius Generator runs without installing desktop software",
+          "Accepts: Per-corner pixel or percent values",
+          "Returns: border-radius CSS + live box preview",
+          "How-to and FAQs for Border Radius Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Border Radius Generator runs without installing desktop software",
+          "Accepts: Per-corner pixel or percent values",
+          "Returns: border-radius CSS + live box preview"
       ],
       "features": [
           "Generate border radius",
@@ -310,17 +320,17 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           {
               "name": "Button Generator",
               "href": "/button-generator",
-              "description": "Design and generate CSS for custom buttons with various styles."
+              "description": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals"
           }
       ],
-      "conclusion": "Use Border Radius Generator above, then browse related development tools linked below."
+      "conclusion": "Use Border Radius Generator on this page, then browse related development tools linked below."
   },
   '/box-shadow-generator': {
       "title": "Box Shadow Generator — CSS Shadow Builder",
       "h1": "Box Shadow Generator — Visual CSS Shadows",
       "metaDescription": "Design CSS box-shadow with offset, blur, spread, and color. Live preview and copy-ready code — free dev tool.",
-      "dateModified": "2026-08-29",
-      "tldr": "Box Shadow Generator: Create and customize CSS box-shadow effects for your web elements. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Box Shadow Generator: Builds box-shadow from offset, blur, spread, and color with a live preview. Input: X/Y offset, blur, spread, RGBA color, inset toggle. Output: box-shadow CSS declaration.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -337,10 +347,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Box Shadow Generator on FYN Tools create and customize CSS box-shadow effects for your web elements. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Box Shadow Generator: Builds box-shadow from offset, blur, spread, and color with a live preview.",
+          "Inputs: X/Y offset, blur, spread, RGBA color, inset toggle. Outputs: box-shadow CSS declaration. Mistake to avoid: stacking a huge blur with 100% black — shadows look like a smudge, not elevation."
       ],
-      "overview": "Create and customize CSS box-shadow effects for your web elements.",
+      "overview": "Box Shadow Generator: Builds box-shadow from offset, blur, spread, and color with a live preview.",
       "howItWorks": "Tweak shadow layers on the preview card; the tool outputs the full box-shadow declaration including inset shadows when enabled.",
       "howToUse": [
           "Use the Box Shadow Generator form above.",
@@ -348,46 +358,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to create and customize css box-shadow effects for your web elements",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need builds box-shadow from offset, blur, spread, and color with a live preview. without another app",
+          "When your input looks like: X/Y offset, blur, spread, RGBA color, inset toggle"
       ],
       "useCases": [
           {
-              "title": "Development workflow",
-              "description": "Create and customize CSS box-shadow effects for your web elements."
+              "title": "Soft card lift",
+              "description": "Y 8px blur 16px 18% black — typical dashboard card."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Box Shadow Generator once, then continue in your doc or app."
+              "title": "Neumorph inset",
+              "description": "Toggle inset for a pressed control."
+          },
+          {
+              "title": "Layered glow",
+              "description": "Copy two shadows: a tight dark one plus a colored glow."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Box Shadow Generator",
-              "output": "Box Shadow Generator returns a formatted result you can copy or download"
+              "input": "X/Y offset, blur, spread, RGBA color, inset toggle",
+              "output": "box-shadow CSS declaration"
+          },
+          {
+              "input": "Open /box-shadow-generator and use the live controls",
+              "output": "box-shadow CSS declaration"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Stacking a huge blur with 100% black — shadows look like a smudge, not elevation.",
+          "Copy Box Shadow Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Stacking a huge blur with 100% black — shadows look like a smudge, not elevation.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Box Shadow Generator runs without installing desktop software",
+          "Accepts: X/Y offset, blur, spread, RGBA color, inset toggle",
+          "Returns: box-shadow CSS declaration",
+          "How-to and FAQs for Box Shadow Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Box Shadow Generator runs without installing desktop software",
+          "Accepts: X/Y offset, blur, spread, RGBA color, inset toggle",
+          "Returns: box-shadow CSS declaration"
       ],
       "features": [
           "Customize box shadow",
@@ -466,17 +483,17 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           {
               "name": "Button Generator",
               "href": "/button-generator",
-              "description": "Design and generate CSS for custom buttons with various styles."
+              "description": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals"
           }
       ],
-      "conclusion": "Use Box Shadow Generator above, then browse related development tools linked below."
+      "conclusion": "Use Box Shadow Generator on this page, then browse related development tools linked below."
   },
   '/business-idea-generator': {
       "title": "Business Idea Generator — Startup Prompts",
       "h1": "Business Idea Generator — Creative Ideas",
       "metaDescription": "Generate business ideas from your interests, skills, and market preferences. Brainstorming aid — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Business Idea Generator: Generate creative business ideas based on your preferences. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Business Idea Generator: Suggests business ideas from industry, budget, and audience filters. Input: Industry, budget band, audience. Output: Idea list with a short angle.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -493,10 +510,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Business Idea Generator on FYN Tools generate creative business ideas based on your preferences. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Business Idea Generator: Suggests business ideas from industry, budget, and audience filters.",
+          "Inputs: Industry, budget band, audience. Outputs: Idea list with a short angle. Mistake to avoid: treating a generated idea as a validated market — it is a prompt, not a business plan."
       ],
-      "overview": "Generate creative business ideas based on your preferences.",
+      "overview": "Business Idea Generator: Suggests business ideas from industry, budget, and audience filters.",
       "howItWorks": "Combines your selected tags and preferences into idea prompts you can refine offline.",
       "howToUse": [
           "Use the Business Idea Generator form above.",
@@ -504,46 +521,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to generate creative business ideas based on your preferences",
-          "For text & writing tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need suggests business ideas from industry, budget, and audience filters. without another app",
+          "When your input looks like: Industry, budget band, audience"
       ],
       "useCases": [
           {
-              "title": "Text & Writing workflow",
-              "description": "Generate creative business ideas based on your preferences."
+              "title": "Side hustle filter",
+              "description": "Set budget low and industry education for exam-prep ideas."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Business Idea Generator once, then continue in your doc or app."
+              "title": "Local services",
+              "description": "Pick a city-friendly audience and skim service-style ideas."
+          },
+          {
+              "title": "Brainstorm dump",
+              "description": "Generate a batch, copy three lines into a notes app, discard the rest."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Business Idea Generator",
-              "output": "Business Idea Generator returns a formatted result you can copy or download"
+              "input": "Industry, budget band, audience",
+              "output": "Idea list with a short angle"
+          },
+          {
+              "input": "Open /business-idea-generator and use the live controls",
+              "output": "Idea list with a short angle"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Treating a generated idea as a validated market — it is a prompt, not a business plan.",
+          "Copy Business Idea Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Treating a generated idea as a validated market — it is a prompt, not a business plan.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Business Idea Generator runs without installing desktop software",
+          "Accepts: Industry, budget band, audience",
+          "Returns: Idea list with a short angle",
+          "How-to and FAQs for Business Idea Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Business Idea Generator runs without installing desktop software",
+          "Accepts: Industry, budget band, audience",
+          "Returns: Idea list with a short angle"
       ],
       "features": [
           "Generate business ideas",
@@ -625,14 +649,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Encode and decode Base64 strings."
           }
       ],
-      "conclusion": "Use Business Idea Generator above, then browse related text & writing tools linked below."
+      "conclusion": "Use Business Idea Generator on this page, then browse related text & writing tools linked below."
   },
   '/button-generator': {
       "title": "Button Generator — CSS Button Styles",
       "h1": "Button Generator — Custom CSS Buttons",
       "metaDescription": "Design button colors, padding, radius, and hover states. Copy CSS and HTML snippet — free UI dev tool.",
-      "dateModified": "2026-08-29",
-      "tldr": "Button Generator: Design and generate CSS for custom buttons with various styles. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Button Generator: Builds HTML/CSS/React for a button from presets (neon, glass, Instagram) plus fonts, hover gradients, glow, and stickers. Input: Preset click or manual text, colors, radius, animations, emoji/logo. Output: Live preview plus copyable HTML, CSS keyframes, and React snippet.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -649,72 +673,79 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Button Generator on FYN Tools design and generate CSS for custom buttons with various styles. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Button Generator: Builds HTML/CSS/React for a button from presets (neon, glass, Instagram) plus fonts, hover gradients, glow, and stickers.",
+          "Inputs: Preset click or manual text, colors, radius, animations, emoji/logo. Outputs: Live preview plus copyable HTML, CSS keyframes, and React snippet. Mistake to avoid: leaving a previous glow/gradient on — click a preset to fully replace settings, or Reset all."
       ],
-      "overview": "Design and generate CSS for custom buttons with various styles.",
-      "howItWorks": "Button Generator updates live preview and code output as you adjust controls.",
+      "overview": "Button Generator: Builds HTML/CSS/React for a button from presets (neon, glass, Instagram) plus fonts, hover gradients, glow, and stickers.",
+      "howItWorks": "You set preset click or manual text, colors, radius, animations, emoji/logo in the live panel. Button Generator then builds HTML/CSS/React for a button from presets (neon, glass, Instagram) plus fonts, hover gradients, glow, and stickers. Results show as live preview plus copyable html, css keyframes, and react snippet.",
       "howToUse": [
           "Use the Button Generator form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to design and generate css for custom buttons with various styles",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need builds HTML/CSS/React for a button from presets (neon, glass, Instagram) plus fonts, hover gradients, glow, and stickers. without another app",
+          "When your input looks like: Preset click or manual text, colors, radius, animations, emoji/logo"
       ],
       "useCases": [
           {
-              "title": "Development workflow",
-              "description": "Design and generate CSS for custom buttons with various styles."
+              "title": "CTA in five seconds",
+              "description": "Click Primary CTA or Sunset Gradient; export CSS into your landing page."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Button Generator once, then continue in your doc or app."
+              "title": "Neon with hover pulse",
+              "description": "Load Neon Cyberpunk, keep glow, copy the keyframes block with the button class."
+          },
+          {
+              "title": "Icon + pill",
+              "description": "Pick Pill Success, add a sticker, set position left/right, copy HTML."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Button Generator",
-              "output": "Button Generator returns a formatted result you can copy or download"
+              "input": "Preset click or manual text, colors, radius, animations, emoji/logo",
+              "output": "Live preview plus copyable HTML, CSS keyframes, and React snippet"
+          },
+          {
+              "input": "Open /button-generator and use the live controls",
+              "output": "Live preview plus copyable HTML, CSS keyframes, and React snippet"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Leaving a previous glow/gradient on — click a preset to fully replace settings, or Reset all.",
+          "Copy Button Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Leaving a previous glow/gradient on — click a preset to fully replace settings, or Reset all.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Button Generator runs without installing desktop software",
+          "Accepts: Preset click or manual text, colors, radius, animations, emoji/logo",
+          "Returns: Live preview plus copyable HTML, CSS keyframes, and React snippet",
+          "How-to and FAQs for Button Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Button Generator runs without installing desktop software",
+          "Accepts: Preset click or manual text, colors, radius, animations, emoji/logo",
+          "Returns: Live preview plus copyable HTML, CSS keyframes, and React snippet"
       ],
       "features": [
-          "Design custom buttons",
-          "Multiple button styles",
-          "Custom colors",
-          "Custom sizes",
-          "Border radius",
-          "Shadow effects",
-          "Hover effects",
-          "Copy CSS code"
+          "24 popular button presets",
+          "40+ Google fonts",
+          "Hover gradient",
+          "Idle & hover animations",
+          "Sticker packs (animals pets birds nature anime)",
+          "Upload logo/image icon",
+          "Glow & shadow styles",
+          "Copy HTML CSS React"
       ],
       "faqs": [
           {
               "question": "How do I use Button Generator?",
-              "answer": "Design and generate CSS for custom buttons with various styles. See How to Use above."
+              "answer": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy HTML/CSS/React. See How to Use above."
           },
           {
               "question": "Is Button Generator free?",
@@ -781,14 +812,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Generate CSS border-radius properties for rounded corners."
           }
       ],
-      "conclusion": "Use Button Generator above, then browse related development tools linked below."
+      "conclusion": "Use Button Generator on this page, then browse related development tools linked below."
   },
   '/coin-flip': {
       "title": "Coin Flip — Heads or Tails",
       "h1": "Coin Flip Simulator — Random Decision",
       "metaDescription": "Flip a virtual coin for heads or tails. Fair random outcome in the browser — free decision maker.",
-      "dateModified": "2026-08-29",
-      "tldr": "Coin Flip: Simulate a coin flip to make random decisions. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Coin Flip: Animates a coin toss with a 50/50 result and a short history. Input: Click Flip. Output: Heads or Tails plus session counts.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -805,10 +836,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Coin Flip on FYN Tools simulate a coin flip to make random decisions. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Coin Flip: Animates a coin toss with a 50/50 result and a short history.",
+          "Inputs: Click Flip. Outputs: Heads or Tails plus session counts. Mistake to avoid: using it as a cryptographic random source — it is a fair UI toss, not a security RNG."
       ],
-      "overview": "Simulate a coin flip to make random decisions.",
+      "overview": "Coin Flip: Animates a coin toss with a 50/50 result and a short history.",
       "howItWorks": "Uses browser randomness to pick heads or tails with animation feedback.",
       "howToUse": [
           "Use the Coin Flip form above.",
@@ -816,46 +847,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to simulate a coin flip to make random decisions",
-          "For utility tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need animates a coin toss with a 50/50 result and a short history. without another app",
+          "When your input looks like: Click Flip"
       ],
       "useCases": [
           {
-              "title": "Utility workflow",
-              "description": "Simulate a coin flip to make random decisions."
+              "title": "Two-option pick",
+              "description": "Assign heads/tails to two restaurants and flip once."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Coin Flip once, then continue in your doc or app."
+              "title": "Best of three",
+              "description": "Flip three times and read the history counts."
+          },
+          {
+              "title": "Classroom demo",
+              "description": "Show a visible random choice without a physical coin."
           }
       ],
       "examples": [
           {
-              "input": "Click \"Flip Coin\" once",
-              "output": "Heads or Tails after a short spin — fair 50/50 result"
+              "input": "Click Flip",
+              "output": "Heads or Tails plus session counts"
+          },
+          {
+              "input": "Open /coin-flip and use the live controls",
+              "output": "Heads or Tails plus session counts"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using it as a cryptographic random source — it is a fair UI toss, not a security RNG.",
+          "Copy Coin Flip output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Using it as a cryptographic random source — it is a fair UI toss, not a security RNG.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Coin Flip runs without installing desktop software",
+          "Accepts: Click Flip",
+          "Returns: Heads or Tails plus session counts",
+          "How-to and FAQs for Coin Flip live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Coin Flip runs without installing desktop software",
+          "Accepts: Click Flip",
+          "Returns: Heads or Tails plus session counts"
       ],
       "features": [
           "Flip coin",
@@ -936,14 +974,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Roll virtual dice with customizable sides and quantities."
           }
       ],
-      "conclusion": "Use Coin Flip above, then browse related utility tools linked below."
+      "conclusion": "Use Coin Flip on this page, then browse related utility tools linked below."
   },
   '/color-converter': {
       "title": "Color Converter — HEX, RGB, HSL",
       "h1": "Color Converter — Convert Color Formats",
       "metaDescription": "Convert colors between HEX, RGB, and HSL with live preview swatch. Free for designers and developers.",
-      "dateModified": "2026-08-29",
-      "tldr": "Color Converter: Convert colors between HEX, RGB, HSL, and other formats. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Color Converter: Converts HEX, RGB, HSL, and related color strings both ways. Input: A color in one notation. Output: The same color in the other notations.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value and unit/color format selectors",
@@ -960,29 +998,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Color Converter on FYN Tools convert colors between HEX, RGB, HSL, and other formats. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Color Converter: Converts HEX, RGB, HSL, and related color strings both ways.",
+          "Inputs: A color in one notation. Outputs: The same color in the other notations. Mistake to avoid: pasting a 3-digit hex without # and wondering why it failed — include # or expand to 6 digits."
       ],
-      "overview": "Convert colors between HEX, RGB, HSL, and other formats.",
-      "howItWorks": "Color Converter runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Color Converter: Converts HEX, RGB, HSL, and related color strings both ways.",
+      "howItWorks": "You set a color in one notation in the live panel. Color Converter then converts HEX, RGB, HSL, and related color strings both ways. Results show as the same color in the other notations.",
       "howToUse": [
           "Use the Color Converter form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to convert colors between hex, rgb, hsl, and other formats",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need converts HEX, RGB, HSL, and related color strings both ways. without another app",
+          "When your input looks like: A color in one notation"
       ],
       "useCases": [
           {
-              "title": "Converter workflow",
-              "description": "Convert colors between HEX, RGB, HSL, and other formats."
+              "title": "Design token",
+              "description": "Paste #2563eb and copy rgb() for a CSS variable."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Color Converter once, then continue in your doc or app."
+              "title": "Figma to CSS",
+              "description": "Convert HSL from a design file into HEX for Tailwind."
+          },
+          {
+              "title": "Opacity check",
+              "description": "Move through RGB to confirm the same hue before adding alpha."
           }
       ],
       "examples": [
@@ -992,25 +1033,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Pasting a 3-digit hex without # and wondering why it failed — include # or expand to 6 digits.",
+          "Copy Color Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Pasting a 3-digit hex without # and wondering why it failed — include # or expand to 6 digits.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Color Converter runs without installing desktop software",
+          "Accepts: A color in one notation",
+          "Returns: The same color in the other notations",
+          "How-to and FAQs for Color Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Color Converter runs without installing desktop software",
+          "Accepts: A color in one notation",
+          "Returns: The same color in the other notations"
       ],
       "features": [
           "HEX to RGB",
@@ -1057,14 +1098,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert between different units of measurement."
           }
       ],
-      "conclusion": "Use Color Converter above, then browse related converter tools linked below."
+      "conclusion": "Use Color Converter on this page, then browse related converter tools linked below."
   },
   '/conception-date-calculator': {
       "title": "Conception Date Calculator — Estimate from Due Date",
       "h1": "Conception Date Calculator — Reverse Due Date Math",
       "metaDescription": "Estimate conception window from due date and cycle length. Educational calendar tool — ultrasound dating is more precise.",
-      "dateModified": "2026-08-29",
-      "tldr": "Conception Date Calculator: Estimate your conception date from due date and cycle details. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Conception Date Calculator: Works backward from a due date or gestational age to a conception window — educational. Input: EDD or week of pregnancy. Output: Approximate conception range.",
       "processingNote": "Reverse calendar estimate — not paternity or clinical dating.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -1081,57 +1122,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Conception Date Calculator on FYN Tools estimate your conception date from due date and cycle details. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Conception Date Calculator: Works backward from a due date or gestational age to a conception window — educational.",
+          "Inputs: EDD or week of pregnancy. Outputs: Approximate conception range. Mistake to avoid: using it for legal paternity — windows are wide and ovulation varies."
       ],
-      "overview": "Estimate your conception date from due date and cycle details.",
-      "howItWorks": "Conception Date Calculator applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "Conception Date Calculator: Works backward from a due date or gestational age to a conception window — educational.",
+      "howItWorks": "You set edd or week of pregnancy in the live panel. Conception Date Calculator then works backward from a due date or gestational age to a conception window — educational. Results show as approximate conception range.",
       "howToUse": [
           "Enter dates or symptoms in Conception Date Calculator.",
           "Review the estimate or log.",
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to estimate your conception date from due date and cycle details",
-          "Before planning travel, workouts, or appointments around your cycle",
-          "On mobile for a quick date estimate without installing an app"
+          "When you need works backward from a due date or gestational age to a conception window — educational. without another app",
+          "When your input looks like: EDD or week of pregnancy"
       ],
       "useCases": [
           {
-              "title": "Pregnancy workflow",
-              "description": "Estimate your conception date from due date and cycle details."
+              "title": "Curiosity range",
+              "description": "From a given EDD, see a two-week-ish window."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Conception Date Calculator once, then continue in your doc or app."
+              "title": "Scan vs LMP",
+              "description": "If dates conflict, follow the clinician’s dating."
+          },
+          {
+              "title": "Not forensic",
+              "description": "Do not treat the output as proof of a calendar day."
           }
       ],
       "examples": [
           {
-              "input": "Open Conception Date Calculator and enter cycle dates or symptoms",
-              "output": "Calendar or log updates — educational estimate only"
+              "input": "EDD or week of pregnancy",
+              "output": "Approximate conception range"
+          },
+          {
+              "input": "Open /conception-date-calculator and use the live controls",
+              "output": "Approximate conception range"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using it for legal paternity — windows are wide and ovulation varies.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Using it for legal paternity — windows are wide and ovulation varies.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Conception Date Calculator runs without installing desktop software",
+          "Accepts: EDD or week of pregnancy",
+          "Returns: Approximate conception range",
+          "How-to and FAQs for Conception Date Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Conception Date Calculator runs without installing desktop software",
+          "Accepts: EDD or week of pregnancy",
+          "Returns: Approximate conception range"
       ],
       "features": [
           "Estimate conception date",
@@ -1191,14 +1239,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Get trimester diet tips, calorie goals, and food lists."
           }
       ],
-      "conclusion": "Use Conception Date Calculator above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Conception Date Calculator on this page, then browse related pregnancy tools linked below."
   },
   '/contraction-timer': {
       "title": "Contraction Timer — Duration & Intervals",
       "h1": "Contraction Timer — Track Labor Contractions",
       "metaDescription": "Time contraction duration and intervals with one tap. History log for labor patterns — free, private, browser-based. Not medical advice.",
-      "dateModified": "2026-08-29",
-      "tldr": "Contraction Timer: Measure contraction duration and intervals with history logs. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Contraction Timer: Times contraction start/stop locally so you can describe frequency to a maternity unit. Input: Tap start/stop per contraction. Output: Duration and interval log.",
       "processingNote": "Contraction data stays in your browser. Call your maternity unit per local guidance — this tool does not diagnose labor stage.",
       "ioContract": {
           "inputs": "Start/stop tap for each contraction",
@@ -1215,10 +1263,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Contraction Timer on FYN Tools measure contraction duration and intervals with history logs. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Contraction Timer: Times contraction start/stop locally so you can describe frequency to a maternity unit.",
+          "Inputs: Tap start/stop per contraction. Outputs: Duration and interval log. Mistake to avoid: using the timer instead of calling your unit when contractions are strong or you are concerned."
       ],
-      "overview": "Measure contraction duration and intervals with history logs.",
+      "overview": "Contraction Timer: Times contraction start/stop locally so you can describe frequency to a maternity unit.",
       "howItWorks": "Tap start when a contraction begins and stop when it ends. The tool records duration and calculates the gap since the previous contraction.",
       "howToUse": [
           "Tap start when a contraction begins.",
@@ -1226,46 +1274,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Review duration and interval history."
       ],
       "whenToUse": [
-          "During the third trimester when timing contractions or kick counts",
-          "When your clinician asks for a printed or screenshot log",
-          "On mobile at bedside — data stays in this browser session"
+          "When you need times contraction start/stop locally so you can describe frequency to a maternity unit. without another app",
+          "When your input looks like: Tap start/stop per contraction"
       ],
       "useCases": [
           {
-              "title": "Pregnancy workflow",
-              "description": "Measure contraction duration and intervals with history logs."
+              "title": "Early labor log",
+              "description": "Record a few contractions and note the gap."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Contraction Timer once, then continue in your doc or app."
+              "title": "Share timestamps",
+              "description": "Read durations to a nurse on the phone."
+          },
+          {
+              "title": "Not a diagnosis",
+              "description": "It does not tell you if you are in active labor."
           }
       ],
       "examples": [
           {
-              "input": "Start timer at first contraction → Stop at end → Repeat for next",
-              "output": "Interval and duration logged; pattern table shows time between contractions"
+              "input": "Tap start/stop per contraction",
+              "output": "Duration and interval log"
+          },
+          {
+              "input": "Open /contraction-timer and use the live controls",
+              "output": "Duration and interval log"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using the timer instead of calling your unit when contractions are strong or you are concerned.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Using the timer instead of calling your unit when contractions are strong or you are concerned.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Contraction Timer runs without installing desktop software",
+          "Accepts: Tap start/stop per contraction",
+          "Returns: Duration and interval log",
+          "How-to and FAQs for Contraction Timer live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Contraction Timer runs without installing desktop software",
+          "Accepts: Tap start/stop per contraction",
+          "Returns: Duration and interval log"
       ],
       "features": [
           "Measure contraction duration",
@@ -1327,14 +1382,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Get trimester diet tips, calorie goals, and food lists."
           }
       ],
-      "conclusion": "Use Contraction Timer above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Contraction Timer on this page, then browse related pregnancy tools linked below."
   },
   '/countdown-timer': {
       "title": "Countdown Timer — Set Target Time",
       "h1": "Countdown Timer — Time Remaining",
       "metaDescription": "Set hours, minutes, and seconds to count down to zero with alert. Free browser timer.",
-      "dateModified": "2026-08-29",
-      "tldr": "Countdown Timer: Set a timer and count down to a specific time. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Countdown Timer: Counts down from a duration you set and alerts at zero. Input: Minutes/seconds or a target duration. Output: Live remaining time, optional tab title.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -1351,57 +1406,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Countdown Timer on FYN Tools set a timer and count down to a specific time. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Countdown Timer: Counts down from a duration you set and alerts at zero.",
+          "Inputs: Minutes/seconds or a target duration. Outputs: Live remaining time, optional tab title. Mistake to avoid: closing the tab and expecting the timer to keep running on the server — it is in-browser."
       ],
-      "overview": "Set a timer and count down to a specific time.",
-      "howItWorks": "Countdown Timer runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Countdown Timer: Counts down from a duration you set and alerts at zero.",
+      "howItWorks": "You set minutes/seconds or a target duration in the live panel. Countdown Timer then counts down from a duration you set and alerts at zero. Results show as live remaining time, optional tab title.",
       "howToUse": [
           "Use the Countdown Timer form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to set a timer and count down to a specific time",
-          "For timer tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need counts down from a duration you set and alerts at zero. without another app",
+          "When your input looks like: Minutes/seconds or a target duration"
       ],
       "useCases": [
           {
-              "title": "Timer workflow",
-              "description": "Set a timer and count down to a specific time."
+              "title": "Pomodoro 25:00",
+              "description": "Set 25 minutes, start, work until the alert."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Countdown Timer once, then continue in your doc or app."
+              "title": "Exam section",
+              "description": "Set the remaining minutes for a paper section."
+          },
+          {
+              "title": "Kitchen backup",
+              "description": "Use it when the phone timer is already busy."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Countdown Timer",
-              "output": "Countdown Timer returns a formatted result you can copy or download"
+              "input": "Minutes/seconds or a target duration",
+              "output": "Live remaining time, optional tab title"
+          },
+          {
+              "input": "Open /countdown-timer and use the live controls",
+              "output": "Live remaining time, optional tab title"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Closing the tab and expecting the timer to keep running on the server — it is in-browser.",
+          "Copy Countdown Timer output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Closing the tab and expecting the timer to keep running on the server — it is in-browser.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Countdown Timer runs without installing desktop software",
+          "Accepts: Minutes/seconds or a target duration",
+          "Returns: Live remaining time, optional tab title",
+          "How-to and FAQs for Countdown Timer live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Countdown Timer runs without installing desktop software",
+          "Accepts: Minutes/seconds or a target duration",
+          "Returns: Live remaining time, optional tab title"
       ],
       "features": [
           "Set countdown timer",
@@ -1438,14 +1500,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Track elapsed time with a stopwatch."
           }
       ],
-      "conclusion": "Use Countdown Timer above, then browse related timer tools linked below."
+      "conclusion": "Use Countdown Timer on this page, then browse related timer tools linked below."
   },
   '/currency-converter': {
       "title": "Currency Converter — Live Exchange Rates",
       "h1": "Currency Converter — FX Conversion",
       "metaDescription": "Convert amounts between world currencies using fetched exchange rates. Free currency calculator.",
-      "dateModified": "2026-08-29",
-      "tldr": "Currency Converter: Convert between different currencies. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Currency Converter: Converts an amount between currencies using a public rate feed. Input: Amount, from currency, to currency. Output: Converted amount at the latest available mid-market style rate.",
       "processingNote": "Rates come from a public API and are indicative — banks use different spreads.",
       "ioContract": {
           "inputs": "Amount, from currency, to currency",
@@ -1462,57 +1524,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Currency Converter on FYN Tools convert between different currencies. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Currency Converter: Converts an amount between currencies using a public rate feed.",
+          "Inputs: Amount, from currency, to currency. Outputs: Converted amount at the latest available mid-market style rate. Not a bank quote — spreads differ Mistake to avoid: using the result as a wire-transfer quote without checking your bank’s rate."
       ],
-      "overview": "Convert between different currencies.",
-      "howItWorks": "Currency Converter runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Currency Converter: Converts an amount between currencies using a public rate feed.",
+      "howItWorks": "You set amount, from currency, to currency in the live panel. Currency Converter then converts an amount between currencies using a public rate feed. Results show as converted amount at the latest available mid-market style rate.",
       "howToUse": [
           "Enter amounts and rates in Currency Converter.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Currency Converter",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need converts an amount between currencies using a public rate feed. without another app",
+          "When your input looks like: Amount, from currency, to currency"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Convert between different currencies."
+              "title": "Travel cash guess",
+              "description": "Convert INR to EUR for a weekend budget."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Currency Converter once, then continue in your doc or app."
+              "title": "Invoice check",
+              "description": "See USD→INR before you send an international invoice."
+          },
+          {
+              "title": "Compare two pairs",
+              "description": "Flip from/to to sanity-check the inverse."
           }
       ],
       "examples": [
           {
-              "input": "Enter labeled amounts in Currency Converter",
-              "output": "On-screen breakdown with totals you can copy or screenshot"
+              "input": "Amount, from currency, to currency",
+              "output": "Converted amount at the latest available mid-market style rate"
+          },
+          {
+              "input": "Open /currency-converter and use the live controls",
+              "output": "Converted amount at the latest available mid-market style rate"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using the result as a wire-transfer quote without checking your bank’s rate.",
+          "Copy Currency Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Using the result as a wire-transfer quote without checking your bank’s rate.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Currency Converter runs without installing desktop software",
+          "Accepts: Amount, from currency, to currency",
+          "Returns: Converted amount at the latest available mid-market style rate",
+          "How-to and FAQs for Currency Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Currency Converter runs without installing desktop software",
+          "Accepts: Amount, from currency, to currency",
+          "Returns: Converted amount at the latest available mid-market style rate"
       ],
       "features": [
           "Multiple currencies",
@@ -1594,14 +1663,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use Currency Converter above, then browse related number tools linked below."
+      "conclusion": "Use Currency Converter on this page, then browse related number tools linked below."
   },
   '/daily-task-report-saver': {
       "title": "Daily Task Report Saver — Routine & Reports",
       "h1": "Daily Task Report Saver — Log by Date",
       "metaDescription": "Save daily timetable, routine, work report, and notes by date. Local browser storage — free planner.",
-      "dateModified": "2026-08-29",
-      "tldr": "Daily Task Report Saver: Save your daily timetable, routine, work report, and notes by date. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Daily Task Report Saver: Stores a dated work/report note in localStorage on this device. Input: Date, tasks, notes. Output: Saved daily log you can reopen and copy.",
       "processingNote": "Reports save in localStorage — back up important logs externally.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -1618,57 +1687,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Daily Task Report Saver on FYN Tools save your daily timetable, routine, work report, and notes by date. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Daily Task Report Saver: Stores a dated work/report note in localStorage on this device.",
+          "Inputs: Date, tasks, notes. Outputs: Saved daily log you can reopen and copy. Mistake to avoid: clearing site data and expecting the log to survive — export first."
       ],
-      "overview": "Save your daily timetable, routine, work report, and notes by date.",
-      "howItWorks": "Daily Task Report Saver runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Daily Task Report Saver: Stores a dated work/report note in localStorage on this device.",
+      "howItWorks": "You set date, tasks, notes in the live panel. Daily Task Report Saver then stores a dated work/report note in localStorage on this device. Results show as saved daily log you can reopen and copy.",
       "howToUse": [
           "Use the Daily Task Report Saver form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to save your daily timetable, routine, work report, and notes by date",
-          "For utility tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need stores a dated work/report note in localStorage on this device. without another app",
+          "When your input looks like: Date, tasks, notes"
       ],
       "useCases": [
           {
-              "title": "Utility workflow",
-              "description": "Save your daily timetable, routine, work report, and notes by date."
+              "title": "EOD standup",
+              "description": "Write shipped items, save, paste into Slack tomorrow."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Daily Task Report Saver once, then continue in your doc or app."
+              "title": "Client hours",
+              "description": "Log tasks per day before invoicing."
+          },
+          {
+              "title": "Habit trail",
+              "description": "Keep a simple dated diary without another app."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Daily Task Report Saver",
-              "output": "Daily Task Report Saver returns a formatted result you can copy or download"
+              "input": "Date, tasks, notes",
+              "output": "Saved daily log you can reopen and copy"
+          },
+          {
+              "input": "Open /daily-task-report-saver and use the live controls",
+              "output": "Saved daily log you can reopen and copy"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Clearing site data and expecting the log to survive — export first.",
+          "Copy Daily Task Report Saver output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Clearing site data and expecting the log to survive — export first.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Daily Task Report Saver runs without installing desktop software",
+          "Accepts: Date, tasks, notes",
+          "Returns: Saved daily log you can reopen and copy",
+          "How-to and FAQs for Daily Task Report Saver live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Daily Task Report Saver runs without installing desktop software",
+          "Accepts: Date, tasks, notes",
+          "Returns: Saved daily log you can reopen and copy"
       ],
       "features": [
           "Save daily timetable",
@@ -1748,14 +1824,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Roll virtual dice with customizable sides and quantities."
           }
       ],
-      "conclusion": "Use Daily Task Report Saver above, then browse related utility tools linked below."
+      "conclusion": "Use Daily Task Report Saver on this page, then browse related utility tools linked below."
   },
   '/date-difference-calculator': {
       "title": "Date Difference Calculator — Days Between Dates",
       "h1": "Date Difference Calculator — Count Days",
       "metaDescription": "Find days, weeks, and months between two calendar dates. Free date math tool.",
-      "dateModified": "2026-08-29",
-      "tldr": "Date Difference Calculator: Calculate the difference between two dates. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Date Difference Calculator: Counts days, weeks, and months between two calendar dates. Input: Start date and end date. Output: Elapsed duration breakdown.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -1772,29 +1848,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Date Difference Calculator on FYN Tools calculate the difference between two dates. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Date Difference Calculator: Counts days, weeks, and months between two calendar dates.",
+          "Inputs: Start date and end date. Outputs: Elapsed duration breakdown. Mistake to avoid: including or excluding the end date inconsistently — check whether you need “nights” vs “days”."
       ],
-      "overview": "Calculate the difference between two dates.",
-      "howItWorks": "Date Difference Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Date Difference Calculator: Counts days, weeks, and months between two calendar dates.",
+      "howItWorks": "You set start date and end date in the live panel. Date Difference Calculator then counts days, weeks, and months between two calendar dates. Results show as elapsed duration breakdown.",
       "howToUse": [
           "Enter amounts and rates in Date Difference Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Date Difference Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need counts days, weeks, and months between two calendar dates. without another app",
+          "When your input looks like: Start date and end date"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate the difference between two dates."
+              "title": "Notice period",
+              "description": "From resignation date to last working day."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Date Difference Calculator once, then continue in your doc or app."
+              "title": "Project span",
+              "description": "Kickoff to delivery for a status slide."
+          },
+          {
+              "title": "Age in days",
+              "description": "Birthday to today when a form wants exact days."
           }
       ],
       "examples": [
@@ -1804,25 +1883,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Including or excluding the end date inconsistently — check whether you need “nights” vs “days”.",
+          "Copy Date Difference Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Including or excluding the end date inconsistently — check whether you need “nights” vs “days”.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Date Difference Calculator runs without installing desktop software",
+          "Accepts: Start date and end date",
+          "Returns: Elapsed duration breakdown",
+          "How-to and FAQs for Date Difference Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Date Difference Calculator runs without installing desktop software",
+          "Accepts: Start date and end date",
+          "Returns: Elapsed duration breakdown"
       ],
       "features": [
           "Calculate days between dates",
@@ -1903,14 +1982,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use Date Difference Calculator above, then browse related number tools linked below."
+      "conclusion": "Use Date Difference Calculator on this page, then browse related number tools linked below."
   },
   '/dice-roller': {
       "title": "Dice Roller — Custom Dice Online",
       "h1": "Dice Roller — Roll Virtual Dice",
       "metaDescription": "Roll d6, d20, or custom dice with quantity. Sum results for tabletop games — free in browser.",
-      "dateModified": "2026-08-29",
-      "tldr": "Dice Roller: Roll virtual dice with customizable sides and quantities. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Dice Roller: Rolls one or more dice and shows the total. Input: Die type and count. Output: Face values and sum.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -1927,29 +2006,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Dice Roller on FYN Tools roll virtual dice with customizable sides and quantities. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Dice Roller: Rolls one or more dice and shows the total.",
+          "Inputs: Die type and count. Outputs: Face values and sum. Mistake to avoid: assuming cryptographic fairness for gambling — this is a casual roller."
       ],
-      "overview": "Roll virtual dice with customizable sides and quantities.",
-      "howItWorks": "Dice Roller runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Dice Roller: Rolls one or more dice and shows the total.",
+      "howItWorks": "You set die type and count in the live panel. Dice Roller then rolls one or more dice and shows the total. Results show as face values and sum.",
       "howToUse": [
           "Use the Dice Roller form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to roll virtual dice with customizable sides and quantities",
-          "For utility tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need rolls one or more dice and shows the total. without another app",
+          "When your input looks like: Die type and count"
       ],
       "useCases": [
           {
-              "title": "Utility workflow",
-              "description": "Roll virtual dice with customizable sides and quantities."
+              "title": "Board game",
+              "description": "Roll 2d6 without hunting physical dice."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Dice Roller once, then continue in your doc or app."
+              "title": "RPG check",
+              "description": "Roll a d20 and read the face."
+          },
+          {
+              "title": "Classroom random",
+              "description": "Pick a number 1–6 for a student."
           }
       ],
       "examples": [
@@ -1959,25 +2041,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Assuming cryptographic fairness for gambling — this is a casual roller.",
+          "Copy Dice Roller output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Assuming cryptographic fairness for gambling — this is a casual roller.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Dice Roller runs without installing desktop software",
+          "Accepts: Die type and count",
+          "Returns: Face values and sum",
+          "How-to and FAQs for Dice Roller live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Dice Roller runs without installing desktop software",
+          "Accepts: Die type and count",
+          "Returns: Face values and sum"
       ],
       "features": [
           "Roll dice",
@@ -2059,13 +2141,13 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Simulate a coin flip to make random decisions."
           }
       ],
-      "conclusion": "Use Dice Roller above, then browse related utility tools linked below."
+      "conclusion": "Use Dice Roller on this page, then browse related utility tools linked below."
   },
   '/emi-calculator': {
       "title": "EMI Calculator — Loan EMI, Amortization & Prepayment",
       "h1": "EMI Calculator — Monthly Installment & Interest Breakdown",
       "metaDescription": "Calculate loan EMI, total interest, and amortization schedule. Compare prepayment strategies to reduce tenure or EMI. Free, instant, browser-based.",
-      "dateModified": "2026-08-29",
+      "dateModified": "2026-09-03",
       "tldr": "Enter principal, annual interest rate, and tenure to see monthly EMI, total interest, yearly summary, and optional prepayment savings — all computed in your browser.",
       "processingNote": "Loan math runs locally in your browser. Figures are planning estimates — confirm rates and fees with your lender before signing.",
       "ioContract": {
@@ -2083,10 +2165,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "EMI Calculator on FYN Tools calculate Equated Monthly Installment (EMI) for loans. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "EMI Calculator: Computes monthly EMI, total interest, and total payable from principal, rate, and tenure.",
+          "Inputs: Loan amount, annual rate, years/months. Outputs: EMI, interest outgo, amortization-style totals. Mistake to avoid: forgetting processing fees — the EMI is the installment, not the all-in cost."
       ],
-      "overview": "Calculate Equated Monthly Installment (EMI) for loans.",
+      "overview": "EMI Calculator: Computes monthly EMI, total interest, and total payable from principal, rate, and tenure.",
       "howItWorks": "EMI uses the standard reducing-balance formula: monthly rate = annual rate ÷ 12, then EMI = P × r × (1+r)^n ÷ ((1+r)^n − 1). Prepayment adds extra principal each month and recalculates the schedule.",
       "howToUse": [
           "Enter amounts and rates in EMI Calculator.",
@@ -2094,9 +2176,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from EMI Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need computes monthly EMI, total interest, and total payable from principal, rate, and tenure. without another app",
+          "When your input looks like: Loan amount, annual rate, years/months"
       ],
       "useCases": [
           {
@@ -2123,25 +2204,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Forgetting processing fees — the EMI is the installment, not the all-in cost.",
+          "Copy EMI Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Forgetting processing fees — the EMI is the installment, not the all-in cost.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "EMI Calculator runs without installing desktop software",
+          "Accepts: Loan amount, annual rate, years/months",
+          "Returns: EMI, interest outgo, amortization-style totals",
+          "How-to and FAQs for EMI Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "EMI Calculator runs without installing desktop software",
+          "Accepts: Loan amount, annual rate, years/months",
+          "Returns: EMI, interest outgo, amortization-style totals"
       ],
       "features": [
           "EMI calculation",
@@ -2219,14 +2300,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use EMI Calculator above, then browse related number tools linked below."
+      "conclusion": "Use EMI Calculator on this page, then browse related number tools linked below."
   },
   '/enhanced-unit-converter': {
       "title": "Enhanced Unit Converter — Multi-Category Units",
       "h1": "Enhanced Unit Converter — All Measurement Types",
       "metaDescription": "Convert units across length, weight, temperature, time, data size, and speed in one place. Same engine as Unit Converter.",
-      "dateModified": "2026-08-29",
-      "tldr": "Enhanced Unit Converter: Convert between various units including length, weight, temperature, time, data size, and speed. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Enhanced Unit Converter: Same family as Unit Converter — convert SI/imperial values in-browser (canonical tool is /unit-converter). Input: Value + units. Output: Converted value.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Numeric value, unit category, from/to units",
@@ -2243,57 +2324,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Enhanced Unit Converter on FYN Tools convert between various units including length, weight, temperature, time, data size, and speed. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Enhanced Unit Converter: Same family as Unit Converter — convert SI/imperial values in-browser (canonical tool is /unit-converter).",
+          "Inputs: Value + units. Outputs: Converted value. Mistake to avoid: using this URL if it redirects — bookmark /unit-converter."
       ],
-      "overview": "Convert between various units including length, weight, temperature, time, data size, and speed.",
-      "howItWorks": "Enhanced Unit Converter runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Enhanced Unit Converter: Same family as Unit Converter — convert SI/imperial values in-browser (canonical tool is /unit-converter).",
+      "howItWorks": "You set value + units in the live panel. Enhanced Unit Converter then same family as Unit Converter — convert SI/imperial values in-browser (canonical tool is /unit-converter). Results show as converted value.",
       "howToUse": [
           "Use the Enhanced Unit Converter form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to convert between various units including length, weight, temperature, time, data size, and speed",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need same family as Unit Converter — convert SI/imperial values in-browser (canonical tool is /unit-converter). without another app",
+          "When your input looks like: Value + units"
       ],
       "useCases": [
           {
-              "title": "Converter workflow",
-              "description": "Convert between various units including length, weight, temperature, time, data size, and speed."
+              "title": "Length",
+              "description": "Meters to feet."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Enhanced Unit Converter once, then continue in your doc or app."
+              "title": "Data",
+              "description": "GiB to GB if both exist."
+          },
+          {
+              "title": "Speed",
+              "description": "km/h to mph."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Enhanced Unit Converter",
-              "output": "Enhanced Unit Converter returns a formatted result you can copy or download"
+              "input": "Value + units",
+              "output": "Converted value"
+          },
+          {
+              "input": "Open /enhanced-unit-converter and use the live controls",
+              "output": "Converted value"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using this URL if it redirects — bookmark /unit-converter.",
+          "Copy Enhanced Unit Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Using this URL if it redirects — bookmark /unit-converter.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Enhanced Unit Converter runs without installing desktop software",
+          "Accepts: Value + units",
+          "Returns: Converted value",
+          "How-to and FAQs for Enhanced Unit Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Enhanced Unit Converter runs without installing desktop software",
+          "Accepts: Value + units",
+          "Returns: Converted value"
       ],
       "features": [
           "Length conversion",
@@ -2345,14 +2433,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert colors between HEX, RGB, HSL, and other formats."
           }
       ],
-      "conclusion": "Use Enhanced Unit Converter above, then browse related converter tools linked below."
+      "conclusion": "Use Enhanced Unit Converter on this page, then browse related converter tools linked below."
   },
   '/fd-calculator': {
       "title": "FD Calculator — Fixed Deposit Maturity & Interest",
       "h1": "FD Calculator — Fixed Deposit Returns",
       "metaDescription": "Estimate fixed deposit maturity amount and interest for quarterly/monthly/yearly compounding. Free FD calculator for India.",
-      "dateModified": "2026-08-29",
-      "tldr": "FD Calculator: Calculate returns on your Fixed Deposit (FD) investments. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "FD Calculator: Estimates fixed-deposit maturity for a principal, rate, and term. Input: Deposit, rate, tenure, compounding if shown. Output: Maturity amount and interest earned.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Principal (₹), annual interest rate (%), tenure (years/months), compounding frequency",
@@ -2369,29 +2457,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "FD Calculator on FYN Tools calculate returns on your Fixed Deposit (FD) investments. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "FD Calculator: Estimates fixed-deposit maturity for a principal, rate, and term.",
+          "Inputs: Deposit, rate, tenure, compounding if shown. Outputs: Maturity amount and interest earned. Mistake to avoid: comparing bank ads that quote differently (quarterly vs annual) without matching the compounding field."
       ],
-      "overview": "Calculate returns on your Fixed Deposit (FD) investments.",
-      "howItWorks": "FD Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "FD Calculator: Estimates fixed-deposit maturity for a principal, rate, and term.",
+      "howItWorks": "You set deposit, rate, tenure, compounding if shown in the live panel. FD Calculator then estimates fixed-deposit maturity for a principal, rate, and term. Results show as maturity amount and interest earned.",
       "howToUse": [
           "Enter amounts and rates in FD Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from FD Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need estimates fixed-deposit maturity for a principal, rate, and term. without another app",
+          "When your input looks like: Deposit, rate, tenure, compounding if shown"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate returns on your Fixed Deposit (FD) investments."
+              "title": "1-year FD",
+              "description": "Enter the bank’s rate and see maturity before you book."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use FD Calculator once, then continue in your doc or app."
+              "title": "Ladder idea",
+              "description": "Run 1y vs 3y to see the extra interest."
+          },
+          {
+              "title": "Senior rate",
+              "description": "Bump the rate and compare against a regular FD."
           }
       ],
       "examples": [
@@ -2401,25 +2492,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Comparing bank ads that quote differently (quarterly vs annual) without matching the compounding field.",
+          "Copy FD Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Comparing bank ads that quote differently (quarterly vs annual) without matching the compounding field.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "FD Calculator runs without installing desktop software",
+          "Accepts: Deposit, rate, tenure, compounding if shown",
+          "Returns: Maturity amount and interest earned",
+          "How-to and FAQs for FD Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "FD Calculator runs without installing desktop software",
+          "Accepts: Deposit, rate, tenure, compounding if shown",
+          "Returns: Maturity amount and interest earned"
       ],
       "features": [
           "FD maturity calculation",
@@ -2501,14 +2592,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your SIP or Lumpsum investments."
           }
       ],
-      "conclusion": "Use FD Calculator above, then browse related number tools linked below."
+      "conclusion": "Use FD Calculator on this page, then browse related number tools linked below."
   },
   '/flip-image': {
       "title": "Flip Image — Horizontal & Vertical Flip",
       "h1": "Flip Image Online — Mirror Photos",
       "metaDescription": "Flip images horizontally or vertically with live preview. Download result — free browser tool.",
-      "dateModified": "2026-08-29",
-      "tldr": "Flip Image: Flip images horizontally or vertically with real-time preview. Free image flipper online. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Flip Image: Mirrors an image horizontally or vertically in the browser. Input: PNG/JPG upload + flip axis. Output: Flipped image download.",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -2525,57 +2616,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Flip Image on FYN Tools flip images horizontally or vertically with real-time preview. Free image flipper online. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Flip Image: Mirrors an image horizontally or vertically in the browser.",
+          "Inputs: PNG/JPG upload + flip axis. Outputs: Flipped image download. Mistake to avoid: flipping a photo with text and expecting the letters to stay readable — they reverse."
       ],
-      "overview": "Flip images horizontally or vertically with real-time preview. Free image flipper online.",
-      "howItWorks": "Flip Image processes your upload in the browser and shows a preview you can download.",
+      "overview": "Flip Image: Mirrors an image horizontally or vertically in the browser.",
+      "howItWorks": "You set png/jpg upload + flip axis in the live panel. Flip Image then mirrors an image horizontally or vertically in the browser. Results show as flipped image download.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need mirrors an image horizontally or vertically in the browser. without another app",
+          "When your input looks like: PNG/JPG upload + flip axis"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Flip images horizontally or vertically with real-time preview. Free image flipper online."
+              "title": "Selfie mirror",
+              "description": "Flip horizontal so it matches what you saw in the camera."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Flip Image once, then continue in your doc or app."
+              "title": "Layout asset",
+              "description": "Flip a product shot to face the other way in a banner."
+          },
+          {
+              "title": "Print proof",
+              "description": "Check a design that must face a binding edge."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "PNG/JPG upload + flip axis",
+              "output": "Flipped image download"
+          },
+          {
+              "input": "Open /flip-image and use the live controls",
+              "output": "Flipped image download"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Flipping a photo with text and expecting the letters to stay readable — they reverse.",
+          "Copy Flip Image output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Flipping a photo with text and expecting the letters to stay readable — they reverse.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Flip Image runs without installing desktop software",
+          "Accepts: PNG/JPG upload + flip axis",
+          "Returns: Flipped image download",
+          "How-to and FAQs for Flip Image live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Flip Image runs without installing desktop software",
+          "Accepts: PNG/JPG upload + flip axis",
+          "Returns: Flipped image download"
       ],
       "features": [
           "Horizontal flip",
@@ -2651,19 +2749,19 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
-              "name": "Placeholder Image Generator",
-              "href": "/placeholder-image-generator",
-              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
           }
       ],
-      "conclusion": "Use Flip Image above, then browse related image tools linked below."
+      "conclusion": "Use Flip Image on this page, then browse related image tools linked below."
   },
   '/future-date-calculator': {
       "title": "Future Date Calculator — Add or Subtract Days",
       "h1": "Future Date Calculator — Date Arithmetic",
       "metaDescription": "Add or subtract days, months, or years from any date. Plan deadlines and reminders — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Future Date Calculator: Calculate future or past dates by adding or subtracting days, months, or years. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Future Date Calculator: Adds days/weeks/months to a start date. Input: Start date + offset. Output: Resulting calendar date.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -2680,29 +2778,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Future Date Calculator on FYN Tools calculate future or past dates by adding or subtracting days, months, or years. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Future Date Calculator: Adds days/weeks/months to a start date.",
+          "Inputs: Start date + offset. Outputs: Resulting calendar date. Mistake to avoid: adding 30 days and calling it “one month” — months vary; use the month field when you mean calendar months."
       ],
-      "overview": "Calculate future or past dates by adding or subtracting days, months, or years.",
-      "howItWorks": "Future Date Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Future Date Calculator: Adds days/weeks/months to a start date.",
+      "howItWorks": "You set start date + offset in the live panel. Future Date Calculator then adds days/weeks/months to a start date. Results show as resulting calendar date.",
       "howToUse": [
           "Enter amounts and rates in Future Date Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Future Date Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need adds days/weeks/months to a start date. without another app",
+          "When your input looks like: Start date + offset"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate future or past dates by adding or subtracting days, months, or years."
+              "title": "Follow-up reminder",
+              "description": "Today + 14 days for a callback."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Future Date Calculator once, then continue in your doc or app."
+              "title": "Warranty end",
+              "description": "Purchase date + 12 months."
+          },
+          {
+              "title": "Visa window",
+              "description": "Entry date + allowed stay days."
           }
       ],
       "examples": [
@@ -2712,25 +2813,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Adding 30 days and calling it “one month” — months vary; use the month field when you mean calendar months.",
+          "Copy Future Date Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Adding 30 days and calling it “one month” — months vary; use the month field when you mean calendar months.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Future Date Calculator runs without installing desktop software",
+          "Accepts: Start date + offset",
+          "Returns: Resulting calendar date",
+          "How-to and FAQs for Future Date Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Future Date Calculator runs without installing desktop software",
+          "Accepts: Start date + offset",
+          "Returns: Resulting calendar date"
       ],
       "features": [
           "Add days to date",
@@ -2812,13 +2913,13 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use Future Date Calculator above, then browse related number tools linked below."
+      "conclusion": "Use Future Date Calculator on this page, then browse related number tools linked below."
   },
   '/gst-calculator': {
       "title": "GST Calculator — Add or Remove GST (India)",
       "h1": "GST Calculator — Inclusive & Exclusive Tax Amounts",
       "metaDescription": "Calculate GST for India: add tax to a base price or extract GST from an inclusive amount. Supports 5%, 12%, 18%, 28% slabs. Free online.",
-      "dateModified": "2026-08-29",
+      "dateModified": "2026-09-03",
       "tldr": "Pick GST rate and enter either pre-tax or tax-inclusive amount to get CGST/SGST split, net price, and gross total — instant browser math.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
@@ -2836,29 +2937,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "GST Calculator on FYN Tools calculate GST (Goods and Services Tax). Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "GST Calculator: Adds or removes Indian GST (5/12/18/28%) from an amount.",
+          "Inputs: Base or inclusive amount + slab. Outputs: GST amount and exclusive/inclusive totals. Mistake to avoid: applying 18% when the HSN is 5% — pick the slab that matches the invoice, not a default."
       ],
-      "overview": "Calculate GST (Goods and Services Tax).",
-      "howItWorks": "GST Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "GST Calculator: Adds or removes Indian GST (5/12/18/28%) from an amount.",
+      "howItWorks": "You set base or inclusive amount + slab in the live panel. GST Calculator then adds or removes Indian GST (5/12/18/28%) from an amount. Results show as gst amount and exclusive/inclusive totals.",
       "howToUse": [
           "Enter amounts and rates in GST Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from GST Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need adds or removes Indian GST (5/12/18/28%) from an amount. without another app",
+          "When your input looks like: Base or inclusive amount + slab"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate GST (Goods and Services Tax)."
+              "title": "Quote exclusive",
+              "description": "Enter services net and add 18% for the client total."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use GST Calculator once, then continue in your doc or app."
+              "title": "Back-out GST",
+              "description": "Paste an inclusive MRP and see the tax component."
+          },
+          {
+              "title": "Slab compare",
+              "description": "Toggle 12 vs 18 to explain a price change."
           }
       ],
       "examples": [
@@ -2868,25 +2972,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Applying 18% when the HSN is 5% — pick the slab that matches the invoice, not a default.",
+          "Copy GST Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Applying 18% when the HSN is 5% — pick the slab that matches the invoice, not a default.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "GST Calculator runs without installing desktop software",
+          "Accepts: Base or inclusive amount + slab",
+          "Returns: GST amount and exclusive/inclusive totals",
+          "How-to and FAQs for GST Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "GST Calculator runs without installing desktop software",
+          "Accepts: Base or inclusive amount + slab",
+          "Returns: GST amount and exclusive/inclusive totals"
       ],
       "features": [
           "GST calculation",
@@ -2968,14 +3072,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use GST Calculator above, then browse related number tools linked below."
+      "conclusion": "Use GST Calculator on this page, then browse related number tools linked below."
   },
   '/image-to-text': {
       "title": "Image to Text (OCR) — Extract Text from Photos",
       "h1": "Image to Text — OCR Online",
       "metaDescription": "Extract text from images and scans using browser OCR. Upload PNG/JPG — copy recognized text. Private processing where supported.",
-      "dateModified": "2026-08-29",
-      "tldr": "Image to Text: Extract text from images using OCR. Convert photos and scanned documents into editable text. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Image to Text: Runs OCR on a photo or scan in the browser when supported. Input: Image with printed text. Output: Extracted plain text.",
       "processingNote": "OCR runs in your browser when supported. Clear photos improve accuracy; always proofread output.",
       "ioContract": {
           "inputs": "Image upload (PNG, JPG, etc.)",
@@ -2992,57 +3096,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Image to Text on FYN Tools extract text from images using OCR. Convert photos and scanned documents into editable text. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Image to Text: Runs OCR on a photo or scan in the browser when supported.",
+          "Inputs: Image with printed text. Outputs: Extracted plain text. Mistake to avoid: expecting handwriting or a blurry night photo to OCR cleanly — use a sharp, high-contrast shot."
       ],
-      "overview": "Extract text from images using OCR. Convert photos and scanned documents into editable text.",
-      "howItWorks": "Image to Text processes your upload in the browser and shows a preview you can download.",
+      "overview": "Image to Text: Runs OCR on a photo or scan in the browser when supported.",
+      "howItWorks": "You set image with printed text in the live panel. Image to Text then runs OCR on a photo or scan in the browser when supported. Results show as extracted plain text.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need runs OCR on a photo or scan in the browser when supported. without another app",
+          "When your input looks like: Image with printed text"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
+              "title": "Receipt line",
+              "description": "Snap a printed bill and copy totals into a sheet."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Image to Text once, then continue in your doc or app."
+              "title": "Whiteboard",
+              "description": "Photograph notes and paste into a doc."
+          },
+          {
+              "title": "ID field",
+              "description": "OCR a printed number, then proofread every digit."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "Image with printed text",
+              "output": "Extracted plain text"
+          },
+          {
+              "input": "Open /image-to-text and use the live controls",
+              "output": "Extracted plain text"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Expecting handwriting or a blurry night photo to OCR cleanly — use a sharp, high-contrast shot.",
+          "Copy Image to Text output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Expecting handwriting or a blurry night photo to OCR cleanly — use a sharp, high-contrast shot.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Image to Text runs without installing desktop software",
+          "Accepts: Image with printed text",
+          "Returns: Extracted plain text",
+          "How-to and FAQs for Image to Text live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Image to Text runs without installing desktop software",
+          "Accepts: Image with printed text",
+          "Returns: Extracted plain text"
       ],
       "features": [
           "OCR text extraction",
@@ -3114,24 +3225,24 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
+          },
+          {
               "name": "Placeholder Image Generator",
               "href": "/placeholder-image-generator",
               "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
-          },
-          {
-              "name": "Pixelate Tool",
-              "href": "/pixelate-tool",
-              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
           }
       ],
-      "conclusion": "Use Image to Text above, then browse related image tools linked below."
+      "conclusion": "Use Image to Text on this page, then browse related image tools linked below."
   },
   '/image-upscaler': {
       "title": "Image Upscaler — Increase Resolution",
       "h1": "Image Upscaler — Enlarge & Sharpen",
       "metaDescription": "Upscale images with interpolation to increase pixel dimensions. Browser-based — best for moderate enlargement.",
-      "dateModified": "2026-08-29",
-      "tldr": "Image Upscaler: Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Image Upscaler: Enlarges an image with interpolation — it cannot invent real detail. Input: Image + scale factor. Output: Larger image download.",
       "processingNote": "Extreme upscaling cannot invent detail — results are interpolated estimates.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -3148,57 +3259,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Image Upscaler on FYN Tools upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Image Upscaler: Enlarges an image with interpolation — it cannot invent real detail.",
+          "Inputs: Image + scale factor. Outputs: Larger image download. Mistake to avoid: upscaling a tiny blurry face and expecting a sharp ID photo."
       ],
-      "overview": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity.",
-      "howItWorks": "Image Upscaler processes your upload in the browser and shows a preview you can download.",
+      "overview": "Image Upscaler: Enlarges an image with interpolation — it cannot invent real detail.",
+      "howItWorks": "You set image + scale factor in the live panel. Image Upscaler then enlarges an image with interpolation — it cannot invent real detail. Results show as larger image download.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need enlarges an image with interpolation — it cannot invent real detail. without another app",
+          "When your input looks like: Image + scale factor"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image resolution and improve clarity."
+              "title": "Print a small logo",
+              "description": "Scale 2× for a poster mock, then judge artifacts."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Image Upscaler once, then continue in your doc or app."
+              "title": "Old screenshot",
+              "description": "Enlarge UI captures for a slide deck."
+          },
+          {
+              "title": "Stop at 2×",
+              "description": "Compare 2× vs 4×; stop when edges smear."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "Image + scale factor",
+              "output": "Larger image download"
+          },
+          {
+              "input": "Open /image-upscaler and use the live controls",
+              "output": "Larger image download"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Upscaling a tiny blurry face and expecting a sharp ID photo.",
+          "Copy Image Upscaler output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Upscaling a tiny blurry face and expecting a sharp ID photo.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Image Upscaler runs without installing desktop software",
+          "Accepts: Image + scale factor",
+          "Returns: Larger image download",
+          "How-to and FAQs for Image Upscaler live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Image Upscaler runs without installing desktop software",
+          "Accepts: Image + scale factor",
+          "Returns: Larger image download"
       ],
       "features": [
           "Upscale resolution",
@@ -3270,24 +3388,24 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
+          },
+          {
               "name": "Placeholder Image Generator",
               "href": "/placeholder-image-generator",
               "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
-          },
-          {
-              "name": "Pixelate Tool",
-              "href": "/pixelate-tool",
-              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
           }
       ],
-      "conclusion": "Use Image Upscaler above, then browse related image tools linked below."
+      "conclusion": "Use Image Upscaler on this page, then browse related image tools linked below."
   },
   '/income-tax-calculator': {
       "title": "Income Tax Calculator — Old vs New Regime (India)",
       "h1": "Income Tax Calculator — Estimate Tax Liability",
       "metaDescription": "Estimate income tax under old and new tax regimes for India. Enter salary, deductions, and compare payable tax — free, educational.",
-      "dateModified": "2026-08-29",
-      "tldr": "Income Tax Calculator: Calculate your income tax liability. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Income Tax Calculator: Estimates Indian income tax from income and the selected regime/year rules in the form. Input: Taxable income, FY, deductions if the form shows them. Output: Estimated tax, cess, and take-home style totals.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Annual income, deductions (80C, 80D, etc.), regime selection, age slab if applicable",
@@ -3304,57 +3422,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Income Tax Calculator on FYN Tools calculate your income tax liability. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Income Tax Calculator: Estimates Indian income tax from income and the selected regime/year rules in the form.",
+          "Inputs: Taxable income, FY, deductions if the form shows them. Outputs: Estimated tax, cess, and take-home style totals. Mistake to avoid: skipping 87A or regime choice — the number is only as good as the fields you filled."
       ],
-      "overview": "Calculate your income tax liability.",
-      "howItWorks": "Income Tax Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Income Tax Calculator: Estimates Indian income tax from income and the selected regime/year rules in the form.",
+      "howItWorks": "You set taxable income, fy, deductions if the form shows them in the live panel. Income Tax Calculator then estimates Indian income tax from income and the selected regime/year rules in the form. Results show as estimated tax, cess, and take-home style totals.",
       "howToUse": [
           "Enter amounts and rates in Income Tax Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Income Tax Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need estimates Indian income tax from income and the selected regime/year rules in the form. without another app",
+          "When your input looks like: Taxable income, FY, deductions if the form shows them"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate your income tax liability."
+              "title": "Salary sketch",
+              "description": "Enter CTC-style income and compare new vs old if both are listed."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Income Tax Calculator once, then continue in your doc or app."
+              "title": "Raise check",
+              "description": "Bump income and see the extra tax, not just the gross raise."
+          },
+          {
+              "title": "Not a filing",
+              "description": "Use it to plan; file with your CA or the income-tax portal."
           }
       ],
       "examples": [
           {
-              "input": "Enter labeled amounts in Income Tax Calculator",
-              "output": "On-screen breakdown with totals you can copy or screenshot"
+              "input": "Taxable income, FY, deductions if the form shows them",
+              "output": "Estimated tax, cess, and take-home style totals"
+          },
+          {
+              "input": "Open /income-tax-calculator and use the live controls",
+              "output": "Estimated tax, cess, and take-home style totals"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Skipping 87A or regime choice — the number is only as good as the fields you filled.",
+          "Copy Income Tax Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Skipping 87A or regime choice — the number is only as good as the fields you filled.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Income Tax Calculator runs without installing desktop software",
+          "Accepts: Taxable income, FY, deductions if the form shows them",
+          "Returns: Estimated tax, cess, and take-home style totals",
+          "How-to and FAQs for Income Tax Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Income Tax Calculator runs without installing desktop software",
+          "Accepts: Taxable income, FY, deductions if the form shows them",
+          "Returns: Estimated tax, cess, and take-home style totals"
       ],
       "features": [
           "Income tax calculation",
@@ -3436,14 +3561,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your SIP or Lumpsum investments."
           }
       ],
-      "conclusion": "Use Income Tax Calculator above, then browse related number tools linked below."
+      "conclusion": "Use Income Tax Calculator on this page, then browse related number tools linked below."
   },
   '/invoice-generator': {
       "title": "Invoice Generator — PDF & Image Export",
       "h1": "Invoice Generator — Professional Invoices",
       "metaDescription": "Create invoices with client details, line items, tax, and logo. Export PDF or image. Auto-save in browser — free for freelancers.",
-      "dateModified": "2026-08-29",
-      "tldr": "Invoice Generator: Create professional invoices with auto-save features. Generate PDF and image exports with client and product management. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Invoice Generator: Fills a professional invoice (client, lines, tax) and exports PDF/image. Input: Seller/client fields, line items, tax %. Output: Preview + PDF or image.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Business info, client, line items, tax rate, currency, logo upload",
@@ -3460,57 +3585,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Invoice Generator on FYN Tools create professional invoices with auto-save features. Generate PDF and image exports with client and product management. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Invoice Generator: Fills a professional invoice (client, lines, tax) and exports PDF/image.",
+          "Inputs: Seller/client fields, line items, tax %. Outputs: Preview + PDF or image. Mistake to avoid: forgetting GSTIN or invoice number required by your client’s AP team."
       ],
-      "overview": "Create professional invoices with auto-save features. Generate PDF and image exports with client and product management.",
-      "howItWorks": "Invoice Generator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Invoice Generator: Fills a professional invoice (client, lines, tax) and exports PDF/image.",
+      "howItWorks": "You set seller/client fields, line items, tax % in the live panel. Invoice Generator then fills a professional invoice (client, lines, tax) and exports PDF/image. Results show as preview + pdf or image.",
       "howToUse": [
           "Use the Invoice Generator form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to create professional invoices with auto-save features. generate pdf and image exports with client and product management",
-          "For business tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need fills a professional invoice (client, lines, tax) and exports PDF/image. without another app",
+          "When your input looks like: Seller/client fields, line items, tax %"
       ],
       "useCases": [
           {
-              "title": "Business workflow",
-              "description": "Create professional invoices with auto-save features. Generate PDF and image exports with client and product management."
+              "title": "Freelance hour block",
+              "description": "Add hours × rate, 18% GST, export PDF."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Invoice Generator once, then continue in your doc or app."
+              "title": "Retain client",
+              "description": "Reuse saved client details for the next month."
+          },
+          {
+              "title": "Image for WhatsApp",
+              "description": "Export an image when the client will not open PDF on phone."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Invoice Generator",
-              "output": "Invoice Generator returns a formatted result you can copy or download"
+              "input": "Seller/client fields, line items, tax %",
+              "output": "Preview + PDF or image"
+          },
+          {
+              "input": "Open /invoice-generator and use the live controls",
+              "output": "Preview + PDF or image"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Forgetting GSTIN or invoice number required by your client’s AP team.",
+          "Copy Invoice Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Forgetting GSTIN or invoice number required by your client’s AP team.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Invoice Generator runs without installing desktop software",
+          "Accepts: Seller/client fields, line items, tax %",
+          "Returns: Preview + PDF or image",
+          "How-to and FAQs for Invoice Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Invoice Generator runs without installing desktop software",
+          "Accepts: Seller/client fields, line items, tax %",
+          "Returns: Preview + PDF or image"
       ],
       "features": [
           "Create invoices",
@@ -3541,14 +3673,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "relatedTools": [],
-      "conclusion": "Use Invoice Generator above, then browse related business tools linked below."
+      "conclusion": "Use Invoice Generator on this page, then browse related business tools linked below."
   },
   '/merge-images': {
       "title": "Merge Images — Combine Photos Online",
       "h1": "Merge Images — Horizontal, Vertical, Grid",
       "metaDescription": "Combine multiple images into one layout. Horizontal, vertical, or grid merge — download PNG.",
-      "dateModified": "2026-08-29",
-      "tldr": "Merge Images: Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Merge Images: Stitches multiple images into one canvas (grid or strip). Input: Two or more images + layout. Output: Merged image download.",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -3565,57 +3697,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Merge Images on FYN Tools merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Merge Images: Stitches multiple images into one canvas (grid or strip).",
+          "Inputs: Two or more images + layout. Outputs: Merged image download. Mistake to avoid: mixing wildly different resolutions — resize first or the collage looks jagged."
       ],
-      "overview": "Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image.",
-      "howItWorks": "Merge Images processes your upload in the browser and shows a preview you can download.",
+      "overview": "Merge Images: Stitches multiple images into one canvas (grid or strip).",
+      "howItWorks": "You set two or more images + layout in the live panel. Merge Images then stitches multiple images into one canvas (grid or strip). Results show as merged image download.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need stitches multiple images into one canvas (grid or strip). without another app",
+          "When your input looks like: Two or more images + layout"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Merge images online in horizontal, vertical, or grid layouts. Combine multiple photos into one image."
+              "title": "Before/after",
+              "description": "Place two photos side by side for a review."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Merge Images once, then continue in your doc or app."
+              "title": "Product strip",
+              "description": "Combine three SKUs for a marketplace banner."
+          },
+          {
+              "title": "Meme layout",
+              "description": "Stack panels then download."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "Two or more images + layout",
+              "output": "Merged image download"
+          },
+          {
+              "input": "Open /merge-images and use the live controls",
+              "output": "Merged image download"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Mixing wildly different resolutions — resize first or the collage looks jagged.",
+          "Copy Merge Images output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Mixing wildly different resolutions — resize first or the collage looks jagged.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Merge Images runs without installing desktop software",
+          "Accepts: Two or more images + layout",
+          "Returns: Merged image download",
+          "How-to and FAQs for Merge Images live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Merge Images runs without installing desktop software",
+          "Accepts: Two or more images + layout",
+          "Returns: Merged image download"
       ],
       "features": [
           "Horizontal merge",
@@ -3692,19 +3831,19 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
-              "name": "Placeholder Image Generator",
-              "href": "/placeholder-image-generator",
-              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
           }
       ],
-      "conclusion": "Use Merge Images above, then browse related image tools linked below."
+      "conclusion": "Use Merge Images on this page, then browse related image tools linked below."
   },
   '/notes': {
       "title": "Notes — Personal Notes with Tags",
       "h1": "Notes — Browser Note Organizer",
       "metaDescription": "Create color-coded notes with tags. Saved locally in your browser — free, private quick notes.",
-      "dateModified": "2026-08-29",
-      "tldr": "Notes: Create, organize, and manage your personal notes with tags and colors. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Notes: Keeps tagged, colored notes in this browser’s localStorage. Input: Title, body, tag, color. Output: Searchable note list on this device.",
       "processingNote": "Notes persist in localStorage on this device only — export important notes before clearing browser data.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -3721,57 +3860,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Notes on FYN Tools create, organize, and manage your personal notes with tags and colors. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Notes: Keeps tagged, colored notes in this browser’s localStorage.",
+          "Inputs: Title, body, tag, color. Outputs: Searchable note list on this device. Mistake to avoid: assuming notes sync to your phone — they do not leave this browser profile."
       ],
-      "overview": "Create, organize, and manage your personal notes with tags and colors.",
-      "howItWorks": "Notes runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Notes: Keeps tagged, colored notes in this browser’s localStorage.",
+      "howItWorks": "You set title, body, tag, color in the live panel. Notes then keeps tagged, colored notes in this browser’s localStorage. Results show as searchable note list on this device.",
       "howToUse": [
           "Use the Notes form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to create, organize, and manage your personal notes with tags and colors",
-          "For text & writing tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need keeps tagged, colored notes in this browser’s localStorage. without another app",
+          "When your input looks like: Title, body, tag, color"
       ],
       "useCases": [
           {
-              "title": "Text & Writing workflow",
-              "description": "Create, organize, and manage your personal notes with tags and colors."
+              "title": "Meeting dump",
+              "description": "Title + tag work, color yellow, search later."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Notes once, then continue in your doc or app."
+              "title": "Snippet stash",
+              "description": "Paste a CSS snippet you keep reusing."
+          },
+          {
+              "title": "Errand list",
+              "description": "Quick notes without a to-do structure."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Notes",
-              "output": "Notes returns a formatted result you can copy or download"
+              "input": "Title, body, tag, color",
+              "output": "Searchable note list on this device"
+          },
+          {
+              "input": "Open /notes and use the live controls",
+              "output": "Searchable note list on this device"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Assuming notes sync to your phone — they do not leave this browser profile.",
+          "Copy Notes output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Assuming notes sync to your phone — they do not leave this browser profile.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Notes runs without installing desktop software",
+          "Accepts: Title, body, tag, color",
+          "Returns: Searchable note list on this device",
+          "How-to and FAQs for Notes live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Notes runs without installing desktop software",
+          "Accepts: Title, body, tag, color",
+          "Returns: Searchable note list on this device"
       ],
       "features": [
           "Create notes",
@@ -3853,14 +3999,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Encode and decode Base64 strings."
           }
       ],
-      "conclusion": "Use Notes above, then browse related text & writing tools linked below."
+      "conclusion": "Use Notes on this page, then browse related text & writing tools linked below."
   },
   '/pdf-text-extractor': {
       "title": "PDF Text Extractor — Copy Text from PDF",
       "h1": "PDF Text Extractor — PDF to Plain Text",
       "metaDescription": "Extract selectable text from PDF files in the browser. Copy plain text for editing — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "PDF Text Extractor: Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "PDF Text Extractor: Pulls selectable text out of a text-based PDF. Input: PDF file. Output: Plain text to copy or download.",
       "processingNote": "Scanned image-only PDFs need OCR — try Image to Text if extraction is empty.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -3877,57 +4023,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PDF Text Extractor on FYN Tools extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "PDF Text Extractor: Pulls selectable text out of a text-based PDF.",
+          "Inputs: PDF file. Outputs: Plain text to copy or download. Mistake to avoid: uploading a scan-only PDF — use Image to Text / OCR if extraction is empty."
       ],
-      "overview": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying.",
-      "howItWorks": "PDF Text Extractor processes your upload in the browser and shows a preview you can download.",
+      "overview": "PDF Text Extractor: Pulls selectable text out of a text-based PDF.",
+      "howItWorks": "You set pdf file in the live panel. PDF Text Extractor then pulls selectable text out of a text-based PDF. Results show as plain text to copy or download.",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need pulls selectable text out of a text-based PDF. without another app",
+          "When your input looks like: PDF file"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and copying."
+              "title": "Contract clause",
+              "description": "Extract and search for a payment term."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use PDF Text Extractor once, then continue in your doc or app."
+              "title": "Paper notes",
+              "description": "Copy a digital paper into your editor."
+          },
+          {
+              "title": "Form dump",
+              "description": "Pull fields from a fillable PDF."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "PDF file",
+              "output": "Plain text to copy or download"
+          },
+          {
+              "input": "Open /pdf-text-extractor and use the live controls",
+              "output": "Plain text to copy or download"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Uploading a scan-only PDF — use Image to Text / OCR if extraction is empty.",
+          "Copy PDF Text Extractor output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Uploading a scan-only PDF — use Image to Text / OCR if extraction is empty.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "PDF Text Extractor runs without installing desktop software",
+          "Accepts: PDF file",
+          "Returns: Plain text to copy or download",
+          "How-to and FAQs for PDF Text Extractor live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "PDF Text Extractor runs without installing desktop software",
+          "Accepts: PDF file",
+          "Returns: Plain text to copy or download"
       ],
       "features": [
           "Extract PDF text",
@@ -3998,24 +4151,24 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text from images using OCR. Convert photos and scanned documents into editable text."
           },
           {
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
+          },
+          {
               "name": "Placeholder Image Generator",
               "href": "/placeholder-image-generator",
               "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
-          },
-          {
-              "name": "Pixelate Tool",
-              "href": "/pixelate-tool",
-              "description": "Apply pixelation effects to specific areas of your images with customizable strength and size."
           }
       ],
-      "conclusion": "Use PDF Text Extractor above, then browse related image tools linked below."
+      "conclusion": "Use PDF Text Extractor on this page, then browse related image tools linked below."
   },
   '/period-calculator': {
       "title": "Period Calculator — Next Period Prediction",
       "h1": "Period Calculator — Predict Next Cycle Date",
       "metaDescription": "Predict next period from last cycle start and average length. Free calendar estimate — cycles vary with stress and health.",
-      "dateModified": "2026-08-29",
-      "tldr": "Period Calculator: Predict your next period date based on your cycle history. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Period Calculator: Estimates next period and fertile window from last start date and cycle length — educational only. Input: LMP date, cycle length. Output: Predicted dates on a calendar.",
       "processingNote": "Educational estimates only — confirm with your prenatal or women's health clinician.",
       "ioContract": {
           "inputs": "Last period start date, average cycle length (days)",
@@ -4032,57 +4185,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Period Calculator on FYN Tools predict your next period date based on your cycle history. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Period Calculator: Estimates next period and fertile window from last start date and cycle length — educational only.",
+          "Inputs: LMP date, cycle length. Outputs: Predicted dates on a calendar. Mistake to avoid: using it as contraception — cycles shift; follow clinical guidance."
       ],
-      "overview": "Predict your next period date based on your cycle history.",
-      "howItWorks": "Period Calculator applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "Period Calculator: Estimates next period and fertile window from last start date and cycle length — educational only.",
+      "howItWorks": "You set lmp date, cycle length in the live panel. Period Calculator then estimates next period and fertile window from last start date and cycle length — educational only. Results show as predicted dates on a calendar.",
       "howToUse": [
           "Enter dates or symptoms in Period Calculator.",
           "Review the estimate or log.",
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to predict your next period date based on your cycle history",
-          "Before planning travel, workouts, or appointments around your cycle",
-          "On mobile for a quick date estimate without installing an app"
+          "When you need estimates next period and fertile window from last start date and cycle length — educational only. without another app",
+          "When your input looks like: LMP date, cycle length"
       ],
       "useCases": [
           {
-              "title": "Period & Cycle workflow",
-              "description": "Predict your next period date based on your cycle history."
+              "title": "Pack a trip",
+              "description": "See if a predicted period overlaps travel."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Period Calculator once, then continue in your doc or app."
+              "title": "Irregular note",
+              "description": "If cycles vary a lot, treat dates as a guess only."
+          },
+          {
+              "title": "Share with clinician",
+              "description": "Bring the date list to an appointment, not as a diagnosis."
           }
       ],
       "examples": [
           {
-              "input": "Last period: March 1, 2025 | Cycle: 28 days | Period length: 5 days",
-              "output": "Next period estimated around March 29, 2025 (± a few days)"
+              "input": "LMP date, cycle length",
+              "output": "Predicted dates on a calendar"
+          },
+          {
+              "input": "Open /period-calculator and use the live controls",
+              "output": "Predicted dates on a calendar"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using it as contraception — cycles shift; follow clinical guidance.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Using it as contraception — cycles shift; follow clinical guidance.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Period Calculator runs without installing desktop software",
+          "Accepts: LMP date, cycle length",
+          "Returns: Predicted dates on a calendar",
+          "How-to and FAQs for Period Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Period Calculator runs without installing desktop software",
+          "Accepts: LMP date, cycle length",
+          "Returns: Predicted dates on a calendar"
       ],
       "features": [
           "Predict next period date",
@@ -4134,14 +4294,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Track PMS symptoms, pain scale, and daily changes."
           }
       ],
-      "conclusion": "Use Period Calculator above, then browse related period & cycle tools linked below."
+      "conclusion": "Use Period Calculator on this page, then browse related period & cycle tools linked below."
   },
   '/period-tracker': {
       "title": "Period Tracker — Log Flow, Mood & Symptoms",
       "h1": "Period Tracker — Cycle Log with History",
       "metaDescription": "Log period days with flow level, mood, symptoms, and notes. History saves locally in your browser — free, private, no account.",
-      "dateModified": "2026-08-29",
-      "tldr": "Period Tracker: Log symptoms, mood, and flow with history charts and reminders. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Period Tracker: Logs period start, flow, and symptoms locally. Input: Date, flow, mood/symptoms. Output: History on this device.",
       "processingNote": "Entries store in browser localStorage only. Not medical advice — share patterns with your clinician.",
       "ioContract": {
           "inputs": "Date, flow (light/medium/heavy), mood, symptom checkboxes, notes, optional reminder flag",
@@ -4158,10 +4318,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Period Tracker on FYN Tools log symptoms, mood, and flow with history charts and reminders. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Period Tracker: Logs period start, flow, and symptoms locally.",
+          "Inputs: Date, flow, mood/symptoms. Outputs: History on this device. Mistake to avoid: clearing cookies and losing the log — screenshot or export if you rely on it."
       ],
-      "overview": "Log symptoms, mood, and flow with history charts and reminders.",
+      "overview": "Period Tracker: Logs period start, flow, and symptoms locally.",
       "howItWorks": "Pick a date, set flow and mood, tick symptoms, add notes, then save. Entries persist in localStorage and appear in the history list below.",
       "howToUse": [
           "Enter dates or symptoms in Period Tracker.",
@@ -4169,18 +4329,21 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When logging flow, mood, and symptoms each cycle",
-          "To review monthly patterns before a clinic appointment",
-          "On mobile for quick daily period and symptom entries"
+          "When you need logs period start, flow, and symptoms locally. without another app",
+          "When your input looks like: Date, flow, mood/symptoms"
       ],
       "useCases": [
           {
-              "title": "Period & Cycle workflow",
-              "description": "Log symptoms, mood, and flow with history charts and reminders."
+              "title": "Monthly log",
+              "description": "Mark start day and flow before you forget."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Period Tracker once, then continue in your doc or app."
+              "title": "Symptom pattern",
+              "description": "Add cramps/mood to show a clinician later."
+          },
+          {
+              "title": "Not medical advice",
+              "description": "Use it as a diary, not a diagnosis."
           }
       ],
       "examples": [
@@ -4190,25 +4353,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Clearing cookies and losing the log — screenshot or export if you rely on it.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Clearing cookies and losing the log — screenshot or export if you rely on it.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Period Tracker runs without installing desktop software",
+          "Accepts: Date, flow, mood/symptoms",
+          "Returns: History on this device",
+          "How-to and FAQs for Period Tracker live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Period Tracker runs without installing desktop software",
+          "Accepts: Date, flow, mood/symptoms",
+          "Returns: History on this device"
       ],
       "features": [
           "Log period dates",
@@ -4260,14 +4423,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Track PMS symptoms, pain scale, and daily changes."
           }
       ],
-      "conclusion": "Use Period Tracker above, then browse related period & cycle tools linked below."
+      "conclusion": "Use Period Tracker on this page, then browse related period & cycle tools linked below."
   },
   '/pms-symptom-tracker': {
       "title": "PMS Symptom Tracker — Daily Symptom Log",
       "h1": "PMS Symptom Tracker — Track Pain & Mood",
       "metaDescription": "Log PMS symptoms, pain scale, and daily changes. History stored locally — bring logs to your healthcare visit.",
-      "dateModified": "2026-08-29",
-      "tldr": "PMS Symptom Tracker: Track PMS symptoms, pain scale, and daily changes. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "PMS Symptom Tracker: Records PMS symptom intensity by date in localStorage. Input: Symptom, severity, date. Output: Local history for pattern review.",
       "processingNote": "Symptom logs stay in your browser. Not a diagnosis tool.",
       "ioContract": {
           "inputs": "Date, symptoms, pain scale, notes",
@@ -4284,61 +4447,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PMS Symptom Tracker on FYN Tools track PMS symptoms, pain scale, and daily changes. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "PMS Symptom Tracker: Records PMS symptom intensity by date in localStorage.",
+          "Inputs: Symptom, severity, date. Outputs: Local history for pattern review. Mistake to avoid: self-diagnosing from a week of logs — show a clinician if symptoms are severe."
       ],
-      "overview": "Track PMS symptoms, pain scale, and daily changes.",
-      "howItWorks": "PMS Symptom Tracker applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "PMS Symptom Tracker: Records PMS symptom intensity by date in localStorage.",
+      "howItWorks": "You set symptom, severity, date in the live panel. PMS Symptom Tracker then records PMS symptom intensity by date in localStorage. Results show as local history for pattern review.",
       "howToUse": [
           "Enter dates or symptoms in PMS Symptom Tracker.",
           "Review the estimate or log.",
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you want to log cramps, mood, bloating, or pain scale day by day",
-          "Before a gynecologist visit — bring exported symptom history",
-          "When tracking patterns across cycles to discuss with your clinician"
+          "When you need records PMS symptom intensity by date in localStorage. without another app",
+          "When your input looks like: Symptom, severity, date"
       ],
       "useCases": [
           {
-              "title": "Period & Cycle workflow",
-              "description": "Track PMS symptoms, pain scale, and daily changes."
+              "title": "Headache scale",
+              "description": "Log 1–10 with the date after a tough day."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use PMS Symptom Tracker once, then continue in your doc or app."
+              "title": "Bloating note",
+              "description": "Track alongside period dates if you also use the tracker."
+          },
+          {
+              "title": "Appointment prep",
+              "description": "Copy a week of entries before a visit."
           }
       ],
       "examples": [
           {
-              "input": "Log: March 22 — headache (6/10), bloating (4/10), mood low, cramps mild",
-              "output": "Entry saved to local history with date and pain scale for pattern review"
+              "input": "Symptom, severity, date",
+              "output": "Local history for pattern review"
           },
           {
-              "input": "Review last 3 cycles in history chart",
-              "output": "Symptom frequency trends visible — export before a clinic visit"
+              "input": "Open /pms-symptom-tracker and use the live controls",
+              "output": "Local history for pattern review"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Self-diagnosing from a week of logs — show a clinician if symptoms are severe.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Self-diagnosing from a week of logs — show a clinician if symptoms are severe.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "PMS Symptom Tracker runs without installing desktop software",
+          "Accepts: Symptom, severity, date",
+          "Returns: Local history for pattern review",
+          "How-to and FAQs for PMS Symptom Tracker live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "PMS Symptom Tracker runs without installing desktop software",
+          "Accepts: Symptom, severity, date",
+          "Returns: Local history for pattern review"
       ],
       "features": [
           "Track PMS symptoms",
@@ -4390,14 +4556,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Log symptoms, mood, and flow with history charts and reminders."
           }
       ],
-      "conclusion": "Use PMS Symptom Tracker above, then browse related period & cycle tools linked below."
+      "conclusion": "Use PMS Symptom Tracker on this page, then browse related period & cycle tools linked below."
   },
   '/ppf-calculator': {
       "title": "PPF Calculator — Public Provident Fund Maturity",
       "h1": "PPF Calculator — 15-Year PPF Projection",
       "metaDescription": "Calculate PPF maturity with annual contributions and current PPF interest rate. Free PPF calculator for long-term tax-saving planning.",
-      "dateModified": "2026-08-29",
-      "tldr": "PPF Calculator: Calculate returns on your Public Provident Fund (PPF) investments. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "PPF Calculator: Projects PPF corpus from yearly contribution, rate, and years. Input: Annual deposit, rate, tenure. Output: Maturity estimate.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Yearly deposit (up to ₹1.5L limit), interest rate (%), tenure (15 years default)",
@@ -4414,57 +4580,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "PPF Calculator on FYN Tools calculate returns on your Public Provident Fund (PPF) investments. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "PPF Calculator: Projects PPF corpus from yearly contribution, rate, and years.",
+          "Inputs: Annual deposit, rate, tenure. Outputs: Maturity estimate. Mistake to avoid: assuming today’s rate lasts 15 years unchanged — treat it as a scenario."
       ],
-      "overview": "Calculate returns on your Public Provident Fund (PPF) investments.",
-      "howItWorks": "PPF Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "PPF Calculator: Projects PPF corpus from yearly contribution, rate, and years.",
+      "howItWorks": "You set annual deposit, rate, tenure in the live panel. PPF Calculator then projects PPF corpus from yearly contribution, rate, and years. Results show as maturity estimate.",
       "howToUse": [
           "Enter amounts and rates in PPF Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from PPF Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need projects PPF corpus from yearly contribution, rate, and years. without another app",
+          "When your input looks like: Annual deposit, rate, tenure"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate returns on your Public Provident Fund (PPF) investments."
+              "title": "₹1.5L ceiling",
+              "description": "Run the max annual contribution for 15 years."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use PPF Calculator once, then continue in your doc or app."
+              "title": "Lower deposit",
+              "description": "Compare ₹50k vs ₹1.5L yearly."
+          },
+          {
+              "title": "Rate sensitivity",
+              "description": "Nudge the rate to see corpus swing."
           }
       ],
       "examples": [
           {
-              "input": "Enter labeled amounts in PPF Calculator",
-              "output": "On-screen breakdown with totals you can copy or screenshot"
+              "input": "Annual deposit, rate, tenure",
+              "output": "Maturity estimate"
+          },
+          {
+              "input": "Open /ppf-calculator and use the live controls",
+              "output": "Maturity estimate"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Assuming today’s rate lasts 15 years unchanged — treat it as a scenario.",
+          "Copy PPF Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Assuming today’s rate lasts 15 years unchanged — treat it as a scenario.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "PPF Calculator runs without installing desktop software",
+          "Accepts: Annual deposit, rate, tenure",
+          "Returns: Maturity estimate",
+          "How-to and FAQs for PPF Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "PPF Calculator runs without installing desktop software",
+          "Accepts: Annual deposit, rate, tenure",
+          "Returns: Maturity estimate"
       ],
       "features": [
           "PPF maturity calculation",
@@ -4546,13 +4719,13 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your SIP or Lumpsum investments."
           }
       ],
-      "conclusion": "Use PPF Calculator above, then browse related number tools linked below."
+      "conclusion": "Use PPF Calculator on this page, then browse related number tools linked below."
   },
   '/pregnancy-diet-planner': {
       "title": "Pregnancy Diet Planner (Educational)",
       "h1": "Pregnancy Diet Planner — Trimester Foods, Nutrients & Safety",
       "metaDescription": "Educational pregnancy diet planner with trimester meal ideas, key nutrients (folate, iron, calcium), foods to avoid, and medical disclaimers. Not a substitute for prenatal care.",
-      "dateModified": "2026-08-29",
+      "dateModified": "2026-09-03",
       "tldr": "Pick a trimester for educational meal ideas, nutrient themes, and foods-to-avoid lists — then confirm everything with your prenatal clinician. Not medical advice.",
       "processingNote": "Planner logic runs in your browser. Outputs are educational only — not a diagnosis, prescription, or substitute for prenatal care.",
       "ioContract": {
@@ -4570,10 +4743,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Diet Planner on FYN Tools get trimester diet tips, calorie goals, and food lists. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Pregnancy Diet Planner: Suggests educational meal ideas by trimester — not a prescription.",
+          "Inputs: Trimester / preferences in the form. Outputs: Food ideas and notes. Mistake to avoid: following a web meal list instead of your obstetrician’s plan, especially with gestational diabetes."
       ],
-      "overview": "Get trimester diet tips, calorie goals, and food lists.",
+      "overview": "Pregnancy Diet Planner: Suggests educational meal ideas by trimester — not a prescription.",
       "howItWorks": "Choose your trimester, optionally enter weight and activity for a rough calorie estimate, then review priorities, sample meals, nutrient cards, foods to avoid, cautions, and terms.",
       "howToUse": [
           "Enter dates or symptoms in Pregnancy Diet Planner.",
@@ -4581,46 +4754,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to get trimester diet tips, calorie goals, and food lists",
-          "Before a prenatal or women's health visit — screenshot or export your log",
-          "On mobile for quick tracking without installing an app"
+          "When you need suggests educational meal ideas by trimester — not a prescription. without another app",
+          "When your input looks like: Trimester / preferences in the form"
       ],
       "useCases": [
           {
-              "title": "Pregnancy workflow",
-              "description": "Get trimester diet tips, calorie goals, and food lists."
+              "title": "First-trimester nausea",
+              "description": "Look for bland ideas the form lists, then confirm with your clinician."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Pregnancy Diet Planner once, then continue in your doc or app."
+              "title": "Iron-rich ideas",
+              "description": "Use it as a brainstorm, not a diet chart."
+          },
+          {
+              "title": "Allergies",
+              "description": "Skip any listed food you cannot eat."
           }
       ],
       "examples": [
           {
-              "input": "Open Pregnancy Diet Planner and enter cycle dates or symptoms",
-              "output": "Calendar or log updates — educational estimate only"
+              "input": "Trimester / preferences in the form",
+              "output": "Food ideas and notes"
+          },
+          {
+              "input": "Open /pregnancy-diet-planner and use the live controls",
+              "output": "Food ideas and notes"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Following a web meal list instead of your obstetrician’s plan, especially with gestational diabetes.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Following a web meal list instead of your obstetrician’s plan, especially with gestational diabetes.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Pregnancy Diet Planner runs without installing desktop software",
+          "Accepts: Trimester / preferences in the form",
+          "Returns: Food ideas and notes",
+          "How-to and FAQs for Pregnancy Diet Planner live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Pregnancy Diet Planner runs without installing desktop software",
+          "Accepts: Trimester / preferences in the form",
+          "Returns: Food ideas and notes"
       ],
       "features": [
           "Trimester diet tips",
@@ -4674,13 +4854,13 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Count baby kicks, track movement, and save daily history."
           }
       ],
-      "conclusion": "Use Pregnancy Diet Planner above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Pregnancy Diet Planner on this page, then browse related pregnancy tools linked below."
   },
   '/pregnancy-due-date-calculator': {
       "title": "Pregnancy Due Date Calculator — EDD from LMP",
       "h1": "Due Date Calculator — Estimated Delivery Date",
       "metaDescription": "Estimate baby due date from last period or conception date using Naegele-style calendar math. Free, educational, not medical advice.",
-      "dateModified": "2026-08-29",
+      "dateModified": "2026-09-03",
       "tldr": "Choose LMP or conception date; the tool adds 280 days (LMP) or 266 days (conception) to show your estimated due date, current week (1–40), and trimester end dates.",
       "processingNote": "EDD is an estimate — only about 5% of babies arrive on the exact date. Confirm with prenatal care.",
       "ioContract": {
@@ -4698,10 +4878,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Due Date Calculator on FYN Tools calculate your baby due date using LMP or conception date. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Pregnancy Due Date Calculator: Estimates EDD from LMP using Naegele-style dating — only ~5% of births land on the exact day.",
+          "Inputs: First day of last period, cycle length if asked. Outputs: Estimated due date and gestational week. Mistake to avoid: ignoring a dating scan that disagrees with LMP."
       ],
-      "overview": "Calculate your baby due date using LMP or conception date.",
+      "overview": "Pregnancy Due Date Calculator: Estimates EDD from LMP using Naegele-style dating — only ~5% of births land on the exact day.",
       "howItWorks": "In LMP mode the tool adds 280 days to your last period start (Naegele rule). In conception mode it adds 266 days. It also calculates weeks pregnant from today and trimester boundary dates.",
       "howToUse": [
           "Tap Use Last Period (LMP) or Use Conception Date.",
@@ -4711,9 +4891,8 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Share the estimate with your prenatal clinician — they may adjust after ultrasound."
       ],
       "whenToUse": [
-          "When you need to calculate your baby due date using lmp or conception date",
-          "Before a prenatal or women's health visit — screenshot or export your log",
-          "On mobile for quick tracking without installing an app"
+          "When you need estimates EDD from LMP using Naegele-style dating — only ~5% of births land on the exact day. without another app",
+          "When your input looks like: First day of last period, cycle length if asked"
       ],
       "useCases": [
           {
@@ -4740,25 +4919,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Ignoring a dating scan that disagrees with LMP.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Ignoring a dating scan that disagrees with LMP.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Pregnancy Due Date Calculator runs without installing desktop software",
+          "Accepts: First day of last period, cycle length if asked",
+          "Returns: Estimated due date and gestational week",
+          "How-to and FAQs for Pregnancy Due Date Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Pregnancy Due Date Calculator runs without installing desktop software",
+          "Accepts: First day of last period, cycle length if asked",
+          "Returns: Estimated due date and gestational week"
       ],
       "features": [
           "LMP or conception date modes",
@@ -4813,14 +4992,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Get trimester diet tips, calorie goals, and food lists."
           }
       ],
-      "conclusion": "Use Pregnancy Due Date Calculator above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Pregnancy Due Date Calculator on this page, then browse related pregnancy tools linked below."
   },
   '/pregnancy-week-calculator': {
       "title": "Pregnancy Week Calculator — Week & Trimester",
       "h1": "Pregnancy Week Calculator — How Many Weeks Pregnant",
       "metaDescription": "Calculate current pregnancy week and trimester from last menstrual period (LMP) or due date. Educational — confirm with ultrasound dating.",
-      "dateModified": "2026-08-29",
-      "tldr": "Pregnancy Week Calculator: Track your pregnancy week, trimester stage, and baby growth. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Pregnancy Week Calculator: Maps LMP or a given date to gestational week and trimester. Input: LMP or current gestational info. Output: Week number + trimester label.",
       "processingNote": "Calendar-based estimate only. Clinical dating may differ — follow your prenatal provider.",
       "ioContract": {
           "inputs": "LMP date or due date",
@@ -4837,57 +5016,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Week Calculator on FYN Tools track your pregnancy week, trimester stage, and baby growth. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Pregnancy Week Calculator: Maps LMP or a given date to gestational week and trimester.",
+          "Inputs: LMP or current gestational info. Outputs: Week number + trimester label. Mistake to avoid: mixing embryonic age with gestational age (gestational is ~2 weeks ahead)."
       ],
-      "overview": "Track your pregnancy week, trimester stage, and baby growth.",
-      "howItWorks": "Pregnancy Week Calculator applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "Pregnancy Week Calculator: Maps LMP or a given date to gestational week and trimester.",
+      "howItWorks": "You set lmp or current gestational info in the live panel. Pregnancy Week Calculator then maps LMP or a given date to gestational week and trimester. Results show as week number + trimester label.",
       "howToUse": [
           "Enter the first day of your last menstrual period (LMP).",
           "Review gestational week and trimester.",
           "Compare with ultrasound at prenatal visits."
       ],
       "whenToUse": [
-          "When you need to track your pregnancy week, trimester stage, and baby growth",
-          "Before a prenatal or women's health visit — screenshot or export your log",
-          "On mobile for quick tracking without installing an app"
+          "When you need maps LMP or a given date to gestational week and trimester. without another app",
+          "When your input looks like: LMP or current gestational info"
       ],
       "useCases": [
           {
-              "title": "Pregnancy workflow",
-              "description": "Track your pregnancy week, trimester stage, and baby growth."
+              "title": "How many weeks",
+              "description": "Enter LMP and read week + trimester."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Pregnancy Week Calculator once, then continue in your doc or app."
+              "title": "Appointment talk",
+              "description": "Use the same week your clinic uses if they gave you one."
+          },
+          {
+              "title": "App mismatch",
+              "description": "If this disagrees with your prenatal app, ask the clinic which dating they use."
           }
       ],
       "examples": [
           {
-              "input": "Open Pregnancy Week Calculator and enter cycle dates or symptoms",
-              "output": "Calendar or log updates — educational estimate only"
+              "input": "LMP or current gestational info",
+              "output": "Week number + trimester label"
+          },
+          {
+              "input": "Open /pregnancy-week-calculator and use the live controls",
+              "output": "Week number + trimester label"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Mixing embryonic age with gestational age (gestational is ~2 weeks ahead).",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Mixing embryonic age with gestational age (gestational is ~2 weeks ahead).",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Pregnancy Week Calculator runs without installing desktop software",
+          "Accepts: LMP or current gestational info",
+          "Returns: Week number + trimester label",
+          "How-to and FAQs for Pregnancy Week Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Pregnancy Week Calculator runs without installing desktop software",
+          "Accepts: LMP or current gestational info",
+          "Returns: Week number + trimester label"
       ],
       "features": [
           "Calculate pregnancy week",
@@ -4948,14 +5134,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Get trimester diet tips, calorie goals, and food lists."
           }
       ],
-      "conclusion": "Use Pregnancy Week Calculator above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Pregnancy Week Calculator on this page, then browse related pregnancy tools linked below."
   },
   '/pregnancy-weight-gain-calculator': {
       "title": "Pregnancy Weight Gain Calculator — BMI Ranges",
       "h1": "Pregnancy Weight Gain Calculator — Healthy Range by BMI",
       "metaDescription": "See educational weight-gain ranges by pre-pregnancy BMI (IOM-style). Track progress — discuss targets with your OB or midwife.",
-      "dateModified": "2026-08-29",
-      "tldr": "Pregnancy Weight Gain Calculator: Track healthy pregnancy weight gain based on BMI. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Pregnancy Weight Gain Calculator: Shows educational BMI-based weight-gain ranges — not a personal medical target. Input: Pre-pregnancy weight/height, current week if asked. Output: Range guidance.",
       "processingNote": "Educational BMI-based ranges. Twins, medical conditions, and individual plans require clinician guidance.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -4972,57 +5158,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Pregnancy Weight Gain Calculator on FYN Tools track healthy pregnancy weight gain based on BMI. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Pregnancy Weight Gain Calculator: Shows educational BMI-based weight-gain ranges — not a personal medical target.",
+          "Inputs: Pre-pregnancy weight/height, current week if asked. Outputs: Range guidance. Mistake to avoid: crash-dieting to “hit” a chart — twins and conditions change targets; ask your clinician."
       ],
-      "overview": "Track healthy pregnancy weight gain based on BMI.",
-      "howItWorks": "Pregnancy Weight Gain Calculator applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "Pregnancy Weight Gain Calculator: Shows educational BMI-based weight-gain ranges — not a personal medical target.",
+      "howItWorks": "You set pre-pregnancy weight/height, current week if asked in the live panel. Pregnancy Weight Gain Calculator then shows educational BMI-based weight-gain ranges — not a personal medical target. Results show as range guidance.",
       "howToUse": [
           "Enter dates or symptoms in Pregnancy Weight Gain Calculator.",
           "Review the estimate or log.",
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to track healthy pregnancy weight gain based on bmi",
-          "Before a prenatal or women's health visit — screenshot or export your log",
-          "On mobile for quick tracking without installing an app"
+          "When you need shows educational BMI-based weight-gain ranges — not a personal medical target. without another app",
+          "When your input looks like: Pre-pregnancy weight/height, current week if asked"
       ],
       "useCases": [
           {
-              "title": "Pregnancy workflow",
-              "description": "Track healthy pregnancy weight gain based on BMI."
+              "title": "BMI band",
+              "description": "Enter height/weight to see which educational range applies."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Pregnancy Weight Gain Calculator once, then continue in your doc or app."
+              "title": "Twins",
+              "description": "Ignore the singleton chart if you are carrying multiples."
+          },
+          {
+              "title": "Trend not number",
+              "description": "Use clinic weigh-ins as the source of truth."
           }
       ],
       "examples": [
           {
-              "input": "Open Pregnancy Weight Gain Calculator and enter cycle dates or symptoms",
-              "output": "Calendar or log updates — educational estimate only"
+              "input": "Pre-pregnancy weight/height, current week if asked",
+              "output": "Range guidance"
+          },
+          {
+              "input": "Open /pregnancy-weight-gain-calculator and use the live controls",
+              "output": "Range guidance"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Crash-dieting to “hit” a chart — twins and conditions change targets; ask your clinician.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Crash-dieting to “hit” a chart — twins and conditions change targets; ask your clinician.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Pregnancy Weight Gain Calculator runs without installing desktop software",
+          "Accepts: Pre-pregnancy weight/height, current week if asked",
+          "Returns: Range guidance",
+          "How-to and FAQs for Pregnancy Weight Gain Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Pregnancy Weight Gain Calculator runs without installing desktop software",
+          "Accepts: Pre-pregnancy weight/height, current week if asked",
+          "Returns: Range guidance"
       ],
       "features": [
           "Calculate healthy weight gain",
@@ -5083,14 +5276,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Get trimester diet tips, calorie goals, and food lists."
           }
       ],
-      "conclusion": "Use Pregnancy Weight Gain Calculator above, then browse related pregnancy tools linked below."
+      "conclusion": "Use Pregnancy Weight Gain Calculator on this page, then browse related pregnancy tools linked below."
   },
   '/safe-days-calculator': {
       "title": "Safe Days Calculator — Fertile Window Estimate",
       "h1": "Safe Days Calculator — Cycle Day Estimates",
       "metaDescription": "Estimate fertile and lower-risk days from cycle length and last period. Rhythm method is not reliable contraception — educational only.",
-      "dateModified": "2026-08-29",
-      "tldr": "Safe Days Calculator: Identify safe and fertile days with pregnancy risk insights. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Safe Days Calculator: Marks calendar rhythm “lower risk” days — this method fails often and is not reliable contraception. Input: LMP, cycle length. Output: Calendar coloring.",
       "processingNote": "Calendar rhythm estimates fail often for contraception. Not medical advice — use approved birth control and clinician guidance.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -5107,57 +5300,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Safe Days Calculator on FYN Tools identify safe and fertile days with pregnancy risk insights. Use the tool above — free, no account required.",
-          "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
+          "Safe Days Calculator: Marks calendar rhythm “lower risk” days — this method fails often and is not reliable contraception.",
+          "Inputs: LMP, cycle length. Outputs: Calendar coloring. Mistake to avoid: relying on rhythm alone to avoid pregnancy."
       ],
-      "overview": "Identify safe and fertile days with pregnancy risk insights.",
-      "howItWorks": "Safe Days Calculator applies calendar math or local logging from the dates you enter — educational only.",
+      "overview": "Safe Days Calculator: Marks calendar rhythm “lower risk” days — this method fails often and is not reliable contraception.",
+      "howItWorks": "You set lmp, cycle length in the live panel. Safe Days Calculator then marks calendar rhythm “lower risk” days — this method fails often and is not reliable contraception. Results show as calendar coloring.",
       "howToUse": [
           "Enter dates or symptoms in Safe Days Calculator.",
           "Review the estimate or log.",
           "Confirm medical decisions with your clinician."
       ],
       "whenToUse": [
-          "When you need to identify safe and fertile days with pregnancy risk insights",
-          "Before planning travel, workouts, or appointments around your cycle",
-          "On mobile for a quick date estimate without installing an app"
+          "When you need marks calendar rhythm “lower risk” days — this method fails often and is not reliable contraception. without another app",
+          "When your input looks like: LMP, cycle length"
       ],
       "useCases": [
           {
-              "title": "Period & Cycle workflow",
-              "description": "Identify safe and fertile days with pregnancy risk insights."
+              "title": "Education only",
+              "description": "See why mid-cycle days cluster as higher risk."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Safe Days Calculator once, then continue in your doc or app."
+              "title": "Irregular cycles",
+              "description": "The map is even less meaningful — use proven contraception."
+          },
+          {
+              "title": "Talk to a clinician",
+              "description": "Ask about methods that actually work for you."
           }
       ],
       "examples": [
           {
-              "input": "Open Safe Days Calculator and enter cycle dates or symptoms",
-              "output": "Calendar or log updates — educational estimate only"
+              "input": "LMP, cycle length",
+              "output": "Calendar coloring"
+          },
+          {
+              "input": "Open /safe-days-calculator and use the live controls",
+              "output": "Calendar coloring"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
+          "Read the Privacy & processing note before you paste secrets.",
+          "Relying on rhythm alone to avoid pregnancy.",
           "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
       ],
       "commonMistakes": [
-          "Using calendar predictions as contraception without clinician guidance",
-          "Ignoring severe symptoms because an app log looks normal",
-          "Expecting cloud backup when data is stored only in this browser"
+          "Relying on rhythm alone to avoid pregnancy.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Safe Days Calculator runs without installing desktop software",
+          "Accepts: LMP, cycle length",
+          "Returns: Calendar coloring",
+          "How-to and FAQs for Safe Days Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Safe Days Calculator runs without installing desktop software",
+          "Accepts: LMP, cycle length",
+          "Returns: Calendar coloring"
       ],
       "features": [
           "Identify safe days",
@@ -5209,14 +5409,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Track PMS symptoms, pain scale, and daily changes."
           }
       ],
-      "conclusion": "Use Safe Days Calculator above, then browse related period & cycle tools linked below."
+      "conclusion": "Use Safe Days Calculator on this page, then browse related period & cycle tools linked below."
   },
   '/simple-calculator': {
       "title": "Simple Calculator — Basic Arithmetic",
       "h1": "Simple Calculator — Add, Subtract, Multiply, Divide",
       "metaDescription": "Online calculator for everyday arithmetic. Keyboard-friendly — free, no download.",
-      "dateModified": "2026-08-29",
-      "tldr": "Simple Calculator: Perform basic arithmetic calculations. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Simple Calculator: Four-function and typical scientific keys in the browser. Input: Keypad expression. Output: Numeric result.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -5233,57 +5433,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Simple Calculator on FYN Tools perform basic arithmetic calculations. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Simple Calculator: Four-function and typical scientific keys in the browser.",
+          "Inputs: Keypad expression. Outputs: Numeric result. Mistake to avoid: pasting Excel formulas with commas as decimals — use the keypad’s decimal style."
       ],
-      "overview": "Perform basic arithmetic calculations.",
-      "howItWorks": "Simple Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Simple Calculator: Four-function and typical scientific keys in the browser.",
+      "howItWorks": "You set keypad expression in the live panel. Simple Calculator then four-function and typical scientific keys in the browser. Results show as numeric result.",
       "howToUse": [
           "Enter amounts and rates in Simple Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Simple Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need four-function and typical scientific keys in the browser. without another app",
+          "When your input looks like: Keypad expression"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Perform basic arithmetic calculations."
+              "title": "Quick split",
+              "description": "Divide a bill by 3 without unlocking the phone calc."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Simple Calculator once, then continue in your doc or app."
+              "title": "Percent off",
+              "description": "Compute a discount before you buy."
+          },
+          {
+              "title": "Chain ops",
+              "description": "Keep using the result as the next operand."
           }
       ],
       "examples": [
           {
-              "input": "Enter labeled amounts in Simple Calculator",
-              "output": "On-screen breakdown with totals you can copy or screenshot"
+              "input": "Keypad expression",
+              "output": "Numeric result"
+          },
+          {
+              "input": "Open /simple-calculator and use the live controls",
+              "output": "Numeric result"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Pasting Excel formulas with commas as decimals — use the keypad’s decimal style.",
+          "Copy Simple Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Pasting Excel formulas with commas as decimals — use the keypad’s decimal style.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Simple Calculator runs without installing desktop software",
+          "Accepts: Keypad expression",
+          "Returns: Numeric result",
+          "How-to and FAQs for Simple Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Simple Calculator runs without installing desktop software",
+          "Accepts: Keypad expression",
+          "Returns: Numeric result"
       ],
       "features": [
           "Basic arithmetic operations",
@@ -5365,14 +5572,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use Simple Calculator above, then browse related number tools linked below."
+      "conclusion": "Use Simple Calculator on this page, then browse related number tools linked below."
   },
   '/sip-calculator': {
       "title": "SIP & Lumpsum Calculator — Mutual Fund Returns",
       "h1": "SIP & Lumpsum Calculator — Investment Growth",
       "metaDescription": "Project SIP or lumpsum mutual fund returns with expected annual return and tenure. Free investment calculator — educational estimates.",
-      "dateModified": "2026-08-29",
-      "tldr": "SIP & Lumpsum Calculator: Calculate returns on your SIP or Lumpsum investments. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "SIP & Lumpsum Calculator: Projects SIP corpus from monthly amount, expected return, and years. Input: Monthly SIP, annual return %, tenure. Output: Invested amount vs estimated corpus.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Monthly SIP or one-time lumpsum, expected annual return (%), investment period (years)",
@@ -5389,29 +5596,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "SIP & Lumpsum Calculator on FYN Tools calculate returns on your SIP or Lumpsum investments. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "SIP & Lumpsum Calculator: Projects SIP corpus from monthly amount, expected return, and years.",
+          "Inputs: Monthly SIP, annual return %, tenure. Outputs: Invested amount vs estimated corpus. Mistake to avoid: treating 12% as a guarantee — markets vary; this is compounding math, not a fund quote."
       ],
-      "overview": "Calculate returns on your SIP or Lumpsum investments.",
-      "howItWorks": "SIP & Lumpsum Calculator runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "SIP & Lumpsum Calculator: Projects SIP corpus from monthly amount, expected return, and years.",
+      "howItWorks": "You set monthly sip, annual return %, tenure in the live panel. SIP & Lumpsum Calculator then projects SIP corpus from monthly amount, expected return, and years. Results show as invested amount vs estimated corpus.",
       "howToUse": [
           "Enter amounts and rates in SIP & Lumpsum Calculator.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from SIP & Lumpsum Calculator",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need projects SIP corpus from monthly amount, expected return, and years. without another app",
+          "When your input looks like: Monthly SIP, annual return %, tenure"
       ],
       "useCases": [
           {
-              "title": "Number workflow",
-              "description": "Calculate returns on your SIP or Lumpsum investments."
+              "title": "₹5,000 × 10 years",
+              "description": "See corpus vs money invested."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use SIP & Lumpsum Calculator once, then continue in your doc or app."
+              "title": "Raise SIP",
+              "description": "Step monthly amount and compare."
+          },
+          {
+              "title": "Return shock",
+              "description": "Drop expected return from 12% to 8%."
           }
       ],
       "examples": [
@@ -5421,25 +5631,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Treating 12% as a guarantee — markets vary; this is compounding math, not a fund quote.",
+          "Copy SIP & Lumpsum Calculator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Treating 12% as a guarantee — markets vary; this is compounding math, not a fund quote.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "SIP & Lumpsum Calculator runs without installing desktop software",
+          "Accepts: Monthly SIP, annual return %, tenure",
+          "Returns: Invested amount vs estimated corpus",
+          "How-to and FAQs for SIP & Lumpsum Calculator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "SIP & Lumpsum Calculator runs without installing desktop software",
+          "Accepts: Monthly SIP, annual return %, tenure",
+          "Returns: Invested amount vs estimated corpus"
       ],
       "features": [
           "SIP calculation",
@@ -5521,14 +5731,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Calculate returns on your Public Provident Fund (PPF) investments."
           }
       ],
-      "conclusion": "Use SIP & Lumpsum Calculator above, then browse related number tools linked below."
+      "conclusion": "Use SIP & Lumpsum Calculator on this page, then browse related number tools linked below."
   },
   '/social-media-db-viewer': {
       "title": "Social Media Profile Viewer",
       "h1": "Instagram & Facebook Public Profile Viewer",
       "metaDescription": "View public profile information from Instagram and Facebook URLs. Public data only — respect privacy and platform terms.",
-      "dateModified": "2026-08-29",
-      "tldr": "Social Media DB Viewer: View public profile information from Instagram and Facebook accounts. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Social Media DB Viewer: Shows public profile fields for Instagram/Facebook usernames you enter — public only. Input: Public username or profile URL. Output: Public fields the tool can display.",
       "processingNote": "Only works for public profiles. Do not use to harass or scrape private data.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -5545,57 +5755,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media DB Viewer on FYN Tools view public profile information from Instagram and Facebook accounts. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Social Media DB Viewer: Shows public profile fields for Instagram/Facebook usernames you enter — public only.",
+          "Inputs: Public username or profile URL. Outputs: Public fields the tool can display. Mistake to avoid: trying to pull private accounts or using it to harass someone."
       ],
-      "overview": "View public profile information from Instagram and Facebook accounts.",
-      "howItWorks": "Social Media DB Viewer runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Social Media DB Viewer: Shows public profile fields for Instagram/Facebook usernames you enter — public only.",
+      "howItWorks": "You set public username or profile url in the live panel. Social Media DB Viewer then shows public profile fields for Instagram/Facebook usernames you enter — public only. Results show as public fields the tool can display.",
       "howToUse": [
           "Use the Social Media DB Viewer form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to view public profile information from instagram and facebook accounts",
-          "For video & social media tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need shows public profile fields for Instagram/Facebook usernames you enter — public only. without another app",
+          "When your input looks like: Public username or profile URL"
       ],
       "useCases": [
           {
-              "title": "Video & Social Media workflow",
-              "description": "View public profile information from Instagram and Facebook accounts."
+              "title": "Public handle check",
+              "description": "Paste a public username and read what is already visible."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Social Media DB Viewer once, then continue in your doc or app."
+              "title": "Brand lookup",
+              "description": "Confirm a public page name before you message it."
+          },
+          {
+              "title": "Stop at public",
+              "description": "If it is private, the tool should not invent data."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Social Media DB Viewer",
-              "output": "Social Media DB Viewer returns a formatted result you can copy or download"
+              "input": "Public username or profile URL",
+              "output": "Public fields the tool can display"
+          },
+          {
+              "input": "Open /social-media-db-viewer and use the live controls",
+              "output": "Public fields the tool can display"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Trying to pull private accounts or using it to harass someone.",
+          "Copy Social Media DB Viewer output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Trying to pull private accounts or using it to harass someone.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Social Media DB Viewer runs without installing desktop software",
+          "Accepts: Public username or profile URL",
+          "Returns: Public fields the tool can display",
+          "How-to and FAQs for Social Media DB Viewer live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Social Media DB Viewer runs without installing desktop software",
+          "Accepts: Public username or profile URL",
+          "Returns: Public fields the tool can display"
       ],
       "features": [
           "View Instagram profiles",
@@ -5647,14 +5864,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert text to audio with natural-sounding voices."
           }
       ],
-      "conclusion": "Use Social Media DB Viewer above, then browse related video & social media tools linked below."
+      "conclusion": "Use Social Media DB Viewer on this page, then browse related video & social media tools linked below."
   },
   '/social-media-deep-link-generator': {
       "title": "Deep Link Generator — Open in App or Web",
       "h1": "Social Media Deep Link Generator",
       "metaDescription": "Create smart links for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn that open apps when installed.",
-      "dateModified": "2026-08-29",
-      "tldr": "Social Media Deep Link Generator: Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Social Media Deep Link Generator: Builds app deep links with web fallbacks for YouTube, Instagram, WhatsApp, etc. Input: Platform + content URL. Output: Deep link + https fallback.",
       "processingNote": "This tool may call external APIs to fetch public data. Do not submit secrets or private credentials.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -5671,10 +5888,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media Deep Link Generator on FYN Tools generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Social Media Deep Link Generator: Builds app deep links with web fallbacks for YouTube, Instagram, WhatsApp, etc.",
+          "Inputs: Platform + content URL. Outputs: Deep link + https fallback. Mistake to avoid: using a mobile-only scheme in an email client that cannot open it — always keep the web fallback."
       ],
-      "overview": "Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn.",
+      "overview": "Social Media Deep Link Generator: Builds app deep links with web fallbacks for YouTube, Instagram, WhatsApp, etc.",
       "howItWorks": "Enter a platform URL; the tool outputs a deep-link pattern that tries the native app URI scheme with web fallback.",
       "howToUse": [
           "Use the Social Media Deep Link Generator form above.",
@@ -5682,46 +5899,53 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. free universal deep linking tool for youtube, instagram, facebook, twitter, whatsapp, telegram, and linkedin",
-          "For video & social media tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need builds app deep links with web fallbacks for YouTube, Instagram, WhatsApp, etc. without another app",
+          "When your input looks like: Platform + content URL"
       ],
       "useCases": [
           {
-              "title": "Video & Social Media workflow",
-              "description": "Generate smart deep links for social media platforms that automatically open content in apps if installed, or fallback to web browser. Free universal deep linking tool for YouTube, Instagram, Facebook, Twitter, WhatsApp, Telegram, and LinkedIn."
+              "title": "YouTube watch",
+              "description": "Paste a watch URL, copy both links into a campaign."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Social Media Deep Link Generator once, then continue in your doc or app."
+              "title": "WhatsApp click-to-chat",
+              "description": "Generate the wa.me style link the form produces."
+          },
+          {
+              "title": "Instagram profile",
+              "description": "Deep link to a public profile with web backup."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Social Media Deep Link Generator",
-              "output": "Social Media Deep Link Generator returns a formatted result you can copy or download"
+              "input": "Platform + content URL",
+              "output": "Deep link + https fallback"
+          },
+          {
+              "input": "Open /social-media-deep-link-generator and use the live controls",
+              "output": "Deep link + https fallback"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Using a mobile-only scheme in an email client that cannot open it — always keep the web fallback.",
+          "Copy Social Media Deep Link Generator output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Using a mobile-only scheme in an email client that cannot open it — always keep the web fallback.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Social Media Deep Link Generator runs without installing desktop software",
+          "Accepts: Platform + content URL",
+          "Returns: Deep link + https fallback",
+          "How-to and FAQs for Social Media Deep Link Generator live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Social Media Deep Link Generator runs without installing desktop software",
+          "Accepts: Platform + content URL",
+          "Returns: Deep link + https fallback"
       ],
       "features": [
           "Generate deep links",
@@ -5773,14 +5997,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert text to audio with natural-sounding voices."
           }
       ],
-      "conclusion": "Use Social Media Deep Link Generator above, then browse related video & social media tools linked below."
+      "conclusion": "Use Social Media Deep Link Generator on this page, then browse related video & social media tools linked below."
   },
   '/social-media-downloader': {
       "title": "Instagram & Facebook Downloader",
       "h1": "Social Media Downloader — Reels & Posts",
       "metaDescription": "Download public Instagram reels, posts, stories, and Facebook videos via URL. Respect copyright and platform terms of use.",
-      "dateModified": "2026-08-29",
-      "tldr": "Instagram & Facebook Downloader: Download reels, posts, stories, and highlights from Instagram and Facebook. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Instagram & Facebook Downloader: Attempts to download public Instagram/Facebook media from a URL you paste. Input: Public post/reel URL. Output: File download when the URL is supported.",
       "processingNote": "Only download content you have rights to use. FYN Tools does not store your downloads on a server beyond the fetch step.",
       "ioContract": {
           "inputs": "Public post/reel/story URL",
@@ -5797,57 +6021,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Instagram & Facebook Downloader on FYN Tools download reels, posts, stories, and highlights from Instagram and Facebook. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Instagram & Facebook Downloader: Attempts to download public Instagram/Facebook media from a URL you paste.",
+          "Inputs: Public post/reel URL. Outputs: File download when the URL is supported. Mistake to avoid: pasting a private or expired story — it will fail; do not use it to steal private content."
       ],
-      "overview": "Download reels, posts, stories, and highlights from Instagram and Facebook.",
-      "howItWorks": "Instagram & Facebook Downloader runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Instagram & Facebook Downloader: Attempts to download public Instagram/Facebook media from a URL you paste.",
+      "howItWorks": "You set public post/reel url in the live panel. Instagram & Facebook Downloader then attempts to download public Instagram/Facebook media from a URL you paste. Results show as file download when the url is supported.",
       "howToUse": [
           "Use the Instagram & Facebook Downloader form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to download reels, posts, stories, and highlights from instagram and facebook",
-          "For video & social media tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need attempts to download public Instagram/Facebook media from a URL you paste. without another app",
+          "When your input looks like: Public post/reel URL"
       ],
       "useCases": [
           {
-              "title": "Video & Social Media workflow",
-              "description": "Download reels, posts, stories, and highlights from Instagram and Facebook."
+              "title": "Your own reel backup",
+              "description": "Paste a public reel you posted and save a copy."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Instagram & Facebook Downloader once, then continue in your doc or app."
+              "title": "Public reference",
+              "description": "Save a public post you have rights to reuse."
+          },
+          {
+              "title": "If it 404s",
+              "description": "The URL is private, region-locked, or unsupported — stop retrying logins here."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Instagram & Facebook Downloader",
-              "output": "Instagram & Facebook Downloader returns a formatted result you can copy or download"
+              "input": "Public post/reel URL",
+              "output": "File download when the URL is supported"
+          },
+          {
+              "input": "Open /social-media-downloader and use the live controls",
+              "output": "File download when the URL is supported"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Pasting a private or expired story — it will fail; do not use it to steal private content.",
+          "Copy Instagram & Facebook Downloader output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Pasting a private or expired story — it will fail; do not use it to steal private content.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Instagram & Facebook Downloader runs without installing desktop software",
+          "Accepts: Public post/reel URL",
+          "Returns: File download when the URL is supported",
+          "How-to and FAQs for Instagram & Facebook Downloader live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Instagram & Facebook Downloader runs without installing desktop software",
+          "Accepts: Public post/reel URL",
+          "Returns: File download when the URL is supported"
       ],
       "features": [
           "Download Instagram reels",
@@ -5899,14 +6130,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert text to audio with natural-sounding voices."
           }
       ],
-      "conclusion": "Use Instagram & Facebook Downloader above, then browse related video & social media tools linked below."
+      "conclusion": "Use Instagram & Facebook Downloader on this page, then browse related video & social media tools linked below."
   },
   '/social-media-planner': {
       "title": "Social Media Planner — Post Schedule Board",
       "h1": "Social Media Planner — Content Calendar",
       "metaDescription": "Draft and organize social posts by date and platform. Browser-based planning board — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Social Media Planner: Plan and schedule your social media posts with ease. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Social Media Planner: Stores captions and dates for planned posts locally. Input: Caption, platform, date. Output: Calendar-style plan on this device.",
       "processingNote": "Planner data may store locally — does not auto-publish to networks.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -5923,57 +6154,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Social Media Planner on FYN Tools plan and schedule your social media posts with ease. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Social Media Planner: Stores captions and dates for planned posts locally.",
+          "Inputs: Caption, platform, date. Outputs: Calendar-style plan on this device. Mistake to avoid: thinking it auto-publishes to Instagram — it is a planner, not a scheduler API."
       ],
-      "overview": "Plan and schedule your social media posts with ease.",
-      "howItWorks": "Social Media Planner runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Social Media Planner: Stores captions and dates for planned posts locally.",
+      "howItWorks": "You set caption, platform, date in the live panel. Social Media Planner then stores captions and dates for planned posts locally. Results show as calendar-style plan on this device.",
       "howToUse": [
           "Use the Social Media Planner form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to plan and schedule your social media posts with ease",
-          "For video & social media tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need stores captions and dates for planned posts locally. without another app",
+          "When your input looks like: Caption, platform, date"
       ],
       "useCases": [
           {
-              "title": "Video & Social Media workflow",
-              "description": "Plan and schedule your social media posts with ease."
+              "title": "Friday launch",
+              "description": "Write the caption, set Friday, copy it when you actually post."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Social Media Planner once, then continue in your doc or app."
+              "title": "Week grid",
+              "description": "Park three ideas so you are not blank on Monday."
+          },
+          {
+              "title": "Export before wipe",
+              "description": "Copy captions out if you will clear the browser."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Social Media Planner",
-              "output": "Social Media Planner returns a formatted result you can copy or download"
+              "input": "Caption, platform, date",
+              "output": "Calendar-style plan on this device"
+          },
+          {
+              "input": "Open /social-media-planner and use the live controls",
+              "output": "Calendar-style plan on this device"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Thinking it auto-publishes to Instagram — it is a planner, not a scheduler API.",
+          "Copy Social Media Planner output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Thinking it auto-publishes to Instagram — it is a planner, not a scheduler API.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Social Media Planner runs without installing desktop software",
+          "Accepts: Caption, platform, date",
+          "Returns: Calendar-style plan on this device",
+          "How-to and FAQs for Social Media Planner live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Social Media Planner runs without installing desktop software",
+          "Accepts: Caption, platform, date",
+          "Returns: Calendar-style plan on this device"
       ],
       "features": [
           "Plan social media posts",
@@ -6025,14 +6263,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert text to audio with natural-sounding voices."
           }
       ],
-      "conclusion": "Use Social Media Planner above, then browse related video & social media tools linked below."
+      "conclusion": "Use Social Media Planner on this page, then browse related video & social media tools linked below."
   },
   '/split-image': {
       "title": "Split Image — Grid Slice & ZIP Download",
       "h1": "Split Image — Cut into Rows & Columns",
       "metaDescription": "Split an image into equal tiles by rows and columns. Download all pieces as ZIP — free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Split Image: Split images into custom rows and columns and download all pieces as ZIP files. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Split Image: Cuts one image into tiles or halves. Input: Image + rows/columns. Output: Pieces to download (often as a set).",
       "processingNote": "Image processing runs in your browser. Original files are not uploaded to FYN Tools servers unless the tool states otherwise.",
       "ioContract": {
           "inputs": "Image upload (drag-drop or file picker)",
@@ -6049,57 +6287,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Split Image on FYN Tools split images into custom rows and columns and download all pieces as ZIP files. Use the tool above — free, no account required.",
-          "Upload from your device; most image tools process locally in the browser."
+          "Split Image: Cuts one image into tiles or halves.",
+          "Inputs: Image + rows/columns. Outputs: Pieces to download (often as a set). Mistake to avoid: splitting a tiny image into 16 tiles — each piece will be unusable."
       ],
-      "overview": "Split images into custom rows and columns and download all pieces as ZIP files.",
-      "howItWorks": "Split Image processes your upload in the browser and shows a preview you can download.",
+      "overview": "Split Image: Cuts one image into tiles or halves.",
+      "howItWorks": "You set image + rows/columns in the live panel. Split Image then cuts one image into tiles or halves. Results show as pieces to download (often as a set).",
       "howToUse": [
           "Upload your image.",
           "Adjust settings and preview.",
           "Download the result."
       ],
       "whenToUse": [
-          "When you need a quick image edit without opening desktop software",
-          "Before uploading to a site or app — compress, resize, or convert first",
-          "On mobile to process a photo from your camera roll"
+          "When you need cuts one image into tiles or halves. without another app",
+          "When your input looks like: Image + rows/columns"
       ],
       "useCases": [
           {
-              "title": "Image workflow",
-              "description": "Split images into custom rows and columns and download all pieces as ZIP files."
+              "title": "Carousel crop",
+              "description": "Slice a wide banner into Instagram carousel frames."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Split Image once, then continue in your doc or app."
+              "title": "Print puzzle",
+              "description": "Make a simple grid for a craft print."
+          },
+          {
+              "title": "Halves",
+              "description": "Split left/right for a comparison slide."
           }
       ],
       "examples": [
           {
-              "input": "Upload PNG/JPG from your device",
-              "output": "Processed preview ready to download — stays in browser"
+              "input": "Image + rows/columns",
+              "output": "Pieces to download (often as a set)"
+          },
+          {
+              "input": "Open /split-image and use the live controls",
+              "output": "Pieces to download (often as a set)"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Splitting a tiny image into 16 tiles — each piece will be unusable.",
+          "Copy Split Image output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-          "Expecting OCR-level text from blurry uploads",
-          "Not downloading the result before navigating away"
+          "Splitting a tiny image into 16 tiles — each piece will be unusable.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Split Image runs without installing desktop software",
+          "Accepts: Image + rows/columns",
+          "Returns: Pieces to download (often as a set)",
+          "How-to and FAQs for Split Image live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Split Image runs without installing desktop software",
+          "Accepts: Image + rows/columns",
+          "Returns: Pieces to download (often as a set)"
       ],
       "features": [
           "Custom rows and columns",
@@ -6175,19 +6420,19 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Extract text content from PDF files. Convert PDF documents to plain text format for easy editing and"
           },
           {
-              "name": "Placeholder Image Generator",
-              "href": "/placeholder-image-generator",
-              "description": "Generate custom placeholder images with specified dimensions, colors, and text. Perfect for web desi"
+              "name": "PDF Compressor",
+              "href": "/pdf-compressor",
+              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
           }
       ],
-      "conclusion": "Use Split Image above, then browse related image tools linked below."
+      "conclusion": "Use Split Image on this page, then browse related image tools linked below."
   },
   '/table-to-json-converter': {
       "title": "Table to JSON Converter — HTML Table Parser",
       "h1": "Table to JSON — Convert HTML Tables",
       "metaDescription": "Paste an HTML table and get JSON array output. Free for scraping cleanup and API fixtures.",
-      "dateModified": "2026-08-29",
-      "tldr": "Table to JSON Converter: Convert HTML tables to JSON format. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Table to JSON Converter: Turns a pasted TSV/CSV/HTML table into JSON. Input: Delimited text or HTML table. Output: JSON array of objects.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "CSS parameters or markup/table paste",
@@ -6204,10 +6449,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Table to JSON Converter on FYN Tools convert HTML tables to JSON format. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Table to JSON Converter: Turns a pasted TSV/CSV/HTML table into JSON.",
+          "Inputs: Delimited text or HTML table. Outputs: JSON array of objects. Mistake to avoid: headers with spaces/duplicates — clean column names before converting."
       ],
-      "overview": "Convert HTML tables to JSON format.",
+      "overview": "Table to JSON Converter: Turns a pasted TSV/CSV/HTML table into JSON.",
       "howItWorks": "Parses table rows and cells into an array of objects using header row keys when present.",
       "howToUse": [
           "Use the Table to JSON Converter form above.",
@@ -6215,18 +6460,21 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to convert html tables to json format",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need turns a pasted TSV/CSV/HTML table into JSON. without another app",
+          "When your input looks like: Delimited text or HTML table"
       ],
       "useCases": [
           {
-              "title": "Development workflow",
-              "description": "Convert HTML tables to JSON format."
+              "title": "Excel dump",
+              "description": "Paste TSV from a sheet, copy JSON into an API mock."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Table to JSON Converter once, then continue in your doc or app."
+              "title": "HTML scrape",
+              "description": "Paste a simple table and get objects."
+          },
+          {
+              "title": "Validate after",
+              "description": "Run the JSON through the formatter/validator next."
           }
       ],
       "examples": [
@@ -6236,25 +6484,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Headers with spaces/duplicates — clean column names before converting.",
+          "Copy Table to JSON Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Headers with spaces/duplicates — clean column names before converting.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Table to JSON Converter runs without installing desktop software",
+          "Accepts: Delimited text or HTML table",
+          "Returns: JSON array of objects",
+          "How-to and FAQs for Table to JSON Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Table to JSON Converter runs without installing desktop software",
+          "Accepts: Delimited text or HTML table",
+          "Returns: JSON array of objects"
       ],
       "features": [
           "Convert HTML table to JSON",
@@ -6333,17 +6581,17 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           {
               "name": "Button Generator",
               "href": "/button-generator",
-              "description": "Design and generate CSS for custom buttons with various styles."
+              "description": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals"
           }
       ],
-      "conclusion": "Use Table to JSON Converter above, then browse related development tools linked below."
+      "conclusion": "Use Table to JSON Converter on this page, then browse related development tools linked below."
   },
   '/temperature-converter': {
       "title": "Temperature Converter — Celsius ↔ Fahrenheit",
       "h1": "Temperature Converter — °C and °F",
       "metaDescription": "Convert Celsius to Fahrenheit and back instantly. Free temperature converter for cooking, travel, and science homework.",
-      "dateModified": "2026-08-29",
-      "tldr": "Temperature Converter: Convert between Celsius and Fahrenheit. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Temperature Converter: Converts °C, °F, and K. Input: Value + from/to units. Output: Converted temperature.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value and unit/color format selectors",
@@ -6360,29 +6608,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Temperature Converter on FYN Tools convert between Celsius and Fahrenheit. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Temperature Converter: Converts °C, °F, and K.",
+          "Inputs: Value + from/to units. Outputs: Converted temperature. Mistake to avoid: mixing weather °C with oven °F without switching the unit control."
       ],
-      "overview": "Convert between Celsius and Fahrenheit.",
-      "howItWorks": "Temperature Converter runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Temperature Converter: Converts °C, °F, and K.",
+      "howItWorks": "You set value + from/to units in the live panel. Temperature Converter then converts °C, °F, and K. Results show as converted temperature.",
       "howToUse": [
           "Use the Temperature Converter form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to convert between celsius and fahrenheit",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need converts °C, °F, and K. without another app",
+          "When your input looks like: Value + from/to units"
       ],
       "useCases": [
           {
-              "title": "Converter workflow",
-              "description": "Convert between Celsius and Fahrenheit."
+              "title": "Fever note",
+              "description": "Convert 101°F to °C for a record."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Temperature Converter once, then continue in your doc or app."
+              "title": "Recipe",
+              "description": "Oven 180°C to °F."
+          },
+          {
+              "title": "Science class",
+              "description": "°C to kelvin for a lab sheet."
           }
       ],
       "examples": [
@@ -6396,25 +6647,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Mixing weather °C with oven °F without switching the unit control.",
+          "Copy Temperature Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Mixing weather °C with oven °F without switching the unit control.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Temperature Converter runs without installing desktop software",
+          "Accepts: Value + from/to units",
+          "Returns: Converted temperature",
+          "How-to and FAQs for Temperature Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Temperature Converter runs without installing desktop software",
+          "Accepts: Value + from/to units",
+          "Returns: Converted temperature"
       ],
       "features": [
           "Celsius to Fahrenheit",
@@ -6460,14 +6711,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert colors between HEX, RGB, HSL, and other formats."
           }
       ],
-      "conclusion": "Use Temperature Converter above, then browse related converter tools linked below."
+      "conclusion": "Use Temperature Converter on this page, then browse related converter tools linked below."
   },
   '/text-font-changer': {
       "title": "Fancy Text Generator — Unicode Fonts",
       "h1": "Text Font Changer — 35+ Unicode Styles",
       "metaDescription": "Turn plain text into bold, cursive, bubble, and aesthetic Unicode fonts for Instagram, Discord, TikTok, and bios. Copy-paste free.",
-      "dateModified": "2026-08-29",
-      "tldr": "Text Font Changer: Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Text Font Changer: Maps your letters to Unicode “fancy” fonts for bios and captions. Input: Plain text + style. Output: Copyable Unicode string (not a real installed font file).",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Fields shown in the tool form above",
@@ -6484,10 +6735,10 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Text Font Changer on FYN Tools free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Text Font Changer: Maps your letters to Unicode “fancy” fonts for bios and captions.",
+          "Inputs: Plain text + style. Outputs: Copyable Unicode string (not a real installed font file). Mistake to avoid: expecting the style to survive in a system that strips Unicode — some banks/forms will flatten it."
       ],
-      "overview": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up.",
+      "overview": "Text Font Changer: Maps your letters to Unicode “fancy” fonts for bios and captions.",
       "howItWorks": "Type in the box; each style row shows a Unicode transformation you can copy — works anywhere Unicode is supported.",
       "howToUse": [
           "Use the Text Font Changer form above.",
@@ -6495,18 +6746,21 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to free fancy text generator with 35+ unicode fonts. copy-paste for instagram bio, discord, tiktok, roblox—bold, cursive, bubble, aesthetic. no sign-up",
-          "For text & writing tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need maps your letters to Unicode “fancy” fonts for bios and captions. without another app",
+          "When your input looks like: Plain text + style"
       ],
       "useCases": [
           {
-              "title": "Text & Writing workflow",
-              "description": "Free fancy text generator with 35+ Unicode fonts. Copy-paste for Instagram bio, Discord, TikTok, Roblox—bold, cursive, bubble, aesthetic. No sign-up."
+              "title": "Instagram bio",
+              "description": "Type a name, pick a style, paste into the bio (watch the 150 cap)."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Text Font Changer once, then continue in your doc or app."
+              "title": "Discord nick",
+              "description": "Copy a bold unicode line."
+          },
+          {
+              "title": "PNG export",
+              "description": "If the platform strips fonts, export an image instead."
           }
       ],
       "examples": [
@@ -6516,25 +6770,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Expecting the style to survive in a system that strips Unicode — some banks/forms will flatten it.",
+          "Copy Text Font Changer output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Expecting the style to survive in a system that strips Unicode — some banks/forms will flatten it.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Text Font Changer runs without installing desktop software",
+          "Accepts: Plain text + style",
+          "Returns: Copyable Unicode string (not a real installed font file)",
+          "How-to and FAQs for Text Font Changer live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Text Font Changer runs without installing desktop software",
+          "Accepts: Plain text + style",
+          "Returns: Copyable Unicode string (not a real installed font file)"
       ],
       "features": [
           "35+ Unicode fonts",
@@ -6616,14 +6870,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert typed text into handwritten-style text on lined paper."
           }
       ],
-      "conclusion": "Use Text Font Changer above, then browse related text & writing tools linked below."
+      "conclusion": "Use Text Font Changer on this page, then browse related text & writing tools linked below."
   },
   '/timetable-maker': {
       "title": "Timetable Maker — Personal Schedule Builder",
       "h1": "Timetable Maker — Custom Weekly Schedule",
       "metaDescription": "Build a weekly timetable from hobbies, goals, and job hours. Printable layout — free schedule maker.",
-      "dateModified": "2026-08-29",
-      "tldr": "Timetable Maker: Create a personalized timetable from your hobbies, goals, job, and preferences. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Timetable Maker: Builds a weekly block timetable from job hours, goals, and sleep. Input: Constraints (work, gym, sleep). Output: Week grid you can copy.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -6640,57 +6894,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Timetable Maker on FYN Tools create a personalized timetable from your hobbies, goals, job, and preferences. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Timetable Maker: Builds a weekly block timetable from job hours, goals, and sleep.",
+          "Inputs: Constraints (work, gym, sleep). Outputs: Week grid you can copy. Mistake to avoid: filling 18 productive hours — the maker cannot invent extra time; cut goals."
       ],
-      "overview": "Create a personalized timetable from your hobbies, goals, job, and preferences.",
-      "howItWorks": "Timetable Maker runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Timetable Maker: Builds a weekly block timetable from job hours, goals, and sleep.",
+      "howItWorks": "You set constraints (work, gym, sleep) in the live panel. Timetable Maker then builds a weekly block timetable from job hours, goals, and sleep. Results show as week grid you can copy.",
       "howToUse": [
           "Use the Timetable Maker form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to create a personalized timetable from your hobbies, goals, job, and preferences",
-          "For utility tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need builds a weekly block timetable from job hours, goals, and sleep. without another app",
+          "When your input looks like: Constraints (work, gym, sleep)"
       ],
       "useCases": [
           {
-              "title": "Utility workflow",
-              "description": "Create a personalized timetable from your hobbies, goals, job, and preferences."
+              "title": "9–5 plus gym",
+              "description": "Set job hours and 5 gym slots, copy the grid."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Timetable Maker once, then continue in your doc or app."
+              "title": "Study blocks",
+              "description": "Protect sleep 11pm then place study around it."
+          },
+          {
+              "title": "Revise weekly",
+              "description": "Regenerate when shifts change."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Timetable Maker",
-              "output": "Timetable Maker returns a formatted result you can copy or download"
+              "input": "Constraints (work, gym, sleep)",
+              "output": "Week grid you can copy"
+          },
+          {
+              "input": "Open /timetable-maker and use the live controls",
+              "output": "Week grid you can copy"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Filling 18 productive hours — the maker cannot invent extra time; cut goals.",
+          "Copy Timetable Maker output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Filling 18 productive hours — the maker cannot invent extra time; cut goals.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Timetable Maker runs without installing desktop software",
+          "Accepts: Constraints (work, gym, sleep)",
+          "Returns: Week grid you can copy",
+          "How-to and FAQs for Timetable Maker live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Timetable Maker runs without installing desktop software",
+          "Accepts: Constraints (work, gym, sleep)",
+          "Returns: Week grid you can copy"
       ],
       "features": [
           "Profile-based generation",
@@ -6770,14 +7031,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Roll virtual dice with customizable sides and quantities."
           }
       ],
-      "conclusion": "Use Timetable Maker above, then browse related utility tools linked below."
+      "conclusion": "Use Timetable Maker on this page, then browse related utility tools linked below."
   },
   '/todo-list': {
       "title": "To-Do List — Simple Task Manager",
       "h1": "To-Do List — Tasks in Your Browser",
       "metaDescription": "Add, complete, and delete tasks. Local browser storage — free minimalist todo list.",
-      "dateModified": "2026-08-29",
-      "tldr": "To-Do List: Create and manage your to-do list. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "To-Do List: Simple local to-do list with due/priority if the UI shows them. Input: Task title, optional due date. Output: Checklist on this device.",
       "processingNote": "Tasks save locally; they do not sync across devices unless you export them.",
       "ioContract": {
           "inputs": "Tool-specific fields (lists, timers, preferences)",
@@ -6794,57 +7055,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "To-Do List on FYN Tools create and manage your to-do list. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "To-Do List: Simple local to-do list with due/priority if the UI shows them.",
+          "Inputs: Task title, optional due date. Outputs: Checklist on this device. Mistake to avoid: relying on it across devices — it is not a cloud todo."
       ],
-      "overview": "Create and manage your to-do list.",
-      "howItWorks": "To-Do List runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "To-Do List: Simple local to-do list with due/priority if the UI shows them.",
+      "howItWorks": "You set task title, optional due date in the live panel. To-Do List then simple local to-do list with due/priority if the UI shows them. Results show as checklist on this device.",
       "howToUse": [
           "Use the To-Do List form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to create and manage your to-do list",
-          "For utility tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need simple local to-do list with due/priority if the UI shows them. without another app",
+          "When your input looks like: Task title, optional due date"
       ],
       "useCases": [
           {
-              "title": "Utility workflow",
-              "description": "Create and manage your to-do list."
+              "title": "Today list",
+              "description": "Add three tasks, check them off at EOD."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use To-Do List once, then continue in your doc or app."
+              "title": "Priority",
+              "description": "Mark one high so it sits on top if sorting exists."
+          },
+          {
+              "title": "Clear done",
+              "description": "Remove completed items so the list stays short."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for To-Do List",
-              "output": "To-Do List returns a formatted result you can copy or download"
+              "input": "Task title, optional due date",
+              "output": "Checklist on this device"
+          },
+          {
+              "input": "Open /todo-list and use the live controls",
+              "output": "Checklist on this device"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Relying on it across devices — it is not a cloud todo.",
+          "Copy To-Do List output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Relying on it across devices — it is not a cloud todo.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "To-Do List runs without installing desktop software",
+          "Accepts: Task title, optional due date",
+          "Returns: Checklist on this device",
+          "How-to and FAQs for To-Do List live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "To-Do List runs without installing desktop software",
+          "Accepts: Task title, optional due date",
+          "Returns: Checklist on this device"
       ],
       "features": [
           "Create tasks",
@@ -6926,14 +7194,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Roll virtual dice with customizable sides and quantities."
           }
       ],
-      "conclusion": "Use To-Do List above, then browse related utility tools linked below."
+      "conclusion": "Use To-Do List on this page, then browse related utility tools linked below."
   },
   '/trip-expense-splitter': {
       "title": "Trip Expense Splitter — Split Bills with Friends",
       "h1": "Trip Expense Splitter — Who Owes What",
       "metaDescription": "Track group trip expenses, assign shares, and calculate settlements. Free expense splitter with roles and balance summary.",
-      "dateModified": "2026-08-29",
-      "tldr": "Trip Expense Splitter & Manager: Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Trip Expense Splitter & Manager: Splits trip costs among people and shows who owes whom. Input: People, expenses, payers. Output: Settlement amounts.",
       "processingNote": "Calculations run locally in your browser. Results are planning estimates — verify with your bank, CA, or advisor.",
       "ioContract": {
           "inputs": "Trip members, expenses, payer, split rules",
@@ -6950,57 +7218,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Trip Expense Splitter & Manager on FYN Tools split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what. Use the tool above — free, no account required.",
-          "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
+          "Trip Expense Splitter & Manager: Splits trip costs among people and shows who owes whom.",
+          "Inputs: People, expenses, payers. Outputs: Settlement amounts. Mistake to avoid: forgetting someone paid a shared Uber — missing payers skew the settle-up."
       ],
-      "overview": "Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what.",
-      "howItWorks": "Trip Expense Splitter & Manager runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Trip Expense Splitter & Manager: Splits trip costs among people and shows who owes whom.",
+      "howItWorks": "You set people, expenses, payers in the live panel. Trip Expense Splitter & Manager then splits trip costs among people and shows who owes whom. Results show as settlement amounts.",
       "howToUse": [
           "Enter amounts and rates in Trip Expense Splitter & Manager.",
           "Compare scenarios by changing inputs.",
           "Verify with your bank or advisor when needed."
       ],
       "whenToUse": [
-          "When comparing loan, tax, or investment numbers before signing paperwork",
-          "Before a budget review or tax filing — copy the breakdown from Trip Expense Splitter & Manager",
-          "On mobile when you need a quick calculator without a spreadsheet"
+          "When you need splits trip costs among people and shows who owes whom. without another app",
+          "When your input looks like: People, expenses, payers"
       ],
       "useCases": [
           {
-              "title": "Finance workflow",
-              "description": "Split and manage trip expenses with friends. Track expenses, assign roles, calculate settlements, and see who owes what."
+              "title": "Goa trip",
+              "description": "Add hotel, dinner, fuel; see net per person."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Trip Expense Splitter & Manager once, then continue in your doc or app."
+              "title": "Uneven payers",
+              "description": "Mark who paid the Airbnb vs who paid food."
+          },
+          {
+              "title": "Settle in UPI",
+              "description": "Copy the “X pays Y” lines into chat."
           }
       ],
       "examples": [
           {
-              "input": "Enter labeled amounts in Trip Expense Splitter & Manager",
-              "output": "On-screen breakdown with totals you can copy or screenshot"
+              "input": "People, expenses, payers",
+              "output": "Settlement amounts"
+          },
+          {
+              "input": "Open /trip-expense-splitter and use the live controls",
+              "output": "Settlement amounts"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Forgetting someone paid a shared Uber — missing payers skew the settle-up.",
+          "Copy Trip Expense Splitter & Manager output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators"
+          "Forgetting someone paid a shared Uber — missing payers skew the settle-up.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Trip Expense Splitter & Manager runs without installing desktop software",
+          "Accepts: People, expenses, payers",
+          "Returns: Settlement amounts",
+          "How-to and FAQs for Trip Expense Splitter & Manager live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Trip Expense Splitter & Manager runs without installing desktop software",
+          "Accepts: People, expenses, payers",
+          "Returns: Settlement amounts"
       ],
       "features": [
           "Split expenses",
@@ -7031,14 +7306,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "relatedTools": [],
-      "conclusion": "Use Trip Expense Splitter & Manager above, then browse related finance tools linked below."
+      "conclusion": "Use Trip Expense Splitter & Manager on this page, then browse related finance tools linked below."
   },
   '/typing-competition': {
       "title": "Typing Competition — Real-Time Races",
       "h1": "Typing Competition — Multiplayer Typing",
       "metaDescription": "Compete in real-time typing races against random players. Track WPM and accuracy — free browser game.",
-      "dateModified": "2026-08-29",
-      "tldr": "Typing Competition: Compete with random players in real-time typing challenges. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Typing Competition: Times a typing round and scores WPM/accuracy against the prompt. Input: Start round, type the shown text. Output: WPM, accuracy, placement if multiplayer.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Keyboard input during matched prompt",
@@ -7055,57 +7330,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Typing Competition on FYN Tools compete with random players in real-time typing challenges. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Typing Competition: Times a typing round and scores WPM/accuracy against the prompt.",
+          "Inputs: Start round, type the shown text. Outputs: WPM, accuracy, placement if multiplayer. Mistake to avoid: refreshing mid-round and expecting the score to save."
       ],
-      "overview": "Compete with random players in real-time typing challenges.",
-      "howItWorks": "Typing Competition runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Typing Competition: Times a typing round and scores WPM/accuracy against the prompt.",
+      "howItWorks": "You set start round, type the shown text in the live panel. Typing Competition then times a typing round and scores WPM/accuracy against the prompt. Results show as wpm, accuracy, placement if multiplayer.",
       "howToUse": [
           "Use the Typing Competition form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to compete with random players in real-time typing challenges",
-          "For typing tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need times a typing round and scores WPM/accuracy against the prompt. without another app",
+          "When your input looks like: Start round, type the shown text"
       ],
       "useCases": [
           {
-              "title": "Typing workflow",
-              "description": "Compete with random players in real-time typing challenges."
+              "title": "Warm-up",
+              "description": "Play one round before a long writing session."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Typing Competition once, then continue in your doc or app."
+              "title": "Compare friends",
+              "description": "Share WPM after the same prompt if the mode allows."
+          },
+          {
+              "title": "Accuracy first",
+              "description": "Slow down if accuracy is under 90%."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Typing Competition",
-              "output": "Typing Competition returns a formatted result you can copy or download"
+              "input": "Start round, type the shown text",
+              "output": "WPM, accuracy, placement if multiplayer"
+          },
+          {
+              "input": "Open /typing-competition and use the live controls",
+              "output": "WPM, accuracy, placement if multiplayer"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Refreshing mid-round and expecting the score to save.",
+          "Copy Typing Competition output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Refreshing mid-round and expecting the score to save.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Typing Competition runs without installing desktop software",
+          "Accepts: Start round, type the shown text",
+          "Returns: WPM, accuracy, placement if multiplayer",
+          "How-to and FAQs for Typing Competition live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Typing Competition runs without installing desktop software",
+          "Accepts: Start round, type the shown text",
+          "Returns: WPM, accuracy, placement if multiplayer"
       ],
       "features": [
           "Real-time competition",
@@ -7152,14 +7434,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Fun typing games to improve your skills while playing."
           }
       ],
-      "conclusion": "Use Typing Competition above, then browse related typing tools linked below."
+      "conclusion": "Use Typing Competition on this page, then browse related typing tools linked below."
   },
   '/typing-tutor': {
       "title": "Typing Tutor — Touch Typing Lessons",
       "h1": "Typing Tutor — Learn Keyboard Skills",
       "metaDescription": "Guided touch typing lessons in English and Hindi. Finger placement drills and accuracy tracking — free in browser.",
-      "dateModified": "2026-08-29",
-      "tldr": "Typing Tutor: Learn touch typing with guided lessons in English and Hindi. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Typing Tutor: Walks through guided lessons (e.g. home row) in English/Hindi as offered. Input: Lesson selection + typed keys. Output: WPM and accuracy for that lesson.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Lesson selection, keyboard input",
@@ -7176,57 +7458,64 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Typing Tutor on FYN Tools learn touch typing with guided lessons in English and Hindi. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Typing Tutor: Walks through guided lessons (e.g. home row) in English/Hindi as offered.",
+          "Inputs: Lesson selection + typed keys. Outputs: WPM and accuracy for that lesson. Mistake to avoid: looking at the keyboard the whole time — the point is to look at the screen."
       ],
-      "overview": "Learn touch typing with guided lessons in English and Hindi.",
-      "howItWorks": "Typing Tutor runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Typing Tutor: Walks through guided lessons (e.g. home row) in English/Hindi as offered.",
+      "howItWorks": "You set lesson selection + typed keys in the live panel. Typing Tutor then walks through guided lessons (e.g. home row) in English/Hindi as offered. Results show as wpm and accuracy for that lesson.",
       "howToUse": [
           "Use the Typing Tutor form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to learn touch typing with guided lessons in english and hindi",
-          "For typing tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need walks through guided lessons (e.g. home row) in English/Hindi as offered. without another app",
+          "When your input looks like: Lesson selection + typed keys"
       ],
       "useCases": [
           {
-              "title": "Typing workflow",
-              "description": "Learn touch typing with guided lessons in English and Hindi."
+              "title": "Home row first",
+              "description": "Finish the home-row lesson before jumping to speed tests."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Typing Tutor once, then continue in your doc or app."
+              "title": "Hindi layout",
+              "description": "Pick Hindi if that is the layout you need at work."
+          },
+          {
+              "title": "Daily 10 minutes",
+              "description": "Repeat a lesson until accuracy holds."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Typing Tutor",
-              "output": "Typing Tutor returns a formatted result you can copy or download"
+              "input": "Lesson selection + typed keys",
+              "output": "WPM and accuracy for that lesson"
+          },
+          {
+              "input": "Open /typing-tutor and use the live controls",
+              "output": "WPM and accuracy for that lesson"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Looking at the keyboard the whole time — the point is to look at the screen.",
+          "Copy Typing Tutor output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Looking at the keyboard the whole time — the point is to look at the screen.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Typing Tutor runs without installing desktop software",
+          "Accepts: Lesson selection + typed keys",
+          "Returns: WPM and accuracy for that lesson",
+          "How-to and FAQs for Typing Tutor live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Typing Tutor runs without installing desktop software",
+          "Accepts: Lesson selection + typed keys",
+          "Returns: WPM and accuracy for that lesson"
       ],
       "features": [
           "Guided typing lessons",
@@ -7273,14 +7562,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Compete with random players in real-time typing challenges."
           }
       ],
-      "conclusion": "Use Typing Tutor above, then browse related typing tools linked below."
+      "conclusion": "Use Typing Tutor on this page, then browse related typing tools linked below."
   },
   '/unit-converter': {
       "title": "Unit Converter — Length, Weight, Temp & More",
       "h1": "Unit Converter — Measurement Conversion",
       "metaDescription": "Convert length, weight, volume, temperature, data size, speed, and more. Free instant unit converter in your browser.",
-      "dateModified": "2026-08-29",
-      "tldr": "Unit Converter: Convert between different units of measurement. Free in your browser on FYN Tools — use the panel above for instant results.",
+      "dateModified": "2026-09-03",
+      "tldr": "Unit Converter: Converts length, weight, temperature, data size, speed, and similar units in one panel. Input: Value + category + from/to unit. Output: Converted value.",
       "processingNote": "Runs in your browser on FYN Tools — no account required for basic use.",
       "ioContract": {
           "inputs": "Value + source unit + target unit category",
@@ -7297,29 +7586,32 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           "fyn tools"
       ],
       "introParagraphs": [
-          "Unit Converter on FYN Tools convert between different units of measurement. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Unit Converter: Converts length, weight, temperature, data size, speed, and similar units in one panel.",
+          "Inputs: Value + category + from/to unit. Outputs: Converted value. Mistake to avoid: leaving the category on length while converting megabytes."
       ],
-      "overview": "Convert between different units of measurement.",
-      "howItWorks": "Unit Converter runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Unit Converter: Converts length, weight, temperature, data size, speed, and similar units in one panel.",
+      "howItWorks": "You set value + category + from/to unit in the live panel. Unit Converter then converts length, weight, temperature, data size, speed, and similar units in one panel. Results show as converted value.",
       "howToUse": [
           "Use the Unit Converter form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to convert between different units of measurement",
-          "During development or content prep — copy output into your project",
-          "On mobile for a quick format or conversion check"
+          "When you need converts length, weight, temperature, data size, speed, and similar units in one panel. without another app",
+          "When your input looks like: Value + category + from/to unit"
       ],
       "useCases": [
           {
-              "title": "Converter workflow",
-              "description": "Convert between different units of measurement."
+              "title": "km to miles",
+              "description": "5 km → miles for a running app."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Unit Converter once, then continue in your doc or app."
+              "title": "MB to GB",
+              "description": "Check a file-size limit."
+          },
+          {
+              "title": "kg to lb",
+              "description": "Luggage estimate before a flight."
           }
       ],
       "examples": [
@@ -7329,25 +7621,25 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Leaving the category on length while converting megabytes.",
+          "Copy Unit Converter output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Leaving the category on length while converting megabytes.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Unit Converter runs without installing desktop software",
+          "Accepts: Value + category + from/to unit",
+          "Returns: Converted value",
+          "How-to and FAQs for Unit Converter live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Unit Converter runs without installing desktop software",
+          "Accepts: Value + category + from/to unit",
+          "Returns: Converted value"
       ],
       "features": [
           "Length conversion",
@@ -7394,14 +7686,14 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Convert colors between HEX, RGB, HSL, and other formats."
           }
       ],
-      "conclusion": "Use Unit Converter above, then browse related converter tools linked below."
+      "conclusion": "Use Unit Converter on this page, then browse related converter tools linked below."
   },
   '/weather-forecast': {
-      "title": "Free Weather Forecast Online — 7-Day, Hourly & Air Quality",
-      "h1": "Free Weather Forecast — 7-Day, Hourly & AQI",
-      "metaDescription": "Free AccuWeather & Weather.com alternative. 7-day forecast, hourly rain, air quality, UV index & activity tips for any city — no API key.",
-      "dateModified": "2026-08-31",
-      "tldr": "Free weather forecast with 7-day outlook, rain chart, air quality, UV index, and activity tips — open-source data, no signup on FYN Tools.",
+      "title": "Weather Forecast — City Weather Lookup",
+      "h1": "Weather Forecast — Current & Weekly",
+      "metaDescription": "Check weather forecast by city name. Temperature, conditions, and multi-day outlook — free online.",
+      "dateModified": "2026-09-03",
+      "tldr": "Weather Forecast: Looks up a village, town, or city (Google Places when a key is set) and returns a live forecast through the FYN Weather Gateway. Input: Place search, GPS, or IP region fallback. Output: Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips.",
       "processingNote": "This tool may call external APIs to fetch public data. Do not submit secrets or private credentials.",
       "ioContract": {
           "inputs": "City or location search",
@@ -7412,79 +7704,80 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
       },
       "keywords": [
           "weather forecast",
+          "weather forecast online",
           "free weather forecast",
-          "accuweather alternative",
-          "weather.com alternative",
-          "7 day weather forecast",
-          "hourly weather forecast",
-          "air quality index",
-          "UV index today",
-          "weather by city",
-          "weather near me",
-          "local weather forecast"
+          "network tools",
+          "fyn tools"
       ],
       "introParagraphs": [
-          "Weather Forecast on FYN Tools check the weather forecast for any location. Use the tool above — free, no account required.",
-          "Results update as you type. Bookmark this page if you reuse the workflow."
+          "Weather Forecast: Looks up a village, town, or city (Google Places when a key is set) and returns a live forecast through the FYN Weather Gateway.",
+          "Inputs: Place search, GPS, or IP region fallback. Outputs: Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips. Forecast quality depends on open weather models; search quality depends on geocoders Mistake to avoid: searching only a common name like “Amb” without state — add Himachal or India."
       ],
-      "overview": "Check the weather forecast for any location.",
-      "howItWorks": "Weather Forecast runs the formulas or conversions in the form and displays results immediately.",
+      "overview": "Weather Forecast: Looks up a village, town, or city (Google Places when a key is set) and returns a live forecast through the FYN Weather Gateway.",
+      "howItWorks": "You set place search, gps, or ip region fallback in the live panel. Weather Forecast then looks up a village, town, or city (Google Places when a key is set) and returns a live forecast through the FYN Weather Gateway. Results show as current temp, feels-like, 7-day, hourly rain %, aqi, uv, clothing tips.",
       "howToUse": [
           "Use the Weather Forecast form above.",
           "Review the on-screen result.",
           "Copy or download for your workflow."
       ],
       "whenToUse": [
-          "When you need to check the weather forecast for any location",
-          "For network tools on mobile or desktop without installing an app",
-          "When a quick browser check is enough before a deeper workflow"
+          "When you need looks up a village, town, or city (Google Places when a key is set) and returns a live forecast through the FYN Weather Gateway. without another app",
+          "When your input looks like: Place search, GPS, or IP region fallback"
       ],
       "useCases": [
           {
-              "title": "Network workflow",
-              "description": "Check the weather forecast for any location."
+              "title": "Village before a trip",
+              "description": "Type a Himachal village, pick the Google suggestion, read rain % for the next 24 hours."
           },
           {
-              "title": "Quick browser check",
-              "description": "Use Weather Forecast once, then continue in your doc or app."
+              "title": "GPS at the current spot",
+              "description": "Tap GPS so reverse-geocode fills the search bar and the hero card matches where you stand."
+          },
+          {
+              "title": "AQI before outdoor work",
+              "description": "Check US AQI and UV on the same card as temperature so you are not opening a second weather app."
           }
       ],
       "examples": [
           {
-              "input": "Sample input for Weather Forecast",
-              "output": "Weather Forecast returns a formatted result you can copy or download"
+              "input": "Place search, GPS, or IP region fallback",
+              "output": "Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips"
+          },
+          {
+              "input": "Open /weather-forecast and use the live controls",
+              "output": "Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips"
           }
       ],
       "tips": [
-          "Double-check units (currency, dates, measurements) before acting on results.",
-          "Use a modern browser for best performance with canvas and file uploads.",
-          "Save or screenshot important outputs before closing the tab."
+          "Read the Privacy & processing note before you paste secrets.",
+          "Searching only a common name like “Amb” without state — add Himachal or India.",
+          "Copy Weather Forecast output immediately if you will close the tab."
       ],
       "commonMistakes": [
-          "Skipping unit or format checks before sharing results",
-          "Assuming local browser data syncs across devices",
-          "Using educational output as professional advice without verification"
+          "Searching only a common name like “Amb” without state — add Himachal or India.",
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert."
       ],
       "advantages": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout",
-          "Clear how-to steps and FAQs on the same page"
+          "Weather Forecast runs without installing desktop software",
+          "Accepts: Place search, GPS, or IP region fallback",
+          "Returns: Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips",
+          "How-to and FAQs for Weather Forecast live on the same page"
       ],
       "benefits": [
-          "Free access with no signup for core features",
-          "Fast browser-based processing",
-          "Mobile-friendly layout"
+          "Weather Forecast runs without installing desktop software",
+          "Accepts: Place search, GPS, or IP region fallback",
+          "Returns: Current temp, feels-like, 7-day, hourly rain %, AQI, UV, clothing tips"
       ],
       "features": [
           "Weather forecast",
-          "Current weather",
+          "7-day forecast",
           "Hourly forecast",
-          "Daily forecast",
-          "Location search",
-          "Temperature display",
-          "Humidity",
-          "Wind speed"
+          "Rain probability chart",
+          "Air quality AQI",
+          "UV index",
+          "Activity planner",
+          "What to wear tips"
       ],
       "faqs": [
           {
@@ -7516,6 +7809,6 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "description": "Find the location of any IP address with detailed geolocation data."
           }
       ],
-      "conclusion": "Use Weather Forecast above, then browse related network tools linked below."
+      "conclusion": "Use Weather Forecast on this page, then browse related network tools linked below."
   },
 };

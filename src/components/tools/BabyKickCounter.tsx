@@ -101,7 +101,7 @@ const BabyKickCounter = () => {
   }, [sessions]);
 
   return (
-    <div className="max-w-lg mx-auto space-y-5">
+    <div className="w-full space-y-5">
       <Card className="overflow-hidden">
         <CardHeader className="text-center pb-3 bg-gradient-to-b from-pink-50/80 to-transparent dark:from-pink-950/20">
           <CardTitle className="flex items-center justify-center gap-2 text-lg">

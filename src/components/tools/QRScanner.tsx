@@ -568,7 +568,7 @@ const QRScanner = () => {
   }, [isScanning, stream]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -618,7 +618,7 @@ const QRScanner = () => {
               )}
 
               {/* Live Camera Preview Card - ALWAYS below Start button */}
-              <div className="w-full max-w-lg mx-auto">
+              <div className="w-full">
                 <p className="text-xs text-center text-muted-foreground mb-2 sm:hidden">
                   Hold steady — align the QR inside the frame
                 </p>

@@ -183,7 +183,7 @@ const FutureDateCalculator = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 p-4 sm:p-6">
+    <div className="w-full space-y-6">
       {/* Hero Section */}
       <div className="text-center space-y-3">
         <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-900/20 mb-3">

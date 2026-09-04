@@ -95,7 +95,7 @@ const SimpleCalculator = () => {
   const operationDisplay = previousValue !== null && operator ? `${previousValue.toLocaleString()} ${operator}` : '';
 
   return (
-    <Card className="max-w-md mx-auto">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Simple Calculator</CardTitle>
       </CardHeader>

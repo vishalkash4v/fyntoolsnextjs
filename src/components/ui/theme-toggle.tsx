@@ -25,10 +25,12 @@ export function ThemeToggle() {
       size="icon"
       onClick={next}
       className="hover:bg-primary/10 transition-all duration-300"
-      aria-label={`Theme: ${current}. Click to change.`}
-      title={`Theme: ${current}`}
+      aria-label={mounted ? `Theme: ${current}. Click to change.` : 'Toggle color theme'}
+      title={mounted ? `Theme: ${current}` : 'Toggle color theme'}
     >
-      {!mounted || current === 'light' ? (
+      {!mounted ? (
+        <Sun className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />
+      ) : current === 'light' ? (
         <Sun className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />
       ) : current === 'dark' ? (
         <Moon className="h-[1.2rem] w-[1.2rem]" aria-hidden="true" />

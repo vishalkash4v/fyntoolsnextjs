@@ -88,6 +88,16 @@ const WEAK_BATCH_MARKERS = [
   'Before a prenatal visit, tax filing, or project handoff',
   'Enter dates or symptoms in',
   'Review the estimate or log',
+  'Quick browser check',
+  'use the panel above for instant results',
+  'Use the tool above — free, no account required',
+  'then continue in your doc or app',
+  'Free access with no signup for core features',
+  'Fast browser-based processing',
+  'Mobile-friendly layout',
+  'Network workflow',
+  'Development workflow',
+  'Results update as you type. Bookmark this page if you reuse the workflow.',
 ];
 
 export function isTemplatedExtendedText(text: string): boolean {
@@ -163,6 +173,11 @@ const GENERIC_EXAMPLE_MARKERS = [
   'Your input in the form above',
   'Instant result shown below the controls',
   'Sample amounts in the labeled fields',
+  'Sample input for',
+  'returns a formatted result you can copy or download',
+  'Enter or paste the input the tool expects',
+  'The result will appear in the output area',
+  'Copy, download, or refine the output for your workflow',
 ];
 
 export function isGenericFaq(faq: { question: string; answer: string }): boolean {
@@ -173,4 +188,39 @@ export function isGenericExamples(examples: { input: string; output: string }[] 
   if (!examples?.length) return true;
   const blob = examples.map((e) => `${e.input} ${e.output}`).join('\n');
   return containsMarker(blob, GENERIC_EXAMPLE_MARKERS);
+}
+
+const GENERIC_USE_CASE_TITLES = [
+  'quick browser check',
+  'network workflow',
+  'development workflow',
+  'utility workflow',
+  'timer workflow',
+  'typing workflow',
+  'video & social media workflow',
+  'text & writing workflow',
+  'converter workflow',
+  'business workflow',
+  'everyday productivity',
+  'team and education',
+  'campaign or project bursts',
+];
+
+export function isGenericUseCase(uc: { title: string; description: string }): boolean {
+  const title = uc.title.toLowerCase();
+  if (GENERIC_USE_CASE_TITLES.includes(title)) return true;
+  return containsMarker(`${uc.title} ${uc.description}`, [
+    'once, then continue in your doc or app',
+    'Everyday productivity',
+    'Team and education',
+    'Campaign or project bursts',
+  ]);
+}
+
+export function isCloneTldr(tldr: string | undefined): boolean {
+  if (!tldr) return true;
+  return containsMarker(tldr, [
+    'use the panel above for instant results',
+    'Free in your browser on FYN Tools',
+  ]);
 }

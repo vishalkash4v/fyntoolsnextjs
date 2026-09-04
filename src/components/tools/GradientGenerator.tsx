@@ -61,7 +61,7 @@ const GradientGenerator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="w-full">
           <CardHeader>

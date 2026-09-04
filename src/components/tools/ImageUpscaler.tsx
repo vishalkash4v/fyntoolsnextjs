@@ -575,7 +575,7 @@ const ImageUpscaler: React.FC = () => {
   }, [previewUrl, upscaledUrl]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

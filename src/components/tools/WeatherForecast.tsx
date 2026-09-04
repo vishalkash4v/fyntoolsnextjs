@@ -137,11 +137,62 @@ const WeatherForecast = () => {
     [applyBundle, toast]
   );
 
+  /** Prompt for GPS weather; fall back to IP region when denied/unavailable. */
+  const requestGpsWeather = useCallback(
+    (opts?: { quiet?: boolean; fallbackToIp?: boolean; showDenyMessage?: boolean }) => {
+      const quiet = opts?.quiet ?? false;
+      const fallbackToIp = opts?.fallbackToIp ?? true;
+      const showDenyMessage = opts?.showDenyMessage ?? true;
+
+      if (!navigator.geolocation) {
+        if (fallbackToIp) {
+          void loadFromApi(fetchWeatherAuto, true);
+        } else {
+          setError('Geolocation is not supported in this browser.');
+        }
+        return;
+      }
+
+      isEditingSearch.current = false;
+      setShowSuggestions(false);
+      setSearchQuery('Detecting your location…');
+      setSuggestions([]);
+      setLocating(true);
+      setError('');
+
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          try {
+            await loadFromApi(
+              () => fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude),
+              quiet
+            );
+          } finally {
+            setLocating(false);
+          }
+        },
+        () => {
+          setLocating(false);
+          if (showDenyMessage) {
+            setError(
+              'Allow location for exact GPS weather — showing your IP region for now. Or search a city.'
+            );
+          }
+          if (fallbackToIp) {
+            void loadFromApi(fetchWeatherAuto, true);
+          }
+        },
+        { enableHighAccuracy: true, timeout: 15000 }
+      );
+    },
+    [loadFromApi]
+  );
+
   useEffect(() => {
     if (initialLoad.current) return;
     initialLoad.current = true;
-    void loadFromApi(fetchWeatherAuto, true);
-  }, [loadFromApi]);
+    requestGpsWeather({ quiet: true, fallbackToIp: true, showDenyMessage: true });
+  }, [requestGpsWeather]);
 
   const handleSearch = () => {
     const q = searchQuery.trim();
@@ -155,35 +206,7 @@ const WeatherForecast = () => {
   };
 
   const handleUseLocation = () => {
-    if (!navigator.geolocation) {
-      setError('Geolocation is not supported in this browser.');
-      return;
-    }
-    isEditingSearch.current = false;
-    setShowSuggestions(false);
-    setSearchQuery('Detecting your location…');
-    setSuggestions([]);
-    setLocating(true);
-    setError('');
-
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        try {
-          await loadFromApi(
-            () => fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude),
-            true
-          );
-        } finally {
-          setLocating(false);
-        }
-      },
-      () => {
-        setError('Location denied — search your city or we use your IP region.');
-        setLocating(false);
-        if (weather) syncSearchToPlace(weather.place);
-      },
-      { enableHighAccuracy: true, timeout: 15000 }
-    );
+    requestGpsWeather({ quiet: true, fallbackToIp: true, showDenyMessage: true });
   };
 
   const loadPlace = (place: GeoPlace) => {
@@ -274,7 +297,7 @@ const WeatherForecast = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Card className="relative z-20 overflow-visible">
         <CardHeader className="pb-2">
           <CardTitle className="text-base sm:text-lg">Weather Forecast</CardTitle>

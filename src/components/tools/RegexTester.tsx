@@ -100,8 +100,8 @@ const RegexTester = () => {
     { name: 'Currency', pattern: '\\$[0-9]+(\\.[0-9]{2})?\\b' }
   ];
   return (
-    <div className="max-w-4xl mx-auto space-y-6 p-4">
-      <Card className="bg-white dark:bg-gray-800">
+    <div className="w-full space-y-6">
+      <Card className="bg-card">
         <CardHeader>
           <CardTitle className="text-gray-900 dark:text-gray-100">Regex Tester</CardTitle>
           <CardDescription className="text-gray-600 dark:text-gray-300">
@@ -129,7 +129,7 @@ const RegexTester = () => {
                   value={pattern}
                   onChange={(e) => setPattern(e.target.value)}
                   placeholder="Enter regex pattern..."
-                  className={`font-mono ${!isValid ? 'border-red-500' : ''} bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600`}
+                  className={`font-mono ${!isValid ? 'border-red-500' : ''} bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600`}
                 />
                 {!isValid && (
                   <p className="text-sm text-red-500 dark:text-red-400 mt-1">{error}</p>
@@ -181,7 +181,7 @@ const RegexTester = () => {
                   value={testString}
                   onChange={(e) => setTestString(e.target.value)}
                   placeholder="Enter text to test against..."
-                  className="min-h-[120px] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+                  className="min-h-[120px] bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
                 />
               </div>
             </div>

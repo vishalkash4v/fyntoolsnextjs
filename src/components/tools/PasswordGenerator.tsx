@@ -55,7 +55,7 @@ const PasswordGenerator: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="length">Password Length: {length}</Label>

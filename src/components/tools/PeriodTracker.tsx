@@ -80,7 +80,7 @@ const PeriodTracker = () => {
   }, [entries]);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

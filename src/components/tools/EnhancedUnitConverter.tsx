@@ -166,7 +166,7 @@ const EnhancedUnitConverter = () => {
   const currentCategory = conversions[category];
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

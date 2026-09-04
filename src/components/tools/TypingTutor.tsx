@@ -470,7 +470,7 @@ const TypingTutor = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Text Display */}
-            <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-900">
+            <div className="p-4 border rounded-lg bg-muted/40">
               <div className="text-lg leading-relaxed font-mono">
                 {currentText.split('').map((char, index) => (
                   <span

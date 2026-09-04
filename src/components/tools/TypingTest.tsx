@@ -463,7 +463,7 @@ const TypingTest = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Text Display */}
-            <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-900 max-w-full overflow-hidden">
+            <div className="p-4 border rounded-lg bg-muted/40 max-w-full overflow-hidden">
               <div
                 className={`text-lg leading-relaxed break-words whitespace-pre-wrap ${isHindi ? 'font-sans' : 'font-mono'}`}
                 style={typefaceStyle}

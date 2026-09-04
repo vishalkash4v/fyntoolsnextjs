@@ -549,8 +549,8 @@ const BarcodeGenerator = () => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto p-4 space-y-6">
-      <div className="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-6">
+    <div className="w-full p-4 space-y-6">
+      <div className="bg-card border rounded-lg shadow-sm p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-xl font-semibold">Barcode Generator</h2>
           <div className="flex flex-wrap gap-2">
@@ -916,7 +916,7 @@ const BarcodeGenerator = () => {
               {results.map((result, index) => (
                 <div
                   key={`${result.value}-${index}`}
-                  className="bg-white dark:bg-gray-800 border rounded-lg p-3 shadow-sm"
+                  className="bg-card border rounded-lg p-3 shadow-sm"
                 >
                   <div
                     className={`flex items-center justify-center overflow-hidden rounded bg-white ${hideText ? 'h-28' : 'h-36'}`}

@@ -49,12 +49,12 @@ const WhitespaceRemover: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 p-4 max-w-4xl mx-auto">
+    <div className="w-full space-y-6">
       <Textarea
         placeholder="Enter text with extra spaces..."
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        className="min-h-[150px] text-base p-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+        className="min-h-[150px] text-base p-4 bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
       />
       
       <div className="flex flex-wrap gap-2">

@@ -192,6 +192,56 @@ export const STICKER_PACKS: { id: string; label: string; items: string[] }[] = [
   },
 ];
 
+export function mergeButtonConfig(partial: Partial<ButtonConfig>): ButtonConfig {
+  return { ...DEFAULT_BUTTON_CONFIG, ...partial };
+}
+
+export function isHexColor(value: string): boolean {
+  return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/.test(value.trim());
+}
+
+export function findStickerPackForEmoji(emoji: string): string | undefined {
+  if (!emoji) return undefined;
+  return STICKER_PACKS.find((p) => p.items.includes(emoji))?.id;
+}
+
+/** Human-readable labels for settings summary */
+export const CONFIG_FIELD_LABELS: Partial<Record<keyof ButtonConfig, string>> = {
+  buttonText: 'Text',
+  fontFamily: 'Font',
+  fontSize: 'Size',
+  fontWeight: 'Weight',
+  letterSpacing: 'Spacing',
+  textTransform: 'Transform',
+  textAlign: 'Align',
+  fullWidth: 'Full width',
+  backgroundColor: 'Background',
+  textColor: 'Text color',
+  hoverBgColor: 'Hover bg',
+  gradient: 'Gradient',
+  gradientColor1: 'Grad 1',
+  gradientColor2: 'Grad 2',
+  gradientAngle: 'Grad angle',
+  hoverGradient: 'Hover grad',
+  hoverGradientColor1: 'Hover grad 1',
+  hoverGradientColor2: 'Hover grad 2',
+  hoverGradientAngle: 'Hover angle',
+  borderRadius: 'Radius',
+  paddingX: 'Pad X',
+  paddingY: 'Pad Y',
+  borderWidth: 'Border',
+  borderColor: 'Border color',
+  shadow: 'Shadow',
+  glowColor: 'Glow',
+  glowIntensity: 'Glow size',
+  hoverAnimation: 'Hover anim',
+  idleAnimation: 'Idle anim',
+  sticker: 'Sticker',
+  stickerPosition: 'Icon pos',
+  customImage: 'Image',
+  imageSize: 'Icon size',
+};
+
 export const BUTTON_PRESETS: ButtonPreset[] = [
   {
     id: 'primary-cta',

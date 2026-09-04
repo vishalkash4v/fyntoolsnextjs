@@ -44,7 +44,7 @@ const ColorPickerTool = () => {
   const hslString = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s * 100)}%, ${Math.round(hsl.l * 100)}%)`;
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full">
       <div className="flex flex-col md:flex-row gap-6 items-start">
         <div className="flex-shrink-0">
           <SketchPicker

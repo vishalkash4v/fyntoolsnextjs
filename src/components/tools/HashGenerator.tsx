@@ -131,7 +131,7 @@ const HashGenerator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="w-full space-y-6">
       <Tabs defaultValue="generate" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="generate">Generate Hash</TabsTrigger>

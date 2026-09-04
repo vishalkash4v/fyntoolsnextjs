@@ -19,7 +19,7 @@ const TextReverser = () => {
   };
 
   return (
-    <div className="space-y-4 p-4 max-w-4xl mx-auto">
+    <div className="w-full space-y-4">
       <div>
         <Label htmlFor="inputText" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
           Enter Text
@@ -29,7 +29,7 @@ const TextReverser = () => {
           value={inputText}
           onChange={handleInputChange}
           placeholder="Type or paste your text here..."
-          className="min-h-[100px] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+          className="min-h-[100px] bg-card text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
         />
       </div>
       <div className="flex flex-wrap gap-2">

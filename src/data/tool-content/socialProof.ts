@@ -3,6 +3,7 @@ import type { Tool } from '@/data/toolsData';
 import { getToolSeoContent } from '@/data/toolSeoContent';
 import { toolTestimonials, type ToolTestimonial } from '@/data/tool-content/toolTestimonials';
 import { isGenericExamples } from '@/lib/seo/contentQuality';
+import { getPathExamples } from '@/data/tool-content/toolExamples';
 
 export function buildTestimonialsForTool(tool: Tool): ToolTestimonial[] {
   const curated = toolTestimonials[tool.path];
@@ -12,6 +13,9 @@ export function buildTestimonialsForTool(tool: Tool): ToolTestimonial[] {
 }
 
 export function buildExamplesForTool(tool: Tool): { input: string; output: string }[] {
+  const fromPath = getPathExamples(tool.path);
+  if (fromPath?.length) return fromPath;
+
   const curated = getToolSeoContent(tool.path);
   if (curated.examples?.length) {
     const mapped = curated.examples.map((e) => ({ input: e.input, output: e.output }));
@@ -84,12 +88,15 @@ export function buildExamplesForTool(tool: Tool): { input: string; output: strin
     return [{ input: 'Upload PNG/JPG → choose size or quality', output: 'Optimized image ready to download' }];
   }
   if (cat.includes('calculat') || /calculator/i.test(n)) {
-    return [{ input: 'Enter values in the fields above', output: 'Instant result with clear breakdown' }];
+    return [{ input: 'Enter the labeled amounts, rates, or dates in the form', output: 'Instant numeric result with a short breakdown' }];
+  }
+  if (/weather|forecast/i.test(n) || path.includes('weather')) {
+    return getPathExamples('/weather-forecast')!;
   }
   return [
     {
-      input: `Sample input for ${n}`,
-      output: `${n} returns a formatted result you can copy or download`,
+      input: `Open ${n} above and enter a real sample (search, file, or values).`,
+      output: `${n} returns a live, tool-specific result — copy or download from the panel.`,
     },
   ];
 }

@@ -227,9 +227,9 @@ const TypingCompetition: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4 sm:p-6">
+    <div className="w-full bg-background p-4 sm:p-6">
       {step === 'menu' && (
-        <Card className="max-w-lg mx-auto">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Trophy className="h-5 w-5" /> Typing Competition
@@ -256,7 +256,7 @@ const TypingCompetition: React.FC = () => {
       )}
 
       {step === 'name' && (
-        <Card className="max-w-md mx-auto">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle>Enter Your Name</CardTitle>
             <CardDescription>Or continue as a guest</CardDescription>
@@ -286,7 +286,7 @@ const TypingCompetition: React.FC = () => {
       )}
 
       {step === 'race' && (
-        <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="w-full space-y-6 mx-auto">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -326,7 +326,7 @@ const TypingCompetition: React.FC = () => {
               <CardTitle className="text-center">Type the text below</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 rounded-lg border bg-gray-50 dark:bg-gray-900 font-mono text-sm leading-relaxed overflow-x-auto">
+              <div className="p-4 rounded-lg border bg-muted/40 font-mono text-sm leading-relaxed overflow-x-auto">
                 {renderText()}
               </div>
               <Input

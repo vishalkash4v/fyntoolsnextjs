@@ -412,7 +412,7 @@ const InvoiceGenerator = () => {
   const ts = getTemplateStyles(selectedTemplate);
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 no-print">
+    <div className="w-full space-y-6 no-print">
 
       {/* ─── Stepper ─── */}
       <div className="px-2">

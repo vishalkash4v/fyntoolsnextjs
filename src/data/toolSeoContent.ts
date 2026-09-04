@@ -6,6 +6,7 @@
 
 import { allTools } from './toolsData';
 import { pageOverrides } from '@/data/tool-content/pageOverrides';
+import { getPathExamples } from '@/data/tool-content/toolExamples';
 
 export type UseCaseItem = { title: string; description: string };
 export type ToolExample = { input: string; output: string };
@@ -1292,6 +1293,9 @@ function generateExamples(tool: { name: string; description: string; category: s
   const path = tool?.path || '';
   const id = path.replace(/^\//, '');
 
+  const fromPath = path ? getPathExamples(path) : null;
+  if (fromPath?.length) return fromPath;
+
   if (toolType === 'text') {
     if (desc.includes('word') && (desc.includes('count') || desc.includes('character')) || id.includes('word-counter')) {
       return [{ input: 'Paste your draft or article text here.\nSupported: any plain text', output: 'Words: 127 | Characters: 612 | Characters (no spaces): 498 | Reading time: ~1 min' }];
@@ -1462,10 +1466,16 @@ function generateExamples(tool: { name: string; description: string; category: s
     }];
   }
 
-  return [{
-    input: 'Enter or paste the input the tool expects (text, numbers, or file).',
-    output: 'The result will appear in the output area and can be copied or downloaded.',
-  }];
+  if (toolType === 'other' && (id.includes('weather') || desc.includes('weather') || desc.includes('forecast'))) {
+    return getPathExamples('/weather-forecast')!;
+  }
+
+  return [
+    {
+      input: `${name}: use the live controls above with a real sample (city, file, numbers, or text).`,
+      output: `${name} shows a live result you can copy, download, or screenshot — specific to this tool, not a generic placeholder.`,
+    },
+  ];
 }
 
 /** Use cases: short scenario titles tied to the tool description */

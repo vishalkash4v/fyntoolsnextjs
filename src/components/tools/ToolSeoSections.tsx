@@ -43,14 +43,16 @@ function Section({
   if (!asCard) {
     return (
       <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8" style={sectionStyle}>
-        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">{title}</h2>
-        <div className="space-y-4 text-zinc-700 dark:text-zinc-300 leading-relaxed">{children}</div>
+        <div className="mx-auto w-full max-w-6xl">
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">{title}</h2>
+          <div className="space-y-4 text-zinc-700 dark:text-zinc-300 leading-relaxed">{children}</div>
+        </div>
       </section>
     );
   }
   return (
     <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8" style={sectionStyle}>
-      <div className="rounded-xl border bg-card text-card-foreground shadow-sm">
+      <div className="mx-auto w-full max-w-6xl rounded-xl border bg-card text-card-foreground shadow-sm">
         <div className="p-6 pb-3">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">{title}</h2>
         </div>
@@ -62,7 +64,7 @@ function Section({
 
 /**
  * Server Component — Googlebot-readable SEO body.
- * Hierarchy: H1 → TL;DR → processing note → Tool → I/O → How to Use → What is → …
+ * Hierarchy: H1 → privacy note → Tool → TL;DR / author → I/O → How to Use → What is → …
  */
 export default function ToolSeoSections({
   title,
@@ -128,34 +130,6 @@ export default function ToolSeoSections({
         <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
           {displayDescription}
         </p>
-        {tldr && (
-          <p
-            className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-foreground/90 leading-relaxed border-l-2 border-primary/60 pl-4 text-left"
-            data-seo="tldr"
-          >
-            <span className="font-semibold text-foreground">TL;DR: </span>
-            {tldr}
-          </p>
-        )}
-        {author && (
-          <p className="mt-3 text-sm text-muted-foreground">
-            Reviewed by{' '}
-            <Link href={`/author/${author.slug}`} className="text-primary hover:underline font-medium">
-              {author.name}
-            </Link>
-            {' · '}
-            <Link href="/guides" className="hover:underline">
-              Guides
-            </Link>
-            {dateModified ? (
-              <>
-                {' · '}
-                <time dateTime={dateModified}>Updated {dateModified}</time>
-              </>
-            ) : null}
-          </p>
-        )}
-        <ToolFeedbackLazy toolName={displayTitle} toolPath={toolPath || ''} />
       </header>
 
       {processingNote && (
@@ -173,8 +147,41 @@ export default function ToolSeoSections({
         </div>
       )}
 
-      {/* 2. Interactive tool immediately below H1 */}
+      {/* Interactive tool immediately after privacy note */}
       {toolSlot}
+
+      {(tldr || author || toolPath) && (
+        <div className="mx-auto mb-6 max-w-3xl px-4 sm:px-6 md:px-8 text-center">
+          {tldr && (
+            <p
+              className="mt-2 max-w-2xl mx-auto text-sm sm:text-base text-foreground/90 leading-relaxed border-l-2 border-primary/60 pl-4 text-left"
+              data-seo="tldr"
+            >
+              <span className="font-semibold text-foreground">TL;DR: </span>
+              {tldr}
+            </p>
+          )}
+          {author && (
+            <p className="mt-3 text-sm text-muted-foreground">
+              Reviewed by{' '}
+              <Link href={`/author/${author.slug}`} className="text-primary hover:underline font-medium">
+                {author.name}
+              </Link>
+              {' · '}
+              <Link href="/guides" className="hover:underline">
+                Guides
+              </Link>
+              {dateModified ? (
+                <>
+                  {' · '}
+                  <time dateTime={dateModified}>Updated {dateModified}</time>
+                </>
+              ) : null}
+            </p>
+          )}
+          <ToolFeedbackLazy toolName={displayTitle} toolPath={toolPath || ''} />
+        </div>
+      )}
 
       {ioContract && (
         <Section id="io-contract" title="Data input / output" asCard={false}>
@@ -256,9 +263,9 @@ export default function ToolSeoSections({
         )}
       </Section>
 
-      {/* 5. Common Use Cases & Examples */}
+      {/* 5. Usage scenarios & examples */}
       {useCases.length > 0 && (
-        <Section id="use-cases" title="Common Use Cases & Examples" asCard={false}>
+        <Section id="use-cases" title="Usage scenarios" asCard={false}>
           <ul className="space-y-3 list-disc pl-5">
             {useCases.map((uc, i) => (
               <li key={i} className="text-sm sm:text-base">
@@ -300,26 +307,28 @@ export default function ToolSeoSections({
         className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8"
         style={{ contentVisibility: 'auto', containIntrinsicSize: '0 420px' }}
       >
-        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-3">
-          {displayFaqs.map((faq) => (
-            <details
-              key={faq.question}
-              className="group rounded-xl border bg-card px-5 py-3 open:shadow-sm"
-            >
-              <summary className="cursor-pointer list-none font-semibold text-base sm:text-lg text-foreground marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
-                <span>{faq.question}</span>
-                <span className="text-muted-foreground text-xl leading-none group-open:rotate-45 transition-transform">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-zinc-700 dark:text-zinc-300 leading-relaxed pb-2">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
+        <div className="mx-auto w-full max-w-6xl">
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {displayFaqs.map((faq) => (
+              <details
+                key={faq.question}
+                className="group rounded-xl border bg-card px-5 py-3 open:shadow-sm"
+              >
+                <summary className="cursor-pointer list-none font-semibold text-base sm:text-lg text-foreground marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-3">
+                  <span>{faq.question}</span>
+                  <span className="text-muted-foreground text-xl leading-none group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-zinc-700 dark:text-zinc-300 leading-relaxed pb-2">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -327,30 +336,32 @@ export default function ToolSeoSections({
 
       {fullSeo?.testimonials && fullSeo.testimonials.length > 0 && (
         <section id="testimonials" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
-          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">What Users Say</h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            Feedback from people who use {conceptName} on FYN Tools.
-          </p>
-          <ul className="grid md:grid-cols-2 gap-4 list-none p-0 m-0">
-            {fullSeo.testimonials.map((t, i) => (
-              <li
-                key={`${t.name}-${i}`}
-                className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card p-4"
-              >
-                <p className="text-amber-500 text-sm mb-2" aria-label={`${t.rating} out of 5 stars`}>
-                  {'★'.repeat(Math.max(1, Math.min(5, t.rating)))}
-                  {'☆'.repeat(Math.max(0, 5 - Math.min(5, t.rating)))}
-                </p>
-                <p className="text-sm text-foreground/90 mb-3">&ldquo;{t.text}&rdquo;</p>
-                <p className="text-sm font-semibold">
-                  {t.name}
-                  {t.title ? (
-                    <span className="text-muted-foreground font-normal"> · {t.title}</span>
-                  ) : null}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <div className="mx-auto w-full max-w-6xl">
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">What Users Say</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Feedback from people who use {conceptName} on FYN Tools.
+            </p>
+            <ul className="grid md:grid-cols-2 gap-4 list-none p-0 m-0">
+              {fullSeo.testimonials.map((t, i) => (
+                <li
+                  key={`${t.name}-${i}`}
+                  className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card p-4"
+                >
+                  <p className="text-amber-500 text-sm mb-2" aria-label={`${t.rating} out of 5 stars`}>
+                    {'★'.repeat(Math.max(1, Math.min(5, t.rating)))}
+                    {'☆'.repeat(Math.max(0, 5 - Math.min(5, t.rating)))}
+                  </p>
+                  <p className="text-sm text-foreground/90 mb-3">&ldquo;{t.text}&rdquo;</p>
+                  <p className="text-sm font-semibold">
+                    {t.name}
+                    {t.title ? (
+                      <span className="text-muted-foreground font-normal"> · {t.title}</span>
+                    ) : null}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
       )}
 

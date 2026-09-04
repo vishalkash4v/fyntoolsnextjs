@@ -50,6 +50,52 @@ function extractTools(src) {
 const allTools = extractTools(toolsSrc);
 const bySlug = Object.fromEntries(allTools.map((t) => [t.path.slice(1), t]));
 
+/** Prefer facts from toolFactCards.ts so regen never recreates clone SEO. */
+function loadFactCards() {
+  const src = fs.readFileSync(path.join(root, "src/data/tool-content/toolFactCards.ts"), "utf8");
+  const start = src.indexOf("export const TOOL_FACT_CARDS");
+  const end = src.indexOf("export type FactSeoBits");
+  const body = start >= 0 && end > start ? src.slice(start, end) : src;
+  const cards = {};
+  const pathRe = /'\/([^']+)':\s*\{/g;
+  let m;
+  const indices = [];
+  while ((m = pathRe.exec(body))) {
+    indices.push({ slug: m[1], index: m.index });
+  }
+  for (let i = 0; i < indices.length; i++) {
+    const { slug, index } = indices[i];
+    const next = i + 1 < indices.length ? indices[i + 1].index : body.length;
+    const chunk = body.slice(index, next);
+    const field = (name) => {
+      const re = new RegExp(`${name}:\\s*(?:\\n\\s*)?'((?:\\\\'|[^'])*)'`);
+      const hit = chunk.match(re);
+      return hit ? hit[1].replace(/\\'/g, "'") : "";
+    };
+    const cases = [];
+    const caseRe = /title:\s*'((?:\\'|[^'])*)',\s*description:\s*'((?:\\'|[^'])*)'/g;
+    let cm;
+    while ((cm = caseRe.exec(chunk))) {
+      cases.push({
+        title: cm[1].replace(/\\'/g, "'"),
+        description: cm[2].replace(/\\'/g, "'"),
+      });
+    }
+    cards[slug] = {
+      whatItDoes: field("whatItDoes"),
+      inputs: field("inputs"),
+      outputs: field("outputs"),
+      limit: field("limit") || undefined,
+      oneMistake: field("oneMistake"),
+      cases: cases.slice(0, 3),
+    };
+  }
+  return cards;
+}
+
+const FACT_CARDS = loadFactCards();
+console.log(`Loaded ${Object.keys(FACT_CARDS).length} fact cards for batch7 generation`);
+
 /** Per-slug accuracy overrides — must match real tool behavior. */
 const SLUG = {
   "emi-calculator": {
@@ -817,8 +863,29 @@ function examplesFor(tool, cat, slug) {
       { input: `Open ${n} and enter cycle dates or symptoms`, output: "Calendar or log updates — educational estimate only" },
     ];
   }
+  if (slug === "weather-forecast") {
+    return [
+      {
+        input: "Search: Una, Himachal Pradesh (or tap GPS)",
+        output: "Current temp, feels-like, 7-day forecast, hourly rain %, AQI, UV, what-to-wear",
+      },
+    ];
+  }
+  if (slug === "button-generator") {
+    return [
+      {
+        input: "Pick a preset (e.g. Neon Cyberpunk) or set colors, hover gradient, font, sticker",
+        output: "Live button + copy HTML / CSS / React",
+      },
+    ];
+  }
+  if (slug === "pdf-compressor") {
+    return [
+      { input: "2.4MB PDF → Compress to ~150 KB", output: "Compressed PDF near 150KB, download in browser" },
+    ];
+  }
   return [
-    { input: `Sample input for ${n}`, output: `${n} returns a formatted result you can copy or download` },
+    { input: `Use ${n} with a real sample in the tool above`, output: `${n} shows a live, tool-specific result you can copy or download` },
   ];
 }
 
@@ -863,6 +930,7 @@ function buildEntry(slug) {
   const tool = bySlug[slug];
   if (!tool) throw new Error(`Missing tool: ${slug}`);
   const o = SLUG[slug] || {};
+  const fact = FACT_CARDS[slug];
   const name = tool.name;
   const desc = tool.description;
   const cat = tool.category;
@@ -875,104 +943,145 @@ function buildEntry(slug) {
 
   const tldr =
     o.tldr ||
-    `${name}: ${desc.replace(/\.$/, "")}. Free in your browser on FYN Tools — use the panel above for instant results.`;
+    (fact?.whatItDoes
+      ? `${name}: ${fact.whatItDoes.replace(/\.$/, "")}. Input: ${fact.inputs}. Output: ${fact.outputs}.`
+      : `${name}: ${desc.replace(/\.$/, "")}. Work in the labeled panel on this page.`);
 
   const processingNote = o.processingNote || processingFor(cat, slug);
   const ioContract = ioFor(tool, o);
 
   const intro1 =
     o.introParagraphs?.[0] ||
-    `${name} on FYN Tools ${desc.charAt(0).toLowerCase()}${desc.slice(1)} Use the tool above — free, no account required.`;
+    (fact?.whatItDoes
+      ? `${name}: ${fact.whatItDoes.replace(/\.$/, "")}.`
+      : `${name}: ${desc.replace(/\.$/, "")}.`);
 
   const intro2 =
     o.introParagraphs?.[1] ||
-    (cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
-      ? "Calendar and symptom tools vary by person. Use output for planning and prenatal discussions — not as diagnosis or emergency guidance."
-      : cat === "Number Tools" || cat === "Finance Tools"
-        ? "Change loan amount, rate, tenure, or tax inputs to compare scenarios before you commit elsewhere."
-        : cat === "Image Tools"
-          ? "Upload from your device; most image tools process locally in the browser."
-          : "Results update as you type. Bookmark this page if you reuse the workflow.");
+    (fact?.inputs
+      ? `Inputs: ${fact.inputs}. Outputs: ${fact.outputs}.${fact.limit ? ` ${fact.limit}` : ""} Mistake to avoid: ${fact.oneMistake.charAt(0).toLowerCase()}${fact.oneMistake.slice(1).replace(/\.$/, "")}.`
+      : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
+        ? `${name} calendar math is educational only — confirm with your clinician.`
+        : cat === "Number Tools" || cat === "Finance Tools"
+          ? `Change ${name} amounts and rates to compare scenarios before you commit elsewhere.`
+          : cat === "Image Tools"
+            ? `${name} uploads stay in the browser for most image jobs.`
+            : `Bookmark /${slug} if you reuse this ${name} workflow weekly.`);
 
   const howItWorks =
     o.howItWorks ||
-    (cat === "Image Tools"
-      ? `${name} processes your upload in the browser and shows a preview you can download.`
-      : cat === "Development Tools"
-        ? `${name} updates live preview and code output as you adjust controls.`
-        : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
-          ? `${name} applies calendar math or local logging from the dates you enter — educational only.`
-          : `${name} runs the formulas or conversions in the form and displays results immediately.`);
+    (fact?.whatItDoes
+      ? `You set ${fact.inputs.toLowerCase()} in the live panel. ${name} then ${fact.whatItDoes.charAt(0).toLowerCase()}${fact.whatItDoes.slice(1).replace(/\.$/, "")}. Results show as ${fact.outputs.toLowerCase()}.`
+      : cat === "Image Tools"
+        ? `${name} processes your upload in the browser and shows a preview you can download.`
+        : cat === "Development Tools"
+          ? `${name} updates live preview and code output as you adjust controls.`
+          : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
+            ? `${name} applies calendar math or local logging from the dates you enter — educational only.`
+            : `${name} runs the formulas or conversions in the form and displays results immediately.`);
 
   const commonMistakes =
     o.commonMistakes ||
-    (cat === "Number Tools" || cat === "Finance Tools"
+    (fact?.oneMistake
       ? [
-          "Confusing annual vs monthly rate when entering loan or investment fields",
-          "Treating rounded calculator output as a bank-approved quote",
-          "Forgetting that tax and fee line items are excluded from simple calculators",
+          fact.oneMistake,
+          "Treating one run as final without checking units or a second sample.",
+          "Ignoring related tools when the next step is resize, compress, or convert.",
         ]
-      : cat === "Image Tools"
+      : cat === "Number Tools" || cat === "Finance Tools"
         ? [
-            "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
-            "Expecting OCR-level text from blurry uploads",
-            "Not downloading the result before navigating away",
+            "Confusing annual vs monthly rate when entering loan or investment fields",
+            "Treating rounded calculator output as a bank-approved quote",
+            "Forgetting that tax and fee line items are excluded from simple calculators",
           ]
-        : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
+        : cat === "Image Tools"
           ? [
-              "Using calendar predictions as contraception without clinician guidance",
-              "Ignoring severe symptoms because an app log looks normal",
-              "Expecting cloud backup when data is stored only in this browser",
+              "Uploading the wrong aspect ratio then blaming the tool for crop mismatch",
+              "Expecting OCR-level text from blurry uploads",
+              "Not downloading the result before navigating away",
             ]
-          : [
-              "Skipping unit or format checks before sharing results",
-              "Assuming local browser data syncs across devices",
-              "Using educational output as professional advice without verification",
-            ]);
+          : cat === "Pregnancy Tools" || cat === "Period & Cycle Tools"
+            ? [
+                "Using calendar predictions as contraception without clinician guidance",
+                "Ignoring severe symptoms because an app log looks normal",
+                "Expecting cloud backup when data is stored only in this browser",
+              ]
+            : [
+                "Skipping unit or format checks before sharing results",
+                "Assuming local browser data syncs across devices",
+                "Using educational output as professional advice without verification",
+              ]);
 
   const howToUse = howToFor(tool, cat, slug, o);
 
-  const whenToUse = o.whenToUse || whenToUseFor(tool, cat, slug);
+  const whenToUse =
+    o.whenToUse ||
+    (fact?.whatItDoes
+      ? [
+          `When you need ${fact.whatItDoes.charAt(0).toLowerCase()}${fact.whatItDoes.slice(1)} without another app`,
+          `When your input looks like: ${fact.inputs}`,
+        ]
+      : whenToUseFor(tool, cat, slug));
 
   const useCases =
     o.useCases ||
-    [
-      { title: `${cat.replace(/ Tools$/, "")} workflow`, description: desc },
-      { title: "Quick browser check", description: `Use ${name} once, then continue in your doc or app.` },
-    ];
+    (fact?.cases?.length
+      ? fact.cases
+      : [
+          {
+            title: `Run ${name} on a real sample`,
+            description: `${desc} Stay on this page so you can tweak inputs without installing an app.`,
+          },
+          {
+            title: `Check ${name} output twice`,
+            description: "Look at units, dates, or file size before you send the result onward.",
+          },
+        ]);
 
-  const examples = o.examples || examplesFor(tool, cat, slug);
+  const examples =
+    o.examples ||
+    (fact?.inputs
+      ? [
+          { input: fact.inputs, output: fact.outputs },
+          {
+            input: `Open /${slug} and use the live controls`,
+            output: fact.outputs,
+          },
+        ]
+      : examplesFor(tool, cat, slug));
 
   const tips =
     o.tips ||
     [
-      "Double-check units (currency, dates, measurements) before acting on results.",
-      "Use a modern browser for best performance with canvas and file uploads.",
+      "Read the Privacy & processing note before you paste secrets.",
+      fact?.oneMistake
+        ? fact.oneMistake.replace(/^./, (c) => c.toUpperCase())
+        : "Double-check units (currency, dates, measurements) before acting on results.",
       cat.includes("Pregnancy") || cat.includes("Period")
         ? "Contact a clinician if symptoms are severe or unusual — online tools cannot triage emergencies."
-        : "Save or screenshot important outputs before closing the tab.",
+        : `Copy ${name} output immediately if you will close the tab.`,
     ];
 
   const advantages =
     o.advantages ||
     [
-      "Free access with no signup for core features",
-      "Fast browser-based processing",
-      "Mobile-friendly layout",
-      "Clear how-to steps and FAQs on the same page",
+      `${name} runs without installing desktop software`,
+      fact?.inputs ? `Accepts: ${fact.inputs}` : `Clear labeled fields for ${name}`,
+      fact?.outputs ? `Returns: ${fact.outputs}` : "Shows a result you can copy or download",
+      `How-to and FAQs for ${name} live on the same page`,
     ];
 
   const faqs = faqsFor(tool, cat, o);
 
   const conclusion =
     o.conclusion ||
-    `Use ${name} above, then browse related ${cat.toLowerCase()} linked below.`;
+    `Use ${name} on this page, then browse related ${cat.toLowerCase()} linked below.`;
 
   return {
     title,
     h1,
     metaDescription,
-    dateModified: "2026-08-29",
+    dateModified: "2026-09-03",
     tldr,
     processingNote,
     ioContract,
@@ -984,7 +1093,7 @@ function buildEntry(slug) {
       "fyn tools",
     ],
     introParagraphs: [intro1, intro2],
-    overview: o.overview || desc,
+    overview: o.overview || (fact?.whatItDoes ? `${name}: ${fact.whatItDoes}` : desc),
     howItWorks,
     howToUse,
     whenToUse,

@@ -75,7 +75,7 @@ const PregnancyDietPlanner = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 px-1">
+    <div className="w-full space-y-6 px-1">
       <PregnancyHealthDisclaimer toolName="Pregnancy Diet Planner" />
 
       <Card>

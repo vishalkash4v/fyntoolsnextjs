@@ -139,7 +139,7 @@ const LogoToFavicon = () => {
   }, [faviconSizes]);
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 py-6 max-w-5xl">
+    <div className="w-full py-6">
       <div className="text-center mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           Logo to Favicon Converter
@@ -268,7 +268,7 @@ const LogoToFavicon = () => {
 
                 <div className="p-4 bg-muted/40 rounded-lg">
                   <h3 className="font-medium mb-2">Paste these links in your HTML head</h3>
-                  <pre className="text-xs bg-white dark:bg-gray-800 p-3 rounded overflow-x-auto">
+                  <pre className="text-xs bg-card p-3 rounded overflow-x-auto">
 {`<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">

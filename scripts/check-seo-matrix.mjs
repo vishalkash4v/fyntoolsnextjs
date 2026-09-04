@@ -185,5 +185,120 @@ if (!social.includes("return [];")) {
   errors++;
 }
 
+// --- Uniqueness / anti-clone gates (source of truth for live merge) ---
+const CLONE_MARKERS = [
+  "Quick browser check",
+  "use the panel above for instant results",
+  "Sample input for",
+  "Use the tool above — free, no account required",
+  "Free access with no signup for core features",
+];
+
+const uniquenessFiles = [
+  "src/data/tool-content/batch7.ts",
+  "src/data/tool-content/toolExamples.ts",
+  "src/data/tool-content/toolFactCards.ts",
+  "src/lib/seo/contentQuality.ts",
+];
+
+for (const rel of uniquenessFiles) {
+  const full = path.join(root, rel);
+  if (!fs.existsSync(full)) continue;
+  const text = fs.readFileSync(full, "utf8");
+  // contentQuality may list markers as strings — skip that file for marker presence
+  if (rel.endsWith("contentQuality.ts")) continue;
+  for (const marker of CLONE_MARKERS) {
+    // Ignore documentation comments that name the forbidden phrase
+    const withoutLineComments = text
+      .split("\n")
+      .filter((line) => !line.trim().startsWith("//") && !line.trim().startsWith("*") && !line.trim().startsWith("/**"))
+      .join("\n");
+    if (withoutLineComments.includes(marker)) {
+      console.error(`Fail ${rel}: clone/generic marker "${marker}"`);
+      errors++;
+    }
+  }
+}
+
+/** 12-word intro n-grams must not be shared across two tool paths. */
+function twelveWordGrams(text) {
+  const words = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+  const grams = [];
+  for (let i = 0; i + 12 <= words.length; i++) {
+    grams.push(words.slice(i, i + 12).join(" "));
+  }
+  return grams;
+}
+
+function collectIntroParagraphsFromBatches() {
+  const dir = path.join(root, "src/data/tool-content");
+  const files = fs.readdirSync(dir).filter((f) => /^batch\d+\.ts$/.test(f));
+  const byPath = new Map();
+  for (const file of files) {
+    const src = fs.readFileSync(path.join(dir, file), "utf8");
+    const pathRe = /['"](\/[^'"]+)['"]\s*:\s*\{/g;
+    const indices = [];
+    let m;
+    while ((m = pathRe.exec(src))) {
+      indices.push({ toolPath: m[1], index: m.index });
+    }
+    for (let i = 0; i < indices.length; i++) {
+      const { toolPath, index } = indices[i];
+      const next = i + 1 < indices.length ? indices[i + 1].index : src.length;
+      const chunk = src.slice(index, next);
+      const introMatch = chunk.match(/introParagraphs\s*:\s*\[([\s\S]*?)\]/);
+      if (!introMatch) continue;
+      const paras = [...introMatch[1].matchAll(/"((?:\\.|[^"\\])*)"/g)].map((x) =>
+        x[1].replace(/\\"/g, '"')
+      );
+      if (paras.length) byPath.set(toolPath, paras.join(" "));
+    }
+  }
+  return byPath;
+}
+
+const introByPath = collectIntroParagraphsFromBatches();
+const gramOwners = new Map();
+for (const [toolPath, intro] of introByPath) {
+  for (const gram of twelveWordGrams(intro)) {
+    const owners = gramOwners.get(gram) || new Set();
+    owners.add(toolPath);
+    gramOwners.set(gram, owners);
+  }
+}
+let sharedGrams = 0;
+for (const [gram, owners] of gramOwners) {
+  if (owners.size < 2) continue;
+  sharedGrams++;
+  if (sharedGrams <= 8) {
+    console.error(
+      `Fail shared 12-word intro n-gram across ${[...owners].join(", ")}: "${gram}"`
+    );
+  }
+}
+if (sharedGrams) {
+  console.error(`Shared intro n-grams: ${sharedGrams}`);
+  errors += Math.min(sharedGrams, 15);
+}
+
+// Fact cards required for merge filler
+const factCards = fs.readFileSync(path.join(root, "src/data/tool-content/toolFactCards.ts"), "utf8");
+if (!factCards.includes("export function interpolateFactSeo")) {
+  console.error("toolFactCards.ts must export interpolateFactSeo");
+  errors++;
+}
+if (!buildContent.includes("interpolateFactSeo")) {
+  console.error("buildUniqueToolContent must wire interpolateFactSeo");
+  errors++;
+}
+if (!buildContent.includes("isGenericUseCase") || !buildContent.includes("isCloneTldr")) {
+  console.error("buildUniqueToolContent must gate use cases / tldr with contentQuality helpers");
+  errors++;
+}
+
 console.log(`SEO matrix final errors=${errors}`);
 process.exit(errors ? 1 : 0);
