@@ -266,7 +266,7 @@ export default function ToolSeoSections({
       {/* 5. Usage scenarios & examples */}
       {useCases.length > 0 && (
         <Section id="use-cases" title="Usage scenarios" asCard={false}>
-          <ul className="space-y-3 list-disc pl-5">
+          <ul className="space-y-3 list-disc pl-5" data-seo="usage-scenarios">
             {useCases.map((uc, i) => (
               <li key={i} className="text-sm sm:text-base">
                 <span className="font-semibold text-foreground">{uc.title}: </span>
@@ -307,7 +307,7 @@ export default function ToolSeoSections({
         className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8"
         style={{ contentVisibility: 'auto', containIntrinsicSize: '0 420px' }}
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-6xl" data-seo="faq">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">
             Frequently Asked Questions
           </h2>

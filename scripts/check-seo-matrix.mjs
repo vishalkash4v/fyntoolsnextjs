@@ -300,5 +300,116 @@ if (!buildContent.includes("isGenericUseCase") || !buildContent.includes("isClon
   errors++;
 }
 
+// --- 100% coverage gates (non-redirect tools) ---
+const REDIRECT_SKIP = new Set(["enhanced-unit-converter", "add-name-date-photo"]);
+const examplesFile = fs.readFileSync(path.join(root, "src/data/tool-content/toolExamples.ts"), "utf8");
+const shellFile = fs.readFileSync(path.join(root, "src/components/tools/ToolPageShell.tsx"), "utf8");
+const factUi = fs.readFileSync(path.join(root, "src/components/tools/ToolFactCard.tsx"), "utf8");
+
+if (!shellFile.includes("ToolFactCard")) {
+  console.error("ToolPageShell must mount ToolFactCard");
+  errors++;
+}
+if (!factUi.includes('data-seo="fact-card"')) {
+  console.error('ToolFactCard must expose data-seo="fact-card"');
+  errors++;
+}
+
+let coverageFails = 0;
+for (const slug of uniqueSlugs) {
+  if (REDIRECT_SKIP.has(slug)) continue;
+  const route = `/${slug}`;
+  if (!factCards.includes(`'${route}'`) && !factCards.includes(`"${route}"`)) {
+    console.error(`Missing fact card: ${route}`);
+    coverageFails++;
+  }
+  const exRe = new RegExp(
+    `['"]${route.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}['"]\\s*:\\s*\\[([\\s\\S]*?)\\n  \\]`
+  );
+  const exM = examplesFile.match(exRe);
+  const exCount = exM ? (exM[1].match(/input\s*:/g) || []).length : 0;
+  if (exCount < 2) {
+    console.error(`PATH_EXAMPLES < 2 for ${route} (have ${exCount})`);
+    coverageFails++;
+  }
+}
+if (coverageFails) {
+  console.error(`Coverage gaps: ${coverageFails}`);
+  errors += Math.min(coverageFails, 25);
+}
+
+// Soft HTML markers when build exists
+if (fs.existsSync(serverApp)) {
+  const sampleHtml = ["weather-forecast", "bmi-calculator", "word-counter"];
+  for (const name of sampleHtml) {
+    const file = findHtml(`${name}.html`) || findHtml(name);
+    if (!file) continue;
+    const html = fs.readFileSync(file, "utf8");
+    if (!html.includes('data-seo="fact-card"') && !html.includes("Quick facts")) {
+      console.warn(`Warn ${name}: fact-card marker not in HTML (rebuild may be needed)`);
+    }
+    if (!/SoftwareApplication|WebApplication/.test(html)) {
+      console.error(`Fail ${name}: missing SoftwareApplication/WebApplication JSON-LD`);
+      errors++;
+    }
+    if (!/FAQPage/.test(html)) {
+      console.error(`Fail ${name}: missing FAQPage JSON-LD`);
+      errors++;
+    }
+  }
+}
+
+// --- Phase 0: FactCard badge/microDescription + WORKFLOW_LINKS coverage ---
+if (!factUi.includes("100% Client-Side Processing")) {
+  console.error('ToolFactCard must include "100% Client-Side Processing" badge copy');
+  errors++;
+}
+if (!factUi.includes("microDescription")) {
+  console.error("ToolFactCard must use microDescription");
+  errors++;
+}
+
+const relatedPicker = fs.readFileSync(
+  path.join(root, "src/lib/seo/relatedToolsPicker.ts"),
+  "utf8"
+);
+for (const orphanKey of ["/gst-calculator", "/typing-test", "/ip-lookup", "/regex-tester"]) {
+  if (!relatedPicker.includes(`'${orphanKey}'`) && !relatedPicker.includes(`"${orphanKey}"`)) {
+    console.error(`WORKFLOW_LINKS must include orphan key ${orphanKey}`);
+    errors++;
+  }
+}
+
+const workflowBlock = relatedPicker.match(
+  /const WORKFLOW_LINKS[^=]*=\s*\{([\s\S]*?)\n\};/
+);
+if (!workflowBlock) {
+  console.error("Could not parse WORKFLOW_LINKS from relatedToolsPicker.ts");
+  errors++;
+} else {
+  const block = workflowBlock[1];
+  const asKey = new Set(
+    [...block.matchAll(/['"](\/[^'"]+)['"]\s*:/g)].map((m) => m[1])
+  );
+  const asValue = new Set(
+    [...block.matchAll(/['"](\/[^'"]+)['"]/g)].map((m) => m[1])
+  );
+  const covered = new Set([...asKey, ...asValue]);
+  const WORKFLOW_SKIP = new Set(["/enhanced-unit-converter", "/themes"]);
+  let orphans = 0;
+  for (const slug of uniqueSlugs) {
+    const route = `/${slug}`;
+    if (WORKFLOW_SKIP.has(route) || REDIRECT_SKIP.has(slug)) continue;
+    if (!covered.has(route)) {
+      console.error(`WORKFLOW orphan (not key or value): ${route}`);
+      orphans++;
+    }
+  }
+  if (orphans) {
+    console.error(`WORKFLOW orphans: ${orphans}`);
+    errors += Math.min(orphans, 20);
+  }
+}
+
 console.log(`SEO matrix final errors=${errors}`);
 process.exit(errors ? 1 : 0);

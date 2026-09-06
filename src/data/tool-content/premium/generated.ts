@@ -13356,7 +13356,7 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
   "/button-generator": {
     "title": "Button Generator Free Online",
     "h1": "Button Generator — Free Online Tool",
-    "metaDescription": "Design and generate CSS for custom buttons with various styles. Free button generator on FYN Tools. No signup required. Fast, mobile-friendly, and private-by-",
+    "metaDescription": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy HTML/CSS/Rea",
     "keywords": [
       "button generator",
       "free button generator",
@@ -13365,10 +13365,10 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
       "fyn tools"
     ],
     "introParagraphs": [
-      "Button Generator helps you design and generate css for custom buttons with various styles. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
+      "Button Generator helps you design custom css buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy html/css/react. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
       "Search intent for “button generator” is practical: people want a reliable browser utility without installing software. This page pairs the interactive Button Generator with clear steps, examples, FAQs, and links to related development tools tools."
     ],
-    "overview": "Button Generator runs in your browser as part of the FYN Tools Development Tools suite. Design and generate CSS for custom buttons with various styles. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
+    "overview": "Button Generator runs in your browser as part of the FYN Tools Development Tools suite. Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy HTML/CSS/React. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
     "howItWorks": "Open /button-generator, enter or upload your input, adjust options if shown, then copy or download the output. Most calculations and transforms update immediately as you type or change settings.",
     "howToUse": [
       "Open Button Generator at /button-generator on FYN Tools.",
@@ -13440,7 +13440,7 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
     "faqs": [
       {
         "question": "What does Button Generator do?",
-        "answer": "Design and generate CSS for custom buttons with various styles. It is part of our Development Tools collection on FYN Tools (/button-generator)."
+        "answer": "Design custom CSS buttons with 40+ fonts, 24 presets, hover gradients, animations, stickers (animals, pets, birds, nature) and image icons — copy HTML/CSS/React. It is part of our Development Tools collection on FYN Tools (/button-generator)."
       },
       {
         "question": "Is Button Generator free on FYN Tools?",

@@ -1,4 +1,5 @@
 import { allTools, type Tool } from '@/data/toolsData';
+import { getCategoryHubPath } from '@/utils/breadcrumbs';
 
 export type RelatedToolEntry = { name: string; href: string; description: string };
 
@@ -7,13 +8,15 @@ export type RelatedToolEntry = { name: string; href: string; description: string
  * Mirrors relatedByPath + COMPARISON_COMPATIBLE in toolSeoContent.ts plus pregnancy/period clusters.
  */
 const WORKFLOW_LINKS: Record<string, string[]> = {
-  '/word-counter': ['/text-case-converter', '/whitespace-remover'],
+  '/word-counter': ['/text-case-converter', '/whitespace-remover', '/meta-tag-previewer'],
   '/text-case-converter': ['/word-counter', '/whitespace-remover', '/text-reverser'],
   '/whitespace-remover': ['/duplicate-line-remover', '/text-case-converter'],
   '/duplicate-line-remover': ['/whitespace-remover'],
   '/text-reverser': ['/text-case-converter', '/word-counter'],
   '/text-font-changer': ['/text-case-converter', '/word-counter'],
   '/ai-text-rewriter': ['/text-case-converter', '/word-counter'],
+  '/regex-tester': ['/word-counter', '/text-case-converter', '/whitespace-remover'],
+  '/lorem-ipsum-generator': ['/word-counter', '/text-case-converter', '/list-randomizer'],
   '/image-compressor': ['/image-resizer', '/image-cropper', '/image-format-converter', '/pdf-compressor'],
   '/image-cropper': ['/image-compressor', '/image-resizer'],
   '/image-resizer': ['/image-compressor', '/image-cropper', '/pdf-compressor'],
@@ -23,6 +26,13 @@ const WORKFLOW_LINKS: Record<string, string[]> = {
   '/flip-image': ['/image-resizer', '/image-compressor'],
   '/merge-images': ['/split-image', '/image-compressor'],
   '/split-image': ['/merge-images', '/image-compressor'],
+  '/pixelate-tool': ['/blur-image', '/invert-image-colors', '/image-compressor'],
+  '/blur-image': ['/pixelate-tool', '/invert-image-colors', '/image-compressor'],
+  '/invert-image-colors': ['/blur-image', '/pixelate-tool', '/image-format-converter'],
+  '/photo-annotation-tool': ['/image-resizer', '/image-compressor', '/blur-image'],
+  '/svg-optimizer': ['/image-format-converter', '/image-compressor', '/logo-to-favicon'],
+  '/image-metadata-viewer': ['/image-compressor', '/image-format-converter'],
+  '/color-palette-generator': ['/color-picker-tool', '/color-converter', '/gradient-generator'],
   '/pdf-compressor': ['/pdf-text-extractor', '/image-compressor', '/image-resizer'],
   '/pdf-text-extractor': ['/pdf-compressor', '/image-to-text'],
   '/image-to-text': ['/pdf-text-extractor', '/pdf-compressor'],
@@ -43,28 +53,41 @@ const WORKFLOW_LINKS: Record<string, string[]> = {
   '/future-date-calculator': ['/timestamp-converter', '/date-difference-calculator'],
   '/age-calculator': ['/date-difference-calculator', '/timestamp-converter', '/bmi-calculator'],
   '/color-picker-tool': ['/color-converter', '/border-radius-generator', '/box-shadow-generator'],
-  '/color-converter': ['/color-picker-tool'],
+  '/color-converter': ['/color-picker-tool', '/color-palette-generator'],
   '/border-radius-generator': ['/box-shadow-generator', '/button-generator', '/color-picker-tool'],
   '/box-shadow-generator': ['/border-radius-generator', '/button-generator'],
   '/button-generator': ['/border-radius-generator', '/box-shadow-generator'],
+  '/gradient-generator': ['/color-picker-tool', '/color-palette-generator', '/css-minifier'],
   '/barcode-generator': ['/barcode-scanner-online'],
-  '/sip-calculator': ['/ppf-calculator', '/fd-calculator', '/emi-calculator'],
-  '/ppf-calculator': ['/sip-calculator', '/fd-calculator'],
-  '/fd-calculator': ['/sip-calculator', '/ppf-calculator'],
-  '/emi-calculator': ['/sip-calculator', '/simple-calculator'],
-  '/simple-calculator': ['/percentage-calculator', '/emi-calculator'],
-  '/percentage-calculator': ['/simple-calculator'],
+  '/barcode-scanner-online': ['/barcode-generator'],
+  '/sip-calculator': ['/ppf-calculator', '/fd-calculator', '/emi-calculator', '/gst-calculator'],
+  '/ppf-calculator': ['/sip-calculator', '/fd-calculator', '/income-tax-calculator'],
+  '/fd-calculator': ['/sip-calculator', '/ppf-calculator', '/simple-calculator'],
+  '/emi-calculator': ['/sip-calculator', '/simple-calculator', '/gst-calculator'],
+  '/simple-calculator': ['/percentage-calculator', '/emi-calculator', '/gst-calculator'],
+  '/percentage-calculator': ['/simple-calculator', '/gst-calculator'],
+  '/gst-calculator': ['/emi-calculator', '/sip-calculator', '/simple-calculator', '/income-tax-calculator'],
+  '/income-tax-calculator': ['/gst-calculator', '/sip-calculator', '/ppf-calculator', '/simple-calculator'],
   '/bmi-calculator': ['/age-calculator', '/pregnancy-weight-gain-calculator'],
   '/currency-converter': ['/unit-converter', '/enhanced-unit-converter'],
   '/unit-converter': ['/enhanced-unit-converter', '/temperature-converter', '/currency-converter'],
   '/enhanced-unit-converter': ['/unit-converter', '/temperature-converter'],
   '/temperature-converter': ['/unit-converter', '/enhanced-unit-converter'],
-  '/meta-tag-previewer': ['/url-slug-generator'],
+  '/meta-tag-previewer': ['/url-slug-generator', '/word-counter', '/xml-sitemap-tester'],
   '/url-slug-generator': ['/meta-tag-previewer'],
+  '/markdown-editor': ['/html-formatter', '/live-preview', '/javascript-minifier'],
+  '/javascript-minifier': ['/css-minifier', '/html-formatter', '/json-formatter'],
+  '/css-minifier': ['/javascript-minifier', '/html-formatter', '/gradient-generator'],
+  '/html-formatter': ['/markdown-editor', '/css-minifier', '/live-preview'],
+  '/live-preview': ['/html-formatter', '/markdown-editor', '/css-minifier'],
+  '/dummy-api-generator': ['/json-formatter', '/json-validator', '/table-to-json-converter'],
+  '/xml-sitemap-tester': ['/meta-tag-previewer', '/url-slug-generator'],
   '/stopwatch': ['/countdown-timer'],
   '/countdown-timer': ['/stopwatch'],
-  '/typing-tutor': ['/typing-competition'],
-  '/typing-competition': ['/typing-tutor'],
+  '/typing-tutor': ['/typing-competition', '/typing-test', '/typing-games'],
+  '/typing-competition': ['/typing-tutor', '/typing-test', '/typing-games'],
+  '/typing-test': ['/typing-tutor', '/typing-competition', '/typing-games'],
+  '/typing-games': ['/typing-tutor', '/typing-test', '/typing-competition'],
   '/todo-list': ['/notes', '/daily-task-report-saver'],
   '/notes': ['/todo-list'],
   '/daily-task-report-saver': ['/todo-list'],
@@ -104,20 +127,86 @@ const WORKFLOW_LINKS: Record<string, string[]> = {
   ],
   '/baby-kick-counter': ['/contraction-timer', '/pregnancy-week-calculator'],
   '/contraction-timer': ['/baby-kick-counter', '/pregnancy-due-date-calculator'],
-  '/coin-flip': ['/dice-roller', '/random-number-generator'],
+  '/coin-flip': ['/dice-roller', '/random-number-generator', '/yes-no-generator'],
   '/dice-roller': ['/coin-flip', '/random-number-generator'],
-  '/random-number-generator': ['/password-generator', '/dice-roller'],
-  '/social-media-planner': ['/social-media-deep-link-generator', '/social-media-downloader'],
+  '/random-number-generator': ['/password-generator', '/dice-roller', '/list-randomizer'],
+  '/yes-no-generator': ['/coin-flip', '/list-randomizer', '/random-number-generator'],
+  '/list-randomizer': ['/random-number-generator', '/yes-no-generator', '/name-generator'],
+  '/name-generator': ['/username-generator', '/list-randomizer', '/business-idea-generator'],
+  '/username-generator': ['/name-generator', '/password-generator', '/hashtag-generator'],
+  '/hashtag-generator': ['/username-generator', '/social-media-planner', '/discord-formatter'],
+  '/discord-formatter': ['/hashtag-generator', '/markdown-editor', '/text-case-converter'],
+  '/business-idea-generator': ['/name-generator', '/invoice-generator'],
+  '/ip-lookup': ['/ip-address-to-location-finder', '/weather-forecast'],
+  '/ip-address-to-location-finder': ['/ip-lookup', '/weather-forecast'],
+  '/weather-forecast': ['/ip-lookup', '/ip-address-to-location-finder'],
+  '/social-media-planner': ['/social-media-deep-link-generator', '/social-media-downloader', '/hashtag-generator'],
   '/social-media-deep-link-generator': ['/social-media-planner', '/url-shortener'],
-  '/social-media-downloader': ['/social-media-planner'],
-  '/invoice-generator': ['/trip-expense-splitter'],
+  '/social-media-downloader': ['/social-media-planner', '/social-media-db-viewer'],
+  '/social-media-db-viewer': ['/social-media-downloader', '/social-media-planner'],
+  '/text-to-speech': ['/word-counter', '/text-case-converter'],
+  '/invoice-generator': ['/trip-expense-splitter', '/business-idea-generator'],
   '/trip-expense-splitter': ['/invoice-generator', '/simple-calculator'],
-  '/table-to-json-converter': ['/json-formatter', '/json-validator'],
+  '/table-to-json-converter': ['/json-formatter', '/json-validator', '/dummy-api-generator'],
   '/text-to-handwriting': ['/text-font-changer'],
-  '/add-name-date-photo': ['/image-resizer', '/image-compressor'],
+  '/add-name-date-photo': ['/photo-annotation-tool', '/image-resizer', '/image-compressor'],
 };
 
 const SKIP_RELATED = new Set(['/enhanced-unit-converter', '/themes']);
+
+/** Soft-dupe groups: max picks from a sibling stem family when filling. */
+const SOFT_DUPE_GROUPS: { paths: string[]; max: number }[] = [
+  { paths: ['/unit-converter', '/enhanced-unit-converter'], max: 1 },
+  { paths: ['/typing-tutor', '/typing-test', '/typing-games', '/typing-competition'], max: 2 },
+  { paths: ['/add-name-date-photo', '/photo-annotation-tool'], max: 1 },
+];
+
+function softDupeGroupFor(path: string): { paths: string[]; max: number } | null {
+  return SOFT_DUPE_GROUPS.find((g) => g.paths.includes(path)) ?? null;
+}
+
+function softDupeAllows(picked: Set<string>, candidate: string): boolean {
+  const group = softDupeGroupFor(candidate);
+  if (!group) return true;
+  const already = group.paths.filter((p) => picked.has(p)).length;
+  if (already >= group.max && !picked.has(candidate)) return false;
+  return true;
+}
+
+/** Stable hash for fair rotation (not Math.random). */
+function stableHash(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+/** Inbound mention count across WORKFLOW_LINKS values. */
+function inboundWorkflowCount(path: string): number {
+  let n = 0;
+  for (const targets of Object.values(WORKFLOW_LINKS)) {
+    if (targets.includes(path)) n++;
+  }
+  return n;
+}
+
+/** Word-boundary trim to ≤ maxLen (default 110). */
+export function trimIntentBlurb(text: string, maxLen = 110): string {
+  const t = text.trim().replace(/\s+/g, ' ');
+  if (t.length <= maxLen) return t;
+  const slice = t.slice(0, maxLen);
+  const lastSpace = slice.lastIndexOf(' ');
+  const cut = lastSpace > 40 ? slice.slice(0, lastSpace) : slice;
+  return `${cut.replace(/[.,;:!?-]+$/, '')}…`;
+}
+
+export function relatedToolDescription(name: string, description: string): string {
+  const first = description.trim().replace(/\s+/g, ' ').slice(0, 90);
+  const trimmed = trimIntentBlurb(first, 90);
+  return trimIntentBlurb(`Continue with ${name}: ${trimmed}`, 110);
+}
 
 /** Bidirectional workflow link check. */
 export function isWorkflowLinked(from: string, to: string): boolean {
@@ -137,10 +226,14 @@ export function isRelatedToolValid(tool: Tool, href: string): boolean {
 function toEntry(href: string): RelatedToolEntry | null {
   const t = allTools.find((x) => x.path === href);
   if (!t) return null;
-  return { name: t.name, href: t.path, description: t.description.slice(0, 110) };
+  return {
+    name: t.name,
+    href: t.path,
+    description: relatedToolDescription(t.name, t.description),
+  };
 }
 
-/** Build related tools: workflow links → same category. Never random cross-category. */
+/** Build related tools: workflow links → fair same-category fill → hub CTA. Never random cross-category. */
 export function getRelatedToolsForPage(path: string, limit = 10): RelatedToolEntry[] {
   const tool = allTools.find((t) => t.path === path);
   if (!tool) return [];
@@ -148,8 +241,9 @@ export function getRelatedToolsForPage(path: string, limit = 10): RelatedToolEnt
   const seen = new Set<string>([path]);
   const out: RelatedToolEntry[] = [];
 
-  const add = (href: string) => {
+  const add = (href: string, respectSoftDupe = false) => {
     if (seen.has(href) || !isRelatedToolValid(tool, href)) return;
+    if (respectSoftDupe && !softDupeAllows(seen, href)) return;
     const entry = toEntry(href);
     if (!entry) return;
     seen.add(href);
@@ -158,10 +252,29 @@ export function getRelatedToolsForPage(path: string, limit = 10): RelatedToolEnt
 
   for (const href of WORKFLOW_LINKS[path] ?? []) add(href);
 
-  for (const t of allTools) {
+  const sameCat = allTools
+    .filter((t) => t.path !== path && t.category === tool.category && !SKIP_RELATED.has(t.path))
+    .map((t) => t.path)
+    .sort((a, b) => {
+      const inboundDiff = inboundWorkflowCount(a) - inboundWorkflowCount(b);
+      if (inboundDiff !== 0) return inboundDiff;
+      return stableHash(`${a}|${path}`) - stableHash(`${b}|${path}`);
+    });
+
+  for (const href of sameCat) {
     if (out.length >= limit) break;
-    if (t.path === path || t.category !== tool.category || SKIP_RELATED.has(t.path)) continue;
-    add(t.path);
+    add(href, true);
+  }
+
+  if (out.length < limit) {
+    const hub = getCategoryHubPath(tool.category);
+    if (hub && !seen.has(hub)) {
+      out.push({
+        name: `All ${tool.category}`,
+        href: hub,
+        description: `Browse the full ${tool.category} hub on FYN Tools`,
+      });
+    }
   }
 
   return out.slice(0, limit);
@@ -178,11 +291,18 @@ export function filterValidRelatedTools(
   for (const c of candidates) {
     if (seen.has(c.href) || !isRelatedToolValid(tool, c.href)) continue;
     seen.add(c.href);
+    const desc =
+      c.description ?? allTools.find((t) => t.path === c.href)?.description ?? '';
     out.push({
       name: c.name,
       href: c.href,
-      description: (c.description ?? allTools.find((t) => t.path === c.href)?.description ?? '').slice(0, 110),
+      description: relatedToolDescription(c.name, desc),
     });
   }
   return out;
+}
+
+/** Exported for CI: paths that appear as keys in WORKFLOW_LINKS. */
+export function getWorkflowLinkKeys(): string[] {
+  return Object.keys(WORKFLOW_LINKS);
 }

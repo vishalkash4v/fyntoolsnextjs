@@ -2,8 +2,10 @@ import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import ToolCrawlerFallback from '@/components/tools/ToolCrawlerFallback';
+import ToolFactCard, { factCardPropsFromSeo } from '@/components/tools/ToolFactCard';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
 import NamezivoAdBanner from '@/components/Ads/NamezivoAdBanner';
+import { TOOL_FACT_CARDS } from '@/data/tool-content/toolFactCards';
 
 type Faq = { question: string; answer: string };
 
@@ -36,6 +38,10 @@ export default function ToolPageShell({
   reviewStats,
   toolClient,
 }: Props) {
+  const path = `/${slug}`;
+  const card = TOOL_FACT_CARDS[path];
+  const factProps = card ? factCardPropsFromSeo(title, card, fullSeo) : null;
+
   return (
     <div className="min-h-screen bg-background">
       <article className="w-full py-4 sm:py-6 md:py-8">
@@ -48,13 +54,16 @@ export default function ToolPageShell({
           faqs={faqs}
           fullSeo={fullSeo}
           reviewStats={reviewStats}
-          toolPath={`/${slug}`}
+          toolPath={path}
           toolSlot={
             <section
               id="tool"
               className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
             >
-              <div className="mx-auto w-full max-w-6xl">{toolClient}</div>
+              <div className="mx-auto w-full max-w-6xl">
+                {toolClient}
+                {factProps ? <ToolFactCard {...factProps} /> : null}
+              </div>
               <div className="sr-only">
                 <ToolCrawlerFallback slug={slug} />
               </div>
@@ -63,7 +72,7 @@ export default function ToolPageShell({
         />
         <div className="px-4 sm:px-6 md:px-8 mb-6 max-w-4xl mx-auto">
           <NamezivoAdBanner
-            sourcePath={`/${slug}`}
+            sourcePath={path}
             placement="tool_below"
             variant="full"
           />

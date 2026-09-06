@@ -1,5 +1,8 @@
+import { tier1Batch1Overrides } from '@/data/tool-content/tier1Batch1';
+
 /**
  * Page-level SEO overrides (legacy Vite props + hand-tuned paths).
+ * Tier 1 batch modules merge last so deep FAQs / scenarios / examples win.
  */
 export type PageOverride = {
   title?: string;
@@ -18,7 +21,7 @@ export type PageOverride = {
   tips?: string[];
 };
 
-export const pageOverrides: Record<string, PageOverride> = {
+const pageOverridesBase: Record<string, PageOverride> = {
   "/add-name-date-photo": {
     "title": "Add Name & Date on Photo - Passport Photo Editor Online",
     "description": "Add name and date on passport photographs for online application forms. Free tool to annotate photos with text for visa, ID, and official applications.",
@@ -95,6 +98,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       {
         "question": "Can I see my age in different units?",
         "answer": "Yes, you can view your age in years, months, days, hours, minutes, and seconds simultaneously."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Form age",
+        "description": "Enter DOB to fill years/months on an application."
+      },
+      {
+        "title": "As-of date",
+        "description": "Compute age on a past exam or enrollment date."
+      },
+      {
+        "title": "Next birthday",
+        "description": "See how many days until the next birthday."
       }
     ],
     "relatedTools": [
@@ -209,6 +226,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       {
         "question": "How should I use this responsibly?",
         "answer": "Avoid misleading claims, preserve factual correctness, and disclose/edit appropriately when publishing sensitive or high-stakes content."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Clarify a stiff draft",
+        "description": "Paste a paragraph, pick a clearer tone, copy the rewrite."
+      },
+      {
+        "title": "Shorten marketing copy",
+        "description": "Ask for shorter and trim fluff before publish."
+      },
+      {
+        "title": "Human edit after",
+        "description": "Treat output as a draft — fact-check before you ship."
       }
     ],
     "relatedTools": [
@@ -1511,6 +1542,20 @@ export const pageOverrides: Record<string, PageOverride> = {
       {
         "question": "Can I see historical exchange rates?",
         "answer": "Yes, many currency pairs include historical data so you can see how exchange rates have changed over time."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Trip budget",
+        "description": "Convert INR to EUR for a weekend estimate."
+      },
+      {
+        "title": "Invoice check",
+        "description": "See USD→INR before sending an international invoice."
+      },
+      {
+        "title": "Not a bank quote",
+        "description": "Use the rate as a sketch — confirm with your bank for wires."
       }
     ],
     "relatedTools": [
@@ -8130,4 +8175,9 @@ export const pageOverrides: Record<string, PageOverride> = {
       }
     ]
   }
-} as const;
+};
+
+export const pageOverrides: Record<string, PageOverride> = {
+  ...pageOverridesBase,
+  ...tier1Batch1Overrides,
+};

@@ -264,9 +264,10 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
       : [];
 
   const useCases =
+    (overrideUseCases.length >= 3 ? overrideUseCases : null) ||
+    (premiumUseCases.length >= 3 ? premiumUseCases : null) ||
+    (curatedUseCases.length >= 3 ? curatedUseCases : null) ||
     (overrideUseCases.length >= 2 ? overrideUseCases : null) ||
-    (premiumUseCases.length >= 2 ? premiumUseCases : null) ||
-    (curatedUseCases.length >= 2 ? curatedUseCases : null) ||
     facts.useCases;
 
   const examples = (() => {
