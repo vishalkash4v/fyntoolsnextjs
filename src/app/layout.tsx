@@ -8,6 +8,7 @@ import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { organizationSchema, websiteSchema } from '@/lib/seo/schemas';
 import { SITE_URL } from '@/lib/seo/site';
 import Script from 'next/script';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -98,18 +99,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
-     <head>
-        {/* You added this AdSense script */}
+      <head>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6868243205754546"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6868243205754546"
-     crossOrigin="anonymous"></script>
       </head>
-     
+      
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
