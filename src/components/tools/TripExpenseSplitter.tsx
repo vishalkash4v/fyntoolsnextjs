@@ -30,7 +30,7 @@ import { Plus, Loader2, Users, DollarSign, History, Settings, LogIn, UserPlus, T
 import { toast } from 'sonner';
 import { io, Socket } from 'socket.io-client';
 
-const API_BASE_URL = 'https://express-two-umber.vercel.app/api';
+const API_BASE_URL = 'https://express-kieg.onrender.com/api';
 
 interface User {
   userId: string;
@@ -147,7 +147,7 @@ const TripExpenseSplitter: React.FC = () => {
     if (isAuthenticated && currentTrip && user) {
       const token = localStorage.getItem('userToken');
       if (token) {
-        socketRef.current = io('https://express-two-umber.vercel.app', {
+        socketRef.current = io('https://express-kieg.onrender.com', {
           auth: { token },
           transports: ['websocket', 'polling']
         });

@@ -1843,13 +1843,13 @@ export const batch5ToolSeo: Record<string, PremiumPartial> = {
     datePublished: '2024-01-15',
     dateModified: '2026-08-05',
     tldr:
-      'Browse documented REST endpoints (auth, users, products, cart) against https://express-two-umber.vercel.app/apis/v2, fill example JSON bodies, attach Bearer tokens when required, send live requests from the browser, and inspect status, headers, and response JSON — a sandbox, not a port scanner.',
+      'Browse documented REST endpoints (auth, users, products, cart) against https://express-kieg.onrender.com/apis/v2, fill example JSON bodies, attach Bearer tokens when required, send live requests from the browser, and inspect status, headers, and response JSON — a sandbox, not a port scanner.',
     processingNote:
       'HTTP requests go from your browser directly to the third-party sandbox API on Vercel. Request and response data are visible to that server.',
     ioContract: {
       inputs: 'Selected HTTP method/path, optional JSON body, optional Bearer token for protected routes',
       outputs: 'HTTP status, response headers, and parsed JSON body with timing',
-      formats: 'REST JSON over HTTPS; base URL https://express-two-umber.vercel.app/apis/v2',
+      formats: 'REST JSON over HTTPS; base URL https://express-kieg.onrender.com/apis/v2',
       limits: 'Sandbox data only — not for production secrets; endpoint list fixed in UI; requiresAuth routes need a token from login/register',
       processing: 'Server-side target (external REST sandbox on Vercel)',
     },
@@ -1862,7 +1862,7 @@ export const batch5ToolSeo: Record<string, PremiumPartial> = {
       'api testing tool free',
     ],
     introParagraphs: [
-      'Pick a category — auth, users, products, or cart — and select an endpoint such as POST /auth/login or GET /users. Example JSON bodies pre-fill the request textarea where applicable. Click Send Request to call the live sandbox at https://express-two-umber.vercel.app/apis/v2 and view status, headers, and response JSON.',
+      'Pick a category — auth, users, products, or cart — and select an endpoint such as POST /auth/login or GET /users. Example JSON bodies pre-fill the request textarea where applicable. Click Send Request to call the live sandbox at https://express-kieg.onrender.com/apis/v2 and view status, headers, and response JSON.',
       'Protected routes show a requiresAuth badge; register or login first, then paste the returned Bearer token into the authorization field. This helps prototype frontend flows against realistic REST shapes. It is not a port scanner or network probe tool.',
     ],
     overview:
@@ -1938,7 +1938,7 @@ export const batch5ToolSeo: Record<string, PremiumPartial> = {
     faqs: [
       {
         question: 'What is the API base URL?',
-        answer: 'https://express-two-umber.vercel.app/apis/v2 — all paths append to this base.',
+        answer: 'https://express-kieg.onrender.com/apis/v2 — all paths append to this base.',
       },
       {
         question: 'Is this a port scanner?',

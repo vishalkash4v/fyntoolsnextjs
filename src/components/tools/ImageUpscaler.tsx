@@ -205,7 +205,7 @@ const ImageUpscaler: React.FC = () => {
   const timeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
 
-  const API_URL = 'https://express-two-umber.vercel.app/api/images';
+  const API_URL = 'https://express-kieg.onrender.com/api/images';
 
   // Calculate estimated processing time (more accurate)
   const calculateEstimatedTime = useCallback((fileSize: number, scale: '2x' | '4x', width: number, height: number) => {

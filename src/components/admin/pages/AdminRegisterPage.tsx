@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 
 const API_BASE_URL = (
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, "") ||
-  "https://express-two-umber.vercel.app"
+  "https://express-kieg.onrender.com"
 ).replace(/\/$/, "");
 
 const AdminRegisterPage = () => {

@@ -43,7 +43,7 @@ const FeedbackButton: React.FC<FeedbackButtonProps> = ({ toolName, toolUrl }) =>
     });
 
     // Submit in background (non-blocking - don't wait for response)
-    const API_BASE_URL = 'https://express-two-umber.vercel.app/api';
+    const API_BASE_URL = 'https://express-kieg.onrender.com/api';
     fetch(`${API_BASE_URL}/toolreview/submit`, {
       method: 'POST',
       headers: {

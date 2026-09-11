@@ -110,7 +110,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     /const API_BASE_URL = ['"]https:\/\/express-two-umber\.vercel\.app['"];/g,
     `const API_BASE_URL = (
   process.env.NEXT_PUBLIC_API_URL?.replace(/\\/api\\/?$/, "") ||
-  "https://express-two-umber.vercel.app"
+  "https://express-kieg.onrender.com"
 ).replace(/\\/$/, "");`
   );
 

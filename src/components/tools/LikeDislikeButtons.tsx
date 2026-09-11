@@ -6,7 +6,7 @@ import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
-const API_BASE_URL = 'https://express-two-umber.vercel.app/api';
+const API_BASE_URL = 'https://express-kieg.onrender.com/api';
 
 interface LikeDislikeButtonsProps {
   toolName: string;

@@ -4,7 +4,7 @@ import { API_BASE_URL } from '@/lib/seo/site';
 export function getBlogApiBase(): string {
   return (
     process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ||
-    'https://express-two-umber.vercel.app/api'
+    'https://express-kieg.onrender.com/api'
   );
 }
 

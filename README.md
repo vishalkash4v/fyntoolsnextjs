@@ -21,4 +21,4 @@ npm run check:gsc           # needs ../gsc-exports/Table.csv
 Copy `.env.example` → `.env.local` / `.env.production`.
 
 - `NEXT_PUBLIC_SITE_URL=https://fyntools.com`
-- `NEXT_PUBLIC_API_URL=https://express-two-umber.vercel.app/api`
+- `NEXT_PUBLIC_API_URL=https://express-kieg.onrender.com/api`

@@ -3,7 +3,7 @@ export const SITE_URL =
 
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
-  "https://express-two-umber.vercel.app/api";
+  "https://express-kieg.onrender.com/api";
 
 export const SITE = {
   name: "FYN Tools Worldwide",

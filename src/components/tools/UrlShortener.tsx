@@ -19,7 +19,7 @@ const UrlShortenerQrDialog = dynamic(() => import('@/components/tools/UrlShorten
   ssr: false,
 });
 
-const API_BASE_URL = 'https://express-two-umber.vercel.app/api/shorturl';
+const API_BASE_URL = 'https://express-kieg.onrender.com/api/shorturl';
 
 interface ShortUrlData {
   originalUrl: string;

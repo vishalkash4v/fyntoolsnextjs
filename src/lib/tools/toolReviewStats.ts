@@ -1,7 +1,7 @@
 import { absoluteUrl } from '@/lib/seo/site';
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'https://express-two-umber.vercel.app/api';
+  process.env.NEXT_PUBLIC_API_URL || 'https://express-kieg.onrender.com/api';
 
 export type ToolReviewStats = {
   likes: number;

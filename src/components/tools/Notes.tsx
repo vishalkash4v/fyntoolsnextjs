@@ -17,7 +17,7 @@ import { Trash2, Edit, Save, X, Plus, Search, Hash, Pin, Download, Loader2, User
 import { toast } from 'sonner';
 import { saveAs } from 'file-saver';
 
-const API_BASE_URL = 'https://express-two-umber.vercel.app/api';
+const API_BASE_URL = 'https://express-kieg.onrender.com/api';
 
 interface Note {
   id: string;
