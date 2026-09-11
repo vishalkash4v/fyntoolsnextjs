@@ -35,6 +35,9 @@ export default function Header() {
           <HeaderClient navigation={navigation} />
         </div>
       </div>
+
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6868243205754546"
+     crossorigin="anonymous"></script>
     </header>
   );
 }
