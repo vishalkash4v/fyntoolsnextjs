@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -8,8 +8,11 @@ import { Loader2, ExternalLink, AlertCircle, Sparkles, Shield, ArrowRight, Refre
 import { API_BASE_URL } from '@/lib/seo/site';
 
 const API = `${API_BASE_URL}/shorturl`;
-const REDIRECT_SECONDS = 3;
+/** Brief pause so users can see destination; keep low for snappy opens. */
+const REDIRECT_SECONDS = 1;
 const NAMEZIVO_URL = 'https://namezivo.com';
+const MAX_ATTEMPTS = 3;
+const ATTEMPT_TIMEOUT_MS = 8000;
 
 function hostnameHint(url: string): string {
   try {
@@ -42,11 +45,18 @@ export default function ShortUrlRedirectClient({
   const [unlocking, setUnlocking] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   const [allowClientResolve, setAllowClientResolve] = useState(!skipResolve);
+  const redirectedRef = useRef(false);
 
   const resolveJson = useCallback(async (response: Response) => {
     const text = await response.text();
     if (!text) throw new Error('Empty response from server.');
     return JSON.parse(text);
+  }, []);
+
+  const goToDestination = useCallback((dest: string) => {
+    if (redirectedRef.current) return;
+    redirectedRef.current = true;
+    window.location.replace(dest);
   }, []);
 
   useEffect(() => {
@@ -62,11 +72,12 @@ export default function ShortUrlRedirectClient({
     const run = async () => {
       setPhase('loading');
       setError(null);
+      redirectedRef.current = false;
 
-      for (let attempt = 0; attempt <= 3; attempt++) {
+      for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 12000);
+          const timeoutId = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
           const response = await fetch(`${API}/${encodeURIComponent(code)}`, {
             method: 'GET',
             cache: 'no-store',
@@ -86,8 +97,8 @@ export default function ShortUrlRedirectClient({
               setPhase('error');
               return;
             }
-            if (response.status >= 500 && attempt < 3) {
-              await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt)));
+            if (response.status >= 500 && attempt < MAX_ATTEMPTS - 1) {
+              await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
               continue;
             }
             setError('We could not load this short link. Please try again in a moment.');
@@ -111,9 +122,11 @@ export default function ShortUrlRedirectClient({
                 : null;
 
           if (dest) {
+            // Fast path: go immediately; interstitial is a soft fallback if navigation is slow.
             setPendingRedirect(dest);
             setCountdown(REDIRECT_SECONDS);
             setPhase('interstitial');
+            goToDestination(dest);
             return;
           }
 
@@ -122,12 +135,12 @@ export default function ShortUrlRedirectClient({
           return;
         } catch {
           if (cancelled) return;
-          if (attempt === 3) {
+          if (attempt === MAX_ATTEMPTS - 1) {
             setError('Network error. Check your connection and try again.');
             setPhase('error');
             return;
           }
-          await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt)));
+          await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
         }
       }
     };
@@ -136,17 +149,17 @@ export default function ShortUrlRedirectClient({
     return () => {
       cancelled = true;
     };
-  }, [code, resolveJson, allowClientResolve, retryKey]);
+  }, [code, resolveJson, allowClientResolve, retryKey, goToDestination]);
 
   useEffect(() => {
     if (phase !== 'interstitial' || !pendingRedirect) return;
     if (countdown <= 0) {
-      window.location.replace(pendingRedirect);
+      goToDestination(pendingRedirect);
       return;
     }
     const t = setTimeout(() => setCountdown((c) => c - 1), 1000);
     return () => clearTimeout(t);
-  }, [phase, pendingRedirect, countdown]);
+  }, [phase, pendingRedirect, countdown, goToDestination]);
 
   const retryResolve = () => {
     setUnlockError(null);
@@ -200,6 +213,7 @@ export default function ShortUrlRedirectClient({
         setPendingRedirect(dest);
         setCountdown(REDIRECT_SECONDS);
         setPhase('interstitial');
+        goToDestination(dest);
         return;
       }
       setUnlockError('Unexpected response from server.');
@@ -320,24 +334,16 @@ export default function ShortUrlRedirectClient({
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">You are leaving FYN Tools</h1>
           <p className="text-sm text-slate-400">
-            Redirecting to <span className="font-medium text-slate-200">{host}</span> in{' '}
-            <span className="tabular-nums text-violet-300">{Math.max(0, countdown)}</span>s
+            Opening <span className="font-medium text-slate-200">{host}</span>…
           </p>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-4">
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Destination</p>
-              <p className="mt-1 truncate text-sm text-slate-200" title={pendingRedirect}>
-                {pendingRedirect}
-              </p>
-            </div>
-            <div className="relative h-14 w-14 shrink-0">
-              <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-white">
-                {Math.max(0, countdown)}
-              </span>
-            </div>
+          <div className="min-w-0">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Destination</p>
+            <p className="mt-1 truncate text-sm text-slate-200" title={pendingRedirect}>
+              {pendingRedirect}
+            </p>
           </div>
           <div className="mt-5 flex flex-col gap-2 sm:flex-row">
             <Button

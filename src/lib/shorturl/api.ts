@@ -7,7 +7,9 @@ export type ShortUrlResolveResult =
   | { type: 'expired' }
   | { type: 'error'; message: string };
 
-const MAX_ATTEMPTS = 4;
+/** Kept for optional server use; prefer client resolve for open latency. */
+const MAX_ATTEMPTS = 2;
+const ATTEMPT_TIMEOUT_MS = 2500;
 
 async function parseJsonResponse(res: Response): Promise<Record<string, unknown>> {
   const text = await res.text();
@@ -35,7 +37,7 @@ export async function resolveShortUrl(code: string): Promise<ShortUrlResolveResu
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12000);
+      const timeout = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
       const res = await fetch(`${API_BASE_URL}/shorturl/${encodeURIComponent(code)}`, {
         method: 'GET',
         cache: 'no-store',
@@ -48,7 +50,7 @@ export async function resolveShortUrl(code: string): Promise<ShortUrlResolveResu
 
       if (!res.ok) {
         if (res.status >= 500 && attempt < MAX_ATTEMPTS - 1) {
-          await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt)));
+          await new Promise((r) => setTimeout(r, 300));
           continue;
         }
         return { type: 'error', message: 'We could not load this short link. Please try again.' };
@@ -69,7 +71,7 @@ export async function resolveShortUrl(code: string): Promise<ShortUrlResolveResu
       if (attempt === MAX_ATTEMPTS - 1) {
         return { type: 'error', message: 'Network error. Check your connection and try again.' };
       }
-      await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt)));
+      await new Promise((r) => setTimeout(r, 300));
     }
   }
 

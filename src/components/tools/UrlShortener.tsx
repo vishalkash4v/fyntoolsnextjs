@@ -406,30 +406,34 @@ const UrlShortener = () => {
         throw new Error(data.error || 'Failed to create short URL');
       }
 
-      // Use the short URL from backend (but format it for frontend domain)
-      const backendShortUrl = data.data.shortUrl;
-      // Extract the short code
       const shortCode = data.data.shortCode;
-      // Create frontend URL with short code (ensure protocol is included)
       const origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
       const frontendShortUrl = `${origin}/s/${shortCode}`;
 
-      // Fetch favicon for the original URL
-      const favicon = await getFavicon(data.data.originalUrl);
-      setCurrentFavicon(favicon);
-      
-      const urlData: ShortUrlData = {
-        originalUrl: data.data.originalUrl,
-        shortCode: shortCode,
-        createdAt: new Date(data.data.createdAt).getTime(),
-        clickCount: data.data.clickCount,
-        expiresAt: data.data.expiresAt || null,
-        favicon: favicon
-      };
-
-      saveToHistory(urlData);
+      // Show result immediately — don't wait on favicon before Open is usable.
       setShortUrl(frontendShortUrl);
+      setCurrentFavicon('');
       toast.success("Short URL generated successfully!");
+
+      // Wake the short-url API (Render cold start) so the first Open is fast.
+      void fetch(`${API_BASE_URL}/${encodeURIComponent(shortCode)}`, {
+        method: 'GET',
+        cache: 'no-store',
+      }).catch(() => {});
+
+      // Favicon + history in the background
+      void (async () => {
+        const favicon = await getFavicon(data.data.originalUrl);
+        setCurrentFavicon(favicon);
+        saveToHistory({
+          originalUrl: data.data.originalUrl,
+          shortCode,
+          createdAt: new Date(data.data.createdAt).getTime(),
+          clickCount: data.data.clickCount,
+          expiresAt: data.data.expiresAt || null,
+          favicon,
+        });
+      })();
 
       // Reset form fields
       setOriginalUrl('');
