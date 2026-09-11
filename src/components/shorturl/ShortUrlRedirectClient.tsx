@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Loader2, ExternalLink, AlertCircle, Sparkles, Shield, ArrowRight } from 'lucide-react';
+import { Loader2, ExternalLink, AlertCircle, Sparkles, Shield, ArrowRight, RefreshCw } from 'lucide-react';
 import { API_BASE_URL } from '@/lib/seo/site';
 
 const API = `${API_BASE_URL}/shorturl`;
@@ -39,6 +39,9 @@ export default function ShortUrlRedirectClient({
   );
   const [password, setPassword] = useState('');
   const [unlockError, setUnlockError] = useState<string | null>(null);
+  const [unlocking, setUnlocking] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
+  const [allowClientResolve, setAllowClientResolve] = useState(!skipResolve);
 
   const resolveJson = useCallback(async (response: Response) => {
     const text = await response.text();
@@ -47,7 +50,7 @@ export default function ShortUrlRedirectClient({
   }, []);
 
   useEffect(() => {
-    if (skipResolve) return;
+    if (!allowClientResolve) return;
     if (!code) {
       setError('Invalid short URL code');
       setPhase('error');
@@ -57,11 +60,14 @@ export default function ShortUrlRedirectClient({
     let cancelled = false;
 
     const run = async () => {
+      setPhase('loading');
+      setError(null);
+
       for (let attempt = 0; attempt <= 3; attempt++) {
         try {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 12000);
-          const response = await fetch(`${API}/${code}`, {
+          const response = await fetch(`${API}/${encodeURIComponent(code)}`, {
             method: 'GET',
             cache: 'no-store',
             signal: controller.signal,
@@ -130,7 +136,7 @@ export default function ShortUrlRedirectClient({
     return () => {
       cancelled = true;
     };
-  }, [code, resolveJson]);
+  }, [code, resolveJson, allowClientResolve, retryKey]);
 
   useEffect(() => {
     if (phase !== 'interstitial' || !pendingRedirect) return;
@@ -142,11 +148,22 @@ export default function ShortUrlRedirectClient({
     return () => clearTimeout(t);
   }, [phase, pendingRedirect, countdown]);
 
+  const retryResolve = () => {
+    setUnlockError(null);
+    setAllowClientResolve(true);
+    setRetryKey((k) => k + 1);
+  };
+
   const handleUnlock = async () => {
     if (!code) return;
+    if (!password.trim()) {
+      setUnlockError('Please enter the password.');
+      return;
+    }
     setUnlockError(null);
+    setUnlocking(true);
     try {
-      const response = await fetch(`${API}/${code}/unlock`, {
+      const response = await fetch(`${API}/${encodeURIComponent(code)}/unlock`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
@@ -188,6 +205,8 @@ export default function ShortUrlRedirectClient({
       setUnlockError('Unexpected response from server.');
     } catch {
       setUnlockError('Network error while unlocking.');
+    } finally {
+      setUnlocking(false);
     }
   };
 
@@ -230,11 +249,12 @@ export default function ShortUrlRedirectClient({
         </div>
         <p className="mt-4 text-sm leading-relaxed text-slate-300">{error}</p>
         <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-          <Button asChild className="flex-1 bg-violet-600 hover:bg-violet-500">
-            <Link href="/url-shortener">Create a short link</Link>
+          <Button className="flex-1 bg-violet-600 hover:bg-violet-500" onClick={retryResolve}>
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Try again
           </Button>
           <Button variant="outline" className="flex-1 border-white/20 text-white hover:bg-white/10" asChild>
-            <Link href="/">Home</Link>
+            <Link href="/url-shortener">Create a short link</Link>
           </Button>
         </div>
       </div>
@@ -258,14 +278,23 @@ export default function ShortUrlRedirectClient({
           onChange={(e) => setPassword(e.target.value)}
           className="mt-4 w-full rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-violet-500/60"
           placeholder="Enter password"
+          autoFocus
           onKeyDown={(e) => {
-            if (e.key === 'Enter') handleUnlock();
+            if (e.key === 'Enter' && !unlocking) handleUnlock();
           }}
         />
         {unlockError && <p className="mt-2 text-xs text-rose-300">{unlockError}</p>}
         <div className="mt-6 flex gap-2">
-          <Button className="flex-1 bg-violet-600 hover:bg-violet-500" onClick={handleUnlock}>
-            <ExternalLink className="mr-2 h-4 w-4" />
+          <Button
+            className="flex-1 bg-violet-600 hover:bg-violet-500"
+            onClick={handleUnlock}
+            disabled={unlocking}
+          >
+            {unlocking ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <ExternalLink className="mr-2 h-4 w-4" />
+            )}
             Unlock
           </Button>
           <Button
@@ -313,12 +342,22 @@ export default function ShortUrlRedirectClient({
           <div className="mt-5 flex flex-col gap-2 sm:flex-row">
             <Button
               className="flex-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500"
-              onClick={() => window.location.replace(pendingRedirect)}
+              asChild
             >
-              Continue now
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <a href={pendingRedirect} rel="noopener noreferrer">
+                Continue now
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
             <Button variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
+              <a href={pendingRedirect} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Open in new tab
+              </a>
+            </Button>
+          </div>
+          <div className="mt-2">
+            <Button variant="ghost" className="w-full text-slate-400 hover:text-white hover:bg-white/5" asChild>
               <Link href="/url-shortener">Stay on FYN Tools</Link>
             </Button>
           </div>

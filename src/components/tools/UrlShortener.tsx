@@ -14,12 +14,13 @@ import { toast } from "sonner";
 import CopyButton from '@/components/common/CopyButton';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { API_BASE_URL as SITE_API_BASE } from '@/lib/seo/site';
 
 const UrlShortenerQrDialog = dynamic(() => import('@/components/tools/UrlShortenerQrDialog'), {
   ssr: false,
 });
 
-const API_BASE_URL = 'https://express-kieg.onrender.com/api/shorturl';
+const API_BASE_URL = `${SITE_API_BASE}/shorturl`;
 
 interface ShortUrlData {
   originalUrl: string;
@@ -445,12 +446,6 @@ const UrlShortener = () => {
       toast.error(error.message || "Failed to create short URL. Please try again.");
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const openUrl = () => {
-    if (shortUrl) {
-      window.open(shortUrl, '_blank');
     }
   };
 
@@ -899,9 +894,11 @@ const UrlShortener = () => {
                     copyText="Copy link"
                     copiedText="Copied!"
                   />
-                  <Button variant="outline" size="sm" onClick={openUrl} title="Open">
-                    <ExternalLink className="h-4 w-4 sm:mr-2" />
-                    <span className="hidden sm:inline">Open</span>
+                  <Button variant="outline" size="sm" asChild title="Open in new tab">
+                    <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4 sm:mr-2" />
+                      <span className="hidden sm:inline">Open</span>
+                    </a>
                   </Button>
                   <Button
                     variant="outline"
@@ -1104,11 +1101,13 @@ const UrlShortener = () => {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => window.open(historyShortUrl, '_blank')}
-                        title="Open short link"
-                        aria-label="Open short link"
+                        asChild
+                        title="Open short link in new tab"
+                        aria-label="Open short link in new tab"
                       >
-                        <ExternalLink className="h-4 w-4" />
+                        <a href={historyShortUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
                       </Button>
                       <Button
                         variant="ghost"

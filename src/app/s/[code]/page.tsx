@@ -37,15 +37,10 @@ export default async function ShortUrlRedirectPage({ params }: Props) {
     return <ShortUrlRedirectClient code={code} initialPhase="password" skipResolve />;
   }
 
+  // SSR resolve can fail (cold start / transient network). Let the browser retry
+  // with a normal Origin header instead of freezing on "Link unavailable".
   if (result.type === 'error') {
-    return (
-      <ShortUrlRedirectClient
-        code={code}
-        initialPhase="error"
-        initialError={result.message}
-        skipResolve
-      />
-    );
+    return <ShortUrlRedirectClient code={code} />;
   }
 
   return <ShortUrlRedirectClient code={code} />;
