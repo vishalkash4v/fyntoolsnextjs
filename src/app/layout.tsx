@@ -15,14 +15,12 @@ const inter = Inter({
   display: 'swap',
   preload: true,
 });
-
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
   display: 'swap',
   preload: false, // code font — not needed for homepage LCP
 });
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
