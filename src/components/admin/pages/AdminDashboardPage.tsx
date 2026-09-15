@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart } from 'recharts';
 import AdminDashboardSkeleton from '@/components/admin/AdminDashboardSkeleton';
 import { cachedFetch } from '@/utils/adminApi';
 import { isAdminAuthError } from '@/utils/adminAuth';
@@ -272,7 +272,7 @@ const AdminDashboardPage = () => {
           </h2>
           <div className="h-[220px]">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart
+              <ComposedChart
                 data={analytics.dailyStats.map((d) => ({
                   date: formatDate(d.date),
                   views: d.views,
@@ -296,9 +296,9 @@ const AdminDashboardPage = () => {
                   }}
                 />
                 <Area type="monotone" dataKey="views" stroke="#3b82f6" fill="url(#colorViews)" name="Views" />
-                <Line type="monotone" dataKey="unique" stroke="#10b981" strokeWidth={2} name="Unique" />
+                <Line type="monotone" dataKey="unique" stroke="#10b981" strokeWidth={2} name="Unique" dot={false} />
                 <Legend />
-              </AreaChart>
+              </ComposedChart>
             </ResponsiveContainer>
           </div>
         </div>

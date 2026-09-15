@@ -159,8 +159,8 @@ const AdminBlogAnalyticsPage = () => {
             if (!prev) return null;
             return {
               ...prev,
-              blogAnalytics: prev.blogAnalytics.map(blog => 
-                blog.blogId === blogId 
+                  blogAnalytics: prev.blogAnalytics.map(blog => 
+                String(blog.blogId) === String(blogId)
                   ? { ...blog, dailyData: data.data.dailyData }
                   : blog
               )
@@ -201,7 +201,7 @@ const AdminBlogAnalyticsPage = () => {
   }
 
   const selectedBlogData = selectedBlog 
-    ? analytics.blogAnalytics.find(b => b.blogId === selectedBlog)
+    ? analytics.blogAnalytics.find(b => String(b.blogId) === String(selectedBlog))
     : null;
 
   return (
@@ -484,7 +484,7 @@ const AdminBlogAnalyticsPage = () => {
                   key={blog.blogId}
                   className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 border rounded-lg hover:bg-muted/50 transition-colors gap-3 cursor-pointer"
                   onClick={() => {
-                    setSelectedBlog(selectedBlog === blog.blogId ? null : blog.blogId);
+                    setSelectedBlog(selectedBlog === String(blog.blogId) ? null : String(blog.blogId));
                     if (!blog.dailyData) {
                       fetchBlogDetails(blog.blogId);
                     }

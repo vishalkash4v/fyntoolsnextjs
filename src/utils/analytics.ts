@@ -38,21 +38,24 @@ function getOrCreateSessionId(): string {
 function sendTrack(body: Record<string, unknown>) {
   const json = JSON.stringify(body);
 
-  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-    const blob = new Blob([json], { type: 'application/json' });
-    if (navigator.sendBeacon(TRACK_URL, blob)) return;
-  }
-
-  fetch(TRACK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: json,
-    keepalive: true,
-  }).catch((err) => {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('Analytics tracking failed:', err);
+  // Prefer fetch+keepalive: more reliable through Next.js API routes than sendBeacon alone.
+  try {
+    void fetch(TRACK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: json,
+      keepalive: true,
+    }).catch(() => {
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        navigator.sendBeacon(TRACK_URL, new Blob([json], { type: 'application/json' }));
+      }
+    });
+    return;
+  } catch {
+    if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+      navigator.sendBeacon(TRACK_URL, new Blob([json], { type: 'application/json' }));
     }
-  });
+  }
 }
 
 export const trackPageView = (params: TrackPageViewParams) => {

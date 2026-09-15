@@ -5,6 +5,17 @@
 import { assertAdminAuthorized } from '@/utils/adminAuth';
 
 const cache = new Map<string, { etag: string; data: unknown; timestamp: number }>();
+const MAX_CACHE_AGE_MS = 60_000;
+
+export function clearAdminApiCache(urlPrefix?: string) {
+  if (!urlPrefix) {
+    cache.clear();
+    return;
+  }
+  for (const key of cache.keys()) {
+    if (key.startsWith(urlPrefix)) cache.delete(key);
+  }
+}
 
 export async function cachedFetch<T>(
   url: string,
@@ -17,11 +28,14 @@ export async function cachedFetch<T>(
     Authorization: `Bearer ${token}`,
     ...((options?.headers as Record<string, string>) || {}),
   };
-  if (cached?.etag) {
+
+  const cacheFresh =
+    cached?.etag && Date.now() - cached.timestamp < MAX_CACHE_AGE_MS;
+  if (cacheFresh) {
     headers['If-None-Match'] = cached.etag;
   }
 
-  const res = await fetch(url, { ...options, headers });
+  const res = await fetch(url, { ...options, headers, cache: 'no-store' });
 
   if (res.status === 304 && cached) {
     return { data: cached.data as T, fromCache: true };
