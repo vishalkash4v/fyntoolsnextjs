@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { trackToolView } from '@/utils/analytics';
+import { trackToolView, trackPageView } from '@/utils/analytics';
 import { allTools } from '@/data/toolsData';
 import { TOOL_SLUGS } from '@/lib/tools/tool-slugs.generated';
 
@@ -42,14 +42,27 @@ export default function AnalyticsTracker() {
   useEffect(() => {
     const path = normalizePath(pathname || '');
     if (!path || path.startsWith('/fyntoolsadmin')) return;
-    if (path.startsWith('/blog')) return;
+    if (path.startsWith('/blog')) return; // BlogViewTracker handles blogs
+    if (path.startsWith('/s/')) return;
     if (lastTracked.current === path) return;
 
     const tool = toolByPath.get(path);
-    if (!tool) return;
+    if (tool) {
+      lastTracked.current = path;
+      trackToolView(tool.id, tool.path, tool.name);
+      return;
+    }
 
-    lastTracked.current = path;
-    trackToolView(tool.id, tool.path, tool.name);
+    // Still count important non-tool pages so dashboard isn't empty
+    if (path === '/' || path.startsWith('/category') || path === '/contact' || path === '/about') {
+      lastTracked.current = path;
+      trackPageView({
+        pageType: 'other',
+        pageId: path === '/' ? 'home' : path.replace(/^\//, '').replace(/\//g, '-'),
+        pagePath: path,
+        pageTitle: typeof document !== 'undefined' ? document.title : path,
+      });
+    }
   }, [pathname]);
 
   return null;

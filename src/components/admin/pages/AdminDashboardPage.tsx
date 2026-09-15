@@ -20,7 +20,6 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart } from 'recharts';
 import AdminDashboardSkeleton from '@/components/admin/AdminDashboardSkeleton';
-import { cachedFetch } from '@/utils/adminApi';
 import { isAdminAuthError } from '@/utils/adminAuth';
 
 
@@ -59,7 +58,7 @@ const HIGHLIGHT_ICONS: Record<string, React.ComponentType<{ className?: string }
 
 const AdminDashboardPage = () => {
   const [analytics, setAnalytics] = useState<SimpleAnalytics | null>(null);
-  const [period, setPeriod] = useState('1d');
+  const [period, setPeriod] = useState('7d');
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -72,12 +71,28 @@ const AdminDashboardPage = () => {
 
     setLoading(true);
     try {
-      const { data } = await cachedFetch<SimpleAnalytics>(
+      // Plain API fetch — same pattern as other admin pages (no sockets / fragile cache).
+      const response = await fetch(
         `${API_BASE_URL}/analytics/dashboard-simple?period=${period}`,
-        token
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          cache: 'no-store',
+        }
       );
 
-      if (data) setAnalytics(data);
+      if (response.status === 401 || response.status === 403) {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminUser');
+        router.push('/fyntoolsadmin/login');
+        return;
+      }
+
+      const json = await response.json();
+      if (!response.ok || !json?.success || !json.data) {
+        throw new Error(json?.error || 'Failed to load dashboard');
+      }
+
+      setAnalytics(json.data as SimpleAnalytics);
     } catch (err) {
       console.error(err);
       if (isAdminAuthError(err)) {

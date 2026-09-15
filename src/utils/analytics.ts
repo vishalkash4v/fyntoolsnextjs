@@ -1,10 +1,12 @@
 /**
- * Analytics tracking utility
- * Tracks page views for analytics dashboard
- * Uses session-based unique view detection (localStorage sessionId)
+ * Analytics tracking — posts directly to the public API (same pattern as other admin APIs).
+ * Browser sends Origin automatically, so Render CORS accepts it.
+ * Avoids the Next.js server proxy (Node fetch cannot set Origin → CORS 500).
  */
 
-const TRACK_URL = '/api/analytics/track';
+import { API_BASE_URL } from '@/lib/seo/site';
+
+const TRACK_URL = `${API_BASE_URL}/analytics/track`;
 
 const SESSION_STORAGE_KEY = 'fyntools_analytics_session';
 const SESSION_TTL_DAYS = 30;
@@ -38,19 +40,18 @@ function getOrCreateSessionId(): string {
 function sendTrack(body: Record<string, unknown>) {
   const json = JSON.stringify(body);
 
-  // Prefer fetch+keepalive: more reliable through Next.js API routes than sendBeacon alone.
   try {
     void fetch(TRACK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: json,
       keepalive: true,
+      mode: 'cors',
     }).catch(() => {
       if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
         navigator.sendBeacon(TRACK_URL, new Blob([json], { type: 'application/json' }));
       }
     });
-    return;
   } catch {
     if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
       navigator.sendBeacon(TRACK_URL, new Blob([json], { type: 'application/json' }));
@@ -60,12 +61,11 @@ function sendTrack(body: Record<string, unknown>) {
 
 export const trackPageView = (params: TrackPageViewParams) => {
   try {
+    if (typeof window === 'undefined') return;
     const sessionId = getOrCreateSessionId();
     sendTrack({ ...params, sessionId });
-  } catch (err) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('Analytics tracking error:', err);
-    }
+  } catch {
+    // never break the page for analytics
   }
 };
 

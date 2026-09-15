@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { API_BASE_URL, SITE_URL } from '@/lib/seo/site';
+import { API_BASE_URL } from '@/lib/seo/site';
 
-/** Same-origin proxy — avoids browser CORS; always send Origin so backend accepts the hop. */
+/**
+ * Optional same-origin proxy. Prefer browser → API direct tracking (see utils/analytics.ts).
+ * When used, call backend without relying on Origin (backend must allow no-Origin / server hops).
+ */
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -9,8 +12,8 @@ export async function POST(req: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Deployed backends that still reject empty Origin accept this site origin.
-        Origin: SITE_URL,
+        // Hint for proxies/CDNs; real browser Origin is not settable from Node.
+        'X-Forwarded-Host': 'fyntools.com',
       },
       body: JSON.stringify(body),
       cache: 'no-store',
