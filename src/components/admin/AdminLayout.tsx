@@ -28,6 +28,7 @@ import {
   Sparkles,
   Users,
   MousePointerClick,
+  MapPin,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTheme } from 'next-themes';
@@ -138,6 +139,11 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       icon: BarChart3,
       label: 'Blog Analytics',
       path: '/fyntoolsadmin/blogs/analytics',
+    },
+    {
+      icon: MapPin,
+      label: 'Traffic & IPs',
+      path: '/fyntoolsadmin/traffic',
     },
     {
       icon: Wrench,

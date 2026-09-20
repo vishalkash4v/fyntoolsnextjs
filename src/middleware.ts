@@ -17,7 +17,8 @@ export function middleware(request: NextRequest) {
       }
     }
 
-    if (searchParams.has('search')) {
+    // Any leftover query on /tools (unknown category, search, etc.) must not be indexed
+    if ([...searchParams.keys()].length > 0) {
       const response = NextResponse.next();
       response.headers.set('X-Robots-Tag', 'noindex, follow');
       return response;

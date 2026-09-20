@@ -189,10 +189,16 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
         ? override.features
         : featureListFromTool(tool);
 
-  const title = premium?.title || override?.title || `${tool.name} — Free Online Tool`;
-  const h1 = premium?.h1 || override?.title || tool.name;
+  const title =
+    usePremiumBody && premium?.title
+      ? premium.title
+      : override?.title || `${tool.name} — Free Online Tool`;
+  const h1 =
+    usePremiumBody && premium?.h1
+      ? premium.h1
+      : override?.title || tool.name;
   const metaDescription = (() => {
-    if (premium?.metaDescription) {
+    if (usePremiumBody && premium?.metaDescription) {
       const m = premium.metaDescription;
       return m.length > 160 ? `${m.slice(0, 157)}...` : m;
     }

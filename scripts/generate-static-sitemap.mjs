@@ -8,9 +8,9 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://fyntools.com';
-const LASTMOD = '2026-09-03';
+const LASTMOD = '2026-09-20';
 
-/** GSC "Crawled – currently not indexed" validation URLs (Aug 2024 crawl batch) */
+/** GSC "Crawled – currently not indexed" / pending validation URLs */
 const GSC_RECRAWL = new Set([
   '/logo-to-favicon',
   '/ovulation-calculator',
@@ -35,6 +35,15 @@ const GSC_RECRAWL = new Set([
   '/image-format-converter',
   '/baby-kick-counter',
   '/unit-converter',
+  // Sep 2026 GSC batch
+  '/coin-flip',
+  '/jwt-decoder',
+  '/discord-formatter',
+  '/live-preview',
+  '/regex-tester',
+  '/ad-maker',
+  '/text-to-speech',
+  '/weather-forecast',
 ]);
 
 const TOP = new Set([
@@ -159,7 +168,8 @@ for (const slug of TOOL_SLUGS) {
   if (SKIP.has(slug)) continue;
   const p = `/${slug}`;
   const priority = TOP.has(p) || GSC_RECRAWL.has(p) ? 0.95 : 0.8;
-  add(p, priority, 'weekly', GSC_RECRAWL.has(p) ? LASTMOD : LASTMOD);
+  // Fresh lastmod for GSC recrawl batch so Google sees a signal to revisit
+  add(p, priority, 'weekly', LASTMOD);
 }
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

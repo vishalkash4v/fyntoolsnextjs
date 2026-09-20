@@ -63,7 +63,9 @@ export const trackPageView = (params: TrackPageViewParams) => {
   try {
     if (typeof window === 'undefined') return;
     const sessionId = getOrCreateSessionId();
-    sendTrack({ ...params, sessionId });
+    // document.referrer = real inbound source (XHR Referer is often our own site)
+    const referrer = typeof document !== 'undefined' && document.referrer ? document.referrer : undefined;
+    sendTrack({ ...params, sessionId, ...(referrer ? { referrer } : {}) });
   } catch {
     // never break the page for analytics
   }
