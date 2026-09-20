@@ -6,18 +6,83 @@ import { CROSSFADE_SEC, orientationSize, type OrientationId } from '@/lib/admake
 import type { AdMediaItem, AdScene } from '@/lib/admaker/store';
 
 let ffmpegSingleton: FFmpeg | null = null;
+let ffmpegLoadPromise: Promise<FFmpeg> | null = null;
 
-async function getFFmpeg(onLog?: (msg: string) => void): Promise<FFmpeg> {
-  if (ffmpegSingleton?.loaded) return ffmpegSingleton;
-  const ffmpeg = new FFmpeg();
-  ffmpeg.on('log', ({ message }) => onLog?.(message));
-  const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/esm';
-  await ffmpeg.load({
-    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+const CORE_BASES = [
+  // Same-origin first (copied by scripts/copy-ffmpeg-core.mjs) — most reliable
+  '/ffmpeg',
+  'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm',
+  'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm',
+];
+
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const t = window.setTimeout(() => reject(new Error(`${label} timed out after ${Math.round(ms / 1000)}s`)), ms);
+    promise.then(
+      (v) => {
+        window.clearTimeout(t);
+        resolve(v);
+      },
+      (err) => {
+        window.clearTimeout(t);
+        reject(err);
+      }
+    );
   });
-  ffmpegSingleton = ffmpeg;
-  return ffmpeg;
+}
+
+async function loadFromBase(
+  ffmpeg: FFmpeg,
+  baseURL: string,
+  onProgress?: (pct: number, message: string) => void
+) {
+  onProgress?.(6, `Fetching FFmpeg core (${baseURL.includes('http') ? 'CDN' : 'local'})…`);
+  const coreURL = await withTimeout(
+    toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+    60_000,
+    'FFmpeg core.js download'
+  );
+  onProgress?.(12, 'Downloading FFmpeg WASM (~25MB, first time only)…');
+  const wasmURL = await withTimeout(
+    toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+    180_000,
+    'FFmpeg WASM download'
+  );
+  onProgress?.(18, 'Initializing FFmpeg engine…');
+  await withTimeout(ffmpeg.load({ coreURL, wasmURL }), 90_000, 'FFmpeg initialize');
+}
+
+async function getFFmpeg(onProgress?: (pct: number, message: string) => void): Promise<FFmpeg> {
+  if (ffmpegSingleton?.loaded) return ffmpegSingleton;
+  if (ffmpegLoadPromise) return ffmpegLoadPromise;
+
+  ffmpegLoadPromise = (async () => {
+    let lastErr: Error | null = null;
+    for (const base of CORE_BASES) {
+      const ffmpeg = new FFmpeg();
+      try {
+        await loadFromBase(ffmpeg, base, onProgress);
+        ffmpegSingleton = ffmpeg;
+        onProgress?.(22, 'FFmpeg ready');
+        return ffmpeg;
+      } catch (err) {
+        lastErr = err as Error;
+        console.warn(`FFmpeg load failed from ${base}:`, err);
+      }
+    }
+    ffmpegLoadPromise = null;
+    throw new Error(
+      lastErr?.message ||
+        'Could not load FFmpeg in this browser. Check network / ad-blockers, then retry.'
+    );
+  })();
+
+  try {
+    return await ffmpegLoadPromise;
+  } catch (err) {
+    ffmpegLoadPromise = null;
+    throw err;
+  }
 }
 
 function loadImage(blob: Blob): Promise<HTMLImageElement> {
@@ -174,11 +239,11 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
 
   const { width, height } = orientationSize(orientation);
   const vfsFiles: string[] = [];
-  onProgress?.(4, 'Loading FFmpeg…');
-  const ffmpeg = await getFFmpeg();
+  onProgress?.(2, 'Loading FFmpeg…');
+  const ffmpeg = await getFFmpeg(onProgress);
 
   try {
-    onProgress?.(10, 'Composing branded frames…');
+    onProgress?.(24, 'Composing branded frames…');
     const stills: Blob[] = [];
     for (let i = 0; i < scenes.length; i++) {
       const sc = scenes[i];
@@ -191,17 +256,16 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
         orientation,
       });
       stills.push(still);
-      onProgress?.(10 + Math.round(((i + 1) / scenes.length) * 25), `Scene ${i + 1}/${scenes.length}`);
+      onProgress?.(24 + Math.round(((i + 1) / scenes.length) * 20), `Scene ${i + 1}/${scenes.length}`);
     }
 
-    onProgress?.(40, 'Writing frames to VFS…');
+    onProgress?.(46, 'Writing frames to VFS…');
     for (let i = 0; i < stills.length; i++) {
       const name = `still${i}.jpg`;
       await ffmpeg.writeFile(name, await fetchFile(stills[i]));
       vfsFiles.push(name);
     }
 
-    // Voiceovers
     const voNames: string[] = [];
     for (let i = 0; i < scenes.length; i++) {
       const vo = scenes[i].voiceBlob;
@@ -222,7 +286,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     const fade = Math.min(CROSSFADE_SEC, Math.max(0.3, Math.min(...scenes.map((s) => s.duration)) / 3));
     const fps = 30;
 
-    // Build Ken Burns + xfade filter graph
     onProgress?.(55, 'Building video filter graph…');
     const args: string[] = [];
     for (let i = 0; i < scenes.length; i++) {
@@ -234,7 +297,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     const filters: string[] = [];
     for (let i = 0; i < scenes.length; i++) {
       const frames = Math.max(fps, Math.round(scenes[i].duration * fps));
-      // Mild Ken Burns zoom
       filters.push(
         `[${i}:v]scale=${width * 2}:${height * 2}:force_original_aspect_ratio=increase,` +
           `crop=${width * 2}:${height * 2},` +
@@ -244,9 +306,7 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     }
 
     let videoOut = '[v0]';
-    if (scenes.length === 1) {
-      videoOut = '[v0]';
-    } else {
+    if (scenes.length > 1) {
       let prev = 'v0';
       let offset = scenes[0].duration - fade;
       for (let i = 1; i < scenes.length; i++) {
@@ -260,7 +320,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
       videoOut = '[vout]';
     }
 
-    // Audio mix
     const bgmInputIndex = scenes.length;
     const voStartIndex = scenes.length + (bgmName ? 1 : 0);
     const bgmVol = Math.max(0, Math.min(1, bgmVolume / 100)) * 0.45;
@@ -273,7 +332,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     }
 
     if (voNames.length) {
-      // Delay each VO to scene start and amix
       let cursor = 0;
       const delayed: string[] = [];
       let voFileIdx = 0;
@@ -301,7 +359,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
 
     let mapAudio: string[] = [];
     if (audioLabels.length === 1) {
-      // rename to aout if needed
       if (audioLabels[0] !== '[aout]') {
         filters.push(`${audioLabels[0]}anull[aout]`);
       }
@@ -346,7 +403,7 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     } catch (err) {
       console.warn('Advanced filter failed, using simple concat fallback', err);
       onProgress?.(72, 'Fallback encode…');
-      await simpleConcatFallback(ffmpeg, scenes, vfsFiles, stills.length, bgmName, voNames, onProgress);
+      await simpleConcatFallback(ffmpeg, scenes, vfsFiles, stills.length, bgmName, onProgress);
     }
 
     onProgress?.(97, 'Packaging download…');
@@ -359,7 +416,6 @@ export async function renderAdVideo(opts: RenderAdOptions): Promise<Blob> {
     return new Blob([copy], { type: 'video/mp4' });
   } finally {
     await wipeVfs(ffmpeg, vfsFiles);
-    // Also wipe any leftover numbered files
     try {
       const listing = await ffmpeg.listDir('/');
       for (const f of listing) {
@@ -383,10 +439,8 @@ async function simpleConcatFallback(
   vfsFiles: string[],
   stillCount: number,
   bgmName: string | null,
-  _voNames: string[],
   onProgress?: (pct: number, message: string) => void
 ) {
-  // Write concat list of looped stills as short clips first
   const clipNames: string[] = [];
   for (let i = 0; i < stillCount; i++) {
     const clip = `clip${i}.mp4`;

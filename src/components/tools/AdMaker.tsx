@@ -214,6 +214,7 @@ const AdMaker: React.FC = () => {
     store.setGeneratingImages(true);
     try {
       const created: AdMediaItem[] = [];
+      let usedStock = false;
       for (let i = 0; i < count; i++) {
         const prompt = buildAiImagePrompt({
           projectName,
@@ -222,7 +223,11 @@ const AdMaker: React.FC = () => {
           sceneHint: aiPrompt || scenes[i]?.textOverlay,
           index: images.length + i,
         });
-        const blob = await fetchPollinationsImage(prompt, orientation);
+        const { blob, source, warning } = await fetchPollinationsImage(prompt, orientation, {
+          category: categoryMeta.label,
+          subCategory,
+        });
+        if (source === 'stock' || warning) usedStock = true;
         created.push({
           id: uid(),
           name: `ai-${Date.now()}-${i}.jpg`,
@@ -233,7 +238,11 @@ const AdMaker: React.FC = () => {
         store.setRenderProgress(Math.round(((i + 1) / count) * 100), `AI image ${i + 1}/${count}`);
       }
       store.addImages(created);
-      toast.success(`Generated ${created.length} AI image(s)`);
+      if (usedStock) {
+        toast.message(`Added ${created.length} image(s) (stock fallback — AI quota unavailable)`);
+      } else {
+        toast.success(`Generated ${created.length} AI image(s)`);
+      }
     } catch (err) {
       toast.error((err as Error).message || 'AI image generation failed');
     } finally {
@@ -1024,10 +1033,10 @@ const AdMaker: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Client-side FFmpeg render</CardTitle>
-            <CardDescription>
-              Ken Burns zoom + crossfades + logo/text (canvas-baked) + BGM/VO mix. VFS wiped after export.
-              Output {orient.width}×{orient.height}.
-            </CardDescription>
+                <CardDescription>
+                  Ken Burns zoom + crossfades + logo/text (canvas-baked) + BGM/VO mix. VFS wiped after export.
+                  Output {orient.width}×{orient.height}. First render downloads FFmpeg WASM (~25MB) once.
+                </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-lg border bg-muted/30 p-3 text-sm grid sm:grid-cols-2 gap-2">

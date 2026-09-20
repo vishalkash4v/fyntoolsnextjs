@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "node scripts/copy-pdf-worker.mjs && npm run generate-premium && npm run generate-registry",
+    "dev": "node scripts/copy-ffmpeg-core.mjs && next dev",
+    "postinstall": "node scripts/copy-pdf-worker.mjs && node scripts/copy-ffmpeg-core.mjs",
+    "prebuild": "node scripts/copy-pdf-worker.mjs && node scripts/copy-ffmpeg-core.mjs && npm run generate-premium && npm run generate-registry",
     "build": "next build",
     "postbuild": "node scripts/prettify-static-html.mjs && node scripts/check-robots-txt.mjs && node scripts/check-dead-links.mjs && node scripts/check-tool-content-quality.mjs && node scripts/check-full-site-audit.mjs",
     "start": "next start",
@@ -28,6 +29,7 @@
     "check:lh-batch": "node scripts/lighthouse-batch.mjs"
   },
   "dependencies": {
+    "@ffmpeg/core": "^0.12.6",
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
     "@hookform/resolvers": "^3.9.0",
