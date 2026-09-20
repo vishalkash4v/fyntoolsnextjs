@@ -41,8 +41,11 @@ import {
   AD_LANGUAGES,
   AD_TONES,
   MAX_IMAGES,
+  MAX_SCENES,
   ORIENTATIONS,
+  TARGET_DURATION_OPTIONS,
   orientationSize,
+  sceneDurationForTarget,
 } from '@/lib/admaker/constants';
 import { buildAiImagePrompt, fetchPollinationsImage } from '@/lib/admaker/pollinations';
 import { renderAdVideo } from '@/lib/admaker/renderVideo';
@@ -87,6 +90,8 @@ const AdMaker: React.FC = () => {
     logo,
     mediaMode,
     targetImageCount,
+    sceneCount,
+    targetDurationSec,
     images,
     scenes,
     bgm,
@@ -131,7 +136,7 @@ const AdMaker: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Suggest TTS voice from language
+    // Suggest TTS voice from language / script
     if (/hindi/i.test(language)) store.setTtsVoiceId('hi-IN-SwaraNeural');
     else if (/punjabi/i.test(language)) store.setTtsVoiceId('en-IN-NeerjaNeural');
     else if (/india/i.test(language)) store.setTtsVoiceId('en-IN-NeerjaNeural');
@@ -213,35 +218,47 @@ const AdMaker: React.FC = () => {
     if (count <= 0) return;
     store.setGeneratingImages(true);
     try {
-      const created: AdMediaItem[] = [];
-      let usedStock = false;
-      for (let i = 0; i < count; i++) {
-        const prompt = buildAiImagePrompt({
-          projectName,
-          category: categoryMeta.label,
-          subCategory,
-          sceneHint: aiPrompt || scenes[i]?.textOverlay,
-          index: images.length + i,
-        });
-        const { blob, source, warning } = await fetchPollinationsImage(prompt, orientation, {
-          category: categoryMeta.label,
-          subCategory,
-        });
-        if (source === 'stock' || warning) usedStock = true;
-        created.push({
-          id: uid(),
-          name: `ai-${Date.now()}-${i}.jpg`,
-          blob,
-          url: URL.createObjectURL(blob),
-          source: 'ai',
-        });
-        store.setRenderProgress(Math.round(((i + 1) / count) * 100), `AI image ${i + 1}/${count}`);
-      }
-      store.addImages(created);
-      if (usedStock) {
-        toast.message(`Added ${created.length} image(s) (stock fallback — AI quota unavailable)`);
+      const indices = Array.from({ length: count }, (_, i) => i);
+      const created: AdMediaItem[] = new Array(count);
+      let done = 0;
+      let usedStock = 0;
+      const concurrency = Math.min(4, count);
+
+      await Promise.all(
+        Array.from({ length: concurrency }, async () => {
+          while (indices.length) {
+            const i = indices.shift();
+            if (i === undefined) return;
+            const prompt = buildAiImagePrompt({
+              projectName,
+              category: categoryMeta.label,
+              subCategory,
+              sceneHint: aiPrompt || scenes[i]?.textOverlay,
+              index: images.length + i,
+            });
+            const { blob, source, warning } = await fetchPollinationsImage(prompt, orientation, {
+              category: categoryMeta.label,
+              subCategory,
+            });
+            if (source === 'stock' || warning) usedStock += 1;
+            created[i] = {
+              id: uid(),
+              name: `ai-${Date.now()}-${i}.jpg`,
+              blob,
+              url: URL.createObjectURL(blob),
+              source: 'ai',
+            };
+            done += 1;
+            store.setRenderProgress(Math.round((done / count) * 100), `Image ${done}/${count}`);
+          }
+        })
+      );
+
+      store.addImages(created.filter(Boolean));
+      if (usedStock > 0) {
+        toast.message(`Added ${count} image(s)${usedStock === count ? ' (fast stock)' : ` · ${usedStock} stock fallback`}`);
       } else {
-        toast.success(`Generated ${created.length} AI image(s)`);
+        toast.success(`Generated ${count} AI image(s)`);
       }
     } catch (err) {
       toast.error((err as Error).message || 'AI image generation failed');
@@ -284,15 +301,25 @@ const AdMaker: React.FC = () => {
           language,
           tone,
           productBrief,
-          sceneCount: Math.max(3, Math.min(8, targetImageCount || 5)),
+          sceneCount,
+          targetDurationSec,
           orientation,
         }),
       });
       const json = await res.json().catch(() => null);
       if (!res.ok || !json?.success) throw new Error(json?.error || 'Script generation failed');
-      const next = scenesFromApi(json.data.scenes || []);
-      store.setScenes(next);
-      toast.success(`${next.length} scenes ready — edit freely`);
+      const next = scenesFromApi(json.data.scenes || [], {
+        sceneCount,
+        targetDurationSec,
+      });
+      // Ensure durations match target length preference
+      const per = sceneDurationForTarget(targetDurationSec, next.length || sceneCount);
+      const tuned = next.map((sc) => ({
+        ...sc,
+        duration: sc.duration || per,
+      }));
+      store.setScenes(tuned);
+      toast.success(`${tuned.length} scenes · ~${targetDurationSec}s video`);
       store.setStep(3);
     } catch (err) {
       toast.error((err as Error).message || 'Failed to generate script');
@@ -512,6 +539,44 @@ const AdMaker: React.FC = () => {
                     </div>
                   </button>
                 ))}
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <Label>Video length</Label>
+                  <span className="tabular-nums text-muted-foreground">{targetDurationSec}s</span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {TARGET_DURATION_OPTIONS.map((sec) => (
+                    <button
+                      key={sec}
+                      type="button"
+                      onClick={() => store.setTargetDurationSec(sec)}
+                      className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium ${
+                        targetDurationSec === sec ? 'border-primary bg-primary/5' : 'hover:bg-muted/40'
+                      }`}
+                    >
+                      {sec}s
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <Label>Scenes (up to {MAX_SCENES})</Label>
+                  <span className="tabular-nums text-muted-foreground">{sceneCount}</span>
+                </div>
+                <Slider
+                  value={[sceneCount]}
+                  min={1}
+                  max={MAX_SCENES}
+                  step={1}
+                  onValueChange={(v) => store.setSceneCount(v[0] ?? 5)}
+                />
+                <p className="text-[11px] text-muted-foreground">
+                  ~{sceneDurationForTarget(targetDurationSec, sceneCount)}s per scene
+                </p>
               </div>
             </div>
             <div className="space-y-2">
@@ -737,6 +802,39 @@ const AdMaker: React.FC = () => {
               </Button>
             </CardHeader>
             <CardContent className="space-y-3">
+              <div className="grid sm:grid-cols-2 gap-4 rounded-xl border bg-muted/20 p-3">
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <Label>Scenes</Label>
+                    <span className="tabular-nums">{sceneCount}</span>
+                  </div>
+                  <Slider
+                    value={[sceneCount]}
+                    min={1}
+                    max={MAX_SCENES}
+                    step={1}
+                    onValueChange={(v) => store.setSceneCount(v[0] ?? 5)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Target length</Label>
+                  <Select
+                    value={String(targetDurationSec)}
+                    onValueChange={(v) => store.setTargetDurationSec(Number(v))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {TARGET_DURATION_OPTIONS.map((sec) => (
+                        <SelectItem key={sec} value={String(sec)}>
+                          {sec} second ad
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
               {!scenes.length && (
                 <p className="text-sm text-muted-foreground">
                   No scenes yet — generate a director-style script to populate the timeline.
@@ -963,6 +1061,11 @@ const AdMaker: React.FC = () => {
                   <Label className="flex items-center gap-2">
                     <Mic className="h-4 w-4" /> Voiceover (Edge TTS)
                   </Label>
+                  {/punjabi/i.test(language) && (
+                    <p className="text-[11px] text-muted-foreground">
+                      Edge has no Punjabi neural voice — Gurmukhi lines are auto-romanized and spoken with English (India).
+                    </p>
+                  )}
                   <Select value={ttsVoiceId} onValueChange={store.setTtsVoiceId}>
                     <SelectTrigger>
                       <SelectValue />

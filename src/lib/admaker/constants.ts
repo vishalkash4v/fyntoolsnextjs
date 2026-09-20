@@ -66,11 +66,22 @@ export const ORIENTATIONS: {
 ];
 
 export const MAX_IMAGES = 50;
+export const MAX_SCENES = 30;
+export const DEFAULT_SCENE_COUNT = 5;
 export const DEFAULT_SCENE_DURATION = 3;
+export const DEFAULT_TARGET_DURATION_SEC = 30;
+export const TARGET_DURATION_OPTIONS = [15, 20, 30, 45, 60, 90] as const;
 export const CROSSFADE_SEC = 0.8;
 export const AI_IMAGE_STYLE_SUFFIX =
   ', cinematic lighting, shot on 35mm lens, photorealistic, raw, highly detailed, --no text, --no watermark';
 
 export function orientationSize(id: OrientationId) {
   return ORIENTATIONS.find((o) => o.id === id) || ORIENTATIONS[0];
+}
+
+/** Distribute target video length across N scenes (clamped per-scene). */
+export function sceneDurationForTarget(targetSec: number, sceneCount: number): number {
+  const n = Math.max(1, sceneCount);
+  const raw = targetSec / n;
+  return Math.round(Math.max(1.5, Math.min(8, raw)) * 2) / 2;
 }

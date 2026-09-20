@@ -2,8 +2,12 @@
 
 import { create } from 'zustand';
 import {
+  DEFAULT_SCENE_COUNT,
   DEFAULT_SCENE_DURATION,
+  DEFAULT_TARGET_DURATION_SEC,
   MAX_IMAGES,
+  MAX_SCENES,
+  sceneDurationForTarget,
   type AdTone,
   type MediaMode,
   type OrientationId,
@@ -42,11 +46,13 @@ type AdMakerState = {
   logo: AdMediaItem | null;
   mediaMode: MediaMode;
   targetImageCount: number;
+  sceneCount: number;
+  targetDurationSec: number;
   images: AdMediaItem[];
   scenes: AdScene[];
   bgm: AdMediaItem | null;
-  bgmVolume: number; // 0–100
-  voiceVolume: number; // 0–100
+  bgmVolume: number;
+  voiceVolume: number;
   ttsVoiceId: string;
   isGeneratingCopy: boolean;
   isGeneratingImages: boolean;
@@ -66,6 +72,8 @@ type AdMakerState = {
   setLogo: (item: AdMediaItem | null) => void;
   setMediaMode: (v: MediaMode) => void;
   setTargetImageCount: (n: number) => void;
+  setSceneCount: (n: number) => void;
+  setTargetDurationSec: (n: number) => void;
   addImages: (items: AdMediaItem[]) => void;
   removeImage: (id: string) => void;
   clearImages: () => void;
@@ -95,21 +103,23 @@ function revoke(url: string | null | undefined) {
   }
 }
 
-export const useAdMakerStore = create<AdMakerState>((set, get) => ({
-  step: 1,
+const initialProject = {
+  step: 1 as AdMakerStep,
   projectName: '',
   category: 'ecommerce',
   subCategory: 'Fashion',
   language: 'English',
-  tone: 'persuasive',
+  tone: 'persuasive' as AdTone,
   productBrief: '',
-  orientation: 'portrait',
-  logo: null,
-  mediaMode: 'combo',
+  orientation: 'portrait' as OrientationId,
+  logo: null as AdMediaItem | null,
+  mediaMode: 'combo' as MediaMode,
   targetImageCount: 6,
-  images: [],
-  scenes: [],
-  bgm: null,
+  sceneCount: DEFAULT_SCENE_COUNT,
+  targetDurationSec: DEFAULT_TARGET_DURATION_SEC,
+  images: [] as AdMediaItem[],
+  scenes: [] as AdScene[],
+  bgm: null as AdMediaItem | null,
   bgmVolume: 35,
   voiceVolume: 100,
   ttsVoiceId: 'en-US-AriaNeural',
@@ -119,7 +129,11 @@ export const useAdMakerStore = create<AdMakerState>((set, get) => ({
   isRendering: false,
   renderProgress: 0,
   renderMessage: '',
-  outputUrl: null,
+  outputUrl: null as string | null,
+};
+
+export const useAdMakerStore = create<AdMakerState>((set, get) => ({
+  ...initialProject,
 
   setStep: (step) => set({ step }),
   setProjectName: (projectName) => set({ projectName }),
@@ -138,6 +152,17 @@ export const useAdMakerStore = create<AdMakerState>((set, get) => ({
   setMediaMode: (mediaMode) => set({ mediaMode }),
   setTargetImageCount: (targetImageCount) =>
     set({ targetImageCount: Math.max(1, Math.min(MAX_IMAGES, targetImageCount)) }),
+
+  setSceneCount: (sceneCount) => {
+    const n = Math.max(1, Math.min(MAX_SCENES, Math.round(sceneCount)));
+    set((s) => ({
+      sceneCount: n,
+      targetImageCount: Math.max(s.targetImageCount, Math.min(MAX_IMAGES, n)),
+    }));
+  },
+
+  setTargetDurationSec: (targetDurationSec) =>
+    set({ targetDurationSec: Math.max(10, Math.min(180, Math.round(targetDurationSec))) }),
 
   addImages: (items) =>
     set((s) => {
@@ -213,32 +238,7 @@ export const useAdMakerStore = create<AdMakerState>((set, get) => ({
     revoke(s.logo?.url);
     revoke(s.bgm?.url);
     revoke(s.outputUrl);
-    set({
-      step: 1,
-      projectName: '',
-      category: 'ecommerce',
-      subCategory: 'Fashion',
-      language: 'English',
-      tone: 'persuasive',
-      productBrief: '',
-      orientation: 'portrait',
-      logo: null,
-      mediaMode: 'combo',
-      targetImageCount: 6,
-      images: [],
-      scenes: [],
-      bgm: null,
-      bgmVolume: 35,
-      voiceVolume: 100,
-      ttsVoiceId: 'en-US-AriaNeural',
-      isGeneratingCopy: false,
-      isGeneratingImages: false,
-      isGeneratingVoice: false,
-      isRendering: false,
-      renderProgress: 0,
-      renderMessage: '',
-      outputUrl: null,
-    });
+    set({ ...initialProject });
   },
 }));
 
@@ -248,13 +248,18 @@ export function createSceneId() {
 
 export function scenesFromApi(
   raw: Array<{ textOverlay?: string; ttsScript?: string; duration?: number }>,
-  fallbackDuration = DEFAULT_SCENE_DURATION
+  opts?: { targetDurationSec?: number; sceneCount?: number }
 ): AdScene[] {
-  return raw.map((s, i) => ({
+  const count = Math.max(1, opts?.sceneCount || raw.length || DEFAULT_SCENE_COUNT);
+  const fallbackDur = opts?.targetDurationSec
+    ? sceneDurationForTarget(opts.targetDurationSec, count)
+    : DEFAULT_SCENE_DURATION;
+
+  return raw.slice(0, count).map((s, i) => ({
     id: createSceneId() + i,
     textOverlay: String(s.textOverlay || '').trim(),
     ttsScript: String(s.ttsScript || s.textOverlay || '').trim(),
-    duration: Math.max(1.5, Math.min(8, Number(s.duration) || fallbackDuration)),
+    duration: Math.max(1.5, Math.min(8, Number(s.duration) || fallbackDur)),
     imageIndex: i,
     voiceBlob: null,
     voiceUrl: null,
