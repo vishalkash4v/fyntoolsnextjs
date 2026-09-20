@@ -26,21 +26,21 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const featuredIds = [
+  'ad-maker',
+  'text-to-speech',
   'pdf-compressor',
   'image-compressor',
-  'timestamp-converter',
-  'word-counter',
   'qr-code-generator',
   'json-formatter',
 ];
 const popularIds = [
+  'weather-forecast',
   'image-resizer',
   'bmi-calculator',
   'typing-test',
   'html-formatter',
   'percentage-calculator',
   'hash-generator',
-  'pdf-text-extractor',
   'password-generator',
 ];
 

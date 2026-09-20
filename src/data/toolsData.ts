@@ -8,7 +8,7 @@ import {
   Users, Image as ImageIcon, Zap, Star, Crop, RotateCcw, Camera, FileImage, 
   FileArchive, Download, Video, Copy, Paintbrush, Sparkles, Dices, MessageSquare, 
   FileCode2, Edit, UserPlus, Link, CloudSun, Receipt, FileSearch, Plane, MapPin, Code2,
-  Activity, HeartPulse, ShieldCheck, CalendarCheck, Baby, Apple, Server
+  Activity, HeartPulse, ShieldCheck, CalendarCheck, Baby, Apple, Server, Megaphone
 } from "lucide-react";
 
 
@@ -1689,6 +1689,20 @@ export const allTools: Tool[] = [
     icon: FileText,
     rating: 4.7,
     userCount: '34,000+'
+  },
+  {
+    id: 'ad-maker',
+    name: 'Ad Maker',
+    category: 'Video & Social Media Tools',
+    description: 'Create short promo videos in your browser — AI ad copy, free AI images, local uploads, and MP4 render with FFmpeg.wasm. No cloud storage.',
+    keywords: 'ad maker, video ad maker, ai ad generator, slideshow video, ffmpeg wasm, pollinations, free ad creator, promotional video maker, hindi ad maker',
+    path: '/ad-maker',
+    href: '/ad-maker',
+    url: 'https://fyntools.com/ad-maker',
+    features: 'AI ad copy, Pollinations AI images, Local image uploads, Local audio, Browser FFmpeg MP4, Multilingual scripts, No server storage, Wizard workflow',
+    icon: Megaphone,
+    rating: 4.8,
+    userCount: '1,200+'
   },
 
   // Network Tools

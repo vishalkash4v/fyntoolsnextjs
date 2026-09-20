@@ -70,6 +70,8 @@ const NO_SSR_TOOLS = new Set([
   "typing-test",
   "typing-tutor",
   "weather-forecast",
+  "ad-maker",
+  "text-to-speech",
 ]);
 
 const EXCLUDED = new Set([
@@ -192,6 +194,7 @@ const OVERRIDES = {
   "text-case-converter": "TextCaseConverter",
   "text-reverser": "TextReverser",
   "text-to-speech": "TextToSpeech",
+  "ad-maker": "AdMaker",
   "text-to-handwriting": "TextToHandwriting",
   "whitespace-remover": "WhitespaceRemover",
   "markdown-editor": "MarkdownEditor",
