@@ -180,7 +180,10 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
   const weakBatch = isWeakBatchPremium(premium);
   const usePremiumBody = premium && !templatedPremium && !weakBatch;
   const feats =
-    premium?.features?.length
+    premium?.features?.length &&
+    !templatedPremium &&
+    !weakBatch &&
+    !isTemplatedExtendedArray(premium.features)
       ? premium.features
       : override?.features?.length
         ? override.features

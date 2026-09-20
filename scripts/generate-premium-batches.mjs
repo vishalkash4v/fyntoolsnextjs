@@ -298,7 +298,7 @@ function premiumFor(tool, all) {
     features: [
       "Interactive tool above the fold",
       "Mobile-friendly layout",
-      "Copy-friendly outputs",
+      "One-click copy and download",
       "Privacy-minded browser processing when possible",
       "Related tools and guides when available",
     ],
