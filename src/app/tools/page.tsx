@@ -91,7 +91,7 @@ export default async function ToolsPage({ searchParams }: Props) {
             {list.map((tool) => {
               const Icon = tool.icon;
               return (
-                <Link key={tool.path} href={tool.path} prefetch={false}>
+                <Link key={tool.path} href={tool.path}>
                   <Card className="h-full hover:border-primary/40">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-2">

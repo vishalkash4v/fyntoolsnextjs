@@ -30,6 +30,7 @@ export type CurrentWeather = {
 export type DailyForecast = {
   date: string;
   dayLabel: string;
+  dateLabel: string;
   tempMin: number;
   tempMax: number;
   precipitationProb: number;
@@ -139,8 +140,97 @@ const DAILY_PARAMS = [
 ].join(',');
 
 function dayLabel(isoDate: string, index: number): string {
+  const d = new Date(`${isoDate}T12:00:00`);
   if (index === 0) return 'Today';
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString('en-US', { weekday: 'short' });
+  return d.toLocaleDateString('en-US', { weekday: 'short' });
+}
+
+function dayDateLabel(isoDate: string): string {
+  const d = new Date(`${isoDate}T12:00:00`);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+/** EPA / AirNow piecewise linear AQI from a pollutant concentration. */
+function concentrationToAqi(
+  c: number,
+  breakpoints: Array<[number, number, number, number]>
+): number {
+  for (const [cLow, cHigh, iLow, iHigh] of breakpoints) {
+    if (c >= cLow && c <= cHigh) {
+      return Math.round(((iHigh - iLow) / (cHigh - cLow)) * (c - cLow) + iLow);
+    }
+  }
+  if (c > breakpoints[breakpoints.length - 1][1]) return 500;
+  return 0;
+}
+
+const PM25_BREAKPOINTS: Array<[number, number, number, number]> = [
+  [0, 12.0, 0, 50],
+  [12.1, 35.4, 51, 100],
+  [35.5, 55.4, 101, 150],
+  [55.5, 150.4, 151, 200],
+  [150.5, 250.4, 201, 300],
+  [250.5, 350.4, 301, 400],
+  [350.5, 500.4, 401, 500],
+];
+
+const PM10_BREAKPOINTS: Array<[number, number, number, number]> = [
+  [0, 54, 0, 50],
+  [55, 154, 51, 100],
+  [155, 254, 101, 150],
+  [255, 354, 151, 200],
+  [355, 424, 201, 300],
+  [425, 504, 301, 400],
+  [505, 604, 401, 500],
+];
+
+function aqiFromPm25(pm25: number): number {
+  return concentrationToAqi(pm25, PM25_BREAKPOINTS);
+}
+
+function aqiFromPm10(pm10: number): number {
+  return concentrationToAqi(pm10, PM10_BREAKPOINTS);
+}
+
+/**
+ * Accurate US AQI: prefer Open-Meteo US AQI when present; otherwise compute from
+ * PM2.5/PM10 using EPA breakpoints (never mix European AQI into the US scale).
+ */
+function resolveUsAqi(c: {
+  us_aqi?: number;
+  european_aqi?: number;
+  pm2_5?: number;
+  pm10?: number;
+}): number | null {
+  if (c.us_aqi != null && Number.isFinite(c.us_aqi)) {
+    return Math.round(c.us_aqi);
+  }
+  const candidates: number[] = [];
+  if (typeof c.pm2_5 === 'number' && c.pm2_5 >= 0) candidates.push(aqiFromPm25(c.pm2_5));
+  if (typeof c.pm10 === 'number' && c.pm10 >= 0) candidates.push(aqiFromPm10(c.pm10));
+  if (candidates.length === 0) return null;
+  return Math.max(...candidates);
+}
+
+async function fetchAirQuality(lat: number, lon: number): Promise<AirQuality | null> {
+  const url =
+    `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}` +
+    `&current=us_aqi,european_aqi,pm2_5,pm10`;
+  const data = await fetchJson<OpenMeteoAir>(url, { cache: 'no-store' });
+  const c = data?.current;
+  if (!c) return null;
+
+  const usAqi = resolveUsAqi(c);
+  if (usAqi === null && !(typeof c.pm2_5 === 'number' || typeof c.pm10 === 'number')) {
+    return null;
+  }
+
+  return {
+    usAqi: usAqi ?? aqiFromPm25(c.pm2_5 ?? 0),
+    europeanAqi: Math.round(c.european_aqi ?? 0),
+    pm25: c.pm2_5 ?? 0,
+    pm10: c.pm10 ?? 0,
+  };
 }
 
 function hourLabel(isoTime: string): string {
@@ -161,21 +251,6 @@ function descToCategory(desc: string): WeatherCategory {
   return 'clear';
 }
 
-async function fetchAirQuality(lat: number, lon: number): Promise<AirQuality | null> {
-  const url =
-    `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}` +
-    `&current=us_aqi,european_aqi,pm2_5,pm10`;
-  const data = await fetchJson<OpenMeteoAir>(url, { cache: 'no-store' });
-  const c = data?.current;
-  if (!c?.us_aqi && !c?.european_aqi) return null;
-  return {
-    usAqi: Math.round(c.us_aqi ?? c.european_aqi ?? 0),
-    europeanAqi: Math.round(c.european_aqi ?? 0),
-    pm25: c.pm2_5 ?? 0,
-    pm10: c.pm10 ?? 0,
-  };
-}
-
 function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace, airQuality: AirQuality | null): WeatherBundle | null {
   if (!data.current || !data.daily) return null;
 
@@ -191,6 +266,7 @@ function parseOpenMeteo(data: OpenMeteoForecast, place: GeoPlace, airQuality: Ai
     return {
       date,
       dayLabel: dayLabel(date, i),
+      dateLabel: dayDateLabel(date),
       tempMin: data.daily!.temperature_2m_min[i],
       tempMax: data.daily!.temperature_2m_max[i],
       precipitationProb: data.daily!.precipitation_probability_max[i] ?? 0,
@@ -308,6 +384,7 @@ async function fetchWttrIn(place: GeoPlace): Promise<WeatherBundle | null> {
     return {
       date: d.date,
       dayLabel: dayLabel(d.date, i),
+      dateLabel: dayDateLabel(d.date),
       tempMin: parseFloat(d.mintempC),
       tempMax: parseFloat(d.maxtempC),
       precipitationProb: 0,

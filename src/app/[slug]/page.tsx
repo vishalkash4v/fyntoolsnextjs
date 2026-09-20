@@ -112,7 +112,7 @@ function HubPage({ slug }: { slug: string }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {tools.map((tool) => {
             return (
-              <Link key={tool.path} href={tool.path} prefetch={false} className="group">
+              <Link key={tool.path} href={tool.path} className="group">
                 <Card className="h-full transition-colors group-hover:border-primary/50">
                   <CardHeader>
                     <CardTitle className="text-lg group-hover:text-primary transition-colors">

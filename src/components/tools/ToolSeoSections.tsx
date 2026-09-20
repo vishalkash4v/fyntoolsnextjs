@@ -373,7 +373,6 @@ export default function ToolSeoSections({
               <li key={g.href}>
                 <Link
                   href={g.href}
-                  prefetch={false}
                   className="h-full p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-primary/50 hover:bg-muted/40 transition-colors block"
                 >
                   <span className="font-medium text-primary">{g.title}</span>
@@ -397,7 +396,6 @@ export default function ToolSeoSections({
               <li key={t.href}>
                 <Link
                   href={t.href}
-                  prefetch={false}
                   className="h-full p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-primary/50 hover:bg-muted/40 transition-colors block"
                 >
                   <span className="font-medium text-primary">{t.name}</span>

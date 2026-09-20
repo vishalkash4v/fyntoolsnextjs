@@ -182,7 +182,7 @@ const WeatherForecast = () => {
             void loadFromApi(fetchWeatherAuto, true);
           }
         },
-        { enableHighAccuracy: true, timeout: 15000 }
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 120000 }
       );
     },
     [loadFromApi]
@@ -330,6 +330,10 @@ const WeatherForecast = () => {
                     setShowSuggestions(true);
                   }
                 }}
+                onBlur={() => {
+                  // Delay so suggestion onMouseDown/onClick can fire first
+                  window.setTimeout(() => setShowSuggestions(false), 150);
+                }}
                 className="h-9 text-sm pr-8"
                 aria-label="Search location"
                 aria-expanded={showSuggestions && suggestions.length > 0}
@@ -338,6 +342,41 @@ const WeatherForecast = () => {
               />
               {searching && (
                 <Loader2 className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 animate-spin text-muted-foreground pointer-events-none" />
+              )}
+
+              {/* Absolute overlay above Recent chips — prevents click-through to chips below */}
+              {showSuggestions && suggestions.length > 0 && (
+                <ul
+                  role="listbox"
+                  className="absolute left-0 right-0 top-[calc(100%+4px)] z-[80] rounded-md border bg-popover text-popover-foreground shadow-lg max-h-[min(320px,50vh)] overflow-y-auto"
+                >
+                  {suggestions.map((s, i) => (
+                    <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
+                      <button
+                        type="button"
+                        className="w-full text-left px-3 py-2.5 text-sm hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/40"
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => {
+                          setShowSuggestions(false);
+                          setSuggestions([]);
+                          loadPlace(s);
+                        }}
+                      >
+                        <span className="font-medium">{s.name}</span>
+                        {(s.admin1 || s.country) && (
+                          <span className="text-muted-foreground">
+                            {` · ${[s.admin1, s.country].filter(Boolean).join(', ')}`}
+                          </span>
+                        )}
+                        {s.source === 'Google Places' && (
+                          <span className="ml-1.5 text-[10px] uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                            Google
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
 
@@ -412,64 +451,8 @@ const WeatherForecast = () => {
             )}
           </div>
 
-          {/* In-document-flow list — never under the weather card */}
-          {showSuggestions && suggestions.length > 0 && (
-            <ul
-              role="listbox"
-              className="rounded-md border bg-background shadow-md max-h-[min(320px,50vh)] overflow-y-auto relative z-30"
-            >
-              {suggestions.map((s, i) => (
-                <li key={`${s.latitude}-${s.longitude}-${i}`} role="option">
-                  <button
-                    type="button"
-                    className="w-full text-left px-3 py-2.5 text-sm hover:bg-accent active:bg-accent/80 transition-colors border-b last:border-b-0 border-border/40"
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => loadPlace(s)}
-                  >
-                    <span className="font-medium">{s.name}</span>
-                    {(s.admin1 || s.country) && (
-                      <span className="text-muted-foreground">
-                        {` · ${[s.admin1, s.country].filter(Boolean).join(', ')}`}
-                      </span>
-                    )}
-                    {s.source === 'Google Places' && (
-                      <span className="ml-1.5 text-[10px] uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
-                        Google
-                      </span>
-                    )}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {searchMeta && isEditingSearch.current && searchQuery.trim().length >= 2 && (
-            <p className="text-[11px] text-muted-foreground">
-              {searchMeta.googleKeyPresent ? (
-                searchMeta.provider === 'google' ? (
-                  <>
-                    Location search:{' '}
-                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">
-                      Google Places
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    Google key present — using {searchMeta.provider} fallback (
-                    {searchMeta.googleStatus || 'no matches'})
-                  </>
-                )
-              ) : (
-                <span className="text-amber-600 dark:text-amber-400">
-                  Google Places key missing on Next.js server. Add GOOGLE_PLACES_API_KEY to
-                  fyntoolsnextjs/.env.local and restart with npm run dev (Backend/.env is ignored
-                  here).
-                </span>
-              )}
-            </p>
-          )}
-
-          {recent.length > 0 && (
+          {/* Suggestions render inside the input wrapper (absolute). Hide Recent while open. */}
+          {recent.length > 0 && !(showSuggestions && suggestions.length > 0) && (
             <div className="flex flex-wrap gap-1.5 items-center">
               <span className="text-[11px] text-muted-foreground shrink-0">Recent</span>
               {recent.map((p) => (
@@ -538,11 +521,12 @@ const WeatherForecast = () => {
               <CardContent>
                 {weather.airQuality && insights.aqi ? (
                   <>
-                    <div className="text-2xl font-bold">{weather.airQuality.usAqi}</div>
+                    <div className="text-2xl font-bold tabular-nums">{weather.airQuality.usAqi}</div>
                     <p className={`text-sm font-medium ${insights.aqi.color}`}>{insights.aqi.label}</p>
                     <p className="text-xs text-muted-foreground mt-1">{insights.aqi.advice}</p>
                     <p className="text-xs text-muted-foreground mt-2">
-                      PM2.5: {weather.airQuality.pm25.toFixed(1)} · PM10: {weather.airQuality.pm10.toFixed(1)}
+                      US AQI · PM2.5 {weather.airQuality.pm25.toFixed(1)} µg/m³ · PM10{' '}
+                      {weather.airQuality.pm10.toFixed(1)} µg/m³
                     </p>
                   </>
                 ) : (
@@ -702,7 +686,10 @@ const WeatherForecast = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
                 {weather.daily.map((day) => (
                   <div key={day.date} className="text-center p-4 rounded-lg bg-muted/50 border">
-                    <div className="font-semibold mb-2 text-sm">{day.dayLabel}</div>
+                    <div className="font-semibold text-sm">{day.dayLabel}</div>
+                    <div className="text-[11px] text-muted-foreground mb-2 tabular-nums">
+                      {day.dateLabel}
+                    </div>
                     <div className="flex justify-center mb-2">{getWeatherIcon(day.category)}</div>
                     <div className="text-xs text-muted-foreground capitalize mb-2 line-clamp-2">
                       {day.description}

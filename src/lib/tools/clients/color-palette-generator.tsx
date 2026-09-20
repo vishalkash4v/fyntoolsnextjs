@@ -5,6 +5,9 @@ import dynamic from "next/dynamic";
 
 const Tool = dynamic(() => import("@/components/tools/ColorPaletteGenerator"), {
   ssr: false,
+  loading: () => (
+    <div className="w-full min-h-[280px] animate-pulse rounded-xl border bg-muted/30" aria-hidden />
+  ),
 });
 
 /** Client-only island — crawlable HTML is in ToolCrawlerFallback (server). */

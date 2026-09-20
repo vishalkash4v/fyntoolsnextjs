@@ -132,7 +132,6 @@ const ToolSearch: React.FC<ToolSearchProps> = ({ tools, className, onResultClick
                       <Link
                         key={tool.id}
                         href={tool.path}
-                        prefetch={false}
                         onClick={handleResultClick}
                         className="w-full text-left block p-3 md:p-4 hover:bg-muted/70 transition-colors border-b border-border/50 last:border-b-0 rounded-md bg-background/90 backdrop-blur-sm"
                       >
