@@ -138,8 +138,23 @@ const BLOGS = [
 const entries = [];
 
 function add(loc, priority, changefreq, lastmod = LASTMOD) {
+  if (SITE !== 'https://fyntools.com') {
+    throw new Error(`Sitemap SITE must be https://fyntools.com (got ${SITE})`);
+  }
+  const absolute =
+    loc === '' || loc === '/'
+      ? `${SITE}/`
+      : loc.startsWith('http')
+        ? loc
+        : `${SITE}${loc.startsWith('/') ? loc : `/${loc}`}`;
+  if (!absolute.startsWith('https://fyntools.com')) {
+    throw new Error(`Sitemap URL rejected (must start with https://fyntools.com): ${absolute}`);
+  }
+  if (/onrender\.com|vercel\.app|localhost/i.test(absolute)) {
+    throw new Error(`Sitemap URL rejected (forbidden host): ${absolute}`);
+  }
   entries.push({
-    loc: loc === '' ? SITE + '/' : SITE + loc,
+    loc: absolute,
     priority,
     changefreq,
     lastmod,

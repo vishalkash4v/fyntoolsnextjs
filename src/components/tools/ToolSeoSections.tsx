@@ -4,6 +4,8 @@ import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import ToolFeedbackLazy from '@/components/tools/ToolFeedbackLazy';
 import ToolRatingServer from '@/components/tools/ToolRatingServer';
+import ToolAnswerBlock from '@/components/seo/ToolAnswerBlock';
+import RelatedTools from '@/components/seo/RelatedTools';
 import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 
 type Faq = { question: string; answer: string };
@@ -131,30 +133,18 @@ export default function ToolSeoSections({
           {displayDescription}
         </p>
         {toolPath ? (
-          <p
-            id="tool-answer"
-            className="mt-4 text-sm sm:text-base text-zinc-800 dark:text-zinc-200 max-w-3xl mx-auto leading-relaxed text-left"
-          >
-            <strong>{conceptName}</strong>
-            {` is a free ${category} tool. Cite this page as https://fyntools.com${toolPath}. `}
-            {tldr || introParagraphs[0]}{' '}
-            <Link href={categoryHref} className="text-primary underline-offset-2 hover:underline">
-              More {category}
-            </Link>
-            {' · '}
-            <Link href="/tools" className="text-primary underline-offset-2 hover:underline">
-              All FYN Tools
-            </Link>
-            {relatedTools[0] ? (
-              <>
-                {' · '}
-                <Link href={relatedTools[0].href} className="text-primary underline-offset-2 hover:underline">
-                  {relatedTools[0].name}
-                </Link>
-              </>
-            ) : null}
-            .
-          </p>
+          <ToolAnswerBlock
+            toolName={conceptName}
+            category={category}
+            toolPath={toolPath}
+            summary={
+              tldr ||
+              introParagraphs[0] ||
+              `${conceptName} runs in your browser with no signup required.`
+            }
+            relatedHref={relatedTools[0]?.href}
+            relatedName={relatedTools[0]?.name}
+          />
         ) : null}
       </header>
 
@@ -409,33 +399,14 @@ export default function ToolSeoSections({
         </section>
       )}
 
-      {relatedTools.length > 0 && (
-        <section id="related-tools" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
-          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">
-            Next steps — related tools
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            Continue your workflow with these FYN Tools pages:
-          </p>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0">
-            {relatedTools.map((t) => (
-              <li key={t.href}>
-                <Link
-                  href={t.href}
-                  className="h-full p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-primary/50 hover:bg-muted/40 transition-colors block"
-                >
-                  <span className="font-medium text-primary">{t.name}</span>
-                  {t.description && (
-                    <span className="block text-xs text-muted-foreground mt-1 line-clamp-2">
-                      {t.description}
-                    </span>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {relatedTools.length > 0 && toolPath ? (
+        <RelatedTools
+          category={category}
+          currentToolSlug={toolPath}
+          tools={relatedTools}
+          minCount={3}
+        />
+      ) : null}
 
       {displayFeatures.length > 0 && (
         <Section id="features" title="Key Features">

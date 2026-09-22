@@ -59,6 +59,17 @@ function extract(html, re) {
   return m ? m[1].trim() : null;
 }
 
+function extractAll(html, re) {
+  const out = [];
+  let m;
+  const flags = re.flags.includes('g') ? re.flags : `${re.flags}g`;
+  const r = new RegExp(re.source, flags);
+  while ((m = r.exec(html)) !== null) {
+    if (m[1]) out.push(m[1].trim());
+  }
+  return out;
+}
+
 function extractAllJsonLd(html) {
   const blocks = [];
   const re = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
@@ -204,6 +215,16 @@ function main() {
         severity: 'error',
         msg: `Canonical must be https://fyntools.com (got ${canonical})`,
       });
+    }
+    const hreflang = extractAll(html, /hreflang="[^"]*"\s+href="([^"]+)"/gi)
+      .concat(extractAll(html, /href="([^"]+)"\s+hreflang="[^"]*"/gi));
+    for (const href of hreflang) {
+      if (href && !href.startsWith('https://fyntools.com')) {
+        pageIssues.push({
+          severity: 'error',
+          msg: `hreflang href must be https://fyntools.com (got ${href})`,
+        });
+      }
     }
 
     if (!h1 && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin') && !slug.startsWith('/s/')) {

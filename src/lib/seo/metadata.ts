@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { absoluteUrl, SITE_URL } from './site';
+import { getCanonicalUrl, SITE_URL } from '@/lib/seo-config';
 
 export type PageMetaInput = {
   title: string;
@@ -19,6 +19,7 @@ export type PageMetaInput = {
 /**
  * Build Next.js Metadata with absolute titles (avoids layout template doubling),
  * canonical (query-stripped path), robots, Open Graph, and Twitter cards.
+ * Canonical + og:url always use getCanonicalUrl → https://fyntools.com.
  */
 export function buildPageMetadata({
   title,
@@ -26,7 +27,7 @@ export function buildPageMetadata({
   path,
   keywords,
   noIndex = false,
-  ogImage = absoluteUrl('/opengraph-image'),
+  ogImage = getCanonicalUrl('/opengraph-image'),
   ogImageAlt,
   ogType = 'website',
   publishedTime,
@@ -35,7 +36,7 @@ export function buildPageMetadata({
 }: PageMetaInput): Metadata {
   // Strip any accidental query/hash from path before canonicalizing
   const cleanPath = (path.split('?')[0] || '/').split('#')[0] || '/';
-  const canonical = absoluteUrl(cleanPath === '/' ? '/' : cleanPath);
+  const canonical = getCanonicalUrl(cleanPath === '/' ? '/' : cleanPath);
   const kw = Array.isArray(keywords) ? keywords.join(', ') : keywords;
 
   // Absolute title — keep roughly 50–65 chars when possible (front-loaded keyword + short brand)
@@ -78,7 +79,10 @@ export function buildPageMetadata({
         },
     alternates: {
       canonical,
-      languages: { 'en-US': canonical },
+      languages: {
+        'en-US': canonical,
+        'x-default': canonical,
+      },
     },
     openGraph: {
       title: fullTitle,
@@ -113,9 +117,9 @@ export function buildPageMetadata({
     },
     other: {
       'application-name': 'FYN Tools Worldwide',
-      sitemap: absoluteUrl('/sitemap.xml'),
+      sitemap: getCanonicalUrl('/sitemap.xml'),
     },
   };
 }
 
-export { SITE_URL };
+export { SITE_URL, getCanonicalUrl };

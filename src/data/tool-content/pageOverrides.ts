@@ -6,6 +6,8 @@ import { tier1Batch1Overrides } from '@/data/tool-content/tier1Batch1';
  */
 export type PageOverride = {
   title?: string;
+  /** Visible H1 — keep different from meta title to avoid GSC duplicate H1/title */
+  h1?: string;
   description?: string;
   shortIntro?: string;
   introText?: string;
@@ -5769,6 +5771,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
   },
   "/safe-days-calculator": {
     "title": "Safe Days Calculator – Avoid or Plan Pregnancy",
+    "h1": "Safe Days Calculator — Fertile Window & Lower-Risk Days",
     "description": "Identify safe and fertile days in your cycle with this easy-to-use safe days calculator.",
     "shortIntro": "Use our safe days calculator to highlight fertile days, safe days, and pregnancy risk levels on your calendar.",
     "keywords": "safe days calculator, fertile days, safe period calculator, pregnancy risk indicator",

@@ -116,6 +116,7 @@ export const tier1Batch1Overrides: Record<(typeof TIER1_BATCH1_PATHS)[number], P
 
   '/safe-days-calculator': {
     title: 'Safe Days Calculator – Fertile vs Lower-Risk Days | FYN Tools',
+    h1: 'Safe Days Calculator — Estimate Fertile & Lower-Risk Days',
     description:
       'Estimate fertile and lower-risk days from last period date and cycle length. Educational calendar only — not contraception or medical advice.',
     shortIntro:

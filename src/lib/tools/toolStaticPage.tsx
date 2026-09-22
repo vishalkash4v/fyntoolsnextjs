@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { buildPageMetadata } from '@/lib/seo/metadata';
-import { absoluteUrl } from '@/lib/seo/site';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
-import { buildToolJsonLd, mergeJsonLdGraph, personSchema } from '@/lib/seo/schemas';
+import { getCanonicalUrl, SEO_DATE_MODIFIED } from '@/lib/seo-config';
+import ToolSchemas from '@/components/seo/ToolSchemas';
 import { getAuthor, PRIMARY_AUTHOR_SLUG } from '@/data/authors';
 import { resolveToolPage } from '@/lib/tools/resolveToolPage';
 import { getToolReviewStats } from '@/lib/tools/toolReviewStats';
@@ -22,8 +21,8 @@ export function buildToolPageMetadata(slug: string): Metadata {
     path: `/${slug}`,
     keywords: fullSeo?.keywords || tool.keywords,
     ogImageAlt: fullSeo?.ogTitle || tool.name,
-    modifiedTime: fullSeo?.dateModified,
-    publishedTime: fullSeo?.datePublished,
+    modifiedTime: fullSeo?.dateModified || SEO_DATE_MODIFIED,
+    publishedTime: fullSeo?.datePublished || SEO_DATE_MODIFIED,
   });
 }
 
@@ -34,7 +33,7 @@ type ToolStaticPageProps = {
 
 /**
  * Server shell shared by every dedicated tool route.
- * Matches /url-shortener: SchemaMarkup + personSchema + ToolPageShell + client island.
+ * Schema + metadata URLs always resolve to https://fyntools.com via seo-config.
  */
 export default async function ToolStaticPage({ slug, toolClient }: ToolStaticPageProps) {
   const resolved = resolveToolPage(slug);
@@ -44,48 +43,52 @@ export default async function ToolStaticPage({ slug, toolClient }: ToolStaticPag
   const displayTitle = fullSeo?.h1 || tool.name;
   const displayDescription = fullSeo?.metaDescription || tool.description;
   const author = getAuthor(PRIMARY_AUTHOR_SLUG);
-  const authorUrl = author ? absoluteUrl(`/author/${author.slug}`) : undefined;
+  const authorUrl = author ? getCanonicalUrl(`/author/${author.slug}`) : undefined;
   const reviewStats = await getToolReviewStats(tool.name, slug);
-
-  const schemaParts = [
-    ...buildToolJsonLd({
-      title: displayTitle,
-      description: displayDescription,
-      slug,
-      category: tool.category,
-      howToSteps: howToUse,
-      features,
-      faqs,
-      includeHowTo: howToUse.length >= 3,
-      relatedTools: (fullSeo?.relatedTools || []).map((t) => ({
-        name: t.name,
-        url: absoluteUrl(t.href),
-      })),
-      datePublished: fullSeo?.datePublished,
-      dateModified: fullSeo?.dateModified,
-      keywords: fullSeo?.keywords,
-      authorUrl,
-      authorName: author?.name,
-      ratingValue: reviewStats?.ratingValue,
-      ratingCount: reviewStats?.ratingCount,
-    }),
-    author
-      ? personSchema({
-          name: author.name,
-          url: authorUrl!,
-          description: author.shortBio,
-          jobTitle: author.role,
-          image: author.avatar,
-          sameAs: author.sameAs,
-        })
-      : null,
-  ].filter(Boolean) as Record<string, unknown>[];
-
-  const schemaGraph = mergeJsonLdGraph(schemaParts);
 
   return (
     <>
-      <SchemaMarkup data={schemaGraph} />
+      <ToolSchemas
+        title={displayTitle}
+        description={displayDescription}
+        slug={slug}
+        category={tool.category}
+        howToSteps={howToUse}
+        features={features}
+        faqs={faqs}
+        keywords={fullSeo?.keywords}
+        relatedTools={(fullSeo?.relatedTools || []).map((t) => ({
+          name: t.name,
+          url: getCanonicalUrl(t.href),
+        }))}
+        datePublished={fullSeo?.datePublished || SEO_DATE_MODIFIED}
+        dateModified={fullSeo?.dateModified || SEO_DATE_MODIFIED}
+        author={
+          author && authorUrl
+            ? {
+                name: author.name,
+                url: authorUrl,
+                description: author.shortBio,
+                jobTitle: author.role,
+                image: author.avatar,
+                sameAs: author.sameAs,
+              }
+            : null
+        }
+        ratingValue={
+          reviewStats &&
+          reviewStats.ratingCount >= 1 &&
+          reviewStats.ratingValue >= 1 &&
+          reviewStats.ratingValue <= 5
+            ? reviewStats.ratingValue
+            : undefined
+        }
+        ratingCount={
+          reviewStats && reviewStats.ratingCount >= 1
+            ? reviewStats.ratingCount
+            : undefined
+        }
+      />
       <ToolPageShell
         slug={slug}
         title={tool.name}

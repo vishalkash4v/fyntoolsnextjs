@@ -329,11 +329,22 @@ export const generateBreadcrumbSchema = (breadcrumbs: Array<{ name: string; url:
 };
 
 export const generateTestimonialsSchema = (testimonials: Array<{ name: string; rating: number; text: string; title?: string }>) => {
+  const valid = (testimonials || []).filter(
+    (t) =>
+      t?.name &&
+      t?.text &&
+      Number.isFinite(Number(t.rating)) &&
+      Number(t.rating) >= 1 &&
+      Number(t.rating) <= 5
+  );
+  // Never emit Product.review as [] — Google flags empty review / aggregateRating.
+  if (!valid.length) return null;
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Online Tool",
-    "review": testimonials.map(testimonial => ({
+    "review": valid.map(testimonial => ({
       "@type": "Review",
       "author": {
         "@type": "Person",

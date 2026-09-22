@@ -1,4 +1,4 @@
-import { absoluteUrl, SITE_URL } from './site';
+import { getCanonicalUrl, SITE_URL } from '@/lib/seo-config';
 import { buildToolBreadcrumbs } from '@/utils/breadcrumbs';
 
 export type FaqItem = { question: string; answer: string };
@@ -13,9 +13,9 @@ const ORG = {
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject' as const,
-    url: absoluteUrl('/logo.png'),
+    url: getCanonicalUrl('/logo.png'),
   },
-  sameAs: ['https://fyntools.com/about', 'https://fyntools.com/contact'],
+  sameAs: [getCanonicalUrl('/about'), getCanonicalUrl('/contact')],
   contactPoint: {
     '@type': 'ContactPoint' as const,
     contactType: 'customer support',
@@ -148,7 +148,7 @@ export function buildToolJsonLd(opts: {
   authorUrl?: string;
   authorName?: string;
 }): Record<string, unknown>[] {
-  const toolUrl = absoluteUrl(`/${opts.slug}`);
+  const toolUrl = getCanonicalUrl(`/${opts.slug}`);
   const pageId = `${toolUrl}#webpage`;
   const appId = `${toolUrl}#app`;
   const crumbs = buildToolBreadcrumbs(opts.title, `/${opts.slug}`, opts.category);
@@ -166,7 +166,7 @@ export function buildToolJsonLd(opts: {
     description: opts.description,
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': appId },
-    primaryImageOfPage: absoluteUrl('/opengraph-image'),
+    primaryImageOfPage: getCanonicalUrl('/opengraph-image'),
     inLanguage: 'en-US',
     isAccessibleForFree: true,
     speakable: {
@@ -227,18 +227,42 @@ export function buildToolJsonLd(opts: {
     ...(opts.features?.length
       ? { featureList: opts.features.slice(0, 12).join(', ') }
       : {}),
-    ...(opts.ratingValue
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: opts.ratingValue,
-            ratingCount: opts.ratingCount || 24,
-            bestRating: 5,
-            worstRating: 1,
-          },
-        }
-      : {}),
+    // Only emit AggregateRating with valid 1–5 values and a real count.
+    // Never emit empty review[] / zero-count ratings (Google Rich Results errors).
+    ...(() => {
+      const value = Number(opts.ratingValue);
+      const count = Number(opts.ratingCount);
+      if (
+        !Number.isFinite(value) ||
+        !Number.isFinite(count) ||
+        value < 1 ||
+        value > 5 ||
+        count < 1
+      ) {
+        return {};
+      }
+      return {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: Math.round(value * 10) / 10,
+          ratingCount: Math.floor(count),
+          bestRating: 5,
+          worstRating: 1,
+        },
+      };
+    })(),
   };
+
+  // Guaranteed: no empty review / aggregateRating placeholders
+  delete softwareApp.review;
+  if (
+    softwareApp.aggregateRating &&
+    typeof softwareApp.aggregateRating === 'object' &&
+    (!(softwareApp.aggregateRating as { ratingCount?: number }).ratingCount ||
+      !(softwareApp.aggregateRating as { ratingValue?: number }).ratingValue)
+  ) {
+    delete softwareApp.aggregateRating;
+  }
 
   const schemas: Record<string, unknown>[] = [
     webPage,
@@ -296,7 +320,7 @@ export function aboutPageSchema(): Record<string, unknown> {
     name: 'About FYN Tools Worldwide',
     description:
       'Learn about FYN Tools Worldwide — free, secure, browser-based tools for developers, students, and professionals.',
-    url: absoluteUrl('/about'),
+    url: getCanonicalUrl('/about'),
     mainEntity: { '@id': ORG_ID },
   };
 }
@@ -307,7 +331,7 @@ export function contactPageSchema(): Record<string, unknown> {
     '@type': 'ContactPage',
     name: 'Contact FYN Tools',
     description: 'Contact FYN Tools Worldwide for support, feedback, or partnership inquiries.',
-    url: absoluteUrl('/contact'),
+    url: getCanonicalUrl('/contact'),
     mainEntity: { '@id': ORG_ID },
   };
 }
@@ -320,7 +344,7 @@ export function blogIndexSchema(
     '@type': 'Blog',
     name: 'FYN Tools Blog',
     description: 'Guides, comparisons, and tips for free online tools.',
-    url: absoluteUrl('/blog'),
+    url: getCanonicalUrl('/blog'),
     publisher: { '@id': ORG_ID },
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
@@ -359,13 +383,13 @@ export function articleSchema(opts: {
       '@id': opts.url,
     },
     url: opts.url,
-    image: opts.image || absoluteUrl('/opengraph-image'),
+    image: opts.image || getCanonicalUrl('/opengraph-image'),
     ...(opts.keywords?.length ? { keywords: opts.keywords.join(', ') } : {}),
     isAccessibleForFree: true,
   };
   const crumbs = breadcrumbSchema([
-    { name: 'Home', url: absoluteUrl('/') },
-    { name: 'Blog', url: absoluteUrl('/blog') },
+    { name: 'Home', url: getCanonicalUrl('/') },
+    { name: 'Blog', url: getCanonicalUrl('/blog') },
     { name: opts.headline, url: opts.url },
   ]);
   return [article, crumbs];
@@ -408,7 +432,7 @@ export function personSchema(opts: {
     ...(opts.description ? { description: opts.description } : {}),
     ...(opts.jobTitle ? { jobTitle: opts.jobTitle } : {}),
     ...(opts.image
-      ? { image: { '@type': 'ImageObject', url: absoluteUrl(opts.image) } }
+      ? { image: { '@type': 'ImageObject', url: getCanonicalUrl(opts.image) } }
       : {}),
     ...(opts.sameAs?.length ? { sameAs: opts.sameAs } : {}),
     ...(opts.email ? { email: opts.email } : {}),
@@ -441,13 +465,13 @@ export function guideArticleSchema(opts: {
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
     url: opts.url,
-    image: absoluteUrl('/opengraph-image'),
+    image: getCanonicalUrl('/opengraph-image'),
     isAccessibleForFree: true,
     ...(opts.keywords?.length ? { keywords: opts.keywords.join(', ') } : {}),
   };
   const crumbs = breadcrumbSchema([
-    { name: 'Home', url: absoluteUrl('/') },
-    { name: 'Guides', url: absoluteUrl('/guides') },
+    { name: 'Home', url: getCanonicalUrl('/') },
+    { name: 'Guides', url: getCanonicalUrl('/guides') },
     { name: opts.headline, url: opts.url },
   ]);
   return [article, crumbs];

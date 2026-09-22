@@ -28,11 +28,12 @@ import {
   getRelatedToolsForPage,
 } from '@/lib/seo/relatedToolsPicker';
 import { interpolateFactSeo, TOOL_FACT_CARDS } from '@/data/tool-content/toolFactCards';
+import { SEO_DATE_MODIFIED } from '@/lib/seo-config';
 
 /** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
 export const SEO_SHELL_DATE = '2026-09-03';
-/** Visible freshness date after the canonical-host fix. */
-export const SEO_REFRESH_DATE = '2026-09-23';
+/** @deprecated Prefer SEO_DATE_MODIFIED from `@/lib/seo-config` */
+export const SEO_REFRESH_DATE = SEO_DATE_MODIFIED;
 
 function containsTemplatePhrase(text: string): boolean {
   const markers = [
@@ -195,10 +196,11 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     usePremiumBody && premium?.title
       ? premium.title
       : override?.title || `${tool.name} — Free Online Tool`;
+  // H1 must differ from <title> (GSC duplicate H1/title). Prefer short concept name.
   const h1 =
     usePremiumBody && premium?.h1
       ? premium.h1
-      : override?.title || tool.name;
+      : override?.h1 || tool.name;
   const metaDescription = (() => {
     if (usePremiumBody && premium?.metaDescription) {
       const m = premium.metaDescription;

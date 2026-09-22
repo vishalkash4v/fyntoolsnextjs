@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { AppProviders } from '@/components/providers/AppProviders';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { organizationSchema, websiteSchema } from '@/lib/seo/schemas';
-import { SITE_URL } from '@/lib/seo/site';
+import { SITE_URL } from '@/lib/seo-config';
 import Script from 'next/script';
 
 const inter = Inter({
