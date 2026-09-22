@@ -5,7 +5,6 @@ export type ToolComponentLoader = () => Promise<{ default: ComponentType<Record<
 
 export const TOOL_LOADERS: Record<string, ToolComponentLoader> = {
   "ad-maker": () => import("@/components/tools/AdMaker"),
-  "add-name-date-photo": () => import("@/components/tools/PhotoAnnotationTool"),
   "age-calculator": () => import("@/components/tools/AgeCalculator"),
   "ai-text-rewriter": () => import("@/components/tools/AiTextRewriter"),
   "baby-kick-counter": () => import("@/components/tools/BabyKickCounter"),

@@ -19,23 +19,23 @@ const WORKFLOW_LINKS: Record<string, string[]> = {
   '/lorem-ipsum-generator': ['/word-counter', '/text-case-converter', '/list-randomizer'],
   '/image-compressor': ['/image-resizer', '/image-cropper', '/image-format-converter', '/pdf-compressor'],
   '/image-cropper': ['/image-compressor', '/image-resizer'],
-  '/image-resizer': ['/image-compressor', '/image-cropper', '/pdf-compressor'],
-  '/image-format-converter': ['/image-compressor', '/image-resizer'],
-  '/image-upscaler': ['/image-resizer', '/image-compressor'],
-  '/background-remover': ['/image-compressor', '/image-resizer'],
+  '/image-resizer': ['/image-compressor', '/image-cropper', '/pdf-compressor', '/photo-annotation-tool'],
+  '/image-format-converter': ['/image-compressor', '/image-resizer', '/photo-annotation-tool'],
+  '/image-upscaler': ['/image-resizer', '/image-compressor', '/photo-annotation-tool'],
+  '/background-remover': ['/image-compressor', '/image-resizer', '/photo-annotation-tool'],
   '/flip-image': ['/image-resizer', '/image-compressor'],
   '/merge-images': ['/split-image', '/image-compressor'],
   '/split-image': ['/merge-images', '/image-compressor'],
   '/pixelate-tool': ['/blur-image', '/invert-image-colors', '/image-compressor'],
   '/blur-image': ['/pixelate-tool', '/invert-image-colors', '/image-compressor'],
   '/invert-image-colors': ['/blur-image', '/pixelate-tool', '/image-format-converter'],
-  '/photo-annotation-tool': ['/image-resizer', '/image-compressor', '/blur-image'],
+  '/photo-annotation-tool': ['/image-resizer', '/image-compressor', '/blur-image', '/background-remover'],
   '/svg-optimizer': ['/image-format-converter', '/image-compressor', '/logo-to-favicon'],
-  '/image-metadata-viewer': ['/image-compressor', '/image-format-converter'],
+  '/image-metadata-viewer': ['/image-compressor', '/image-format-converter', '/photo-annotation-tool'],
   '/color-palette-generator': ['/color-picker-tool', '/color-converter', '/gradient-generator'],
   '/pdf-compressor': ['/pdf-text-extractor', '/image-compressor', '/image-resizer'],
   '/pdf-text-extractor': ['/pdf-compressor', '/image-to-text'],
-  '/image-to-text': ['/pdf-text-extractor', '/pdf-compressor'],
+  '/image-to-text': ['/pdf-text-extractor', '/pdf-compressor', '/photo-annotation-tool'],
   '/logo-to-favicon': ['/image-resizer', '/image-format-converter'],
   '/placeholder-image-generator': ['/image-resizer'],
   '/json-formatter': ['/json-validator'],
@@ -149,10 +149,9 @@ const WORKFLOW_LINKS: Record<string, string[]> = {
   '/trip-expense-splitter': ['/invoice-generator', '/simple-calculator'],
   '/table-to-json-converter': ['/json-formatter', '/json-validator', '/dummy-api-generator'],
   '/text-to-handwriting': ['/text-font-changer'],
-  '/add-name-date-photo': ['/photo-annotation-tool', '/image-resizer', '/image-compressor'],
 };
 
-const SKIP_RELATED = new Set(['/enhanced-unit-converter', '/themes']);
+const SKIP_RELATED = new Set(['/enhanced-unit-converter', '/add-name-date-photo', '/themes']);
 
 /** Soft-dupe groups: max picks from a sibling stem family when filling. */
 const SOFT_DUPE_GROUPS: { paths: string[]; max: number }[] = [
@@ -160,6 +159,14 @@ const SOFT_DUPE_GROUPS: { paths: string[]; max: number }[] = [
   { paths: ['/typing-tutor', '/typing-test', '/typing-games', '/typing-competition'], max: 2 },
   { paths: ['/add-name-date-photo', '/photo-annotation-tool'], max: 1 },
 ];
+
+const HIDDEN_TOOL_IDS = new Set(['enhanced-unit-converter', 'add-name-date-photo']);
+
+function canonicalizeToolHref(href: string): string {
+  if (href === '/add-name-date-photo') return '/photo-annotation-tool';
+  if (href === '/enhanced-unit-converter') return '/unit-converter';
+  return href;
+}
 
 function softDupeGroupFor(path: string): { paths: string[]; max: number } | null {
   return SOFT_DUPE_GROUPS.find((g) => g.paths.includes(path)) ?? null;
@@ -216,19 +223,21 @@ export function isWorkflowLinked(from: string, to: string): boolean {
 }
 
 export function isRelatedToolValid(tool: Tool, href: string): boolean {
-  if (href === tool.path || SKIP_RELATED.has(href)) return false;
-  const other = allTools.find((t) => t.path === href);
+  const canonical = canonicalizeToolHref(href);
+  if (canonical === tool.path || SKIP_RELATED.has(href) || SKIP_RELATED.has(canonical)) return false;
+  const other = allTools.find((t) => t.path === canonical && !HIDDEN_TOOL_IDS.has(t.id));
   if (!other) return false;
   if (other.category === tool.category) return true;
-  return isWorkflowLinked(tool.path, href);
+  return isWorkflowLinked(tool.path, canonical);
 }
 
 function toEntry(href: string): RelatedToolEntry | null {
-  const t = allTools.find((x) => x.path === href);
+  const canonical = canonicalizeToolHref(href);
+  const t = allTools.find((x) => x.path === canonical && !HIDDEN_TOOL_IDS.has(x.id));
   if (!t) return null;
   return {
     name: t.name,
-    href: t.path,
+    href: canonical,
     description: relatedToolDescription(t.name, t.description),
   };
 }
@@ -253,7 +262,13 @@ export function getRelatedToolsForPage(path: string, limit = 10): RelatedToolEnt
   for (const href of WORKFLOW_LINKS[path] ?? []) add(href);
 
   const sameCat = allTools
-    .filter((t) => t.path !== path && t.category === tool.category && !SKIP_RELATED.has(t.path))
+    .filter(
+      (t) =>
+        t.path !== path &&
+        t.category === tool.category &&
+        !HIDDEN_TOOL_IDS.has(t.id) &&
+        !SKIP_RELATED.has(t.path)
+    )
     .map((t) => t.path)
     .sort((a, b) => {
       const inboundDiff = inboundWorkflowCount(a) - inboundWorkflowCount(b);
@@ -289,13 +304,14 @@ export function filterValidRelatedTools(
   const out: RelatedToolEntry[] = [];
   const seen = new Set<string>([tool.path]);
   for (const c of candidates) {
-    if (seen.has(c.href) || !isRelatedToolValid(tool, c.href)) continue;
-    seen.add(c.href);
+    const href = canonicalizeToolHref(c.href);
+    if (seen.has(href) || !isRelatedToolValid(tool, href)) continue;
+    seen.add(href);
     const desc =
-      c.description ?? allTools.find((t) => t.path === c.href)?.description ?? '';
+      c.description ?? allTools.find((t) => t.path === href && !HIDDEN_TOOL_IDS.has(t.id))?.description ?? '';
     out.push({
       name: c.name,
-      href: c.href,
+      href,
       description: relatedToolDescription(c.name, desc),
     });
   }

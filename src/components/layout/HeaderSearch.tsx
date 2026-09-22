@@ -4,7 +4,7 @@ import ToolSearch from '@/components/tools/ToolSearch';
 import { allTools } from '@/data/toolsData';
 
 const SEARCH_TOOLS = allTools.filter(
-  (t) => !['/enhanced-unit-converter', '/add-name-date-photo'].includes(t.path)
+  (t) => !['enhanced-unit-converter', 'add-name-date-photo'].includes(t.id)
 );
 
 /** Isolated chunk — keeps toolsData + lucide icons out of the default header graph. */

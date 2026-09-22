@@ -598,7 +598,7 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       },
     ],
     relatedTools: [
-      { name: 'Add Name & Date to Photo', href: '/add-name-date-photo', description: 'Stamp a name and date on photos automatically' },
+      { name: 'Add Name & Date to Photo', href: '/photo-annotation-tool', description: 'Stamp a name and date on photos automatically' },
       { name: 'Image Cropper', href: '/image-cropper', description: 'Crop the photo before adding annotations' },
       { name: 'Background Remover', href: '/background-remover', description: 'Remove the background before overlaying a logo' },
       { name: 'Blur Image', href: '/blur-image', description: 'Blur sensitive areas before annotating' },
@@ -1062,7 +1062,7 @@ export const batch4ToolSeo: Record<string, PremiumPartial> = {
       { name: 'Image Cropper', href: '/image-cropper', description: 'Crop after checking original dimensions' },
       { name: 'Blur Image', href: '/blur-image', description: 'Blur before sharing a photo that had GPS EXIF' },
       { name: 'Image Upscaler', href: '/image-upscaler', description: 'Upscale after verifying source dimensions' },
-      { name: 'Add Name & Date to Photo', href: '/add-name-date-photo', description: 'Stamp photos after metadata review' },
+      { name: 'Add Name & Date to Photo', href: '/photo-annotation-tool', description: 'Stamp photos after metadata review' },
       { name: 'Image to Text', href: '/image-to-text', description: 'Extract text from an image after inspecting it' },
     ],
     conclusion:

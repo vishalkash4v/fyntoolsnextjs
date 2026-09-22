@@ -131,6 +131,25 @@ function HubPage({ slug }: { slug: string }) {
           })}
         </div>
       </section>
+      {hub.faqs.length > 0 && (
+        <section className="mb-12 max-w-3xl mx-auto" aria-labelledby="hub-faq-heading">
+          <h2 id="hub-faq-heading" className="text-2xl font-bold mb-4">
+            {hub.name} FAQ
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300 mb-6">
+            Quick answers for people browsing this category. Open any tool above when you are ready
+            to run a conversion, lookup, timer, or typing session in your browser—no install required.
+          </p>
+          <dl className="space-y-4">
+            {hub.faqs.map((faq) => (
+              <div key={faq.question} className="rounded-lg border border-border/60 p-4">
+                <dt className="font-semibold text-foreground mb-2">{faq.question}</dt>
+                <dd className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
       {otherHubs.length > 0 && (
         <section>
           <h2 className="text-xl font-bold mb-4">More categories</h2>

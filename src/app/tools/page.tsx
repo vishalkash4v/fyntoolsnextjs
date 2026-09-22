@@ -34,7 +34,7 @@ export default async function ToolsPage({ searchParams }: Props) {
   }
 
   const q = (sp.search || '').toLowerCase().trim();
-  const HIDDEN_PATHS = new Set(['/enhanced-unit-converter', '/add-name-date-photo']);
+  const HIDDEN_IDS = new Set(['enhanced-unit-converter', 'add-name-date-photo']);
   const tools = (q
     ? allTools.filter(
         (t) =>
@@ -44,7 +44,7 @@ export default async function ToolsPage({ searchParams }: Props) {
           t.keywords.toLowerCase().includes(q)
       )
     : allTools
-  ).filter((t) => !HIDDEN_PATHS.has(t.path));
+  ).filter((t) => !HIDDEN_IDS.has(t.id));
 
   const byCategory = new Map<string, typeof allTools>();
   for (const tool of tools) {

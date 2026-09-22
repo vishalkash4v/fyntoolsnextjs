@@ -155,6 +155,39 @@ export const blogPosts: BlogPost[] = [
             You have easily setuped the project on your computer. Your Node.js project is now ready for development!
           </p>
         </div>
+
+        <div class="mt-10 mb-8">
+          <h2 class="text-2xl font-bold mb-4">Troubleshooting tips</h2>
+          <p class="mb-4">
+            If something fails during setup, work through these checks before rewriting your whole project.
+            Most beginner blockers are environment PATH issues, a missing dependency install, or a port already in use.
+          </p>
+          <ul class="list-disc pl-6 mb-6 space-y-3">
+            <li>
+              <strong>npm is not recognized:</strong> Reinstall Node.js from the official installer and reopen the terminal so PATH updates apply. Confirm with <code>node -v</code> and <code>npm -v</code>.
+            </li>
+            <li>
+              <strong>npm start crashes immediately:</strong> Run <code>npm i</code> again in the project root, then check that <code>package.json</code> still contains a start script pointing at your Express entry file.
+            </li>
+            <li>
+              <strong>Port already in use:</strong> Another process may be listening on the default Express port. Stop the other server or change the port in your app configuration and restart.
+            </li>
+            <li>
+              <strong>Generator overwrote files:</strong> If you ran <code>npx express-generator</code> inside a non-empty folder, move your work to a fresh directory and regenerate so scaffold files stay consistent.
+            </li>
+            <li>
+              <strong>Need a second practice project:</strong> After the server runs, skim our
+              <a href="/blog/go-lang-project-setup-2026-guide">Go language project setup guide</a>
+              for a parallel backend workflow, or check whether a
+              <a href="/blog/iphone-67w-charger-safe-for-iphone-2026-guide">67W iPhone charger is safe for your device</a>
+              if you are charging a phone while long compile or install jobs run on a laptop.
+            </li>
+          </ul>
+          <p class="mb-2">
+            Once <code>npm start</code> prints the nodemon boot lines and the browser loads without an error page,
+            your Node.js foundation is solid enough to add routes, middleware, and environment variables next.
+          </p>
+        </div>
       </div>
     `,
     faqs: [

@@ -24,7 +24,6 @@ const Footer = () => {
     { name: 'All Tools', href: '/tools' },
     { name: 'Blog', href: '/blog' },
     { name: 'AI Domain Names', href: '/ai-domain-name-generator' },
-    { name: 'Themes', href: '/themes' },
     { name: 'llms.txt', href: '/llms.txt' },
   ];
 
@@ -48,7 +47,8 @@ const Footer = () => {
                 loading="lazy"
                 decoding="async"
               />
-              <span className="sr-only">FYN Tools homepage</span>
+              <span className="font-semibold text-foreground">FYN Tools</span>
+              <span className="sr-only">Go to FYN Tools homepage</span>
             </Link>
             <p className="text-zinc-700 dark:text-zinc-300 mb-4 leading-relaxed">
               Professional online tools for developers, businesses, and individuals.

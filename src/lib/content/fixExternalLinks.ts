@@ -6,9 +6,28 @@
 const DEAD_MDN_CANVAS =
   /https?:\/\/developer\.mozilla\.org\/[^"'>\s]*Pixel_manipulation[^"'>\s]*/gi;
 
+const NAKED_URL_LABELS: Record<string, string> = {
+  'https://tinyurl.com': 'Visit TinyURL',
+  'https://www.tinyurl.com': 'Visit TinyURL',
+  'https://cutt.ly': 'Visit Cuttly',
+  'https://www.cutt.ly': 'Visit Cuttly',
+  'https://dub.co': 'Visit Dub.co',
+  'https://www.dub.co': 'Visit Dub.co',
+  'https://short.io': 'Visit Short.io',
+  'https://www.short.io': 'Visit Short.io',
+  'https://rebrandly.com': 'Visit Rebrandly',
+  'https://www.rebrandly.com': 'Visit Rebrandly',
+  'https://is.gd': 'Visit is.gd',
+  'https://www.is.gd': 'Visit is.gd',
+  'https://bitly.com': 'Visit Bitly',
+  'https://www.bitly.com': 'Visit Bitly',
+  'https://fyntools.com/url-shortener': 'Open FYN Tools URL Shortener',
+  'https://en.wikipedia.org/wiki/Node.js': 'Visit Node.js official site',
+};
+
 /**
  * Unwrap anchors whose href is a known-dead MDN canvas tutorial URL → plain text.
- * Also fixes the double-suffix artifact (`…_with_canvas_with_canvas`) from an older replace.
+ * Rewrite naked URL link text to descriptive anchors for Semrush notice #216.
  */
 export function fixExternalLinks(html: string | undefined): string {
   if (!html) return html ?? '';
@@ -29,9 +48,45 @@ export function fixExternalLinks(html: string | undefined): string {
   // Any remaining bare dead MDN canvas URLs in text
   out = out.replace(DEAD_MDN_CANVAS, 'MDN Canvas pixel manipulation guide');
 
+  // Semrush: Wikipedia Node.js misclassified as a .js asset — point to official site
+  out = out.split('https://en.wikipedia.org/wiki/Node.js').join('https://nodejs.org/');
+
   // Other known dead external URLs → working destinations
   out = out.split('https://www.nhs.uk/conditions/period-tracker/').join('https://www.nhs.uk/conditions/periods/');
   out = out.split('http://www.nhs.uk/conditions/period-tracker/').join('https://www.nhs.uk/conditions/periods/');
+
+  // Soft-dupe: never leave internal links pointing at the 308 alias
+  out = out.split('href="/add-name-date-photo"').join('href="/photo-annotation-tool"');
+  out = out.split('href=\'/add-name-date-photo\'').join('href=\'/photo-annotation-tool\'');
+  out = out
+    .split('https://fyntools.com/add-name-date-photo')
+    .join('https://fyntools.com/photo-annotation-tool');
+
+  // Naked URL anchors → descriptive text (Bitly alternatives blog, etc.)
+  out = out.replace(
+    /<a\b([^>]*\bhref=["']([^"']+)["'][^>]*)>([\s\S]*?)<\/a>/gi,
+    (full, attrs: string, href: string, inner: string) => {
+      const text = inner.replace(/<[^>]+>/g, '').trim();
+      const cleanHref = href.replace(/\/$/, '');
+      const label =
+        NAKED_URL_LABELS[href] ||
+        NAKED_URL_LABELS[cleanHref] ||
+        NAKED_URL_LABELS[href.toLowerCase()] ||
+        NAKED_URL_LABELS[cleanHref.toLowerCase()];
+
+      const isNaked =
+        !text ||
+        text === href ||
+        text === cleanHref ||
+        /^https?:\/\//i.test(text);
+
+      if (label && isNaked) {
+        return `<a${attrs}>${label}</a>`;
+      }
+      // Wikipedia Node.js label may still say "backend language" — keep label, href already rewritten
+      return full;
+    }
+  );
 
   return out;
 }

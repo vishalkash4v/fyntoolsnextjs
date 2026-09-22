@@ -14,7 +14,7 @@ function formatDate(dateString: string) {
 }
 
 function relatedToolsForSlug(slug: string) {
-  if (slug.includes('url-shortener')) {
+  if (slug.includes('url-shortener') || slug.includes('bitly')) {
     return [
       { name: 'URL Shortener', href: '/url-shortener' },
       { name: 'URL Slug Generator', href: '/url-slug-generator' },
@@ -28,11 +28,58 @@ function relatedToolsForSlug(slug: string) {
       { name: 'Text Tools', href: '/text-tools' },
     ];
   }
+  if (slug.includes('nodejs') || slug.includes('go-lang') || slug.includes('iphone-67w')) {
+    return [
+      { name: 'JSON Formatter', href: '/json-formatter' },
+      { name: 'Developer Tools', href: '/developer-tools' },
+      { name: 'Hash Generator', href: '/hash-generator' },
+    ];
+  }
   return [
     { name: 'All Tools', href: '/tools' },
     { name: 'Developer Tools', href: '/developer-tools' },
     { name: 'Word Counter', href: '/word-counter' },
   ];
+}
+
+function relatedGuidesForSlug(slug: string): { name: string; href: string }[] {
+  if (slug.includes('nodejs')) {
+    return [
+      {
+        name: 'Go language project setup guide',
+        href: '/blog/go-lang-project-setup-2026-guide',
+      },
+      {
+        name: 'Is a 67W charger safe for iPhone?',
+        href: '/blog/iphone-67w-charger-safe-for-iphone-2026-guide',
+      },
+    ];
+  }
+  if (slug.includes('go-lang')) {
+    return [
+      {
+        name: 'Setting up a Node.js project',
+        href: '/blog/setting-up-nodejs-project-step-by-step-guide',
+      },
+      {
+        name: 'Is a 67W charger safe for iPhone?',
+        href: '/blog/iphone-67w-charger-safe-for-iphone-2026-guide',
+      },
+    ];
+  }
+  if (slug.includes('iphone-67w')) {
+    return [
+      {
+        name: 'Setting up a Node.js project',
+        href: '/blog/setting-up-nodejs-project-step-by-step-guide',
+      },
+      {
+        name: 'Go language project setup guide',
+        href: '/blog/go-lang-project-setup-2026-guide',
+      },
+    ];
+  }
+  return [];
 }
 
 type Props = {
@@ -44,6 +91,7 @@ export default function BlogPostView({ post, relatedBlogs }: Props) {
   const imageUrl = resolveBlogImageUrl(post.featuredImage);
   const authorName = post.author?.name || post.author?.email || 'FYN Tools';
   const relatedTools = relatedToolsForSlug(post.slug);
+  const relatedGuides = relatedGuidesForSlug(post.slug);
   const bodyHtml = demoteContentH1ToH2(fixExternalLinks(post.content || post.excerpt));
 
   return (
@@ -128,6 +176,20 @@ export default function BlogPostView({ post, relatedBlogs }: Props) {
             </Link>
           ))}
         </div>
+        {relatedGuides.length > 0 ? (
+          <div className="mt-6">
+            <h2 className="text-xl font-bold mb-3">Related guides</h2>
+            <ul className="space-y-2">
+              {relatedGuides.map((g) => (
+                <li key={g.href}>
+                  <Link href={g.href} className="text-primary hover:underline font-medium">
+                    {g.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </aside>
 
       {relatedBlogs.length > 0 && (

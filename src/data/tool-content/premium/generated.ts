@@ -3767,31 +3767,31 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
     ]
   },
   "/photo-annotation-tool": {
-    "title": "Photo Annotation Tool Free Online",
-    "h1": "Photo Annotation Tool — Free Online Tool",
-    "metaDescription": "Add name, date, signature, and fingerprint to photos. Perfect for passport photos and applications. Free photo annotation tool on FYN Tools. No signup require",
+    "title": "Add Name & Date on Photo Free Online",
+    "h1": "Add Name & Date on Photo — Free Online Tool",
+    "metaDescription": "Add name and date on passport photographs for online application forms. Free add name & date on photo on FYN Tools. No signup required. Fast, mobile-friendly,",
     "keywords": [
-      "photo annotation tool",
-      "free photo annotation tool",
-      "photo annotation tool online",
+      "add name & date on photo",
+      "free add name & date on photo",
+      "add name & date on photo online",
       "image tools",
       "fyn tools"
     ],
     "introParagraphs": [
-      "Photo Annotation Tool helps you add name, date, signature, and fingerprint to photos. perfect for passport photos and applications. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
-      "Search intent for “photo annotation tool” is practical: people want a reliable browser utility without installing software. This page pairs the interactive Photo Annotation Tool with clear steps, examples, FAQs, and links to related image tools tools."
+      "Add Name & Date on Photo helps you add name and date on passport photographs for online application forms. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
+      "Search intent for “add name & date on photo” is practical: people want a reliable browser utility without installing software. This page pairs the interactive Add Name & Date on Photo with clear steps, examples, FAQs, and links to related image tools tools."
     ],
-    "overview": "Photo Annotation Tool runs in your browser as part of the FYN Tools Image Tools suite. Add name, date, signature, and fingerprint to photos. Perfect for passport photos and applications. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
+    "overview": "Add Name & Date on Photo runs in your browser as part of the FYN Tools Image Tools suite. Add name and date on passport photographs for online application forms. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
     "howItWorks": "Open /photo-annotation-tool, enter or upload your input, adjust options if shown, then copy or download the output. Most calculations and transforms update immediately as you type or change settings.",
     "howToUse": [
-      "Open Photo Annotation Tool at /photo-annotation-tool on FYN Tools.",
+      "Open Add Name & Date on Photo at /photo-annotation-tool on FYN Tools.",
       "Enter your input using the fields or upload controls above.",
       "Adjust options if available, then review the live result.",
       "Copy, download, or export the output for your workflow.",
-      "Bookmark /photo-annotation-tool if you use Photo Annotation Tool regularly."
+      "Bookmark /photo-annotation-tool if you use Add Name & Date on Photo regularly."
     ],
     "whenToUse": [
-      "Whenever you need a quick photo annotation tool without installing apps",
+      "Whenever you need a quick add name & date on photo without installing apps",
       "On mobile when you only have a browser tab",
       "During drafting, debugging, or campaign prep workflows",
       "When comparing outputs with other image tools tools on FYN Tools"
@@ -3799,7 +3799,7 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
     "useCases": [
       {
         "title": "Everyday productivity",
-        "description": "Drop Photo Annotation Tool into your daily checklist when you need a trustworthy, fast answer without leaving the browser."
+        "description": "Drop Add Name & Date on Photo into your daily checklist when you need a trustworthy, fast answer without leaving the browser."
       },
       {
         "title": "Team and education",
@@ -3807,7 +3807,7 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
       },
       {
         "title": "Campaign or project bursts",
-        "description": "Use Photo Annotation Tool during launches, homework deadlines, or sprint reviews when speed matters more than heavy desktop suites."
+        "description": "Use Add Name & Date on Photo during launches, homework deadlines, or sprint reviews when speed matters more than heavy desktop suites."
       }
     ],
     "examples": [
@@ -3821,9 +3821,9 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
       }
     ],
     "tips": [
-      "Keep a sample input saved so you can re-test Photo Annotation Tool after changing options.",
+      "Keep a sample input saved so you can re-test Add Name & Date on Photo after changing options.",
       "Prefer HTTPS pages and updated browsers for the smoothest experience.",
-      "Pair Photo Annotation Tool with related tools listed below when your workflow has a next step.",
+      "Pair Add Name & Date on Photo with related tools listed below when your workflow has a next step.",
       "Double-check outputs before publishing or sending to clients."
     ],
     "commonMistakes": [
@@ -3839,7 +3839,7 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
       "Related FYN Tools linked for the next step"
     ],
     "benefits": [
-      "Finish photo annotation tool tasks without installing software.",
+      "Finish add name & date on photo tasks without installing software.",
       "Stay on one trusted domain for multiple utilities.",
       "Learn the workflow from examples and FAQs without leaving the tool."
     ],
@@ -3852,27 +3852,27 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
     ],
     "faqs": [
       {
-        "question": "What does Photo Annotation Tool do?",
-        "answer": "Add name, date, signature, and fingerprint to photos. Perfect for passport photos and applications. It is part of our Image Tools collection on FYN Tools (/photo-annotation-tool)."
+        "question": "What does Add Name & Date on Photo do?",
+        "answer": "Add name and date on passport photographs for online application forms. It is part of our Image Tools collection on FYN Tools (/photo-annotation-tool)."
       },
       {
-        "question": "Is Photo Annotation Tool free on FYN Tools?",
-        "answer": "Yes. Photo Annotation Tool is free to use in your browser with no mandatory account for normal interactive use."
+        "question": "Is Add Name & Date on Photo free on FYN Tools?",
+        "answer": "Yes. Add Name & Date on Photo is free to use in your browser with no mandatory account for normal interactive use."
       },
       {
-        "question": "Does Photo Annotation Tool upload my data to a server?",
-        "answer": "Photo Annotation Tool is designed for browser-side processing whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool."
+        "question": "Does Add Name & Date on Photo upload my data to a server?",
+        "answer": "Add Name & Date on Photo is designed for browser-side processing whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool."
       },
       {
-        "question": "Can I use Photo Annotation Tool on mobile?",
+        "question": "Can I use Add Name & Date on Photo on mobile?",
         "answer": "Yes. Open /photo-annotation-tool on a modern phone or tablet browser — the layout adapts to smaller screens."
       },
       {
-        "question": "How do I get the best results with Photo Annotation Tool?",
+        "question": "How do I get the best results with Add Name & Date on Photo?",
         "answer": "Enter values exactly as labeled in the tool panel, review the live output, then copy or download. Bookmark /photo-annotation-tool if you reuse this workflow regularly."
       },
       {
-        "question": "What file types does Photo Annotation Tool support?",
+        "question": "What file types does Add Name & Date on Photo support?",
         "answer": "Supported formats depend on the tool — check the upload area on /photo-annotation-tool. Very large files may be limited by your device memory or browser."
       }
     ],
@@ -3908,10 +3908,10 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
         "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size"
       }
     ],
-    "conclusion": "Use Photo Annotation Tool above for a fast, free result, then explore related image tools tools on FYN Tools when your workflow continues.",
+    "conclusion": "Use Add Name & Date on Photo above for a fast, free result, then explore related image tools tools on FYN Tools when your workflow continues.",
     "deepParagraphs": [
-      "Google rewards pages that put the useful tool first and explain the topic with unique detail. This Photo Annotation Tool page follows that pattern: interactive UI, then how-to, overview, examples, FAQs, and internal links — not thin keyword stuffing.",
-      "If you arrived from a search for photo annotation tool, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /photo-annotation-tool (no tracking query strings)."
+      "Google rewards pages that put the useful tool first and explain the topic with unique detail. This Add Name & Date on Photo page follows that pattern: interactive UI, then how-to, overview, examples, FAQs, and internal links — not thin keyword stuffing.",
+      "If you arrived from a search for add name & date on photo, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /photo-annotation-tool (no tracking query strings)."
     ]
   },
   "/background-remover": {
@@ -4944,154 +4944,6 @@ export const generatedPremiumToolSeo: Record<string, PremiumPartial> = {
     "deepParagraphs": [
       "Google rewards pages that put the useful tool first and explain the topic with unique detail. This Image Resizer page follows that pattern: interactive UI, then how-to, overview, examples, FAQs, and internal links — not thin keyword stuffing.",
       "If you arrived from a search for image resizer, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /image-resizer (no tracking query strings)."
-    ]
-  },
-  "/add-name-date-photo": {
-    "title": "Add Name & Date on Photo Free Online",
-    "h1": "Add Name & Date on Photo — Free Online Tool",
-    "metaDescription": "Add name and date on passport photographs for online application forms. Free add name & date on photo on FYN Tools. No signup required. Fast, mobile-friendly,",
-    "keywords": [
-      "add name & date on photo",
-      "free add name & date on photo",
-      "add name & date on photo online",
-      "image tools",
-      "fyn tools"
-    ],
-    "introParagraphs": [
-      "Add Name & Date on Photo helps you add name and date on passport photographs for online application forms. On FYN Tools the live workspace sits directly under this heading so you can get a result in seconds, then read how the tool works, when to use it, and common mistakes to avoid.",
-      "Search intent for “add name & date on photo” is practical: people want a reliable browser utility without installing software. This page pairs the interactive Add Name & Date on Photo with clear steps, examples, FAQs, and links to related image tools tools."
-    ],
-    "overview": "Add Name & Date on Photo runs in your browser as part of the FYN Tools Image Tools suite. Add name and date on passport photographs for online application forms. Use the controls above for everyday tasks; keep sensitive production secrets offline.",
-    "howItWorks": "Open /add-name-date-photo, enter or upload your input, adjust options if shown, then copy or download the output. Most calculations and transforms update immediately as you type or change settings.",
-    "howToUse": [
-      "Open Add Name & Date on Photo at /add-name-date-photo on FYN Tools.",
-      "Enter your input using the fields or upload controls above.",
-      "Adjust options if available, then review the live result.",
-      "Copy, download, or export the output for your workflow.",
-      "Bookmark /add-name-date-photo if you use Add Name & Date on Photo regularly."
-    ],
-    "whenToUse": [
-      "Whenever you need a quick add name & date on photo without installing apps",
-      "On mobile when you only have a browser tab",
-      "During drafting, debugging, or campaign prep workflows",
-      "When comparing outputs with other image tools tools on FYN Tools"
-    ],
-    "useCases": [
-      {
-        "title": "Everyday productivity",
-        "description": "Drop Add Name & Date on Photo into your daily checklist when you need a trustworthy, fast answer without leaving the browser."
-      },
-      {
-        "title": "Team and education",
-        "description": "Share /add-name-date-photo with teammates or students so everyone uses the same free utility and instructions."
-      },
-      {
-        "title": "Campaign or project bursts",
-        "description": "Use Add Name & Date on Photo during launches, homework deadlines, or sprint reviews when speed matters more than heavy desktop suites."
-      }
-    ],
-    "examples": [
-      {
-        "input": "Typical inputs for Add Name & Date on Photo",
-        "output": "Instant breakdown with clear units — copy or screenshot results"
-      },
-      {
-        "input": "Change one field",
-        "output": "Live recalculation without page reload"
-      }
-    ],
-    "tips": [
-      "Keep a sample input saved so you can re-test Add Name & Date on Photo after changing options.",
-      "Prefer HTTPS pages and updated browsers for the smoothest experience.",
-      "Pair Add Name & Date on Photo with related tools listed below when your workflow has a next step.",
-      "Double-check outputs before publishing or sending to clients."
-    ],
-    "commonMistakes": [
-      "Pasting highly sensitive secrets into any online tool",
-      "Assuming desktop-only features exist — this is a focused web utility",
-      "Skipping the FAQ when an option label is unclear",
-      "Forgetting to copy results before refreshing the tab"
-    ],
-    "advantages": [
-      "Free to use with no mandatory account",
-      "Works on modern mobile and desktop browsers",
-      "Clear how-to, examples, and FAQs on the same page",
-      "Related FYN Tools linked for the next step"
-    ],
-    "benefits": [
-      "Finish add name & date on photo tasks without installing software.",
-      "Stay on one trusted domain for multiple utilities.",
-      "Learn the workflow from examples and FAQs without leaving the tool."
-    ],
-    "features": [
-      "Interactive tool above the fold",
-      "Mobile-friendly layout",
-      "One-click copy and download",
-      "Privacy-minded browser processing when possible",
-      "Related tools and guides when available"
-    ],
-    "faqs": [
-      {
-        "question": "What does Add Name & Date on Photo do?",
-        "answer": "Add name and date on passport photographs for online application forms. It is part of our Image Tools collection on FYN Tools (/add-name-date-photo)."
-      },
-      {
-        "question": "Is Add Name & Date on Photo free on FYN Tools?",
-        "answer": "Yes. Add Name & Date on Photo is free to use in your browser with no mandatory account for normal interactive use."
-      },
-      {
-        "question": "Does Add Name & Date on Photo upload my data to a server?",
-        "answer": "Add Name & Date on Photo is designed for browser-side processing whenever possible. Avoid pasting production secrets or highly sensitive personal data into any online tool."
-      },
-      {
-        "question": "Can I use Add Name & Date on Photo on mobile?",
-        "answer": "Yes. Open /add-name-date-photo on a modern phone or tablet browser — the layout adapts to smaller screens."
-      },
-      {
-        "question": "How do I get the best results with Add Name & Date on Photo?",
-        "answer": "Enter values exactly as labeled in the tool panel, review the live output, then copy or download. Bookmark /add-name-date-photo if you reuse this workflow regularly."
-      },
-      {
-        "question": "What file types does Add Name & Date on Photo support?",
-        "answer": "Supported formats depend on the tool — check the upload area on /add-name-date-photo. Very large files may be limited by your device memory or browser."
-      }
-    ],
-    "relatedTools": [
-      {
-        "name": "Image Compressor",
-        "href": "/image-compressor",
-        "description": "Compress images to reduce file size while maintaining quality. Convert MB images to KB for"
-      },
-      {
-        "name": "Logo to Favicon Converter",
-        "href": "/logo-to-favicon",
-        "description": "Convert your logo into multiple favicon sizes for websites and apps. Generate 16x16, 32x32"
-      },
-      {
-        "name": "Image Upscaler",
-        "href": "/image-upscaler",
-        "description": "Upscale and enhance image quality using advanced interpolation techniques. Increase image "
-      },
-      {
-        "name": "Image Cropper & Resizer",
-        "href": "/image-cropper",
-        "description": "Crop and resize images for social media platforms. Perfect dimensions for Instagram, Faceb"
-      },
-      {
-        "name": "Image Format Converter",
-        "href": "/image-format-converter",
-        "description": "Convert images between JPG, PNG, WebP formats with quality control. Fast and secure online"
-      },
-      {
-        "name": "SVG Optimizer",
-        "href": "/svg-optimizer",
-        "description": "Optimize SVG files by removing unused attributes, comments, and metadata. Reduce file size"
-      }
-    ],
-    "conclusion": "Use Add Name & Date on Photo above for a fast, free result, then explore related image tools tools on FYN Tools when your workflow continues.",
-    "deepParagraphs": [
-      "Google rewards pages that put the useful tool first and explain the topic with unique detail. This Add Name & Date on Photo page follows that pattern: interactive UI, then how-to, overview, examples, FAQs, and internal links — not thin keyword stuffing.",
-      "If you arrived from a search for add name & date on photo, start with the tool, then skim FAQs for limits, privacy, and mobile tips. Update bookmarks to the canonical path /add-name-date-photo (no tracking query strings)."
     ]
   },
   "/qr-scanner": {

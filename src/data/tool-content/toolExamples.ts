@@ -616,7 +616,7 @@ export const PATH_EXAMPLES: Record<string, ToolIoExample[]> = {
       output: 'Annotated image download',
     },
     {
-      input: 'Open /add-name-date-photo and run a second sample',
+      input: 'Open /photo-annotation-tool and run a second sample',
       output: 'Annotated image download (iterate settings if the tool has options)',
     },
   ],

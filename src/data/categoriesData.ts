@@ -73,11 +73,14 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     metaDescription: 'Network utilities on FYNTools including IP lookup and IP address to location finder. Inspect connection details quickly in your browser.',
     h1: 'Free Online Network Tools',
     categories: ['Network Tools'],
-    intro: 'Investigate IP addresses and approximate locations with FYNTools network utilities. Useful for debugging, analytics sanity checks, and learning how public IP metadata works.',
+    intro:
+      'Investigate IP addresses and approximate locations with FYNTools network utilities. Useful for debugging, analytics sanity checks, and learning how public IP metadata works. Start with IP Lookup to see your public address, then open IP Address to Location Finder when you need a country or city estimate for a client IP. These tools run in the browser so you can compare results side by side without installing desktop network suites. They are educational helpers—not a replacement for enterprise monitoring, firewall logs, or professional penetration-testing platforms.',
     keywords: ['network tools', 'ip lookup', 'ip location', 'online network utilities'],
     faqs: [
       { question: 'How accurate is IP location?', answer: 'IP geolocation is approximate and can reflect ISP routing rather than exact street addresses.' },
       { question: 'Can I look up any IP?', answer: 'Public lookup tools work with public IPs. Private/reserved ranges will not resolve meaningfully.' },
+      { question: 'Do these tools store my IP history?', answer: 'Lookups are intended for on-demand checks. Avoid pasting sensitive infrastructure details into shared devices, and clear the tab when finished.' },
+      { question: 'When should I use IP Lookup vs location finder?', answer: 'Use IP Lookup to confirm the public address you are currently egressing from. Use the location finder when you already have an IP string and need a rough geographic label for support or analytics triage.' },
     ],
   },
   {
@@ -159,10 +162,14 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     metaDescription: 'Online converters for units, temperature, timestamps, currency, color, and more. Fast accurate conversions in your browser on FYNTools.',
     h1: 'Free Online Converter Tools',
     categories: ['Converter Tools'],
-    intro: 'Convert measurements, temperatures, timestamps, colors, and related values instantly. FYNTools converters are built for students, travelers, and engineers who need quick accurate results.',
+    intro:
+      'Convert measurements, temperatures, timestamps, colors, and related values instantly. FYNTools converters are built for students, travelers, and engineers who need quick accurate results without opening a spreadsheet. Use the Unit Converter for length, weight, and volume; Temperature Converter for °C/°F/K; Timestamp Converter for Unix epoch and human dates; and Color Converter when you move between HEX, RGB, and related formats. Pair converters with Calculator Tools when you still need arithmetic after a unit change. Results are estimates for everyday work—verify critical engineering or financial conversions with your official source of truth.',
     keywords: ['converter tools', 'unit converter', 'temperature converter', 'timestamp converter'],
     faqs: [
-      { question: 'Which unit converter should I use?', answer: 'Use Enhanced Unit Converter for broad measurement sets and Temperature Converter for °C/°F/K focused work.' },
+      { question: 'Which unit converter should I use?', answer: 'Use Unit Converter for broad measurement sets and Temperature Converter for °C/°F/K focused work.' },
+      { question: 'Are currency rates live?', answer: 'Currency conversion depends on the rates available to the tool at request time. Treat outputs as planning estimates, not bank settlement figures.' },
+      { question: 'Do converters work offline?', answer: 'Most conversion math runs in your browser after the page loads. A short first load still needs network access to fetch the tool page.' },
+      { question: 'Can I convert timestamps for different time zones?', answer: 'Open Timestamp Converter, enter the epoch or date string, and review the human-readable output. Confirm zone offsets with your system clock when scheduling across regions.' },
     ],
   },
   {
@@ -188,10 +195,14 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     metaDescription: 'Improve typing speed and accuracy with typing test, tutor, games, and competition modes — free on FYNTools.',
     h1: 'Free Online Typing Tools',
     categories: ['Typing Tools'],
-    intro: 'Build WPM and accuracy with structured practice. Take a typing test, follow tutor lessons, play typing games, or compete — all free in the browser.',
+    intro:
+      'Build WPM and accuracy with structured practice. Take a typing test to measure baseline speed, follow tutor lessons for finger placement, play typing games when you need variety, or join competition modes for a timed challenge—all free in the browser on FYN Tools. Short daily sessions beat rare marathon drills: warm up for five minutes, run one measured test, then review mistakes before closing the tab. These tools are ideal for students, remote workers, and anyone improving keyboard fluency without installing desktop typing software.',
     keywords: ['typing test', 'typing tutor', 'typing games', 'wpm test'],
     faqs: [
       { question: 'How often should I practice?', answer: 'Short daily sessions beat rare marathon drills. Track progress with Typing Test weekly.' },
+      { question: 'What WPM should I aim for?', answer: 'Many office workflows feel comfortable around 40–60 WPM with high accuracy. Prioritize fewer errors before chasing raw speed.' },
+      { question: 'Do I need an account to save scores?', answer: 'You can practice immediately without signup. Note scores locally or screenshot results if you want a personal log.' },
+      { question: 'Which tool should beginners open first?', answer: 'Start with Typing Tutor for form, then Typing Test for a baseline WPM, then games or competition once accuracy stabilizes.' },
     ],
   },
   {
@@ -245,10 +256,14 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     metaDescription: 'Online stopwatch and countdown timer for workouts, study sessions, cooking, and productivity — free on FYNTools.',
     h1: 'Free Online Timer Tools',
     categories: ['Timer Tools'],
-    intro: 'Time focused work, workouts, and kitchen tasks with a clean stopwatch and countdown timer that run in your browser.',
+    intro:
+      'Time focused work, workouts, and kitchen tasks with a clean stopwatch and countdown timer that run in your browser. Use Stopwatch when you need elapsed time for intervals or study blocks, and Countdown Timer when you are counting down to a deadline, stretch, or cooking step. Keep the timer tab visible for critical sessions—background browser throttling can pause or slow timers in inactive tabs. Pair timers with Todo List or Daily Task Report tools when you are structuring a full productivity routine on FYN Tools.',
     keywords: ['stopwatch online', 'countdown timer', 'online timer'],
     faqs: [
       { question: 'Do timers keep running if I switch tabs?', answer: 'Browser throttling may affect background tabs; keep the timer tab active for critical timing.' },
+      { question: 'Can I use these timers on mobile?', answer: 'Yes. Open Stopwatch or Countdown Timer in a modern mobile browser. Avoid locking the screen during important countdowns.' },
+      { question: 'Is there an account requirement?', answer: 'No. Both timer tools are free to use without signup on FYN Tools.' },
+      { question: 'Stopwatch vs countdown — which should I pick?', answer: 'Choose Stopwatch to measure how long a task takes. Choose Countdown when you already know the target duration and need an alert when time expires.' },
     ],
   },
   {
@@ -273,10 +288,14 @@ export const CATEGORY_HUBS: CategoryHub[] = [
     metaDescription: 'Business helpers including invoice generator and business idea generator. Create documents and brainstorm concepts free on FYNTools.',
     h1: 'Free Online Business Tools',
     categories: ['Business Tools'],
-    intro: 'Support freelance and small-business workflows with invoice generation and idea brainstorming tools that stay accessible in the browser.',
+    intro:
+      'Support freelance and small-business workflows with invoice generation and idea brainstorming tools that stay accessible in the browser. Draft a professional invoice for a client, export or copy the details you need, then switch to the Business Idea Generator when you are exploring product angles or side projects. These utilities are designed for speed—not as a full accounting suite—so always confirm tax fields, legal wording, and payment terms for your jurisdiction. Pair business tools with PDF Compressor or Image Resizer when you need attachments that meet upload size limits.',
     keywords: ['business tools', 'invoice generator', 'business idea generator'],
     faqs: [
       { question: 'Are invoices legally valid?', answer: 'Templates help you draft; ensure tax fields meet your local requirements.' },
+      { question: 'Can I use the invoice tool for freelancing?', answer: 'Yes. Many freelancers draft invoices in the browser, then paste totals into their bookkeeping app or PDF workflow.' },
+      { question: 'Does idea generation replace market research?', answer: 'No. Treat generated ideas as brainstorming prompts. Validate demand, costs, and regulations before investing.' },
+      { question: 'Do business tools require an account?', answer: 'No. Open Invoice Generator or Business Idea Generator on FYN Tools and start without signup.' },
     ],
   },
   {
@@ -300,7 +319,7 @@ export function getCategoryHub(slugOrPath: string): CategoryHub | undefined {
   return CATEGORY_HUBS.find((h) => h.slug === key || h.path === `/${key}` || h.path === slugOrPath);
 }
 
-const HIDDEN_FROM_HUBS = new Set(['/enhanced-unit-converter', '/add-name-date-photo']);
+const HIDDEN_FROM_HUBS = new Set(['enhanced-unit-converter', 'add-name-date-photo']);
 
 export function getToolsForHub(hub: CategoryHub): Tool[] {
   const byCategory = allTools.filter((t) => hub.categories.includes(t.category));
@@ -309,7 +328,7 @@ export function getToolsForHub(hub: CategoryHub): Tool[] {
     .filter(Boolean) as Tool[];
   const map = new Map<string, Tool>();
   [...byCategory, ...extras].forEach((t) => {
-    if (!HIDDEN_FROM_HUBS.has(t.path)) map.set(t.path, t);
+    if (!HIDDEN_FROM_HUBS.has(t.id)) map.set(t.path, t);
   });
   return Array.from(map.values());
 }

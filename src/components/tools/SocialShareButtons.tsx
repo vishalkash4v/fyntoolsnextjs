@@ -208,6 +208,7 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
               <span className="mr-2" aria-hidden="true">
                 {Icons[platform.id as keyof typeof Icons]}
               </span>
+              <span className="sr-only">Share image on {platform.label}</span>
               {platform.label}
             </Button>
           ))}
@@ -228,6 +229,7 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
               <span className="mr-2" aria-hidden="true">
                 {Icons[platform.id as keyof typeof Icons]}
               </span>
+              <span className="sr-only">Share text on {platform.label}</span>
               {platform.label}
             </Button>
           ))}

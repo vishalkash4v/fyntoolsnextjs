@@ -61,7 +61,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
               "output": "Annotated image download"
           },
           {
-              "input": "Open /add-name-date-photo and use the live controls",
+              "input": "Open /photo-annotation-tool and use the live controls",
               "output": "Annotated image download"
           }
       ],
