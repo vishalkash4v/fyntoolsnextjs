@@ -63,6 +63,7 @@ export default async function ToolStaticPage({ slug, toolClient }: ToolStaticPag
       })),
       datePublished: fullSeo?.datePublished,
       dateModified: fullSeo?.dateModified,
+      keywords: fullSeo?.keywords,
       authorUrl,
       authorName: author?.name,
       ratingValue: reviewStats?.ratingValue,

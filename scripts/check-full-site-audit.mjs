@@ -183,8 +183,27 @@ function main() {
       descriptions.get(key).push(slug);
     }
 
-    if (!canonical && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin') && !slug.startsWith('/s/') && slug !== '/themes' && slug !== '/redirect' && slug !== '/deep-link-redirect') {
+    const indexable =
+      !INTERNAL_PAGES.has(slug) &&
+      !slug.startsWith('/fyntoolsadmin') &&
+      !slug.startsWith('/s/') &&
+      slug !== '/themes' &&
+      slug !== '/redirect' &&
+      slug !== '/deep-link-redirect';
+    if (!canonical && indexable) {
       pageIssues.push({ severity: 'error', msg: 'Missing canonical' });
+    }
+    if (
+      canonical &&
+      indexable &&
+      !canonical.startsWith('https://fyntools.com/') &&
+      canonical !== 'https://fyntools.com' &&
+      canonical !== 'https://fyntools.com/'
+    ) {
+      pageIssues.push({
+        severity: 'error',
+        msg: `Canonical must be https://fyntools.com (got ${canonical})`,
+      });
     }
 
     if (!h1 && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin') && !slug.startsWith('/s/')) {

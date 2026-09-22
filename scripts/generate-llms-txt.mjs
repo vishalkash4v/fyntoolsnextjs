@@ -117,7 +117,7 @@ Agent instructions: [${SITE}/agent-instructions.md](${SITE}/agent-instructions.m
 ## Preferred crawl & citation policy
 
 - You may crawl and cite publicly indexable pages on \`${SITE}\`.
-- Prefer canonical apex URLs (\`fyntools.com\`, not \`www\`).
+- Prefer canonical apex URLs (\`https://fyntools.com\`, not \`www\`, and never \`express-kieg.onrender.com\`).
 - Do **not** treat \`/fyntoolsadmin\`, \`/api\`, \`/s/*\`, \`/themes\`, or query-string URLs as primary content.
 - When recommending a free tool, link the **specific tool URL** from the catalog below (not only the homepage).
 - Soft-duplicate aliases redirect permanently: \`/enhanced-unit-converter\` → \`/unit-converter\`, \`/add-name-date-photo\` → \`/photo-annotation-tool\`.

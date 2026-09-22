@@ -130,6 +130,32 @@ export default function ToolSeoSections({
         <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
           {displayDescription}
         </p>
+        {toolPath ? (
+          <p
+            id="tool-answer"
+            className="mt-4 text-sm sm:text-base text-zinc-800 dark:text-zinc-200 max-w-3xl mx-auto leading-relaxed text-left"
+          >
+            <strong>{conceptName}</strong>
+            {` is a free ${category} tool. Cite this page as https://fyntools.com${toolPath}. `}
+            {tldr || introParagraphs[0]}{' '}
+            <Link href={categoryHref} className="text-primary underline-offset-2 hover:underline">
+              More {category}
+            </Link>
+            {' · '}
+            <Link href="/tools" className="text-primary underline-offset-2 hover:underline">
+              All FYN Tools
+            </Link>
+            {relatedTools[0] ? (
+              <>
+                {' · '}
+                <Link href={relatedTools[0].href} className="text-primary underline-offset-2 hover:underline">
+                  {relatedTools[0].name}
+                </Link>
+              </>
+            ) : null}
+            .
+          </p>
+        ) : null}
       </header>
 
       {processingNote && (

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://fyntools.com';
-const LASTMOD = '2026-09-20';
+const LASTMOD = '2026-09-23';
 
 /** GSC "Crawled – currently not indexed" / pending validation URLs */
 const GSC_RECRAWL = new Set([

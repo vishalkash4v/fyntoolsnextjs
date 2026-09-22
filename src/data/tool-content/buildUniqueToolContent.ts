@@ -31,6 +31,8 @@ import { interpolateFactSeo, TOOL_FACT_CARDS } from '@/data/tool-content/toolFac
 
 /** Shell / sitewide SEO upgrade date — bump when Phase content batches ship. */
 export const SEO_SHELL_DATE = '2026-09-03';
+/** Visible freshness date after the canonical-host fix. */
+export const SEO_REFRESH_DATE = '2026-09-23';
 
 function containsTemplatePhrase(text: string): boolean {
   const markers = [
@@ -403,7 +405,7 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     (premium?.ioContract && !weakBatch ? premium.ioContract : null) ||
     defaultIoContract(tool);
   const datePublished = premium?.datePublished || SEO_SHELL_DATE;
-  const dateModified = premium?.dateModified || SEO_SHELL_DATE;
+  const dateModified = SEO_REFRESH_DATE;
 
   return {
     title,

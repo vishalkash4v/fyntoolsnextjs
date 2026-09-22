@@ -140,6 +140,7 @@ export function buildToolJsonLd(opts: {
   faqs: FaqItem[];
   includeHowTo?: boolean;
   relatedTools?: { name: string; url: string }[];
+  keywords?: string[];
   ratingValue?: number;
   ratingCount?: number;
   datePublished?: string;
@@ -168,6 +169,11 @@ export function buildToolJsonLd(opts: {
     primaryImageOfPage: absoluteUrl('/opengraph-image'),
     inLanguage: 'en-US',
     isAccessibleForFree: true,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#tool-answer', '#faq'],
+    },
+    ...(opts.keywords?.length ? { keywords: opts.keywords.slice(0, 12).join(', ') } : {}),
     ...(published ? { datePublished: published } : {}),
     ...(modified ? { dateModified: modified } : {}),
     publisher: { '@id': ORG_ID },
