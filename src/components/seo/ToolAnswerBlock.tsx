@@ -1,5 +1,3 @@
-import { getCanonicalUrl } from '@/lib/seo-config';
-
 type Props = {
   toolName: string;
   category: string;
@@ -11,7 +9,7 @@ type Props = {
 
 /**
  * AEO / GEO citeable answer — AI engines chunk this block for citations.
- * Keep two authoritative sentences + exact fyntools.com URL.
+ * Use descriptive anchor text (never naked self-URLs) so Semrush #216 stays clean.
  */
 export default function ToolAnswerBlock({
   toolName,
@@ -22,7 +20,6 @@ export default function ToolAnswerBlock({
   relatedName,
 }: Props) {
   const path = toolPath.startsWith('/') ? toolPath : `/${toolPath}`;
-  const canonical = getCanonicalUrl(path);
   const hubHint = category;
 
   return (
@@ -34,11 +31,11 @@ export default function ToolAnswerBlock({
     >
       <p itemProp="text">
         <strong itemProp="name">{toolName}</strong>
-        {` on FYN Tools is a free ${hubHint} utility at `}
-        <a href={canonical} className="text-primary underline-offset-2 hover:underline" itemProp="url">
-          {canonical}
+        {` on FYN Tools is a free ${hubHint} utility. `}
+        <a href={path} className="text-primary underline-offset-2 hover:underline" itemProp="url">
+          Open {toolName}
         </a>
-        {`. ${summary.trim()}`}
+        {` in your browser — no signup required. ${summary.trim()}`}
         {relatedHref && relatedName ? (
           <>
             {' '}

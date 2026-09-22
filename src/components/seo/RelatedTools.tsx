@@ -60,8 +60,12 @@ export default function RelatedTools({
         Browse more{' '}
         <Link href={hubPath} className="text-primary underline-offset-2 hover:underline">
           free {category}
-        </Link>{' '}
-        or the full{' '}
+        </Link>
+        , the{' '}
+        <Link href="/" className="text-primary underline-offset-2 hover:underline">
+          FYN Tools homepage
+        </Link>
+        , or the full{' '}
         <Link href="/tools" className="text-primary underline-offset-2 hover:underline">
           FYN Tools catalog
         </Link>

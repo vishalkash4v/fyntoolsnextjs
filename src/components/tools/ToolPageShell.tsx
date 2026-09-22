@@ -62,11 +62,10 @@ export default function ToolPageShell({
               id="tool"
               className="mb-8 sm:mb-10 md:mb-12 w-full px-4 sm:px-6 md:px-8 min-h-[560px]"
             >
-              <div className="mx-auto w-full max-w-6xl">
+              <div className="mx-auto w-full max-w-6xl space-y-4">
                 {toolClient}
                 {factProps ? <ToolFactCard {...factProps} /> : null}
-              </div>
-              <div className="sr-only">
+                {/* Visible overview (not sr-only) so Semrush text/HTML ratio counts this copy. */}
                 <ToolCrawlerFallback slug={slug} />
               </div>
             </section>
@@ -88,10 +87,7 @@ export default function ToolPageShell({
             variant="full"
           />
         </div>
-        <div
-          className="px-4 sm:px-6 md:px-8 mb-10"
-          style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1px' }}
-        >
+        <div className="px-4 sm:px-6 md:px-8 mb-10 cv-auto-ads">
           <DeferredAdSense className="max-w-3xl mx-auto" minHeight={280} />
         </div>
       </article>

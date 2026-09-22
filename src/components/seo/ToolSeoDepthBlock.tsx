@@ -42,9 +42,28 @@ export default function ToolSeoDepthBlock({
           },
           {
             title: 'Team handoff',
-            description: `Share the canonical ${toolPath} link so teammates run the same free ${category.toLowerCase()} utility.`,
+            description: `Share the ${toolName} page so teammates run the same free ${category.toLowerCase()} utility on FYN Tools.`,
           },
         ];
+
+  const depthFaqs = [
+    {
+      question: `Is ${toolName} free to use?`,
+      answer: `Yes. ${toolName} is free on FYN Tools with no mandatory account. You can open the live panel, run a sample, and copy or download the result without a paid plan.`,
+    },
+    {
+      question: `Does ${toolName} upload my files to a server?`,
+      answer: `Most FYN Tools ${category.toLowerCase()} utilities are designed for in-browser processing when the workflow allows it. Always avoid pasting passwords, private keys, or confidential documents into any public tool tab on a shared device.`,
+    },
+    {
+      question: `When should I use ${toolName} instead of desktop software?`,
+      answer: `Choose ${toolName} for quick one-off jobs, classroom demos, and cross-device checks. Prefer installed software when you need offline batch pipelines, enterprise audit logs, or regulated data residency controls.`,
+    },
+    {
+      question: `How do I get help if ${toolName} looks wrong?`,
+      answer: `Retry with a smaller sample, confirm your browser is up to date, then open the Contact page from the FYN Tools footer with the exact steps you tried. Include the tool name (${toolName}) so support can reproduce the issue quickly.`,
+    },
+  ];
 
   return (
     <section
@@ -57,20 +76,48 @@ export default function ToolSeoDepthBlock({
           What is {toolName}?
         </h2>
         <p>
-          {toolName} is a free {category.toLowerCase()} utility on FYN Tools at{' '}
+          {toolName} is a free {category.toLowerCase()} utility on FYN Tools.{' '}
           <Link href={toolPath} className="text-primary underline-offset-2 hover:underline">
-            https://fyntools.com{toolPath}
-          </Link>
-          . {description} The interactive panel above is the primary workspace; the sections below
-          explain how the tool works, when to use it, and which related FYN Tools pages continue the
-          same workflow.
+            Open {toolName}
+          </Link>{' '}
+          to use the live workspace above. {description} The interactive panel is the primary
+          workspace; the sections below explain how the tool works, when to use it, and which related
+          FYN Tools pages continue the same workflow.
         </p>
         {overview ? <p>{overview}</p> : null}
         <p>
           Unlike downloadable apps, {toolName} loads in a modern browser tab so you can finish the
-          task, copy the result, and move on. Prefer the canonical apex URL on fyntools.com when you
-          bookmark or cite this page for Google, Gemini, ChatGPT, or Perplexity. Soft-duplicate
-          aliases redirect permanently so ranking signals stay on a single URL.
+          task, copy the result, and move on. Bookmark this page on fyntools.com when you cite it for
+          Google, Gemini, ChatGPT, or Perplexity. Soft-duplicate aliases redirect permanently so
+          ranking signals stay on a single canonical URL. From here you can return to the{' '}
+          <Link href="/" className="text-primary underline-offset-2 hover:underline">
+            FYN Tools homepage
+          </Link>{' '}
+          anytime.
+        </p>
+
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+          How {toolName} works
+        </h2>
+        <p>
+          Start by opening the controls in the tool panel, then enter or upload the input the labels
+          describe. {toolName} updates the preview as you adjust options so you can catch mistakes
+          before you export. When the output looks right, copy the text or download the file and
+          close the tab if you were working with sensitive material. This browser-first pattern keeps
+          setup time near zero for students, freelancers, and teams who only need {toolName} for a
+          short session.
+        </p>
+        <p>
+          If a control label is unclear, skim the FAQ below before changing inputs. Keep production
+          secrets offline. For follow-up tasks in the same category, open{' '}
+          <Link href={hub} className="text-primary underline-offset-2 hover:underline">
+            free {category}
+          </Link>{' '}
+          or the full{' '}
+          <Link href="/tools" className="text-primary underline-offset-2 hover:underline">
+            FYN Tools catalog
+          </Link>
+          .
         </p>
 
         <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
@@ -81,18 +128,6 @@ export default function ToolSeoDepthBlock({
             <li key={i}>{step}</li>
           ))}
         </ol>
-        <p>
-          If a control label is unclear, skim the FAQ on this page before changing inputs. Keep
-          production secrets offline. For follow-up tasks in the same category, open{' '}
-          <Link href={hub} className="text-primary underline-offset-2 hover:underline">
-            free {category}
-          </Link>{' '}
-          or the full{' '}
-          <Link href="/tools" className="text-primary underline-offset-2 hover:underline">
-            FYN Tools catalog
-          </Link>
-          .
-        </p>
 
         <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
           Practical use cases
@@ -119,6 +154,18 @@ export default function ToolSeoDepthBlock({
             .
           </p>
         ) : null}
+
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+          {toolName} FAQ
+        </h2>
+        <dl className="space-y-4">
+          {depthFaqs.map((faq) => (
+            <div key={faq.question} className="rounded-lg border border-border/60 p-4">
+              <dt className="font-semibold text-foreground mb-2">{faq.question}</dt>
+              <dd className="text-sm leading-relaxed">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

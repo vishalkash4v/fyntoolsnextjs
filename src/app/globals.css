@@ -1341,4 +1341,23 @@ html {
     }
   }
 
+  /* Deferred below-fold sections — keeps LCP clean without inline style attributes */
+  .cv-auto-480 {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 480px;
+  }
 
+  .cv-auto-420 {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 420px;
+  }
+
+  .cv-auto-220 {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 220px;
+  }
+
+  .cv-auto-ads {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 1px;
+  }

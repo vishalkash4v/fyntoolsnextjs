@@ -37,14 +37,9 @@ function Section({
   children: React.ReactNode;
   asCard?: boolean;
 }) {
-  // content-visibility keeps below-fold SEO paint off the critical path (LCP/CLS)
-  const sectionStyle = {
-    contentVisibility: 'auto' as const,
-    containIntrinsicSize: '0 480px',
-  };
   if (!asCard) {
     return (
-      <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8" style={sectionStyle}>
+      <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8 cv-auto-480">
         <div className="mx-auto w-full max-w-6xl">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">{title}</h2>
           <div className="space-y-4 text-zinc-700 dark:text-zinc-300 leading-relaxed">{children}</div>
@@ -53,7 +48,7 @@ function Section({
     );
   }
   return (
-    <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8" style={sectionStyle}>
+    <section id={id} className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8 cv-auto-480">
       <div className="mx-auto w-full max-w-6xl rounded-xl border bg-card text-card-foreground shadow-sm">
         <div className="p-6 pb-3">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">{title}</h2>
@@ -320,8 +315,7 @@ export default function ToolSeoSections({
       {/* 6. FAQ */}
       <section
         id="faqs"
-        className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8"
-        style={{ contentVisibility: 'auto', containIntrinsicSize: '0 420px' }}
+        className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8 cv-auto-420"
       >
         <div className="mx-auto w-full max-w-6xl" data-seo="faq">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">

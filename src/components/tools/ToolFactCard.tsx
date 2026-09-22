@@ -82,8 +82,7 @@ export default function ToolFactCard({
   return (
     <aside
       data-seo="fact-card"
-      className="mt-6 rounded-xl border border-border bg-card text-card-foreground"
-      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 220px' }}
+      className="mt-6 rounded-xl border border-border bg-card text-card-foreground cv-auto-220"
       aria-label={`${toolName} quick facts`}
     >
       <div className="px-4 sm:px-5 py-3 border-b border-border flex flex-wrap items-center gap-2 justify-between">

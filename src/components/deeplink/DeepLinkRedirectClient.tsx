@@ -263,7 +263,7 @@ export default function DeepLinkRedirectClient() {
           <p className="text-xs text-center text-muted-foreground mt-4">
             Link made by{' '}
             <a
-              href="https://fyntools.com"
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline font-medium"

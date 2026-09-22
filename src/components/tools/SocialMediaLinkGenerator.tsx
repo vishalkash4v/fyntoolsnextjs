@@ -298,7 +298,7 @@ const SocialMediaLinkGenerator = () => {
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">
                   This smart link will try to open {platformName} app first, then fallback to web browser automatically. 
-                  <span className="block mt-1 text-primary font-medium">🔗 Link made by <a href="https://fyntools.com" target="_blank" rel="noopener noreferrer" className="underline">fyntools.com</a></span>
+                  <span className="block mt-1 text-primary font-medium">🔗 Link made by <a href="/" className="underline">FYN Tools homepage</a></span>
                 </p>
               </div>
 

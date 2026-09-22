@@ -157,10 +157,11 @@ export const blogPosts: BlogPost[] = [
         </div>
 
         <div class="mt-10 mb-8">
-          <h2 class="text-2xl font-bold mb-4">Troubleshooting tips</h2>
+          <h2 class="text-2xl font-bold mb-4">Troubleshooting Common Node.js Errors</h2>
           <p class="mb-4">
             If something fails during setup, work through these checks before rewriting your whole project.
             Most beginner blockers are environment PATH issues, a missing dependency install, or a port already in use.
+            Spending five minutes on diagnosis usually beats recreating the folder from scratch.
           </p>
           <ul class="list-disc pl-6 mb-6 space-y-3">
             <li>
@@ -176,6 +177,9 @@ export const blogPosts: BlogPost[] = [
               <strong>Generator overwrote files:</strong> If you ran <code>npx express-generator</code> inside a non-empty folder, move your work to a fresh directory and regenerate so scaffold files stay consistent.
             </li>
             <li>
+              <strong>Module not found after install:</strong> Delete <code>node_modules</code> and the lockfile only if needed, then run <code>npm i</code> again from the folder that contains <code>package.json</code>. Mixing global and local installs is a common source of confusing require errors.
+            </li>
+            <li>
               <strong>Need a second practice project:</strong> After the server runs, skim our
               <a href="/blog/go-lang-project-setup-2026-guide">Go language project setup guide</a>
               for a parallel backend workflow, or check whether a
@@ -183,9 +187,20 @@ export const blogPosts: BlogPost[] = [
               if you are charging a phone while long compile or install jobs run on a laptop.
             </li>
           </ul>
-          <p class="mb-2">
+          <h2 class="text-2xl font-bold mb-4">Next steps after your first server starts</h2>
+          <p class="mb-4">
             Once <code>npm start</code> prints the nodemon boot lines and the browser loads without an error page,
             your Node.js foundation is solid enough to add routes, middleware, and environment variables next.
+            Create a <code>.env</code> file for secrets, keep <code>node_modules</code> out of git, and add a simple
+            health-check route so you can confirm deploys quickly. When you need to inspect JSON payloads from an API,
+            open the free <a href="/json-formatter">JSON Formatter</a> on FYN Tools; for hashing tokens locally during
+            experiments, try the <a href="/hash-generator">Hash Generator</a>.
+          </p>
+          <p class="mb-2">
+            Treat this guide as a repeatable checklist: create the folder, initialize npm, install Express, generate or
+            hand-write the app skeleton, install dependencies, then verify with <code>npm start</code>. If any step
+            fails, jump back to the troubleshooting list above before changing unrelated files. That habit keeps new
+            Node.js projects predictable whether you are learning alone or pairing with a teammate.
           </p>
         </div>
       </div>

@@ -60,6 +60,13 @@ export function normalizeBlogKeywords(
   return undefined;
 }
 
+function wordCount(html?: string): number {
+  if (!html) return 0;
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!text) return 0;
+  return text.split(' ').filter(Boolean).length;
+}
+
 function mapFallbackPost(p: (typeof fallbackPosts)[number]): PublicBlogPost {
   return {
     _id: p.id,
@@ -83,14 +90,25 @@ function mapFallbackPost(p: (typeof fallbackPosts)[number]): PublicBlogPost {
 }
 
 function sanitizeBlogPost(post: PublicBlogPost): PublicBlogPost {
+  const fallback = fallbackPosts.find((p) => p.slug === post.slug);
+  const apiWords = wordCount(post.content);
+  // Prefer richer local guide copy when the CMS/API body is thin (Semrush #117).
+  const useFallbackBody = Boolean(fallback && apiWords < 250 && wordCount(fallback.content) > apiWords);
+
   return {
     ...post,
-    content: fixExternalLinks(post.content),
-    excerpt: fixExternalLinks(post.excerpt),
-    faqs: post.faqs?.map((f) => ({
-      question: f.question,
-      answer: fixExternalLinks(f.answer),
-    })),
+    content: fixExternalLinks(useFallbackBody ? fallback!.content : post.content),
+    excerpt: fixExternalLinks(post.excerpt || fallback?.description),
+    faqs:
+      post.faqs && post.faqs.length > 0
+        ? post.faqs.map((f) => ({
+            question: f.question,
+            answer: fixExternalLinks(f.answer),
+          }))
+        : fallback?.faqs?.map((f) => ({
+            question: f.question,
+            answer: fixExternalLinks(f.answer),
+          })),
   };
 }
 

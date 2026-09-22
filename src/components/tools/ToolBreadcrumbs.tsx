@@ -23,10 +23,10 @@ const ToolBreadcrumbs: React.FC<ToolBreadcrumbsProps> = ({
       className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground mb-6 ml-[6%] pr-4 max-w-full"
       aria-label="Breadcrumb"
     >
-      <Home className="h-4 w-4 shrink-0" />
-
-      <Link href="/" className="hover:text-primary">
-        Home
+      <Link href="/" className="hover:text-primary inline-flex items-center gap-1">
+        <Home className="h-4 w-4 shrink-0" aria-hidden="true" />
+        <span>Home</span>
+        <span className="sr-only">Go to FYN Tools homepage</span>
       </Link>
 
       {showToolsLink && (
