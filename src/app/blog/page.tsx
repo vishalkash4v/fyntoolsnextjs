@@ -9,7 +9,7 @@ import BlogIndexClient from '@/components/blog/BlogIndexClient';
 export const revalidate = 60;
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'FYN Tools Blog',
+  title: 'Online Tools Blog — Guides & Reviews',
   description:
     'Guides, comparisons, and tips for free online tools from FYN Tools Worldwide — URL shorteners, AI writers, SEO, and more.',
   path: '/blog',

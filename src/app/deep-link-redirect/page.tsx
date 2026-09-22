@@ -9,14 +9,17 @@ export const metadata: Metadata = {
 
 export default function DeepLinkRedirectPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center text-muted-foreground">
-          Preparing deep link…
-        </div>
-      }
-    >
-      <DeepLinkRedirectClient />
-    </Suspense>
+    <div className="min-h-screen">
+      <h1 className="sr-only">Deep Link Redirect</h1>
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+            Preparing deep link…
+          </div>
+        }
+      >
+        <DeepLinkRedirectClient />
+      </Suspense>
+    </div>
   );
 }

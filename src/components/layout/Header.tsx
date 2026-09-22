@@ -20,6 +20,7 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center space-x-3 hover:opacity-90 transition-opacity shrink-0"
+            aria-label="Go to FYN Tools homepage"
           >
             <Image
               src="/logobeta-128.webp"
@@ -30,6 +31,7 @@ export default function Header() {
               priority
               sizes="128px"
             />
+            <span className="sr-only">FYN Tools homepage</span>
           </Link>
 
           <HeaderClient navigation={navigation} />

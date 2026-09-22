@@ -1,5 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: { absolute: '404 — Page Not Found | FYN Tools' },
+  description:
+    'This FYN Tools page could not be found. Browse free online tools, guides, or return home.',
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

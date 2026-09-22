@@ -118,11 +118,14 @@ function isToolPage(slug) {
     '/opengraph-image',
     '/apple-icon.png',
     '/fyntoolsadmin',
+    '/_global-error',
+    '/_not-found',
   ];
   if (skip.includes(slug)) return false;
   if (slug.startsWith('/blog/') || slug.startsWith('/guides/') || slug.startsWith('/author/')) return false;
-  if (slug.startsWith('/s/')) return false;
+  if (slug.startsWith('/s/') || slug.startsWith('/fyntoolsadmin') || slug.startsWith('/api/')) return false;
   if (slug.endsWith('-tools')) return false; // category hub
+  if (slug.startsWith('/_')) return false;
   return true;
 }
 
@@ -165,7 +168,7 @@ function main() {
     const types = getTypes(jsonLd);
 
     const tool = isToolPage(slug);
-    const hub = slug.endsWith('-tools');
+    const hub = slug.endsWith('-tools') && !slug.startsWith('/guides/') && !slug.startsWith('/blog/');
     if (tool) stats.tools++;
     else if (hub) stats.hubs++;
     else stats.marketing++;
@@ -178,16 +181,27 @@ function main() {
     // Meta checks
     if (!title) pageIssues.push({ severity: 'error', msg: 'Missing <title>' });
     else {
-      if (title.length < 20) pageIssues.push({ severity: 'warn', msg: `Title too short (${title.length} chars)` });
-      if (title.length > 70) pageIssues.push({ severity: 'warn', msg: `Title too long (${title.length} chars)` });
+      const skipLen =
+        INTERNAL_PAGES.has(slug) ||
+        slug.startsWith('/fyntoolsadmin') ||
+        slug.startsWith('/s/');
+      if (!skipLen && title.length < 20) {
+        pageIssues.push({ severity: 'warn', msg: `Title too short (${title.length} chars)` });
+      }
+      if (!skipLen && title.length > 70) {
+        pageIssues.push({ severity: 'warn', msg: `Title too long (${title.length} chars)` });
+      }
       const key = title.toLowerCase();
       if (!titles.has(key)) titles.set(key, []);
       titles.get(key).push(slug);
     }
 
-    if (!desc) pageIssues.push({ severity: 'error', msg: 'Missing meta description' });
-    else {
-      if (desc.length < 80) pageIssues.push({ severity: 'warn', msg: `Description short (${desc.length} chars)` });
+    if (!desc && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin')) {
+      pageIssues.push({ severity: 'error', msg: 'Missing meta description' });
+    } else if (desc) {
+      if (desc.length < 80 && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin')) {
+        pageIssues.push({ severity: 'warn', msg: `Description short (${desc.length} chars)` });
+      }
       if (desc.length > 165) pageIssues.push({ severity: 'warn', msg: `Description long (${desc.length} chars)` });
       const key = desc.slice(0, 80).toLowerCase();
       if (!descriptions.has(key)) descriptions.set(key, []);
@@ -227,7 +241,15 @@ function main() {
       }
     }
 
-    if (!h1 && !INTERNAL_PAGES.has(slug) && !slug.startsWith('/fyntoolsadmin') && !slug.startsWith('/s/')) {
+    if (
+      !h1 &&
+      !INTERNAL_PAGES.has(slug) &&
+      !slug.startsWith('/fyntoolsadmin') &&
+      !slug.startsWith('/s/') &&
+      slug !== '/themes' &&
+      slug !== '/redirect' &&
+      slug !== '/deep-link-redirect'
+    ) {
       pageIssues.push({ severity: 'warn', msg: 'Missing visible H1' });
     }
 
@@ -342,7 +364,22 @@ function main() {
   };
   fs.writeFileSync(path.join(root, 'scripts/.full-site-audit-report.json'), JSON.stringify(report, null, 2));
 
-  const exitCode = errors.filter((e) => !INTERNAL_PAGES.has(e.slug)).length || dupTitles.filter(([, s]) => !s.every((p) => INTERNAL_PAGES.has(p))).length ? 1 : 0;
+  const exitErrors = errors.filter((e) => !INTERNAL_PAGES.has(e.slug));
+  const exitDupes = dupTitles.filter(([, s]) => !s.every((p) => INTERNAL_PAGES.has(p) || p.startsWith('/fyntoolsadmin')));
+  const exitWarns = warnOnly.filter(
+    (w) =>
+      !INTERNAL_PAGES.has(w.slug) &&
+      !w.slug.startsWith('/fyntoolsadmin') &&
+      !w.slug.startsWith('/s/')
+  );
+  const exitCode = exitErrors.length || exitDupes.length || exitWarns.length ? 1 : 0;
+  if (exitWarns.length && !exitErrors.length) {
+    console.log(`\n── EXIT WARNINGS (${exitWarns.length} pages) ──\n`);
+    for (const { slug, issues: iss } of exitWarns.slice(0, 30)) {
+      console.log(`  ${slug}`);
+      for (const i of iss) console.log(`    ⚠ ${i.msg}`);
+    }
+  }
   console.log(`\n${exitCode ? '❌' : '✅'} Audit complete — report: scripts/.full-site-audit-report.json\n`);
   process.exit(exitCode);
 }

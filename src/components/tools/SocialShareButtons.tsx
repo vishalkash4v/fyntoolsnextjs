@@ -203,8 +203,11 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
               variant="outline"
               size="sm"
               onClick={() => handleShareImage(platform)}
+              aria-label={`Share image on ${platform.label}`}
             >
-              <span className="mr-2">{Icons[platform.id as keyof typeof Icons]}</span>
+              <span className="mr-2" aria-hidden="true">
+                {Icons[platform.id as keyof typeof Icons]}
+              </span>
               {platform.label}
             </Button>
           ))}
@@ -220,8 +223,11 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
               variant="outline"
               size="sm"
               onClick={() => handleShareText(platform)}
+              aria-label={`Share text on ${platform.label}`}
             >
-              <span className="mr-2">{Icons[platform.id as keyof typeof Icons]}</span>
+              <span className="mr-2" aria-hidden="true">
+                {Icons[platform.id as keyof typeof Icons]}
+              </span>
               {platform.label}
             </Button>
           ))}

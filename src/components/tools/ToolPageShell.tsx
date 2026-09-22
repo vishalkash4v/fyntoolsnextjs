@@ -3,6 +3,7 @@ import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import ToolCrawlerFallback from '@/components/tools/ToolCrawlerFallback';
 import ToolFactCard, { factCardPropsFromSeo } from '@/components/tools/ToolFactCard';
+import ToolSeoDepthBlock from '@/components/seo/ToolSeoDepthBlock';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
 import NamezivoAdBanner from '@/components/Ads/NamezivoAdBanner';
 import { TOOL_FACT_CARDS } from '@/data/tool-content/toolFactCards';
@@ -41,6 +42,7 @@ export default function ToolPageShell({
   const path = `/${slug}`;
   const card = TOOL_FACT_CARDS[path];
   const factProps = card ? factCardPropsFromSeo(title, card, fullSeo) : null;
+  const displayName = fullSeo?.h1 || title;
 
   return (
     <div className="min-h-screen bg-background">
@@ -69,6 +71,15 @@ export default function ToolPageShell({
               </div>
             </section>
           }
+        />
+        <ToolSeoDepthBlock
+          toolName={displayName.replace(/\s*[—|-].*$/, '').trim() || title}
+          category={category}
+          toolPath={path}
+          description={fullSeo?.metaDescription || description}
+          howToUse={fullSeo?.howToUse?.length ? fullSeo.howToUse : howToUse}
+          useCases={fullSeo?.useCases}
+          overview={fullSeo?.overview}
         />
         <div className="px-4 sm:px-6 md:px-8 mb-6 max-w-4xl mx-auto">
           <NamezivoAdBanner

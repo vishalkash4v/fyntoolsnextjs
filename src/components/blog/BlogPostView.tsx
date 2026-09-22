@@ -3,6 +3,7 @@ import { Calendar, Clock, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import type { PublicBlogPost, RelatedBlogPost } from '@/lib/blog/api';
 import { resolveBlogImageUrl } from '@/lib/blog/api';
+import { demoteContentH1ToH2, fixExternalLinks } from '@/lib/content/fixExternalLinks';
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -43,6 +44,7 @@ export default function BlogPostView({ post, relatedBlogs }: Props) {
   const imageUrl = resolveBlogImageUrl(post.featuredImage);
   const authorName = post.author?.name || post.author?.email || 'FYN Tools';
   const relatedTools = relatedToolsForSlug(post.slug);
+  const bodyHtml = demoteContentH1ToH2(fixExternalLinks(post.content || post.excerpt));
 
   return (
     <article className="container mx-auto px-4 py-12 max-w-4xl">
@@ -94,7 +96,7 @@ export default function BlogPostView({ post, relatedBlogs }: Props) {
 
       <div
         className="prose prose-lg dark:prose-invert max-w-none blog-content mb-12"
-        dangerouslySetInnerHTML={{ __html: post.content || post.excerpt }}
+        dangerouslySetInnerHTML={{ __html: bodyHtml }}
       />
 
       {post.faqs && post.faqs.length > 0 && (

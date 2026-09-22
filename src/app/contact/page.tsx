@@ -6,7 +6,7 @@ import { absoluteUrl } from '@/lib/seo/site';
 import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Contact FYN Tools',
+  title: 'Contact Support & Partnerships',
   description:
     'Contact FYN Tools Worldwide for support, feedback, partnership inquiries, or bug reports. We read every message.',
   path: '/contact',

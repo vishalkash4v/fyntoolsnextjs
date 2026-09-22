@@ -319,7 +319,7 @@ export default function ToolSeoSections({
 
       {/* 6. FAQ */}
       <section
-        id="faq"
+        id="faqs"
         className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8"
         style={{ contentVisibility: 'auto', containIntrinsicSize: '0 420px' }}
       >
@@ -399,7 +399,7 @@ export default function ToolSeoSections({
         </section>
       )}
 
-      {relatedTools.length > 0 && toolPath ? (
+      {toolPath ? (
         <RelatedTools
           category={category}
           currentToolSlug={toolPath}

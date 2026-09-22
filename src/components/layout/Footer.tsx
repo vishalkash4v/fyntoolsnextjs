@@ -33,7 +33,11 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <Link href="/" className="flex items-center space-x-2 mb-4">
+            <Link
+              href="/"
+              className="flex items-center space-x-2 mb-4"
+              aria-label="Go to FYN Tools homepage"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element -- tiny footer logo; avoid layout JS cost */}
               <img
                 src="/logobeta-128.webp"
@@ -44,6 +48,7 @@ const Footer = () => {
                 loading="lazy"
                 decoding="async"
               />
+              <span className="sr-only">FYN Tools homepage</span>
             </Link>
             <p className="text-zinc-700 dark:text-zinc-300 mb-4 leading-relaxed">
               Professional online tools for developers, businesses, and individuals.

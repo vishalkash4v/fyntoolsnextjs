@@ -29,7 +29,27 @@ export default function RelatedTools({
       ? tools.slice(0, 12)
       : getRelatedToolsForPage(path, 12);
 
-  if (resolved.length < minCount) return null;
+  // Always show the section when we can surface at least one peer or hub CTA
+  const list =
+    resolved.length >= 1
+      ? resolved
+      : [
+          {
+            name: `All ${category}`,
+            href: hubPath,
+            description: `Browse the full ${category} hub on FYN Tools`,
+          },
+          {
+            name: 'All FYN Tools',
+            href: '/tools',
+            description: 'Open the complete free tools catalog',
+          },
+          {
+            name: 'Guides',
+            href: '/guides',
+            description: 'How-to guides for FYN Tools workflows',
+          },
+        ];
 
   return (
     <section id="related-tools" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
@@ -48,7 +68,7 @@ export default function RelatedTools({
         .
       </p>
       <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0">
-        {resolved.map((t) => (
+        {list.slice(0, 12).map((t) => (
           <li key={t.href}>
             <Link
               href={t.href}

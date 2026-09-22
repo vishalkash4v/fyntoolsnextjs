@@ -853,7 +853,7 @@ export const batch2ToolSeo: Record<string, PremiumPartial> = {
   /* /base64-converter                                                 */
   /* ---------------------------------------------------------------- */
   '/base64-converter': {
-    title: 'Free Base64 Encoder & Decoder — Text, Image & Audio',
+    title: 'Free Base64 Encoder & Decoder Online',
     h1: 'Base64 Converter — Encode/Decode Text, Images & Audio',
     metaDescription:
       'Encode or decode Base64 for text, images, and audio files up to 2MB free. Preview images and audio directly from Base64 or a Data URL. No signup.',
