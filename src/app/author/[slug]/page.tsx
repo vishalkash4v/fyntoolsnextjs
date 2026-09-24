@@ -131,7 +131,7 @@ export default async function AuthorPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="text-primary hover:underline break-all"
                 >
-                  {href}
+                  {href.includes('/about') ? 'About FYN Tools' : href.includes('/contact') ? 'Contact FYN Tools' : href.includes('/guides') ? 'FYN Tools Guides' : href}
                 </a>
               </li>
             ))}
