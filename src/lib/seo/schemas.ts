@@ -95,7 +95,7 @@ export function howToSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: WebPage + SoftwareApplication + ConsumeAction + Breadcrumb
+ * Tool JSON-LD: WebPage + WebApplication + ConsumeAction + Breadcrumb
  * + FAQ + HowTo (when visible). Prefer one coherent graph over thin duplicates.
  */
 export function buildToolJsonLd(opts: {
@@ -169,7 +169,7 @@ export function buildToolJsonLd(opts: {
 
   const softwareApp: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': ['SoftwareApplication', 'WebApplication'],
+    '@type': 'WebApplication',
     '@id': appId,
     name: opts.title,
     description: opts.description,
