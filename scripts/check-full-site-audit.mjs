@@ -147,7 +147,6 @@ function main() {
     withJsonLd: 0,
     withFaq: 0,
     withHowTo: 0,
-    withWebApplication: 0,
     genericHits: 0,
     missingMeta: 0,
   };
@@ -176,7 +175,6 @@ function main() {
     if (jsonLd.length) stats.withJsonLd++;
     if (types.has('FAQPage')) stats.withFaq++;
     if (types.has('HowTo')) stats.withHowTo++;
-    if (types.has('WebApplication')) stats.withWebApplication++;
 
     // Meta checks
     if (!title) pageIssues.push({ severity: 'error', msg: 'Missing <title>' });
@@ -262,7 +260,6 @@ function main() {
 
     // Tool-specific schema
     if (tool) {
-      if (!types.has('WebApplication')) pageIssues.push({ severity: 'warn', msg: 'Missing WebApplication schema' });
       if (!types.has('WebPage')) pageIssues.push({ severity: 'warn', msg: 'Missing WebPage schema' });
       if (!types.has('BreadcrumbList')) pageIssues.push({ severity: 'warn', msg: 'Missing BreadcrumbList schema' });
       if (!types.has('FAQPage')) pageIssues.push({ severity: 'warn', msg: 'Missing FAQPage schema' });
@@ -315,7 +312,6 @@ function main() {
   console.log(`With JSON-LD:         ${stats.withJsonLd}`);
   console.log(`With FAQ schema:      ${stats.withFaq}`);
   console.log(`With HowTo schema:    ${stats.withHowTo}`);
-  console.log(`With WebApplication:  ${stats.withWebApplication}`);
   console.log(`Generic phrase hits:  ${stats.genericHits}`);
   console.log(`Pages with errors:    ${issues.filter((i) => i.issues.some((x) => x.severity === 'error')).length}`);
   console.log(`Duplicate titles:     ${dupTitles.length} groups`);
