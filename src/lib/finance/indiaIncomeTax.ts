@@ -104,10 +104,8 @@ function calculateSurcharge(taxableIncome: number, taxAfterRelief: number, regim
   if (taxableIncome <= 5_000_000) return 0;
   if (taxableIncome <= 10_000_000) return taxAfterRelief * 0.10;
   if (taxableIncome <= 20_000_000) return taxAfterRelief * 0.15;
-  // For this calculator, the new regime uses the 25% maximum surcharge.
-  // The old regime also has a 25% rate for income up to ₹5 crore; higher
-  // old-regime surcharge treatment is outside the simplified calculator.
-  return taxAfterRelief * 0.25;
+  if (taxableIncome <= 50_000_000) return taxAfterRelief * 0.25;
+  return regime === 'old' ? taxAfterRelief * 0.37 : taxAfterRelief * 0.25;
 }
 
 function buildBreakdown(
