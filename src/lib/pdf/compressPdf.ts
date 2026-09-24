@@ -11,7 +11,7 @@ export type PdfCompressLevelId =
   | 'optimized'
   | 'slight-drop'
   | 'compact'
-  | 'max-150kb';
+  | 'max-150kb'\n  | 'max-200kb'\n  | 'max-500kb';
 
 export type PdfCompressLevel = {
   id: PdfCompressLevelId;
