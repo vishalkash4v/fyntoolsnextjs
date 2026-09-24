@@ -36,7 +36,7 @@ type Props = {
 };
 
 /**
- * Reusable tool JSON-LD: WebPage + SoftwareApplication + BreadcrumbList +
+ * Reusable tool JSON-LD: WebPage + WebApplication + BreadcrumbList +
  * FAQPage + HowTo. All URLs forced through getCanonicalUrl (fyntools.com).
  */
 export default function ToolSchemas({
