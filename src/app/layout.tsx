@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'FYN Tools Worldwide',
     title: 'FYN Tools Worldwide - Free Professional Online Tools',
     description:
-      'Access 90+ free professional online tools instantly. No registration required.',
+      'Access 118+ free professional online tools instantly. No registration required.',
   },
   twitter: {
     card: 'summary_large_image',
