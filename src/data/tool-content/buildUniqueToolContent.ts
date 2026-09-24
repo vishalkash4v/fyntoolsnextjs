@@ -339,12 +339,10 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
   );
 
   const benefits =
-    (usePremiumBody && premium?.benefits?.length ? premium.benefits : null) || [
-      `Finish ${tool.name.toLowerCase()} tasks in the browser without creating an account.`,
-      `Keep drafts closer to your device when processing can run locally.`,
-      `Get consistent output you can copy, download, or screenshot.`,
-      `Continue in related ${tool.category.toLowerCase()} via internal links below.`,
-    ];
+    (usePremiumBody && premium?.benefits?.length ? premium.benefits : null) ||
+    (override?.benefits?.length ? override.benefits : null) ||
+    (curated?.benefits?.length ? curated.benefits : null) ||
+    [];
 
   const faqs = (() => {
     const fromOverride = override?.faqs?.filter((f) => !isGenericFaq(f));
