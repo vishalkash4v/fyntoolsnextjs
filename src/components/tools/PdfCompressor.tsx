@@ -184,7 +184,7 @@ const PdfCompressor = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-primary" />
-            PDF Compressor — Compress PDF to 150KB
+            PDF Compressor — Compress PDF to 150KB, 200KB or 500KB
           </CardTitle>
           <CardDescription>
             Free online PDF compressor for single or bulk files. Six quality levels with estimated
@@ -432,7 +432,7 @@ const PdfCompressor = () => {
           <Alert>
             <AlertDescription className="text-sm">
               Pages are re-encoded as high-efficiency JPEG images inside a new PDF. That is how free
-              compressors shrink scanned forms and photo-heavy PDFs toward 150KB limits. Text-only
+              compressors shrink scanned forms and photo-heavy PDFs toward common 150KB, 200KB and 500KB upload limits. Text-only
               PDFs may not shrink as much — use Compact or Compress to ~150 KB for upload portals.
             </AlertDescription>
           </Alert>
