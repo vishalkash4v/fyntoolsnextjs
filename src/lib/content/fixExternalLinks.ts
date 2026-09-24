@@ -23,6 +23,7 @@ const NAKED_URL_LABELS: Record<string, string> = {
   'https://www.bitly.com': 'Visit Bitly',
   'https://fyntools.com/url-shortener': 'Open FYN Tools URL Shortener',
   'https://en.wikipedia.org/wiki/Node.js': 'Visit Node.js official site',
+  'https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency': 'Read about reading fluency',
 };
 
 /**
@@ -50,6 +51,8 @@ export function fixExternalLinks(html: string | undefined): string {
 
   // Semrush: Wikipedia Node.js misclassified as a .js asset — point to official site
   out = out.split('https://en.wikipedia.org/wiki/Node.js').join('https://nodejs.org/');
+  // Replace crawler-blocked Wikipedia reading-speed reference with a stable educational source.
+  out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency');
 
   // Other known dead external URLs → working destinations
   out = out.split('https://www.nhs.uk/conditions/period-tracker/').join('https://www.nhs.uk/conditions/periods/');
