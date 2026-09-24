@@ -30,15 +30,6 @@ export const metadata: Metadata = {
   description:
     'Access 118+ free professional online tools instantly. Calculators, text tools, image editors, converters, and developer utilities. No registration required.',
   applicationName: 'FYN Tools Worldwide',
-  keywords: [
-    'free online tools',
-    'calculators',
-    'text tools',
-    'image tools',
-    'developer tools',
-    'converters',
-    'FYN Tools',
-  ],
   authors: [{ name: 'FYN Tools Worldwide', url: SITE_URL }],
   creator: 'FYN Tools Worldwide',
   publisher: 'FYN Tools Worldwide',
@@ -60,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'FYN Tools Worldwide',
     title: 'FYN Tools Worldwide - Free Professional Online Tools',
     description:
-      'Access 90+ free professional online tools instantly. No registration required.',
+      'Access 118+ free professional online tools instantly. No registration required.',
   },
   twitter: {
     card: 'summary_large_image',

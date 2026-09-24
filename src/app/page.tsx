@@ -14,12 +14,12 @@ import {
   organizationSchema,
   itemListSchema,
 } from '@/lib/seo/schemas';
-import { ArrowRight, Award, CheckCircle, Sparkles, TrendingUp, Users, Zap, Shield, Globe } from 'lucide-react';
+import { ArrowRight, Award, Sparkles, Users, Zap, Shield, Globe } from 'lucide-react';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'FYN Tools Worldwide - 90+ Free Professional Online Tools',
+  title: `FYN Tools Worldwide - ${allTools.length}+ Free Professional Online Tools`,
   description:
-    'Access 90+ free professional online tools instantly. Calculators, text tools, image editors, converters, generators, and developer utilities. Secure, fast, and no registration required.',
+    'Access 118+ free professional online tools instantly. Calculators, text tools, image editors, converters, generators, and developer utilities. Secure, fast, and no registration required.',
   path: '/',
   keywords:
     'free online tools, calculators, text tools, image tools, developer tools, converters, QR code, BMI calculator, JSON formatter',
@@ -72,7 +72,7 @@ export default async function HomePage() {
         <div className="container mx-auto px-4 relative text-center max-w-5xl">
           <Badge variant="secondary" className="mb-4">
             <Sparkles className="h-4 w-4 mr-2 inline" />
-            90+ Useful Tools Available
+            {allTools.length}+ Useful Tools Available
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight [content-visibility:visible]">
             Professional Online Tools for Everyone
@@ -96,10 +96,10 @@ export default async function HomePage() {
             style={{ contentVisibility: 'auto', containIntrinsicSize: '0 140px' }}
           >
             {[
-              { n: '90+', l: 'Useful Tools', Icon: Award },
-              { n: '100K+', l: 'Happy Users', Icon: Users },
-              { n: '1M+', l: 'Tasks Done', Icon: TrendingUp },
-              { n: '99.9%', l: 'Uptime', Icon: CheckCircle },
+              { n: `${allTools.length}+`, l: 'Free Tools', Icon: Award },
+              { n: 'No sign-up', l: 'Required', Icon: Users },
+              { n: 'Browser', l: 'Based', Icon: Zap },
+              { n: 'Free', l: 'To Use', Icon: Shield },
             ].map((s) => (
               <Card key={s.l} className="text-center">
                 <CardContent className="p-6">

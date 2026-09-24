@@ -123,24 +123,7 @@ export function softwareApplicationSchema(opts: {
     ...(opts.features?.length
       ? { featureList: opts.features.slice(0, 12).join(', ') }
       : {}),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '120',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: {
-      '@type': 'Review',
-      author: { '@type': 'Organization', name: 'FYN Tools Worldwide' },
-      reviewBody: 'Free browser-based utility on FYN Tools.',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-        worstRating: '1',
-      },
-    },
+
   };
 }
 
@@ -245,9 +228,9 @@ export function buildToolJsonLd(opts: {
     ...(opts.features?.length
       ? { featureList: opts.features.slice(0, 12).join(', ') }
       : {}),
-    // Semrush Site Audit requires aggregateRating on SoftwareApplication.
-    // Prefer live review stats when valid; otherwise a stable sitewide fallback.
-    aggregateRating: (() => {
+    // Only emit review markup when real live review data exists.
+    // Never invent fallback ratings or self-authored reviews for pages without votes.
+    ...(() => {
       const value = Number(opts.ratingValue);
       const count = Number(opts.ratingCount);
       const useLive =
@@ -255,31 +238,18 @@ export function buildToolJsonLd(opts: {
         Number.isFinite(count) &&
         value >= 1 &&
         value <= 5 &&
-        count >= 1;
+        count >= 3;
+      if (!useLive) return {};
       return {
-        '@type': 'AggregateRating',
-        ratingValue: useLive ? String(Math.round(value * 10) / 10) : '4.8',
-        ratingCount: useLive ? String(Math.floor(count)) : '120',
-        bestRating: '5',
-        worstRating: '1',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: String(Math.round(value * 10) / 10),
+          ratingCount: String(Math.floor(count)),
+          bestRating: '5',
+          worstRating: '1',
+        },
       };
     })(),
-    review: {
-      '@type': 'Review',
-      author: {
-        '@type': 'Organization',
-        name: 'FYN Tools Worldwide',
-      },
-      datePublished: opts.dateModified || opts.datePublished || '2026-09-23',
-      reviewBody:
-        'Free browser-based utility on FYN Tools — fast, private-first workflows with no mandatory signup.',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-        worstRating: '1',
-      },
-    },
   };
 
   const schemas: Record<string, unknown>[] = [

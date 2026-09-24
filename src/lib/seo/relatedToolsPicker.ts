@@ -1,5 +1,6 @@
 import { allTools, type Tool } from '@/data/toolsData';
 import { getCategoryHubPath } from '@/utils/breadcrumbs';
+import { getPriorityClusterPeers } from '@/lib/seo/priorityClusters';
 
 export type RelatedToolEntry = { name: string; href: string; description: string };
 
@@ -260,6 +261,10 @@ export function getRelatedToolsForPage(path: string, limit = 10): RelatedToolEnt
   };
 
   for (const href of WORKFLOW_LINKS[path] ?? []) add(href);
+
+  // Give validated priority clusters stronger internal-link support than generic
+  // same-category rotation. This concentrates equity without deleting long-tail tools.
+  for (const href of getPriorityClusterPeers(path)) add(href, true);
 
   const sameCat = allTools
     .filter(

@@ -1,4 +1,5 @@
 import { tier1Batch1Overrides } from '@/data/tool-content/tier1Batch1';
+import { tier1Batch2Overrides } from '@/data/tool-content/tier1Batch2';
 
 /**
  * Page-level SEO overrides (legacy Vite props + hand-tuned paths).
@@ -7536,88 +7537,144 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/url-shortener": {
-    "title": "Free URL Shortener Online (UTM, Bulk, QR)",
-    "description": "Free online URL shortener with custom aliases, UTM tracking, bulk shortening, QR codes, and basic click stats. Create clean, trackable short links for social media, marketing campaigns, and everyday sharing.",
-    "shortIntro": "Our free URL shortener helps you create clean, trackable short links with custom aliases, UTM parameters, bulk shortening, QR codes, and basic click stats. Perfect for social media, marketing campaigns, and sharing links anywhere online.",
-    "keywords": "url shortener, short url, url shortener free, link shortener, shorten url, custom url shortener, url shortener online, free url shortener, short link generator, url compressor, bulk url shortener, utm link shortener, qr code short link",
+    "title": "Free URL Shortener Online — Custom Links, UTM & QR",
+    "description": "Shorten long URLs online with custom aliases, bulk shortening, UTM parameters, QR codes, expiration controls, and basic click tracking. Free URL shortener for social media, campaigns, email, and everyday sharing.",
+    "shortIntro": "Create a shorter, cleaner link from a long URL without installing software. FYN Tools supports custom aliases, UTM campaign parameters, bulk shortening, QR generation, and optional link expiration.",
+    "introText": "A URL shortener converts a long web address into a compact link that is easier to share in social posts, messages, emails, presentations, and printed materials. The destination stays separate from the short link, so the shared address remains readable while the redirect handles the longer URL behind it.\n\nFor campaign links, the built-in UTM fields let you add source, medium, campaign, term, and content values before creating the short URL. That makes the resulting link easier to organize in analytics while keeping the visible URL compact.\n\nYou can also create multiple short links in one batch, generate a QR code for a shortened URL, choose an expiration time for temporary campaigns, and use custom aliases when a recognizable path is more useful than a random identifier.",
+    "keywords": "url shortener, free url shortener, short url, link shortener, shorten url, url shortener online, custom url shortener, bulk url shortener, utm link shortener, short link generator, url shortening, shortened url, qr code short link",
     "category": "Utility Tools",
     "howToUse": [
-      "Paste your long URL in the input field (or use the bulk box to paste up to 20 URLs, one per line)",
-      "Optionally add a custom alias to keep links on-brand",
-      "Turn on UTM tracking to add source, medium, campaign, and other parameters before shortening",
-      "Choose how long the link should stay active using preset or custom expiration",
-      "Click 'Shorten URL' to generate the short link, copy it, open it, or get a QR code with your logo"
+      "Paste the long URL you want to shorten.",
+      "Optionally enter a custom alias if you want a recognizable short path.",
+      "Add UTM source, medium, campaign, term, or content values when the link is for analytics.",
+      "For multiple links, use the bulk input with one URL per line.",
+      "Choose an expiration option when the link is temporary, then create the short URL.",
+      "Copy the result or generate a QR code for sharing online or in print."
     ],
     "features": [
-      "Create short, memorable URLs from long links",
-      "Custom aliases so links match your brand or campaign names",
-      "Built-in UTM parameter builder for campaign tracking (source, medium, campaign, term, content)",
-      "Bulk URL shortening: paste multiple URLs and shorten them all at once",
-      "Flexible expiration options including no expiry, time presets, and custom date and time",
-      "Automatic QR code generation with logo overlay and PNG download",
-      "Local link history with favicons and basic click counts per short link",
-      "No signup required and links stay fast and lightweight on desktop and mobile"
+      "Create short links from long URLs",
+      "Custom aliases for recognizable campaign links",
+      "UTM parameter builder for source, medium, campaign, term, and content",
+      "Bulk shortening for multiple URLs",
+      "Optional link expiration controls",
+      "QR code generation for shortened links",
+      "Local link history with basic click counts",
+      "Works in modern desktop and mobile browsers"
     ],
     "useCases": [
       {
-        "title": "Campaign UTM short link",
-        "description": "Build source/medium/campaign, then shorten so ads do not show a 200-character URL."
+        "title": "Social media sharing",
+        "description": "Turn long tracking or product URLs into compact links that are easier to paste into posts, messages, and profiles."
       },
       {
-        "title": "Bulk paste",
-        "description": "Drop up to 20 URLs, one per line, and copy the short set for a spreadsheet."
+        "title": "UTM campaign links",
+        "description": "Add campaign parameters before shortening so marketing links remain compact while retaining the tracking values your analytics setup expects."
       },
       {
-        "title": "QR for print",
-        "description": "Generate a QR with optional logo after the short URL exists."
+        "title": "Temporary campaign links",
+        "description": "Use an expiration date for links created for events, promotions, or limited-time campaigns instead of leaving them active indefinitely."
+      },
+      {
+        "title": "Bulk link preparation",
+        "description": "Paste multiple URLs at once when preparing a spreadsheet, content calendar, campaign list, or set of links for a team."
+      },
+      {
+        "title": "QR code for print",
+        "description": "Generate a QR code from the shortened URL when the destination needs to be shared on posters, cards, packaging, or other printed material."
       }
+    ],
+    "examples": [
+      {
+        "input": "https://example.com/products/summer-sale?utm_source=newsletter&utm_medium=email&utm_campaign=summer-sale",
+        "output": "A compact short link that preserves the UTM parameters for the campaign."
+      },
+      {
+        "input": "20 product or campaign URLs pasted one per line",
+        "output": "A batch of shortened links that can be copied into a spreadsheet or campaign workflow."
+      }
+    ],
+    "tips": [
+      "Use a descriptive custom alias when people need to recognize the destination before clicking.",
+      "Keep UTM values consistent with your existing analytics naming convention.",
+      "Use expiration for temporary promotions, event links, or test campaigns.",
+      "Do not assume a shortened URL is safe just because it is short; verify unknown destinations before opening them."
+    ],
+    "whenToUse": [
+      "When a long URL is awkward to share in a social post, message, email, or document.",
+      "When you need a compact campaign URL with UTM parameters.",
+      "When preparing several links at once for a marketing or content workflow.",
+      "When a shortened URL will be converted into a QR code for print or offline sharing."
     ],
     "faqs": [
       {
-        "question": "Why should I use a URL shortener?",
-        "answer": "URL shorteners make long links more manageable for social media, emails, and printed materials. They also provide click tracking and can include your brand in the shortened URL."
+        "question": "What is a URL shortener?",
+        "answer": "A URL shortener creates a compact link that redirects to a longer destination URL. It is useful when the original address is difficult to share, display, or remember."
+      },
+      {
+        "question": "How do URL shorteners work?",
+        "answer": "The service associates a short path with the destination URL. When someone opens the short link, the service handles the redirect to the stored destination."
+      },
+      {
+        "question": "Is this URL shortener free?",
+        "answer": "Yes. FYN Tools provides this URL shortener without requiring a paid subscription or account for normal use."
+      },
+      {
+        "question": "Can I create a custom short URL?",
+        "answer": "Yes, when the custom-alias option is available, you can choose a recognizable path instead of relying only on a generated identifier."
+      },
+      {
+        "question": "Can I shorten multiple URLs at once?",
+        "answer": "Yes. Use the bulk input and enter one URL per line to prepare multiple short links in a single workflow."
+      },
+      {
+        "question": "Can I add UTM parameters before shortening?",
+        "answer": "Yes. Add campaign values such as source, medium, campaign, term, and content before creating the short link. The destination URL keeps those tracking parameters."
       },
       {
         "question": "Do shortened URLs expire?",
-        "answer": "By default links do not expire. You can also set an expiration (presets or a custom date) from the tool if you want a campaign or temporary link to stop working after a certain time."
+        "answer": "A short link can remain active according to the service's configured lifetime. FYN Tools also provides expiration controls for links that should stop working after a chosen time."
       },
       {
-        "question": "Can I customize my shortened URLs?",
-        "answer": "Yes, you can create custom aliases to make your shortened URLs more memorable and brand-friendly. Custom aliases help with recognition and trust."
+        "question": "Are shortened URLs safe?",
+        "answer": "A shortened URL hides the full destination, so you should still treat unfamiliar short links carefully. The short format itself is not a guarantee that the destination is trustworthy."
       },
       {
-        "question": "Are shortened URLs safe to click?",
-        "answer": "Our service doesn't modify the destination of your URLs. However, always be cautious when clicking shortened links from unknown sources, as they can hide the actual destination."
+        "question": "Can I make a QR code from a short URL?",
+        "answer": "Yes. After creating a short link, you can generate a QR code for use in print and offline campaigns."
       },
       {
-        "question": "Can I track clicks on my shortened URLs?",
-        "answer": "Yes, our service provides basic click tracking so you can see how many people have clicked on your shortened links and when they were clicked."
+        "question": "What is the difference between a shortened URL and a normal URL?",
+        "answer": "A normal URL points directly to a destination and may be long. A shortened URL uses a compact address that redirects to that destination."
       },
       {
-        "question": "Why did my clicks or search traffic drop?",
-        "answer": "Search rankings and clicks change with competition, Google updates, and how trustworthy your pages look. Mass abuse of any free shortener (spam links) can hurt your whole site's reputation—so we block risky destinations, limit bulk creation, and recommend using expiring links for campaigns."
+        "question": "Can I use shortened URLs for email campaigns?",
+        "answer": "Yes, but keep your destination, tracking parameters, and domain reputation in mind. Test the final redirect and analytics before sending a large campaign."
+      },
+      {
+        "question": "Why use a custom alias?",
+        "answer": "A meaningful alias can make a short link easier to recognize in a campaign, document, presentation, or printed material."
       }
     ],
     "relatedTools": [
       {
         "name": "QR Code Generator",
         "href": "/qr-code-generator",
-        "description": "Create QR codes for your short or long URLs"
+        "description": "Create QR codes for short or long URLs."
       },
       {
-        "name": "URL slug generator",
+        "name": "URL Slug Generator",
         "href": "/url-slug-generator",
-        "description": "Clean, readable paths for your own site"
+        "description": "Create readable URL paths for websites."
       },
       {
-        "name": "Social deep links",
+        "name": "Social Media Deep Link Generator",
         "href": "/social-media-deep-link-generator",
-        "description": "App-aware campaign links"
+        "description": "Prepare app-aware social sharing links."
       },
       {
-        "name": "All tools",
-        "href": "/tools",
-        "description": "Browse the full FYN Tools directory"
+        "name": "UTM Builder",
+        "href": "/utm-builder",
+        "description": "Build campaign tracking parameters when available."
       }
     ]
   },
@@ -8183,4 +8240,5 @@ const pageOverridesBase: Record<string, PageOverride> = {
 export const pageOverrides: Record<string, PageOverride> = {
   ...pageOverridesBase,
   ...tier1Batch1Overrides,
+  ...tier1Batch2Overrides,
 };

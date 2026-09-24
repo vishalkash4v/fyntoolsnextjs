@@ -18,7 +18,7 @@ import { Badge } from '@/components/ui/badge';
 export const metadata: Metadata = buildPageMetadata({
   title: 'All Free Online Tools',
   description:
-    'Browse 90+ free online tools on FYNTools: text, image, developer, finance, typing, converters, and more. No registration required.',
+    'Browse free online tools on FYNTools: text, image, developer, finance, typing, converters, and more. No registration required.',
   path: '/tools',
   keywords: 'online tools, free tools, fyntools, calculators, converters, image tools, text tools',
 });
@@ -60,7 +60,7 @@ export default async function ToolsPage({ searchParams }: Props) {
     ]),
     collectionPageSchema({
       name: 'All Free Online Tools',
-      description: 'Browse 90+ free online tools on FYNTools.',
+      description: 'Browse the complete collection of free online tools on FYNTools.'
       url: absoluteUrl('/tools'),
       items: tools.map((t) => ({ name: t.name, url: absoluteUrl(t.path) })),
     }),
