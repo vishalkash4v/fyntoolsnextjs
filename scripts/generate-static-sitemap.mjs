@@ -1,6 +1,9 @@
 /**
  * One-shot generator for public/sitemap.xml — run manually when URLs change.
  * Usage: node scripts/generate-static-sitemap.mjs
+ *
+ * SEO rule: lastmod is only emitted for URLs whose substantive content changed.
+ * Do not use sitemap lastmod as an artificial recrawl signal.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,42 +11,18 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = 'https://fyntools.com';
-const LASTMOD = '2026-09-23';
+const LASTMOD = '2026-09-24';
 
-/** GSC "Crawled – currently not indexed" / pending validation URLs */
-const GSC_RECRAWL = new Set([
-  '/logo-to-favicon',
-  '/ovulation-calculator',
-  '/html-formatter',
-  '/pms-symptom-tracker',
-  '/safe-days-calculator',
-  '/percentage-calculator',
-  '/json-validator',
-  '/typing-test',
-  '/url-slug-generator',
+/** Pages with substantive SEO/content changes in the current recovery batch. */
+const UPDATED_THIS_BATCH = new Set([
+  '/url-shortener',
+  '/barcode-generator',
   '/image-resizer',
-  '/xml-sitemap-tester',
-  '/meta-tag-previewer',
-  '/typing-games',
-  '/text-reverser',
-  '/period-tracker',
-  '/barcode-scanner-online',
-  '/pregnancy-weight-gain-calculator',
-  '/markdown-editor',
-  '/list-randomizer',
-  '/hash-generator',
-  '/image-format-converter',
-  '/baby-kick-counter',
-  '/unit-converter',
-  // Sep 2026 GSC batch
-  '/coin-flip',
-  '/jwt-decoder',
-  '/discord-formatter',
-  '/live-preview',
-  '/regex-tester',
-  '/ad-maker',
-  '/text-to-speech',
-  '/weather-forecast',
+  '/image-upscaler',
+  '/json-formatter',
+  '/word-counter',
+  '/pdf-compressor',
+  '/income-tax-calculator',
 ]);
 
 const TOP = new Set([
@@ -137,28 +116,26 @@ const BLOGS = [
 
 const entries = [];
 
-function add(loc, priority, changefreq, lastmod = LASTMOD) {
+function add(loc, priority, changefreq, lastmod) {
   if (SITE !== 'https://fyntools.com') {
     throw new Error(`Sitemap SITE must be https://fyntools.com (got ${SITE})`);
   }
+
   const absolute =
     loc === '' || loc === '/'
       ? `${SITE}/`
       : loc.startsWith('http')
         ? loc
         : `${SITE}${loc.startsWith('/') ? loc : `/${loc}`}`;
+
   if (!absolute.startsWith('https://fyntools.com')) {
     throw new Error(`Sitemap URL rejected (must start with https://fyntools.com): ${absolute}`);
   }
-  if (/onrender\.com|vercel\.app|localhost/i.test(absolute)) {
+  if (/onrender\\.com|vercel\\.app|localhost/i.test(absolute)) {
     throw new Error(`Sitemap URL rejected (forbidden host): ${absolute}`);
   }
-  entries.push({
-    loc: absolute,
-    priority,
-    changefreq,
-    lastmod,
-  });
+
+  entries.push({ loc: absolute, priority, changefreq, lastmod });
 }
 
 add('', 1.0, 'daily');
@@ -182,21 +159,22 @@ for (const b of BLOGS) {
 for (const slug of TOOL_SLUGS) {
   if (SKIP.has(slug)) continue;
   const p = `/${slug}`;
-  const priority = TOP.has(p) || GSC_RECRAWL.has(p) ? 0.95 : 0.8;
-  // Fresh lastmod for GSC recrawl batch so Google sees a signal to revisit
-  add(p, priority, 'weekly', LASTMOD);
+  const priority = TOP.has(p) ? 0.95 : 0.8;
+  add(p, priority, 'weekly', UPDATED_THIS_BATCH.has(p) ? LASTMOD : undefined);
 }
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
 for (const e of entries) {
   xml += '  <url>\n';
   xml += `    <loc>${e.loc}</loc>\n`;
-  xml += `    <lastmod>${e.lastmod}</lastmod>\n`;
+  if (e.lastmod) xml += `    <lastmod>${e.lastmod}</lastmod>\n`;
   xml += `    <changefreq>${e.changefreq}</changefreq>\n`;
   xml += `    <priority>${e.priority.toFixed(2)}</priority>\n`;
   xml += '  </url>\n';
 }
+
 xml += '</urlset>\n';
 
 const out = path.join(__dirname, '..', 'public', 'sitemap.xml');
