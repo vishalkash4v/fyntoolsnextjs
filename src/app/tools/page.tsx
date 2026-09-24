@@ -60,7 +60,7 @@ export default async function ToolsPage({ searchParams }: Props) {
     ]),
     collectionPageSchema({
       name: 'All Free Online Tools',
-      description: 'Browse the complete collection of free online tools on FYNTools.'
+      description: 'Browse the complete collection of free online tools on FYNTools.',
       url: absoluteUrl('/tools'),
       items: tools.map((t) => ({ name: t.name, url: absoluteUrl(t.path) })),
     }),
