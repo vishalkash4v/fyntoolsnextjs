@@ -22,6 +22,12 @@ const NAKED_URL_LABELS: Record<string, string> = {
   'https://bitly.com': 'Visit Bitly',
   'https://www.bitly.com': 'Visit Bitly',
   'https://fyntools.com/url-shortener': 'Open FYN Tools URL Shortener',
+  'https://fyntools.com/period-calculator': 'Open Period Calculator',
+  'https://fyntools.com/word-counter': 'Open Word Counter',
+  'https://fyntools.com/about': 'About FYN Tools',
+  'https://fyntools.com/contact': 'Contact FYN Tools',
+  'https://fyntools.com/guides': 'FYN Tools Guides',
+
   'https://en.wikipedia.org/wiki/Node.js': 'Visit Node.js official site',
   'https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency': 'Read about reading fluency',
 };
