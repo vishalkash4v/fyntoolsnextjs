@@ -7594,7 +7594,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
     "description": "Shorten long URLs online with custom aliases, bulk shortening, UTM parameters, QR codes, expiration controls, and basic click tracking. Free URL shortener for social media, campaigns, email, and everyday sharing.",
     "shortIntro": "Create a shorter, cleaner link from a long URL without installing software. FYN Tools supports custom aliases, UTM campaign parameters, bulk shortening, QR generation, and optional link expiration.",
     "introText": "A URL shortener converts a long web address into a compact link that is easier to share in social posts, messages, emails, presentations, and printed materials. The destination stays separate from the short link, so the shared address remains readable while the redirect handles the longer URL behind it.\n\nFor campaign links, the built-in UTM fields let you add source, medium, campaign, term, and content values before creating the short URL. That makes the resulting link easier to organize in analytics while keeping the visible URL compact.\n\nYou can also create multiple short links in one batch, generate a QR code for a shortened URL, choose an expiration time for temporary campaigns, and use custom aliases when a recognizable path is more useful than a random identifier.",
-    "keywords": "url shortener, free url shortener, short url, link shortener, shorten url, url shortener online, custom url shortener, bulk url shortener, utm link shortener, short link generator, url shortening, shortened url, qr code short link",
+    "keywords": "url shortener, free url shortener, short url, link shortener, shorten url, shorten url free, url shortener online, custom url shortener, bulk url shortener, utm link shortener, short link generator, url shortening, shortened url, qr code short link",
     "category": "Utility Tools",
     "howToUse": [
       "Paste the long URL you want to shorten.",
@@ -7664,6 +7664,10 @@ const pageOverridesBase: Record<string, PageOverride> = {
         "answer": "A URL shortener creates a compact link that redirects to a longer destination URL. It is useful when the original address is difficult to share, display, or remember."
       },
       {
+        "question": "How do I shorten a URL?",
+        "answer": "Paste the long web address into the URL Shortener, optionally choose a custom alias or add UTM parameters, and create the short link. For multiple addresses, use the bulk input with one URL per line."
+      },
+      {
         "question": "How do URL shorteners work?",
         "answer": "The service associates a short path with the destination URL. When someone opens the short link, the service handles the redirect to the stored destination."
       },
@@ -7674,6 +7678,10 @@ const pageOverridesBase: Record<string, PageOverride> = {
       {
         "question": "Can I create a custom short URL?",
         "answer": "Yes, when the custom-alias option is available, you can choose a recognizable path instead of relying only on a generated identifier."
+      },
+      {
+        "question": "Can I shorten a URL for free?",
+        "answer": "Yes. FYN Tools provides a free URL-shortening workflow for normal use, including the ability to create compact links from long destination URLs."
       },
       {
         "question": "Can I shorten multiple URLs at once?",
