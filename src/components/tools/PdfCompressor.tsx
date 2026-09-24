@@ -288,7 +288,7 @@ const PdfCompressor = () => {
                       <span className="font-semibold text-sm">{l.name}</span>
                       {l.targetBytes && (
                         <Badge variant="secondary" className="text-[10px] shrink-0">
-                          ~150 KB
+                          ~{formatBytes(l.targetBytes)} target
                         </Badge>
                       )}
                     </div>
@@ -302,7 +302,7 @@ const PdfCompressor = () => {
                     {est == null && (
                       <p className="text-xs text-muted-foreground mt-2">
                         ~{Math.round(l.estimateRatio * 100)}% of original
-                        {l.targetBytes ? ' (or under 150 KB)' : ''}
+                        {l.targetBytes ? ' target-oriented' : ''}
                       </p>
                     )}
                   </button>
