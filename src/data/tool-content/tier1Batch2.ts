@@ -175,7 +175,7 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
       'Percentage-based resizing',
       'Aspect-ratio preservation',
       'DPI controls for print-oriented workflows',
-      '50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB email presets',
+      '20 KB, 50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB email presets',
       'Social media dimension presets',
       'Education and application-oriented presets',
       'JPEG, PNG, and other formats supported by the browser workflow',
