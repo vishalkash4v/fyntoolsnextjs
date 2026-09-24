@@ -3314,68 +3314,121 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/income-tax-calculator": {
-    "title": "Free Income Tax Calculator Online",
-    "description": "Calculate income tax for different tax regimes. Compare old vs new tax systems, get detailed tax breakdowns, and plan your tax savings effectively.",
-    "shortIntro": "Calculate income tax for different tax regimes with our free online Income Tax Calculator. Compare old vs new tax systems and plan your tax savings effectively.",
-    "keywords": "income tax calculator, tax calculator, income tax calculator india, tax calculator online, income tax calculation, tax calculator tool, tax savings calculator",
+    "title": "Income Tax Calculator India FY 2026-27 — Old vs New Regime",
+    "description": "Free India income tax calculator for FY 2026-27 (AY 2027-28). Compare old and new regimes using current slabs, ₹75,000 new-regime standard deduction, Section 87A rebate, marginal relief, surcharge and 4% cess.",
+    "shortIntro": "Estimate Indian income tax for FY 2026-27 by entering annual gross income and, for the old regime, eligible Chapter VI-A deductions. The calculator shows both regimes side by side using the current standard slabs.",
+    "introText": "This calculator is designed for an ordinary slab-rate income estimate for Tax Year/FY 2026-27. It compares the old and new tax regimes, applies the relevant standard deduction, Section 87A rebate where eligible, marginal relief under the new regime around the ₹12 lakh threshold, surcharge where applicable, and 4% Health & Education Cess. It does not model every special-rate income, exemption, capital-gains rule, AMT/MAT rule, or case-specific tax provision.",
+    "keywords": "income tax calculator, income tax calculator india, income tax calculator FY 2026-27, tax calculator 2026-27, new tax regime calculator, old tax regime calculator, income tax slab calculator, section 87A calculator, marginal relief calculator, salary tax calculator india",
     "category": "Financial Tools",
     "howToUse": [
-      "Enter your annual gross income",
-      "Add deductions and exemptions",
-      "Select your tax regime (old or new)",
-      "Input investment details for tax savings",
-      "View detailed tax calculation and breakdown"
+      "Enter your annual gross income in Indian rupees.",
+      "Select the age group used for the old-regime slab calculation.",
+      "If using the old regime, enter eligible Chapter VI-A deductions such as applicable 80C or 80D amounts.",
+      "Run the calculator to see taxable income, slab tax, Section 87A rebate or marginal relief, surcharge, cess and total tax.",
+      "Compare the displayed old and new regime tax amounts, then verify your final liability against your actual income details and the official filing rules."
     ],
     "features": [
-      "Support for multiple tax regimes",
-      "Detailed tax breakdown and analysis",
-      "Investment planning for tax savings",
-      "Comparison between old and new tax systems",
-      "HRA, LTA, and other exemption calculations",
-      "Tax-saving investment recommendations"
+      "FY 2026-27 / AY 2027-28 tax-year labeling",
+      "Old and new regime comparison",
+      "Current new-regime slabs from ₹4 lakh to above ₹24 lakh",
+      "New-regime ₹75,000 standard deduction for salary estimates",
+      "Old-regime ₹50,000 standard deduction",
+      "Section 87A rebate calculation for eligible resident individuals",
+      "New-regime marginal relief around the ₹12 lakh threshold",
+      "Surcharge calculation for higher taxable incomes",
+      "4% Health & Education Cess",
+      "Effective tax-rate calculation",
+      "Age-based old-regime slab selection"
     ],
     "useCases": [
       {
-        "title": "Old vs new regime",
-        "description": "Enter salary and deductions, then compare both regimes before you file."
+        "title": "Salary tax estimate",
+        "description": "Estimate tax on ordinary salary income and compare the two regimes before preparing a return."
       },
       {
-        "title": "HRA and 80C sketch",
-        "description": "Add HRA and 80C amounts so the old regime is not compared as a blank slate."
+        "title": "FY 2026-27 planning",
+        "description": "Use the current-year slabs and standard deductions to understand how taxable income affects estimated tax."
       },
       {
-        "title": "FY planning",
-        "description": "Use the current-year slabs as a sketch — not a substitute for a CA on complex returns."
+        "title": "Old vs new comparison",
+        "description": "Enter eligible old-regime deductions and compare the resulting tax amounts without treating the comparison as professional tax advice."
+      },
+      {
+        "title": "12 lakh rebate threshold",
+        "description": "Check how the new-regime Section 87A rebate and marginal-relief rules affect income around and just above ₹12 lakh of taxable income."
       }
+    ],
+    "examples": [
+      {
+        "input": "Gross income ₹12,00,000 under the new regime",
+        "output": "The ₹75,000 standard deduction gives estimated taxable income of ₹11,25,000; the calculator then applies the FY 2026-27 slabs and eligible Section 87A rebate."
+      },
+      {
+        "input": "Gross income ₹12,75,000 under the new regime",
+        "output": "The calculator applies the current slabs and the marginal-relief logic around the ₹12 lakh taxable-income threshold."
+      },
+      {
+        "input": "Gross income ₹15,00,000 with eligible old-regime deductions",
+        "output": "The calculator subtracts the ₹50,000 old-regime standard deduction plus the entered Chapter VI-A deductions before applying old-regime slabs."
+      }
+    ],
+    "tips": [
+      "Enter annual income rather than monthly salary.",
+      "Only enter deductions that you are actually eligible to claim under the old regime.",
+      "For the new regime, do not subtract old-regime Chapter VI-A deductions through this calculator.",
+      "Use the calculator as an estimate for ordinary slab-rate income and verify special-rate income separately.",
+      "For a return involving capital gains, business income, multiple income sources, foreign income, or other complex provisions, verify the result using the official Income Tax Department tools or a qualified tax professional."
+    ],
+    "whenToUse": [
+      "You want a quick FY 2026-27 salary tax estimate.",
+      "You want to compare old and new regime calculations.",
+      "You want to understand the effect of eligible old-regime deductions.",
+      "You want to inspect the new-regime ₹12 lakh rebate and marginal-relief area."
     ],
     "faqs": [
       {
-        "question": "What's the difference between old and new tax regimes?",
-        "answer": "The old regime offers various deductions and exemptions with higher tax rates, while the new regime has lower tax rates but fewer deductions available."
+        "question": "What tax year does this calculator use?",
+        "answer": "The calculator is labeled for FY 2026-27 / AY 2027-28 and uses the current standard slab structure implemented for that tax year."
       },
       {
-        "question": "Which tax regime should I choose?",
-        "answer": "The choice depends on your income level and eligible deductions. Our calculator helps you compare both regimes to choose the most beneficial one."
+        "question": "What are the FY 2026-27 new-regime slabs?",
+        "answer": "The new regime uses nil tax up to ₹4 lakh, then 5% from ₹4–8 lakh, 10% from ₹8–12 lakh, 15% from ₹12–16 lakh, 20% from ₹16–20 lakh, 25% from ₹20–24 lakh, and 30% above ₹24 lakh."
       },
       {
-        "question": "Are the calculations accurate?",
-        "answer": "Our calculator uses current tax slabs and rates. However, consult a tax professional for complex situations or final tax planning decisions."
+        "question": "How does Section 87A work in the new regime?",
+        "answer": "For eligible resident individuals, the rebate can be up to ₹60,000 where taxable income does not exceed ₹12 lakh. The calculation also models the marginal-relief rule for taxable income just above ₹12 lakh."
       },
       {
-        "question": "Can I calculate tax for previous years?",
-        "answer": "The calculator is designed for the current financial year. Tax rates and slabs may differ for previous years."
+        "question": "What standard deduction is used?",
+        "answer": "The calculator uses ₹75,000 for the new regime and ₹50,000 for the old regime in its ordinary salary-income estimate."
+      },
+      {
+        "question": "Does the old regime still allow deductions?",
+        "answer": "Eligible deductions and exemptions can apply under the old regime, but this calculator currently accepts a single Chapter VI-A deduction amount rather than modelling every individual deduction or exemption."
+      },
+      {
+        "question": "Does this calculator include 4% cess?",
+        "answer": "Yes. Health & Education Cess is calculated at 4% of income tax plus surcharge where applicable."
+      },
+      {
+        "question": "Does it include surcharge?",
+        "answer": "Yes, the calculator includes simplified surcharge treatment for higher taxable incomes. Complex special-rate income and detailed marginal-relief interactions should be verified separately."
+      },
+      {
+        "question": "Is the result a final tax liability?",
+        "answer": "No. It is an estimate for ordinary slab-rate income. Capital gains, special-rate income, business or professional income, AMT/MAT, exemptions, rebates other than the modelled Section 87A rule, TDS and other facts can change the final liability."
       }
     ],
     "relatedTools": [
       {
-        "name": "SIP Calculator",
-        "href": "/sip-calculator",
-        "description": "Calculate SIP returns"
-      },
-      {
         "name": "GST Calculator",
         "href": "/gst-calculator",
         "description": "Calculate GST amounts"
+      },
+      {
+        "name": "SIP Calculator",
+        "href": "/sip-calculator",
+        "description": "Calculate SIP returns"
       },
       {
         "name": "EMI Calculator",
@@ -3385,7 +3438,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
       {
         "name": "FD Calculator",
         "href": "/fd-calculator",
-        "description": "Calculate FD returns"
+        "description": "Calculate fixed-deposit returns"
       }
     ]
   },
