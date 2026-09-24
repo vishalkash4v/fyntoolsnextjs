@@ -1,4 +1,5 @@
 import { tier1Batch1Overrides } from '@/data/tool-content/tier1Batch1';
+import { tier1Batch2Overrides } from '@/data/tool-content/tier1Batch2';
 
 /**
  * Page-level SEO overrides (legacy Vite props + hand-tuned paths).
@@ -8239,4 +8240,5 @@ const pageOverridesBase: Record<string, PageOverride> = {
 export const pageOverrides: Record<string, PageOverride> = {
   ...pageOverridesBase,
   ...tier1Batch1Overrides,
+  ...tier1Batch2Overrides,
 };
