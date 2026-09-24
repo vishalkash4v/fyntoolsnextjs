@@ -95,8 +95,9 @@ export function howToSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: WebPage + WebApplication + ConsumeAction + Breadcrumb
- * + FAQ + HowTo (when visible). Prefer one coherent graph over thin duplicates.
+ * Tool JSON-LD: WebPage + ConsumeAction + Breadcrumb + FAQ + HowTo.
+ * Keep tool markup focused on schema types that describe the page without
+ * inventing commercial SoftwareApplication fields such as offers or ratings.
  */
 export function buildToolJsonLd(opts: {
   title: string;
@@ -118,7 +119,6 @@ export function buildToolJsonLd(opts: {
 }): Record<string, unknown>[] {
   const toolUrl = getCanonicalUrl(`/${opts.slug}`);
   const pageId = `${toolUrl}#webpage`;
-  const appId = `${toolUrl}#app`;
   const crumbs = buildToolBreadcrumbs(opts.title, `/${opts.slug}`, opts.category);
   const includeHowTo =
     opts.includeHowTo !== false && opts.howToSteps.length >= 3;
@@ -133,7 +133,6 @@ export function buildToolJsonLd(opts: {
     name: opts.title,
     description: opts.description,
     isPartOf: { '@id': WEBSITE_ID },
-    about: { '@id': appId },
     primaryImageOfPage: getCanonicalUrl('/opengraph-image'),
     inLanguage: 'en-US',
     isAccessibleForFree: true,
@@ -167,50 +166,8 @@ export function buildToolJsonLd(opts: {
     },
   };
 
-  const softwareApp: Record<string, unknown> = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    '@id': appId,
-    name: opts.title,
-    description: opts.description,
-    url: toolUrl,
-    applicationCategory: 'UtilityApplication',
-    applicationSubCategory: opts.category,
-    operatingSystem: 'Any',
-    browserRequirements: 'Requires a modern browser with JavaScript',
-    isAccessibleForFree: true,
-    provider: { '@id': ORG_ID },
-    mainEntityOfPage: { '@id': pageId },
-    ...(opts.features?.length
-      ? { featureList: opts.features.slice(0, 12).join(', ') }
-      : {}),
-    // Only emit review markup when real live review data exists.
-    // Never invent fallback ratings or self-authored reviews for pages without votes.
-    ...(() => {
-      const value = Number(opts.ratingValue);
-      const count = Number(opts.ratingCount);
-      const useLive =
-        Number.isFinite(value) &&
-        Number.isFinite(count) &&
-        value >= 1 &&
-        value <= 5 &&
-        count >= 3;
-      if (!useLive) return {};
-      return {
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: String(Math.round(value * 10) / 10),
-          ratingCount: String(Math.floor(count)),
-          bestRating: '5',
-          worstRating: '1',
-        },
-      };
-    })(),
-  };
-
   const schemas: Record<string, unknown>[] = [
     webPage,
-    softwareApp,
     breadcrumbSchema(crumbs),
   ];
 
