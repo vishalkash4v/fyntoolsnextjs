@@ -31,6 +31,8 @@ const WordCounter: React.FC = () => {
     return text.trim().split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
   }, [text]);
 
+  const readingTimeMinutes = useMemo(() => Math.max(1, Math.ceil(wordCount / 200)), [wordCount]);
+
   const paragraphCount = useMemo(() => {
     if (text.trim() === '') {
       return 0;
@@ -40,8 +42,22 @@ const WordCounter: React.FC = () => {
   }, [text]);
 
 
+  const loadExample = () => setText('FYN Tools provides free online tools for writing, development, images, PDFs, and everyday tasks.');
+
+  const clearText = () => setText('');
+
   return (
     <div className="w-full space-y-6">
+      <div className="rounded-xl border bg-muted/30 p-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="font-semibold text-sm">Word count quick start</p>
+          <p className="text-xs text-muted-foreground mt-1">Check words, characters, sentences, paragraphs, and approximate reading time as you type.</p>
+        </div>
+        <div className="flex gap-2">
+          <button type="button" className="rounded-md border px-3 py-2 text-xs font-medium" onClick={loadExample}>Load example</button>
+          <button type="button" className="rounded-md border px-3 py-2 text-xs font-medium" onClick={clearText} disabled={!text}>Clear</button>
+        </div>
+      </div>
       <Textarea
         placeholder="Type or paste your text here..."
         value={text}
@@ -86,6 +102,12 @@ const WordCounter: React.FC = () => {
           <CardHeader className="pb-2">
             <CardDescription>Paragraphs</CardDescription>
             <CardTitle className="text-4xl">{paragraphCount}</CardTitle>
+          </CardHeader>
+        </Card>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardDescription>Reading Time</CardDescription>
+            <CardTitle className="text-4xl">{wordCount ? `${readingTimeMinutes}m` : '0m'}</CardTitle>
           </CardHeader>
         </Card>
       </div>
