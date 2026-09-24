@@ -68,8 +68,8 @@ const IncomeTaxCalculator = () => {
         <span>{formatCurrency(result.taxableIncome)}</span>
       </div>
       <div className="flex justify-between">
-        <span>Income Tax (before rebate)</span>
-        <span>{formatCurrency(result.incomeTax + result.rebate87A)}</span>
+        <span>Income Tax (before rebate/relief)</span>
+        <span>{formatCurrency(result.incomeTaxBeforeRebate)}</span>
       </div>
       {result.rebate87A > 0 && (
         <div className="flex justify-between text-green-600 dark:text-green-400">
@@ -77,10 +77,22 @@ const IncomeTaxCalculator = () => {
           <span>− {formatCurrency(result.rebate87A)}</span>
         </div>
       )}
+      {result.marginalRelief > 0 && (
+        <div className="flex justify-between text-green-600 dark:text-green-400">
+          <span>Marginal relief</span>
+          <span>− {formatCurrency(result.marginalRelief)}</span>
+        </div>
+      )}
       <div className="flex justify-between">
         <span>Income Tax (after rebate)</span>
         <span className="font-medium">{formatCurrency(result.incomeTax)}</span>
       </div>
+      {result.surcharge > 0 && (
+        <div className="flex justify-between">
+          <span>Surcharge</span>
+          <span>{formatCurrency(result.surcharge)}</span>
+        </div>
+      )}
       <div className="flex justify-between">
         <span>Health &amp; Education Cess (4%)</span>
         <span>{formatCurrency(result.cess)}</span>
@@ -109,7 +121,7 @@ const IncomeTaxCalculator = () => {
             Income Tax Calculator (India)
           </CardTitle>
           <CardDescription>
-            FY 2024-25 (AY 2025-26) — progressive slab tax with Section 87A rebate, standard deduction, and 4% cess.
+            FY 2026-27 (AY 2027-28) — compares old and new regimes using current slabs, Section 87A rebate/marginal relief, standard deductions, surcharge where applicable, and 4% cess. This is an estimate for ordinary slab-rate income.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -204,7 +216,7 @@ const IncomeTaxCalculator = () => {
                 {oldRegimeResult && newRegimeResult && (
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Which regime saves more?</CardTitle>
+                      <CardTitle className="text-lg">Regime Tax Comparison</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -218,11 +230,7 @@ const IncomeTaxCalculator = () => {
                         </div>
                       </div>
                       <p className="text-center text-lg">
-                        <strong>
-                          {oldRegimeResult.totalTax <= newRegimeResult.totalTax ? 'Old' : 'New'} regime
-                        </strong>{' '}
-                        is lower by{' '}
-                        <span className="text-primary font-bold">
+                        Tax difference: <span className="font-bold">
                           {formatCurrency(Math.abs(oldRegimeResult.totalTax - newRegimeResult.totalTax))}
                         </span>
                       </p>
