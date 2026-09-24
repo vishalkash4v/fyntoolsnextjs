@@ -169,6 +169,11 @@ const BarcodeGenerator = () => {
     setMessage('info', `Added ${lineCount} sample line${lineCount === 1 ? '' : 's'} (one barcode per line).`);
   };
 
+  const quickBulkExamples = [
+    { label: '3 sample SKUs', value: 'SKU-1001\nSKU-1002\nSKU-1003' },
+    { label: '3 numeric product codes', value: '012345678905\n036000291452\n049000028904' },
+  ];
+
   const clearBulkInput = () => {
     setBulkInput('');
     setResults([]);
@@ -549,6 +554,20 @@ const BarcodeGenerator = () => {
   };
 
   return (
+    <div className="rounded-xl border bg-muted/30 p-4 mb-4 space-y-3">
+      <div>
+        <p className="font-semibold text-sm">Quick barcode workflows</p>
+        <p className="text-xs text-muted-foreground mt-1">Load a sample list to test bulk generation, then choose the barcode type and print layout.</p>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {quickBulkExamples.map((example) => (
+          <button key={example.label} type="button" className="rounded-md border px-3 py-2 text-xs font-medium hover:border-primary/50" onClick={() => setBulkInput(example.value)} disabled={isGenerating}>
+            {example.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
     <div className="w-full p-4 space-y-6">
       <div className="bg-card border rounded-lg shadow-sm p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
