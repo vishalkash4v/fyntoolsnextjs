@@ -60,7 +60,7 @@ function pickCuratedList(primary: string[] | undefined, fallback: string[]): str
   return fallback;
 }
 
-function relatedToolsFallback(tool: Tool, limit = 10) {
+function relatedToolsFallback(tool: Tool, limit = 8) {
   return getRelatedToolsForPage(tool.path, limit);
 }
 
