@@ -439,6 +439,9 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/barcode-generator": {
+    "title": "Barcode Generator Online Free — Bulk UPC, Code 128 & EAN",
+    "description": "Free barcode generator for UPC, EAN, Code 128, Code 39 and more. Create bulk barcodes, download PNG or ZIP files, and print label sheets online without signup.",
+    "keywords": "barcode generator, bulk barcode generator, free barcode generator, upc barcode generator, code 128 barcode generator, ean barcode generator, online barcode generator",
     "howToUse": [
       "Pick a barcode look from the preview grid (label size or symbology such as Code 128, EAN-13, UPC-A).",
       "Enter one barcode value per line in the bulk box—the line count shows how many labels and print pages you need.",
@@ -3054,6 +3057,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
     "description": "Resize images to any dimension while maintaining quality. Free online image resizer with preset sizes for social media, government portals (GATE, NEET, UPSC, SSC), print, and web use. Batch resize multiple images instantly.",
     "shortIntro": "Transform your images with our professional-grade image resizer. Perfect for social media posts, government exam applications, print materials, and web optimization.",
     "category": "Image Tools",
+    "keywords": "image resizer, resize image, resize image to 20kb, resize image to 50kb, resize image to 100kb, photo resizer online, image size reducer",
     "howToUse": [
       "Upload your image file (JPG, PNG, WebP supported)",
       "Choose your purpose: Education/Government, Social Media, or Manual resize",
@@ -3194,6 +3198,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
     "description": "Upscale images 2x and 4x using advanced AI technology. Enhance image resolution up to 400% while preserving details and quality. Perfect for enlarging photos, artwork, graphics, and creating high-resolution images for print or digital use. Free, fast, no registration required.",
     "shortIntro": "Transform your low-resolution images into stunning high-resolution masterpieces with our professional AI-powered image upscaler. Enhance resolution 2x or 4x while preserving fine details, textures, and colors. Perfect for photographers, designers, artists, and anyone who needs to enlarge images without losing quality. Our advanced Lanczos3 algorithm with intelligent sharpening ensures professional-grade results every time.",
     "category": "Image Tools",
+    "keywords": "image upscaler, online upscaler, ai image upscaler, upscale image, image resolution enhancer, photo upscaler",
     "howToUse": [
       "Upload your image file (JPG, PNG, WebP supported, max 15MB, max 8000px dimension)",
       "Choose upscale factor: 2x (doubles resolution) or 4x (quadruples resolution)",
@@ -3788,10 +3793,10 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/json-formatter": {
-    "title": "JSON Beautifier & Minifier Online - Free JSON Formatter Tool",
-    "description": "Free online JSON beautifier and minifier tool. Beautify JSON, format JSON, minify JSON, and validate JSON syntax instantly. Best JSON beautifier online with proper indentation and formatting.",
+    "title": "JSON Formatter & Validator Online — Free Beautify & Minify Tool",
+    "description": "Free online JSON formatter and validator to beautify, validate, minify and inspect JSON. Format API responses, find syntax errors, and copy clean JSON instantly.",
     "shortIntro": "Our free online JSON Beautifier and Minifier helps you format, validate, and minify JSON data instantly. Beautify JSON with proper indentation and spacing for readability, or minify JSON to reduce file size for production. Includes syntax validation and error detection to ensure your JSON is valid.",
-    "keywords": "json beautifier, json beautifier online, beautify json, json beautify, json beautify online, json online beautifier, json formatter online, minify json, code beautifier, json formatter, format json, validate json, json validator, json viewer, json editor, pretty print json",
+    "keywords": "json formatter, json validator, json formatter online, json beautifier, beautify json, minify json, validate json, pretty print json, json viewer",
     "category": "Development Tools",
     "howToUse": [
       "Paste your JSON data into the input area",
@@ -8024,11 +8029,11 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/word-counter": {
-    "title": "Word Counter",
-    "description": "Free online word counter tool to count words, characters, sentences, and paragraphs in real-time. Get reading time estimates and text statistics instantly.",
+    "title": "Word Counter & Character Counter Online — Free Tool",
+    "description": "Free online word counter and character counter for essays, articles, SEO content and social posts. Count words, characters, sentences and paragraphs with reading time.",
     "shortIntro": "Count words, characters, sentences, and paragraphs instantly with our free online word counter tool.",
     "introText": "Paste or type your text in the box below to see live word count, character count, sentences, and paragraphs. The tool runs entirely in your browser, so your text never leaves your device. Use it for essays, blog posts, social media, or any content where length matters.",
-    "keywords": "word counter, character counter, text counter, word count tool, text statistics, reading time calculator",
+    "keywords": "word counter, character counter, word count tool, online word counter, character count, reading time calculator, essay word counter",
     "category": "Text & Writing Tools",
     "howToUse": [
       "Type or paste your text into the text area",
