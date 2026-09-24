@@ -25,7 +25,7 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
     introText:
       'The tool is designed for practical barcode workflows rather than a single-image demo. You can generate one barcode or process a bulk list, use numeric-only formats when required, choose paper and label layouts, and download generated barcodes for later use. Barcode values are generated in the browser, so the page can be useful for quick product, inventory, testing, and labeling tasks without creating an account.',
     keywords:
-      'barcode generator, free barcode generator, online barcode generator, barcode generator free, generate barcode, UPC barcode generator, Code 128 barcode generator, bulk barcode generator, printable barcode generator, barcode maker online',
+      'barcode generator, free barcode generator, online barcode generator, barcode generator free, generate barcode, UPC barcode generator, Code 128 barcode generator, bulk barcode generator, multiple barcode generator, free online barcode generator, printable barcode generator, barcode maker online',
     category: 'Utility Tools',
     howToUse: [
       'Enter one barcode value per line in the bulk input area. Use a single line when you only need one barcode.',
@@ -161,7 +161,7 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
     introText:
       'Image resizing changes the pixel dimensions of an image while keeping the original file usable for a new context. The FYN Tools resizer combines manual dimensions with presets for social platforms, email-friendly file sizes, and selected education or application workflows. Maintain the aspect ratio when you want proportional scaling, or set exact dimensions when a destination requires a specific size.',
     keywords:
-      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize image to 100kb, resize image to 200kb, social media image resizer, image dimensions resizer',
+      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize image in kb, resize image to 20kb, resize image to 50kb, resize image to 100kb, resize image to 200kb, image resizer 50kb, bulk image resizer, social media image resizer, image dimensions resizer',
     category: 'Image Tools',
     howToUse: [
       'Upload the image you want to resize.',
@@ -235,6 +235,11 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
         question: 'What does an image resizer do?',
         answer:
           'An image resizer changes the pixel dimensions of a photo or graphic. Depending on the selected settings, it can also adjust output quality and format so the resulting file fits a particular workflow.',
+      },
+      {
+        question: 'Can I resize an image to 20KB, 50KB, 100KB, or 200KB?',
+        answer:
+          'The page provides KB-oriented workflows for common upload limits. Because JPEG and other encoded file sizes depend on the image itself, a target such as 20KB or 100KB should be treated as a size goal rather than a guaranteed exact byte count. Check the downloaded file before submitting it.',
       },
       {
         question: 'Can I resize an image to a specific KB size?',
@@ -635,7 +640,7 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
     introText:
       'PDF compression is useful when a portal, email system, or document workflow limits upload size. The FYN Tools compressor lets you choose from several quality levels and compare the estimated result before processing. The current interface accepts PDFs up to 40MB each and can process up to 12 files in bulk mode.',
     keywords:
-      'pdf compressor, pdf compressor online, free pdf compressor, compress pdf, pdf file compressor, online pdf compressor, compress pdf to 150kb, pdf size compressor, reduce pdf size, bulk pdf compressor',
+      'pdf compressor, pdf compressor online, free pdf compressor, compress pdf, pdf file compressor, online pdf compressor, compress pdf to 150kb, pdf compressor to 100kb, pdf compressor to 200kb, pdf compressor to 300kb, pdf compressor to 500kb, pdf size compressor, reduce pdf size, bulk pdf compressor',
     category: 'PDF Tools',
     howToUse: [
       'Choose Single PDF or Bulk mode depending on how many files you need to process.',
@@ -708,6 +713,11 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
         question: 'What does a PDF compressor do?',
         answer:
           'A PDF compressor reduces the size of a PDF by applying document and image compression. The amount of reduction depends on the source file, embedded images, fonts, and the selected compression level.',
+      },
+      {
+        question: 'Can I compress a PDF to 100KB, 200KB, 300KB, or 500KB?',
+        answer:
+          'You can use the available compression levels to reduce a PDF toward a required upload limit, but the current tool does not guarantee an exact byte target for every document. The 150KB-oriented option is specifically provided for strict small-file workflows; always verify the final downloaded size.',
       },
       {
         question: 'Can I compress a PDF to 150KB?',
