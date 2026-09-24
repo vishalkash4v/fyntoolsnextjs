@@ -26,7 +26,6 @@ export const metadata: Metadata = buildPageMetadata({
     'Namezivo',
   ],
 });
-
 const faqs = [
   {
     question: 'Why are so many brand names already registered?',
