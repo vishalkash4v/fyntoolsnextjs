@@ -4787,7 +4787,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
     "title": "Compress PDF to 150KB Free — Bulk PDF Compressor Online",
     "description": "Compress PDF to 150KB free. Single or bulk PDF compression with 6 quality levels and estimated sizes. 150KB PDF converter for forms, email, and uploads — no signup.",
     "shortIntro": "Free PDF compressor for single or bulk files. Six levels from Full Quality to Compress to ~150 KB with live size estimates — built for government forms and email limits.",
-    "keywords": "pdf compressor, compress pdf to 150kb, 150kb pdf converter, compress 150kb pdf, pdf crop, free pdf compressor online, compress pdf bulk, reduce pdf file size",
+    "keywords": "pdf compressor, compress pdf online, compress pdf to 150kb, compress pdf to 200kb, compress pdf to 500kb, 150kb pdf converter, free pdf compressor online, compress pdf bulk, reduce pdf file size",
     "category": "Image Tools",
     "howToUse": [
       "Choose Single or Bulk mode and upload your PDF(s).",
