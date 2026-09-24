@@ -55,6 +55,15 @@ const JsonFormatter: React.FC = () => {
     }
   };
 
+  const exampleJson = '{"name":"FYN Tools","active":true,"tools":118}';
+
+  const loadExample = () => {
+    setInputText(exampleJson);
+    setOutputText('');
+    setIsValidJson(null);
+    setErrorMessage('');
+  };
+
   const handleFormat = () => handleAction('beautify');
   const handleMinify = () => handleAction('minify');
 
@@ -85,6 +94,14 @@ const JsonFormatter: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <div className="rounded-xl border bg-muted/30 p-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="font-semibold text-sm">JSON formatter quick start</p>
+          <p className="text-xs text-muted-foreground mt-1">Load a valid JSON example, then beautify or minify it.</p>
+        </div>
+        <Button type="button" variant="outline" size="sm" onClick={loadExample}>Load example JSON</Button>
+      </div>
+
       {/* Action Tabs */}
       <Tabs value={actionType} onValueChange={(value) => setActionType(value as ActionType)} className="w-full">
         <TabsList className="grid w-full grid-cols-2">
