@@ -39,9 +39,7 @@ export const allTools: Tool[] = [
     href: '/word-counter',
     url: 'https://fyntools.com/word-counter',
     features: 'Real-time word counting, Character count with and without spaces, Paragraph counting, Sentence counting, Reading time estimation, Character frequency analysis, Word frequency analysis, Copy results to clipboard, Text statistics dashboard',
-    icon: FileText,
-    rating: 4.8,
-    userCount: '45,000+'
+    icon: FileText
   },
   { 
     id: 'text-case-converter', 
@@ -53,9 +51,7 @@ export const allTools: Tool[] = [
     href: '/text-case-converter',
     url: 'https://fyntools.com/text-case-converter',
     features: 'Uppercase conversion, Lowercase conversion, Title case conversion, Sentence case conversion, Toggle case, Copy to clipboard, Real-time preview, Batch text processing, Preserve formatting options',
-    icon: TextCursor,
-    rating: 4.6,
-    userCount: '22,000+'
+    icon: TextCursor
   },
   { 
     id: 'text-font-changer', 
@@ -67,9 +63,7 @@ export const allTools: Tool[] = [
     href: '/text-font-changer',
     url: 'https://fyntools.com/text-font-changer',
     features: '35+ Unicode fonts, Bold italic cursive bubble aesthetic, Kaomojis and emoticons, Export to PNG, Platform presets Instagram Discord TikTok Roblox, Character limit indicators, Font search and favorites, Dark light preview, Sample text buttons',
-    icon: Type,
-    rating: 4.8,
-    userCount: '50,000+'
+    icon: Type
   },
   { 
     id: 'ai-text-rewriter', 
@@ -81,9 +75,7 @@ export const allTools: Tool[] = [
     href: '/ai-text-rewriter',
     url: 'https://fyntools.com/ai-text-rewriter',
     features: 'Multiple writing styles, Professional tone option, Casual tone option, Creative writing style, Academic writing style, Simple writing style, Creativity level control, AI detection avoidance, Maintains original meaning, Natural human-like rewriting, Word count preservation, Instant rewriting, Copy rewritten text',
-    icon: CopyCheck,
-    rating: 4.7,
-    userCount: '32,000+'
+    icon: CopyCheck
   },
   { 
     id: 'lorem-ipsum-generator', 
@@ -95,9 +87,7 @@ export const allTools: Tool[] = [
     href: '/lorem-ipsum-generator',
     url: 'https://fyntools.com/lorem-ipsum-generator',
     features: 'Customizable word count, Paragraph generation, Sentence generation, Words generation, Copy to clipboard, Multiple variations, Classic Lorem Ipsum text, Design mockup ready, Instant generation',
-    icon: FileText,
-    rating: 4.4,
-    userCount: '14,000+'
+    icon: FileText
   },
   { 
     id: 'whitespace-remover', 
@@ -109,9 +99,7 @@ export const allTools: Tool[] = [
     href: '/whitespace-remover',
     url: 'https://fyntools.com/whitespace-remover',
     features: 'Remove extra spaces, Remove tabs, Remove leading spaces, Remove trailing spaces, Remove all whitespace, Clean text formatting, Preserve line breaks option, Real-time cleaning, Copy cleaned text, Batch text processing',
-    icon: Eraser,
-    rating: 4.5,
-    userCount: '16,000+'
+    icon: Eraser
   },
   { 
     id: 'duplicate-line-remover', 
@@ -123,9 +111,7 @@ export const allTools: Tool[] = [
     href: '/duplicate-line-remover',
     url: 'https://fyntools.com/duplicate-line-remover',
     features: 'Remove duplicate lines, Case-sensitive option, Case-insensitive option, Keep first occurrence, Keep last occurrence, Show duplicate count, Preserve original order, Copy unique lines, Batch processing, Real-time preview',
-    icon: CopyCheck,
-    rating: 4.3,
-    userCount: '9,500+'
+    icon: CopyCheck
   },
   { 
     id: 'text-reverser', 
@@ -137,9 +123,7 @@ export const allTools: Tool[] = [
     href: '/text-reverser',
     url: 'https://fyntools.com/text-reverser',
     features: 'Reverse entire text, Reverse words order, Reverse lines order, Reverse characters, Mirror text effect, Copy reversed text, Real-time preview, Multiple reverse options, Preserve formatting',
-    icon: ArrowLeftRight,
-    rating: 4.2,
-    userCount: '7,200+'
+    icon: ArrowLeftRight
   },
   { 
     id: 'regex-tester', 
@@ -151,9 +135,7 @@ export const allTools: Tool[] = [
     href: '/regex-tester',
     url: 'https://fyntools.com/regex-tester',
     features: 'Test regex patterns, Match highlighting, Match groups extraction, Global match option, Case-insensitive option, Multiline mode, Real-time testing, Match count display, Copy matches, Common regex patterns library',
-    icon: Search,
-    rating: 4.7,
-    userCount: '28,000+'
+    icon: Search
   },
   { 
     id: 'base64-converter', 
@@ -165,9 +147,7 @@ export const allTools: Tool[] = [
     href: '/base64-converter',
     url: 'https://fyntools.com/base64-converter',
     features: 'Encode text to Base64, Decode Base64 to text, File encoding support, URL-safe encoding, Instant conversion, Copy encoded text, Copy decoded text, Validation check, Error detection, Batch processing',
-    icon: Code,
-    rating: 4.6,
-    userCount: '24,000+'
+    icon: Code
   },
   { 
     id: 'text-to-handwriting', 
@@ -179,9 +159,7 @@ export const allTools: Tool[] = [
     href: '/text-to-handwriting',
     url: 'https://fyntools.com/text-to-handwriting',
     features: 'Convert text to handwriting, Multiple handwriting styles, Lined paper background, Cursive font option, Download as image, Customizable pen color, Adjustable font size, Real-time preview, Copy handwriting image',
-    icon: PenTool,
-    rating: 4.5,
-    userCount: '19,000+'
+    icon: PenTool
   },
   { 
     id: 'url-slug-generator', 
@@ -193,9 +171,7 @@ export const allTools: Tool[] = [
     href: '/url-slug-generator',
     url: 'https://fyntools.com/url-slug-generator',
     features: 'Generate SEO-friendly slugs, Remove special characters, Convert to lowercase, Replace spaces with hyphens, Remove stop words option, Custom separator, Copy slug to clipboard, Real-time generation, URL validation, Length limit option',
-    icon: TextCursor,
-    rating: 4.6,
-    userCount: '21,000+'
+    icon: TextCursor
   },
   { 
     id: 'notes', 
@@ -207,9 +183,7 @@ export const allTools: Tool[] = [
     href: '/notes',
     url: 'https://fyntools.com/notes',
     features: 'Create notes, Edit notes, Delete notes, Tag organization, Color coding, Search notes, Filter by tags, Filter by color, Local storage, Export notes, Import notes, Rich text formatting, Date timestamps',
-    icon: StickyNote,
-    rating: 4.8,
-    userCount: '38,000+'
+    icon: StickyNote
   },
   { 
     id: 'timestamp-converter', 
@@ -221,9 +195,7 @@ export const allTools: Tool[] = [
     href: '/timestamp-converter',
     url: 'https://fyntools.com/timestamp-converter',
     features: 'Convert timestamp to date, Convert date to timestamp, Timezone support, Multiple timezone selection, Unix timestamp format, ISO 8601 format, Custom date format, Real-time conversion, Copy converted value, Current timestamp display, Date picker, Time picker',
-    icon: Clock,
-    rating: 4.7,
-    userCount: '26,000+'
+    icon: Clock
   },
 
   // Image Tools
@@ -237,9 +209,7 @@ export const allTools: Tool[] = [
     href: '/image-compressor',
     url: 'https://fyntools.com/image-compressor',
     features: 'Quality control slider, Target size in KB, Email-friendly presets, Batch compression, Format conversion, Before after comparison, Drag and drop interface, Mobile optimization, Preserve aspect ratio, Custom compression level, Download compressed image, File size reduction percentage',
-    icon: ImageIcon,
-    rating: 4.9,
-    userCount: '50,000+'
+    icon: ImageIcon
   },
   { 
     id: 'logo-to-favicon', 
@@ -251,9 +221,7 @@ export const allTools: Tool[] = [
     href: '/logo-to-favicon',
     url: 'https://fyntools.com/logo-to-favicon',
     features: 'Multiple favicon sizes, 16x16 favicon, 32x32 favicon, 180x180 favicon, ICO format support, PNG format support, Batch generation, Download all sizes, Preview favicons, Auto-crop and center',
-    icon: Star,
-    rating: 4.5,
-    userCount: '17,000+'
+    icon: Star
   },
   { 
     id: 'image-upscaler', 
@@ -265,9 +233,7 @@ export const allTools: Tool[] = [
     href: '/image-upscaler',
     url: 'https://fyntools.com/image-upscaler',
     features: 'Upscale resolution, Enhance image quality, Multiple upscale factors, Advanced interpolation, Quality improvement, Download upscaled image, Real-time preview, Preserve aspect ratio, Batch upscaling',
-    icon: Zap,
-    rating: 4.9,
-    userCount: '75,000+'
+    icon: Zap
   },
   { 
     id: 'image-cropper', 
@@ -279,9 +245,7 @@ export const allTools: Tool[] = [
     href: '/image-cropper',
     url: 'https://fyntools.com/image-cropper',
     features: 'Crop images, Resize images, Social media presets, Instagram dimensions, Facebook dimensions, Twitter dimensions, LinkedIn dimensions, Custom dimensions, Aspect ratio lock, Real-time preview, Download cropped image',
-    icon: Crop,
-    rating: 4.8,
-    userCount: '42,000+'
+    icon: Crop
   },
   { 
     id: 'image-format-converter', 
@@ -293,9 +257,7 @@ export const allTools: Tool[] = [
     href: '/image-format-converter',
     url: 'https://fyntools.com/image-format-converter',
     features: 'JPG to PNG conversion, PNG to JPG conversion, WebP conversion, Quality control, Batch conversion, Format selection, Download converted image, Preserve transparency, Fast conversion, Secure processing',
-    icon: RotateCcw,
-    rating: 4.7,
-    userCount: '30,000+'
+    icon: RotateCcw
   },
   { 
     id: 'svg-optimizer', 
@@ -307,9 +269,7 @@ export const allTools: Tool[] = [
     href: '/svg-optimizer',
     url: 'https://fyntools.com/svg-optimizer',
     features: 'Remove unused attributes, Remove comments, Remove metadata, Reduce file size, Preserve quality, Clean SVG code, Download optimized SVG, File size comparison, Batch optimization',
-    icon: FileCode,
-    rating: 4.4,
-    userCount: '11,000+'
+    icon: FileCode
   },
   { 
     id: 'image-metadata-viewer', 
@@ -321,9 +281,7 @@ export const allTools: Tool[] = [
     href: '/image-metadata-viewer',
     url: 'https://fyntools.com/image-metadata-viewer',
     features: 'View EXIF data, Camera settings, GPS location, Technical details, Image properties, Metadata extraction, Export metadata, Camera model info, Date taken, ISO settings, Aperture settings',
-    icon: Camera,
-    rating: 4.3,
-    userCount: '8,400+'
+    icon: Camera
   },
   { 
     id: 'image-to-text', 
@@ -335,9 +293,7 @@ export const allTools: Tool[] = [
     href: '/image-to-text',
     url: 'https://fyntools.com/image-to-text',
     features: 'OCR text extraction, Extract text from photos, Extract text from scanned documents, Multiple language support, Copy extracted text, Download as text file, Batch processing, High accuracy OCR',
-    icon: FileText,
-    rating: 4.6,
-    userCount: '23,000+'
+    icon: FileText
   },
   { 
     id: 'pdf-text-extractor', 
@@ -349,9 +305,7 @@ export const allTools: Tool[] = [
     href: '/pdf-text-extractor',
     url: 'https://fyntools.com/pdf-text-extractor',
     features: 'Extract PDF text, Convert PDF to text, Copy extracted text, Download as text file, Batch PDF processing, Preserve formatting option, Multi-page PDF support',
-    icon: FileArchive,
-    rating: 4.5,
-    userCount: '15,000+'
+    icon: FileArchive
   },
   {
     id: 'pdf-compressor',
@@ -367,8 +321,6 @@ export const allTools: Tool[] = [
     features:
       'Compress PDF to 150KB, Six compression levels with size estimates, Single and bulk PDF compression, Full quality to max compact modes, Client-side private processing, Download compressed PDF, Government form upload ready',
     icon: FileArchive,
-    rating: 4.8,
-    userCount: '12,400+',
   },
   { 
     id: 'placeholder-image-generator', 
@@ -380,9 +332,7 @@ export const allTools: Tool[] = [
     href: '/placeholder-image-generator',
     url: 'https://fyntools.com/placeholder-image-generator',
     features: 'Custom dimensions, Custom colors, Custom text, Download placeholder, Multiple formats, Quick generation, Design mockups, Web development',
-    icon: FileImage,
-    rating: 4.3,
-    userCount: '10,200+'
+    icon: FileImage
   },
   { 
     id: 'pixelate-tool', 
@@ -394,9 +344,7 @@ export const allTools: Tool[] = [
     href: '/pixelate-tool',
     url: 'https://fyntools.com/pixelate-tool',
     features: 'Pixelate specific areas, Adjustable pixel size, Adjustable strength, Select area to pixelate, Download pixelated image, Privacy protection, Face blurring, Real-time preview',
-    icon: ImageIcon,
-    rating: 4.4,
-    userCount: '12,500+'
+    icon: ImageIcon
   },
   { 
     id: 'photo-annotation-tool', 
@@ -408,9 +356,7 @@ export const allTools: Tool[] = [
     href: '/photo-annotation-tool',
     url: 'https://fyntools.com/photo-annotation-tool',
     features: 'Add name to photo, Add date to photo, Add signature, Add fingerprint, Passport photo editor, Application photo editor, Text overlay, Download annotated photo',
-    icon: PenTool,
-    rating: 4.6,
-    userCount: '20,000+'
+    icon: PenTool
   },
   { 
     id: 'background-remover', 
@@ -422,9 +368,7 @@ export const allTools: Tool[] = [
     href: '/background-remover',
     url: 'https://fyntools.com/background-remover',
     features: 'Automatic background removal, Transparent background, Manual refinement, Download PNG with transparency, Batch processing, High quality removal, Instant processing',
-    icon: Eraser,
-    rating: 4.7,
-    userCount: '34,000+'
+    icon: Eraser
   },
   { 
     id: 'merge-images', 
@@ -436,9 +380,7 @@ export const allTools: Tool[] = [
     href: '/merge-images',
     url: 'https://fyntools.com/merge-images',
     features: 'Horizontal merge, Vertical merge, Grid layout, Combine multiple photos, Custom spacing, Align images, Download merged image, Batch merge, Preserve aspect ratio',
-    icon: ImageIcon,
-    rating: 4.5,
-    userCount: '18,500+'
+    icon: ImageIcon
   },
   { 
     id: 'flip-image', 
@@ -450,9 +392,7 @@ export const allTools: Tool[] = [
     href: '/flip-image',
     url: 'https://fyntools.com/flip-image',
     features: 'Horizontal flip, Vertical flip, Real-time preview, Download flipped image, Mirror effect, Instant flip, Batch flipping',
-    icon: RotateCcw,
-    rating: 4.3,
-    userCount: '8,800+'
+    icon: RotateCcw
   },
   { 
     id: 'blur-image', 
@@ -464,9 +404,7 @@ export const allTools: Tool[] = [
     href: '/blur-image',
     url: 'https://fyntools.com/blur-image',
     features: 'Adjustable blur intensity, Selective blur, Background blur, Privacy blur, Download blurred image, Real-time preview, Multiple blur styles',
-    icon: ImageIcon,
-    rating: 4.4,
-    userCount: '11,800+'
+    icon: ImageIcon
   },
   { 
     id: 'split-image', 
@@ -478,9 +416,7 @@ export const allTools: Tool[] = [
     href: '/split-image',
     url: 'https://fyntools.com/split-image',
     features: 'Custom rows and columns, Split into pieces, Download as ZIP, Individual piece download, Grid split, Equal size pieces, Download all pieces',
-    icon: ImageIcon,
-    rating: 4.2,
-    userCount: '6,500+'
+    icon: ImageIcon
   },
   { 
     id: 'invert-image-colors', 
@@ -492,9 +428,7 @@ export const allTools: Tool[] = [
     href: '/invert-image-colors',
     url: 'https://fyntools.com/invert-image-colors',
     features: 'Color inversion, Negative effect, Adjustable intensity, Download inverted image, Real-time preview, Full color inversion',
-    icon: ImageIcon,
-    rating: 4.3,
-    userCount: '9,200+'
+    icon: ImageIcon
   },
   { 
     id: 'image-resizer', 
@@ -506,9 +440,7 @@ export const allTools: Tool[] = [
     href: '/image-resizer',
     url: 'https://fyntools.com/image-resizer',
     features: 'Manual resize, Custom dimensions, Preserve aspect ratio, File size reduction, Email-friendly KB presets, Download resized image, Real-time preview, Batch resizing, Exam and social presets',
-    icon: ImageIcon,
-    rating: 4.8,
-    userCount: '40,000+'
+    icon: ImageIcon
   },
   { 
     id: 'add-name-date-photo', 
@@ -520,9 +452,7 @@ export const allTools: Tool[] = [
     href: '/photo-annotation-tool',
     url: 'https://fyntools.com/photo-annotation-tool',
     features: 'Add name to photo, Add date to photo, Passport photo editor, Application form photos, Text overlay, Download edited photo',
-    icon: CalendarDays,
-    rating: 4.5,
-    userCount: '16,200+'
+    icon: CalendarDays
   },
   { 
     id: 'qr-scanner', 
@@ -534,9 +464,7 @@ export const allTools: Tool[] = [
     href: '/qr-scanner',
     url: 'https://fyntools.com/qr-scanner',
     features: 'Camera scanning, Upload image to scan, Decode QR codes, Copy decoded text, Open decoded URLs, Multiple QR code support, History of scans',
-    icon: QrCode,
-    rating: 4.6,
-    userCount: '25,000+'
+    icon: QrCode
   },
 
   // Typing Tools
@@ -550,9 +478,7 @@ export const allTools: Tool[] = [
     href: '/typing-tutor',
     url: 'https://fyntools.com/typing-tutor',
     features: 'Guided typing lessons, English lessons, Hindi lessons, Touch typing practice, Progress tracking, Finger position guide, Lesson difficulty levels, Practice exercises, Typing speed improvement, Accuracy training',
-    icon: Keyboard,
-    rating: 4.7,
-    userCount: '29,000+'
+    icon: Keyboard
   },
   { 
     id: 'typing-test', 
@@ -564,9 +490,7 @@ export const allTools: Tool[] = [
     href: '/typing-test',
     url: 'https://fyntools.com/typing-test',
     features: 'Typing speed test, WPM calculation, Accuracy measurement, Various text samples, Time-based tests, Word count tracking, Error highlighting, Results history, Performance statistics, Share results',
-    icon: Timer,
-    rating: 4.8,
-    userCount: '44,000+'
+    icon: Timer
   },
   { 
     id: 'typing-games', 
@@ -578,9 +502,7 @@ export const allTools: Tool[] = [
     href: '/typing-games',
     url: 'https://fyntools.com/typing-games',
     features: 'Multiple typing games, Fun learning experience, Skill improvement, Game-based practice, Score tracking, Level progression, Interactive gameplay, Typing challenges, Entertainment and learning',
-    icon: Gamepad2,
-    rating: 4.5,
-    userCount: '19,500+'
+    icon: Gamepad2
   },
   { 
     id: 'typing-competition', 
@@ -592,9 +514,7 @@ export const allTools: Tool[] = [
     href: '/typing-competition',
     url: 'https://fyntools.com/typing-competition',
     features: 'Real-time competition, Multiplayer typing, Typing races, Leaderboard, Challenge random players, Live results, Competition mode, Ranking system, Typing battles',
-    icon: Trophy,
-    rating: 4.4,
-    userCount: '13,000+'
+    icon: Trophy
   },
 
   // Utility Tools
@@ -608,9 +528,7 @@ export const allTools: Tool[] = [
     href: '/qr-code-generator',
     url: 'https://fyntools.com/qr-code-generator',
     features: 'Generate QR codes, Text to QR code, URL to QR code, Custom colors, Custom sizes, Error correction levels, Logo embedding, Download as PNG, Download as SVG, Batch generation, Different QR types',
-    icon: QrCode,
-    rating: 4.8,
-    userCount: '48,000+'
+    icon: QrCode
   },
   { 
     id: 'password-generator', 
@@ -622,9 +540,7 @@ export const allTools: Tool[] = [
     href: '/password-generator',
     url: 'https://fyntools.com/password-generator',
     features: 'Customizable length, Include numbers, Include symbols, Include uppercase, Include lowercase, Memorable passwords option, Strength indicator, Copy to clipboard, Multiple password generation, Secure random generation',
-    icon: Key,
-    rating: 4.9,
-    userCount: '50,000+'
+    icon: Key
   },
   { 
     id: 'json-formatter', 
@@ -636,9 +552,7 @@ export const allTools: Tool[] = [
     href: '/json-formatter',
     url: 'https://fyntools.com/json-formatter',
     features: 'Beautify JSON, Format JSON, Validate JSON, Minify JSON, Syntax highlighting, Error detection, Tree view, Copy formatted JSON, Download JSON, Pretty print, Indentation control',
-    icon: Code,
-    rating: 4.9,
-    userCount: '52,000+'
+    icon: Code
   },
   { 
     id: 'color-picker-tool', 
@@ -650,9 +564,7 @@ export const allTools: Tool[] = [
     href: '/color-picker-tool',
     url: 'https://fyntools.com/color-picker-tool',
     features: 'Color picker from palette, Pick color from image, HEX color code, RGB color code, HSL color code, Copy color code, Color history, Eyedropper tool, Color palette, Custom colors',
-    icon: Palette,
-    rating: 4.8,
-    userCount: '35,000+'
+    icon: Palette
   },
   { 
     id: 'todo-list', 
@@ -664,9 +576,7 @@ export const allTools: Tool[] = [
     href: '/todo-list',
     url: 'https://fyntools.com/todo-list',
     features: 'Create tasks, Edit tasks, Delete tasks, Mark as complete, Task priorities, Due dates, Task categories, Local storage, Export tasks, Import tasks, Task search, Filter tasks',
-    icon: ListChecks,
-    rating: 4.6,
-    userCount: '27,000+'
+    icon: ListChecks
   },
   { 
     id: 'daily-task-report-saver', 
@@ -678,9 +588,7 @@ export const allTools: Tool[] = [
     href: '/daily-task-report-saver',
     url: 'https://fyntools.com/daily-task-report-saver',
     features: 'Save daily timetable, Daily routine tracking, Work report section, Export to file, Quick jump to saved dates, Local storage',
-    icon: CalendarCheck,
-    rating: 4.4,
-    userCount: '12,200+'
+    icon: CalendarCheck
   },
   { 
     id: 'timetable-maker', 
@@ -692,9 +600,7 @@ export const allTools: Tool[] = [
     href: '/timetable-maker',
     url: 'https://fyntools.com/timetable-maker',
     features: 'Profile-based generation, Hobbies and goals input, For students and adults, Editable slots, Regenerate, Save locally',
-    icon: CalendarDays,
-    rating: 4.3,
-    userCount: '8,100+'
+    icon: CalendarDays
   },
   { 
     id: 'list-randomizer', 
@@ -706,9 +612,7 @@ export const allTools: Tool[] = [
     href: '/list-randomizer',
     url: 'https://fyntools.com/list-randomizer',
     features: 'Shuffle list items, Randomize order, Copy randomized list, Multiple randomization, Preserve original option, Export randomized list',
-    icon: List,
-    rating: 4.5,
-    userCount: '17,800+'
+    icon: List
   },
   { 
     id: 'barcode-generator', 
@@ -720,9 +624,7 @@ export const allTools: Tool[] = [
     href: '/barcode-generator',
     url: 'https://fyntools.com/barcode-generator',
     features: 'Visual 1D style picker, Avery label sheets, Bulk lines, Print layout planner, Code128 EAN UPC GS1, PNG ZIP download, QR tool links',
-    icon: Barcode,
-    rating: 4.5,
-    userCount: '15,400+'
+    icon: Barcode
   },
   {
     id: 'barcode-scanner-online',
@@ -734,9 +636,7 @@ export const allTools: Tool[] = [
     href: '/barcode-scanner-online',
     url: 'https://fyntools.com/barcode-scanner-online',
     features: 'Camera scanner, Upload image scanning, EAN13 UPC Code128 Code39 support, QR support, Batch mode, Scan history, CSV export, Copy results, Smart actions',
-    icon: Barcode,
-    rating: 4.7,
-    userCount: '19,000+'
+    icon: Barcode
   },
   // Number Tools
   { 
@@ -749,9 +649,7 @@ export const allTools: Tool[] = [
     href: '/simple-calculator',
     url: 'https://fyntools.com/simple-calculator',
     features: 'Basic arithmetic operations, Addition, Subtraction, Multiplication, Division, Clear function, Memory functions, Percentage calculations, Decimal support',
-    icon: Calculator,
-    rating: 4.7,
-    userCount: '36,000+'
+    icon: Calculator
   },
   { 
     id: 'age-calculator', 
@@ -763,9 +661,7 @@ export const allTools: Tool[] = [
     href: '/age-calculator',
     url: 'https://fyntools.com/age-calculator',
     features: 'Calculate exact age, Age in years months days, Age in days only, Age in weeks, Next birthday countdown, Date picker, Accurate calculation, Age display in multiple formats',
-    icon: User,
-    rating: 4.8,
-    userCount: '41,000+'
+    icon: User
   },
   { 
     id: 'date-difference-calculator', 
@@ -777,9 +673,7 @@ export const allTools: Tool[] = [
     href: '/date-difference-calculator',
     url: 'https://fyntools.com/date-difference-calculator',
     features: 'Calculate days between dates, Calculate months between dates, Calculate years between dates, Total difference display, Date picker, Include end date option, Exclude end date option',
-    icon: CalendarDays,
-    rating: 4.6,
-    userCount: '24,500+'
+    icon: CalendarDays
   },
   { 
     id: 'future-date-calculator', 
@@ -791,9 +685,7 @@ export const allTools: Tool[] = [
     href: '/future-date-calculator',
     url: 'https://fyntools.com/future-date-calculator',
     features: 'Add days to date, Subtract days from date, Add months to date, Subtract months from date, Add years to date, Subtract years from date, Date picker, Calculate future date, Calculate past date',
-    icon: CalendarSchedule,
-    rating: 4.5,
-    userCount: '18,200+'
+    icon: CalendarSchedule
   },
   { 
     id: 'bmi-calculator', 
@@ -805,9 +697,7 @@ export const allTools: Tool[] = [
     href: '/bmi-calculator',
     url: 'https://fyntools.com/bmi-calculator',
     features: 'BMI calculation, Metric units, Imperial units, BMI category classification, Health recommendations, Age and gender considerations, Visual BMI chart, Underweight normal overweight obese classification',
-    icon: Weight,
-    rating: 4.8,
-    userCount: '46,000+'
+    icon: Weight
   },
   { 
     id: 'percentage-calculator', 
@@ -819,9 +709,7 @@ export const allTools: Tool[] = [
     href: '/percentage-calculator',
     url: 'https://fyntools.com/percentage-calculator',
     features: 'Calculate percentage, Percentage increase, Percentage decrease, Percentage of number, Ratio calculation, Percentage change, Multiple calculation modes',
-    icon: Percent,
-    rating: 4.7,
-    userCount: '31,000+'
+    icon: Percent
   },
   { 
     id: 'currency-converter', 
@@ -833,9 +721,7 @@ export const allTools: Tool[] = [
     href: '/currency-converter',
     url: 'https://fyntools.com/currency-converter',
     features: 'Multiple currencies, Real-time exchange rates, Historical rates, Currency swap, Amount input, Convert button, Popular currencies, All world currencies',
-    icon: DollarSign,
-    rating: 4.8,
-    userCount: '43,000+'
+    icon: DollarSign
   },
   { 
     id: 'gst-calculator', 
@@ -847,9 +733,7 @@ export const allTools: Tool[] = [
     href: '/gst-calculator',
     url: 'https://fyntools.com/gst-calculator',
     features: 'GST calculation, Multiple GST rates, Add GST, Remove GST, GST inclusive price, GST exclusive price, Tax amount display, Total amount display, India GST rates',
-    icon: PackagePlus,
-    rating: 4.6,
-    userCount: '26,000+'
+    icon: PackagePlus
   },
   { 
     id: 'emi-calculator', 
@@ -861,9 +745,7 @@ export const allTools: Tool[] = [
     href: '/emi-calculator',
     url: 'https://fyntools.com/emi-calculator',
     features: 'EMI calculation, Loan amount input, Interest rate input, Loan tenure input, Monthly EMI display, Total interest display, Total amount display, Amortization schedule, Principal and interest breakdown',
-    icon: DollarSign,
-    rating: 4.7,
-    userCount: '33,000+'
+    icon: DollarSign
   },
   { 
     id: 'sip-calculator', 
@@ -875,9 +757,7 @@ export const allTools: Tool[] = [
     href: '/sip-calculator',
     url: 'https://fyntools.com/sip-calculator',
     features: 'SIP calculation, Lumpsum calculation, Expected returns, Investment amount input, Expected return rate, Investment period, Maturity amount display, Total investment display, Returns breakdown, Investment growth chart',
-    icon: TrendingUp,
-    rating: 4.7,
-    userCount: '30,000+'
+    icon: TrendingUp
   },
   { 
     id: 'ppf-calculator', 
@@ -889,9 +769,7 @@ export const allTools: Tool[] = [
     href: '/ppf-calculator',
     url: 'https://fyntools.com/ppf-calculator',
     features: 'PPF maturity calculation, Annual contribution input, Current PPF rate, Investment period, Maturity amount display, Total investment display, Interest earned display, Yearly breakdown',
-    icon: TrendingUp,
-    rating: 4.6,
-    userCount: '22,500+'
+    icon: TrendingUp
   },
   { 
     id: 'fd-calculator', 
@@ -903,9 +781,7 @@ export const allTools: Tool[] = [
     href: '/fd-calculator',
     url: 'https://fyntools.com/fd-calculator',
     features: 'FD maturity calculation, Principal amount input, Interest rate input, Tenure input, Maturity amount display, Interest earned display, Quarterly compounding, Monthly compounding, Yearly compounding',
-    icon: TrendingUp,
-    rating: 4.6,
-    userCount: '21,000+'
+    icon: TrendingUp
   },
   { 
     id: 'income-tax-calculator', 
@@ -917,9 +793,7 @@ export const allTools: Tool[] = [
     href: '/income-tax-calculator',
     url: 'https://fyntools.com/income-tax-calculator',
     features: 'Income tax calculation, Taxable income input, Tax deductions, Tax exemptions, Old tax regime, New tax regime, Tax slabs, Tax liability display, Effective tax rate, Tax saving suggestions',
-    icon: DollarSign,
-    rating: 4.8,
-    userCount: '39,000+'
+    icon: DollarSign
   },
 
   // Period & Cycle Tools
@@ -933,9 +807,7 @@ export const allTools: Tool[] = [
     href: '/period-calculator',
     url: 'https://fyntools.com/period-calculator',
     features: 'Predict next period date, Cycle length input, Last period date, Average cycle calculation, Period calendar, Reminders, Cycle history tracking, Irregular cycle support',
-    icon: CalendarDays,
-    rating: 4.7,
-    userCount: '28,500+'
+    icon: CalendarDays
   },
   { 
     id: 'ovulation-calculator', 
@@ -947,9 +819,7 @@ export const allTools: Tool[] = [
     href: '/ovulation-calculator',
     url: 'https://fyntools.com/ovulation-calculator',
     features: 'Calculate ovulation day, Fertile window display, Cycle length input, Last period date, Ovulation calendar, Fertility predictions, Best conception days, Cycle tracking',
-    icon: Activity,
-    rating: 4.6,
-    userCount: '23,000+'
+    icon: Activity
   },
   { 
     id: 'safe-days-calculator', 
@@ -961,9 +831,7 @@ export const allTools: Tool[] = [
     href: '/safe-days-calculator',
     url: 'https://fyntools.com/safe-days-calculator',
     features: 'Identify safe days, Identify fertile days, Pregnancy risk indicator, Cycle length input, Last period date, Safe days calendar, Fertile days calendar, Risk level display',
-    icon: ShieldCheck,
-    rating: 4.5,
-    userCount: '17,500+'
+    icon: ShieldCheck
   },
   { 
     id: 'period-tracker', 
@@ -975,9 +843,7 @@ export const allTools: Tool[] = [
     href: '/period-tracker',
     url: 'https://fyntools.com/period-tracker',
     features: 'Log period dates, Track symptoms, Track mood, Track flow, History charts, Reminders, Cycle patterns, Export data, Privacy protection, Local storage',
-    icon: CalendarCheck,
-    rating: 4.7,
-    userCount: '31,500+'
+    icon: CalendarCheck
   },
   { 
     id: 'pms-symptom-tracker', 
@@ -989,9 +855,7 @@ export const allTools: Tool[] = [
     href: '/pms-symptom-tracker',
     url: 'https://fyntools.com/pms-symptom-tracker',
     features: 'Track PMS symptoms, Pain scale tracking, Daily symptom logging, Symptom history, Pattern recognition, Export data, Reminders, Multiple symptom categories',
-    icon: HeartPulse,
-    rating: 4.4,
-    userCount: '11,200+'
+    icon: HeartPulse
   },
 
   // Pregnancy Tools
@@ -1005,9 +869,7 @@ export const allTools: Tool[] = [
     href: '/pregnancy-due-date-calculator',
     url: 'https://fyntools.com/pregnancy-due-date-calculator',
     features: 'Calculate due date, LMP method, Conception date method, Ultrasound date method, Due date display, Pregnancy week display, Trimester information, Countdown to due date',
-    icon: Baby,
-    rating: 4.8,
-    userCount: '37,000+'
+    icon: Baby
   },
   { 
     id: 'pregnancy-week-calculator', 
@@ -1019,9 +881,7 @@ export const allTools: Tool[] = [
     href: '/pregnancy-week-calculator',
     url: 'https://fyntools.com/pregnancy-week-calculator',
     features: 'Calculate pregnancy week, Trimester stage display, Baby growth information, Development milestones, Week by week guide, Due date calculation, Pregnancy calendar',
-    icon: CalendarDays,
-    rating: 4.5,
-    userCount: '16,800+'
+    icon: CalendarDays
   },
   { 
     id: 'conception-date-calculator', 
@@ -1033,9 +893,7 @@ export const allTools: Tool[] = [
     href: '/conception-date-calculator',
     url: 'https://fyntools.com/conception-date-calculator',
     features: 'Estimate conception date, Due date input, Cycle length input, Conception window display, Fertility period, Reverse calculation from due date',
-    icon: Activity,
-    rating: 4.4,
-    userCount: '10,500+'
+    icon: Activity
   },
   { 
     id: 'pregnancy-weight-gain-calculator', 
@@ -1047,9 +905,7 @@ export const allTools: Tool[] = [
     href: '/pregnancy-weight-gain-calculator',
     url: 'https://fyntools.com/pregnancy-weight-gain-calculator',
     features: 'Calculate healthy weight gain, Pre-pregnancy BMI input, Recommended weight gain range, Trimester-wise recommendations, Weight tracking, Health guidelines, BMI-based recommendations',
-    icon: Weight,
-    rating: 4.5,
-    userCount: '14,800+'
+    icon: Weight
   },
   { 
     id: 'contraction-timer', 
@@ -1061,9 +917,7 @@ export const allTools: Tool[] = [
     href: '/contraction-timer',
     url: 'https://fyntools.com/contraction-timer',
     features: 'Measure contraction duration, Measure contraction intervals, History logs, Start stop timer, Contraction counter, Average interval calculation, Labor progress tracking, Export data',
-    icon: Timer,
-    rating: 4.6,
-    userCount: '20,500+'
+    icon: Timer
   },
   { 
     id: 'baby-kick-counter', 
@@ -1075,9 +929,7 @@ export const allTools: Tool[] = [
     href: '/baby-kick-counter',
     url: 'https://fyntools.com/baby-kick-counter',
     features: 'Count baby kicks, Track fetal movement, Daily history, Kick timer, Movement patterns, Export data, Reminders, Health monitoring',
-    icon: HeartPulse,
-    rating: 4.6,
-    userCount: '19,200+'
+    icon: HeartPulse
   },
   { 
     id: 'pregnancy-diet-planner', 
@@ -1089,9 +941,7 @@ export const allTools: Tool[] = [
     href: '/pregnancy-diet-planner',
     url: 'https://fyntools.com/pregnancy-diet-planner',
     features: 'Trimester diet tips, Calorie goals, Food lists, Healthy foods, Foods to avoid, Nutritional guidelines, Meal planning, Trimester-specific recommendations',
-    icon: Apple,
-    rating: 4.5,
-    userCount: '15,600+'
+    icon: Apple
   },
 
   // Converter Tools
@@ -1105,9 +955,7 @@ export const allTools: Tool[] = [
     href: '/temperature-converter',
     url: 'https://fyntools.com/temperature-converter',
     features: 'Celsius to Fahrenheit, Fahrenheit to Celsius, Kelvin conversion, Real-time conversion, Bidirectional conversion, Copy result, Clear input',
-    icon: Palette,
-    rating: 4.5,
-    userCount: '18,000+'
+    icon: Palette
   },
   { 
     id: 'unit-converter', 
@@ -1119,9 +967,7 @@ export const allTools: Tool[] = [
     href: '/unit-converter',
     url: 'https://fyntools.com/unit-converter',
     features: 'Length conversion, Weight conversion, Volume conversion, Area conversion, Multiple unit types, Metric units, Imperial units, Real-time conversion, Copy result',
-    icon: Palette,
-    rating: 4.6,
-    userCount: '25,500+'
+    icon: Palette
   },
   { 
     id: 'enhanced-unit-converter', 
@@ -1133,9 +979,7 @@ export const allTools: Tool[] = [
     href: '/enhanced-unit-converter',
     url: 'https://fyntools.com/enhanced-unit-converter',
     features: 'Length conversion, Weight conversion, Temperature conversion, Time conversion, Data size conversion, Speed conversion, Multiple categories, Metric and imperial units, Real-time conversion, Copy result, History of conversions',
-    icon: ArrowLeftRight,
-    rating: 4.7,
-    userCount: '27,000+'
+    icon: ArrowLeftRight
   },
 
   // Developer Tools
@@ -1149,9 +993,7 @@ export const allTools: Tool[] = [
     href: '/hash-generator',
     url: 'https://fyntools.com/hash-generator',
     features: 'Generate MD5 hash, Generate SHA-1 hash, Generate SHA-256 hash, Generate SHA-512 hash, Compare hashes, Verify hash, Hash comparison tool, Copy hash, Multiple hash algorithms, File hashing support',
-    icon: Hash,
-    rating: 4.7,
-    userCount: '29,500+'
+    icon: Hash
   },
   { 
     id: 'jwt-decoder', 
@@ -1163,9 +1005,7 @@ export const allTools: Tool[] = [
     href: '/jwt-decoder',
     url: 'https://fyntools.com/jwt-decoder',
     features: 'Decode JWT tokens, Parse JWT header, Parse JWT payload, View JWT signature, Pretty print JSON, Copy decoded data, Token validation, Expiration check, Algorithm display',
-    icon: Key,
-    rating: 4.6,
-    userCount: '23,500+'
+    icon: Key
   },
   { 
     id: 'meta-tag-previewer', 
@@ -1177,9 +1017,7 @@ export const allTools: Tool[] = [
     href: '/meta-tag-previewer',
     url: 'https://fyntools.com/meta-tag-previewer',
     features: 'Preview search results, Generate meta tags, Open Graph tags, Twitter Card tags, Meta title preview, Meta description preview, SEO optimization, Copy meta tags, Validate meta tags',
-    icon: Eye,
-    rating: 4.5,
-    userCount: '17,200+'
+    icon: Eye
   },
   { 
     id: 'live-preview', 
@@ -1191,9 +1029,7 @@ export const allTools: Tool[] = [
     href: '/live-preview',
     url: 'https://fyntools.com/live-preview',
     features: 'Live HTML preview, CSS preview, JavaScript preview, Real-time rendering, Multiple viewport sizes, Code editor, Syntax highlighting, Error detection, Copy code, Download code, Responsive preview',
-    icon: FileCode,
-    rating: 4.6,
-    userCount: '24,000+'
+    icon: FileCode
   },
   { 
     id: 'javascript-minifier', 
@@ -1205,9 +1041,7 @@ export const allTools: Tool[] = [
     href: '/javascript-minifier',
     url: 'https://fyntools.com/javascript-minifier',
     features: 'Minify JavaScript, Compress JS code, Remove whitespace, Remove comments, Optimize code, File size reduction, Copy minified code, Download minified file, Before after comparison',
-    icon: Code,
-    rating: 4.5,
-    userCount: '16,500+'
+    icon: Code
   },
   { 
     id: 'table-to-json-converter', 
@@ -1219,9 +1053,7 @@ export const allTools: Tool[] = [
     href: '/table-to-json-converter',
     url: 'https://fyntools.com/table-to-json-converter',
     features: 'Convert HTML table to JSON, Paste table HTML, Generate JSON, Array format, Object format, Copy JSON, Download JSON, Validate JSON, Pretty print JSON',
-    icon: Table,
-    rating: 4.4,
-    userCount: '11,500+'
+    icon: Table
   },
   { 
     id: 'xml-sitemap-tester', 
@@ -1233,9 +1065,7 @@ export const allTools: Tool[] = [
     href: '/xml-sitemap-tester',
     url: 'https://fyntools.com/xml-sitemap-tester',
     features: 'Test XML sitemap, Validate sitemap, Analyze URLs, Detect broken links, Check redirects, Response time analysis, Status code checking, SEO recommendations, Export results, Sitemap health score',
-    icon: FileSearch,
-    rating: 4.5,
-    userCount: '13,800+'
+    icon: FileSearch
   },
   { 
     id: 'trip-expense-splitter', 
@@ -1247,9 +1077,7 @@ export const allTools: Tool[] = [
     href: '/trip-expense-splitter',
     url: 'https://fyntools.com/trip-expense-splitter',
     features: 'Split expenses, Track trip expenses, Assign roles, Calculate settlements, See who owes what, Add participants, Add expenses, Equal split, Custom split, Export calculations, Expense history',
-    icon: Plane,
-    rating: 5,
-    userCount: '1K+'
+    icon: Plane
   },
 
   // Timer Tools
@@ -1263,9 +1091,7 @@ export const allTools: Tool[] = [
     href: '/stopwatch',
     url: 'https://fyntools.com/stopwatch',
     features: 'Start stopwatch, Stop stopwatch, Reset stopwatch, Lap times, Time display, Millisecond precision, Multiple lap tracking, Copy time, Export lap times',
-    icon: Clock,
-    rating: 4.7,
-    userCount: '32,000+'
+    icon: Clock
   },
   { 
     id: 'countdown-timer', 
@@ -1277,9 +1103,7 @@ export const allTools: Tool[] = [
     href: '/countdown-timer',
     url: 'https://fyntools.com/countdown-timer',
     features: 'Set countdown timer, Hours minutes seconds input, Alarm sound, Visual countdown, Pause resume, Reset timer, Custom alarm, Notification support, Full screen mode',
-    icon: Timer,
-    rating: 4.6,
-    userCount: '26,500+'
+    icon: Timer
   },
   
   // Network Tools
@@ -1293,9 +1117,7 @@ export const allTools: Tool[] = [
     href: '/ip-lookup',
     url: 'https://fyntools.com/ip-lookup',
     features: 'Display public IP address, IP location, ISP information, Country city display, IPv4 IPv6 support, Copy IP address, Network information, Connection details',
-    icon: Globe,
-    rating: 4.8,
-    userCount: '47,000+'
+    icon: Globe
   },
   { 
     id: 'ip-address-to-location-finder', 
@@ -1307,9 +1129,7 @@ export const allTools: Tool[] = [
     href: '/ip-address-to-location-finder',
     url: 'https://fyntools.com/ip-address-to-location-finder',
     features: 'Find IP location, Geolocation data, Country city lookup, ISP information, Latitude longitude, Timezone information, Map display, Copy location data, Detailed IP information',
-    icon: MapPin,
-    rating: 4.6,
-    userCount: '22,000+'
+    icon: MapPin
   },
 
   // Video & Social Media Tools
@@ -1323,9 +1143,7 @@ export const allTools: Tool[] = [
     href: '/social-media-db-viewer',
     url: 'https://fyntools.com/social-media-db-viewer',
     features: 'View Instagram profiles, View Facebook profiles, Public profile information, Profile statistics, Follower count, Post count, Profile details, Account information',
-    icon: Globe,
-    rating: 4.5,
-    userCount: '19,000+'
+    icon: Globe
   },
   { 
     id: 'social-media-downloader', 
@@ -1337,9 +1155,7 @@ export const allTools: Tool[] = [
     href: '/social-media-downloader',
     url: 'https://fyntools.com/social-media-downloader',
     features: 'Download Instagram reels, Download Instagram posts, Download Instagram stories, Download Instagram highlights, Download Facebook videos, Download Facebook posts, Multiple quality options, Download as MP4, Download as image, Batch download',
-    icon: Download,
-    rating: 4.7,
-    userCount: '35,000+'
+    icon: Download
   },
    { 
     id: 'box-shadow-generator', 
@@ -1351,9 +1167,7 @@ export const allTools: Tool[] = [
     href: '/box-shadow-generator', 
     url: 'https://fyntools.com/box-shadow-generator',
     features: 'Customize box shadow, X offset, Y offset, Blur radius, Spread radius, Shadow color, Multiple shadows, Live preview, Copy CSS code, Download CSS, Inset shadow option',
-    icon: Palette,
-    rating: 4.6,
-    userCount: '21,500+'
+    icon: Palette
   },
   { 
     id: 'border-radius-generator', 
@@ -1365,9 +1179,7 @@ export const allTools: Tool[] = [
     href: '/border-radius-generator', 
     url: 'https://fyntools.com/border-radius-generator',
     features: 'Generate border radius, Top left radius, Top right radius, Bottom left radius, Bottom right radius, Uniform radius, Individual corner control, Live preview, Copy CSS code, Visual preview',
-    icon: Palette,
-    rating: 4.4,
-    userCount: '12,800+'
+    icon: Palette
   },
   { 
     id: 'button-generator', 
@@ -1382,9 +1194,7 @@ export const allTools: Tool[] = [
     url: 'https://fyntools.com/button-generator',
     features:
       '24 popular button presets, 40+ Google fonts, Hover gradient, Idle & hover animations, Sticker packs (animals pets birds nature anime), Upload logo/image icon, Glow & shadow styles, Copy HTML CSS React',
-    icon: Palette,
-    rating: 4.5,
-    userCount: '15,200+'
+    icon: Palette
   },
   { 
     id: 'css-minifier', 
@@ -1396,9 +1206,7 @@ export const allTools: Tool[] = [
     href: '/css-minifier', 
     url: 'https://fyntools.com/css-minifier',
     features: 'Minify CSS code, Remove whitespace, Remove comments, Color optimization, File size reduction, Before after comparison, Copy minified CSS, Download minified file, Optimize CSS, Compress CSS',
-    icon: Code,
-    rating: 4.6,
-    userCount: '20,200+'
+    icon: Code
   },
   { 
     id: 'gradient-generator', 
@@ -1410,9 +1218,7 @@ export const allTools: Tool[] = [
     href: '/gradient-generator', 
     url: 'https://fyntools.com/gradient-generator',
     features: 'Linear gradient, Radial gradient, Multiple colors, Color stops, Gradient direction, Angle control, Live preview, Copy CSS code, Download gradient, Custom gradient creation',
-    icon: Paintbrush,
-    rating: 4.7,
-    userCount: '28,200+'
+    icon: Paintbrush
   },
   { 
     id: 'html-formatter', 
@@ -1424,9 +1230,7 @@ export const allTools: Tool[] = [
     href: '/html-formatter', 
     url: 'https://fyntools.com/html-formatter',
     features: 'Format HTML code, Beautify HTML, Indentation control, Remove extra whitespace, Clean HTML, Pretty print, Copy formatted code, Download formatted file, Syntax validation',
-    icon: FileCode2,
-    rating: 4.6,
-    userCount: '23,200+'
+    icon: FileCode2
   },
   { 
     id: 'json-validator', 
@@ -1438,9 +1242,7 @@ export const allTools: Tool[] = [
     href: '/json-validator', 
     url: 'https://fyntools.com/json-validator',
     features: 'Validate JSON, Format JSON, Error detection, Syntax checking, Pretty print, Copy validated JSON, Download JSON, Error highlighting, Line number display',
-    icon: Code,
-    rating: 4.8,
-    userCount: '45,000+'
+    icon: Code
   },
   { 
     id: 'url-encode-decode', 
@@ -1452,9 +1254,7 @@ export const allTools: Tool[] = [
     href: '/url-encode-decode',
     url: 'https://fyntools.com/url-encode-decode',
     features: 'URL encode, URL decode, Percent encoding, Special character encoding, Instant conversion, Copy encoded URL, Copy decoded URL, Bidirectional conversion, Validation check',
-    icon: Link,
-    rating: 4.7,
-    userCount: '30,500+'
+    icon: Link
   },
 
   // Utility Tools
@@ -1468,9 +1268,7 @@ export const allTools: Tool[] = [
     href: '/coin-flip', 
     url: 'https://fyntools.com/coin-flip',
     features: 'Flip coin, Random heads or tails, Decision making, Visual coin flip, Flip history, Multiple flips, Copy result',
-    icon: Dices,
-    rating: 4.5,
-    userCount: '18,800+'
+    icon: Dices
   },
   { 
     id: 'dice-roller', 
@@ -1482,9 +1280,7 @@ export const allTools: Tool[] = [
     href: '/dice-roller', 
     url: 'https://fyntools.com/dice-roller',
     features: 'Roll dice, Customizable sides, Multiple dice, Dice quantity, Roll history, Sum display, Individual dice results, Visual dice display',
-    icon: Dices,
-    rating: 4.6,
-    userCount: '24,200+'
+    icon: Dices
   },
   { 
     id: 'random-number-generator', 
@@ -1496,9 +1292,7 @@ export const allTools: Tool[] = [
     href: '/random-number-generator', 
     url: 'https://fyntools.com/random-number-generator',
     features: 'Generate random numbers, Custom range, Minimum maximum input, Multiple numbers, Copy numbers, Exclude numbers option, Integer generation, Decimal generation',
-    icon: Hash,
-    rating: 4.7,
-    userCount: '33,500+'
+    icon: Hash
   },
   { 
     id: 'url-shortener', 
@@ -1510,9 +1304,7 @@ export const allTools: Tool[] = [
     href: '/url-shortener', 
     url: 'https://fyntools.com/url-shortener',
     features: 'Shorten URLs, Custom alias support, UTM builder for campaigns, Bulk URL shortening, Expiration dates with presets and custom date, QR code generation with logo, Basic click counts, Local link history with favicons, Copy short URL, Export history as CSV',
-    icon: Link,
-    rating: 4.8,
-    userCount: '49,000+'
+    icon: Link
   },
   { 
     id: 'yes-no-generator', 
@@ -1524,9 +1316,7 @@ export const allTools: Tool[] = [
     href: '/yes-no-generator', 
     url: 'https://fyntools.com/yes-no-generator',
     features: 'Random Yes or No, Decision making, Visual display, Copy result, Multiple generations, Decision history',
-    icon: ListChecks,
-    rating: 4.4,
-    userCount: '10,800+'
+    icon: ListChecks
   },
 
   // Text & Writing Tools
@@ -1540,9 +1330,7 @@ export const allTools: Tool[] = [
     href: '/business-idea-generator', 
     url: 'https://fyntools.com/business-idea-generator',
     features: 'Generate business ideas, Creative ideas, Startup ideas, Industry selection, Idea categories, Copy ideas, Save ideas, Multiple idea generation, Idea variations',
-    icon: Sparkles,
-    rating: 4.5,
-    userCount: '14,200+'
+    icon: Sparkles
   },
   { 
     id: 'discord-formatter', 
@@ -1554,9 +1342,7 @@ export const allTools: Tool[] = [
     href: '/discord-formatter', 
     url: 'https://fyntools.com/discord-formatter',
     features: 'Format Discord text, Markdown support, Bold italic underline, Code blocks, Emoji support, Copy formatted text, Preview formatted text, Discord compatible formatting',
-    icon: MessageSquare,
-    rating: 4.6,
-    userCount: '20,800+'
+    icon: MessageSquare
   },
   { 
     id: 'hashtag-generator', 
@@ -1568,9 +1354,7 @@ export const allTools: Tool[] = [
     href: '/hashtag-generator', 
     url: 'https://fyntools.com/hashtag-generator',
     features: 'Generate hashtags, Relevant hashtags, Social media hashtags, Copy hashtags, Multiple hashtag generation, Trending hashtags, Category-based hashtags',
-    icon: Hash,
-    rating: 4.7,
-    userCount: '27,500+'
+    icon: Hash
   },
   { 
     id: 'markdown-editor', 
@@ -1582,9 +1366,7 @@ export const allTools: Tool[] = [
     href: '/markdown-editor', 
     url: 'https://fyntools.com/markdown-editor',
     features: 'Markdown editor, Real-time preview, Syntax highlighting, Export as HTML, Copy markdown, Copy HTML, Markdown formatting, Preview pane, Split view',
-    icon: Edit,
-    rating: 4.6,
-    userCount: '25,000+'
+    icon: Edit
   },
   { 
     id: 'name-generator', 
@@ -1596,9 +1378,7 @@ export const allTools: Tool[] = [
     href: '/name-generator', 
     url: 'https://fyntools.com/name-generator',
     features: 'Generate random names, People names, Business names, Character names, Multiple name generation, Copy names, Name categories, Gender selection, Name variations',
-    icon: UserPlus,
-    rating: 4.5,
-    userCount: '17,500+'
+    icon: UserPlus
   },
   { 
     id: 'username-generator', 
@@ -1610,9 +1390,7 @@ export const allTools: Tool[] = [
     href: '/username-generator', 
     url: 'https://fyntools.com/username-generator',
     features: 'Generate usernames, Unique usernames, Gaming usernames, Social media usernames, Customizable length, Include numbers, Include symbols, Copy usernames, Multiple username generation, Username availability check',
-    icon: User,
-    rating: 4.6,
-    userCount: '22,200+'
+    icon: User
   },
 
   // Converter Tools
@@ -1626,9 +1404,7 @@ export const allTools: Tool[] = [
     href: '/color-converter', 
     url: 'https://fyntools.com/color-converter',
     features: 'HEX to RGB, RGB to HEX, HEX to HSL, HSL to HEX, RGB to HSL, HSL to RGB, Color picker, Copy color codes, Multiple color formats, Real-time conversion',
-    icon: Palette,
-    rating: 4.6,
-    userCount: '21,000+'
+    icon: Palette
   },
 
   // Image Tools
@@ -1642,9 +1418,7 @@ export const allTools: Tool[] = [
     href: '/color-palette-generator', 
     url: 'https://fyntools.com/color-palette-generator',
     features: 'Generate color palettes, Extract colors from images, Custom color input, Multiple color schemes, Copy color codes, Download palette, Color harmony, Design color schemes',
-    icon: Palette,
-    rating: 4.7,
-    userCount: '28,800+'
+    icon: Palette
   },
 
   // Video & Social Media Tools
@@ -1658,9 +1432,7 @@ export const allTools: Tool[] = [
     href: '/social-media-deep-link-generator', 
     url: 'https://fyntools.com/social-media-deep-link-generator',
     features: 'Generate deep links, YouTube deep links, Instagram deep links, Facebook deep links, Twitter deep links, WhatsApp deep links, Telegram deep links, LinkedIn deep links, Universal deep links, App fallback, Web fallback, Smart redirect, Copy deep link, Test deep link',
-    icon: Share2,
-    rating: 4.5,
-    userCount: '13,500+'
+    icon: Share2
   },
   { 
     id: 'social-media-planner', 
@@ -1672,9 +1444,7 @@ export const allTools: Tool[] = [
     href: '/social-media-planner', 
     url: 'https://fyntools.com/social-media-planner',
     features: 'Plan social media posts, Schedule posts, Content calendar, Multiple platforms, Post templates, Draft posts, Post history, Export calendar, Reminders, Post analytics',
-    icon: CalendarSchedule,
-    rating: 4.5,
-    userCount: '16,500+'
+    icon: CalendarSchedule
   },
   { 
     id: 'text-to-speech', 
@@ -1686,9 +1456,7 @@ export const allTools: Tool[] = [
     href: '/text-to-speech', 
     url: 'https://fyntools.com/text-to-speech',
     features: 'Premium Edge neural voices, Free browser TTS, Hindi & Punjabi voices, Speed pitch volume, Word highlighting, MP3 download, Character counter',
-    icon: FileText,
-    rating: 4.7,
-    userCount: '34,000+'
+    icon: FileText
   },
   {
     id: 'ad-maker',
@@ -1700,9 +1468,7 @@ export const allTools: Tool[] = [
     href: '/ad-maker',
     url: 'https://fyntools.com/ad-maker',
     features: 'AI ad copy, Pollinations AI images, Local image uploads, Local audio, Browser FFmpeg MP4, Multilingual scripts, No server storage, Wizard workflow',
-    icon: Megaphone,
-    rating: 4.8,
-    userCount: '1,200+'
+    icon: Megaphone
   },
 
   // Network Tools
@@ -1716,9 +1482,7 @@ export const allTools: Tool[] = [
     href: '/weather-forecast', 
     url: 'https://fyntools.com/weather-forecast',
     features: 'Weather forecast, 7-day forecast, Hourly forecast, Rain probability chart, Air quality AQI, UV index, Activity planner, What to wear tips, GPS location, Recent cities, Celsius Fahrenheit toggle, Copy weather report, No API key, Open-source data',
-    icon: CloudSun,
-    rating: 4.6,
-    userCount: '26,200+'
+    icon: CloudSun
   },
 
   // Business Tools
@@ -1732,9 +1496,7 @@ export const allTools: Tool[] = [
     href: '/invoice-generator', 
     url: 'https://fyntools.com/invoice-generator',
     features: 'Create invoices, Professional templates, Client management, Product management, Auto-save, Generate PDF, Generate image, Download invoice, Print invoice, Invoice numbering, Tax calculation, Multiple currencies, Invoice history, Custom branding',
-    icon: Receipt,
-    rating: 4.8,
-    userCount: '41,000+'
+    icon: Receipt
   },
 
   {
@@ -1747,9 +1509,7 @@ export const allTools: Tool[] = [
     href: '/dummy-api-generator',
     url: 'https://fyntools.com/dummy-api-generator',
     features: 'REST endpoints, Auth login register, CRUD operations, Bearer tokens, Live API tester, cURL examples, Fetch examples, Axios examples, JSON responses, No signup',
-    icon: Server,
-    rating: 4.7,
-    userCount: '18,500+'
+    icon: Server
   },
 
   // Redirect (Utility Tools)
