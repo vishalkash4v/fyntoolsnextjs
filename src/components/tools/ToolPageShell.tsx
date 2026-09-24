@@ -1,7 +1,6 @@
 import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
-import ToolCrawlerFallback from '@/components/tools/ToolCrawlerFallback';
 import ToolFactCard, { factCardPropsFromSeo } from '@/components/tools/ToolFactCard';
 import ToolSeoDepthBlock from '@/components/seo/ToolSeoDepthBlock';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
@@ -65,8 +64,6 @@ export default function ToolPageShell({
               <div className="mx-auto w-full max-w-6xl space-y-4">
                 {toolClient}
                 {factProps ? <ToolFactCard {...factProps} /> : null}
-                {/* Visible overview (not sr-only) so Semrush text/HTML ratio counts this copy. */}
-                <ToolCrawlerFallback slug={slug} />
               </div>
             </section>
           }
