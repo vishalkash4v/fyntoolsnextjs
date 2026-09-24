@@ -123,24 +123,7 @@ export function softwareApplicationSchema(opts: {
     ...(opts.features?.length
       ? { featureList: opts.features.slice(0, 12).join(', ') }
       : {}),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '120',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: {
-      '@type': 'Review',
-      author: { '@type': 'Organization', name: 'FYN Tools Worldwide' },
-      reviewBody: 'Free browser-based utility on FYN Tools.',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-        worstRating: '1',
-      },
-    },
+
   };
 }
 
