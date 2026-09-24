@@ -39,6 +39,8 @@ export interface ToolSeoContent {
   internalLinkInHowItWorks?: { before: string; linkText: string; href: string; after: string };
   /** Optional: advantages (4 bullets) */
   advantages?: string[];
+  /** Optional: curated benefits for the tool page */
+  benefits?: string[];
   /** Optional: internal link sentence in advantages section */
   internalLinkInAdvantages?: { before: string; linkText: string; href: string; after: string };
   /** Optional: common mistakes to avoid (3 items) */
