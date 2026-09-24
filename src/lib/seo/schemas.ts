@@ -15,7 +15,6 @@ const ORG = {
     '@type': 'ImageObject' as const,
     url: getCanonicalUrl('/logo.png'),
   },
-  sameAs: [getCanonicalUrl('/about'), getCanonicalUrl('/contact')],
   contactPoint: {
     '@type': 'ContactPoint' as const,
     contactType: 'customer support',
@@ -95,38 +94,6 @@ export function howToSchema(opts: {
   };
 }
 
-export function softwareApplicationSchema(opts: {
-  name: string;
-  description: string;
-  url: string;
-  category: string;
-  features?: string[];
-}): Record<string, unknown> {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: opts.name,
-    description: opts.description,
-    url: opts.url,
-    applicationCategory: 'UtilityApplication',
-    applicationSubCategory: opts.category,
-    operatingSystem: 'Any',
-    browserRequirements: 'Requires a modern browser with JavaScript',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
-    isAccessibleForFree: true,
-    provider: { '@id': ORG_ID },
-    ...(opts.features?.length
-      ? { featureList: opts.features.slice(0, 12).join(', ') }
-      : {}),
-
-  };
-}
-
 /**
  * Tool JSON-LD: WebPage + SoftwareApplication + ConsumeAction + Breadcrumb
  * + FAQ + HowTo (when visible). Prefer one coherent graph over thin duplicates.
@@ -197,11 +164,6 @@ export function buildToolJsonLd(opts: {
           'http://schema.org/MobileWebPlatform',
         ],
       },
-      expectsAcceptanceOf: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
     },
   };
 
@@ -216,12 +178,6 @@ export function buildToolJsonLd(opts: {
     applicationSubCategory: opts.category,
     operatingSystem: 'Any',
     browserRequirements: 'Requires a modern browser with JavaScript',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
     isAccessibleForFree: true,
     provider: { '@id': ORG_ID },
     mainEntityOfPage: { '@id': pageId },
