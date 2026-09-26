@@ -79,7 +79,8 @@ export default function ToolSeoSections({
   const displayDescription = fullSeo?.metaDescription || description;
   const displayHowTo = (fullSeo?.howToUse?.length ? fullSeo.howToUse : howToUse).slice(0, 6);
   const displayFeatures = fullSeo?.features?.length ? fullSeo.features : features;
-  const displayFaqs = (fullSeo?.faqs?.length ? fullSeo.faqs : faqs).slice(0, 8);
+  // Keep the FAQ section complete enough to cover real long-tail questions while avoiding unbounded page bloat.
+  const displayFaqs = (fullSeo?.faqs?.length ? fullSeo.faqs : faqs).slice(0, 12);
   const introParagraphs = fullSeo?.introParagraphs?.length
     ? fullSeo.introParagraphs
     : [displayDescription];
