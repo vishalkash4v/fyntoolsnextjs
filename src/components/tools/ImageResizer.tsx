@@ -416,7 +416,7 @@ const ImageResizer = () => {
               <div className="mt-4 inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">Choose Image</div>
             </button>
           ) : (
-            <>
+            <div className="space-y-6">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div className="rounded-xl bg-muted/50 p-3"><div className="text-xs text-muted-foreground">Original</div><div className="font-semibold">{originalSize.width} × {originalSize.height}px</div><div className="text-xs text-muted-foreground">{formatBytes(originalSize.bytes)}</div></div>
                 <div className="rounded-xl bg-muted/50 p-3"><div className="text-xs text-muted-foreground">Output</div><div className="font-semibold">{target.width} × {target.height}px</div><div className="text-xs text-muted-foreground">{outputBytes ? formatBytes(outputBytes) : 'Processing preview…'}</div></div>
@@ -528,7 +528,7 @@ const ImageResizer = () => {
               <div className="rounded-xl border bg-muted/30 p-4 text-xs text-muted-foreground">
                 <strong className="text-foreground">Privacy:</strong> the image is processed in your browser with Canvas. The tool does not upload your image to an FYN Tools server.
               </div>
-            </>
+            </div>
           )}
 
           {image && (
