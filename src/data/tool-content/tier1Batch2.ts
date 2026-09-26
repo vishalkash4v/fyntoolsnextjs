@@ -296,9 +296,9 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
           'Yes. The HPPSC preset uses the dimensions and file-size limits stated in the Commission FAQ: 110×140 pixels (width×height) and no more than 40 KB for the photograph, in JPG format. Check the active recruitment notice before submitting.',
       },
       {
-        question: 'Can I resize a photo for UPSC?',
+        question: 'Can I resize a photo for UPSC CSE 2026?',
         answer:
-          'Yes. Current UPSC notices specify JPG photograph and signature files between 20 KB and 300 KB. Exact image dimensions can depend on the active application module, so use the preset as a preparation workflow and verify the current UPSC instructions before upload.',
+          'Yes. The 2026 Civil Services notice requires an uploaded photograph plus live photograph capture, and it provides photo and signature instructions through the UPSC application portal. The tool includes a CSE 2026 preparation preset, but you should follow the live portal instructions for the final upload.',
       },
       {
         question: 'Can I adjust brightness, contrast or sharpness?',
