@@ -1,1126 +1,549 @@
 'use client';
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
-import { Upload, Download, Link, RotateCcw, GraduationCap, Briefcase, Mail } from 'lucide-react';
+import {
+  Crop, Download, Image as ImageIcon, RotateCcw, RotateCw, FlipHorizontal, FlipVertical,
+  SlidersHorizontal, Sparkles, Upload, Check, Maximize2, Move, Wand2
+} from 'lucide-react';
 import { toast } from 'sonner';
 
-/** Email-friendly photo KB resize presets — resize photo to KB targets. */
-const emailKbPresets = [
-  { id: 'email-50', label: '50 KB', max_kb: 50, maxSide: 720, note: 'Strict form uploads' },
-  { id: 'email-100', label: '100 KB', max_kb: 100, maxSide: 1024, note: 'Common portal limit' },
-  { id: 'email-150', label: '150 KB', max_kb: 150, maxSide: 1280, note: 'Popular exam/form size' },
-  { id: 'email-200', label: '200 KB', max_kb: 200, maxSide: 1400, note: 'Email thumbnail friendly' },
-  { id: 'email-500', label: '500 KB', max_kb: 500, maxSide: 1600, note: 'Balanced email photo' },
-  { id: 'email-1024', label: '1 MB (Email)', max_kb: 1024, maxSide: 1920, note: 'Email-friendly photo resizer' },
-] as const;
+type FitMode = 'fit' | 'fill' | 'stretch';
+type PresetKind = 'photo' | 'signature';
 
-// Social Media Presets
-const socialMediaPresets = {
-  "Instagram": {
-    profile: {
-      width_px: 320,
-      height_px: 320,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Cropped to circle. Use higher resolution to avoid blur."
-    },
-    feed_square: {
-      width_px: 1080,
-      height_px: 1080,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Standard square post"
-    },
-    feed_portrait: {
-      width_px: 1080,
-      height_px: 1350,
-      aspect_ratio: "4:5",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Vertical / portrait post"
-    },
-    feed_landscape: {
-      width_px: 1080,
-      height_px: 566,
-      aspect_ratio: "1.91:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Horizontal / wide post"
-    },
-    story_reel: {
-      width_px: 1080,
-      height_px: 1920,
-      aspect_ratio: "9:16",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Stories / Reels full vertical"
-    },
-    reel_thumbnail: {
-      width_px: 1080,
-      height_px: 1920,
-      aspect_ratio: "9:16",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Thumbnail / cover image for Reel. Will crop depending on grid view."
-    }
-  },
-  "Facebook": {
-    profile: {
-      width_px: 320,
-      height_px: 320,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square profile picture. Will be displayed as circle or square depending on context."
-    },
-    cover: {
-      width_px: 851,
-      height_px: 315,
-      aspect_ratio: "2.7:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Cover photo (desktop). On mobile will be cropped (640×360 view)."
-    },
-    post_square: {
-      width_px: 1080,
-      height_px: 1080,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square image post"
-    },
-    post_vertical: {
-      width_px: 1080,
-      height_px: 1350,
-      aspect_ratio: "4:5",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Vertical image post"
-    },
-    post_landscape: {
-      width_px: 1080,
-      height_px: 566,
-      aspect_ratio: "1.91:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Landscape post / wide image"
-    },
-    story: {
-      width_px: 1080,
-      height_px: 1920,
-      aspect_ratio: "9:16",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Facebook Story full vertical"
-    },
-    link_share: {
-      width_px: 1200,
-      height_px: 630,
-      aspect_ratio: "1.91:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Image shown when you share a link (og:image)"
-    }
-  },
-  "X (formerly Twitter)": {
-    profile: {
-      width_px: 400,
-      height_px: 400,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square profile picture"
-    },
-    header: {
-      width_px: 1500,
-      height_px: 500,
-      aspect_ratio: "3:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Banner / header image"
-    },
-    in_stream: {
-      width_px: 1600,
-      height_px: 900,
-      aspect_ratio: "16:9",
-      formats: ["jpg", "jpeg", "png", "gif"],
-      notes: "Image in tweet / X post"
-    },
-    card_link: {
-      width_px: 1200,
-      height_px: 628,
-      aspect_ratio: "1.91:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Link card image / summary card"
-    }
-  },
-  "LinkedIn": {
-    profile: {
-      width_px: 400,
-      height_px: 400,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square profile picture"
-    },
-    cover: {
-      width_px: 1584,
-      height_px: 396,
-      aspect_ratio: "4:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Background / cover image for profile"
-    },
-    post_square: {
-      width_px: 1080,
-      height_px: 1080,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square post image"
-    },
-    post_horizontal: {
-      width_px: 1200,
-      height_px: 627,
-      aspect_ratio: "1.91:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Horizontal landscape post"
-    },
-    post_vertical: {
-      width_px: 1080,
-      height_px: 1920,
-      aspect_ratio: "9:16",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Vertical post – rare but supported"
-    }
-  },
-  "Snapchat": {
-    geofilter: {
-      width_px: 1080,
-      height_px: 1920,
-      aspect_ratio: "9:16",
-      formats: ["png"],
-      notes: "Transparent PNG overlay geofilter; must keep key design elements away from edges."
-    }
-  },
-  "Tinder": {
-    profile_photo: {
-      width_px: 800,
-      height_px: 800,
-      aspect_ratio: "1:1",
-      formats: ["jpg", "jpeg", "png"],
-      notes: "Square profile picture. Also must allow for cropping to 4:5 and 3:4 internally."
-    }
-  }
+type Preset = {
+  id: string;
+  platform: string;
+  label: string;
+  kind?: PresetKind;
+  width?: number;
+  height?: number;
+  ratio?: number;
+  maxKB?: number;
+  minKB?: number;
+  format?: 'jpeg' | 'png' | 'webp';
+  note: string;
+  verified?: boolean;
 };
 
-// Education and Government Portal Presets
-const educationJobPresets = {
-  "GATE": {
-    photo: {
-      width_cm: 3.5,
-      height_cm: 4.5,
-      min_px: [200, 260],
-      max_px: [530, 690],
-      min_kb: 5,
-      max_kb: 600,
-      formats: ["jpg", "jpeg"],
-      notes: "Color photo, white/light background; face ~60-70% of area."
-    },
-    signature: {
-      height_cm: 1.0,
-      width_cm_min: 2.75,
-      width_cm_max: 3.75,
-      min_px: [250, 80],
-      max_px: [580, 180],
-      min_kb: 3,
-      max_kb: 300,
-      formats: ["jpg", "jpeg"],
-      notes: "Signature in black/dark-blue ink, should cover 70-80% of uploaded area."
-    }
-  },
-  "NEET (NTA)": {
-    photo: {
-      width_cm: 3.5,
-      height_cm: 4.5,
-      postcard_cm: [10.16, 15.24],
-      min_kb: 10,
-      max_kb: 200,
-      formats: ["jpg", "jpeg"],
-      notes: "Recent passport-size color photo; also require postcard size for some admit card uses."
-    },
-    signature: {
-      min_kb: 4,
-      max_kb: 30,
-      formats: ["jpg", "jpeg"],
-      notes: "Sign with black pen on white paper; scan & upload per NTA bulletin."
-    }
-  },
-  "JEE Main (NTA)": {
-    photo: {
-      width_cm: 3.5,
-      height_cm: 4.5,
-      min_kb: 10,
-      max_kb: 300,
-      formats: ["jpg", "jpeg"],
-      notes: "White background; recent color photograph."
-    },
-    signature: {
-      min_kb: 4,
-      max_kb: 30,
-      formats: ["jpg", "jpeg"],
-      notes: "Black/blue ink, scanned and cropped."
-    }
-  },
-  "UPSC": {
-    photo: {
-      min_kb: 20,
-      max_kb: 200,
-      formats: ["jpg", "jpeg"],
-      notes: "Photo must have ~75% face coverage (3/4th face coverage); recent, clear."
-    },
-    signature: {
-      min_kb: 20,
-      max_kb: 100,
-      min_px: [350, 350],
-      max_px: [500, 500],
-      formats: ["jpg", "jpeg"],
-      notes: "Sign on white paper with black pen; scan clearly."
-    }
-  },
-  "SSC (CGL / other SSC)": {
-    photo: {
-      width_cm: 3.5,
-      height_cm: 4.5,
-      min_kb: 20,
-      max_kb: 50,
-      formats: ["jpg", "jpeg"],
-      notes: "Passport-size color photo; no cap/sunglasses; face ~40% area (varies by notification)."
-    },
-    signature: {
-      min_kb: 10,
-      max_kb: 20,
-      formats: ["jpg", "jpeg"],
-      notes: "Signature in running hand, black ink preferred."
-    }
-  },
-  "IBPS / Bank Exams": {
-    photo: {
-      width_cm: 4.5,
-      height_cm: 3.5,
-      min_kb: 20,
-      max_kb: 50,
-      formats: ["jpg", "jpeg"],
-      notes: "Passport style color photo; white/light background."
-    },
-    signature: {
-      min_kb: 10,
-      max_kb: 20,
-      formats: ["jpg", "jpeg"],
-      notes: "Black/blue pen signature scanned and cropped."
-    }
-  },
-  "HPPSC": {
-    photo: {
-      px: [110, 140],
-      max_kb: 40,
-      formats: ["jpg", "jpeg"],
-      notes: "HPPSC states typical pixel size 140 px (height) × 110 px (width) and <=40 KB."
-    },
-    signature: {
-      max_kb: 40,
-      formats: ["jpg", "jpeg"]
-    }
-  },
-  "HPSSC": {
-    photo: {
-      px: [110, 140],
-      min_kb: 20,
-      max_kb: 50,
-      formats: ["jpg", "jpeg"],
-      notes: "HPSSC common requirements similar to HPPSC; check the specific notification."
-    },
-    signature: {
-      min_kb: 10,
-      max_kb: 20,
-      formats: ["jpg", "jpeg"]
-    }
-  },
-  "RRB (Railways)": {
-    photo: {
-      width_cm: 3.5,
-      height_cm: 4.5,
-      min_kb: 20,
-      max_kb: 50,
-      formats: ["jpg", "jpeg"]
-    },
-    signature: {
-      min_kb: 10,
-      max_kb: 20,
-      formats: ["jpg", "jpeg"]
-    }
-  },
-  "Driving License (RTO)": {
-    photo: {
-      width_cm: 2.5,
-      height_cm: 3.5,
-      max_kb: 20,
-      formats: ["jpg", "jpeg"],
-      notes: "State RTOs vary; use 300x350 px / 2.5x3.5 cm as common preset."
-    },
-    signature: {
-      notes: "Usually not required for initial upload; vary by state."
-    }
-  },
-  "Passport (India)": {
-    photo: {
-      width_mm: 45,
-      height_mm: 35,
-      width_cm: 4.5,
-      height_cm: 3.5,
-      min_kb: null,
-      max_kb: 100,
-      formats: ["jpg", "jpeg"],
-      notes: "Passport-size: 45×35 mm (often stated as 4.5×3.5 cm); white/light background."
-    },
-    signature: {
-      notes: "Signature usually on form - digital upload not always required for passport."
-    }
-  }
+const socialPresets: Preset[] = [
+  { id:'instagram-square', platform:'Instagram', label:'Post — Square', width:1080, height:1080, ratio:1, note:'1:1 feed image' },
+  { id:'instagram-portrait', platform:'Instagram', label:'Post — Portrait', width:1080, height:1350, ratio:4/5, note:'4:5 feed image' },
+  { id:'instagram-landscape', platform:'Instagram', label:'Post — Landscape', width:1080, height:566, ratio:1.91, note:'Wide feed image' },
+  { id:'instagram-story', platform:'Instagram', label:'Story / Reel', width:1080, height:1920, ratio:9/16, note:'Full-screen vertical' },
+  { id:'instagram-profile', platform:'Instagram', label:'Profile Photo', width:1080, height:1080, ratio:1, note:'Square source; platform displays it circularly' },
+  { id:'facebook-post', platform:'Facebook', label:'Post — Square', width:1080, height:1080, ratio:1, note:'General square post' },
+  { id:'facebook-portrait', platform:'Facebook', label:'Post — Portrait', width:1080, height:1350, ratio:4/5, note:'Tall feed image' },
+  { id:'facebook-link', platform:'Facebook', label:'Link Preview', width:1200, height:630, ratio:1.91, note:'Open Graph / shared-link style' },
+  { id:'facebook-story', platform:'Facebook', label:'Story', width:1080, height:1920, ratio:9/16, note:'Full-screen vertical' },
+  { id:'x-profile', platform:'X', label:'Profile Photo', width:400, height:400, ratio:1, note:'X official recommended profile dimensions', verified:true },
+  { id:'x-header', platform:'X', label:'Header / Banner', width:1500, height:500, ratio:3, note:'X official recommended header dimensions', verified:true },
+  { id:'x-post', platform:'X', label:'Post Image', width:1600, height:900, ratio:16/9, note:'16:9 working preset' },
+  { id:'linkedin-profile', platform:'LinkedIn', label:'Profile Photo', width:400, height:400, ratio:1, note:'LinkedIn recommended profile dimensions', verified:true },
+  { id:'linkedin-cover', platform:'LinkedIn', label:'Personal Cover', width:1584, height:396, ratio:4, note:'LinkedIn official recommended cover dimensions', verified:true },
+  { id:'linkedin-post', platform:'LinkedIn', label:'Post — Landscape', width:1200, height:627, ratio:1.91, note:'LinkedIn shared image / link-preview style', verified:true },
+  { id:'linkedin-square', platform:'LinkedIn', label:'Post — Square', width:1080, height:1080, ratio:1, note:'Square creator preset' },
+  { id:'youtube-thumbnail', platform:'YouTube', label:'Video Thumbnail', width:1280, height:720, ratio:16/9, note:'16:9 thumbnail canvas' },
+  { id:'youtube-banner', platform:'YouTube', label:'Channel Banner', width:2560, height:1440, ratio:16/9, note:'YouTube recommended banner size; keep important text in the safe area', verified:true },
+  { id:'youtube-profile', platform:'YouTube', label:'Channel Profile', width:800, height:800, ratio:1, note:'Square/round profile source' },
+  { id:'pinterest-pin', platform:'Pinterest', label:'Standard Pin', width:1000, height:1500, ratio:2/3, note:'Pinterest recommends 2:3 / 1000×1500 for standard image ads', verified:true },
+  { id:'tiktok-video', platform:'TikTok', label:'Vertical Creative', width:1080, height:1920, ratio:9/16, note:'Full-screen vertical creator preset' },
+  { id:'whatsapp-dp', platform:'WhatsApp', label:'Profile Photo', width:1080, height:1080, ratio:1, note:'Square profile source; displayed circularly' },
+  { id:'whatsapp-status', platform:'WhatsApp', label:'Status', width:1080, height:1920, ratio:9/16, note:'Full-screen status preset' },
+];
+
+const examPresets: Preset[] = [
+  { id:'hppsc-photo', platform:'HPPSC', label:'Photo', kind:'photo', width:110, height:140, ratio:110/140, maxKB:40, format:'jpeg', note:'Official FAQ: 110×140 px (width×height), JPG, ≤40 KB.', verified:true },
+  { id:'hppsc-signature', platform:'HPPSC', label:'Signature', kind:'signature', width:140, height:110, ratio:140/110, maxKB:40, format:'jpeg', note:'Official FAQ: 140×110 px (width×height), JPG, ≤40 KB.', verified:true },
+  { id:'upsc-photo', platform:'UPSC', label:'Photo — 20–300 KB', kind:'photo', ratio:3/4, minKB:20, maxKB:300, format:'jpeg', note:'Current UPSC notices specify JPG and 20–300 KB; exact image dimensions can depend on the application module. Verify the active notice.', verified:true },
+  { id:'upsc-signature', platform:'UPSC', label:'Signature — 20–300 KB', kind:'signature', ratio:3, minKB:20, maxKB:300, format:'jpeg', note:'Current UPSC notices specify JPG and 20–300 KB; verify the active application module before submission.', verified:true },
+  { id:'ssc-signature', platform:'SSC', label:'Signature — 10–20 KB', kind:'signature', width:900, height:300, ratio:3, minKB:10, maxKB:20, format:'jpeg', note:'SSC 2026 notice: JPEG/JPG, 10–20 KB, about 6.0×2.0 cm. Pixel dimensions are a practical 300 DPI working canvas; verify the live form.', verified:true },
+  { id:'ssc-photo', platform:'SSC', label:'Live Photo / Application', kind:'photo', ratio:3/4, note:'SSC 2026 application uses live photo capture for relevant notices; use this preset for pre-crop only and follow the live form instructions.', verified:true },
+  { id:'gate-photo', platform:'GATE', label:'Passport Photo', kind:'photo', width:300, height:400, ratio:3/4, maxKB:600, format:'jpeg', note:'Common working canvas only; GATE requirements can vary by year. Verify the current brochure.' },
+  { id:'neet-photo', platform:'NEET / NTA', label:'Passport Photo', kind:'photo', width:300, height:400, ratio:3/4, note:'Use as a working crop; current NTA instructions should be checked for the exact session.' },
+  { id:'jee-photo', platform:'JEE Main / NTA', label:'Passport Photo', kind:'photo', width:300, height:400, ratio:3/4, note:'Use as a working crop; current NTA instructions should be checked for the exact session.' },
+  { id:'ibps-photo', platform:'IBPS / Banking', label:'Photo', kind:'photo', width:350, height:450, ratio:7/9, note:'Common banking-exam working preset; requirements vary by notification.' },
+  { id:'ibps-signature', platform:'IBPS / Banking', label:'Signature', kind:'signature', width:350, height:150, ratio:7/3, note:'Common working preset; verify the active IBPS notification.' },
+  { id:'rrb-photo', platform:'RRB / Railway', label:'Photo', kind:'photo', width:300, height:400, ratio:3/4, note:'Common working preset; verify the active RRB notification.' },
+  { id:'passport-india', platform:'Passport India', label:'Passport Photo', kind:'photo', width:413, height:531, ratio:45/35, note:'45×35 mm proportional working canvas at ~300 DPI; follow the current Passport Seva guidance.' },
+  { id:'driving-license', platform:'Driving Licence / RTO', label:'Photo', kind:'photo', width:300, height:420, ratio:5/7, note:'RTO requirements vary by state and service; verify the application portal.' },
+];
+
+const utilityPresets: Preset[] = [
+  { id:'email-50', platform:'Email & Forms', label:'50 KB', width:720, height:720, maxKB:50, format:'jpeg', note:'Target upper file-size limit; final bytes vary by image.' },
+  { id:'email-100', platform:'Email & Forms', label:'100 KB', width:1024, height:1024, maxKB:100, format:'jpeg', note:'Common small-upload target; final bytes vary.' },
+  { id:'email-150', platform:'Email & Forms', label:'150 KB', width:1280, height:1280, maxKB:150, format:'jpeg', note:'Common form/photo target; final bytes vary.' },
+  { id:'email-200', platform:'Email & Forms', label:'200 KB', width:1400, height:1400, maxKB:200, format:'jpeg', note:'Useful for portals with a 200 KB ceiling.' },
+  { id:'web-1200', platform:'Web', label:'Web Hero 1200 px', width:1200, height:800, ratio:3/2, note:'Flexible web image working size' },
+  { id:'og-image', platform:'Web / SEO', label:'Open Graph 1200×630', width:1200, height:630, ratio:1.91, note:'Common social link preview canvas' },
+  { id:'favicon', platform:'Web', label:'Favicon 512×512', width:512, height:512, ratio:1, note:'High-resolution square source for favicon generation' },
+];
+
+const allPresets = [...socialPresets, ...examPresets, ...utilityPresets];
+
+const clamp = (n:number, min:number, max:number) => Math.min(max, Math.max(min, n));
+const formatBytes = (bytes:number) => {
+  if (!bytes) return '0 B';
+  const units = ['B','KB','MB'];
+  const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+  return `${(bytes / Math.pow(1024, i)).toFixed(i ? 1 : 0)} ${units[i]}`;
 };
+
+function centeredCrop(width:number, height:number, aspect:number, zoom:number) {
+  const sourceAspect = width / height;
+  let w = 1;
+  let h = 1;
+  if (sourceAspect > aspect) w = (height * aspect) / width;
+  else h = (width / aspect) / height;
+  w = clamp(w * zoom, 0.05, 1);
+  h = clamp(h * zoom, 0.05, 1);
+  return { x:(1-w)/2, y:(1-h)/2, w, h };
+}
 
 const ImageResizer = () => {
-  const [originalImage, setOriginalImage] = useState<HTMLImageElement | null>(null);
-  const [originalSize, setOriginalSize] = useState({ width: 0, height: 0, fileSize: 0 });
-  const [resizedImage, setResizedImage] = useState<string | null>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [quality, setQuality] = useState(90);
-  const [format, setFormat] = useState('jpeg');
-  const [maintainAspectRatio, setMaintainAspectRatio] = useState(true);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [dpi, setDpi] = useState(300);
-  const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
-  const [selectedPresetType, setSelectedPresetType] = useState<'photo' | 'signature' | null>(null);
-  const [currentStep, setCurrentStep] = useState<'upload' | 'preset-type' | 'presets' | 'tools'>('upload');
-  const [selectedPresetCategory, setSelectedPresetCategory] = useState<'education' | 'social' | 'manual' | 'email' | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null);
+  const [image, setImage] = useState<HTMLImageElement | null>(null);
+  const [originalSize, setOriginalSize] = useState({ width:0, height:0, bytes:0, type:'' });
+  const [target, setTarget] = useState({ width:1080, height:1080 });
+  const [fitMode, setFitMode] = useState<FitMode>('fill');
+  const [crop, setCrop] = useState({ x:.1, y:.1, w:.8, h:.8 });
+  const [cropAspect, setCropAspect] = useState<number | null>(1);
+  const [cropZoom, setCropZoom] = useState(1);
+  const [quality, setQuality] = useState(88);
+  const [format, setFormat] = useState<'jpeg'|'png'|'webp'>('jpeg');
+  const [brightness, setBrightness] = useState(0);
+  const [contrast, setContrast] = useState(0);
+  const [saturation, setSaturation] = useState(0);
+  const [sharpness, setSharpness] = useState(0);
+  const [grayscale, setGrayscale] = useState(0);
+  const [rotation, setRotation] = useState(0);
+  const [flipX, setFlipX] = useState(false);
+  const [flipY, setFlipY] = useState(false);
+  const [background, setBackground] = useState('#ffffff');
+  const [resizedUrl, setResizedUrl] = useState<string | null>(null);
+  const [outputBytes, setOutputBytes] = useState<number | null>(null);
+  const [processing, setProcessing] = useState(false);
+  const [presetSearch, setPresetSearch] = useState('');
+  const [activeGroup, setActiveGroup] = useState<'social'|'exam'|'utility'|'manual'>('social');
+  const [selectedPreset, setSelectedPreset] = useState<Preset | null>(null);
+  const [showCrop, setShowCrop] = useState(true);
+  const [drag, setDrag] = useState<{startX:number;startY:number;crop:{x:number;y:number;w:number;h:number}} | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [scalePercent, setScalePercent] = useState(0);
-  const [resizedFileSize, setResizedFileSize] = useState<number | null>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
 
-  // Helper functions
-  const cmToPixels = (cm: number, dpi: number = 300) => Math.round(cm * dpi / 2.54);
-  const mmToPixels = (mm: number, dpi: number = 300) => Math.round(mm * dpi / 25.4);
-  
-  const updateScaleFromSizes = (newWidth: number, newHeight: number) => {
-    if (!originalImage) return;
-    const originalPixels = originalImage.width * originalImage.height;
-    const newPixels = Math.max(1, newWidth) * Math.max(1, newHeight);
-    const scale = Math.sqrt(newPixels / Math.max(1, originalPixels));
-    const percent = Math.round((scale - 1) * 100);
-    setScalePercent(percent);
-  };
+  useEffect(() => () => {
+    if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+    if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+  }, [sourceUrl, resizedUrl]);
 
-  const applyPreset = (presetKey: string, type: 'photo' | 'signature' = 'photo', presetSource: 'education' | 'social' = 'education') => {
-    let preset, presetData;
-    
-    if (presetSource === 'social') {
-      preset = socialMediaPresets[presetKey as keyof typeof socialMediaPresets];
-      if (!preset || !preset[type]) return;
-      presetData = preset[type] as any;
-    } else {
-      preset = educationJobPresets[presetKey as keyof typeof educationJobPresets];
-      if (!preset || !preset[type]) return;
-      presetData = preset[type] as any;
-    }
+  const updateCropForTarget = useCallback((width:number, height:number, zoom=1) => {
+    if (!image || width <= 0 || height <= 0) return;
+    const aspect = width / height;
+    setCropAspect(aspect);
+    setCrop(centeredCrop(image.width, image.height, aspect, zoom));
+    setCropZoom(zoom);
+  }, [image]);
 
-    setSelectedPreset(presetKey);
-    setSelectedPresetType(type);
-    setCurrentStep('tools');
-    
-    // Set format based on preset
-    if (presetData.formats && presetData.formats.length > 0) {
-      setFormat(presetData.formats[0]);
-    }
-
-    // Calculate dimensions based on preset
-    let newWidth = 0, newHeight = 0;
-
-    if (presetData.width_cm && presetData.height_cm) {
-      newWidth = cmToPixels(presetData.width_cm, dpi);
-      newHeight = cmToPixels(presetData.height_cm, dpi);
-    } else if (presetData.width_mm && presetData.height_mm) {
-      newWidth = mmToPixels(presetData.width_mm, dpi);
-      newHeight = mmToPixels(presetData.height_mm, dpi);
-    } else if (presetData.width_px && presetData.height_px) {
-      newWidth = presetData.width_px;
-      newHeight = presetData.height_px;
-    } else if (presetData.px && Array.isArray(presetData.px) && presetData.px.length === 2) {
-      newWidth = presetData.px[0];
-      newHeight = presetData.px[1];
-    } else if (presetData.min_px && Array.isArray(presetData.min_px) && presetData.min_px.length === 2) {
-      newWidth = presetData.min_px[0];
-      newHeight = presetData.min_px[1];
-    } else if (presetData.max_px && Array.isArray(presetData.max_px) && presetData.max_px.length === 2) {
-      newWidth = presetData.max_px[0];
-      newHeight = presetData.max_px[1];
-    }
-
-    if (newWidth > 0 && newHeight > 0) {
-      setDimensions({ width: newWidth, height: newHeight });
-      updateScaleFromSizes(newWidth, newHeight);
-    }
-
-    // Adjust quality to meet file size requirements
-    if (presetData.max_kb && newWidth > 0 && newHeight > 0) {
-      const maxBytes = presetData.max_kb * 1024;
-      // Estimate quality needed for target file size
-      const estimatedQuality = Math.min(95, Math.max(10, Math.round((maxBytes / (newWidth * newHeight * 0.1)) * 100)));
-      setQuality(estimatedQuality);
-    }
-  };
-
-  const handlePresetCategorySelect = (category: 'education' | 'social' | 'manual' | 'email') => {
-    setSelectedPresetCategory(category);
-    setCurrentStep('presets');
-  };
-
-  const applyEmailKbPreset = (presetId: string) => {
-    const preset = emailKbPresets.find((p) => p.id === presetId);
-    if (!preset || !originalImage) return;
-
-    const scale = Math.min(1, preset.maxSide / Math.max(originalImage.width, originalImage.height));
-    const newWidth = Math.max(1, Math.round(originalImage.width * scale));
-    const newHeight = Math.max(1, Math.round(originalImage.height * scale));
-
-    setSelectedPreset(preset.label);
-    setSelectedPresetType('photo');
-    setSelectedPresetCategory('email');
-    setFormat('jpeg');
-    setDimensions({ width: newWidth, height: newHeight });
-    updateScaleFromSizes(newWidth, newHeight);
-
-    const maxBytes = preset.max_kb * 1024;
-    const estimatedQuality = Math.min(
-      92,
-      Math.max(12, Math.round((maxBytes / Math.max(1, newWidth * newHeight * 0.12)) * 100))
-    );
-    setQuality(estimatedQuality);
-    setCurrentStep('tools');
-    toast.success(`Email / KB preset: ${preset.label} — resize photo to ~${preset.max_kb} KB`);
-  };
-
-  const handleManualResize = () => {
-    setSelectedPresetCategory('manual');
-    setSelectedPreset('Manual');
-    setSelectedPresetType('photo');
-    setCurrentStep('tools');
-  };
-
-  const handleImageUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        toast.error('Please select a valid image file');
-        return;
-      }
-
-      const img = new Image();
-      img.onload = () => {
-        setOriginalImage(img);
-        setOriginalSize({
-          width: img.width,
-          height: img.height,
-          fileSize: file.size
-        });
-        setDimensions({
-          width: img.width,
-          height: img.height
-        });
-        setResizedImage(null);
-        setResizedFileSize(null);
-        setScalePercent(0);
-        setSelectedPreset(null);
-        setSelectedPresetType(null);
-        setCurrentStep('preset-type');
-        setSelectedPresetCategory(null);
-      };
-      img.src = URL.createObjectURL(file);
-    }
-  }, []);
-
-  const handleDimensionChange = (field: 'width' | 'height', value: number) => {
-    if (maintainAspectRatio && originalImage) {
-      const aspectRatio = originalImage.width / originalImage.height;
-      if (field === 'width') {
-        const next = {
-          width: value,
-          height: Math.round(value / aspectRatio)
-        };
-        setDimensions(next);
-        updateScaleFromSizes(next.width, next.height);
-      } else {
-        const next = {
-          width: Math.round(value * aspectRatio),
-          height: value
-        };
-        setDimensions(next);
-        updateScaleFromSizes(next.width, next.height);
-      }
-    } else {
-      setDimensions(prev => {
-        const next = { ...prev, [field]: value } as { width: number; height: number };
-        updateScaleFromSizes(next.width, next.height);
-        return next;
-      });
-    }
-  };
-
-  const handleScaleChange = (percent: number) => {
-    setScalePercent(percent);
-    if (!originalImage) return;
-    const scale = 1 + percent / 100;
-    const newWidth = Math.max(1, Math.round(originalImage.width * scale));
-    const newHeight = Math.max(1, Math.round(originalImage.height * scale));
-    setDimensions(prev => ({
-      width: newWidth,
-      height: maintainAspectRatio ? newHeight : prev.height
-    }));
-  };
-
-  const resizeImage = useCallback(() => {
-    if (!originalImage || !canvasRef.current) return;
-
-    setIsProcessing(true);
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      setIsProcessing(false);
+  const loadFile = useCallback((file:File) => {
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please choose a JPG, PNG, WebP or other supported image file.');
       return;
     }
-
-    canvas.width = dimensions.width;
-    canvas.height = dimensions.height;
-
-    // Use image smoothing for better quality
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-
-    // Draw resized image
-    ctx.drawImage(originalImage, 0, 0, dimensions.width, dimensions.height);
-
-    // Convert to desired format with quality using Blob and correct MIME (supports webp)
-    const mimeType = format === 'png' ? 'image/png' : (format === 'webp' ? 'image/webp' : 'image/jpeg');
-    const qualityValue = format === 'png' ? 1 : quality / 100;
-
-    canvas.toBlob((blob) => {
-      if (blob) {
-        if (resizedImage) {
-          URL.revokeObjectURL(resizedImage);
-        }
-        const url = URL.createObjectURL(blob);
-        setResizedImage(url);
-        setResizedFileSize(blob.size);
-        // Removed toast to avoid repeated notifications during auto-resize
-      } else {
-        toast.error('Failed to generate resized image');
-      }
-    setIsProcessing(false);
-    }, mimeType, qualityValue);
-  }, [originalImage, dimensions, format, quality, resizedImage]);
-
-  // Auto-resize with proper debouncing
-  useEffect(() => {
-    if (!originalImage || dimensions.width <= 0 || dimensions.height <= 0) return;
-
-    const timeoutId = setTimeout(() => {
-      resizeImage();
-    }, 800); // Increased debounce time to prevent excessive processing
-    
-    return () => clearTimeout(timeoutId);
-  }, [dimensions, format, quality]);
-
-  const downloadImage = () => {
-    if (!resizedImage) return;
-
-    const link = document.createElement('a');
-    link.download = `resized-image.${format}`;
-    link.href = resizedImage;
-    link.click();
-    // Silent download - no toast needed
-  };
-
-  const resetToOriginal = () => {
-    if (originalImage) {
-      setDimensions({
-        width: originalImage.width,
-        height: originalImage.height
-      });
-      setResizedImage(null);
-      setResizedFileSize(null);
-      setScalePercent(0);
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+      setSourceUrl(url);
+      setImage(img);
+      setOriginalSize({ width:img.width, height:img.height, bytes:file.size, type:file.type });
+      setTarget({ width:img.width, height:img.height });
+      setCropAspect(img.width / img.height);
+      setCrop({ x:0, y:0, w:1, h:1 });
+      setCropZoom(1);
+      setFitMode('fill');
+      setResizedUrl(null);
+      setOutputBytes(null);
       setSelectedPreset(null);
-      setSelectedPresetType(null);
-      setCurrentStep('upload');
-      setSelectedPresetCategory(null);
-    }
+      setBrightness(0); setContrast(0); setSaturation(0); setSharpness(0); setGrayscale(0);
+      setRotation(0); setFlipX(false); setFlipY(false);
+      toast.success('Image loaded — choose a preset or crop manually.');
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      toast.error('Could not read this image.');
+    };
+    img.src = url;
+  }, [sourceUrl]);
+
+  const handleFile = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) loadFile(file);
+    e.target.value = '';
   };
 
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  const applyPreset = (preset:Preset) => {
+    setSelectedPreset(preset);
+    if (preset.width && preset.height) {
+      setTarget({ width:preset.width, height:preset.height });
+      updateCropForTarget(preset.width, preset.height);
+    } else if (preset.ratio && image) {
+      const width = Math.min(1600, image.width);
+      const height = Math.max(1, Math.round(width / preset.ratio));
+      setTarget({ width, height });
+      updateCropForTarget(width, height);
+    }
+    if (preset.format) setFormat(preset.format);
+    if (preset.maxKB) setQuality(clamp(Math.round(84 - Math.max(0, preset.maxKB - 100) / 40), 35, 88));
+    setFitMode('fill');
+    setShowCrop(true);
+    toast.success(`${preset.platform} — ${preset.label} preset applied`);
   };
 
-  const getEstimatedFileSize = () => {
-    if (!originalImage) return '0 KB';
-    
-    // More accurate estimation based on format and compression
-    const pixelCount = dimensions.width * dimensions.height;
-    let bytesPerPixel = 3; // RGB
-    
-    if (format === 'png') {
-      bytesPerPixel = 4; // RGBA, but PNG is lossless so varies
-    } else if (format === 'jpeg' || format === 'jpg') {
-      bytesPerPixel = (quality / 100) * 0.8; // JPEG compression
-    } else if (format === 'webp') {
-      bytesPerPixel = (quality / 100) * 0.6; // WebP is more efficient
+  const resetCrop = () => {
+    if (!image) return;
+    const aspect = cropAspect || image.width / image.height;
+    setCrop(centeredCrop(image.width, image.height, aspect, cropZoom));
+  };
+
+  const setZoom = (zoom:number) => {
+    setCropZoom(zoom);
+    if (image && cropAspect) setCrop(centeredCrop(image.width, image.height, cropAspect, zoom));
+  };
+
+  const onCropPointerDown = (e:React.PointerEvent<HTMLDivElement>) => {
+    if (!previewRef.current) return;
+    const rect = previewRef.current.getBoundingClientRect();
+    const px = clamp((e.clientX - rect.left) / rect.width, 0, 1);
+    const py = clamp((e.clientY - rect.top) / rect.height, 0, 1);
+    const inside = px >= crop.x && px <= crop.x + crop.w && py >= crop.y && py <= crop.y + crop.h;
+    if (!inside) return;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    setDrag({ startX:px, startY:py, crop:{...crop} });
+  };
+
+  const onCropPointerMove = (e:React.PointerEvent<HTMLDivElement>) => {
+    if (!drag || !previewRef.current) return;
+    const rect = previewRef.current.getBoundingClientRect();
+    const dx = (e.clientX - rect.left) / rect.width - drag.startX;
+    const dy = (e.clientY - rect.top) / rect.height - drag.startY;
+    setCrop({
+      ...drag.crop,
+      x:clamp(drag.crop.x + dx, 0, 1 - drag.crop.w),
+      y:clamp(drag.crop.y + dy, 0, 1 - drag.crop.h),
+    });
+  };
+
+  const stopDrag = () => setDrag(null);
+
+  const drawOutput = useCallback(() => {
+    if (!image || !canvasRef.current) return;
+    setProcessing(true);
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d', { willReadFrequently: sharpness > 0 });
+    if (!ctx) { setProcessing(false); return; }
+
+    const outW = clamp(Math.round(target.width), 1, 8000);
+    const outH = clamp(Math.round(target.height), 1, 8000);
+    canvas.width = outW;
+    canvas.height = outH;
+
+    const radians = (rotation * Math.PI) / 180;
+    const sourceW = image.width;
+    const sourceH = image.height;
+    let sx = 0, sy = 0, sw = sourceW, sh = sourceH;
+
+    if (fitMode === 'fill' && crop) {
+      sx = Math.round(crop.x * sourceW);
+      sy = Math.round(crop.y * sourceH);
+      sw = Math.max(1, Math.round(crop.w * sourceW));
+      sh = Math.max(1, Math.round(crop.h * sourceH));
     }
-    
-    const estimatedSize = pixelCount * bytesPerPixel;
-    return formatFileSize(estimatedSize);
+
+    ctx.save();
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, outW, outH);
+    ctx.translate(outW / 2, outH / 2);
+    ctx.rotate(radians);
+    ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
+
+    const filterParts = [
+      `brightness(${100 + brightness}%)`,
+      `contrast(${100 + contrast}%)`,
+      `saturate(${100 + saturation}%)`,
+      `grayscale(${grayscale}%)`,
+    ];
+    ctx.filter = filterParts.join(' ');
+
+    if (fitMode === 'stretch') {
+      ctx.drawImage(image, 0, 0, sourceW, sourceH, -outW/2, -outH/2, outW, outH);
+    } else if (fitMode === 'fit') {
+      const scale = Math.min(outW / sw, outH / sh);
+      const dw = sw * scale;
+      const dh = sh * scale;
+      ctx.drawImage(image, sx, sy, sw, sh, -dw/2, -dh/2, dw, dh);
+    } else {
+      ctx.drawImage(image, sx, sy, sw, sh, -outW/2, -outH/2, outW, outH);
+    }
+    ctx.restore();
+
+    if (sharpness > 0) {
+      const strength = Math.min(0.75, sharpness / 100);
+      const frame = ctx.getImageData(0, 0, outW, outH);
+      const src = frame.data;
+      const copy = new Uint8ClampedArray(src);
+      for (let y=1; y<outH-1; y++) {
+        for (let x=1; x<outW-1; x++) {
+          const i=(y*outW+x)*4;
+          for (let c=0;c<3;c++) {
+            const center=copy[i+c] * (1 + 4*strength);
+            const neighbours =
+              copy[((y-1)*outW+x)*4+c] +
+              copy[((y+1)*outW+x)*4+c] +
+              copy[(y*outW+x-1)*4+c] +
+              copy[(y*outW+x+1)*4+c];
+            src[i+c]=clamp(Math.round(center - strength*neighbours),0,255);
+          }
+        }
+      }
+      ctx.putImageData(frame,0,0);
+    }
+
+    const mime = format === 'png' ? 'image/png' : format === 'webp' ? 'image/webp' : 'image/jpeg';
+    const q = format === 'png' ? undefined : quality / 100;
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        setProcessing(false);
+        toast.error('Could not create the output image.');
+        return;
+      }
+      if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+      const url=URL.createObjectURL(blob);
+      setResizedUrl(url);
+      setOutputBytes(blob.size);
+      setProcessing(false);
+    }, mime, q);
+  }, [image, target, fitMode, crop, rotation, flipX, flipY, brightness, contrast, saturation, sharpness, grayscale, background, format, quality, resizedUrl]);
+
+  useEffect(() => {
+    if (!image) return;
+    const id=window.setTimeout(drawOutput, 250);
+    return () => window.clearTimeout(id);
+  }, [drawOutput, image]);
+
+  const download = () => {
+    if (!resizedUrl) return;
+    const a=document.createElement('a');
+    a.href=resizedUrl;
+    const ext=format === 'jpeg' ? 'jpg' : format;
+    const suffix=selectedPreset ? `-${selectedPreset.platform.toLowerCase().replace(/[^a-z0-9]+/g,'-')}-${selectedPreset.label.toLowerCase().replace(/[^a-z0-9]+/g,'-')}` : '';
+    a.download=`fyntools-resized-image${suffix}.${ext}`;
+    a.click();
+  };
+
+  const resetAll = () => {
+    if (resizedUrl) URL.revokeObjectURL(resizedUrl);
+    if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+    setSourceUrl(null); setImage(null); setResizedUrl(null); setOutputBytes(null);
+    setOriginalSize({width:0,height:0,bytes:0,type:''});
+    setSelectedPreset(null); setPresetSearch(''); setRotation(0); setFlipX(false); setFlipY(false);
+    setBrightness(0); setContrast(0); setSaturation(0); setSharpness(0); setGrayscale(0);
+    setCrop({x:0,y:0,w:1,h:1}); setCropZoom(1); setFitMode('fill');
+  };
+
+  const filtered = useMemo(() => {
+    const source = activeGroup === 'social' ? socialPresets : activeGroup === 'exam' ? examPresets : utilityPresets;
+    const q=presetSearch.trim().toLowerCase();
+    return source.filter(p => !q || `${p.platform} ${p.label} ${p.note}`.toLowerCase().includes(q));
+  }, [activeGroup,presetSearch]);
+
+  const setTargetDimension = (field:'width'|'height', value:number) => {
+    const safe=clamp(Math.round(value || 1),1,8000);
+    setTarget(prev => {
+      if (fitMode !== 'stretch' && cropAspect) {
+        return field === 'width'
+          ? {width:safe,height:Math.max(1,Math.round(safe/cropAspect))}
+          : {width:Math.max(1,Math.round(safe*cropAspect)),height:safe};
+      }
+      return {...prev,[field]:safe};
+    });
   };
 
   return (
-    <div className="w-full space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Image Resizer</CardTitle>
+    <div className="w-full">
+      <Card className="overflow-hidden border-border/70 shadow-sm">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
+            <Sparkles className="h-5 w-5 text-primary" />
+            Image Resizer & Smart Cropper
+          </CardTitle>
           <CardDescription>
-            Manually resize dimensions and file size of images and documents
+            Resize, crop, fit, stretch, rotate and enhance images for exams, forms, websites and social platforms.
+            Everything is processed locally in your browser.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Step 1: Upload Image */}
-          {currentStep === 'upload' && (
-            <div className="space-y-6">
-              <div className="text-center py-12 bg-muted/30 rounded-lg border-2 border-dashed border-muted-foreground/25">
-                <Upload className="mx-auto h-16 w-16 text-muted-foreground/50 mb-6" />
-                <h3 className="text-2xl font-semibold text-muted-foreground mb-3">Step 1: Upload Your Image</h3>
-                <p className="text-muted-foreground/75 mb-6 max-w-md mx-auto">
-                  Choose an image file to start the resizing process. We support JPG, PNG, WebP and other common formats.
-                </p>
-                <Button
-                  onClick={() => fileInputRef.current?.click()}
-                  size="lg"
-                  className="px-8"
-                >
-                  <Upload className="mr-2 h-5 w-5" />
-                  Choose Image File
-                </Button>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                />
-              </div>
-            </div>
-          )}
+          <input ref={inputRef} type="file" accept="image/*" onChange={handleFile} className="hidden" />
 
-          {/* Step 2: Choose Preset Category */}
-          {currentStep === 'preset-type' && originalImage && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-semibold mb-2">Step 2: Choose Your Purpose</h3>
-                <p className="text-muted-foreground">What do you want to resize your image for?</p>
+          {!image ? (
+            <button
+              type="button"
+              onClick={() => inputRef.current?.click()}
+              className="w-full rounded-2xl border-2 border-dashed border-primary/30 bg-primary/[0.03] px-5 py-12 text-center transition hover:border-primary/60 hover:bg-primary/[0.06]"
+            >
+              <Upload className="mx-auto mb-3 h-10 w-10 text-primary" />
+              <div className="text-lg font-semibold">Upload an image</div>
+              <div className="mt-1 text-sm text-muted-foreground">JPG, PNG, WebP and other browser-supported formats</div>
+              <div className="mt-4 inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">Choose Image</div>
+            </button>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="rounded-xl bg-muted/50 p-3"><div className="text-xs text-muted-foreground">Original</div><div className="font-semibold">{originalSize.width} × {originalSize.height}px</div><div className="text-xs text-muted-foreground">{formatBytes(originalSize.bytes)}</div></div>
+                <div className="rounded-xl bg-muted/50 p-3"><div className="text-xs text-muted-foreground">Output</div><div className="font-semibold">{target.width} × {target.height}px</div><div className="text-xs text-muted-foreground">{outputBytes ? formatBytes(outputBytes) : 'Processing preview…'}</div></div>
+                <div className="rounded-xl bg-muted/50 p-3"><div className="text-xs text-muted-foreground">Preset</div><div className="font-semibold truncate">{selectedPreset ? `${selectedPreset.platform} · ${selectedPreset.label}` : 'Manual'}</div><div className="text-xs text-muted-foreground">{fitMode === 'fill' ? 'Fill + crop' : fitMode === 'fit' ? 'Fit' : 'Stretch'}</div></div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Education/Government */}
-                <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
-                     onClick={() => handlePresetCategorySelect('education')}>
-                  <GraduationCap className="mx-auto h-12 w-12 text-primary mb-4" />
-                  <h4 className="font-semibold mb-2">Education & Government</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    For exams like GATE, NEET, UPSC, SSC, IBPS, and other government portals
-                  </p>
-                  <div className="text-xs text-primary font-medium">
-                    Photo & Signature presets
-                  </div>
-                </div>
-
-                {/* Social Media */}
-                <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
-                     onClick={() => handlePresetCategorySelect('social')}>
-                  <Briefcase className="mx-auto h-12 w-12 text-primary mb-4" />
-                  <h4 className="font-semibold mb-2">Social Media</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    For Instagram, Facebook, LinkedIn, Twitter, and other social platforms
-                  </p>
-                  <div className="text-xs text-primary font-medium">
-                    Profile, posts, stories, covers
-                  </div>
-                </div>
-
-                {/* Email / KB */}
-                <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
-                     onClick={() => handlePresetCategorySelect('email')}>
-                  <Mail className="mx-auto h-12 w-12 text-primary mb-4" />
-                  <h4 className="font-semibold mb-2">Email / Photo KB Resize</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Resize photo to KB — 50KB, 100KB, 150KB, email-friendly sizes
-                  </p>
-                  <div className="text-xs text-primary font-medium">
-                    Email friendly photo resizer
-                  </div>
-                </div>
-
-                {/* Manual */}
-                <div className="border rounded-lg p-6 text-center hover:border-primary/50 transition-all cursor-pointer"
-                     onClick={handleManualResize}>
-                  <Link className="mx-auto h-12 w-12 text-primary mb-4" />
-                  <h4 className="font-semibold mb-2">Manual Resize</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Custom dimensions, DPI settings, and full control over the output
-                  </p>
-                  <div className="text-xs text-primary font-medium">
-                    Complete customization
-                  </div>
-                </div>
-              </div>
-
-              {/* Current Image Info */}
-              <div className="bg-muted/50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3 flex items-center">
-                  <Upload className="mr-2 h-4 w-4" />
-                  Your Image
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                  <div><span className="font-medium">Size:</span> {formatFileSize(originalSize.fileSize)}</div>
-                  <div><span className="font-medium">Dimensions:</span> {originalSize.width} × {originalSize.height}px</div>
-                  <div><span className="font-medium">Aspect Ratio:</span> {(originalSize.width / originalSize.height).toFixed(2)}</div>
-                  <div><span className="font-medium">Format:</span> {originalImage?.src.split('.').pop()?.toUpperCase()}</div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Choose Specific Presets */}
-          {currentStep === 'presets' && originalImage && selectedPresetCategory && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-semibold mb-2">Step 3: Choose Your Preset</h3>
-                <p className="text-muted-foreground">
-                  Select the specific{' '}
-                  {selectedPresetCategory === 'education'
-                    ? 'exam/portal'
-                    : selectedPresetCategory === 'email'
-                      ? 'email / KB size'
-                      : 'social media'}{' '}
-                  preset that matches your needs
-                </p>
-              </div>
-
-              {/* Email / KB presets */}
-              {selectedPresetCategory === 'email' && (
+              <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(320px,.75fr)]">
                 <div className="space-y-4">
-                  <p className="text-sm text-muted-foreground text-center max-w-xl mx-auto">
-                    Photo KB resize for email attachments and forms — we scale long edge and tune JPEG quality toward your KB target.
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {emailKbPresets.map((p) => (
-                      <button
-                        key={p.id}
-                        type="button"
-                        className="border rounded-lg p-4 text-left hover:border-primary/50 transition-all"
-                        onClick={() => applyEmailKbPreset(p.id)}
-                      >
-                        <div className="font-semibold">{p.label}</div>
-                        <div className="text-xs text-muted-foreground mt-1">{p.note}</div>
-                        <div className="text-xs text-primary mt-2">Max side ~{p.maxSide}px</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Education Presets */}
-              {selectedPresetCategory === 'education' && (
-                <div className="space-y-4">
-                  <h4 className="font-semibold flex items-center">
-                    <GraduationCap className="mr-2 h-5 w-5" />
-                    Education & Government Portal Presets
-                  </h4>
-                  <div className="space-y-3 max-h-96 overflow-y-auto">
-                    {Object.keys(educationJobPresets).map((presetKey) => {
-                      const preset = educationJobPresets[presetKey as keyof typeof educationJobPresets];
-                      const hasPhoto = preset.photo && Object.keys(preset.photo).length > 1;
-                      const hasSignature = preset.signature && Object.keys(preset.signature).length > 1;
-                      
-                      return (
-                        <div key={presetKey} className="border rounded-lg p-4 space-y-3">
-                          <div className="font-medium flex items-center">
-                            <GraduationCap className="mr-2 h-4 w-4" />
-                            {presetKey}
+                  <div className="relative overflow-hidden rounded-2xl border bg-muted/30 p-2">
+                    <div
+                      ref={previewRef}
+                      className="relative mx-auto flex max-h-[520px] min-h-[260px] max-w-full items-center justify-center overflow-hidden rounded-xl bg-black/5"
+                      onPointerMove={onCropPointerMove}
+                      onPointerUp={stopDrag}
+                      onPointerCancel={stopDrag}
+                    >
+                      <img src={sourceUrl || ''} alt="Image resize preview" className="block max-h-[500px] max-w-full select-none object-contain" draggable={false} />
+                      {showCrop && fitMode === 'fill' && (
+                        <div
+                          className="absolute inset-0 cursor-move"
+                          onPointerDown={onCropPointerDown}
+                          aria-label="Drag crop area to choose which part of the image to keep"
+                        >
+                          <div className="absolute border-2 border-white shadow-[0_0_0_9999px_rgba(0,0,0,.45)]" style={{left:`${crop.x*100}%`,top:`${crop.y*100}%`,width:`${crop.w*100}%`,height:`${crop.h*100}%`}}>
+                            <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 pointer-events-none opacity-60"><i className="border-r border-white/60" /><i className="border-r border-white/60" /><i /><i className="border-r border-t border-white/60" /><i className="border-r border-t border-white/60" /><i className="border-t border-white/60" /><i className="border-r border-t border-white/60" /><i className="border-r border-t border-white/60" /><i className="border-t border-white/60" /></div>
+                            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/60 px-2 py-1 text-[10px] text-white">Drag to choose area</span>
                           </div>
-                           <div className="flex flex-wrap gap-2">
-                             {hasPhoto && (
-                               <Button
-                                 variant="outline"
-                                 size="sm"
-                                 onClick={() => applyPreset(presetKey, 'photo', 'education')}
-                                 className="text-sm h-9 px-3 sm:px-4 flex-shrink-0"
-                               >
-                                 📷 Photo
-                               </Button>
-                             )}
-                             {hasSignature && (
-                               <Button
-                                 variant="outline"
-                                 size="sm"
-                                 onClick={() => applyPreset(presetKey, 'signature', 'education')}
-                                 className="text-sm h-9 px-3 sm:px-4 flex-shrink-0"
-                               >
-                                 ✍️ Signature
-                               </Button>
-                             )}
-                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Social Media Presets */}
-              {selectedPresetCategory === 'social' && (
-                <div className="space-y-4">
-                  <h4 className="font-semibold flex items-center">
-                    <Briefcase className="mr-2 h-5 w-5" />
-                    Social Media Presets
-                  </h4>
-                  <div className="space-y-3 max-h-96 overflow-y-auto">
-                    {Object.keys(socialMediaPresets).map((presetKey) => {
-                      const preset = socialMediaPresets[presetKey as keyof typeof socialMediaPresets];
-                      
-                      return (
-                        <div key={presetKey} className="border rounded-lg p-4 space-y-3">
-                          <div className="font-medium flex items-center">
-                            <Briefcase className="mr-2 h-4 w-4" />
-                            {presetKey}
-                          </div>
-                           <div className="flex flex-wrap gap-2">
-                             {Object.keys(preset).map((subType) => {
-                               const displayName = subType.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                               const icon = subType.includes('profile') ? '👤' : 
-                                           subType.includes('cover') || subType.includes('header') ? '🖼️' :
-                                           subType.includes('story') || subType.includes('reel') ? '📱' :
-                                           subType.includes('post') ? '📝' :
-                                           subType.includes('feed') ? '📸' :
-                                           subType.includes('link') || subType.includes('card') ? '🔗' :
-                                           subType.includes('geofilter') ? '📍' : '📷';
-                               
-                               return (
-                                 <Button
-                                   key={subType}
-                                   variant="outline"
-                                   size="sm"
-                                   onClick={() => applyPreset(presetKey, subType as any, 'social')}
-                                   className="text-sm h-9 px-2 sm:px-4 flex-shrink-0"
-                                 >
-                                   <span className="hidden sm:inline">{icon} </span>
-                                   <span className="truncate">{displayName}</span>
-                                 </Button>
-                               );
-                             })}
-                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Step 4: Tools and Preview */}
-          {currentStep === 'tools' && originalImage && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-semibold mb-2">Step 4: Fine-tune & Download</h3>
-                <p className="text-muted-foreground">
-                  Adjust settings if needed and download your resized image
-                </p>
-              </div>
-
-              {/* Comparison Layout */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Original Image Info */}
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-3 flex items-center">
-                    <Upload className="mr-2 h-4 w-4" />
-                    Original Image
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div><span className="font-medium">Size:</span> {formatFileSize(originalSize.fileSize)}</div>
-                    <div><span className="font-medium">Dimensions:</span> {originalSize.width} × {originalSize.height}px</div>
-                    <div><span className="font-medium">Aspect Ratio:</span> {(originalSize.width / originalSize.height).toFixed(2)}</div>
-                    <div><span className="font-medium">Format:</span> {originalImage?.src.split('.').pop()?.toUpperCase()}</div>
-                  </div>
-                </div>
-
-                {/* Output Image Info */}
-                <div className="bg-primary/10 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-3 flex items-center">
-                    <Download className="mr-2 h-4 w-4" />
-                    Output Image
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div><span className="font-medium">Size:</span> {resizedFileSize != null ? formatFileSize(resizedFileSize) : getEstimatedFileSize()}</div>
-                    <div><span className="font-medium">Dimensions:</span> {dimensions.width} × {dimensions.height}px</div>
-                    <div><span className="font-medium">Aspect Ratio:</span> {(dimensions.width / dimensions.height).toFixed(2)}</div>
-                    <div><span className="font-medium">Format:</span> {format.toUpperCase()}</div>
-                  </div>
-                  {selectedPreset && selectedPresetType && (
-                    <div className="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded text-xs">
-                      <span className="font-medium">Preset:</span> {selectedPreset} - {selectedPresetType === 'photo' ? '📷 Photo' : selectedPresetType === 'signature' ? '✍️ Signature' : (selectedPresetType as string).replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Manual Controls (only for manual or for fine-tuning) */}
-              {selectedPresetCategory === 'manual' && (
-                <div className="space-y-6">
-                  <h4 className="font-semibold">Manual Controls</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="dpi">DPI: {dpi}</Label>
-                        <Slider
-                          id="dpi"
-                          min={72}
-                          max={600}
-                          step={1}
-                          value={[dpi]}
-                          onValueChange={(value) => setDpi(value[0])}
-                          className="mt-2"
-                          aria-label="DPI (dots per inch) setting"
-                        />
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <Label htmlFor="width">Width (px)</Label>
-                          <Input
-                            id="width"
-                            type="number"
-                            value={dimensions.width}
-                            onChange={(e) => handleDimensionChange('width', parseInt(e.target.value) || 0)}
-                            min={1}
-                            max={5000}
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="height">Height (px)</Label>
-                          <Input
-                            id="height"
-                            type="number"
-                            value={dimensions.height}
-                            onChange={(e) => handleDimensionChange('height', parseInt(e.target.value) || 0)}
-                            min={1}
-                            max={5000}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex items-center space-x-2">
-                        <Checkbox
-                          id="aspectRatio"
-                          checked={maintainAspectRatio}
-                          onCheckedChange={(checked) => setMaintainAspectRatio(checked === true)}
-                        />
-                        <Label htmlFor="aspectRatio" className="flex items-center">
-                          <Link className="mr-1 h-3 w-3" />
-                          Maintain aspect ratio
-                        </Label>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="scale">Scale: {scalePercent}%</Label>
-                        <Slider
-                          id="scale"
-                          min={-90}
-                          max={200}
-                          step={1}
-                          value={[scalePercent]}
-                          onValueChange={(value) => handleScaleChange(value[0])}
-                          className="mt-2"
-                          aria-label="Image scale percentage"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="format">Output Format</Label>
-                        <Select value={format} onValueChange={setFormat}>
-                          <SelectTrigger>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="jpeg">JPEG</SelectItem>
-                            <SelectItem value="png">PNG</SelectItem>
-                            <SelectItem value="webp">WebP</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      {format !== 'png' && (
-                        <div>
-                          <Label htmlFor="quality">Quality: {quality}%</Label>
-                          <Slider
-                            id="quality"
-                            min={10}
-                            max={100}
-                            step={1}
-                            value={[quality]}
-                            onValueChange={(value) => setQuality(value[0])}
-                            className="mt-2"
-                            aria-label="Image quality percentage"
-                          />
                         </div>
                       )}
                     </div>
                   </div>
+
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button size="sm" variant={fitMode === 'fill' ? 'default' : 'outline'} onClick={() => {setFitMode('fill'); updateCropForTarget(target.width,target.height,cropZoom);}}><Crop className="mr-1 h-4 w-4" /> Fill / Crop</Button>
+                    <Button size="sm" variant={fitMode === 'fit' ? 'default' : 'outline'} onClick={() => setFitMode('fit')}><Maximize2 className="mr-1 h-4 w-4" /> Fit</Button>
+                    <Button size="sm" variant={fitMode === 'stretch' ? 'default' : 'outline'} onClick={() => setFitMode('stretch')}>Stretch</Button>
+                    <Button size="sm" variant="outline" onClick={resetCrop}><RotateCcw className="mr-1 h-4 w-4" /> Reset crop</Button>
+                    <Button size="sm" variant={showCrop ? 'outline' : 'default'} onClick={() => setShowCrop(v=>!v)}><Move className="mr-1 h-4 w-4" /> {showCrop ? 'Hide crop' : 'Show crop'}</Button>
+                  </div>
+
+                  {fitMode === 'fill' && (
+                    <div className="rounded-xl border p-3">
+                      <div className="flex items-center justify-between text-sm"><Label>Crop zoom</Label><span className="text-muted-foreground">{Math.round(cropZoom*100)}%</span></div>
+                      <Slider min={0.35} max={1} step={0.01} value={[cropZoom]} onValueChange={v=>setZoom(v[0])} className="mt-3" aria-label="Crop zoom" />
+                      <p className="mt-2 text-xs text-muted-foreground">Drag the crop box over the preview to choose exactly which part stays visible.</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-5">
+                  <section className="rounded-xl border p-4">
+                    <div className="mb-3 flex items-center gap-2 font-semibold"><Maximize2 className="h-4 w-4" /> Output size</div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div><Label htmlFor="out-w">Width (px)</Label><Input id="out-w" type="number" min={1} max={8000} value={target.width} onChange={e=>setTargetDimension('width',Number(e.target.value))} /></div>
+                      <div><Label htmlFor="out-h">Height (px)</Label><Input id="out-h" type="number" min={1} max={8000} value={target.height} onChange={e=>setTargetDimension('height',Number(e.target.value))} /></div>
+                    </div>
+                    <div className="mt-3 text-xs text-muted-foreground">Aspect ratio: {(target.width/target.height).toFixed(2)}:1</div>
+                  </section>
+
+                  <section className="rounded-xl border p-4">
+                    <div className="mb-3 flex items-center gap-2 font-semibold"><SlidersHorizontal className="h-4 w-4" /> Adjustments</div>
+                    {[
+                      ['Brightness',brightness,setBrightness,-100,100],
+                      ['Contrast',contrast,setContrast,-100,100],
+                      ['Saturation',saturation,setSaturation,-100,100],
+                      ['Sharpness',sharpness,setSharpness,0,100],
+                      ['Grayscale',grayscale,setGrayscale,0,100],
+                    ].map(([label,value,setter,min,max]) => (
+                      <div key={String(label)} className="mb-3">
+                        <div className="flex justify-between text-xs"><span>{String(label)}</span><span className="text-muted-foreground">{Number(value)}</span></div>
+                        <Slider min={Number(min)} max={Number(max)} step={1} value={[Number(value)]} onValueChange={v=>(setter as React.Dispatch<React.SetStateAction<number>>)(v[0])} className="mt-1" aria-label={String(label)} />
+                      </div>
+                    ))}
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button size="sm" variant="outline" onClick={()=>setRotation(r=>(r+90)%360)}><RotateCw className="mr-1 h-4 w-4" /> Rotate</Button>
+                      <Button size="sm" variant="outline" onClick={()=>setFlipX(v=>!v)}><FlipHorizontal className="mr-1 h-4 w-4" /> Flip H</Button>
+                      <Button size="sm" variant="outline" onClick={()=>setFlipY(v=>!v)}><FlipVertical className="mr-1 h-4 w-4" /> Flip V</Button>
+                      <Button size="sm" variant="outline" onClick={()=>{setBrightness(0);setContrast(0);setSaturation(0);setSharpness(0);setGrayscale(0);setRotation(0);setFlipX(false);setFlipY(false);}}>Reset edits</Button>
+                    </div>
+                  </section>
+
+                  <section className="rounded-xl border p-4">
+                    <div className="mb-3 flex items-center gap-2 font-semibold"><Wand2 className="h-4 w-4" /> Export</div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div><Label>Format</Label><select value={format} onChange={e=>setFormat(e.target.value as 'jpeg'|'png'|'webp')} className="mt-1 h-10 w-full rounded-md border bg-background px-3 text-sm"><option value="jpeg">JPEG</option><option value="png">PNG</option><option value="webp">WebP</option></select></div>
+                      <div><Label>Quality {quality}%</Label><Slider min={20} max={100} step={1} value={[quality]} onValueChange={v=>setQuality(v[0])} className="mt-4" disabled={format==='png'} aria-label="JPEG or WebP quality" /></div>
+                    </div>
+                    <div className="mt-3"><Label>Background for Fit</Label><div className="mt-1 flex gap-2"><Input type="color" value={background} onChange={e=>setBackground(e.target.value)} className="h-10 w-16 p-1" /><Input value={background} onChange={e=>setBackground(e.target.value)} /></div></div>
+                  </section>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <Button onClick={download} disabled={!resizedUrl || processing} size="lg"><Download className="mr-2 h-5 w-5" />{processing ? 'Processing…' : 'Download Image'}</Button>
+                <Button variant="outline" onClick={() => inputRef.current?.click()}><Upload className="mr-2 h-4 w-4" />Choose another</Button>
+                <Button variant="ghost" onClick={resetAll}>Start over</Button>
+              </div>
+
+              <div className="rounded-xl border bg-muted/30 p-4 text-xs text-muted-foreground">
+                <strong className="text-foreground">Privacy:</strong> the image is processed in your browser with Canvas. The tool does not upload your image to an FYN Tools server.
+              </div>
+            </>
+          )}
+
+          {image && (
+            <section className="space-y-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold">Quick presets</h3>
+                  <p className="text-sm text-muted-foreground">Choose a platform, exam or file-size target, then fine-tune the crop manually.</p>
+                </div>
+                <div className="relative w-full sm:w-72"><Input value={presetSearch} onChange={e=>setPresetSearch(e.target.value)} placeholder="Search presets… e.g. HPPSC, UPSC, Instagram" aria-label="Search image resize presets" /></div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <Button variant={activeGroup==='social'?'default':'outline'} onClick={()=>setActiveGroup('social')}>Social & Creator</Button>
+                <Button variant={activeGroup==='exam'?'default':'outline'} onClick={()=>setActiveGroup('exam')}>Exams & Forms</Button>
+                <Button variant={activeGroup==='utility'?'default':'outline'} onClick={()=>setActiveGroup('utility')}>KB & Web</Button>
+                <Button variant={activeGroup==='manual'?'default':'outline'} onClick={()=>{setActiveGroup('manual');setSelectedPreset(null);}}>Manual</Button>
+              </div>
+
+              {activeGroup === 'manual' ? (
+                <div className="rounded-xl border bg-muted/20 p-4">
+                  <div className="flex items-start gap-3"><Check className="mt-0.5 h-5 w-5 text-primary" /><div><div className="font-semibold">Manual mode is ready</div><p className="mt-1 text-sm text-muted-foreground">Set any width and height up to 8000 px, choose Fit, Fill/Crop or Stretch, then adjust the image before downloading.</p></div></div>
+                </div>
+              ) : (
+                <div className="grid max-h-[460px] grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3">
+                  {filtered.map(p => (
+                    <button key={p.id} type="button" onClick={()=>applyPreset(p)} className={`rounded-xl border p-3 text-left transition hover:border-primary/60 hover:bg-primary/[0.03] ${selectedPreset?.id===p.id?'border-primary bg-primary/[0.05]':''}`}>
+                      <div className="flex items-start justify-between gap-2"><div className="font-medium">{p.platform}</div>{p.verified && <span title="Checked against an official source" className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] text-primary"><Check className="h-3 w-3" /> Official</span>}</div>
+                      <div className="mt-1 text-sm">{p.label}</div>
+                      <div className="mt-1 text-xs text-muted-foreground">{p.width && p.height ? `${p.width}×${p.height}px` : p.maxKB ? `${p.minKB || ''}${p.minKB ? '–' : '≤'}${p.maxKB} KB` : p.ratio ? `Ratio ${p.ratio.toFixed(2)}:1` : 'Flexible'}</div>
+                      <div className="mt-2 line-clamp-2 text-[11px] text-muted-foreground">{p.note}</div>
+                    </button>
+                  ))}
                 </div>
               )}
 
-              {/* Preview */}
-              <div className="space-y-4">
-                <h4 className="font-semibold">Preview</h4>
-                <div className="flex justify-center">
-                  <canvas
-                    ref={canvasRef}
-                    className="max-w-full max-h-64 border border-border rounded-lg"
-                    style={{ maxWidth: '100%', height: 'auto' }}
-                  />
-                </div>
+              <div className="rounded-xl border bg-background p-4 text-xs text-muted-foreground">
+                <strong className="text-foreground">Important for exam uploads:</strong> official requirements can change by recruitment/exam notice. The presets marked Official are tied to sources checked for this update; all other exam presets are practical working presets, not guarantees. Always compare the final file against the current application portal before submitting.
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button onClick={() => setCurrentStep('preset-type')} variant="outline" className="w-full sm:w-auto">
-                  <RotateCcw className="mr-2 h-4 w-4" />
-                  Back to Presets
-                </Button>
-                <Button onClick={resetToOriginal} variant="outline" className="w-full sm:w-auto">
-                  <Upload className="mr-2 h-4 w-4" />
-                  Start Over
-                </Button>
-                {resizedImage && (
-                  <Button onClick={downloadImage} disabled={isProcessing} size="lg" className="w-full sm:w-auto">
-                    <Download className="mr-2 h-5 w-5" />
-                    {isProcessing ? 'Processing...' : 'Download Image'}
-                  </Button>
-                )}
-              </div>
-            </div>
+            </section>
           )}
         </CardContent>
       </Card>
