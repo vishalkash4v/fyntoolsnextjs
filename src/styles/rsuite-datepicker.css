@@ -1,77 +1,226 @@
-/* Rsuite DatePicker - Common Styles */
-  .rsuite-date-picker.rs-picker {
-    width: 100%;
-  }
+/* Shared RSuite DatePicker styles.
+ * The popup is portaled to <body>, so styles must target the menu itself
+ * rather than only descendants of .rsuite-date-picker.
+ */
+.rsuite-date-picker.rs-picker {
+  width: 100%;
+}
 
+.rsuite-date-picker .rs-picker-toggle {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--input));
+  color: hsl(var(--foreground));
+  box-shadow: none;
+}
+
+@media (min-width: 640px) {
   .rsuite-date-picker .rs-picker-toggle {
-    width: 100%;
-    height: 3rem;
-    border-radius: 0.75rem;
-    border: 1px solid hsl(var(--border));
-    background: hsl(var(--input));
-    color: hsl(var(--foreground));
-    box-shadow: none;
+    height: 3.5rem;
   }
+}
 
-  @media (min-width: 640px) {
-    .rsuite-date-picker .rs-picker-toggle {
-      height: 3.5rem;
-    }
-  }
+.rsuite-date-picker .rs-picker-toggle-placeholder,
+.rsuite-date-picker .rs-picker-toggle-value {
+  color: hsl(var(--foreground));
+}
 
-  .rsuite-date-picker .rs-picker-toggle-placeholder,
-  .rsuite-date-picker .rs-picker-toggle-value {
-    color: hsl(var(--foreground));
-  }
+.rsuite-date-picker .rs-picker-toggle-caret,
+.rsuite-date-picker .rs-picker-toggle-clean {
+  color: hsl(var(--muted-foreground));
+}
 
-  .rsuite-date-picker .rs-picker-toggle-caret,
-  .rsuite-date-picker .rs-picker-toggle-clean {
-    color: hsl(var(--muted-foreground));
-  }
+.rsuite-date-picker .rs-picker-toggle:focus,
+.rsuite-date-picker .rs-picker-toggle.rs-picker-toggle-focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.35);
+}
 
-  .rsuite-date-picker .rs-picker-toggle:focus,
-  .rsuite-date-picker .rs-picker-toggle.rs-picker-toggle-focus {
-    border-color: hsl(var(--ring));
-    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.35);
-  }
+/* DatePicker popup.
+ * RSuite renders this menu outside the picker trigger (usually under body),
+ * which is why the old .rsuite-date-picker .rs-picker-menu selectors did
+ * not reliably inherit the application's theme.
+ */
+.rsuite-date-picker-menu.rs-picker-menu {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: var(--shadow-glass) !important;
+  color-scheme: light;
+}
 
-  .rsuite-date-picker .rs-picker-menu {
-    background: hsl(var(--card));
-    color: hsl(var(--card-foreground));
-    border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-glass);
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar {
-    background: hsl(var(--card));
-    color: hsl(var(--card-foreground));
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-title,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-btn,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-backward,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-forward {
+  color: hsl(var(--foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-header-title,
-  .rsuite-date-picker .rs-calendar-header-backward,
-  .rsuite-date-picker .rs-calendar-header-forward {
-    color: hsl(var(--foreground));
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-btn:hover,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-backward:hover,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-forward:hover {
+  background: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-table-cell-content {
-    border-radius: 0.5rem;
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell {
+  color: hsl(var(--foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
-    border: 1px solid hsl(var(--primary));
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-content {
+  border-radius: 0.5rem;
+  color: hsl(var(--foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
-    background: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
+  background: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+}
 
-  .rsuite-date-picker .rs-calendar-table-cell-disabled .rs-calendar-table-cell-content {
-    color: hsl(var(--muted-foreground));
-    opacity: 0.6;
-  }
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
+  border: 1px solid hsl(var(--primary)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-disabled .rs-calendar-table-cell-content,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-un-same-month .rs-calendar-table-cell-content {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell {
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell:hover,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell:hover {
+  background: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell-active,
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell-active {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar {
+  background: hsl(var(--card)) !important;
+  border-top: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn {
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn:hover {
+  background: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn-primary {
+  color: hsl(var(--primary-foreground)) !important;
+  background: hsl(var(--primary)) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn-primary:hover {
+  background: hsl(var(--primary) / 0.9) !important;
+}
+
+.rsuite-date-picker-menu.rs-picker-menu .rs-calendar * {
+  box-sizing: border-box;
+}
+
+/* Theme is applied from the document root. This is intentionally explicit
+ * because the RSuite popup is portaled outside the picker component.
+ */
+html.dark .rsuite-date-picker-menu.rs-picker-menu,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  color-scheme: dark;
+}
+
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-content,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-title,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-btn,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-backward,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-forward,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell {
+  color: hsl(var(--foreground)) !important;
+}
+
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-un-same-month .rs-calendar-table-cell-content,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-disabled .rs-calendar-table-cell-content {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell:hover .rs-calendar-table-cell-content,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-btn:hover,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-backward:hover,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-header-forward:hover,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell:hover,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell:hover,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn:hover {
+  background: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-selected .rs-calendar-table-cell-content,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-month-dropdown-cell-active,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-year-dropdown-cell-active,
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-picker-toolbar .rs-btn-primary {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+html.dark .rsuite-date-picker-menu.rs-picker-menu .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
+  border-color: hsl(var(--primary)) !important;
+}
+
+/* Keep the trigger itself correct in dark mode as well. */
+html.dark .rsuite-date-picker .rs-picker-toggle {
+  background: hsl(var(--input)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+html.dark .rsuite-date-picker .rs-picker-toggle-placeholder,
+html.dark .rsuite-date-picker .rs-picker-toggle-value {
+  color: hsl(var(--foreground)) !important;
+}
+
+html.dark .rsuite-date-picker .rs-picker-toggle-caret,
+html.dark .rsuite-date-picker .rs-picker-toggle-clean {
+  color: hsl(var(--muted-foreground)) !important;
+}
