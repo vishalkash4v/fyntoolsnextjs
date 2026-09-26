@@ -273,24 +273,9 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
           'Yes. Use the 100 KB-oriented workflow and review the resulting file size. A portrait photo with the same dimensions as another image can still produce a different byte size because its visual content and compression characteristics differ.',
       },
       {
-        question: 'Does resizing an image reduce quality?',
-        answer:
-          'Reducing dimensions can remove detail because the output contains fewer pixels. Enlarging an image can make it look softer. Output quality also depends on the selected format and quality setting, especially for JPEG and WebP.',
-      },
-      {
         question: 'How can I resize an image without stretching it?',
         answer:
           'Keep Maintain Aspect Ratio enabled and change one dimension. The other dimension is then calculated from the original width-to-height ratio to preserve the image proportions.',
-      },
-      {
-        question: 'What is the difference between resizing and compressing an image?',
-        answer:
-          'Resizing changes pixel dimensions such as 4000×3000 to 1200×900. Compression mainly targets file size and can often keep the same pixel dimensions. You can use both when a destination needs smaller dimensions and fewer bytes.',
-      },
-      {
-        question: 'Can I resize JPG, PNG, and WebP images?',
-        answer:
-          'Yes. The browser-based workflow supports common image formats including JPEG/JPG, PNG, and WebP where the browser can decode the source and the selected output format is available.',
       },
       {
         question: 'Can I resize images for social media?',
@@ -303,19 +288,19 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
           'Yes. The page includes education and application-oriented presets. Use them as a starting point and verify the current official notification or portal rules for the exact pixels, dimensions, format, and file-size limits.',
       },
       {
-        question: 'What is DPI used for in image resizing?',
+        question: 'Does resizing an image reduce quality?',
         answer:
-          'DPI is mainly relevant when an image is prepared for a print workflow that also specifies physical dimensions. For many web uploads, pixel dimensions are the more important requirement.',
+          'Reducing dimensions can remove detail because the output contains fewer pixels. Enlarging an image can make it look softer. Output quality also depends on the selected format and quality setting, especially for JPEG and WebP.',
+      },
+      {
+        question: 'What is the difference between resizing and compressing an image?',
+        answer:
+          'Resizing changes pixel dimensions such as 4000×3000 to 1200×900. Compression mainly targets file size and can often keep the same pixel dimensions. You can use both when a destination needs smaller dimensions and fewer bytes.',
       },
       {
         question: 'Is the image resizer processed in my browser?',
         answer:
           'The core resize operation uses browser image and canvas capabilities. Very large images can still be constrained by the memory and processing limits of the device and browser.',
-      },
-      {
-        question: 'Is FYN Tools Image Resizer free?',
-        answer:
-          'Yes. The image resizing workflow is available to use without a paid subscription or mandatory account.',
       },
     ],
     relatedTools: [
