@@ -2,7 +2,6 @@ import type { FullSeoPageContent } from '@/data/seo-pages/types';
 import type { ToolReviewStats } from '@/lib/tools/toolReviewStats';
 import ToolSeoSections from '@/components/tools/ToolSeoSections';
 import ToolFactCard, { factCardPropsFromSeo } from '@/components/tools/ToolFactCard';
-import ToolSeoDepthBlock from '@/components/seo/ToolSeoDepthBlock';
 import DeferredAdSense from '@/components/Ads/DeferredAdSense';
 import NamezivoAdBanner from '@/components/Ads/NamezivoAdBanner';
 import { TOOL_FACT_CARDS } from '@/data/tool-content/toolFactCards';
@@ -41,7 +40,6 @@ export default function ToolPageShell({
   const path = `/${slug}`;
   const card = TOOL_FACT_CARDS[path];
   const factProps = card ? factCardPropsFromSeo(title, card, fullSeo) : null;
-  const displayName = fullSeo?.h1 || title;
 
   return (
     <div className="min-h-screen bg-background">
