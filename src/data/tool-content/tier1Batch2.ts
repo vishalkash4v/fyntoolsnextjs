@@ -152,133 +152,180 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
   },
 
   '/image-resizer': {
-    title: 'Free Image Resizer Online — Resize Photos, KB & Social Media Images',
-    h1: 'Free Image Resizer Online',
+    title: 'Image Resizer Online — Resize Photos by Pixels, KB & More',
+    h1: 'Image Resizer Online',
     description:
-      'Resize JPG, PNG, and other common images online by pixels, percentage, DPI, or practical presets. Compress to common KB targets and prepare images for social media and forms.',
+      'Resize images online for free by pixels, percentage, DPI, quality, or practical presets. Target common KB limits and social dimensions with JPG, PNG, and WebP support.',
     shortIntro:
-      'Resize an image by width and height, percentage, DPI, or a practical preset. FYN Tools also includes size-target presets for common upload limits and social-media dimensions, so you can prepare an image for the destination instead of guessing the settings.',
+      'Resize a JPG, PNG, or WebP image by width and height, percentage, DPI, or a practical preset. Use the KB-oriented presets for common upload limits and the social/application presets when a destination needs specific dimensions.',
     introText:
-      'Image resizing changes the pixel dimensions of an image while keeping the original file usable for a new context. The FYN Tools resizer combines manual dimensions with presets for social platforms, email-friendly file sizes, and selected education or application workflows. Maintain the aspect ratio when you want proportional scaling, or set exact dimensions when a destination requires a specific size.',
+      'FYN Tools Image Resizer is designed around the actual task behind most resize requests: change an image to a required dimension, approximate file-size target, or destination format without installing desktop software. You can enter custom width and height values, scale an image by percentage, keep its original aspect ratio, adjust output quality, change format, and use preset workflows for common online forms and social-media dimensions.',
     keywords:
-      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize image in kb, resize image to 20kb, resize image to 50kb, resize image to 100kb, resize image to 200kb, image resizer 50kb, bulk image resizer, social media image resizer, image dimensions resizer',
+      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize photo online, resize picture online, image resize tool, resize image to 50kb, resize image to 100kb, resize image to 200kb, resize photo to 100kb, image resizer 50kb, image dimensions resizer, social media image resizer',
     category: 'Image Tools',
     howToUse: [
-      'Upload the image you want to resize.',
-      'Choose a manual resize workflow or select a relevant preset category.',
-      'Set the target width and height, percentage, DPI, or file-size target shown by the tool.',
-      'Keep aspect ratio enabled when you want proportional dimensions; disable it only when exact stretching is intentional.',
-      'Review the output dimensions and estimated file size, then download the resized image.',
+      'Upload the JPG, PNG, WebP, or other browser-supported image you want to resize.',
+      'Choose manual resizing or select an email, social-media, education, or application preset.',
+      'Set the target width and height, percentage scale, DPI, output quality, and format as needed.',
+      'Keep Maintain Aspect Ratio enabled when you want proportional resizing and to avoid stretching.',
+      'Generate the resized image, check the final dimensions and file size, then download the output.',
     ],
     features: [
-      'Resize by width and height',
-      'Percentage-based resizing',
-      'Aspect-ratio preservation',
+      'Custom width and height resizing',
+      'Percentage-based image resizing',
+      'Maintain-aspect-ratio option',
+      'Output quality control for lossy formats',
+      'JPEG, PNG, and WebP output workflow',
       'DPI controls for print-oriented workflows',
-      '50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB email presets',
-      'Social media dimension presets',
+      '50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB presets',
+      'Social-media size presets',
       'Education and application-oriented presets',
-      'JPEG, PNG, and other formats supported by the browser workflow',
-      'Quality control for output',
-      'Browser-based image processing',
+      'Browser-based canvas processing',
     ],
     useCases: [
       {
         title: 'Resize an image for a website',
         description:
-          'Set a specific width and height or percentage so a large source image fits the dimensions needed by a web page or content system.',
+          'Reduce a large source image to a practical width and height for web pages, CMS uploads, blog graphics, or email attachments.',
       },
       {
-        title: 'Meet an upload-size limit',
+        title: 'Resize image to 100KB',
         description:
-          'Use a KB-oriented preset when an application, email workflow, or portal asks for a maximum image file size.',
+          'Use the 100 KB-oriented preset when a portal or upload workflow specifies a maximum file size. Always check the downloaded file before submission.',
       },
       {
-        title: 'Prepare social media images',
+        title: 'Resize image to 50KB or 200KB',
         description:
-          'Start with the relevant platform preset instead of manually searching for common post, profile, story, or cover dimensions.',
+          'Choose the closest KB preset for a form or upload limit, then verify the actual output size because encoded file size varies with image content and settings.',
       },
       {
-        title: 'Prepare exam or application photos',
+        title: 'Prepare social-media images',
         description:
-          'Use the available education and application presets as a starting point, then verify the exact requirements in the current official notification before submitting.',
+          'Start from a platform preset for profile, feed, story, cover, or other supported social dimensions instead of manually calculating common sizes.',
+      },
+      {
+        title: 'Prepare application or exam photos',
+        description:
+          'Use the available education and application presets as a starting point, then compare the result with the latest official instructions before uploading.',
       },
     ],
     examples: [
       {
-        input: 'Upload a 4000 × 3000 photo → choose a 50% scale',
-        output: 'A proportionally resized image at approximately 2000 × 1500 pixels.',
+        input: '4000 × 3000 photo → 50% scale',
+        output: 'Approximately 2000 × 1500 pixels when proportional scaling is enabled.',
       },
       {
-        input: 'Upload a photo → choose the 150 KB preset',
-        output: 'The tool applies its 150 KB-oriented resize/quality settings and provides an output for download.',
+        input: 'Photo → 100 KB preset',
+        output: 'The tool applies its 100 KB-oriented resize and quality settings and generates an output for download; final bytes should be checked.',
       },
       {
-        input: 'Upload a photo → choose Instagram feed portrait',
-        output: 'The tool applies the preset dimensions shown in the social-media preset panel.',
+        input: 'Photo → custom width 1200 px with aspect ratio locked',
+        output: 'The height is calculated from the original image proportions so the image is resized without intentional stretching.',
+      },
+      {
+        input: 'Photo → Instagram feed portrait preset',
+        output: 'The social preset applies the dimensions currently configured in the tool.',
       },
     ],
     tips: [
-      'Keep the aspect ratio enabled unless the destination explicitly requires non-proportional dimensions.',
-      'For strict upload limits, leave some margin below the stated maximum because portal validation can differ from a displayed target.',
-      'Use a higher source resolution when the final image must remain sharp after resizing.',
-      'Check the official destination requirements before using education, government, or application presets.',
+      'Keep the aspect ratio enabled unless you intentionally need non-proportional dimensions.',
+      'For a strict maximum KB limit, leave a little margin and check the downloaded file rather than trusting an estimate.',
+      'If a destination specifies exact pixels, enter those dimensions instead of relying on a percentage scale.',
+      'A resize can reduce file size, but it is not the same operation as compression; use an image compressor when the main goal is smaller bytes while keeping dimensions.',
+      'Verify current official requirements before using presets for exams, government forms, passports, or other applications.',
     ],
     whenToUse: [
-      'A website or app requires a specific pixel dimension.',
-      'An upload form imposes a maximum image size in KB or MB.',
-      'You need a social-media-ready image dimension.',
-      'You want to reduce a large photo before attaching or uploading it.',
+      'A website or application requires a specific image width and height.',
+      'A form or portal has a maximum file size in KB or MB.',
+      'You need a ready-made social-media dimension.',
+      'You need a smaller photo for email or document uploads.',
+      'A large original image needs proportional scaling before publishing.',
     ],
     faqs: [
       {
-        question: 'What does an image resizer do?',
+        question: 'What is an image resizer?',
         answer:
-          'An image resizer changes the pixel dimensions of a photo or graphic. Depending on the selected settings, it can also adjust output quality and format so the resulting file fits a particular workflow.',
+          'An image resizer changes the pixel dimensions of a photo or graphic. It can also change the output format and, for formats such as JPEG or WebP, the quality setting that affects the resulting file size.',
       },
       {
-        question: 'Can I resize an image to 20KB, 50KB, 100KB, or 200KB?',
+        question: 'How do I resize an image online?',
         answer:
-          'The page provides KB-oriented workflows for common upload limits. Because JPEG and other encoded file sizes depend on the image itself, a target such as 20KB or 100KB should be treated as a size goal rather than a guaranteed exact byte count. Check the downloaded file before submitting it.',
+          'Upload the image, choose manual dimensions or a preset, keep the aspect ratio enabled when proportional scaling is needed, generate the result, check the output, and download the resized file.',
       },
       {
-        question: 'Can I resize an image to a specific KB size?',
+        question: 'Can I resize an image to 100KB?',
         answer:
-          'The resizer provides practical KB-oriented presets such as 50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB. Because final file size depends on image content and encoding, treat the preset as a target rather than a mathematical guarantee.',
+          'Yes, the page includes a 100 KB-oriented preset. Treat the target as practical guidance rather than an exact byte guarantee because final file size depends on dimensions, format, image detail, and quality settings. Check the downloaded file before submitting it.',
       },
       {
-        question: 'Can I resize an image without changing its proportions?',
+        question: 'Can I resize an image to 50KB?',
         answer:
-          'Yes. Keep the aspect-ratio option enabled and change one dimension or the scale. The other dimension can then follow the original proportions.',
+          'Yes. The 50 KB preset is intended for workflows with small upload limits. Since image encoding is content-dependent, verify the final file size after processing instead of assuming it will be exactly 50 KB.',
       },
       {
-        question: 'Can I resize images for Instagram and other social platforms?',
+        question: 'Can I resize an image to 200KB?',
         answer:
-          'Yes. The tool includes social-media presets with dimensions for common profile, feed, story, cover, and related workflows. Verify the destination platform requirements before publishing.',
+          'Yes. The 200 KB preset provides a practical starting point for that limit. The final file can vary, so check the generated file size before uploading it to a form or portal.',
       },
       {
-        question: 'What is DPI used for in an image resizer?',
+        question: 'Can I resize a photo to 100KB?',
         answer:
-          'DPI is useful when a workflow is tied to print dimensions. Pixel dimensions remain the primary factor for many web uploads, while print workflows may also specify physical size and DPI.',
+          'Yes. Use the 100 KB-oriented workflow and review the resulting file size. A portrait photo with the same dimensions as another image can still produce a different byte size because its visual content and compression characteristics differ.',
       },
       {
-        question: 'Will resizing improve a blurry image?',
+        question: 'Does resizing an image reduce quality?',
         answer:
-          'Resizing alone does not restore missing detail. If the source is too small or blurry, an image upscaler or enhancement workflow may be more appropriate.',
+          'Reducing dimensions can remove detail because the output contains fewer pixels. Enlarging an image can make it look softer. Output quality also depends on the selected format and quality setting, especially for JPEG and WebP.',
       },
       {
-        question: 'Is image resizing done in the browser?',
+        question: 'How can I resize an image without stretching it?',
         answer:
-          'The core resize workflow uses browser image and canvas capabilities. Large images can still be limited by the memory available to the browser and device.',
+          'Keep Maintain Aspect Ratio enabled and change one dimension. The other dimension is then calculated from the original width-to-height ratio to preserve the image proportions.',
+      },
+      {
+        question: 'What is the difference between resizing and compressing an image?',
+        answer:
+          'Resizing changes pixel dimensions such as 4000×3000 to 1200×900. Compression mainly targets file size and can often keep the same pixel dimensions. You can use both when a destination needs smaller dimensions and fewer bytes.',
+      },
+      {
+        question: 'Can I resize JPG, PNG, and WebP images?',
+        answer:
+          'Yes. The browser-based workflow supports common image formats including JPEG/JPG, PNG, and WebP where the browser can decode the source and the selected output format is available.',
+      },
+      {
+        question: 'Can I resize images for social media?',
+        answer:
+          'Yes. The tool includes configurable social-media presets for supported profile, post, story, cover, and related dimensions. Because platform requirements can change, verify the current destination guidance before publishing.',
+      },
+      {
+        question: 'Can I resize images for exam or application forms?',
+        answer:
+          'Yes. The page includes education and application-oriented presets. Use them as a starting point and verify the current official notification or portal rules for the exact pixels, dimensions, format, and file-size limits.',
+      },
+      {
+        question: 'What is DPI used for in image resizing?',
+        answer:
+          'DPI is mainly relevant when an image is prepared for a print workflow that also specifies physical dimensions. For many web uploads, pixel dimensions are the more important requirement.',
+      },
+      {
+        question: 'Is the image resizer processed in my browser?',
+        answer:
+          'The core resize operation uses browser image and canvas capabilities. Very large images can still be constrained by the memory and processing limits of the device and browser.',
+      },
+      {
+        question: 'Is FYN Tools Image Resizer free?',
+        answer:
+          'Yes. The image resizing workflow is available to use without a paid subscription or mandatory account.',
       },
     ],
     relatedTools: [
-      { name: 'Image Compressor', href: '/image-compressor', description: 'Reduce file size while preserving useful quality' },
-      { name: 'Image Upscaler', href: '/image-upscaler', description: 'Increase resolution when the source is too small' },
-      { name: 'Image Cropper', href: '/image-cropper', description: 'Crop to a required aspect ratio or composition' },
+      { name: 'Image Compressor', href: '/image-compressor', description: 'Reduce image file size when dimensions can stay the same' },
+      { name: 'Image Upscaler', href: '/image-upscaler', description: 'Increase image resolution when the source is too small' },
+      { name: 'Image Cropper', href: '/image-cropper', description: 'Crop an image to the required composition or aspect ratio' },
       { name: 'Image Format Converter', href: '/image-format-converter', description: 'Convert between supported image formats' },
-      { name: 'Add Name & Date on Photo', href: '/add-name-date-photo', description: 'Annotate application photos' },
+      { name: 'Add Name & Date on Photo', href: '/add-name-date-photo', description: 'Prepare application photos with required text annotations' },
     ],
+    dateModified: '2026-09-27',
   },
 
   '/image-upscaler': {
