@@ -23,6 +23,46 @@ export type PageOverride = {
   whenToUse?: string[];
   tips?: string[];
   benefits?: string[];
+  /** Page-specific freshness date. */
+  datePublished?: string;
+  dateModified?: string;
+  /** Optional richer fields used by premium SEO batches. */
+  metaDescription?: string;
+  tldr?: string;
+  processingNote?: string;
+  ioContract?: {
+    inputs: string;
+    outputs: string;
+    formats: string;
+    limits: string;
+    processing: string;
+  };
+  introParagraphs?: string[];
+  overview?: string;
+  howItWorks?: string;
+  advantages?: string[];
+  commonMistakes?: string[];
+  conclusion?: string;
+  internalLinkInIntro?: {
+    before: string;
+    linkText: string;
+    href: string;
+    after: string;
+  };
+  relatedGuides?: { title: string; href: string }[];
+  testimonials?: Array<{ name: string; rating: number; text: string; title?: string }>;
+  toolComparisons?: Array<{
+    toolAName: string;
+    toolAHref: string;
+    toolBName: string;
+    toolBHref: string;
+    description: string;
+  }>;
+  relatedSearches?: Array<{ phrase: string; href?: string }>;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
 };
 
 const pageOverridesBase: Record<string, PageOverride> = {
