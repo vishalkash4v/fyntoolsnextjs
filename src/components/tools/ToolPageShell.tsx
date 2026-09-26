@@ -66,15 +66,6 @@ export default function ToolPageShell({
             </section>
           }
         />
-        <ToolSeoDepthBlock
-          toolName={displayName.replace(/\s*[—|-].*$/, '').trim() || title}
-          category={category}
-          toolPath={path}
-          description={fullSeo?.metaDescription || description}
-          howToUse={fullSeo?.howToUse?.length ? fullSeo.howToUse : howToUse}
-          useCases={fullSeo?.useCases}
-          overview={fullSeo?.overview}
-        />
         <div className="px-4 sm:px-6 md:px-8 mb-6 max-w-4xl mx-auto">
           <NamezivoAdBanner
             sourcePath={path}
