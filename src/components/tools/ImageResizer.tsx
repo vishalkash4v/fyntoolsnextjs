@@ -529,6 +529,7 @@ const ImageResizer = () => {
                 <strong className="text-foreground">Privacy:</strong> the image is processed in your browser with Canvas. The tool does not upload your image to an FYN Tools server.
               </div>
             </div>
+            </div>
           )}
 
           {image && (
