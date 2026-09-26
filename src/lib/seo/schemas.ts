@@ -59,6 +59,10 @@ export function breadcrumbSchema(
   };
 }
 
+/**
+ * FAQ markup remains semantic JSON-LD for consumers that understand FAQPage.
+ * Google no longer surfaces FAQ rich results, so visible HTML FAQs remain the primary UX/search content.
+ */
 export function faqPageSchema(faqs: FaqItem[]): Record<string, unknown> | null {
   if (!faqs.length) return null;
   return {
