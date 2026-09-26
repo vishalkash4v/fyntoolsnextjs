@@ -47,7 +47,7 @@ const socialPresets: Preset[] = [
   { id:'linkedin-cover', platform:'LinkedIn', label:'Personal Cover', width:1584, height:396, ratio:4, note:'LinkedIn official recommended cover dimensions', verified:true },
   { id:'linkedin-post', platform:'LinkedIn', label:'Post — Landscape', width:1200, height:627, ratio:1.91, note:'LinkedIn shared image / link-preview style', verified:true },
   { id:'linkedin-square', platform:'LinkedIn', label:'Post — Square', width:1080, height:1080, ratio:1, note:'Square creator preset' },
-  { id:'youtube-thumbnail', platform:'YouTube', label:'Video Thumbnail', width:1280, height:720, ratio:16/9, note:'16:9 thumbnail canvas' },
+  { id:'youtube-thumbnail', platform:'YouTube', label:'Video Thumbnail', width:3840, height:2160, ratio:16/9, note:'Current YouTube Help recommends 3840×2160 for custom video thumbnails; 16:9.', verified:true },
   { id:'youtube-banner', platform:'YouTube', label:'Channel Banner', width:2560, height:1440, ratio:16/9, note:'YouTube recommended banner size; keep important text in the safe area', verified:true },
   { id:'youtube-profile', platform:'YouTube', label:'Channel Profile', width:800, height:800, ratio:1, note:'Square/round profile source' },
   { id:'pinterest-pin', platform:'Pinterest', label:'Standard Pin', width:1000, height:1500, ratio:2/3, note:'Pinterest recommends 2:3 / 1000×1500 for standard image ads', verified:true },
@@ -111,7 +111,7 @@ const ImageResizer = () => {
   const [target, setTarget] = useState({ width:1080, height:1080 });
   const [fitMode, setFitMode] = useState<FitMode>('fill');
   const [crop, setCrop] = useState({ x:.1, y:.1, w:.8, h:.8 });
-  const [cropAspect, setCropAspect] = useState<number | null>(1);
+  const [cropAspect, setCropAspect] = useState<number | null>(1);\n  const [lockAspect, setLockAspect] = useState(true);
   const [cropZoom, setCropZoom] = useState(1);
   const [quality, setQuality] = useState(88);
   const [format, setFormat] = useState<'jpeg'|'png'|'webp'>('jpeg');
@@ -204,7 +204,7 @@ const ImageResizer = () => {
     toast.success(`${preset.platform} — ${preset.label} preset applied`);
   };
 
-  const resetCrop = () => {
+  const rotateRight = () => {\n    setRotation(r => (r + 90) % 360);\n    setTarget(t => ({ width:t.height, height:t.width }));\n    if (image && cropAspect) setCropAspect(1 / cropAspect);\n  };\n\n  const chooseCropRatio = (ratio:number | null) => {\n    setCropAspect(ratio);\n    setLockAspect(Boolean(ratio));\n    if (image && ratio) setCrop(centeredCrop(image.width, image.height, ratio, cropZoom));\n  };\n\n  const resetCrop = () => {
     if (!image) return;
     const aspect = cropAspect || image.width / image.height;
     setCrop(centeredCrop(image.width, image.height, aspect, cropZoom));
@@ -364,7 +364,7 @@ const ImageResizer = () => {
   const setTargetDimension = (field:'width'|'height', value:number) => {
     const safe=clamp(Math.round(value || 1),1,8000);
     setTarget(prev => {
-      if (fitMode !== 'stretch' && cropAspect) {
+      if (fitMode !== 'stretch' && lockAspect && cropAspect) {
         return field === 'width'
           ? {width:safe,height:Math.max(1,Math.round(safe/cropAspect))}
           : {width:Math.max(1,Math.round(safe*cropAspect)),height:safe};
@@ -438,7 +438,7 @@ const ImageResizer = () => {
                     <Button size="sm" variant={fitMode === 'fill' ? 'default' : 'outline'} onClick={() => {setFitMode('fill'); updateCropForTarget(target.width,target.height,cropZoom);}}><Crop className="mr-1 h-4 w-4" /> Fill / Crop</Button>
                     <Button size="sm" variant={fitMode === 'fit' ? 'default' : 'outline'} onClick={() => setFitMode('fit')}><Maximize2 className="mr-1 h-4 w-4" /> Fit</Button>
                     <Button size="sm" variant={fitMode === 'stretch' ? 'default' : 'outline'} onClick={() => setFitMode('stretch')}>Stretch</Button>
-                    <Button size="sm" variant="outline" onClick={resetCrop}><RotateCcw className="mr-1 h-4 w-4" /> Reset crop</Button>
+                    <Button size="sm" variant="outline" onClick={resetCrop}><RotateCcw className="mr-1 h-4 w-4" /> Reset crop</Button>\n                    <Button size="sm" variant={lockAspect ? 'outline' : 'default'} onClick={() => setLockAspect(v=>!v)}>\n                      {lockAspect ? 'Lock ratio' : 'Free ratio'}\n                    </Button>
                     <Button size="sm" variant={showCrop ? 'outline' : 'default'} onClick={() => setShowCrop(v=>!v)}><Move className="mr-1 h-4 w-4" /> {showCrop ? 'Hide crop' : 'Show crop'}</Button>
                   </div>
 
@@ -476,7 +476,7 @@ const ImageResizer = () => {
                       </div>
                     ))}
                     <div className="grid grid-cols-2 gap-2">
-                      <Button size="sm" variant="outline" onClick={()=>setRotation(r=>(r+90)%360)}><RotateCw className="mr-1 h-4 w-4" /> Rotate</Button>
+                      <Button size="sm" variant="outline" onClick={rotateRight}><RotateCw className="mr-1 h-4 w-4" /> Rotate</Button>
                       <Button size="sm" variant="outline" onClick={()=>setFlipX(v=>!v)}><FlipHorizontal className="mr-1 h-4 w-4" /> Flip H</Button>
                       <Button size="sm" variant="outline" onClick={()=>setFlipY(v=>!v)}><FlipVertical className="mr-1 h-4 w-4" /> Flip V</Button>
                       <Button size="sm" variant="outline" onClick={()=>{setBrightness(0);setContrast(0);setSaturation(0);setSharpness(0);setGrayscale(0);setRotation(0);setFlipX(false);setFlipY(false);}}>Reset edits</Button>
