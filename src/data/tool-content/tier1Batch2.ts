@@ -157,30 +157,33 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
     description:
       'Resize images online for free by pixels, percentage, DPI, quality, or practical presets. Target common KB limits and social dimensions with JPG, PNG, and WebP support.',
     shortIntro:
-      'Resize a JPG, PNG, or WebP image by width and height, percentage, DPI, or a practical preset. Use the KB-oriented presets for common upload limits and the social/application presets when a destination needs specific dimensions.',
+      'Resize and crop JPG, PNG, or WebP images by exact pixels, aspect ratio, KB target, or destination preset. Choose Fit, Fill/Crop, or Stretch, drag the crop area to select the part you want to keep, then adjust brightness, contrast, saturation, sharpness, rotation, and output quality before downloading.',
     introText:
-      'FYN Tools Image Resizer is designed around the actual task behind most resize requests: change an image to a required dimension, approximate file-size target, or destination format without installing desktop software. You can enter custom width and height values, scale an image by percentage, keep its original aspect ratio, adjust output quality, change format, and use preset workflows for common online forms and social-media dimensions.',
+      'FYN Tools Image Resizer combines resizing and practical image editing in one browser-based workflow. Upload an image, choose a platform or application preset, crop the exact part you want to keep, and then set output dimensions, format, quality, brightness, contrast, saturation, sharpness, rotation, and flips. Presets cover social platforms, web images, KB-oriented uploads, and application workflows such as HPPSC and UPSC; official requirements can change, so application presets are always a starting point unless explicitly marked as verified.',
     keywords:
-      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize photo online, resize picture online, image resize tool, resize image to 50kb, resize image to 100kb, resize image to 200kb, resize photo to 100kb, image resizer 50kb, image dimensions resizer, social media image resizer',
+      'image resizer, resize image, image resizer online, free image resizer, resize image online, photo resizer, resize photo online, resize picture online, image resize tool, image cropper, resize and crop image, smart image cropper, fit image online, fill image online, stretch image, resize image to 50kb, resize image to 100kb, resize image to 200kb, resize photo to 100kb, resize image without losing quality, social media image resizer, Instagram image resizer, YouTube thumbnail resizer, LinkedIn image resizer, HPPSC photo resize, HPPSC photo size, UPSC photo resize, exam photo resizer, passport photo resizer',
     category: 'Image Tools',
     howToUse: [
-      'Upload the JPG, PNG, WebP, or other browser-supported image you want to resize.',
-      'Choose manual resizing or select an email, social-media, education, or application preset.',
-      'Set the target width and height, percentage scale, DPI, output quality, and format as needed.',
-      'Keep Maintain Aspect Ratio enabled when you want proportional resizing and to avoid stretching.',
-      'Generate the resized image, check the final dimensions and file size, then download the output.',
+      'Upload the image you want to resize or crop.',
+      'Search the preset list for a destination such as Instagram, YouTube, LinkedIn, HPPSC, UPSC, or a KB target, or use Manual mode.',
+      'Choose Fill/Crop, Fit, or Stretch. With Fill/Crop enabled, drag the crop box to select the exact part of the image you want to keep and use the zoom control for finer framing.',
+      'Set exact output width and height, lock or free the aspect ratio, and choose JPEG, PNG, or WebP quality.',
+      'Use the adjustment controls for brightness, contrast, saturation, sharpness, grayscale, rotation, and flips when needed.',
+      'Review the output dimensions and actual file size, then download the final image. For application uploads, compare the file with the latest official instructions before submission.',
     ],
     features: [
-      'Custom width and height resizing',
-      'Percentage-based image resizing',
-      'Maintain-aspect-ratio option',
-      'Output quality control for lossy formats',
-      'JPEG, PNG, and WebP output workflow',
-      'DPI controls for print-oriented workflows',
-      '50 KB, 100 KB, 150 KB, 200 KB, 500 KB, and 1 MB presets',
-      'Social-media size presets',
-      'Education and application-oriented presets',
-      'Browser-based canvas processing',
+      'Exact pixel width and height controls',
+      'Aspect-ratio lock with manual free-ratio mode',
+      'Smart Fill/Crop with draggable crop area and crop zoom',
+      'Fit/contain mode with selectable background color',
+      'Stretch mode for intentional non-proportional resizing',
+      'Brightness, contrast, saturation, sharpness, and grayscale controls',
+      'Rotate 90° and horizontal/vertical flip controls',
+      'JPEG, PNG, and WebP export with quality control',
+      'KB-oriented 50 KB, 100 KB, 150 KB, 200 KB and larger presets',
+      'Social, creator, web, education, government and application presets',
+      'Searchable preset library for faster workflows',
+      'Browser-based local Canvas processing',
     ],
     useCases: [
       {
@@ -204,9 +207,19 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
           'Start from a platform preset for profile, feed, story, cover, or other supported social dimensions instead of manually calculating common sizes.',
       },
       {
-        title: 'Prepare application or exam photos',
+        title: 'Prepare HPPSC and UPSC application images',
         description:
-          'Use the available education and application presets as a starting point, then compare the result with the latest official instructions before uploading.',
+          'Use the verified HPPSC and UPSC file-size workflows where applicable, crop the correct subject area, and compare the final file against the active official notice before submission.',
+      },
+      {
+        title: 'Crop a photo before resizing',
+        description:
+          'Choose a destination aspect ratio, drag the crop box over the important part of the image, adjust crop zoom, and then render the exact output dimensions.',
+      },
+      {
+        title: 'Fix brightness and contrast before export',
+        description:
+          'Make small browser-side adjustments to brightness, contrast, saturation, sharpness, or grayscale before downloading the resized image.',
       },
     ],
     examples: [
@@ -245,62 +258,62 @@ export const tier1Batch2Overrides: Record<(typeof TIER1_BATCH2_PATHS)[number], P
       {
         question: 'What is an image resizer?',
         answer:
-          'An image resizer changes the pixel dimensions of a photo or graphic. It can also change the output format and, for formats such as JPEG or WebP, the quality setting that affects the resulting file size.',
+          'An image resizer changes the pixel dimensions of a photo or graphic. FYN Tools also combines resizing with crop, fit, stretch, quality, format, and basic image-adjustment controls.',
       },
       {
         question: 'How do I resize an image online?',
         answer:
-          'Upload the image, choose manual dimensions or a preset, keep the aspect ratio enabled when proportional scaling is needed, generate the result, check the output, and download the resized file.',
+          'Upload an image, choose a preset or enter custom dimensions, select Fit, Fill/Crop, or Stretch, adjust the output if needed, then download the generated image.',
+      },
+      {
+        question: 'Can I crop an image before resizing it?',
+        answer:
+          'Yes. Choose Fill/Crop, select an aspect ratio such as 1:1, 4:5, 3:4, 16:9, or 9:16, then drag the crop box to position the part of the image you want to keep. Crop zoom gives additional framing control.',
+      },
+      {
+        question: 'What is the difference between Fit, Fill/Crop, and Stretch?',
+        answer:
+          'Fit keeps the whole source image and places it inside the target canvas, Fill/Crop fills the target dimensions by cropping away excess area, and Stretch forces the whole source into the target dimensions even when the aspect ratio changes.',
       },
       {
         question: 'Can I resize an image to 100KB?',
         answer:
-          'Yes, the page includes a 100 KB-oriented preset. Treat the target as practical guidance rather than an exact byte guarantee because final file size depends on dimensions, format, image detail, and quality settings. Check the downloaded file before submitting it.',
+          'Yes. The 100 KB preset is designed as a practical starting point for a maximum-size workflow. Final bytes depend on the image, dimensions, format, and quality, so always check the downloaded file.',
       },
       {
-        question: 'Can I resize an image to 50KB?',
+        question: 'Can I resize an image to 50KB or 200KB?',
         answer:
-          'Yes. The 50 KB preset is intended for workflows with small upload limits. Since image encoding is content-dependent, verify the final file size after processing instead of assuming it will be exactly 50 KB.',
+          'Yes. The tool includes 50 KB and 200 KB-oriented presets as well as other common targets. These are target workflows rather than exact byte guarantees because image encoding varies by content.',
       },
       {
-        question: 'Can I resize an image to 200KB?',
+        question: 'Can I resize images for Instagram, YouTube, LinkedIn and other platforms?',
         answer:
-          'Yes. The 200 KB preset provides a practical starting point for that limit. The final file can vary, so check the generated file size before uploading it to a form or portal.',
+          'Yes. The preset library includes common social and creator dimensions for Instagram, Facebook, X, LinkedIn, YouTube, Pinterest, TikTok and WhatsApp. Platform specifications can change, so verify the destination when publishing important assets.',
       },
       {
-        question: 'Can I resize a photo to 100KB?',
+        question: 'Can I resize a photo for HPPSC?',
         answer:
-          'Yes. Use the 100 KB-oriented workflow and review the resulting file size. A portrait photo with the same dimensions as another image can still produce a different byte size because its visual content and compression characteristics differ.',
+          'Yes. The HPPSC preset uses the dimensions and file-size limits stated in the Commission FAQ: 110×140 pixels (width×height) and no more than 40 KB for the photograph, in JPG format. Check the active recruitment notice before submitting.',
       },
       {
-        question: 'How can I resize an image without stretching it?',
+        question: 'Can I resize a photo for UPSC?',
         answer:
-          'Keep Maintain Aspect Ratio enabled and change one dimension. The other dimension is then calculated from the original width-to-height ratio to preserve the image proportions.',
+          'Yes. Current UPSC notices specify JPG photograph and signature files between 20 KB and 300 KB. Exact image dimensions can depend on the active application module, so use the preset as a preparation workflow and verify the current UPSC instructions before upload.',
       },
       {
-        question: 'Can I resize images for social media?',
+        question: 'Can I adjust brightness, contrast or sharpness?',
         answer:
-          'Yes. The tool includes configurable social-media presets for supported profile, post, story, cover, and related dimensions. Because platform requirements can change, verify the current destination guidance before publishing.',
+          'Yes. The editor provides brightness, contrast, saturation, sharpness, grayscale, rotation, and flip controls. These adjustments are applied in the browser before the final export.',
       },
       {
-        question: 'Can I resize images for exam or application forms?',
+        question: 'Does resizing reduce image quality?',
         answer:
-          'Yes. The page includes education and application-oriented presets. Use them as a starting point and verify the current official notification or portal rules for the exact pixels, dimensions, format, and file-size limits.',
+          'Reducing dimensions removes pixels, while enlarging can make an image softer. JPEG and WebP quality settings also affect visible detail and file size. For best results, avoid unnecessary upscaling and use moderate quality adjustments.',
       },
       {
-        question: 'Does resizing an image reduce quality?',
+        question: 'Is image resizing processed in my browser?',
         answer:
-          'Reducing dimensions can remove detail because the output contains fewer pixels. Enlarging an image can make it look softer. Output quality also depends on the selected format and quality setting, especially for JPEG and WebP.',
-      },
-      {
-        question: 'What is the difference between resizing and compressing an image?',
-        answer:
-          'Resizing changes pixel dimensions such as 4000×3000 to 1200×900. Compression mainly targets file size and can often keep the same pixel dimensions. You can use both when a destination needs smaller dimensions and fewer bytes.',
-      },
-      {
-        question: 'Is the image resizer processed in my browser?',
-        answer:
-          'The core resize operation uses browser image and canvas capabilities. Very large images can still be constrained by the memory and processing limits of the device and browser.',
+          'Yes. The core workflow uses browser Canvas APIs, so the uploaded image is processed locally by the browser rather than being sent to an FYN Tools server.',
       },
     ],
     relatedTools: [
