@@ -111,7 +111,8 @@ const ImageResizer = () => {
   const [target, setTarget] = useState({ width:1080, height:1080 });
   const [fitMode, setFitMode] = useState<FitMode>('fill');
   const [crop, setCrop] = useState({ x:.1, y:.1, w:.8, h:.8 });
-  const [cropAspect, setCropAspect] = useState<number | null>(1);\n  const [lockAspect, setLockAspect] = useState(true);
+  const [cropAspect, setCropAspect] = useState<number | null>(1);
+  const [lockAspect, setLockAspect] = useState(true);
   const [cropZoom, setCropZoom] = useState(1);
   const [quality, setQuality] = useState(88);
   const [format, setFormat] = useState<'jpeg'|'png'|'webp'>('jpeg');
@@ -204,7 +205,19 @@ const ImageResizer = () => {
     toast.success(`${preset.platform} — ${preset.label} preset applied`);
   };
 
-  const rotateRight = () => {\n    setRotation(r => (r + 90) % 360);\n    setTarget(t => ({ width:t.height, height:t.width }));\n    if (image && cropAspect) setCropAspect(1 / cropAspect);\n  };\n\n  const chooseCropRatio = (ratio:number | null) => {\n    setCropAspect(ratio);\n    setLockAspect(Boolean(ratio));\n    if (image && ratio) setCrop(centeredCrop(image.width, image.height, ratio, cropZoom));\n  };\n\n  const resetCrop = () => {
+  const rotateRight = () => {
+    setRotation(r => (r + 90) % 360);
+    setTarget(t => ({ width:t.height, height:t.width }));
+    if (image && cropAspect) setCropAspect(1 / cropAspect);
+  };
+
+  const chooseCropRatio = (ratio:number | null) => {
+    setCropAspect(ratio);
+    setLockAspect(Boolean(ratio));
+    if (image && ratio) setCrop(centeredCrop(image.width, image.height, ratio, cropZoom));
+  };
+
+  const resetCrop = () => {
     if (!image) return;
     const aspect = cropAspect || image.width / image.height;
     setCrop(centeredCrop(image.width, image.height, aspect, cropZoom));
@@ -411,9 +424,10 @@ const ImageResizer = () => {
               <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1.25fr)_minmax(320px,.75fr)]">
                 <div className="space-y-4">
                   <div className="relative overflow-hidden rounded-2xl border bg-muted/30 p-2">
+                    <div className="relative mx-auto max-w-full overflow-hidden rounded-xl bg-black/5">
                     <div
                       ref={previewRef}
-                      className="relative mx-auto flex max-h-[520px] min-h-[260px] max-w-full items-center justify-center overflow-hidden rounded-xl bg-black/5"
+                      className="relative max-h-[520px] max-w-full overflow-hidden rounded-xl bg-black/5"
                       onPointerMove={onCropPointerMove}
                       onPointerUp={stopDrag}
                       onPointerCancel={stopDrag}
@@ -438,12 +452,21 @@ const ImageResizer = () => {
                     <Button size="sm" variant={fitMode === 'fill' ? 'default' : 'outline'} onClick={() => {setFitMode('fill'); updateCropForTarget(target.width,target.height,cropZoom);}}><Crop className="mr-1 h-4 w-4" /> Fill / Crop</Button>
                     <Button size="sm" variant={fitMode === 'fit' ? 'default' : 'outline'} onClick={() => setFitMode('fit')}><Maximize2 className="mr-1 h-4 w-4" /> Fit</Button>
                     <Button size="sm" variant={fitMode === 'stretch' ? 'default' : 'outline'} onClick={() => setFitMode('stretch')}>Stretch</Button>
-                    <Button size="sm" variant="outline" onClick={resetCrop}><RotateCcw className="mr-1 h-4 w-4" /> Reset crop</Button>\n                    <Button size="sm" variant={lockAspect ? 'outline' : 'default'} onClick={() => setLockAspect(v=>!v)}>\n                      {lockAspect ? 'Lock ratio' : 'Free ratio'}\n                    </Button>
+                    <Button size="sm" variant="outline" onClick={resetCrop}><RotateCcw className="mr-1 h-4 w-4" /> Reset crop</Button>
+                    <Button size="sm" variant={lockAspect ? 'outline' : 'default'} onClick={() => setLockAspect(v=>!v)}>
+                      {lockAspect ? 'Lock ratio' : 'Free ratio'}
+                    </Button>
                     <Button size="sm" variant={showCrop ? 'outline' : 'default'} onClick={() => setShowCrop(v=>!v)}><Move className="mr-1 h-4 w-4" /> {showCrop ? 'Hide crop' : 'Show crop'}</Button>
                   </div>
 
                   {fitMode === 'fill' && (
                     <div className="rounded-xl border p-3">
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        {[['1:1',1],['4:5',4/5],['3:4',3/4],['16:9',16/9],['9:16',9/16]].map(([label,ratio]) => (
+                          <Button key={String(label)} size="sm" variant={cropAspect === Number(ratio) ? 'default' : 'outline'} onClick={() => chooseCropRatio(Number(ratio))}>{String(label)}</Button>
+                        ))}
+                        <Button size="sm" variant={cropAspect === null ? 'default' : 'outline'} onClick={() => chooseCropRatio(null)}>Free</Button>
+                      </div>
                       <div className="flex items-center justify-between text-sm"><Label>Crop zoom</Label><span className="text-muted-foreground">{Math.round(cropZoom*100)}%</span></div>
                       <Slider min={0.35} max={1} step={0.01} value={[cropZoom]} onValueChange={v=>setZoom(v[0])} className="mt-3" aria-label="Crop zoom" />
                       <p className="mt-2 text-xs text-muted-foreground">Drag the crop box over the preview to choose exactly which part stays visible.</p>
