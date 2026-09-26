@@ -354,7 +354,7 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     const fromPremium =
       premium?.faqs?.length ? premium.faqs.filter((f) => !isGenericFaq(f)) : [];
     if (fromPremium.length >= 4) {
-      return fromPremium.slice(0, 8).map((f) => ({ question: f.question, answer: f.answer }));
+      return fromPremium.slice(0, 12).map((f) => ({ question: f.question, answer: f.answer }));
     }
 
     const base = fromOverride?.length
@@ -368,7 +368,7 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
         !base.some((b) => b.question.toLowerCase() === f.question.toLowerCase()) &&
         !filler.some((x) => x.question.toLowerCase() === f.question.toLowerCase())
     );
-    return [...base, ...filler, ...extra].slice(0, 8);
+    return [...base, ...filler, ...extra].slice(0, 12);
   })();
 
   const related = (() => {
