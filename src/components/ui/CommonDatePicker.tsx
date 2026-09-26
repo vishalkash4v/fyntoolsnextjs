@@ -33,6 +33,7 @@ const CommonDatePicker: React.FC<CommonDatePickerProps> = ({
   return (
     <DatePicker
       className="rsuite-date-picker"
+      menuClassName="rsuite-date-picker-menu"
       block
       size="lg"
       oneTap
