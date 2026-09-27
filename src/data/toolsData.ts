@@ -7,7 +7,7 @@ import {
   Calendar as CalendarSchedule, Type, Smartphone, Keyboard, Trophy, Gamepad2, 
   Users, Image as ImageIcon, Zap, Star, Crop, RotateCcw, Camera, FileImage, 
   FileArchive, Download, Video, Copy, Paintbrush, Sparkles, Dices, MessageSquare, 
-  FileCode2, Edit, UserPlus, Link, CloudSun, Receipt, FileSearch, Plane, MapPin, Code2,
+  FileCode2, Edit, UserPlus, Link, CloudSun, Receipt, FileSearch, Plane, MapPin, Code2, Mic,
   Activity, HeartPulse, ShieldCheck, CalendarCheck, Baby, Apple, Server, Megaphone
 } from "lucide-react";
 
@@ -356,7 +356,7 @@ export const allTools: Tool[] = [
   {
     id: 'pdf-compressor',
     name: 'PDF Compressor',
-    category: 'Image Tools',
+    category: 'PDF Tools',
     description:
       'Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals.',
     keywords:
@@ -1679,14 +1679,14 @@ export const allTools: Tool[] = [
   { 
     id: 'text-to-speech', 
     name: 'Text to Speech', 
-    category: 'Video & Social Media Tools', 
+    category: 'Utility Tools', 
     description: 'Free forever text-to-speech with Premium Edge neural voices (EN/HI/PA), browser TTS, word highlight, and MP3 download.', 
     keywords: 'text to speech, tts, speech synthesis, text to audio, neural voice, hindi tts, punjabi tts', 
     path: '/text-to-speech', 
     href: '/text-to-speech', 
     url: 'https://fyntools.com/text-to-speech',
     features: 'Premium Edge neural voices, Free browser TTS, Hindi & Punjabi voices, Speed pitch volume, Word highlighting, MP3 download, Character counter',
-    icon: FileText,
+    icon: Mic,
     rating: 4.7,
     userCount: '34,000+'
   },
