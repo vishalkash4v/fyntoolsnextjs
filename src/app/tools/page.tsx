@@ -73,6 +73,9 @@ export default async function ToolsPage({ searchParams }: Props) {
   return (
     <div className="container mx-auto px-4 py-10">
       <JsonLd data={schemas} />
+      <p className="mb-4 text-center text-sm text-muted-foreground">
+        <Link href="/" className="text-primary hover:underline">Return to FYN Tools home</Link>
+      </p>
       <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">All Tools</h1>
       <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
         {tools.length} free browser tools. Use category hubs for indexable collections.
