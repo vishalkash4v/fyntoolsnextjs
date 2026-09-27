@@ -376,9 +376,17 @@ export default function ToolSeoSections({
         </section>
       )}
 
-      {relatedGuides.length > 0 && (
+      {(relatedGuides.length > 0 || toolPath === '/url-shortener') && (
         <section id="related-guides" className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8">
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4">Related Guides</h2>
+          {toolPath === '/url-shortener' ? (
+            <p className="mb-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+              For campaign setup, UTM tracking, custom aliases, expiry, QR codes, and safe sharing, see the{' '}
+              <Link href="/blog/url-shortener-tips-2026-boost-clicks" className="text-primary hover:underline font-medium">
+                URL Shortener Tips 2026 guide
+              </Link>.
+            </p>
+          ) : null}
           <ul className="grid sm:grid-cols-2 gap-3 list-none p-0 m-0">
             {relatedGuides.map((g) => (
               <li key={g.href}>
