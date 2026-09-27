@@ -99,10 +99,10 @@ export function howToSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: WebPage + Breadcrumb + related-tool ItemList.
- * Visible FAQs and how-to steps remain normal HTML content. Google currently
- * does not list FAQPage/HowTo as supported Search appearance features, so
- * we avoid shipping large redundant JSON-LD payloads for deprecated rich-result types.
+ * Tool JSON-LD: WebPage + Breadcrumb.
+ * Related tools remain crawlable HTML links, so we do not duplicate the full
+ * related-tools list inside every page's JSON-LD payload.
+ * Visible FAQs and how-to steps remain normal HTML content.
  */
 export function buildToolJsonLd(opts: {
   title: string;
@@ -174,9 +174,6 @@ export function buildToolJsonLd(opts: {
     breadcrumbSchema(crumbs),
   ];
 
-  if (opts.relatedTools?.length) {
-    schemas.push(itemListSchema(`Related tools for ${opts.title}`, opts.relatedTools));
-  }
   return schemas;
 }
 
