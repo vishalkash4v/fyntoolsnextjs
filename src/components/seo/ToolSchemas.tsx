@@ -36,8 +36,9 @@ type Props = {
 };
 
 /**
- * Reusable tool JSON-LD: WebPage + WebApplication + BreadcrumbList +
- * FAQPage + HowTo. All URLs forced through getCanonicalUrl (fyntools.com).
+ * Reusable tool JSON-LD: WebPage + BreadcrumbList + related-tool ItemList,
+ * plus the editorial author entity when available. Visible FAQs/how-to content
+ * stays in HTML rather than shipping deprecated rich-result schema payloads.
  */
 export default function ToolSchemas({
   title,
