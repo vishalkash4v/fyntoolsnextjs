@@ -43,6 +43,18 @@ export default async function BlogIndexPage() {
       <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
         Expert articles, tutorials, and guides on web development, programming, and technology tools.
       </p>
+      <section className="mb-8 max-w-3xl mx-auto rounded-xl border border-border/60 bg-muted/20 p-4" aria-labelledby="featured-url-shortener-guide">
+        <h2 id="featured-url-shortener-guide" className="text-base font-semibold mb-1">
+          Featured URL Shortener Guide
+        </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+          Learn practical URL shortener setup, UTM tracking, custom aliases, expiry, QR codes, and safe sharing.
+        </p>
+        <a href="/blog/url-shortener-tips-2026-boost-clicks" className="text-sm font-medium text-primary hover:underline">
+          URL Shortener Tips 2026: Boost Clicks
+        </a>
+      </section>
+
       <BlogIndexClient initialPosts={posts} categories={categories} />
     </div>
   );
