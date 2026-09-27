@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/lib/seo/jsonld';
-import { articleSchema, faqPageSchema } from '@/lib/seo/schemas';
+import { articleSchema } from '@/lib/seo/schemas';
 import { absoluteUrl } from '@/lib/seo/site';
 import {
   fetchAllBlogSlugs,
@@ -61,7 +61,6 @@ export default async function BlogPostPage({ params }: Props) {
 
   const url = absoluteUrl(`/blog/${post.slug}`);
   const image = resolveBlogImageUrl(post.ogImage || post.featuredImage);
-  const faqSchema = post.faqs?.length ? faqPageSchema(post.faqs) : null;
   const schemas = [
     ...articleSchema({
       headline: post.title,
@@ -73,7 +72,6 @@ export default async function BlogPostPage({ params }: Props) {
       image: image ? absoluteUrl(image) : undefined,
       keywords: normalizeBlogKeywords(post.keywords, post.tags),
     }),
-    ...(faqSchema ? [faqSchema] : []),
   ];
 
   return (
