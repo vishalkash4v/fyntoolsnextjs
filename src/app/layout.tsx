@@ -4,8 +4,6 @@ import './globals.css';
 import SiteChrome from '@/components/layout/SiteChrome';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { AppProviders } from '@/components/providers/AppProviders';
-import SchemaMarkup from '@/components/seo/SchemaMarkup';
-import { organizationSchema, websiteSchema } from '@/lib/seo/schemas';
 import { SITE_URL } from '@/lib/seo-config';
 import Script from 'next/script';
 
@@ -100,7 +98,6 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
-        <SchemaMarkup data={[organizationSchema(), websiteSchema()]} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <AppProviders>
             <SiteChrome>{children}</SiteChrome>
