@@ -1,8 +1,11 @@
 import React from "react";
 
-/** Sanitize JSON-LD so `</script>` cannot break out of the tag. Pretty-printed for readable view source. */
+/** Sanitize JSON-LD so `</script>` cannot break out of the tag.
+ * Keep the payload compact because JSON-LD is machine-readable and every byte
+ * is duplicated into the initial HTML response.
+ */
 export function serializeJsonLd(data: unknown): string {
-  return JSON.stringify(data, null, 2).replace(/</g, "\\u003c");
+  return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
 export function JsonLd({ data }: { data: object | object[] }) {
