@@ -99,9 +99,10 @@ export function howToSchema(opts: {
 }
 
 /**
- * Tool JSON-LD: WebPage + ConsumeAction + Breadcrumb + FAQ + HowTo.
- * Keep tool markup focused on schema types that describe the page without
- * inventing commercial SoftwareApplication fields such as offers or ratings.
+ * Tool JSON-LD: WebPage + Breadcrumb + related-tool ItemList.
+ * Visible FAQs and how-to steps remain normal HTML content. Google currently
+ * does not list FAQPage/HowTo as supported Search appearance features, so
+ * we avoid shipping large redundant JSON-LD payloads for deprecated rich-result types.
  */
 export function buildToolJsonLd(opts: {
   title: string;
@@ -124,8 +125,6 @@ export function buildToolJsonLd(opts: {
   const toolUrl = getCanonicalUrl(`/${opts.slug}`);
   const pageId = `${toolUrl}#webpage`;
   const crumbs = buildToolBreadcrumbs(opts.title, `/${opts.slug}`, opts.category);
-  const includeHowTo =
-    opts.includeHowTo !== false && opts.howToSteps.length >= 3;
   const published = opts.datePublished || opts.dateModified;
   const modified = opts.dateModified || opts.datePublished;
 
@@ -175,17 +174,6 @@ export function buildToolJsonLd(opts: {
     breadcrumbSchema(crumbs),
   ];
 
-  if (includeHowTo) {
-    const howTo = howToSchema({
-      name: opts.title,
-      description: opts.description,
-      url: toolUrl,
-      steps: opts.howToSteps,
-    });
-    if (howTo) schemas.push(howTo);
-  }
-  const faq = faqPageSchema(opts.faqs);
-  if (faq) schemas.push(faq);
   if (opts.relatedTools?.length) {
     schemas.push(itemListSchema(`Related tools for ${opts.title}`, opts.relatedTools));
   }
