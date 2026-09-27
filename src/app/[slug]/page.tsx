@@ -9,7 +9,6 @@ import { absoluteUrl } from '@/lib/seo/site';
 import {
   breadcrumbSchema,
   collectionPageSchema,
-  faqPageSchema,
 } from '@/lib/seo/schemas';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 import { isReservedSlug } from '@/lib/tools/reserved';
@@ -75,7 +74,6 @@ function HubPage({ slug }: { slug: string }) {
       url: canonical,
       items: tools.map((t) => ({ name: t.name, url: absoluteUrl(t.path) })),
     }),
-    faqPageSchema(hub.faqs),
   ].filter(Boolean);
 
   const otherHubs = CATEGORY_HUBS.filter((h) => h.path !== hub.path).slice(0, 12);
