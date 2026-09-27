@@ -172,6 +172,13 @@
     @apply border-border;
   }
 
+  /* The root shell is server-rendered. Admin pages are marked by their nested
+     layout and hide the public chrome without requiring a client pathname gate. */
+  body:has(#fyntools-admin-shell) header,
+  body:has(#fyntools-admin-shell) footer {
+    display: none;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
