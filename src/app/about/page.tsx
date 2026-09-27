@@ -29,6 +29,10 @@ export default function AboutPage() {
         ]}
       />
 
+      <p className="mb-6 text-center text-sm text-muted-foreground">
+        <Link href="/" className="text-primary hover:underline">Return to FYN Tools home</Link>
+      </p>
+
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">About FYN Tools Worldwide</h1>
         <p className="text-xl text-muted-foreground">
