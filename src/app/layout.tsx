@@ -3,7 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import SiteChrome from '@/components/layout/SiteChrome';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
-import { AppProviders } from '@/components/providers/AppProviders';
+import { Toaster } from 'sonner';
 import { SITE_URL } from '@/lib/seo-config';
 import Script from 'next/script';
 
@@ -99,9 +99,8 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <AppProviders>
-            <SiteChrome>{children}</SiteChrome>
-          </AppProviders>
+          <SiteChrome>{children}</SiteChrome>
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>
