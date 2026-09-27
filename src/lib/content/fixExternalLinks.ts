@@ -57,7 +57,13 @@ export function fixExternalLinks(html: string | undefined): string {
 
   // Semrush: Wikipedia Node.js misclassified as a .js asset — point to official site
   out = out.split('https://en.wikipedia.org/wiki/Node.js').join('https://nodejs.org/');
-  // Semrush Site Audit found the Reading Rockets fluency URL returning 403.\n  // Keep the article text but remove the crawler-blocked external destination.\n  out = out.replace(\n    /<a\\b([^>]*\\bhref=["']https:\\/\\/www\\.readingrockets\\.org\\/reading-101\\/reading-and-writing-basics\\/fluency["'][^>]*)>([\\s\\S]*?)<\\/a>/gi,\n    '$2'\n  );\n  out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('reading-speed reference');
+  // Semrush Site Audit found the Reading Rockets fluency URL returning 403.
+  // Keep the article text but remove the crawler-blocked external destination.
+  out = out.replace(
+    /<a\b([^>]*\bhref=["']https:\/\/www\.readingrockets\.org\/reading-101\/reading-and-writing-basics\/fluency["'][^>]*)>([\s\S]*?)<\/a>/gi,
+    '$2'
+  );
+  out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('reading-speed reference');
 
   // Other known dead external URLs → working destinations
   out = out.split('https://www.nhs.uk/conditions/period-tracker/').join('https://www.nhs.uk/conditions/periods/');
