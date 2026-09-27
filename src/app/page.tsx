@@ -14,7 +14,7 @@ import {
   organizationSchema,
   itemListSchema,
 } from '@/lib/seo/schemas';
-import { ArrowRight, Award, Sparkles, Users, Zap, Shield, Globe } from 'lucide-react';
+import { ArrowRight, Award, Sparkles, Users, Zap, Shield, Globe, FileImage, FileText, Code2, Network, FileArchive, Search, ShieldCheck, ArrowLeftRight, Calculator, Keyboard, HeartPulse, CalendarDays, Wrench, Timer, Share2, Briefcase, Hash } from 'lucide-react';
 
 export const metadata: Metadata = buildPageMetadata({
   title: `FYN Tools Worldwide - ${allTools.length}+ Free Professional Online Tools`,
@@ -33,6 +33,26 @@ const featuredIds = [
   'qr-code-generator',
   'json-formatter',
 ];
+const categoryIcons = {
+  'image-tools': FileImage,
+  'text-tools': FileText,
+  'developer-tools': Code2,
+  'network-tools': Network,
+  'pdf-tools': FileArchive,
+  'seo-tools': Search,
+  'security-tools': ShieldCheck,
+  'converter-tools': ArrowLeftRight,
+  'finance-tools': Calculator,
+  'typing-tools': Keyboard,
+  'pregnancy-tools': HeartPulse,
+  'period-cycle-tools': CalendarDays,
+  'utility-tools': Wrench,
+  'timer-tools': Timer,
+  'social-media-tools': Share2,
+  'business-tools': Briefcase,
+  'number-tools': Hash,
+} as const;
+
 const popularIds = [
   'weather-forecast',
   'image-resizer',
@@ -123,16 +143,22 @@ export default async function HomePage() {
             Indexable hubs for image, text, developer, SEO, finance, and more
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {CATEGORY_HUBS.map((hub) => (
+            {CATEGORY_HUBS.map((hub, index) => {
+              const Icon = categoryIcons[hub.slug as keyof typeof categoryIcons] || Wrench;
+              return (
               <Link key={hub.path} href={hub.path} prefetch={false}>
-                <Card className="h-full hover:border-primary/40 transition-colors">
-                  <CardHeader className="pb-2">
+                <Card className={`h-full hover:border-primary/40 transition-colors ${index === CATEGORY_HUBS.length - 1 ? 'lg:col-start-2' : ''}`}>
+                  <CardHeader className="pb-3">
+                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary" aria-hidden="true">
+                      <Icon className="h-5 w-5" />
+                    </div>
                     <CardTitle className="text-base">{hub.name}</CardTitle>
                     <CardDescription className="line-clamp-2 text-sm">{hub.metaDescription}</CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
