@@ -262,7 +262,8 @@ function main() {
     if (tool) {
       if (!types.has('WebPage')) pageIssues.push({ severity: 'warn', msg: 'Missing WebPage schema' });
       if (!types.has('BreadcrumbList')) pageIssues.push({ severity: 'warn', msg: 'Missing BreadcrumbList schema' });
-      if (!types.has('FAQPage')) pageIssues.push({ severity: 'warn', msg: 'Missing FAQPage schema' });
+      // Visible FAQ content remains required; FAQPage JSON-LD is intentionally omitted
+      // because Google no longer lists it as a supported Search appearance feature.
       if (!html.includes('id="examples"') && !html.includes('Examples')) {
         pageIssues.push({ severity: 'warn', msg: 'Examples section may be missing' });
       }
