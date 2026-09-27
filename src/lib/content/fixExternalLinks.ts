@@ -67,12 +67,12 @@ export function fixExternalLinks(html: string | undefined): string {
   // Unwrap both the original external link and the malformed href produced by the
   // previous sanitizer version (e.g. href="reading-speed reference"), preserving text.
   out = out.replace(
-    /<a\\b[^>]*\\bhref=["'](?:https:\\/\\/en\\.wikipedia\\.org\\/wiki\\/Reading_speed|(?:https:\\/\\/fyntools\\.com\\/)?(?:\\/blog\\/)?reading-speed(?:%20|\\+|\\s)+reference)["'][^>]*>([\\s\\S]*?)<\\/a>/gi,
+    /<a\b[^>]*\bhref=["'](?:https:\/\/en\.wikipedia\.org\/wiki\/Reading_speed|(?:https:\/\/fyntools\.com\/)?(?:\/blog\/)?reading-speed(?:%20|\+|\s)+reference)["'][^>]*>([\s\S]*?)<\/a>/gi,
     '$1'
   );
   out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('reading speed reference');
   out = out.replace(
-    /href=["'](?:reading-speed(?:%20|\\+|\\s)+reference|\\/blog\\/reading-speed(?:%20|\\+|\\s)+reference)["']/gi,
+    /href=["'](?:reading-speed(?:%20|\+|\s)+reference|\/blog\/reading-speed(?:%20|\+|\s)+reference)["']/gi,
     ''
   );
 
