@@ -80,7 +80,7 @@ const Footer = () => {
                     href={hub.path}
                     className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-primary transition-colors"
                   >
-                    {hub.name}
+                    {hub.name === 'Period & Cycle Tools' ? 'Period & Cycle' : hub.name}
                   </Link>
                 </li>
               ))}
