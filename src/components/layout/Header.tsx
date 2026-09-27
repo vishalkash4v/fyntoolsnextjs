@@ -31,9 +31,6 @@ export default function Header() {
               priority
               sizes="128px"
             />
-            <span className="font-semibold text-sm sm:text-base tracking-tight text-foreground">
-              FYN Tools
-            </span>
             <span className="sr-only">Go to FYN Tools homepage</span>
           </Link>
 
