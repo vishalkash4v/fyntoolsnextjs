@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Menu, X, Search } from 'lucide-react';
@@ -24,6 +24,18 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchReady, setSearchReady] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setSearchReady(true);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   const enableSearch = () => setSearchReady(true);
 
@@ -40,11 +52,13 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
           <button
             type="button"
             onClick={enableSearch}
-            className="relative w-full h-10 md:h-12 rounded-xl border-2 bg-background text-left px-3 text-sm text-muted-foreground flex items-center gap-2"
+            className="relative w-full h-10 md:h-12 rounded-xl border-2 border-border/80 bg-background text-left px-3 text-sm text-foreground flex items-center gap-2 shadow-sm"
             aria-label="Open tool search"
+            aria-keyshortcuts="Control+K"
           >
-            <Search className="h-4 w-4" />
-            Search tools…
+            <Search className="h-4 w-4 text-primary" />
+            <span className="flex-1">Search tools…</span>
+            <kbd className="hidden sm:inline-flex items-center rounded border bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">Ctrl K</kbd>
           </button>
         )}
       </div>
@@ -55,7 +69,8 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
             key={item.name}
             href={item.href}
             prefetch={false}
-            className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${pathname === item.href || (item.href !== '/' && pathname.startsWith(`${item.href}/`)) ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-primary'}`}
+            aria-current={pathname === item.href || (item.href !== '/' && pathname.startsWith(`${item.href}/`)) ? 'page' : undefined}
           >
             {item.name}
           </Link>
@@ -89,11 +104,13 @@ export default function HeaderClient({ navigation }: { navigation: NavItem[] }) 
                 <button
                   type="button"
                   onClick={enableSearch}
-                  className="relative w-full h-10 mb-2 rounded-xl border-2 bg-background text-left px-3 text-sm text-muted-foreground flex items-center gap-2"
+                  className="relative w-full h-10 mb-2 rounded-xl border-2 border-border/80 bg-background text-left px-3 text-sm text-foreground flex items-center gap-2 shadow-sm"
                   aria-label="Open tool search"
+                  aria-keyshortcuts="Control+K"
                 >
-                  <Search className="h-4 w-4" />
-                  Search tools…
+                  <Search className="h-4 w-4 text-primary" />
+                  <span className="flex-1">Search tools…</span>
+                  <kbd className="inline-flex items-center rounded border bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">Ctrl K</kbd>
                 </button>
               )}
             </div>
