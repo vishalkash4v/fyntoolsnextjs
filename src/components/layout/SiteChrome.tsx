@@ -1,22 +1,13 @@
-'use client';
-
-import { usePathname } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AnalyticsTracker from '@/components/analytics/AnalyticsTracker';
 
 /**
- * Hides public chrome on /fyntoolsadmin/* so the admin shell is full-viewport
- * (matches Vite admin, which sat outside MainLayout).
+ * Server-first site shell. Keep the shared header/footer outside client
+ * boundaries so public pages remain server-rendered and the interactive
+ * pieces hydrate only where needed.
  */
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname() || '';
-  const isAdmin = pathname.startsWith('/fyntoolsadmin');
-
-  if (isAdmin) {
-    return <>{children}</>;
-  }
-
   return (
     <>
       <AnalyticsTracker />
