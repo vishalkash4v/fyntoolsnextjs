@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <div id="fyntools-admin-shell">{children}</div>;
 }
