@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer className="bg-muted/50 border-t" style={{ minHeight: '200px' }}>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           <div>
             <Link
               href="/"
@@ -87,7 +87,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="lg:pt-0">
             <h2 className="font-semibold text-foreground mb-4 text-base">Popular Tools</h2>
             <ul className="space-y-2">
               {popularTools.map((tool) => (
@@ -122,18 +122,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <Link href="/seo-tools" className="text-sm text-muted-foreground hover:text-primary">SEO Tools</Link>
-              <Link href="/security-tools" className="text-sm text-muted-foreground hover:text-primary">Security Tools</Link>
-              <Link href="/pdf-tools" className="text-sm text-muted-foreground hover:text-primary">PDF Tools</Link>
-              <Link href="/period-cycle-tools" className="text-sm text-muted-foreground hover:text-primary">Period & Cycle</Link>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              © {currentYear} FYN Tools Worldwide. All rights reserved.
-            </p>
-          </div>
+        <div className="mt-12 pt-8 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} FYN Tools Worldwide. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
