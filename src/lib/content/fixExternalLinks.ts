@@ -63,7 +63,18 @@ export function fixExternalLinks(html: string | undefined): string {
     /<a\b([^>]*\bhref=["']https:\/\/www\.readingrockets\.org\/reading-101\/reading-and-writing-basics\/fluency["'][^>]*)>([\s\S]*?)<\/a>/gi,
     '$2'
   );
-  out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('reading-speed reference');
+  // Reading Speed reference: the old Wikipedia URL must not become a relative URL.
+  // Unwrap both the original external link and the malformed href produced by the
+  // previous sanitizer version (e.g. href="reading-speed reference"), preserving text.
+  out = out.replace(
+    /<a\\b[^>]*\\bhref=["'](?:https:\\/\\/en\\.wikipedia\\.org\\/wiki\\/Reading_speed|(?:https:\\/\\/fyntools\\.com\\/)?(?:\\/blog\\/)?reading-speed(?:%20|\\+|\\s)+reference)["'][^>]*>([\\s\\S]*?)<\\/a>/gi,
+    '$1'
+  );
+  out = out.split('https://en.wikipedia.org/wiki/Reading_speed').join('reading speed reference');
+  out = out.replace(
+    /href=["'](?:reading-speed(?:%20|\\+|\\s)+reference|\\/blog\\/reading-speed(?:%20|\\+|\\s)+reference)["']/gi,
+    ''
+  );
 
   // Other known dead external URLs → working destinations
   out = out.split('https://www.nhs.uk/conditions/period-tracker/').join('https://www.nhs.uk/conditions/periods/');
