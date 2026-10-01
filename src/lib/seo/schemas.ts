@@ -266,6 +266,10 @@ export function articleSchema(opts: {
       '@type': 'Organization',
       name: opts.author || 'FYN Tools Worldwide',
       url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: getCanonicalUrl('/logo.png'),
+      },
     },
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: {
