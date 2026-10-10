@@ -300,6 +300,8 @@ const PdfCompressor = () => {
               <option value="2097152">Under 2 MB (best effort)</option>
               <option value="5242880">Under 5 MB (best effort)</option>
               <option value="10485760">Under 10 MB (best effort)</option>
+              <option value="20971520">Under 20 MB (best effort)</option>
+              <option value="26214400">Under 25 MB (best effort)</option>
             </select>
             <p className="text-xs text-muted-foreground">
               A target size triggers multiple compression attempts. Very small targets may reduce scan readability, and some PDFs cannot reach the requested size.
