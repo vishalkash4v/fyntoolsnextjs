@@ -16,18 +16,29 @@ export type PdfCompressLevel = {
 
 export const PDF_COMPRESS_LEVELS: PdfCompressLevel[] = [
   { id: 'full-quality', name: 'Maximum Clarity', subtitle: 'Prioritize print quality and fine details' },
-  { id: 'high-quality', name: 'High Quality', subtitle: 'High-resolution output with minimal image downsampling' },
-  { id: 'optimized', name: 'Recommended', subtitle: 'Balanced size and readability for everyday PDFs' },
-  { id: 'slight-drop', name: 'Smaller File', subtitle: 'Stronger optimization for scanned and image-heavy PDFs' },
-  { id: 'compact', name: 'Compact', subtitle: 'Smaller output; inspect fine print after compression' },
-  { id: 'max-150kb', name: 'Target 150 KB', subtitle: 'Best-effort target; final size depends on PDF contents' },
+  { id: 'high-quality', name: 'High Quality', subtitle: 'Preserve legibility for print and fine text' },
+  { id: 'optimized', name: 'Recommended', subtitle: 'Content-aware balance for everyday PDFs' },
+  { id: 'slight-drop', name: 'Smaller File', subtitle: 'More size reduction for image-heavy PDFs' },
+  { id: 'compact', name: 'Compact', subtitle: 'Prioritize a smaller file; inspect fine print' },
+  { id: 'max-150kb', name: 'Target 150 KB', subtitle: 'Best-effort target; depends on page count and content' },
 ];
+
+export type PdfCompressStage =
+  | 'uploading'
+  | 'uploaded'
+  | 'validating'
+  | 'analyzing'
+  | 'optimizing'
+  | 'verifying'
+  | 'uploading-result'
+  | 'complete'
+  | 'failed';
 
 export type PdfCompressProgress = {
   fileName: string;
-  page: number;
-  totalPages: number;
+  stage: PdfCompressStage;
   percent: number;
+  message: string;
 };
 
 export type PdfCompressResult = {
@@ -40,20 +51,41 @@ export type PdfCompressResult = {
   durationMs: number;
   level: PdfCompressLevel;
   reductionPercent: number;
+  pageCount?: number;
+  contentPreset?: string;
 };
 
-type ApiResponse = {
+type ApiJobResponse = {
   success?: boolean;
   error?: string;
   data?: {
-    downloadUrl: string;
-    fileName: string;
-    originalBytes: number;
-    bytes: number;
-    compressed: boolean;
-    reductionPercent: number;
-    durationMs: number;
+    jobId: string;
+    statusUrl?: string;
+  };
+};
+
+type ApiStatusResponse = {
+  success?: boolean;
+  error?: string;
+  data?: {
+    jobId: string;
+    status: 'queued' | 'processing' | 'done' | 'error';
+    stage: string;
+    percent: number;
     message: string;
+    error?: string | null;
+    result?: {
+      downloadUrl: string;
+      fileName: string;
+      originalBytes: number;
+      bytes: number;
+      compressed: boolean;
+      reductionPercent: number;
+      durationMs: number;
+      levelId: string;
+      analysis?: { preset?: string; pageCount?: number };
+      message: string;
+    } | null;
   };
 };
 
@@ -63,10 +95,63 @@ export function formatBytes(bytes: number): string {
   return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
 }
 
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function uploadJob(
+  file: File,
+  levelId: PdfCompressLevelId,
+  onProgress?: (progress: PdfCompressProgress) => void
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', API_BASE_URL + '/pdf-compressor/jobs');
+    xhr.responseType = 'json';
+    xhr.timeout = 120000;
+
+    xhr.upload.onprogress = (event) => {
+      if (!event.lengthComputable) return;
+      // Upload accounts for the first 10% of the complete journey.
+      const percent = Math.max(1, Math.min(10, Math.round((event.loaded / event.total) * 10)));
+      onProgress?.({
+        fileName: file.name,
+        stage: 'uploading',
+        percent,
+        message: 'Uploading PDF securely (' + Math.round((event.loaded / event.total) * 100) + '%).',
+      });
+    };
+
+    xhr.onerror = () => reject(new Error('Network error while uploading the PDF. Please try again.'));
+    xhr.ontimeout = () => reject(new Error('Upload timed out. Try a smaller PDF or a more stable connection.'));
+    xhr.onabort = () => reject(new Error('PDF upload was cancelled.'));
+    xhr.onload = () => {
+      const body = (xhr.response || {}) as ApiJobResponse;
+      if (xhr.status < 200 || xhr.status >= 300 || body.success !== true || !body.data?.jobId) {
+        reject(new Error(body.error || 'Could not start PDF compression (HTTP ' + xhr.status + ').'));
+        return;
+      }
+      onProgress?.({
+        fileName: file.name,
+        stage: 'uploaded',
+        percent: 10,
+        message: 'Upload complete. Preparing the PDF for compression.',
+      });
+      resolve(body.data.jobId);
+    };
+
+    const form = new FormData();
+    form.append('file', file, file.name);
+    form.append('levelId', levelId);
+    xhr.send(form);
+  });
+}
+
 /**
- * Uses Ghostscript on the FYN Tools backend for real PDF-level optimization,
- * preserving text and vector objects where Ghostscript can retain them.
- * The result is stored temporarily in Cloudflare R2 and returned as a signed URL.
+ * Submits a PDF as an asynchronous job, reports actual upload progress, then
+ * polls real backend stage updates rather than inventing a percentage while
+ * Ghostscript is working. A completed result is only returned after validation
+ * and storage have finished.
  */
 export async function compressPdfFile(
   file: File,
@@ -74,30 +159,64 @@ export async function compressPdfFile(
   onProgress?: (progress: PdfCompressProgress) => void
 ): Promise<PdfCompressResult> {
   const level = PDF_COMPRESS_LEVELS.find((item) => item.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!;
+  const jobId = await uploadJob(file, levelId, onProgress);
+  const deadline = Date.now() + 6 * 60 * 1000;
+  let latestPercent = 10;
 
-  onProgress?.({ fileName: file.name, page: 1, totalPages: 1, percent: 10 });
+  while (Date.now() < deadline) {
+    let response: Response;
+    try {
+      response = await fetch(API_BASE_URL + '/pdf-compressor/jobs/' + encodeURIComponent(jobId), {
+        method: 'GET',
+        cache: 'no-store',
+      });
+    } catch {
+      await delay(900);
+      continue;
+    }
 
-  const form = new FormData();
-  form.append('file', file, file.name);
-  form.append('levelId', levelId);
+    const payload = (await response.json().catch(() => ({}))) as ApiStatusResponse;
+    if (!response.ok || payload.success !== true || !payload.data) {
+      throw new Error(payload.error || 'Could not check compression status. Please try again.');
+    }
 
-  let response: Response;
-  try {
-    response = await fetch(API_BASE_URL + '/pdf-compressor/compress', {
-      method: 'POST',
-      body: form,
-      cache: 'no-store',
+    const job = payload.data;
+    latestPercent = Math.max(latestPercent, Math.min(99, job.percent));
+    onProgress?.({
+      fileName: file.name,
+      stage: job.stage as PdfCompressStage,
+      percent: latestPercent,
+      message: job.message || 'Processing your PDF. Please keep this page open.',
     });
-  } catch {
-    throw new Error('Could not reach the PDF compression service. Please try again in a moment.');
+
+    if (job.status === 'error') {
+      throw new Error(job.error || 'PDF compression failed. Please try another PDF.');
+    }
+
+    if (job.status === 'done' && job.result?.downloadUrl) {
+      onProgress?.({
+        fileName: file.name,
+        stage: 'complete',
+        percent: 100,
+        message: 'Compression complete. Your file is ready to download.',
+      });
+      return {
+        downloadUrl: job.result.downloadUrl,
+        bytes: job.result.bytes,
+        originalBytes: job.result.originalBytes,
+        fileName: job.result.fileName,
+        compressed: job.result.compressed,
+        message: job.result.message,
+        durationMs: job.result.durationMs,
+        level,
+        reductionPercent: job.result.reductionPercent,
+        pageCount: job.result.analysis?.pageCount,
+        contentPreset: job.result.analysis?.preset,
+      };
+    }
+
+    await delay(800);
   }
 
-  const payload = (await response.json().catch(() => ({}))) as ApiResponse;
-  if (!response.ok || payload.success !== true || !payload.data?.downloadUrl) {
-    throw new Error(payload.error || 'PDF compression failed (HTTP ' + response.status + ').');
-  }
-
-  onProgress?.({ fileName: file.name, page: 1, totalPages: 1, percent: 100 });
-
-  return { ...payload.data, level };
+  throw new Error('This PDF is taking longer than expected. Please try again with a smaller file.');
 }
