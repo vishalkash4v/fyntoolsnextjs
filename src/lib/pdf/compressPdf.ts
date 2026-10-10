@@ -102,7 +102,8 @@ function delay(ms: number): Promise<void> {
 function uploadJob(
   file: File,
   levelId: PdfCompressLevelId,
-  onProgress?: (progress: PdfCompressProgress) => void
+  onProgress?: (progress: PdfCompressProgress) => void,
+  targetSizeBytes?: number | null
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -143,6 +144,9 @@ function uploadJob(
     const form = new FormData();
     form.append('file', file, file.name);
     form.append('levelId', levelId);
+    if (targetSizeBytes && Number.isFinite(targetSizeBytes)) {
+      form.append('targetSizeBytes', String(Math.round(targetSizeBytes)));
+    }
     xhr.send(form);
   });
 }
@@ -156,10 +160,11 @@ function uploadJob(
 export async function compressPdfFile(
   file: File,
   levelId: PdfCompressLevelId,
-  onProgress?: (progress: PdfCompressProgress) => void
+  onProgress?: (progress: PdfCompressProgress) => void,
+  targetSizeBytes?: number | null
 ): Promise<PdfCompressResult> {
   const level = PDF_COMPRESS_LEVELS.find((item) => item.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!;
-  const jobId = await uploadJob(file, levelId, onProgress);
+  const jobId = await uploadJob(file, levelId, onProgress, targetSizeBytes);
   const deadline = Date.now() + 6 * 60 * 1000;
   let latestPercent = 10;
 
