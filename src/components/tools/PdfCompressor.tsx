@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import { Label } from '@/components/ui/label';
@@ -24,7 +23,6 @@ import {
   type PdfCompressLevelId,
   type PdfCompressResult,
   compressPdfFile,
-  estimateCompressedBytes,
   formatBytes,
 } from '@/lib/pdf/compressPdf';
 
@@ -59,17 +57,6 @@ const PdfCompressor = () => {
   const [dragging, setDragging] = useState(false);
   const [running, setRunning] = useState(false);
   const [progress, setProgress] = useState({ label: '', percent: 0 });
-
-  const level = useMemo(
-    () => PDF_COMPRESS_LEVELS.find((l) => l.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!,
-    [levelId]
-  );
-
-  const totalOriginal = queue.reduce((s, q) => s + q.file.size, 0);
-  const estimatedTotal = queue.reduce(
-    (s, q) => s + estimateCompressedBytes(q.file.size, level),
-    0
-  );
 
   const addFiles = useCallback(
     (list: FileList | File[]) => {
@@ -184,11 +171,11 @@ const PdfCompressor = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-primary" />
-            PDF Compressor — Compress PDF to 150KB
+            PDF Compressor — Reduce PDF Size
           </CardTitle>
           <CardDescription>
-            Free online PDF compressor for single or bulk files. Six quality levels with estimated
-            size before you compress — ideal for government forms, email, and 150KB PDF upload limits.
+            Compress image-only and scanned PDFs while protecting readable text. Actual output size is
+            measured after processing; the original is kept if compression would make the file larger.
             Runs in your browser (no signup).
           </CardDescription>
         </CardHeader>
@@ -266,10 +253,6 @@ const PdfCompressor = () => {
             <Label>Compression level</Label>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {PDF_COMPRESS_LEVELS.map((l) => {
-                const est =
-                  queue.length > 0
-                    ? queue.reduce((s, q) => s + estimateCompressedBytes(q.file.size, l), 0)
-                    : null;
                 const selected = levelId === l.id;
                 return (
                   <button
@@ -286,35 +269,16 @@ const PdfCompressor = () => {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <span className="font-semibold text-sm">{l.name}</span>
-                      {l.targetBytes && (
-                        <Badge variant="secondary" className="text-[10px] shrink-0">
-                          ~150 KB
-                        </Badge>
-                      )}
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">{l.subtitle}</p>
-                    {est != null && (
-                      <p className="text-xs font-medium mt-2 text-primary">
-                        Est. ~{formatBytes(est)}
-                        {queue.length === 1 ? '' : ` total`}
-                      </p>
-                    )}
-                    {est == null && (
-                      <p className="text-xs text-muted-foreground mt-2">
-                        ~{Math.round(l.estimateRatio * 100)}% of original
-                        {l.targetBytes ? ' (or under 150 KB)' : ''}
-                      </p>
-                    )}
                   </button>
                 );
               })}
             </div>
-            {queue.length > 0 && (
-              <p className="text-sm text-muted-foreground">
-                Selected: <strong>{level.name}</strong> — original{' '}
-                {formatBytes(totalOriginal)} → estimated ~{formatBytes(estimatedTotal)}
-              </p>
-            )}
+            <p className="text-sm text-muted-foreground">
+              Choose a compression level above. Estimates are intentionally omitted because the actual
+              output depends on the PDF's contents and is shown only after processing.
+            </p>
           </div>
 
           {/* Queue */}
@@ -340,20 +304,19 @@ const PdfCompressor = () => {
                         {formatBytes(item.file.size)}
                         {item.result && (
                           <>
-                            {' '}
-                            →{' '}
+                            {' '}→{' '}
                             <span className="text-primary font-medium">
-                              {formatBytes(item.result.bytes)}
-                            </span>{' '}
-                            (
-                            {Math.max(
-                              0,
-                              Math.round(
-                                (1 - item.result.bytes / item.result.originalBytes) * 100
-                              )
+                              {formatBytes(item.result.bytes)} actual output
+                            </span>
+                            {item.result.compressed ? (
+                              <span> ({Math.round((1 - item.result.bytes / item.result.originalBytes) * 100)}% smaller)</span>
+                            ) : (
+                              <span> (original retained)</span>
                             )}
-                            % smaller)
                           </>
+                        )}
+                        {item.result && (
+                          <p className="text-xs text-muted-foreground mt-1">{item.result.message}</p>
                         )}
                       </div>
                       {item.error && (
@@ -431,9 +394,10 @@ const PdfCompressor = () => {
 
           <Alert>
             <AlertDescription className="text-sm">
-              Pages are re-encoded as high-efficiency JPEG images inside a new PDF. That is how free
-              compressors shrink scanned forms and photo-heavy PDFs toward 150KB limits. Text-only
-              PDFs may not shrink as much — use Compact or Compress to ~150 KB for upload portals.
+              Text-based PDFs are kept intact so selectable text and vector graphics stay sharp. Only
+              image-only/scanned PDFs are re-encoded at high resolution. If the result is not smaller,
+              the original is retained. A 150 KB target cannot be guaranteed without potentially
+              damaging readability; always check the actual output size shown above.
             </AlertDescription>
           </Alert>
         </CardContent>
