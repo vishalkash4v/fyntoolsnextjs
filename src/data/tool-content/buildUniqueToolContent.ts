@@ -333,10 +333,13 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     feats.slice(0, 5)
   );
 
-  const howItWorks = pickCuratedText(
-    (usePremiumBody && premium?.howItWorks) || curated?.howItWorks,
-    facts.howItWorks
-  );
+  const howItWorks =
+    path === '/pdf-compressor'
+      ? 'FYN Tools first compares lossless QPDF candidates, including an optional metadata-cleaned version. Depending on the selected quality and target size, it may compare a Ghostscript or QPDF image-compression candidate. It verifies each smaller output, keeps the smallest valid file, and reports actual bytes. PDFs with detectable signatures, XFA, JavaScript actions, or interactive form fields are kept unchanged to avoid altering document behavior.'
+      : pickCuratedText(
+          (usePremiumBody && premium?.howItWorks) || curated?.howItWorks,
+          facts.howItWorks
+        );
 
   const benefits =
     (usePremiumBody && premium?.benefits?.length ? premium.benefits : null) ||
@@ -385,25 +388,35 @@ export function buildUniqueToolContent(tool: Tool): FullSeoPageContent {
     return ensureRelatedCount(relatedToolsFallback(tool), tool);
   })();
 
-  const keywords = premium?.keywords?.length
-    ? premium.keywords
-    : override?.keywords
+  const keywords =
+    path === '/pdf-compressor' && override?.keywords
       ? override.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 12)
-      : tool.keywords
-        ? tool.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 8)
-        : [tool.name.toLowerCase()];
+      : premium?.keywords?.length
+        ? premium.keywords
+        : override?.keywords
+          ? override.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 12)
+          : tool.keywords
+            ? tool.keywords.split(',').map((k) => k.trim()).filter(Boolean).slice(0, 8)
+            : [tool.name.toLowerCase()];
 
   const conclusion =
     (usePremiumBody && premium?.conclusion) ||
     `${tool.name} handles the core job on this page without a mandatory account. Use the live tool above, then follow related links when your workflow continues in another FYN Tools utility.`;
 
   const tldr =
-    (premium?.tldr && !weakBatch && !isCloneTldr(premium.tldr) ? premium.tldr : null) ||
-    facts.tldr;
-  const processingNote = premium?.processingNote || defaultProcessingNote(tool);
+    path === '/pdf-compressor'
+      ? 'Upload a PDF, try lossless QPDF optimization first, optionally set a 100 KB–25 MB target, and download the smallest valid result with actual size and target status.'
+      : (premium?.tldr && !weakBatch && !isCloneTldr(premium.tldr) ? premium.tldr : null) ||
+        facts.tldr;
+  const processingNote =
+    path === '/pdf-compressor'
+      ? defaultProcessingNote(tool)
+      : premium?.processingNote || defaultProcessingNote(tool);
   const ioContract =
-    (premium?.ioContract && !weakBatch ? premium.ioContract : null) ||
-    defaultIoContract(tool);
+    path === '/pdf-compressor'
+      ? defaultIoContract(tool)
+      : (premium?.ioContract && !weakBatch ? premium.ioContract : null) ||
+        defaultIoContract(tool);
   const datePublished = premium?.datePublished || SEO_SHELL_DATE;
   const dateModified = SEO_REFRESH_DATE;
 
