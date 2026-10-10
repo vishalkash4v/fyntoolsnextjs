@@ -344,6 +344,11 @@ const PdfCompressor = () => {
                         {item.result && (
                           <p className="text-xs text-muted-foreground mt-1">{item.result.message}</p>
                         )}
+                        {item.result?.targetSizeBytes && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Target {formatBytes(item.result.targetSizeBytes)}: {item.result.targetReached ? 'reached' : 'not reached at this quality level'}
+                          </p>
+                        )}
                         {item.result && (
                           <p className="text-xs text-muted-foreground mt-1">Processed in {(item.result.durationMs / 1000).toFixed(1)}s{item.result.contentPreset ? ' · Detected content: ' + item.result.contentPreset : ''}</p>
                         )}
