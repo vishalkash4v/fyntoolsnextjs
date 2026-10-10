@@ -40,6 +40,7 @@ type QueuedFile = {
 function compressionEngineLabel(engine?: string) {
   switch (engine) {
     case 'qpdf-lossless': return 'QPDF lossless optimization';
+    case 'qpdf-lossless-metadata': return 'QPDF lossless + metadata cleanup';
     case 'qpdf-lossy': return 'QPDF image compression';
     case 'ghostscript': return 'Ghostscript image optimization';
     case 'original': return 'Original PDF preserved';
