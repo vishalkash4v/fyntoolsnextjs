@@ -358,14 +358,14 @@ export const allTools: Tool[] = [
     name: 'PDF Compressor',
     category: 'PDF Tools',
     description:
-      'Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels and estimated file sizes — ideal for forms, email, and upload portals.',
+      'Compress PDF files online with lossless-first QPDF optimization and optional image compression. Choose quality levels and best-effort target sizes, then check actual output bytes.',
     keywords:
-      'pdf compressor, compress pdf, compress pdf to 150kb, 150kb pdf, reduce pdf size, free pdf compressor, pdf size reducer, compress pdf online, bulk pdf compress, pdf crop compress',
+      'pdf compressor, compress pdf online, compress pdf to 100kb, compress pdf to 150kb, compress pdf to 200kb, compress pdf to 300kb, compress pdf to 500kb, reduce pdf size, free pdf compressor, batch pdf compressor, pdf size reducer',
     path: '/pdf-compressor',
     href: '/pdf-compressor',
     url: 'https://fyntools.com/pdf-compressor',
     features:
-      'Compress PDF to 150KB, Six compression levels with size estimates, Single and bulk PDF compression, Full quality to max compact modes, Client-side private processing, Download compressed PDF, Government form upload ready',
+      'Lossless-first QPDF optimization, Optional image compression, Best-effort targets from 100KB to 25MB, Multiple quality levels, Single and bulk compression, Actual before-and-after size reporting, Stage-based progress, Signed download link',
     icon: FileArchive,
     rating: 4.8,
     userCount: '12,400+',
