@@ -127,6 +127,7 @@ async function checkPdfCompressorBackend(): Promise<void> {
     success?: boolean;
     data?: {
       build?: string;
+      runtime?: string;
       engines?: {
         qpdf?: { available?: boolean };
         ghostscript?: { available?: boolean };
@@ -137,6 +138,10 @@ async function checkPdfCompressorBackend(): Promise<void> {
 
   if (!response.ok || payload.success !== true || !payload.data) {
     throw new Error('The PDF compression server health check failed. Please retry shortly.');
+  }
+
+  if (payload.data.runtime === 'vercel') {
+    throw new Error('The PDF compressor is connected to a Vercel serverless backend. Background compression must run on the persistent Render API configured for FYN Tools.');
   }
 
   if (payload.data.build !== EXPECTED_PDF_COMPRESSOR_BUILD) {
