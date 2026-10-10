@@ -409,6 +409,11 @@ const PdfCompressor = () => {
               </div>
               <Progress value={progress.percent} />
               {progress.stage === 'optimizing' && (
+                <div className="h-2 w-full overflow-hidden rounded-full bg-muted" role="status" aria-label="PDF optimization is running">
+                  <div className="h-full w-1/3 rounded-full bg-primary animate-pulse" />
+                </div>
+              )}
+              {progress.stage === 'optimizing' && (
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
                   <span>Optimization can take longer for scanned PDFs or documents with many large images. The percentage will update when the server completes the next step.</span>
