@@ -187,7 +187,7 @@ const PdfCompressor = () => {
             PDF Compressor — Reduce PDF Size
           </CardTitle>
           <CardDescription>
-            Uses a server-side Ghostscript engine to optimize PDF objects and embedded images without rasterizing every page. Actual output size is measured; the original is kept if optimization makes the file larger.
+            Uses native QPDF lossless optimization first, then compares image-optimized candidates when your selected quality level allows it. The smallest valid result is selected and the original is preserved when no candidate is smaller.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
