@@ -19,6 +19,7 @@ const SERVER_ASSISTED = new Set([
   '/image-upscaler',
   '/image-to-text',
   '/invoice-generator',
+  '/pdf-compressor',
 ]);
 
 export type ProcessingMode = 'client' | 'hybrid' | 'server';
@@ -32,7 +33,8 @@ export function getProcessingMode(tool: Tool): ProcessingMode {
     tool.path === '/weather-forecast' ||
     tool.path === '/ip-lookup' ||
     tool.path === '/ip-address-to-location-finder' ||
-    tool.path === '/currency-converter'
+    tool.path === '/currency-converter' ||
+    tool.path === '/pdf-compressor'
   ) {
     return 'server';
   }
@@ -41,6 +43,9 @@ export function getProcessingMode(tool: Tool): ProcessingMode {
 
 export function defaultProcessingNote(tool: Tool): string {
   const mode = getProcessingMode(tool);
+  if (tool.path === '/pdf-compressor') {
+    return 'PDF files are uploaded to the FYN Tools backend for server-side optimization. Output files and job status are temporarily stored in Cloudflare R2 to provide a signed download link; retention depends on the bucket lifecycle policy. Avoid uploading highly sensitive PDFs.';
+  }
   if (mode === 'client') {
     return 'Runs in your browser when possible — your input is not uploaded to FYN Tools servers for this tool’s core transform. Avoid pasting production secrets into any online form.';
   }
@@ -60,6 +65,16 @@ export function defaultIoContract(tool: Tool): SeoIoContract {
   const mode = getProcessingMode(tool);
   const cat = tool.category.toLowerCase();
   const path = tool.path;
+
+  if (path === '/pdf-compressor') {
+    return {
+      inputs: 'One PDF or a batch of up to 12 PDF files; 40 MiB maximum per file; optional quality level and target size',
+      outputs: 'A compressed PDF download, actual output size, percentage reduced, selected compression method, and target-size status',
+      formats: 'application/pdf input and output',
+      limits: 'Targets from 100 KB to 25 MB are best effort; image-heavy scans may need quality trade-offs. Detected signed PDFs and interactive forms are kept unchanged.',
+      processing: 'Server-side QPDF lossless optimization first; optional Ghostscript/QPDF image optimization; output temporarily stored in Cloudflare R2 behind a signed download link',
+    };
+  }
 
   if (path === '/pms-symptom-tracker' || path === '/period-tracker') {
     return {
