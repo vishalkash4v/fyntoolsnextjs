@@ -171,7 +171,7 @@ const PdfCompressor = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-primary" />
-            PDF Compressor — Compress PDF to 150KB
+            PDF Compressor — Reduce PDF Size
           </CardTitle>
           <CardDescription>
             Compress image-only and scanned PDFs while protecting readable text. Actual output size is
