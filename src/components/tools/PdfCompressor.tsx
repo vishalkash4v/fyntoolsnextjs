@@ -37,15 +37,14 @@ type QueuedFile = {
   result?: PdfCompressResult;
 };
 
-function downloadBlob(blob: Blob, name: string) {
-  const url = URL.createObjectURL(blob);
+function downloadFile(url: string, name: string) {
   const a = document.createElement('a');
   a.href = url;
   a.download = name;
+  a.rel = 'noopener noreferrer';
   document.body.appendChild(a);
   a.click();
   a.remove();
-  URL.revokeObjectURL(url);
 }
 
 const PdfCompressor = () => {
@@ -130,7 +129,7 @@ const PdfCompressor = () => {
       try {
         const result = await compressPdfFile(item.file, levelId, (p) => {
           setProgress({
-            label: `${p.fileName} — page ${p.page}/${p.totalPages}`,
+            label: `${p.fileName} — optimizing on server`,
             percent: p.percent,
           });
         });
@@ -154,7 +153,7 @@ const PdfCompressor = () => {
 
   const downloadOne = (item: QueuedFile) => {
     if (!item.result) return;
-    downloadBlob(item.result.blob, item.result.fileName);
+    downloadFile(item.result.downloadUrl, item.result.fileName);
   };
 
   const downloadAll = async () => {
@@ -174,9 +173,7 @@ const PdfCompressor = () => {
             PDF Compressor — Reduce PDF Size
           </CardTitle>
           <CardDescription>
-            Compress image-only and scanned PDFs while protecting readable text. Actual output size is
-            measured after processing; the original is kept if compression would make the file larger.
-            Runs in your browser (no signup).
+            Uses a server-side Ghostscript engine to optimize PDF objects and embedded images without rasterizing every page. Actual output size is measured; the original is kept if optimization makes the file larger.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -241,7 +238,7 @@ const PdfCompressor = () => {
               {bulk ? 'Drop PDF files here' : 'Drop a PDF here'}
             </p>
             <p className="text-sm text-muted-foreground mb-4">
-              Max {formatBytes(MAX_FILE_BYTES)} per file · Client-side only
+              Max {formatBytes(MAX_FILE_BYTES)} per file · Secure server-side processing
             </p>
             <Button type="button" onClick={() => inputRef.current?.click()} disabled={running}>
               Choose PDF{bulk ? 's' : ''}
@@ -276,8 +273,7 @@ const PdfCompressor = () => {
               })}
             </div>
             <p className="text-sm text-muted-foreground">
-              Choose a compression level above. Estimates are intentionally omitted because the actual
-              output depends on the PDF's contents and is shown only after processing.
+              Choose a level above. Output sizes are measured from the finished PDF, never estimated. The 150 KB option is a best-effort target, not a guarantee.
             </p>
           </div>
 
@@ -394,10 +390,7 @@ const PdfCompressor = () => {
 
           <Alert>
             <AlertDescription className="text-sm">
-              Text-based PDFs are kept intact so selectable text and vector graphics stay sharp. Only
-              image-only/scanned PDFs are re-encoded at high resolution. If the result is not smaller,
-              the original is retained. A 150 KB target cannot be guaranteed without potentially
-              damaging readability; always check the actual output size shown above.
+              PDFs are processed on the FYN Tools backend with Ghostscript. Text and vector content are preserved where the optimizer supports it, but image downsampling can affect fine detail. If the result is not smaller, the original is retained. Files are temporarily stored in Cloudflare R2 to provide a download link; configure a lifecycle rule to automatically delete objects under pdf-compressor/ after 1 day. Always review important documents after compression.
             </AlertDescription>
           </Alert>
         </CardContent>
