@@ -350,7 +350,7 @@ const PdfCompressor = () => {
                           </p>
                         )}
                         {item.result && (
-                          <p className="text-xs text-muted-foreground mt-1">Processed in {(item.result.durationMs / 1000).toFixed(1)}s{item.result.contentPreset ? ' · Detected content: ' + item.result.contentPreset : ''}</p>
+                          <p className="text-xs text-muted-foreground mt-1">Server processing: {(item.result.durationMs / 1000).toFixed(1)}s{item.result.contentPreset ? ' · Detected content: ' + item.result.contentPreset : ''}</p>
                         )}
                       </div>
                       {item.error && (
@@ -427,9 +427,9 @@ const PdfCompressor = () => {
                   { id: 'verifying', label: 'Verify' },
                   { id: 'uploading-result', label: 'Prepare download' },
                 ].map((step) => {
-                  const active = progress.stage === step.id || (step.id === 'uploading' && progress.stage === 'uploaded');
+                  const active = progress.stage === step.id || (step.id === 'uploading' && progress.stage === 'uploaded') || (step.id === 'analyzing' && progress.stage === 'validating');
                   const done = progress.stage === 'complete' ||
-                    (step.id === 'uploading' && ['analyzing', 'optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'uploading' && ['validating', 'analyzing', 'optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
                     (step.id === 'analyzing' && ['optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
                     (step.id === 'optimizing' && ['verifying', 'uploading-result'].includes(progress.stage)) ||
                     (step.id === 'verifying' && progress.stage === 'uploading-result');
