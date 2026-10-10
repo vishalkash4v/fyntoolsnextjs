@@ -37,6 +37,17 @@ type QueuedFile = {
   result?: PdfCompressResult;
 };
 
+function compressionEngineLabel(engine?: string) {
+  switch (engine) {
+    case 'qpdf-lossless': return 'QPDF lossless optimization';
+    case 'qpdf-lossless-metadata': return 'QPDF lossless + metadata cleanup';
+    case 'qpdf-lossy': return 'QPDF image compression';
+    case 'ghostscript': return 'Ghostscript image optimization';
+    case 'original': return 'Original PDF preserved';
+    default: return engine || 'PDF optimizer';
+  }
+}
+
 function downloadFile(url: string, name: string) {
   const a = document.createElement('a');
   a.href = url;
@@ -52,10 +63,11 @@ const PdfCompressor = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [bulk, setBulk] = useState(false);
   const [levelId, setLevelId] = useState<PdfCompressLevelId>('optimized');
+  const [targetSize, setTargetSize] = useState('');
   const [queue, setQueue] = useState<QueuedFile[]>([]);
   const [dragging, setDragging] = useState(false);
   const [running, setRunning] = useState(false);
-  const [progress, setProgress] = useState({ label: '', percent: 0 });
+  const [progress, setProgress] = useState({ label: '', message: '', stage: '', percent: 0 });
 
   const addFiles = useCallback(
     (list: FileList | File[]) => {
@@ -112,7 +124,7 @@ const PdfCompressor = () => {
 
   const clearAll = () => {
     setQueue([]);
-    setProgress({ label: '', percent: 0 });
+    setProgress({ label: '', message: '', stage: '', percent: 0 });
   };
 
   const runCompress = async () => {
@@ -124,15 +136,17 @@ const PdfCompressor = () => {
       const item = updated[i]!;
       updated[i] = { ...item, status: 'working', error: undefined };
       setQueue([...updated]);
-      setProgress({ label: item.file.name, percent: 0 });
+      setProgress({ label: item.file.name, message: 'Waiting to start…', stage: 'queued', percent: 0 });
 
       try {
         const result = await compressPdfFile(item.file, levelId, (p) => {
           setProgress({
-            label: `${p.fileName} — optimizing on server`,
+            label: p.fileName,
+            message: p.message,
+            stage: p.stage,
             percent: p.percent,
           });
-        });
+        }, targetSize ? Number(targetSize) : null);
         updated[i] = { ...item, status: 'done', result };
         setQueue([...updated]);
       } catch (err) {
@@ -143,7 +157,7 @@ const PdfCompressor = () => {
     }
 
     setRunning(false);
-    setProgress({ label: 'Done', percent: 100 });
+    setProgress({ label: 'Done', message: 'All queued files have finished processing.', stage: 'complete', percent: 100 });
     const ok = updated.filter((u) => u.status === 'done').length;
     toast({
       title: 'Compression finished',
@@ -173,7 +187,7 @@ const PdfCompressor = () => {
             PDF Compressor — Reduce PDF Size
           </CardTitle>
           <CardDescription>
-            Uses a server-side Ghostscript engine to optimize PDF objects and embedded images without rasterizing every page. Actual output size is measured; the original is kept if optimization makes the file larger.
+            Uses native QPDF lossless optimization first, then compares image-optimized candidates when your selected quality level allows it. The smallest valid result is selected and the original is preserved when no candidate is smaller.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -273,11 +287,38 @@ const PdfCompressor = () => {
               })}
             </div>
             <p className="text-sm text-muted-foreground">
-              Choose a level above. Output sizes are measured from the finished PDF, never estimated. The 150 KB option is a best-effort target, not a guarantee.
+              Choose a quality level, then optionally set a target size. Actual output is measured from the finished PDF; target sizes are best-effort, not guaranteed.
             </p>
           </div>
 
-          {/* Queue */}
+          {/* Target size */}
+          <div className="space-y-2 rounded-lg border p-4">
+            <Label htmlFor="pdf-target-size">Target file size (optional)</Label>
+            <select
+              id="pdf-target-size"
+              value={targetSize}
+              onChange={(event) => setTargetSize(event.target.value)}
+              disabled={running}
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+            >
+              <option value="">No fixed target — optimize for selected quality</option>
+              <option value="102400">Under 100 KB (best effort)</option>
+              <option value="153600">Under 150 KB (best effort)</option>
+              <option value="204800">Under 200 KB (best effort)</option>
+              <option value="307200">Under 300 KB (best effort)</option>
+              <option value="512000">Under 500 KB (best effort)</option>
+              <option value="1048576">Under 1 MB (best effort)</option>
+              <option value="2097152">Under 2 MB (best effort)</option>
+              <option value="5242880">Under 5 MB (best effort)</option>
+              <option value="10485760">Under 10 MB (best effort)</option>
+              <option value="20971520">Under 20 MB (best effort)</option>
+              <option value="26214400">Under 25 MB (best effort)</option>
+            </select>
+            <p className="text-xs text-muted-foreground">
+              A target size triggers multiple compression attempts. Very small targets may reduce scan readability, and some PDFs cannot reach the requested size.
+            </p>
+          </div>
+
           {queue.length > 0 && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -313,6 +354,22 @@ const PdfCompressor = () => {
                         )}
                         {item.result && (
                           <p className="text-xs text-muted-foreground mt-1">{item.result.message}</p>
+                        )}
+                        {item.result?.compressionEngine && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Method: {{ 'qpdf-lossless': 'QPDF lossless', 'qpdf-lossy': 'QPDF image optimization', ghostscript: 'Ghostscript image optimization', original: 'Original kept' }[item.result.compressionEngine] || item.result.compressionEngine}
+                          </p>
+                        )}
+                        {item.result?.compressionEngine && (
+                          <p className="text-xs text-muted-foreground mt-1">Method: {compressionEngineLabel(item.result.compressionEngine)}</p>
+                        )}
+                        {item.result?.targetSizeBytes && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Target {formatBytes(item.result.targetSizeBytes)}: {item.result.targetReached ? 'reached' : 'not reached at this quality level'}
+                          </p>
+                        )}
+                        {item.result && (
+                          <p className="text-xs text-muted-foreground mt-1">Server processing: {(item.result.durationMs / 1000).toFixed(1)}s{item.result.contentPreset ? ' · Detected content: ' + item.result.contentPreset : ''}</p>
                         )}
                       </div>
                       {item.error && (
@@ -355,12 +412,57 @@ const PdfCompressor = () => {
           )}
 
           {running && (
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="truncate pr-2">{progress.label}</span>
-                <span>{progress.percent}%</span>
+            <div className="space-y-3 rounded-xl border p-4" aria-live="polite" aria-atomic="true">
+              <div className="flex items-start gap-3">
+                <div className="rounded-full bg-primary/10 p-2">
+                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="font-semibold text-sm">Processing your PDF</p>
+                    <span className="text-sm font-medium tabular-nums">{progress.percent}%</span>
+                  </div>
+                  <p className="mt-1 truncate text-sm text-muted-foreground">{progress.label}</p>
+                  <p className="mt-1 text-sm">{progress.message || 'Please keep this tab open while your PDF is processed.'}</p>
+                </div>
               </div>
               <Progress value={progress.percent} />
+              {progress.stage === 'optimizing' && (
+                <div className="h-2 w-full overflow-hidden rounded-full bg-muted" role="status" aria-label="PDF optimization is running">
+                  <div className="h-full w-1/3 rounded-full bg-primary animate-pulse" />
+                </div>
+              )}
+              {progress.stage === 'optimizing' && (
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
+                  <span>Optimization can take longer for scanned PDFs or documents with many large images. The percentage will update when the server completes the next step.</span>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-5">
+                {[
+                  { id: 'uploading', label: 'Upload' },
+                  { id: 'analyzing', label: 'Analyze' },
+                  { id: 'optimizing', label: 'Optimize' },
+                  { id: 'verifying', label: 'Verify' },
+                  { id: 'uploading-result', label: 'Prepare download' },
+                ].map((step) => {
+                  const active = progress.stage === step.id || (step.id === 'uploading' && progress.stage === 'uploaded') || (step.id === 'analyzing' && progress.stage === 'validating');
+                  const done = progress.stage === 'complete' ||
+                    (step.id === 'uploading' && ['validating', 'analyzing', 'optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'analyzing' && ['optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'optimizing' && ['verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'verifying' && progress.stage === 'uploading-result');
+                  return (
+                    <div key={step.id} className={cn(
+                      'rounded-md border px-2 py-2 text-center',
+                      active && 'border-primary bg-primary/5 font-semibold',
+                      done && 'border-primary/30 text-primary'
+                    )}>
+                      {done ? '✓ ' : active ? '● ' : ''}{step.label}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
@@ -390,7 +492,7 @@ const PdfCompressor = () => {
 
           <Alert>
             <AlertDescription className="text-sm">
-              PDFs are processed on the FYN Tools backend with Ghostscript. Text and vector content are preserved where the optimizer supports it, but image downsampling can affect fine detail. If the result is not smaller, the original is retained. Files are temporarily stored in Cloudflare R2 to provide a download link; configure a lifecycle rule to automatically delete objects under pdf-compressor/ after 1 day. Always review important documents after compression.
+              FYN Tools first tries lossless QPDF optimization, then compares an image-optimized candidate when the selected mode allows it. It returns the smallest valid result and keeps the original when no candidate is smaller. Stronger compression can reduce scan detail; digitally signed PDFs, XFA forms, and detected interactive forms are kept unchanged to avoid breaking them. Files are temporarily stored in Cloudflare R2; configure a lifecycle rule to delete objects under pdf-compressor/ after 1 day.
             </AlertDescription>
           </Alert>
         </CardContent>
