@@ -55,7 +55,7 @@ const PdfCompressor = () => {
   const [queue, setQueue] = useState<QueuedFile[]>([]);
   const [dragging, setDragging] = useState(false);
   const [running, setRunning] = useState(false);
-  const [progress, setProgress] = useState({ label: '', percent: 0 });
+  const [progress, setProgress] = useState({ label: '', message: '', stage: '', percent: 0 });
 
   const addFiles = useCallback(
     (list: FileList | File[]) => {
@@ -112,7 +112,7 @@ const PdfCompressor = () => {
 
   const clearAll = () => {
     setQueue([]);
-    setProgress({ label: '', percent: 0 });
+    setProgress({ label: '', message: '', stage: '', percent: 0 });
   };
 
   const runCompress = async () => {
@@ -124,12 +124,14 @@ const PdfCompressor = () => {
       const item = updated[i]!;
       updated[i] = { ...item, status: 'working', error: undefined };
       setQueue([...updated]);
-      setProgress({ label: item.file.name, percent: 0 });
+      setProgress({ label: item.file.name, message: 'Waiting to start…', stage: 'queued', percent: 0 });
 
       try {
         const result = await compressPdfFile(item.file, levelId, (p) => {
           setProgress({
-            label: `${p.fileName} — optimizing on server`,
+            label: p.fileName,
+            message: p.message,
+            stage: p.stage,
             percent: p.percent,
           });
         });
@@ -143,7 +145,7 @@ const PdfCompressor = () => {
     }
 
     setRunning(false);
-    setProgress({ label: 'Done', percent: 100 });
+    setProgress({ label: 'Done', message: 'All queued files have finished processing.', stage: 'complete', percent: 100 });
     const ok = updated.filter((u) => u.status === 'done').length;
     toast({
       title: 'Compression finished',
@@ -355,12 +357,52 @@ const PdfCompressor = () => {
           )}
 
           {running && (
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="truncate pr-2">{progress.label}</span>
-                <span>{progress.percent}%</span>
+            <div className="space-y-3 rounded-xl border p-4" aria-live="polite" aria-atomic="true">
+              <div className="flex items-start gap-3">
+                <div className="rounded-full bg-primary/10 p-2">
+                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="font-semibold text-sm">Processing your PDF</p>
+                    <span className="text-sm font-medium tabular-nums">{progress.percent}%</span>
+                  </div>
+                  <p className="mt-1 truncate text-sm text-muted-foreground">{progress.label}</p>
+                  <p className="mt-1 text-sm">{progress.message || 'Please keep this tab open while your PDF is processed.'}</p>
+                </div>
               </div>
               <Progress value={progress.percent} />
+              {progress.stage === 'optimizing' && (
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
+                  <span>Optimization can take longer for scanned PDFs or documents with many large images. The percentage will update when the server completes the next step.</span>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-5">
+                {[
+                  { id: 'uploading', label: 'Upload' },
+                  { id: 'analyzing', label: 'Analyze' },
+                  { id: 'optimizing', label: 'Optimize' },
+                  { id: 'verifying', label: 'Verify' },
+                  { id: 'uploading-result', label: 'Prepare download' },
+                ].map((step) => {
+                  const active = progress.stage === step.id || (step.id === 'uploading' && progress.stage === 'uploaded');
+                  const done = progress.stage === 'complete' ||
+                    (step.id === 'uploading' && ['analyzing', 'optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'analyzing' && ['optimizing', 'verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'optimizing' && ['verifying', 'uploading-result'].includes(progress.stage)) ||
+                    (step.id === 'verifying' && progress.stage === 'uploading-result');
+                  return (
+                    <div key={step.id} className={cn(
+                      'rounded-md border px-2 py-2 text-center',
+                      active && 'border-primary bg-primary/5 font-semibold',
+                      done && 'border-primary/30 text-primary'
+                    )}>
+                      {done ? '✓ ' : active ? '● ' : ''}{step.label}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
