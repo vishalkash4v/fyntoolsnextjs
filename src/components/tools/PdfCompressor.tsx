@@ -344,6 +344,11 @@ const PdfCompressor = () => {
                         {item.result && (
                           <p className="text-xs text-muted-foreground mt-1">{item.result.message}</p>
                         )}
+                        {item.result?.compressionEngine && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Method: {{ 'qpdf-lossless': 'QPDF lossless', 'qpdf-lossy': 'QPDF image optimization', ghostscript: 'Ghostscript image optimization', original: 'Original kept' }[item.result.compressionEngine] || item.result.compressionEngine}
+                          </p>
+                        )}
                         {item.result?.targetSizeBytes && (
                           <p className="text-xs text-muted-foreground mt-1">
                             Target {formatBytes(item.result.targetSizeBytes)}: {item.result.targetReached ? 'reached' : 'not reached at this quality level'}
@@ -473,7 +478,7 @@ const PdfCompressor = () => {
 
           <Alert>
             <AlertDescription className="text-sm">
-              PDFs are processed on the FYN Tools backend with Ghostscript. Text and vector content are preserved where the optimizer supports it, but image downsampling can affect fine detail. If the result is not smaller, the original is retained. Files are temporarily stored in Cloudflare R2 to provide a download link; configure a lifecycle rule to automatically delete objects under pdf-compressor/ after 1 day. Always review important documents after compression.
+              FYN Tools first tries lossless QPDF optimization, then compares an image-optimized candidate when the selected mode allows it. It returns the smallest valid result and keeps the original when no candidate is smaller. Stronger compression can reduce scan detail; digitally signed PDFs, XFA forms, and detected interactive forms are kept unchanged to avoid breaking them. Files are temporarily stored in Cloudflare R2; configure a lifecycle rule to delete objects under pdf-compressor/ after 1 day.
             </AlertDescription>
           </Alert>
         </CardContent>
