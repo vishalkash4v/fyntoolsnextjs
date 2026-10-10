@@ -37,6 +37,16 @@ type QueuedFile = {
   result?: PdfCompressResult;
 };
 
+function compressionEngineLabel(engine?: string) {
+  switch (engine) {
+    case 'qpdf-lossless': return 'QPDF lossless optimization';
+    case 'qpdf-lossy': return 'QPDF image compression';
+    case 'ghostscript': return 'Ghostscript image optimization';
+    case 'original': return 'Original PDF preserved';
+    default: return engine || 'PDF optimizer';
+  }
+}
+
 function downloadFile(url: string, name: string) {
   const a = document.createElement('a');
   a.href = url;
@@ -348,6 +358,9 @@ const PdfCompressor = () => {
                           <p className="text-xs text-muted-foreground mt-1">
                             Method: {{ 'qpdf-lossless': 'QPDF lossless', 'qpdf-lossy': 'QPDF image optimization', ghostscript: 'Ghostscript image optimization', original: 'Original kept' }[item.result.compressionEngine] || item.result.compressionEngine}
                           </p>
+                        )}
+                        {item.result?.compressionEngine && (
+                          <p className="text-xs text-muted-foreground mt-1">Method: {compressionEngineLabel(item.result.compressionEngine)}</p>
                         )}
                         {item.result?.targetSizeBytes && (
                           <p className="text-xs text-muted-foreground mt-1">
