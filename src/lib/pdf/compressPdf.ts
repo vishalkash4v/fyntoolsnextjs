@@ -228,7 +228,9 @@ export async function compressPdfFile(
         compressionEngine: job.result.compressionEngine,
         preservationReason: job.result.preservationReason,
         pageCount: job.result.analysis?.pageCount,
-        contentPreset: job.result.analysis?.preset,
+        contentPreset: job.result.analysis?.preset && job.result.analysis.preset !== 'unknown'
+          ? job.result.analysis.preset
+          : undefined,
       };
     }
 
