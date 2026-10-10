@@ -52,6 +52,7 @@ const PdfCompressor = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [bulk, setBulk] = useState(false);
   const [levelId, setLevelId] = useState<PdfCompressLevelId>('optimized');
+  const [targetSize, setTargetSize] = useState('');
   const [queue, setQueue] = useState<QueuedFile[]>([]);
   const [dragging, setDragging] = useState(false);
   const [running, setRunning] = useState(false);
@@ -134,7 +135,7 @@ const PdfCompressor = () => {
             stage: p.stage,
             percent: p.percent,
           });
-        });
+        }, targetSize ? Number(targetSize) : null);
         updated[i] = { ...item, status: 'done', result };
         setQueue([...updated]);
       } catch (err) {
@@ -275,11 +276,37 @@ const PdfCompressor = () => {
               })}
             </div>
             <p className="text-sm text-muted-foreground">
-              Choose a level above. Output sizes are measured from the finished PDF, never estimated. The 150 KB option is a best-effort target, not a guarantee.
+              Choose a quality level, then optionally set a target size. Actual output is measured from the finished PDF; target sizes are best-effort, not guaranteed.
             </p>
           </div>
 
-          {/* Queue */}
+          {/* Target size */}
+          <div className="space-y-2 rounded-lg border p-4">
+            <Label htmlFor="pdf-target-size">Target file size (optional)</Label>
+            <select
+              id="pdf-target-size"
+              value={targetSize}
+              onChange={(event) => setTargetSize(event.target.value)}
+              disabled={running}
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+            >
+              <option value="">No fixed target — optimize for selected quality</option>
+              <option value="102400">Under 100 KB (best effort)</option>
+              <option value="153600">Under 150 KB (best effort)</option>
+              <option value="204800">Under 200 KB (best effort)</option>
+              <option value="307200">Under 300 KB (best effort)</option>
+              <option value="512000">Under 500 KB (best effort)</option>
+              <option value="1048576">Under 1 MB (best effort)</option>
+              <option value="2097152">Under 2 MB (best effort)</option>
+              <option value="5242880">Under 5 MB (best effort)</option>
+              <option value="10485760">Under 10 MB (best effort)</option>
+            </select>
+            <p className="text-xs text-muted-foreground">
+              A target size triggers multiple compression attempts. Very small targets may reduce scan readability, and some PDFs cannot reach the requested size.
+            </p>
+          </div>
+
+          {old}
           {queue.length > 0 && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -315,6 +342,9 @@ const PdfCompressor = () => {
                         )}
                         {item.result && (
                           <p className="text-xs text-muted-foreground mt-1">{item.result.message}</p>
+                        )}
+                        {item.result && (
+                          <p className="text-xs text-muted-foreground mt-1">Processed in {(item.result.durationMs / 1000).toFixed(1)}s{item.result.contentPreset ? ' · Detected content: ' + item.result.contentPreset : ''}</p>
                         )}
                       </div>
                       {item.error && (
