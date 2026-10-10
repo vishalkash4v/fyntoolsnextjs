@@ -40,17 +40,18 @@ export const TOOL_FACT_CARDS: Record<string, ToolFactCard> = {
     ],
   },
   '/pdf-compressor': {
-    whatItDoes: 'Re-encodes PDF pages in the browser so scanned forms fit ~150KB upload caps.',
-    inputs: 'One PDF or up to 12 files, 40MB each, six quality levels',
-    outputs: 'Compressed PDF download with before/after sizes',
-    limit: 'Photo-heavy multi-page files may stay slightly above 150KB at the quality floor',
-    oneMistake: 'Using Full Quality when the portal wants 150KB — pick Compress to ~150 KB.',
+    whatItDoes: 'Optimizes PDF structure with QPDF first, then compares optional image-compression candidates and keeps the smallest valid result.',
+    inputs: 'One PDF or a batch of up to 12 PDFs, up to 40 MiB each; quality level and optional target from 100 KB to 25 MB',
+    outputs: 'PDF download with measured original/output sizes, reduction percentage, compression method, and target-size status',
+    limit: 'Target sizes are best effort. Strong image compression can affect scan clarity; detected signed PDFs and interactive forms are kept unchanged.',
+    oneMistake: 'Assuming every PDF can be forced under 150 KB without quality loss — try lossless optimization first and check the actual output size.',
     cases: [
-      { title: 'Exam portal cap', description: 'Upload a 2MB scan, choose Compress to ~150 KB, download for the form.' },
-      { title: 'Bulk supporting docs', description: 'Switch to Bulk, drop several PDFs, use Optimized, Download all.' },
-      { title: 'Email attachment', description: 'Use Compact so the file sits under common mailbox limits.' },
+      { title: 'Application portal limit', description: 'Select a target such as 150 KB or 200 KB and check whether the actual result reaches it before submitting.' },
+      { title: 'Text-heavy resume', description: 'Start with lossless QPDF optimization to keep text and embedded images from being intentionally downsampled.' },
+      { title: 'Scanned forms', description: 'Use a stronger image-compression level when needed, then inspect small print at 100–200% zoom.' },
     ],
   },
+
   '/image-compressor': {
     whatItDoes: 'Shrinks JPG/PNG/WebP in the browser with a quality slider and size target.',
     inputs: 'Image file + quality or KB target',
