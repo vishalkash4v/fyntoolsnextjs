@@ -391,11 +391,12 @@ export const toolHowToCatalog: Record<string, string[]> = {
     "Regenerate until strength and format match your policy.",
   ],
   '/pdf-compressor': [
-    "Choose Single or Bulk mode and upload PDF file(s) up to 40MB each.",
-    "Select a compression level (Full Quality → Compact, or Compress to ~150 KB) and check estimated size.",
-    "Click Compress and wait for page progress.",
-    "Download each compressed PDF or use Download all for bulk jobs.",
+    "Choose Single or Bulk mode and upload PDF files (maximum 40 MiB each).",
+    "Select a quality level and optionally choose a target size from 100 KB to 25 MB.",
+    "Start compression and follow the upload, analysis, optimization, verification, and download-preparation stages.",
+    "Download the result and check actual output bytes and target status; target sizes are best effort, not guarantees.",
   ],
+
   '/pdf-text-extractor': [
     "Upload a PDF file via drag-and-drop or the file picker.",
     "Wait for text extraction to complete page by page.",
