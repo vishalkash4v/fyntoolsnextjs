@@ -4827,6 +4827,7 @@ const pageOverridesBase: Record<string, PageOverride> = {
     "title": "Compress PDF Online to 100KB–25MB | Free PDF Compressor",
     "description": "Compress PDF online with QPDF lossless optimization and optional image compression. Set best-effort targets from 100 KB to 25 MB, see actual output sizes, and process single or bulk PDF files.",
     "shortIntro": "Free PDF size reducer for single or bulk files. Use lossless-first optimization, choose a quality level and optional target size, then check actual before-and-after results.",
+    "introText": "FYN Tools PDF Compressor uploads the selected PDF to the backend, compares lossless QPDF optimizations first, and optionally checks an image-compressed candidate when the chosen quality level allows it. It measures the finished file and returns the smallest valid result only when it is smaller than the original. Target sizes from 100 KB to 25 MB are best-effort. Downloads are served through signed Cloudflare R2 links; avoid uploading highly sensitive documents.",
     "keywords": "pdf compressor, compress pdf online, compress pdf to 150kb, compress pdf to 200kb, compress pdf to 500kb, 150kb pdf converter, free pdf compressor online, compress pdf bulk, reduce pdf file size",
     "category": "PDF Tools",
     "howToUse": [
