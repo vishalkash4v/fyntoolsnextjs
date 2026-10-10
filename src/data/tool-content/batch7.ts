@@ -161,7 +161,7 @@ export const batch7ToolSeo: Record<string, PremiumPartial> = {
           {
               "name": "PDF Compressor",
               "href": "/pdf-compressor",
-              "description": "Compress PDF to 150KB or smaller online free. Single or bulk PDF compression with 6 quality levels a"
+              "description": "Lossless-first PDF optimization with actual size reporting and best-effort targets from 100 KB to 25 MB"
           }
       ],
       "conclusion": "Use Add Name & Date on Photo on this page, then browse related image tools linked below."
