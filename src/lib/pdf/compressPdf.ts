@@ -1,18 +1,4 @@
-/**
- * Quality-first PDF compression.
- *
- * Important safeguards:
- * - Never rasterize PDFs containing selectable text: that makes text blurry and
- *   removes text search/copy/accessibility.
- * - Only rasterize image-only/scanned PDFs, at a high render resolution.
- * - Keep the original file if the candidate is not smaller.
- * - Preserve the original PDF page dimensions (PDF points), not pixel dimensions.
- *
- * Browser-only compression cannot guarantee a target size for every PDF without
- * sacrificing quality. The UI therefore reports actual output bytes only.
- */
-
-import { PDFDocument } from 'pdf-lib';
+import { API_BASE_URL } from '@/lib/seo/site';
 
 export type PdfCompressLevelId =
   | 'full-quality'
@@ -26,55 +12,15 @@ export type PdfCompressLevel = {
   id: PdfCompressLevelId;
   name: string;
   subtitle: string;
-  /** Render scale relative to PDF.js's 72-DPI viewport. */
-  scale: number;
-  /** JPEG quality used only for image-only/scanned PDFs. */
-  quality: number;
 };
 
 export const PDF_COMPRESS_LEVELS: PdfCompressLevel[] = [
-  {
-    id: 'full-quality',
-    name: 'Maximum Clarity',
-    subtitle: 'Highest clarity for scanned pages',
-    scale: 2.2,
-    quality: 0.95,
-  },
-  {
-    id: 'high-quality',
-    name: 'High Quality',
-    subtitle: 'High-resolution scans with minimal loss',
-    scale: 2.0,
-    quality: 0.92,
-  },
-  {
-    id: 'optimized',
-    name: 'Recommended',
-    subtitle: 'Balanced size and scan readability',
-    scale: 1.8,
-    quality: 0.9,
-  },
-  {
-    id: 'slight-drop',
-    name: 'Smaller File',
-    subtitle: 'More compression for image-only scans',
-    scale: 1.65,
-    quality: 0.86,
-  },
-  {
-    id: 'compact',
-    name: 'Compact Scan',
-    subtitle: 'Stronger compression; inspect fine print',
-    scale: 1.5,
-    quality: 0.82,
-  },
-  {
-    id: 'max-150kb',
-    name: 'Smallest File (Best Effort)',
-    subtitle: 'Attempts stronger reduction; 150 KB is not guaranteed',
-    scale: 1.35,
-    quality: 0.78,
-  },
+  { id: 'full-quality', name: 'Maximum Clarity', subtitle: 'Prioritize print quality and fine details' },
+  { id: 'high-quality', name: 'High Quality', subtitle: 'High-resolution output with minimal image downsampling' },
+  { id: 'optimized', name: 'Recommended', subtitle: 'Balanced size and readability for everyday PDFs' },
+  { id: 'slight-drop', name: 'Smaller File', subtitle: 'Stronger optimization for scanned and image-heavy PDFs' },
+  { id: 'compact', name: 'Compact', subtitle: 'Smaller output; inspect fine print after compression' },
+  { id: 'max-150kb', name: 'Target 150 KB', subtitle: 'Best-effort target; final size depends on PDF contents' },
 ];
 
 export type PdfCompressProgress = {
@@ -85,204 +31,73 @@ export type PdfCompressProgress = {
 };
 
 export type PdfCompressResult = {
-  blob: Blob;
+  downloadUrl: string;
   bytes: number;
-  pageCount: number;
-  level: PdfCompressLevel;
   originalBytes: number;
   fileName: string;
   compressed: boolean;
   message: string;
+  durationMs: number;
+  level: PdfCompressLevel;
+  reductionPercent: number;
 };
 
-let workerReady = false;
-
-async function getPdfJs() {
-  const pdfjs = await import('pdfjs-dist');
-  if (!workerReady && typeof window !== 'undefined') {
-    pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-    workerReady = true;
-  }
-  return pdfjs;
-}
-
-function canvasToJpegBlob(canvas: HTMLCanvasElement, quality: number): Promise<Blob> {
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(
-      (blob) => {
-        if (!blob) reject(new Error('Failed to encode a PDF page'));
-        else resolve(blob);
-      },
-      'image/jpeg',
-      quality
-    );
-  });
-}
-
-async function renderPageToJpeg(
-  page: {
-    getViewport: (opts: { scale: number }) => { width: number; height: number };
-    render: (opts: Record<string, unknown>) => { promise: Promise<void> };
-  },
-  scale: number,
-  quality: number
-): Promise<{ blob: Blob; pageWidth: number; pageHeight: number }> {
-  const viewport = page.getViewport({ scale });
-  const baseViewport = page.getViewport({ scale: 1 });
-  const canvas = document.createElement('canvas');
-  canvas.width = Math.max(1, Math.ceil(viewport.width));
-  canvas.height = Math.max(1, Math.ceil(viewport.height));
-
-  const ctx = canvas.getContext('2d', { alpha: false });
-  if (!ctx) throw new Error('Canvas is not supported by this browser');
-
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  await page.render({ canvasContext: ctx, viewport }).promise;
-  const blob = await canvasToJpegBlob(canvas, quality);
-
-  // Release the potentially large canvas immediately.
-  canvas.width = 0;
-  canvas.height = 0;
-
-  return {
-    blob,
-    // Keep the original physical page geometry in PDF points.
-    pageWidth: baseViewport.width,
-    pageHeight: baseViewport.height,
+type ApiResponse = {
+  success?: boolean;
+  error?: string;
+  data?: {
+    downloadUrl: string;
+    fileName: string;
+    originalBytes: number;
+    bytes: number;
+    compressed: boolean;
+    reductionPercent: number;
+    durationMs: number;
+    message: string;
   };
-}
-
-async function buildPdfFromPageJpegs(
-  pages: { blob: Blob; pageWidth: number; pageHeight: number }[]
-): Promise<Uint8Array> {
-  const doc = await PDFDocument.create();
-
-  for (const p of pages) {
-    const bytes = new Uint8Array(await p.blob.arrayBuffer());
-    const jpg = await doc.embedJpg(bytes);
-    const page = doc.addPage([p.pageWidth, p.pageHeight]);
-    page.drawImage(jpg, {
-      x: 0,
-      y: 0,
-      width: p.pageWidth,
-      height: p.pageHeight,
-    });
-  }
-
-  return doc.save({ useObjectStreams: true });
-}
+};
 
 export function formatBytes(bytes: number): string {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
-}
-
-function originalResult(
-  file: File,
-  level: PdfCompressLevel,
-  pageCount: number,
-  message: string
-): PdfCompressResult {
-  return {
-    blob: file,
-    bytes: file.size,
-    pageCount,
-    level,
-    originalBytes: file.size,
-    fileName: file.name,
-    compressed: false,
-    message,
-  };
+  if (bytes < 1024) return String(bytes) + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
 }
 
 /**
- * Compress a PDF without trading away selectable text for a smaller file.
- * Text-bearing PDFs are kept intact because browser-only rasterization would
- * degrade their text and vector content. Image-only PDFs are re-encoded once;
- * the original is retained if the candidate is not strictly smaller.
+ * Uses Ghostscript on the FYN Tools backend for real PDF-level optimization,
+ * preserving text and vector objects where Ghostscript can retain them.
+ * The result is stored temporarily in Cloudflare R2 and returned as a signed URL.
  */
 export async function compressPdfFile(
   file: File,
   levelId: PdfCompressLevelId,
-  onProgress?: (p: PdfCompressProgress) => void
+  onProgress?: (progress: PdfCompressProgress) => void
 ): Promise<PdfCompressResult> {
-  const level = PDF_COMPRESS_LEVELS.find((l) => l.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!;
-  const pdfjs = await getPdfJs();
-  const data = new Uint8Array(await file.arrayBuffer());
-  const pdf = await pdfjs.getDocument({ data: data.slice(0) }).promise;
-  const totalPages = pdf.numPages;
+  const level = PDF_COMPRESS_LEVELS.find((item) => item.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!;
 
+  onProgress?.({ fileName: file.name, page: 1, totalPages: 1, percent: 10 });
+
+  const form = new FormData();
+  form.append('file', file, file.name);
+  form.append('levelId', levelId);
+
+  let response: Response;
   try {
-    let containsSelectableText = false;
-
-    // Inspect every page before any destructive rasterization.
-    for (let i = 1; i <= totalPages; i++) {
-      const page = await pdf.getPage(i);
-      const textContent = await page.getTextContent();
-      const textItems = (textContent.items ?? []) as Array<{ str?: string }>;
-      if (textItems.some((item) => (item.str ?? '').trim().length > 0)) {
-        containsSelectableText = true;
-      }
-      onProgress?.({
-        fileName: file.name,
-        page: i,
-        totalPages,
-        percent: Math.round((i / totalPages) * 20),
-      });
-      if (containsSelectableText) break;
-    }
-
-    if (containsSelectableText) {
-      return originalResult(
-        file,
-        level,
-        totalPages,
-        'Original kept to protect selectable text, fonts, and vector quality. This browser-only compressor will not rasterize a text-based PDF.'
-      );
-    }
-
-    const pages: { blob: Blob; pageWidth: number; pageHeight: number }[] = [];
-    for (let i = 1; i <= totalPages; i++) {
-      const page = await pdf.getPage(i);
-      pages.push(await renderPageToJpeg(page as never, level.scale, level.quality));
-      onProgress?.({
-        fileName: file.name,
-        page: i,
-        totalPages,
-        percent: 20 + Math.round((i / totalPages) * 75),
-      });
-    }
-
-    const output = await buildPdfFromPageJpegs(pages);
-    const candidate = new Blob(
-      [output.buffer.slice(output.byteOffset, output.byteOffset + output.byteLength) as ArrayBuffer],
-      { type: 'application/pdf' }
-    );
-
-    // Never return a larger PDF and call it compression.
-    if (candidate.size >= file.size) {
-      return originalResult(
-        file,
-        level,
-        totalPages,
-        'The PDF was already efficient for its content. The original was kept because recompression did not reduce its size.'
-      );
-    }
-
-    const base = file.name.replace(/\.pdf$/i, '') || 'document';
-    return {
-      blob: candidate,
-      bytes: candidate.size,
-      pageCount: totalPages,
-      level,
-      originalBytes: file.size,
-      fileName: `${base}_compressed.pdf`,
-      compressed: true,
-      message: 'Image-only PDF compressed. Check small print before using the file.',
-    };
-  } finally {
-    await pdf.destroy();
+    response = await fetch(API_BASE_URL + '/pdf-compressor/compress', {
+      method: 'POST',
+      body: form,
+      cache: 'no-store',
+    });
+  } catch {
+    throw new Error('Could not reach the PDF compression service. Please try again in a moment.');
   }
+
+  const payload = (await response.json().catch(() => ({}))) as ApiResponse;
+  if (!response.ok || payload.success !== true || !payload.data?.downloadUrl) {
+    throw new Error(payload.error || 'PDF compression failed (HTTP ' + response.status + ').');
+  }
+
+  onProgress?.({ fileName: file.name, page: 1, totalPages: 1, percent: 100 });
+
+  return { ...payload.data, level };
 }
