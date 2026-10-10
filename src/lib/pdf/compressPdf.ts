@@ -55,6 +55,7 @@ export type PdfCompressResult = {
   targetReached?: boolean;
   compressionEngine?: string;
   preservationReason?: string | null;
+  inspectionWarning?: string | null;
   pageCount?: number;
   contentPreset?: string;
 };
@@ -89,6 +90,7 @@ type ApiStatusResponse = {
       targetReached?: boolean;
       compressionEngine?: string;
       preservationReason?: string | null;
+      inspectionWarning?: string | null;
       durationMs: number;
       levelId: string;
       analysis?: { preset?: string; pageCount?: number };
@@ -277,6 +279,7 @@ export async function compressPdfFile(
         targetReached: job.result.targetReached,
         compressionEngine: job.result.compressionEngine,
         preservationReason: job.result.preservationReason,
+        inspectionWarning: job.result.inspectionWarning,
         pageCount: job.result.analysis?.pageCount,
         contentPreset: job.result.analysis?.preset && job.result.analysis.preset !== 'unknown'
           ? job.result.analysis.preset
