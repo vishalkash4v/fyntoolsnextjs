@@ -4824,43 +4824,44 @@ const pageOverridesBase: Record<string, PageOverride> = {
     ]
   },
   "/pdf-compressor": {
-    "title": "Compress PDF to 150KB Free — Bulk PDF Compressor Online",
-    "description": "Compress PDF to 150KB free. Single or bulk PDF compression with 6 quality levels and estimated sizes. 150KB PDF converter for forms, email, and uploads — no signup.",
-    "shortIntro": "Free PDF compressor for single or bulk files. Six levels from Full Quality to Compress to ~150 KB with live size estimates — built for government forms and email limits.",
+    "title": "Compress PDF Online to 100KB–25MB | Free PDF Compressor",
+    "description": "Compress PDF online with QPDF lossless optimization and optional image compression. Set best-effort targets from 100 KB to 25 MB, see actual output sizes, and process single or bulk PDF files.",
+    "shortIntro": "Free PDF size reducer for single or bulk files. Use lossless-first optimization, choose a quality level and optional target size, then check actual before-and-after results.",
     "keywords": "pdf compressor, compress pdf online, compress pdf to 150kb, compress pdf to 200kb, compress pdf to 500kb, 150kb pdf converter, free pdf compressor online, compress pdf bulk, reduce pdf file size",
-    "category": "Image Tools",
+    "category": "PDF Tools",
     "howToUse": [
-      "Choose Single or Bulk mode and upload your PDF(s).",
-      "Select a compression level and check the estimated size.",
-      "Click Compress and wait for page-by-page progress.",
-      "Download each file or use Download all for bulk jobs."
+      "Choose Single PDF or Bulk mode and upload PDF files (up to 40 MiB per file).",
+      "Choose a quality level and optionally select a target size from 100 KB to 25 MB.",
+      "Click Compress and follow the upload, analysis, optimization, verification, and download-preparation progress stages.",
+      "Download the result and check the actual output size. A target size is best-effort, not guaranteed."
     ],
     "features": [
-      "Compress PDF to 150KB target mode",
-      "Six named quality levels with estimates",
-      "Single and bulk compression (up to 12 files)",
-      "Client-side private processing",
-      "Download all for batches",
-      "Form and email upload ready"
+      "Lossless-first QPDF structural and font optimization",
+      "Compare valid compression candidates and keep the smallest one",
+      "Best-effort target sizes from 100 KB to 25 MB",
+      "Quality choices for text-heavy PDFs and scanned documents",
+      "Single and bulk compression for up to 12 PDFs",
+      "Actual before-and-after byte sizes, reduction percentage, and target status",
+      "Clear upload and processing-stage progress with signed download links"
     ],
     "useCases": [
       {
-        "title": "Exam portal 150KB cap",
-        "description": "Upload a scanned form, pick Compress to ~150 KB, download and attach."
+        "title": "Government or application upload limits",
+        "description": "Select a target such as 150 KB or 200 KB, then verify the actual result before submitting."
       },
       {
-        "title": "Bulk supporting PDFs",
-        "description": "Switch to Bulk, drop up to 12 files, Download all when estimates look right."
+        "title": "Text-heavy resumes and documents",
+        "description": "Start with lossless QPDF optimization to reduce redundant PDF structures without intentionally downsampling images."
       },
       {
-        "title": "Email a lighter copy",
-        "description": "Use Compact so a photo-heavy PDF fits a typical mailbox limit."
+        "title": "Scanned forms and photo-heavy PDFs",
+        "description": "Choose a stronger compression level when image reduction is needed, then inspect small print for readability."
       }
     ],
     "faqs": [
       {
-        "question": "Can I compress a PDF to 150KB?",
-        "answer": "Yes. Use the Compress to ~150 KB level. The tool lowers quality iteratively to approach 150KB for form upload portals."
+        "question": "Can I compress a PDF to 150KB or 200KB?",
+        "answer": "Choose a target size such as 150 KB or 200 KB. The optimizer tries multiple candidates and shows the actual final size; no target can be guaranteed for every PDF without potentially reducing image quality."
       },
       {
         "question": "Is bulk PDF compression available?",
@@ -4868,7 +4869,11 @@ const pageOverridesBase: Record<string, PageOverride> = {
       },
       {
         "question": "Is my PDF uploaded to a server?",
-        "answer": "No. Compression runs entirely in your browser."
+        "answer": "Yes. Your PDF is uploaded to the FYN Tools backend for processing. The resulting file and job status are temporarily stored in Cloudflare R2 to create a signed download link. Do not upload highly sensitive PDFs; retention depends on the storage lifecycle policy."
+      },
+      {
+        "question": "Will compression affect document quality or text?",
+        "answer": "The QPDF lossless pass tries to optimize PDF structure without downsampling images. Stronger image compression can reduce scan clarity. Detected signed PDFs and interactive forms are kept unchanged to avoid invalidating signatures or flattening form fields."
       },
       {
         "question": "Is this PDF compressor free?",
