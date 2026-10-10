@@ -162,8 +162,8 @@ function uploadJob(
 /**
  * Submits a PDF as an asynchronous job, reports actual upload progress, then
  * polls real backend stage updates rather than inventing a percentage while
- * Ghostscript is working. A completed result is only returned after validation
- * and storage have finished.
+ * native QPDF and Ghostscript run. A completed result is only returned after
+ * candidate validation and storage have finished.
  */
 export async function compressPdfFile(
   file: File,
