@@ -103,6 +103,55 @@ export function formatBytes(bytes: number): string {
   return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
 }
 
+const EXPECTED_PDF_COMPRESSOR_BUILD = 'pdf-compressor-2026-10-10.2';
+
+async function checkPdfCompressorBackend(): Promise<void> {
+  let response: Response;
+  try {
+    response = await fetch(API_BASE_URL + '/pdf-compressor/health', {
+      method: 'GET',
+      cache: 'no-store',
+      headers: { Accept: 'application/json' },
+    });
+  } catch {
+    throw new Error('The PDF compression server is unreachable. Please retry in a moment.');
+  }
+
+  if (response.status === 404) {
+    throw new Error('The production PDF backend has not been updated yet. The Render API must deploy the latest express main branch before compression can run.');
+  }
+
+  const payload = await response.json().catch(() => ({})) as {
+    success?: boolean;
+    data?: {
+      build?: string;
+      engines?: {
+        qpdf?: { available?: boolean };
+        ghostscript?: { available?: boolean };
+      };
+      storageConfigured?: boolean;
+    };
+  };
+
+  if (!response.ok || payload.success !== true || !payload.data) {
+    throw new Error('The PDF compression server health check failed. Please retry shortly.');
+  }
+
+  if (payload.data.build !== EXPECTED_PDF_COMPRESSOR_BUILD) {
+    throw new Error('The PDF backend is running an older version. Deploy the latest express main branch on Render, then retry.');
+  }
+
+  if (!payload.data.storageConfigured) {
+    throw new Error('PDF compression storage is not configured on the backend. Configure the Cloudflare R2 environment variables.');
+  }
+
+  const hasQpdf = payload.data.engines?.qpdf?.available === true;
+  const hasGhostscript = payload.data.engines?.ghostscript?.available === true;
+  if (!hasQpdf && !hasGhostscript) {
+    throw new Error('Both PDF compression engines are unavailable on the server. Check the backend deployment and engine installation.');
+  }
+}
+
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -171,6 +220,7 @@ export async function compressPdfFile(
   onProgress?: (progress: PdfCompressProgress) => void,
   targetSizeBytes?: number | null
 ): Promise<PdfCompressResult> {
+  await checkPdfCompressorBackend();
   const level = PDF_COMPRESS_LEVELS.find((item) => item.id === levelId) ?? PDF_COMPRESS_LEVELS[2]!;
   const jobId = await uploadJob(file, levelId, onProgress, targetSizeBytes);
   const deadline = Date.now() + 6 * 60 * 1000;
