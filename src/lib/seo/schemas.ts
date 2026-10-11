@@ -35,7 +35,8 @@ export function websiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    name: 'FYN Tools Worldwide',
+    name: 'FYN Tools',
+    alternateName: ['FYN Tools Worldwide', 'FYNTools', 'fyntools.com'],
     url: SITE_URL,
     description:
       'Free professional online tools — calculators, text tools, image editors, converters, and developer utilities.',
