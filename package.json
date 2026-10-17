@@ -26,7 +26,8 @@
     "check:full": "node scripts/check-full-site-audit.mjs",
     "check:howto": "node scripts/audit-howto-coverage.mjs",
     "check:batch": "node scripts/check-seo-batch-coverage.mjs",
-    "check:lh-batch": "node scripts/lighthouse-batch.mjs"
+    "check:lh-batch": "node scripts/lighthouse-batch.mjs",
+    "check:service-worker": "node scripts/check-service-worker-safety.mjs"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.12.6",
