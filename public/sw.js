@@ -1,156 +1,84 @@
-// Service Worker for FYN Tools - Performance & Caching
-const CACHE_NAME = 'fyn-tools-v1.0.0';
-const STATIC_CACHE = 'fyn-tools-static-v1';
-const DYNAMIC_CACHE = 'fyn-tools-dynamic-v1';
+/*
+ * FYN Tools service worker.
+ *
+ * Important: Next.js deployment assets are versioned by build ID. Caching
+ * navigations or arbitrary same-origin responses here can keep old HTML alive
+ * after a deployment, causing it to request chunks that no longer exist.
+ * Keep navigations/network content fresh and only use a safe offline fallback.
+ */
+const CACHE_PREFIX = 'fyn-tools-';
+const CACHE_VERSION = 'v2';
+const STATIC_CACHE = CACHE_PREFIX + 'static-' + CACHE_VERSION;
+const OFFLINE_URL = '/offline.html';
 
-// Assets to cache immediately
-const STATIC_ASSETS = [
-  '/',
-  '/tools',
-  '/about',
-  '/contact',
-  '/static/js/bundle.js',
-  '/static/css/main.css',
-  '/manifest.json',
-  '/favicon.ico',
-  '/logo.png'
-];
-
-// Install event - cache static assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE)
-      .then((cache) => {
-        console.log('Caching static assets');
-        return cache.addAll(STATIC_ASSETS);
-      })
-      .catch((error) => {
-        console.log('Cache installation failed:', error);
-      })
+      .then((cache) => cache.add(OFFLINE_URL))
+      .catch(() => undefined)
   );
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then((names) => Promise.all(
+      names
+        .filter((name) => name.startsWith(CACHE_PREFIX) && name !== STATIC_CACHE)
+        .map((name) => caches.delete(name))
+    )).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-  const { request } = event;
+  const request = event.request;
   const url = new URL(request.url);
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  if (request.method !== 'GET' || url.origin !== self.location.origin) return;
+
+  // Never intercept Next.js chunks, image optimization, API responses, or
+  // navigations. They must always follow the deployed version's network path.
+  if (
+    url.pathname.startsWith('/_next/') ||
+    url.pathname.startsWith('/api/') ||
+    request.mode === 'navigate'
+  ) {
+    if (request.mode === 'navigate') {
+      event.respondWith(
+        fetch(request).catch(async () => {
+          const cached = await caches.match(OFFLINE_URL);
+          return cached || Response.error();
+        })
+      );
+    }
     return;
   }
 
-  // Skip chrome-extension and other non-http requests
-  if (!url.protocol.startsWith('http')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(request)
-      .then((cachedResponse) => {
-        // Return cached version if available
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        // Otherwise, fetch from network
-        return fetch(request)
-          .then((networkResponse) => {
-            // Don't cache non-successful responses
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-              return networkResponse;
-            }
-
-            // Clone the response
-            const responseToCache = networkResponse.clone();
-
-            // Cache dynamic content
-            caches.open(DYNAMIC_CACHE)
-              .then((cache) => {
-                cache.put(request, responseToCache);
-              });
-
-            return networkResponse;
-          })
-          .catch(() => {
-            // Return offline page for navigation requests
-            if (request.mode === 'navigate') {
-              return caches.match('/offline.html');
-            }
-          });
-      })
-  );
+  // Do not runtime-cache HTML or arbitrary responses. This worker only keeps a
+  // versioned offline fallback; normal assets use the browser/CDN cache policy.
 });
 
-// Background sync for offline actions
 self.addEventListener('sync', (event) => {
   if (event.tag === 'background-sync') {
-    event.waitUntil(doBackgroundSync());
+    event.waitUntil(Promise.resolve());
   }
 });
 
-// Push notifications
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New tool available!',
-    icon: '/icon-192x192.png',
-    badge: '/badge-72x72.png',
-    vibrate: [100, 50, 100],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    },
-    actions: [
-      {
-        action: 'explore',
-        title: 'Explore Tools',
-        icon: '/icon-192x192.png'
-      },
-      {
-        action: 'close',
-        title: 'Close',
-        icon: '/icon-192x192.png'
-      }
-    ]
+    icon: '/logobeta-128.webp',
+    badge: '/logobeta-64.webp',
+    data: { url: '/' },
   };
-
-  event.waitUntil(
-    self.registration.showNotification('FYN Tools', options)
-  );
+  event.waitUntil(self.registration.showNotification('FYN Tools', options));
 });
 
-// Notification click handler
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-
-  if (event.action === 'explore') {
-    event.waitUntil(
-      clients.openWindow('/tools')
-    );
-  }
+  const target = new URL(
+    event.notification.data && event.notification.data.url || '/',
+    self.location.origin
+  ).href;
+  event.waitUntil(self.clients.openWindow(target));
 });
-
-// Background sync function
-async function doBackgroundSync() {
-  // Handle offline actions when back online
-  console.log('Background sync triggered');
-}
-
